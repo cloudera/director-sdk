@@ -1,0 +1,38 @@
+*.swp
+*.iml
+*.class
+.idea
+target
+*/target
+.DS_Store
+*.pid
+
+# Package Files #
+*.jar
+*.war
+*.ear
+
+# Eclipse files
+.xml
+.settings
+.project
+.classpath
+.bpmn
+core/.xml
+felix-cache
+.metadata
+test-support/.externalToolBuilders
+test-support/maven-eclipse.xml
+eclipse-classes
+phantomjsdriver.log
+#H2 DB
+*.h2.db
+
+*.pyc
+server/state.lock.db
+clients/webapp/src/main/.tern-project
+clients/webapp/src/main/.tern-port
+
+#ignore temporary files
+.#*
+\#*

@@ -1,0 +1,12 @@
+build/
+dist/
+*.egg-info/
+.git-hash
+
+*.pyc
+*.pyo
+
+.*.swp
+.*.swo
+
+.DS_Store

@@ -1,0 +1,9 @@
+com.cloudera.director.shaded.com.sun.jersey.core.impl.provider.header.LocaleProvider
+com.cloudera.director.shaded.com.sun.jersey.core.impl.provider.header.EntityTagProvider
+com.cloudera.director.shaded.com.sun.jersey.core.impl.provider.header.MediaTypeProvider
+com.cloudera.director.shaded.com.sun.jersey.core.impl.provider.header.CacheControlProvider
+com.cloudera.director.shaded.com.sun.jersey.core.impl.provider.header.NewCookieProvider
+com.cloudera.director.shaded.com.sun.jersey.core.impl.provider.header.CookieProvider
+com.cloudera.director.shaded.com.sun.jersey.core.impl.provider.header.URIProvider
+com.cloudera.director.shaded.com.sun.jersey.core.impl.provider.header.DateProvider
+com.cloudera.director.shaded.com.sun.jersey.core.impl.provider.header.StringProvider
