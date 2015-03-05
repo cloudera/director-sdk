@@ -28,6 +28,7 @@
         <director-client.version>1.1.0</director-client.version>
         <jcommander.version>1.47</jcommander.version>
         <junit.version>4.11</junit.version>
+        <ini4j.version>0.5.4</ini4j.version>
     </properties>
 
     <dependencies>
@@ -41,6 +42,12 @@
             <groupId>com.beust</groupId>
             <artifactId>jcommander</artifactId>
             <version>${jcommander.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.ini4j</groupId>
+            <artifactId>ini4j</artifactId>
+            <version>${ini4j.version}</version>
         </dependency>
 
         <!-- test dependencies -->
