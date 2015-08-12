@@ -23,17 +23,17 @@ class DeploymentTemplate:
     def __init__(self, **kwargs):
         self.swaggerTypes = {
             'config': 'dict[str,str]',
-            'externalDatabases': 'dict[str,ExternalDatabase]',
-            'managerVirtualInstance': 'VirtualInstance',
+            'externalDatabases': 'dict[str,cloudera.director.v1.models.ExternalDatabase]',
+            'managerVirtualInstance': 'cloudera.director.v1.models.VirtualInstance',
             'name': 'str'
 
         }
 
 
         self.config = kwargs.get('config',{}) # dict[str,str]
-        self.externalDatabases = kwargs.get('externalDatabases',{}) # dict[str,ExternalDatabase]
+        self.externalDatabases = kwargs.get('externalDatabases',{}) # dict[str,cloudera.director.v1.models.ExternalDatabase]
         #Instance definition for a Cloudera Manager instance created from scratch
-        self.managerVirtualInstance = kwargs.get('managerVirtualInstance',None) # VirtualInstance
+        self.managerVirtualInstance = kwargs.get('managerVirtualInstance',None) # cloudera.director.v1.models.VirtualInstance
         #Deployment name
         self.name = kwargs.get('name',None) # str
         

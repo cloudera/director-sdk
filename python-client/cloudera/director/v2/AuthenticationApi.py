@@ -21,8 +21,6 @@
 import sys
 import os
 
-from models import *
-
 
 class AuthenticationApi(object):
 
@@ -31,18 +29,18 @@ class AuthenticationApi(object):
 
     
 
-    def login(self, login, **kwargs):
+    def login(self, body, **kwargs):
         """Log in to the API
 
         Args:
-            login, Login: login (required)
+            body, cloudera.director.v2.models.Login: login (required)
 
             
 
-        Returns: User
+        Returns: cloudera.director.v2.models.User
         """
 
-        allParams = ['login']
+        allParams = ['body']
 
         params = locals()
         for (key, val) in params['kwargs'].iteritems():
@@ -58,7 +56,7 @@ class AuthenticationApi(object):
         queryParams = {}
         headerParams = {}
 
-        postData = login
+        postData = body
 
         response = self.apiClient.callAPI(resourcePath, method, queryParams,
                                           postData, headerParams)
@@ -66,7 +64,7 @@ class AuthenticationApi(object):
         if not response:
             return None
 
-        responseObject = self.apiClient.deserialize(response, 'User')
+        responseObject = self.apiClient.deserialize(response, 'cloudera.director.v2.models.User')
         return responseObject
         
 

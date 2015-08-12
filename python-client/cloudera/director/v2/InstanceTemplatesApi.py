@@ -21,8 +21,6 @@
 import sys
 import os
 
-from models import *
-
 
 class InstanceTemplatesApi(object):
 
@@ -31,20 +29,20 @@ class InstanceTemplatesApi(object):
 
     
 
-    def create(self, environment, instanceTemplate, **kwargs):
+    def create(self, environment, body, **kwargs):
         """Create a new instance template
 
         Args:
             environment, str: environmentName (required)
 
-            instanceTemplate, InstanceTemplate: instanceTemplate (required)
+            body, cloudera.director.v2.models.InstanceTemplate: instanceTemplate (required)
 
             
 
         Returns: 
         """
 
-        allParams = ['environment', 'instanceTemplate']
+        allParams = ['environment', 'body']
 
         params = locals()
         for (key, val) in params['kwargs'].iteritems():
@@ -64,7 +62,7 @@ class InstanceTemplatesApi(object):
             replacement = str(self.apiClient.toPathValue(params['environment']))
             resourcePath = resourcePath.replace('{' + 'environment' + '}',
                                                 replacement)
-        postData = instanceTemplate
+        postData = body
 
         response = self.apiClient.callAPI(resourcePath, method, queryParams,
                                           postData, headerParams)
@@ -129,7 +127,7 @@ class InstanceTemplatesApi(object):
 
             
 
-        Returns: InstanceTemplate
+        Returns: cloudera.director.v2.models.InstanceTemplate
         """
 
         allParams = ['environment', 'template']
@@ -164,7 +162,7 @@ class InstanceTemplatesApi(object):
         if not response:
             return None
 
-        responseObject = self.apiClient.deserialize(response, 'InstanceTemplate')
+        responseObject = self.apiClient.deserialize(response, 'cloudera.director.v2.models.InstanceTemplate')
         return responseObject
         
 
@@ -215,7 +213,7 @@ class InstanceTemplatesApi(object):
 
         
 
-    def update(self, environment, template, instanceTemplate, **kwargs):
+    def update(self, environment, template, body, **kwargs):
         """Update an existing instance template
 
         Args:
@@ -223,14 +221,14 @@ class InstanceTemplatesApi(object):
 
             template, str: templateName (required)
 
-            instanceTemplate, InstanceTemplate: instanceTemplate (required)
+            body, cloudera.director.v2.models.InstanceTemplate: instanceTemplate (required)
 
             
 
         Returns: 
         """
 
-        allParams = ['environment', 'template', 'instanceTemplate']
+        allParams = ['environment', 'template', 'body']
 
         params = locals()
         for (key, val) in params['kwargs'].iteritems():
@@ -254,7 +252,7 @@ class InstanceTemplatesApi(object):
             replacement = str(self.apiClient.toPathValue(params['template']))
             resourcePath = resourcePath.replace('{' + 'template' + '}',
                                                 replacement)
-        postData = instanceTemplate
+        postData = body
 
         response = self.apiClient.callAPI(resourcePath, method, queryParams,
                                           postData, headerParams)

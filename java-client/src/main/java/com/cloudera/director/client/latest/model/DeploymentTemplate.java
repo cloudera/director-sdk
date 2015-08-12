@@ -18,9 +18,9 @@
 
 package com.cloudera.director.client.latest.model;
 
-import java.util.Map;
 import java.util.HashMap;
-import com.cloudera.director.client.latest.model.VirtualInstance;
+import java.util.Map;
+
 public class DeploymentTemplate {
   /* Optional configurations for Cloudera Manager and its management services */
   private Map<String,Map<String,String>> configs;
@@ -32,6 +32,12 @@ public class DeploymentTemplate {
   private Map<String,ExternalDatabase> externalDatabases;
   /* Hostname for existing Cloudera Manager installation */
   private String hostname;
+  /* Password for Kerberos administrative principal used by Cloudera Manager [redacted on read] */
+  private String krbAdminPassword;
+  /* Username for Kerberos administrative principal used by Cloudera Manager */
+  private String krbAdminUsername;
+  /* License for Cloudera Manager [redacted on read] */
+  private String license;
   /* Instance definition for a Cloudera Manager instance created from scratch */
   private VirtualInstance managerVirtualInstance;
   /* Deployment name */
@@ -44,61 +50,72 @@ public class DeploymentTemplate {
   private String repository;
   /* Custom Cloudera Manager public GPG key */
   private String repositoryKeyUrl;
+  /* Whether to install unlimited strength JCE policy files */
+  private Boolean unlimitedJce;
   /* Web UI and API username */
   private String username;
-  public DeploymentTemplate() {} 
+  public DeploymentTemplate() { }
 
-  private DeploymentTemplate(Map<String,Map<String,String>> configs, Boolean enableEnterpriseTrial, Map<String,ExternalDatabaseTemplate> externalDatabaseTemplates, Map<String,ExternalDatabase> externalDatabases, String hostname, VirtualInstance managerVirtualInstance, String name, String password, Integer port, String repository, String repositoryKeyUrl, String username) {
+  private DeploymentTemplate(Map<String,Map<String,String>> configs, Boolean enableEnterpriseTrial, Map<String,ExternalDatabaseTemplate> externalDatabaseTemplates, Map<String,ExternalDatabase> externalDatabases, String hostname, String krbAdminPassword, String krbAdminUsername, String license, VirtualInstance managerVirtualInstance, String name, String password, Integer port, String repository, String repositoryKeyUrl, Boolean unlimitedJce, String username) {
     this.configs = configs;
     this.enableEnterpriseTrial = enableEnterpriseTrial;
     this.externalDatabaseTemplates = externalDatabaseTemplates;
     this.externalDatabases = externalDatabases;
     this.hostname = hostname;
+    this.krbAdminPassword = krbAdminPassword;
+    this.krbAdminUsername = krbAdminUsername;
+    this.license = license;
     this.managerVirtualInstance = managerVirtualInstance;
     this.name = name;
     this.password = password;
     this.port = port;
     this.repository = repository;
     this.repositoryKeyUrl = repositoryKeyUrl;
+    this.unlimitedJce = unlimitedJce;
     this.username = username;
-    
   }
-  
-  private DeploymentTemplate (DeploymentTemplateBuilder builder) {
+
+  private DeploymentTemplate(DeploymentTemplateBuilder builder) {
     this.configs = builder.configs;
     this.enableEnterpriseTrial = builder.enableEnterpriseTrial;
     this.externalDatabaseTemplates = builder.externalDatabaseTemplates;
     this.externalDatabases = builder.externalDatabases;
     this.hostname = builder.hostname;
+    this.krbAdminPassword = builder.krbAdminPassword;
+    this.krbAdminUsername = builder.krbAdminUsername;
+    this.license = builder.license;
     this.managerVirtualInstance = builder.managerVirtualInstance;
     this.name = builder.name;
     this.password = builder.password;
     this.port = builder.port;
     this.repository = builder.repository;
     this.repositoryKeyUrl = builder.repositoryKeyUrl;
+    this.unlimitedJce = builder.unlimitedJce;
     this.username = builder.username;
-    
   }
 
   public static DeploymentTemplateBuilder builder() {
     return new DeploymentTemplateBuilder();
   }
 
-  
   public static class DeploymentTemplateBuilder {
     private Map<String,Map<String,String>> configs = new HashMap<String,Map<String,String>>();
     private Boolean enableEnterpriseTrial = null;
     private Map<String,ExternalDatabaseTemplate> externalDatabaseTemplates = new HashMap<String,ExternalDatabaseTemplate>();
     private Map<String,ExternalDatabase> externalDatabases = new HashMap<String,ExternalDatabase>();
     private String hostname = null;
+    private String krbAdminPassword = null;
+    private String krbAdminUsername = null;
+    private String license = null;
     private VirtualInstance managerVirtualInstance = null;
     private String name = null;
     private String password = null;
     private Integer port = null;
     private String repository = null;
     private String repositoryKeyUrl = null;
+    private Boolean unlimitedJce = null;
     private String username = null;
-    
+
     public DeploymentTemplateBuilder configs(Map<String,Map<String,String>> configs) {
       this.configs = configs;
       return this;
@@ -121,6 +138,21 @@ public class DeploymentTemplate {
 
     public DeploymentTemplateBuilder hostname(String hostname) {
       this.hostname = hostname;
+      return this;
+    }
+
+    public DeploymentTemplateBuilder krbAdminPassword(String krbAdminPassword) {
+      this.krbAdminPassword = krbAdminPassword;
+      return this;
+    }
+
+    public DeploymentTemplateBuilder krbAdminUsername(String krbAdminUsername) {
+      this.krbAdminUsername = krbAdminUsername;
+      return this;
+    }
+
+    public DeploymentTemplateBuilder license(String license) {
+      this.license = license;
       return this;
     }
 
@@ -154,12 +186,17 @@ public class DeploymentTemplate {
       return this;
     }
 
+    public DeploymentTemplateBuilder unlimitedJce(Boolean unlimitedJce) {
+      this.unlimitedJce = unlimitedJce;
+      return this;
+    }
+
     public DeploymentTemplateBuilder username(String username) {
       this.username = username;
       return this;
     }
 
-    public DeploymentTemplate build(){
+    public DeploymentTemplate build() {
       return new DeploymentTemplate(this);
     }
   }
@@ -171,12 +208,16 @@ public class DeploymentTemplate {
       .externalDatabaseTemplates(externalDatabaseTemplates)
       .externalDatabases(externalDatabases)
       .hostname(hostname)
+      .krbAdminPassword(krbAdminPassword)
+      .krbAdminUsername(krbAdminUsername)
+      .license(license)
       .managerVirtualInstance(managerVirtualInstance)
       .name(name)
       .password(password)
       .port(port)
       .repository(repository)
       .repositoryKeyUrl(repositoryKeyUrl)
+      .unlimitedJce(unlimitedJce)
       .username(username)
       ;
   }
@@ -213,6 +254,27 @@ public class DeploymentTemplate {
   }
   public void setHostname(String hostname) {
     this.hostname = hostname;
+  }
+
+  public String getKrbAdminPassword() {
+    return krbAdminPassword;
+  }
+  public void setKrbAdminPassword(String krbAdminPassword) {
+    this.krbAdminPassword = krbAdminPassword;
+  }
+
+  public String getKrbAdminUsername() {
+    return krbAdminUsername;
+  }
+  public void setKrbAdminUsername(String krbAdminUsername) {
+    this.krbAdminUsername = krbAdminUsername;
+  }
+
+  public String getLicense() {
+    return license;
+  }
+  public void setLicense(String license) {
+    this.license = license;
   }
 
   public VirtualInstance getManagerVirtualInstance() {
@@ -257,6 +319,13 @@ public class DeploymentTemplate {
     this.repositoryKeyUrl = repositoryKeyUrl;
   }
 
+  public Boolean getUnlimitedJce() {
+    return unlimitedJce;
+  }
+  public void setUnlimitedJce(Boolean unlimitedJce) {
+    this.unlimitedJce = unlimitedJce;
+  }
+
   public String getUsername() {
     return username;
   }
@@ -274,12 +343,16 @@ public class DeploymentTemplate {
     sb.append("  externalDatabaseTemplates: ").append(externalDatabaseTemplates).append(newLine);
     sb.append("  externalDatabases: ").append(externalDatabases).append(newLine);
     sb.append("  hostname: ").append(hostname).append(newLine);
+    sb.append("  krbAdminPassword: ").append("REDACTED").append(newLine);
+    sb.append("  krbAdminUsername: ").append(krbAdminUsername).append(newLine);
+    sb.append("  license: ").append("REDACTED").append(newLine);
     sb.append("  managerVirtualInstance: ").append(managerVirtualInstance).append(newLine);
     sb.append("  name: ").append(name).append(newLine);
     sb.append("  password: ").append("REDACTED").append(newLine);
     sb.append("  port: ").append(port).append(newLine);
     sb.append("  repository: ").append(repository).append(newLine);
     sb.append("  repositoryKeyUrl: ").append(repositoryKeyUrl).append(newLine);
+    sb.append("  unlimitedJce: ").append(unlimitedJce).append(newLine);
     sb.append("  username: ").append(username).append(newLine);
     sb.append("}" + newLine);
     return sb.toString();

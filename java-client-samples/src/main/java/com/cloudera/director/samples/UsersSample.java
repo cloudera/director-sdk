@@ -19,10 +19,10 @@ package com.cloudera.director.samples;
 import com.beust.jcommander.JCommander;
 import com.beust.jcommander.Parameter;
 import com.beust.jcommander.Parameters;
+import com.cloudera.director.client.common.ApiClient;
+import com.cloudera.director.client.common.ApiException;
 import com.cloudera.director.client.latest.api.AuthenticationApi;
 import com.cloudera.director.client.latest.api.UsersApi;
-import com.cloudera.director.client.latest.common.ApiClient;
-import com.cloudera.director.client.latest.common.ApiException;
 import com.cloudera.director.client.latest.model.Login;
 import com.cloudera.director.client.latest.model.User;
 

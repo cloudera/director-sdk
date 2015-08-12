@@ -22,7 +22,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='cloudera-director-python-client',
-    version='1.1.0',
+    version='1.5.0',
     author="Cloudera, Inc.",
     author_email="sme-eng-cloud@cloudera.com",
     description="Python client for Cloudera Director's REST API",

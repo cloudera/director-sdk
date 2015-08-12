@@ -18,43 +18,38 @@
 
 package com.cloudera.director.client.v2.model;
 
-import com.cloudera.director.client.v2.model.Health;
-import com.cloudera.director.client.v2.model.VirtualInstance;
-import com.cloudera.director.client.v2.model.Capabilities;
+
 public class Instance {
   private Capabilities capabilities;
   private Health health;
   private String ipAddress;
   private VirtualInstance virtualInstance;
-  public Instance() {} 
+  public Instance() { }
 
   private Instance(Capabilities capabilities, Health health, String ipAddress, VirtualInstance virtualInstance) {
     this.capabilities = capabilities;
     this.health = health;
     this.ipAddress = ipAddress;
     this.virtualInstance = virtualInstance;
-    
   }
-  
-  private Instance (InstanceBuilder builder) {
+
+  private Instance(InstanceBuilder builder) {
     this.capabilities = builder.capabilities;
     this.health = builder.health;
     this.ipAddress = builder.ipAddress;
     this.virtualInstance = builder.virtualInstance;
-    
   }
 
   public static InstanceBuilder builder() {
     return new InstanceBuilder();
   }
 
-  
   public static class InstanceBuilder {
     private Capabilities capabilities = null;
     private Health health = null;
     private String ipAddress = null;
     private VirtualInstance virtualInstance = null;
-    
+
     public InstanceBuilder capabilities(Capabilities capabilities) {
       this.capabilities = capabilities;
       return this;
@@ -75,7 +70,7 @@ public class Instance {
       return this;
     }
 
-    public Instance build(){
+    public Instance build() {
       return new Instance(this);
     }
   }

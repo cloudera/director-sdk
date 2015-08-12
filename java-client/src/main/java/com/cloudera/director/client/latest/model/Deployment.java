@@ -18,12 +18,16 @@
 
 package com.cloudera.director.client.latest.model;
 
-import com.cloudera.director.client.latest.model.Instance;
+
 public class Deployment {
   /* Whether to enable Cloudera Enterprise Trial */
   private Boolean enableEnterpriseTrial;
   /* Hostname for existing Cloudera Manager installation */
   private String hostname;
+  /* Password for Kerberos administrative principal used by Cloudera Manager [redacted on read] */
+  private String krbAdminPassword;
+  /* Username for Kerberos administrative principal used by Cloudera Manager */
+  private String krbAdminUsername;
   private Instance managerInstance;
   /* Deployment name */
   private String name;
@@ -35,52 +39,60 @@ public class Deployment {
   private String repository;
   /* Custom Cloudera Manager public GPG key */
   private String repositoryKeyUrl;
+  /* Whether to install unlimited strength JCE policy files */
+  private Boolean unlimitedJce;
   /* Username for API access */
   private String username;
-  public Deployment() {} 
+  public Deployment() { }
 
-  private Deployment(Boolean enableEnterpriseTrial, String hostname, Instance managerInstance, String name, String password, Integer port, String repository, String repositoryKeyUrl, String username) {
+  private Deployment(Boolean enableEnterpriseTrial, String hostname, String krbAdminPassword, String krbAdminUsername, Instance managerInstance, String name, String password, Integer port, String repository, String repositoryKeyUrl, Boolean unlimitedJce, String username) {
     this.enableEnterpriseTrial = enableEnterpriseTrial;
     this.hostname = hostname;
+    this.krbAdminPassword = krbAdminPassword;
+    this.krbAdminUsername = krbAdminUsername;
     this.managerInstance = managerInstance;
     this.name = name;
     this.password = password;
     this.port = port;
     this.repository = repository;
     this.repositoryKeyUrl = repositoryKeyUrl;
+    this.unlimitedJce = unlimitedJce;
     this.username = username;
-    
   }
-  
-  private Deployment (DeploymentBuilder builder) {
+
+  private Deployment(DeploymentBuilder builder) {
     this.enableEnterpriseTrial = builder.enableEnterpriseTrial;
     this.hostname = builder.hostname;
+    this.krbAdminPassword = builder.krbAdminPassword;
+    this.krbAdminUsername = builder.krbAdminUsername;
     this.managerInstance = builder.managerInstance;
     this.name = builder.name;
     this.password = builder.password;
     this.port = builder.port;
     this.repository = builder.repository;
     this.repositoryKeyUrl = builder.repositoryKeyUrl;
+    this.unlimitedJce = builder.unlimitedJce;
     this.username = builder.username;
-    
   }
 
   public static DeploymentBuilder builder() {
     return new DeploymentBuilder();
   }
 
-  
   public static class DeploymentBuilder {
     private Boolean enableEnterpriseTrial = null;
     private String hostname = null;
+    private String krbAdminPassword = null;
+    private String krbAdminUsername = null;
     private Instance managerInstance = null;
     private String name = null;
     private String password = null;
     private Integer port = null;
     private String repository = null;
     private String repositoryKeyUrl = null;
+    private Boolean unlimitedJce = null;
     private String username = null;
-    
+
     public DeploymentBuilder enableEnterpriseTrial(Boolean enableEnterpriseTrial) {
       this.enableEnterpriseTrial = enableEnterpriseTrial;
       return this;
@@ -88,6 +100,16 @@ public class Deployment {
 
     public DeploymentBuilder hostname(String hostname) {
       this.hostname = hostname;
+      return this;
+    }
+
+    public DeploymentBuilder krbAdminPassword(String krbAdminPassword) {
+      this.krbAdminPassword = krbAdminPassword;
+      return this;
+    }
+
+    public DeploymentBuilder krbAdminUsername(String krbAdminUsername) {
+      this.krbAdminUsername = krbAdminUsername;
       return this;
     }
 
@@ -121,12 +143,17 @@ public class Deployment {
       return this;
     }
 
+    public DeploymentBuilder unlimitedJce(Boolean unlimitedJce) {
+      this.unlimitedJce = unlimitedJce;
+      return this;
+    }
+
     public DeploymentBuilder username(String username) {
       this.username = username;
       return this;
     }
 
-    public Deployment build(){
+    public Deployment build() {
       return new Deployment(this);
     }
   }
@@ -135,12 +162,15 @@ public class Deployment {
     return builder()
       .enableEnterpriseTrial(enableEnterpriseTrial)
       .hostname(hostname)
+      .krbAdminPassword(krbAdminPassword)
+      .krbAdminUsername(krbAdminUsername)
       .managerInstance(managerInstance)
       .name(name)
       .password(password)
       .port(port)
       .repository(repository)
       .repositoryKeyUrl(repositoryKeyUrl)
+      .unlimitedJce(unlimitedJce)
       .username(username)
       ;
   }
@@ -156,6 +186,20 @@ public class Deployment {
   }
   public void setHostname(String hostname) {
     this.hostname = hostname;
+  }
+
+  public String getKrbAdminPassword() {
+    return krbAdminPassword;
+  }
+  public void setKrbAdminPassword(String krbAdminPassword) {
+    this.krbAdminPassword = krbAdminPassword;
+  }
+
+  public String getKrbAdminUsername() {
+    return krbAdminUsername;
+  }
+  public void setKrbAdminUsername(String krbAdminUsername) {
+    this.krbAdminUsername = krbAdminUsername;
   }
 
   public Instance getManagerInstance() {
@@ -200,6 +244,13 @@ public class Deployment {
     this.repositoryKeyUrl = repositoryKeyUrl;
   }
 
+  public Boolean getUnlimitedJce() {
+    return unlimitedJce;
+  }
+  public void setUnlimitedJce(Boolean unlimitedJce) {
+    this.unlimitedJce = unlimitedJce;
+  }
+
   public String getUsername() {
     return username;
   }
@@ -214,12 +265,15 @@ public class Deployment {
     sb.append("class Deployment {" + newLine);
     sb.append("  enableEnterpriseTrial: ").append(enableEnterpriseTrial).append(newLine);
     sb.append("  hostname: ").append(hostname).append(newLine);
+    sb.append("  krbAdminPassword: ").append("REDACTED").append(newLine);
+    sb.append("  krbAdminUsername: ").append(krbAdminUsername).append(newLine);
     sb.append("  managerInstance: ").append(managerInstance).append(newLine);
     sb.append("  name: ").append(name).append(newLine);
     sb.append("  password: ").append("REDACTED").append(newLine);
     sb.append("  port: ").append(port).append(newLine);
     sb.append("  repository: ").append(repository).append(newLine);
     sb.append("  repositoryKeyUrl: ").append(repositoryKeyUrl).append(newLine);
+    sb.append("  unlimitedJce: ").append(unlimitedJce).append(newLine);
     sb.append("  username: ").append(username).append(newLine);
     sb.append("}" + newLine);
     return sb.toString();

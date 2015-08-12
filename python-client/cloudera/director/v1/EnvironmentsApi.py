@@ -21,8 +21,6 @@
 import sys
 import os
 
-from models import *
-
 
 class EnvironmentsApi(object):
 
@@ -31,18 +29,18 @@ class EnvironmentsApi(object):
 
     
 
-    def create(self, environment, **kwargs):
+    def create(self, body, **kwargs):
         """Create a new environment
 
         Args:
-            environment, Environment: environment (required)
+            body, cloudera.director.v1.models.Environment: environment (required)
 
             
 
         Returns: 
         """
 
-        allParams = ['environment']
+        allParams = ['body']
 
         params = locals()
         for (key, val) in params['kwargs'].iteritems():
@@ -58,7 +56,7 @@ class EnvironmentsApi(object):
         queryParams = {}
         headerParams = {}
 
-        postData = environment
+        postData = body
 
         response = self.apiClient.callAPI(resourcePath, method, queryParams,
                                           postData, headerParams)
@@ -115,7 +113,7 @@ class EnvironmentsApi(object):
 
             
 
-        Returns: Environment
+        Returns: cloudera.director.v1.models.Environment
         """
 
         allParams = ['name']
@@ -146,7 +144,7 @@ class EnvironmentsApi(object):
         if not response:
             return None
 
-        responseObject = self.apiClient.deserialize(response, 'Environment')
+        responseObject = self.apiClient.deserialize(response, 'cloudera.director.v1.models.Environment')
         return responseObject
         
 
@@ -191,20 +189,20 @@ class EnvironmentsApi(object):
 
         
 
-    def update(self, name, environment, **kwargs):
+    def update(self, name, body, **kwargs):
         """Update an existing environment
 
         Args:
             name, str: environmentName (required)
 
-            environment, Environment: environment (required)
+            body, cloudera.director.v1.models.Environment: environment (required)
 
             
 
         Returns: 
         """
 
-        allParams = ['name', 'environment']
+        allParams = ['name', 'body']
 
         params = locals()
         for (key, val) in params['kwargs'].iteritems():
@@ -224,7 +222,7 @@ class EnvironmentsApi(object):
             replacement = str(self.apiClient.toPathValue(params['name']))
             resourcePath = resourcePath.replace('{' + 'name' + '}',
                                                 replacement)
-        postData = environment
+        postData = body
 
         response = self.apiClient.callAPI(resourcePath, method, queryParams,
                                           postData, headerParams)

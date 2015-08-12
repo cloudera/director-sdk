@@ -24,7 +24,7 @@ class Deployment:
         self.swaggerTypes = {
             'config': 'dict[str,str]',
             'hostname': 'str',
-            'managerInstance': 'Instance',
+            'managerInstance': 'cloudera.director.v1.models.Instance',
             'name': 'str',
             'password': 'str',
             'port': 'int',
@@ -36,7 +36,7 @@ class Deployment:
         self.config = kwargs.get('config',{}) # dict[str,str]
         #Hostname for existing Cloudera Manager installation
         self.hostname = kwargs.get('hostname',None) # str
-        self.managerInstance = kwargs.get('managerInstance',None) # Instance
+        self.managerInstance = kwargs.get('managerInstance',None) # cloudera.director.v1.models.Instance
         #Deployment name
         self.name = kwargs.get('name',None) # str
         #Password for API access [redacted on read]

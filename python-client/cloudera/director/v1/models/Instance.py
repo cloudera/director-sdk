@@ -22,14 +22,14 @@ class Instance:
 
     def __init__(self, **kwargs):
         self.swaggerTypes = {
-            'capabilities': 'Capabilities',
+            'capabilities': 'cloudera.director.v1.models.Capabilities',
             'ipAddress': 'str',
-            'virtualInstance': 'VirtualInstance'
+            'virtualInstance': 'cloudera.director.v1.models.VirtualInstance'
 
         }
 
 
-        self.capabilities = kwargs.get('capabilities',None) # Capabilities
+        self.capabilities = kwargs.get('capabilities',None) # cloudera.director.v1.models.Capabilities
         self.ipAddress = kwargs.get('ipAddress',None) # str
-        self.virtualInstance = kwargs.get('virtualInstance',None) # VirtualInstance
+        self.virtualInstance = kwargs.get('virtualInstance',None) # cloudera.director.v1.models.VirtualInstance
         

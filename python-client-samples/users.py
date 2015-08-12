@@ -22,7 +22,7 @@ import argparse
 from urllib2 import HTTPError
 
 from cloudera.director.latest.models import Login, User
-from cloudera.director.latest.client import ApiClient
+from cloudera.director.common.client import ApiClient
 from cloudera.director.latest import AuthenticationApi, UsersApi
 
 class ExitCodes(object):

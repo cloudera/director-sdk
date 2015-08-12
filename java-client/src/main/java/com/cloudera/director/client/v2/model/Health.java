@@ -18,40 +18,37 @@
 
 package com.cloudera.director.client.v2.model;
 
+
 public class Health {
   private Long lastReported;
   private String status;
-  public interface Status{
+  public interface Status {
     String DISABLED = "DISABLED";
     String NOT_AVAILABLE = "NOT_AVAILABLE";
     String GOOD = "GOOD";
     String CONCERNING = "CONCERNING";
     String BAD = "BAD";
-    
   }
-  public Health() {} 
+  public Health() { }
 
   private Health(Long lastReported, String status) {
     this.lastReported = lastReported;
     this.status = status;
-    
   }
-  
-  private Health (HealthBuilder builder) {
+
+  private Health(HealthBuilder builder) {
     this.lastReported = builder.lastReported;
     this.status = builder.status;
-    
   }
 
   public static HealthBuilder builder() {
     return new HealthBuilder();
   }
 
-  
   public static class HealthBuilder {
     private Long lastReported = null;
     private String status = null;
-    
+
     public HealthBuilder lastReported(Long lastReported) {
       this.lastReported = lastReported;
       return this;
@@ -62,7 +59,7 @@ public class Health {
       return this;
     }
 
-    public Health build(){
+    public Health build() {
       return new Health(this);
     }
   }

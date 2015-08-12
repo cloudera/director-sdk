@@ -26,7 +26,7 @@ class VirtualInstanceGroup:
             'name': 'str',
             'roleTypesConfigs': 'dict[str,dict[str,dict[str,str]]]',
             'serviceTypeToRoleTypes': 'dict[str,list[str]]',
-            'virtualInstances': 'list[VirtualInstance]'
+            'virtualInstances': 'list[cloudera.director.latest.models.VirtualInstance]'
 
         }
 
@@ -35,5 +35,5 @@ class VirtualInstanceGroup:
         self.name = kwargs.get('name',None) # str
         self.roleTypesConfigs = kwargs.get('roleTypesConfigs',{}) # dict[str,dict[str,dict[str,str]]]
         self.serviceTypeToRoleTypes = kwargs.get('serviceTypeToRoleTypes',{}) # dict[str,list[str]]
-        self.virtualInstances = kwargs.get('virtualInstances',[]) # list[VirtualInstance]
+        self.virtualInstances = kwargs.get('virtualInstances',[]) # list[cloudera.director.latest.models.VirtualInstance]
         

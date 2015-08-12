@@ -18,6 +18,7 @@
 
 package com.cloudera.director.client.v1.model;
 
+
 public class ExternalDatabase {
   private String host;
   private String name;
@@ -26,13 +27,12 @@ public class ExternalDatabase {
   private Integer port;
   private String type;
   private String user;
-  public interface Type{
+  public interface Type {
     String POSTGRESQL = "POSTGRESQL";
     String MYSQL = "MYSQL";
     String ORACLE = "ORACLE";
-    
   }
-  public ExternalDatabase() {} 
+  public ExternalDatabase() { }
 
   private ExternalDatabase(String host, String name, String password, Integer port, String type, String user) {
     this.host = host;
@@ -41,24 +41,21 @@ public class ExternalDatabase {
     this.port = port;
     this.type = type;
     this.user = user;
-    
   }
-  
-  private ExternalDatabase (ExternalDatabaseBuilder builder) {
+
+  private ExternalDatabase(ExternalDatabaseBuilder builder) {
     this.host = builder.host;
     this.name = builder.name;
     this.password = builder.password;
     this.port = builder.port;
     this.type = builder.type;
     this.user = builder.user;
-    
   }
 
   public static ExternalDatabaseBuilder builder() {
     return new ExternalDatabaseBuilder();
   }
 
-  
   public static class ExternalDatabaseBuilder {
     private String host = null;
     private String name = null;
@@ -66,7 +63,7 @@ public class ExternalDatabase {
     private Integer port = null;
     private String type = null;
     private String user = null;
-    
+
     public ExternalDatabaseBuilder host(String host) {
       this.host = host;
       return this;
@@ -97,7 +94,7 @@ public class ExternalDatabase {
       return this;
     }
 
-    public ExternalDatabase build(){
+    public ExternalDatabase build() {
       return new ExternalDatabase(this);
     }
   }

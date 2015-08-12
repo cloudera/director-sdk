@@ -19,6 +19,7 @@
 package com.cloudera.director.client.latest.model;
 
 import java.util.Set;
+
 public class User {
   /* Enabled */
   private Boolean enabled;
@@ -28,35 +29,32 @@ public class User {
   private Set<String> roles;
   /* User name */
   private String username;
-  public User() {} 
+  public User() { }
 
   private User(Boolean enabled, String password, Set<String> roles, String username) {
     this.enabled = enabled;
     this.password = password;
     this.roles = roles;
     this.username = username;
-    
   }
-  
-  private User (UserBuilder builder) {
+
+  private User(UserBuilder builder) {
     this.enabled = builder.enabled;
     this.password = builder.password;
     this.roles = builder.roles;
     this.username = builder.username;
-    
   }
 
   public static UserBuilder builder() {
     return new UserBuilder();
   }
 
-  
   public static class UserBuilder {
     private Boolean enabled = null;
     private String password = null;
     private Set<String> roles = null;
     private String username = null;
-    
+
     public UserBuilder enabled(Boolean enabled) {
       this.enabled = enabled;
       return this;
@@ -77,7 +75,7 @@ public class User {
       return this;
     }
 
-    public User build(){
+    public User build() {
       return new User(this);
     }
   }

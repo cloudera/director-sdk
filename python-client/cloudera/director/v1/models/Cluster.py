@@ -22,14 +22,14 @@ class Cluster:
 
     def __init__(self, **kwargs):
         self.swaggerTypes = {
-            'instances': 'list[Instance]',
+            'instances': 'list[cloudera.director.v1.models.Instance]',
             'name': 'str'
 
         }
 
 
         #All instances making this cluster
-        self.instances = kwargs.get('instances',[]) # list[Instance]
+        self.instances = kwargs.get('instances',[]) # list[cloudera.director.v1.models.Instance]
         #Cluster name
         self.name = kwargs.get('name',None) # str
         

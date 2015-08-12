@@ -18,43 +18,44 @@
 
 package com.cloudera.director.client.latest.model;
 
-import com.cloudera.director.client.latest.model.Health;
-import com.cloudera.director.client.latest.model.VirtualInstance;
-import com.cloudera.director.client.latest.model.Capabilities;
+import java.util.HashMap;
+import java.util.Map;
+
 public class Instance {
   private Capabilities capabilities;
   private Health health;
   private String ipAddress;
+  private Map<String,String> properties;
   private VirtualInstance virtualInstance;
-  public Instance() {} 
+  public Instance() { }
 
-  private Instance(Capabilities capabilities, Health health, String ipAddress, VirtualInstance virtualInstance) {
+  private Instance(Capabilities capabilities, Health health, String ipAddress, Map<String,String> properties, VirtualInstance virtualInstance) {
     this.capabilities = capabilities;
     this.health = health;
     this.ipAddress = ipAddress;
+    this.properties = properties;
     this.virtualInstance = virtualInstance;
-    
   }
-  
-  private Instance (InstanceBuilder builder) {
+
+  private Instance(InstanceBuilder builder) {
     this.capabilities = builder.capabilities;
     this.health = builder.health;
     this.ipAddress = builder.ipAddress;
+    this.properties = builder.properties;
     this.virtualInstance = builder.virtualInstance;
-    
   }
 
   public static InstanceBuilder builder() {
     return new InstanceBuilder();
   }
 
-  
   public static class InstanceBuilder {
     private Capabilities capabilities = null;
     private Health health = null;
     private String ipAddress = null;
+    private Map<String,String> properties = new HashMap<String,String>();
     private VirtualInstance virtualInstance = null;
-    
+
     public InstanceBuilder capabilities(Capabilities capabilities) {
       this.capabilities = capabilities;
       return this;
@@ -70,12 +71,17 @@ public class Instance {
       return this;
     }
 
+    public InstanceBuilder properties(Map<String,String> properties) {
+      this.properties = properties;
+      return this;
+    }
+
     public InstanceBuilder virtualInstance(VirtualInstance virtualInstance) {
       this.virtualInstance = virtualInstance;
       return this;
     }
 
-    public Instance build(){
+    public Instance build() {
       return new Instance(this);
     }
   }
@@ -85,6 +91,7 @@ public class Instance {
       .capabilities(capabilities)
       .health(health)
       .ipAddress(ipAddress)
+      .properties(properties)
       .virtualInstance(virtualInstance)
       ;
   }
@@ -109,6 +116,13 @@ public class Instance {
     this.ipAddress = ipAddress;
   }
 
+  public Map<String,String> getProperties() {
+    return properties;
+  }
+  public void setProperties(Map<String,String> properties) {
+    this.properties = properties;
+  }
+
   public VirtualInstance getVirtualInstance() {
     return virtualInstance;
   }
@@ -124,6 +138,7 @@ public class Instance {
     sb.append("  capabilities: ").append(capabilities).append(newLine);
     sb.append("  health: ").append(health).append(newLine);
     sb.append("  ipAddress: ").append(ipAddress).append(newLine);
+    sb.append("  properties: ").append(properties).append(newLine);
     sb.append("  virtualInstance: ").append(virtualInstance).append(newLine);
     sb.append("}" + newLine);
     return sb.toString();

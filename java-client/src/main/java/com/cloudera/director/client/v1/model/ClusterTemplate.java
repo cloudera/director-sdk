@@ -18,11 +18,12 @@
 
 package com.cloudera.director.client.v1.model;
 
-import java.util.Map;
 import java.util.HashMap;
-import java.util.List;
+import java.util.Map;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
+
 public class ClusterTemplate {
   /* Optional external databases */
   private Map<String,ExternalDatabase> externalDatabases;
@@ -38,7 +39,7 @@ public class ClusterTemplate {
   private Map<String,Map<String,String>> servicesConfigs;
   /* List of virtual instances */
   private Map<String,VirtualInstanceGroup> virtualInstanceGroups;
-  public ClusterTemplate() {} 
+  public ClusterTemplate() { }
 
   private ClusterTemplate(Map<String,ExternalDatabase> externalDatabases, String name, Set<String> parcelRepositories, Map<String,String> productVersions, List<String> services, Map<String,Map<String,String>> servicesConfigs, Map<String,VirtualInstanceGroup> virtualInstanceGroups) {
     this.externalDatabases = externalDatabases;
@@ -48,10 +49,9 @@ public class ClusterTemplate {
     this.services = services;
     this.servicesConfigs = servicesConfigs;
     this.virtualInstanceGroups = virtualInstanceGroups;
-    
   }
-  
-  private ClusterTemplate (ClusterTemplateBuilder builder) {
+
+  private ClusterTemplate(ClusterTemplateBuilder builder) {
     this.externalDatabases = builder.externalDatabases;
     this.name = builder.name;
     this.parcelRepositories = builder.parcelRepositories;
@@ -59,14 +59,12 @@ public class ClusterTemplate {
     this.services = builder.services;
     this.servicesConfigs = builder.servicesConfigs;
     this.virtualInstanceGroups = builder.virtualInstanceGroups;
-    
   }
 
   public static ClusterTemplateBuilder builder() {
     return new ClusterTemplateBuilder();
   }
 
-  
   public static class ClusterTemplateBuilder {
     private Map<String,ExternalDatabase> externalDatabases = new HashMap<String,ExternalDatabase>();
     private String name = null;
@@ -75,7 +73,7 @@ public class ClusterTemplate {
     private List<String> services = new ArrayList<String>();
     private Map<String,Map<String,String>> servicesConfigs = new HashMap<String,Map<String,String>>();
     private Map<String,VirtualInstanceGroup> virtualInstanceGroups = new HashMap<String,VirtualInstanceGroup>();
-    
+
     public ClusterTemplateBuilder externalDatabases(Map<String,ExternalDatabase> externalDatabases) {
       this.externalDatabases = externalDatabases;
       return this;
@@ -111,7 +109,7 @@ public class ClusterTemplate {
       return this;
     }
 
-    public ClusterTemplate build(){
+    public ClusterTemplate build() {
       return new ClusterTemplate(this);
     }
   }

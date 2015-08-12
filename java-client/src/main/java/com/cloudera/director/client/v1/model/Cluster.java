@@ -18,36 +18,34 @@
 
 package com.cloudera.director.client.v1.model;
 
-import java.util.List;
 import java.util.ArrayList;
+import java.util.List;
+
 public class Cluster {
   /* All instances making this cluster */
   private List<Instance> instances;
   /* Cluster name */
   private String name;
-  public Cluster() {} 
+  public Cluster() { }
 
   private Cluster(List<Instance> instances, String name) {
     this.instances = instances;
     this.name = name;
-    
   }
-  
-  private Cluster (ClusterBuilder builder) {
+
+  private Cluster(ClusterBuilder builder) {
     this.instances = builder.instances;
     this.name = builder.name;
-    
   }
 
   public static ClusterBuilder builder() {
     return new ClusterBuilder();
   }
 
-  
   public static class ClusterBuilder {
     private List<Instance> instances = new ArrayList<Instance>();
     private String name = null;
-    
+
     public ClusterBuilder instances(List<Instance> instances) {
       this.instances = instances;
       return this;
@@ -58,7 +56,7 @@ public class Cluster {
       return this;
     }
 
-    public Cluster build(){
+    public Cluster build() {
       return new Cluster(this);
     }
   }

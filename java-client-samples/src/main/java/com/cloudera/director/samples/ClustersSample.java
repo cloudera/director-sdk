@@ -20,12 +20,12 @@ import com.beust.jcommander.JCommander;
 import com.beust.jcommander.Parameter;
 import com.beust.jcommander.ParameterException;
 import com.beust.jcommander.Parameters;
+import com.cloudera.director.client.common.ApiClient;
+import com.cloudera.director.client.common.ApiException;
 import com.cloudera.director.client.latest.api.AuthenticationApi;
 import com.cloudera.director.client.latest.api.ClustersApi;
 import com.cloudera.director.client.latest.api.DeploymentsApi;
 import com.cloudera.director.client.latest.api.EnvironmentsApi;
-import com.cloudera.director.client.latest.common.ApiClient;
-import com.cloudera.director.client.latest.common.ApiException;
 import com.cloudera.director.client.latest.model.ClusterTemplate;
 import com.cloudera.director.client.latest.model.DeploymentTemplate;
 import com.cloudera.director.client.latest.model.Environment;
@@ -97,7 +97,6 @@ public class ClustersSample extends CommonParameters {
     properties.put("accessKeyId", config.get("provider", "accessKeyId"));
     properties.put("secretAccessKey", config.get("provider", "secretAccessKey"));
     properties.put("region", config.get("provider", "region"));
-    properties.put("keyName", config.get("ssh", "keyName"));
 
     InstanceProviderConfig provider = InstanceProviderConfig.builder()
         .type(config.get("provider", "type"))
@@ -304,7 +303,7 @@ public class ClustersSample extends CommonParameters {
   }
 
   private String readFile(String path) throws FileNotFoundException {
-    Scanner scanner = new Scanner(new File(path));
+    Scanner scanner = new Scanner(new File(path), "UTF-8");
     try {
       return scanner.useDelimiter("\\Z").next();
 

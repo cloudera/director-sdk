@@ -18,18 +18,16 @@
 
 package com.cloudera.director.client.v2.api;
 
-import com.cloudera.director.client.v2.common.ApiException;
-import com.cloudera.director.client.v2.common.ApiClient;
+import com.cloudera.director.client.common.ApiClient;
+import com.cloudera.director.client.common.ApiException;
 
 import com.cloudera.director.client.v2.model.User;
 import com.cloudera.director.client.v2.model.Login;
-import com.sun.jersey.multipart.FormDataMultiPart;
+import java.util.HashMap;
+import java.util.List; // NOPMD
+import java.util.Map;
 
-import javax.ws.rs.core.MediaType;
-
-import java.io.File;
-import java.util.*;
-
+@SuppressWarnings("parametername")
 public class AuthenticationApi {
   ApiClient apiClient;
 
@@ -37,28 +35,28 @@ public class AuthenticationApi {
     return apiClient;
   }
 
-  public AuthenticationApi (ApiClient apiClient) {
+  public AuthenticationApi(ApiClient apiClient) {
     this.apiClient = apiClient;
   }
 
   /**
   * Log in to the API
-  * @param  login  login
+  * @param  body  login
   * status code: 200 reason: "Login successful"
-  * status code: 400 reason: "Invalid login"
   * status code: 201 reason: "Created"
+  * status code: 400 reason: "Invalid login"
   * status code: 401 reason: "Login failed"
   * status code: 403 reason: "Forbidden"
   * status code: 404 reason: "Not Found"
   */
-  public User login (Login login) throws ApiException {
-    Object postBody = login;
+  public User login(Login body) throws ApiException {
+    Object postBody = body;
     // verify required params are set
-    if(login == null ) {
+    if (body == null ) {
        throw new ApiException(400, "missing required params");
     }
     // create path and map variables
-    String path = "/api/v2/login".replaceAll("\\{format\\}","json");
+    String path = "/api/v2/login".replaceAll("\\{format\\}", "json");
 
     // query params
     Map<String, String> queryParams = new HashMap<String, String>();
@@ -69,22 +67,20 @@ public class AuthenticationApi {
 
     try {
       String response = apiClient.invokeAPI(path, "POST", queryParams, postBody, headerParams, formParams, contentType);
-      if(response != null){
+      if (response != null) {
         return (User) ApiClient.deserialize(response, "", User.class);
-      }
-      else {
+      } else {
         return null;
       }
     } catch (ApiException ex) {
-      if(ex.getCode() == 404) {
-      	return null;
-      }
-      else {
+      if (ex.getCode() == 404) {
+        return null;
+      } else {
         throw ex;
       }
     }
   }
-  
+
   /**
   * Log out from the API
   * status code: 200 reason: "Logout successful"
@@ -93,10 +89,10 @@ public class AuthenticationApi {
   * status code: 403 reason: "Forbidden"
   * status code: 404 reason: "Not Found"
   */
-  public Boolean logout () throws ApiException {
+  public Boolean logout() throws ApiException {
     Object postBody = null;
     // create path and map variables
-    String path = "/api/v2/logout".replaceAll("\\{format\\}","json");
+    String path = "/api/v2/logout".replaceAll("\\{format\\}", "json");
 
     // query params
     Map<String, String> queryParams = new HashMap<String, String>();
@@ -107,21 +103,19 @@ public class AuthenticationApi {
 
     try {
       String response = apiClient.invokeAPI(path, "POST", queryParams, postBody, headerParams, formParams, contentType);
-      if(response != null){
+      if (response != null) {
         return (Boolean) ApiClient.deserialize(response, "", Boolean.class);
-      }
-      else {
+      } else {
         return null;
       }
     } catch (ApiException ex) {
-      if(ex.getCode() == 404) {
-      	return null;
-      }
-      else {
+      if (ex.getCode() == 404) {
+        return null;
+      } else {
         throw ex;
       }
     }
   }
-  
+
   }
 

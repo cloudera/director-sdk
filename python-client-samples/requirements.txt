@@ -1,1 +1,1 @@
-cloudera-director-python-client==1.1.0
+cloudera-director-api-client==1.5.0

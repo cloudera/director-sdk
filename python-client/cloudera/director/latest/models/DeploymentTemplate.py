@@ -24,15 +24,19 @@ class DeploymentTemplate:
         self.swaggerTypes = {
             'configs': 'dict[str,dict[str,str]]',
             'enableEnterpriseTrial': 'bool',
-            'externalDatabaseTemplates': 'dict[str,ExternalDatabaseTemplate]',
-            'externalDatabases': 'dict[str,ExternalDatabase]',
+            'externalDatabaseTemplates': 'dict[str,cloudera.director.latest.models.ExternalDatabaseTemplate]',
+            'externalDatabases': 'dict[str,cloudera.director.latest.models.ExternalDatabase]',
             'hostname': 'str',
-            'managerVirtualInstance': 'VirtualInstance',
+            'krbAdminPassword': 'str',
+            'krbAdminUsername': 'str',
+            'license': 'str',
+            'managerVirtualInstance': 'cloudera.director.latest.models.VirtualInstance',
             'name': 'str',
             'password': 'str',
             'port': 'int',
             'repository': 'str',
             'repositoryKeyUrl': 'str',
+            'unlimitedJce': 'bool',
             'username': 'str'
 
         }
@@ -43,13 +47,19 @@ class DeploymentTemplate:
         #Whether to enable Cloudera Enterprise Trial
         self.enableEnterpriseTrial = kwargs.get('enableEnterpriseTrial',None) # bool
         #External database template definitions
-        self.externalDatabaseTemplates = kwargs.get('externalDatabaseTemplates',{}) # dict[str,ExternalDatabaseTemplate]
+        self.externalDatabaseTemplates = kwargs.get('externalDatabaseTemplates',{}) # dict[str,cloudera.director.latest.models.ExternalDatabaseTemplate]
         #External database definitions
-        self.externalDatabases = kwargs.get('externalDatabases',{}) # dict[str,ExternalDatabase]
+        self.externalDatabases = kwargs.get('externalDatabases',{}) # dict[str,cloudera.director.latest.models.ExternalDatabase]
         #Hostname for existing Cloudera Manager installation
         self.hostname = kwargs.get('hostname',None) # str
+        #Password for Kerberos administrative principal used by Cloudera Manager [redacted on read]
+        self.krbAdminPassword = kwargs.get('krbAdminPassword',None) # str
+        #Username for Kerberos administrative principal used by Cloudera Manager
+        self.krbAdminUsername = kwargs.get('krbAdminUsername',None) # str
+        #License for Cloudera Manager [redacted on read]
+        self.license = kwargs.get('license',None) # str
         #Instance definition for a Cloudera Manager instance created from scratch
-        self.managerVirtualInstance = kwargs.get('managerVirtualInstance',None) # VirtualInstance
+        self.managerVirtualInstance = kwargs.get('managerVirtualInstance',None) # cloudera.director.latest.models.VirtualInstance
         #Deployment name
         self.name = kwargs.get('name',None) # str
         #Web UI and API password [redacted on read]
@@ -60,6 +70,8 @@ class DeploymentTemplate:
         self.repository = kwargs.get('repository',None) # str
         #Custom Cloudera Manager public GPG key
         self.repositoryKeyUrl = kwargs.get('repositoryKeyUrl',None) # str
+        #Whether to install unlimited strength JCE policy files
+        self.unlimitedJce = kwargs.get('unlimitedJce',None) # bool
         #Web UI and API username
         self.username = kwargs.get('username',None) # str
         

@@ -18,34 +18,32 @@
 
 package com.cloudera.director.client.v1.model;
 
+
 public class Login {
   /* Login password [redacted on read] */
   private String password;
   /* Login username */
   private String username;
-  public Login() {} 
+  public Login() { }
 
   private Login(String password, String username) {
     this.password = password;
     this.username = username;
-    
   }
-  
-  private Login (LoginBuilder builder) {
+
+  private Login(LoginBuilder builder) {
     this.password = builder.password;
     this.username = builder.username;
-    
   }
 
   public static LoginBuilder builder() {
     return new LoginBuilder();
   }
 
-  
   public static class LoginBuilder {
     private String password = null;
     private String username = null;
-    
+
     public LoginBuilder password(String password) {
       this.password = password;
       return this;
@@ -56,7 +54,7 @@ public class Login {
       return this;
     }
 
-    public Login build(){
+    public Login build() {
       return new Login(this);
     }
   }

@@ -18,33 +18,30 @@
 
 package com.cloudera.director.client.v2.model;
 
-import com.cloudera.director.client.v2.model.Health;
+
 public class Service {
   private Health health;
   private String serviceName;
-  public Service() {} 
+  public Service() { }
 
   private Service(Health health, String serviceName) {
     this.health = health;
     this.serviceName = serviceName;
-    
   }
-  
-  private Service (ServiceBuilder builder) {
+
+  private Service(ServiceBuilder builder) {
     this.health = builder.health;
     this.serviceName = builder.serviceName;
-    
   }
 
   public static ServiceBuilder builder() {
     return new ServiceBuilder();
   }
 
-  
   public static class ServiceBuilder {
     private Health health = null;
     private String serviceName = null;
-    
+
     public ServiceBuilder health(Health health) {
       this.health = health;
       return this;
@@ -55,7 +52,7 @@ public class Service {
       return this;
     }
 
-    public Service build(){
+    public Service build() {
       return new Service(this);
     }
   }

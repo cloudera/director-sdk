@@ -18,9 +18,9 @@
 
 package com.cloudera.director.client.v2.model;
 
-import java.util.Map;
 import java.util.HashMap;
-import com.cloudera.director.client.v2.model.VirtualInstance;
+import java.util.Map;
+
 public class DeploymentTemplate {
   /* Optional configurations for Cloudera Manager and its management services */
   private Map<String,Map<String,String>> configs;
@@ -46,7 +46,7 @@ public class DeploymentTemplate {
   private String repositoryKeyUrl;
   /* Web UI and API username */
   private String username;
-  public DeploymentTemplate() {} 
+  public DeploymentTemplate() { }
 
   private DeploymentTemplate(Map<String,Map<String,String>> configs, Boolean enableEnterpriseTrial, Map<String,ExternalDatabaseTemplate> externalDatabaseTemplates, Map<String,ExternalDatabase> externalDatabases, String hostname, VirtualInstance managerVirtualInstance, String name, String password, Integer port, String repository, String repositoryKeyUrl, String username) {
     this.configs = configs;
@@ -61,10 +61,9 @@ public class DeploymentTemplate {
     this.repository = repository;
     this.repositoryKeyUrl = repositoryKeyUrl;
     this.username = username;
-    
   }
-  
-  private DeploymentTemplate (DeploymentTemplateBuilder builder) {
+
+  private DeploymentTemplate(DeploymentTemplateBuilder builder) {
     this.configs = builder.configs;
     this.enableEnterpriseTrial = builder.enableEnterpriseTrial;
     this.externalDatabaseTemplates = builder.externalDatabaseTemplates;
@@ -77,14 +76,12 @@ public class DeploymentTemplate {
     this.repository = builder.repository;
     this.repositoryKeyUrl = builder.repositoryKeyUrl;
     this.username = builder.username;
-    
   }
 
   public static DeploymentTemplateBuilder builder() {
     return new DeploymentTemplateBuilder();
   }
 
-  
   public static class DeploymentTemplateBuilder {
     private Map<String,Map<String,String>> configs = new HashMap<String,Map<String,String>>();
     private Boolean enableEnterpriseTrial = null;
@@ -98,7 +95,7 @@ public class DeploymentTemplate {
     private String repository = null;
     private String repositoryKeyUrl = null;
     private String username = null;
-    
+
     public DeploymentTemplateBuilder configs(Map<String,Map<String,String>> configs) {
       this.configs = configs;
       return this;
@@ -159,7 +156,7 @@ public class DeploymentTemplate {
       return this;
     }
 
-    public DeploymentTemplate build(){
+    public DeploymentTemplate build() {
       return new DeploymentTemplate(this);
     }
   }

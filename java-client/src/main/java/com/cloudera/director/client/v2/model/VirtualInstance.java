@@ -18,33 +18,30 @@
 
 package com.cloudera.director.client.v2.model;
 
-import com.cloudera.director.client.v2.model.InstanceTemplate;
+
 public class VirtualInstance {
   private String id;
   private InstanceTemplate template;
-  public VirtualInstance() {} 
+  public VirtualInstance() { }
 
   private VirtualInstance(String id, InstanceTemplate template) {
     this.id = id;
     this.template = template;
-    
   }
-  
-  private VirtualInstance (VirtualInstanceBuilder builder) {
+
+  private VirtualInstance(VirtualInstanceBuilder builder) {
     this.id = builder.id;
     this.template = builder.template;
-    
   }
 
   public static VirtualInstanceBuilder builder() {
     return new VirtualInstanceBuilder();
   }
 
-  
   public static class VirtualInstanceBuilder {
     private String id = null;
     private InstanceTemplate template = null;
-    
+
     public VirtualInstanceBuilder id(String id) {
       this.id = id;
       return this;
@@ -55,7 +52,7 @@ public class VirtualInstance {
       return this;
     }
 
-    public VirtualInstance build(){
+    public VirtualInstance build() {
       return new VirtualInstance(this);
     }
   }

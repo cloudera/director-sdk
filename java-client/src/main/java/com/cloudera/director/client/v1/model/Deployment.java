@@ -18,9 +18,9 @@
 
 package com.cloudera.director.client.v1.model;
 
-import java.util.Map;
 import java.util.HashMap;
-import com.cloudera.director.client.v1.model.Instance;
+import java.util.Map;
+
 public class Deployment {
   private Map<String,String> config;
   /* Hostname for existing Cloudera Manager installation */
@@ -34,7 +34,7 @@ public class Deployment {
   private Integer port;
   /* Username for API access */
   private String username;
-  public Deployment() {} 
+  public Deployment() { }
 
   private Deployment(Map<String,String> config, String hostname, Instance managerInstance, String name, String password, Integer port, String username) {
     this.config = config;
@@ -44,10 +44,9 @@ public class Deployment {
     this.password = password;
     this.port = port;
     this.username = username;
-    
   }
-  
-  private Deployment (DeploymentBuilder builder) {
+
+  private Deployment(DeploymentBuilder builder) {
     this.config = builder.config;
     this.hostname = builder.hostname;
     this.managerInstance = builder.managerInstance;
@@ -55,14 +54,12 @@ public class Deployment {
     this.password = builder.password;
     this.port = builder.port;
     this.username = builder.username;
-    
   }
 
   public static DeploymentBuilder builder() {
     return new DeploymentBuilder();
   }
 
-  
   public static class DeploymentBuilder {
     private Map<String,String> config = new HashMap<String,String>();
     private String hostname = null;
@@ -71,7 +68,7 @@ public class Deployment {
     private String password = null;
     private Integer port = null;
     private String username = null;
-    
+
     public DeploymentBuilder config(Map<String,String> config) {
       this.config = config;
       return this;
@@ -107,7 +104,7 @@ public class Deployment {
       return this;
     }
 
-    public Deployment build(){
+    public Deployment build() {
       return new Deployment(this);
     }
   }

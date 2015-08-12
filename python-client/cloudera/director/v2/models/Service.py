@@ -22,12 +22,12 @@ class Service:
 
     def __init__(self, **kwargs):
         self.swaggerTypes = {
-            'health': 'Health',
+            'health': 'cloudera.director.v2.models.Health',
             'serviceName': 'str'
 
         }
 
 
-        self.health = kwargs.get('health',None) # Health
+        self.health = kwargs.get('health',None) # cloudera.director.v2.models.Health
         self.serviceName = kwargs.get('serviceName',None) # str
         

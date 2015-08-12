@@ -18,6 +18,7 @@
 
 package com.cloudera.director.client.latest.model;
 
+
 public class ExternalDatabaseServer {
   /* Hostname for existing external database server */
   private String hostname;
@@ -31,13 +32,12 @@ public class ExternalDatabaseServer {
   private String type;
   /* Database username for administrative access */
   private String username;
-  public interface Type{
+  public interface Type {
     String POSTGRESQL = "POSTGRESQL";
     String MYSQL = "MYSQL";
     String ORACLE = "ORACLE";
-    
   }
-  public ExternalDatabaseServer() {} 
+  public ExternalDatabaseServer() { }
 
   private ExternalDatabaseServer(String hostname, String name, String password, Integer port, String type, String username) {
     this.hostname = hostname;
@@ -46,24 +46,21 @@ public class ExternalDatabaseServer {
     this.port = port;
     this.type = type;
     this.username = username;
-    
   }
-  
-  private ExternalDatabaseServer (ExternalDatabaseServerBuilder builder) {
+
+  private ExternalDatabaseServer(ExternalDatabaseServerBuilder builder) {
     this.hostname = builder.hostname;
     this.name = builder.name;
     this.password = builder.password;
     this.port = builder.port;
     this.type = builder.type;
     this.username = builder.username;
-    
   }
 
   public static ExternalDatabaseServerBuilder builder() {
     return new ExternalDatabaseServerBuilder();
   }
 
-  
   public static class ExternalDatabaseServerBuilder {
     private String hostname = null;
     private String name = null;
@@ -71,7 +68,7 @@ public class ExternalDatabaseServer {
     private Integer port = null;
     private String type = null;
     private String username = null;
-    
+
     public ExternalDatabaseServerBuilder hostname(String hostname) {
       this.hostname = hostname;
       return this;
@@ -102,7 +99,7 @@ public class ExternalDatabaseServer {
       return this;
     }
 
-    public ExternalDatabaseServer build(){
+    public ExternalDatabaseServer build() {
       return new ExternalDatabaseServer(this);
     }
   }

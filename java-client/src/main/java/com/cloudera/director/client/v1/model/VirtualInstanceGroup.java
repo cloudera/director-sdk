@@ -18,17 +18,18 @@
 
 package com.cloudera.director.client.v1.model;
 
-import java.util.List;
 import java.util.ArrayList;
-import java.util.Map;
+import java.util.List;
 import java.util.HashMap;
+import java.util.Map;
+
 public class VirtualInstanceGroup {
   private Integer minCount;
   private String name;
   private Map<String,Map<String,Map<String,String>>> roleTypesConfigs;
   private Map<String,List<String>> serviceTypeToRoleTypes;
   private List<VirtualInstance> virtualInstances;
-  public VirtualInstanceGroup() {} 
+  public VirtualInstanceGroup() { }
 
   private VirtualInstanceGroup(Integer minCount, String name, Map<String,Map<String,Map<String,String>>> roleTypesConfigs, Map<String,List<String>> serviceTypeToRoleTypes, List<VirtualInstance> virtualInstances) {
     this.minCount = minCount;
@@ -36,30 +37,27 @@ public class VirtualInstanceGroup {
     this.roleTypesConfigs = roleTypesConfigs;
     this.serviceTypeToRoleTypes = serviceTypeToRoleTypes;
     this.virtualInstances = virtualInstances;
-    
   }
-  
-  private VirtualInstanceGroup (VirtualInstanceGroupBuilder builder) {
+
+  private VirtualInstanceGroup(VirtualInstanceGroupBuilder builder) {
     this.minCount = builder.minCount;
     this.name = builder.name;
     this.roleTypesConfigs = builder.roleTypesConfigs;
     this.serviceTypeToRoleTypes = builder.serviceTypeToRoleTypes;
     this.virtualInstances = builder.virtualInstances;
-    
   }
 
   public static VirtualInstanceGroupBuilder builder() {
     return new VirtualInstanceGroupBuilder();
   }
 
-  
   public static class VirtualInstanceGroupBuilder {
     private Integer minCount = null;
     private String name = null;
     private Map<String,Map<String,Map<String,String>>> roleTypesConfigs = new HashMap<String,Map<String,Map<String,String>>>();
     private Map<String,List<String>> serviceTypeToRoleTypes = new HashMap<String,List<String>>();
     private List<VirtualInstance> virtualInstances = new ArrayList<VirtualInstance>();
-    
+
     public VirtualInstanceGroupBuilder minCount(Integer minCount) {
       this.minCount = minCount;
       return this;
@@ -85,7 +83,7 @@ public class VirtualInstanceGroup {
       return this;
     }
 
-    public VirtualInstanceGroup build(){
+    public VirtualInstanceGroup build() {
       return new VirtualInstanceGroup(this);
     }
   }

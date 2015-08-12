@@ -18,11 +18,12 @@
 
 package com.cloudera.director.client.latest.model;
 
-import java.util.Map;
 import java.util.HashMap;
-import java.util.List;
+import java.util.Map;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
+
 public class ClusterTemplate {
   /* Optional external database templates */
   private Map<String,ExternalDatabaseTemplate> externalDatabaseTemplates;
@@ -32,6 +33,8 @@ public class ClusterTemplate {
   private String name;
   /* Optional list of cluster parcel repositories */
   private Set<String> parcelRepositories;
+  /* A list of scripts to be run after cluster creation */
+  private List<String> postCreateScripts;
   /* Versions for cluster components */
   private Map<String,String> productVersions;
   /* Whether to redeploy client configuration on cluster update */
@@ -44,53 +47,53 @@ public class ClusterTemplate {
   private Map<String,Map<String,String>> servicesConfigs;
   /* List of virtual instances */
   private Map<String,VirtualInstanceGroup> virtualInstanceGroups;
-  public ClusterTemplate() {} 
+  public ClusterTemplate() { }
 
-  private ClusterTemplate(Map<String,ExternalDatabaseTemplate> externalDatabaseTemplates, Map<String,ExternalDatabase> externalDatabases, String name, Set<String> parcelRepositories, Map<String,String> productVersions, Boolean redeployClientConfigsOnUpdate, Boolean restartClusterOnUpdate, List<String> services, Map<String,Map<String,String>> servicesConfigs, Map<String,VirtualInstanceGroup> virtualInstanceGroups) {
+  private ClusterTemplate(Map<String,ExternalDatabaseTemplate> externalDatabaseTemplates, Map<String,ExternalDatabase> externalDatabases, String name, Set<String> parcelRepositories, List<String> postCreateScripts, Map<String,String> productVersions, Boolean redeployClientConfigsOnUpdate, Boolean restartClusterOnUpdate, List<String> services, Map<String,Map<String,String>> servicesConfigs, Map<String,VirtualInstanceGroup> virtualInstanceGroups) {
     this.externalDatabaseTemplates = externalDatabaseTemplates;
     this.externalDatabases = externalDatabases;
     this.name = name;
     this.parcelRepositories = parcelRepositories;
+    this.postCreateScripts = postCreateScripts;
     this.productVersions = productVersions;
     this.redeployClientConfigsOnUpdate = redeployClientConfigsOnUpdate;
     this.restartClusterOnUpdate = restartClusterOnUpdate;
     this.services = services;
     this.servicesConfigs = servicesConfigs;
     this.virtualInstanceGroups = virtualInstanceGroups;
-    
   }
-  
-  private ClusterTemplate (ClusterTemplateBuilder builder) {
+
+  private ClusterTemplate(ClusterTemplateBuilder builder) {
     this.externalDatabaseTemplates = builder.externalDatabaseTemplates;
     this.externalDatabases = builder.externalDatabases;
     this.name = builder.name;
     this.parcelRepositories = builder.parcelRepositories;
+    this.postCreateScripts = builder.postCreateScripts;
     this.productVersions = builder.productVersions;
     this.redeployClientConfigsOnUpdate = builder.redeployClientConfigsOnUpdate;
     this.restartClusterOnUpdate = builder.restartClusterOnUpdate;
     this.services = builder.services;
     this.servicesConfigs = builder.servicesConfigs;
     this.virtualInstanceGroups = builder.virtualInstanceGroups;
-    
   }
 
   public static ClusterTemplateBuilder builder() {
     return new ClusterTemplateBuilder();
   }
 
-  
   public static class ClusterTemplateBuilder {
     private Map<String,ExternalDatabaseTemplate> externalDatabaseTemplates = new HashMap<String,ExternalDatabaseTemplate>();
     private Map<String,ExternalDatabase> externalDatabases = new HashMap<String,ExternalDatabase>();
     private String name = null;
     private Set<String> parcelRepositories = null;
+    private List<String> postCreateScripts = new ArrayList<String>();
     private Map<String,String> productVersions = new HashMap<String,String>();
     private Boolean redeployClientConfigsOnUpdate = null;
     private Boolean restartClusterOnUpdate = null;
     private List<String> services = new ArrayList<String>();
     private Map<String,Map<String,String>> servicesConfigs = new HashMap<String,Map<String,String>>();
     private Map<String,VirtualInstanceGroup> virtualInstanceGroups = new HashMap<String,VirtualInstanceGroup>();
-    
+
     public ClusterTemplateBuilder externalDatabaseTemplates(Map<String,ExternalDatabaseTemplate> externalDatabaseTemplates) {
       this.externalDatabaseTemplates = externalDatabaseTemplates;
       return this;
@@ -108,6 +111,11 @@ public class ClusterTemplate {
 
     public ClusterTemplateBuilder parcelRepositories(Set<String> parcelRepositories) {
       this.parcelRepositories = parcelRepositories;
+      return this;
+    }
+
+    public ClusterTemplateBuilder postCreateScripts(List<String> postCreateScripts) {
+      this.postCreateScripts = postCreateScripts;
       return this;
     }
 
@@ -141,7 +149,7 @@ public class ClusterTemplate {
       return this;
     }
 
-    public ClusterTemplate build(){
+    public ClusterTemplate build() {
       return new ClusterTemplate(this);
     }
   }
@@ -152,6 +160,7 @@ public class ClusterTemplate {
       .externalDatabases(externalDatabases)
       .name(name)
       .parcelRepositories(parcelRepositories)
+      .postCreateScripts(postCreateScripts)
       .productVersions(productVersions)
       .redeployClientConfigsOnUpdate(redeployClientConfigsOnUpdate)
       .restartClusterOnUpdate(restartClusterOnUpdate)
@@ -186,6 +195,13 @@ public class ClusterTemplate {
   }
   public void setParcelRepositories(Set<String> parcelRepositories) {
     this.parcelRepositories = parcelRepositories;
+  }
+
+  public List<String> getPostCreateScripts() {
+    return postCreateScripts;
+  }
+  public void setPostCreateScripts(List<String> postCreateScripts) {
+    this.postCreateScripts = postCreateScripts;
   }
 
   public Map<String,String> getProductVersions() {
@@ -239,6 +255,7 @@ public class ClusterTemplate {
     sb.append("  externalDatabases: ").append(externalDatabases).append(newLine);
     sb.append("  name: ").append(name).append(newLine);
     sb.append("  parcelRepositories: ").append(parcelRepositories).append(newLine);
+    sb.append("  postCreateScripts: ").append(postCreateScripts).append(newLine);
     sb.append("  productVersions: ").append(productVersions).append(newLine);
     sb.append("  redeployClientConfigsOnUpdate: ").append(redeployClientConfigsOnUpdate).append(newLine);
     sb.append("  restartClusterOnUpdate: ").append(restartClusterOnUpdate).append(newLine);

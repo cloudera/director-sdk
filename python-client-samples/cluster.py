@@ -30,7 +30,7 @@ from cloudera.director.latest.models import (Login, SshCredentials,
     VirtualInstance, DeploymentTemplate, ClusterTemplate,
     VirtualInstanceGroup)
 
-from cloudera.director.latest.client import ApiClient
+from cloudera.director.common.client import ApiClient
 from cloudera.director.latest import (AuthenticationApi, EnvironmentsApi,
     DeploymentsApi, ClustersApi)
 
@@ -76,8 +76,7 @@ def create_environment(client, config):
     provider.config = {
         'accessKeyId': config.get("provider", "accessKeyId"),
         'secretAccessKey': config.get("provider", "secretAccessKey"),
-        'region': config.get("provider", "region"),
-        'keyName': config.get("ssh", "keyName")
+        'region': config.get("provider", "region")
     }
 
     # Create a new environment object using the credentials and provider

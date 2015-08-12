@@ -22,8 +22,8 @@ class ClusterTemplate:
 
     def __init__(self, **kwargs):
         self.swaggerTypes = {
-            'externalDatabaseTemplates': 'dict[str,ExternalDatabaseTemplate]',
-            'externalDatabases': 'dict[str,ExternalDatabase]',
+            'externalDatabaseTemplates': 'dict[str,cloudera.director.v2.models.ExternalDatabaseTemplate]',
+            'externalDatabases': 'dict[str,cloudera.director.v2.models.ExternalDatabase]',
             'name': 'str',
             'parcelRepositories': 'set',
             'productVersions': 'dict[str,str]',
@@ -31,15 +31,15 @@ class ClusterTemplate:
             'restartClusterOnUpdate': 'bool',
             'services': 'list[str]',
             'servicesConfigs': 'dict[str,dict[str,str]]',
-            'virtualInstanceGroups': 'dict[str,VirtualInstanceGroup]'
+            'virtualInstanceGroups': 'dict[str,cloudera.director.v2.models.VirtualInstanceGroup]'
 
         }
 
 
         #Optional external database templates
-        self.externalDatabaseTemplates = kwargs.get('externalDatabaseTemplates',{}) # dict[str,ExternalDatabaseTemplate]
+        self.externalDatabaseTemplates = kwargs.get('externalDatabaseTemplates',{}) # dict[str,cloudera.director.v2.models.ExternalDatabaseTemplate]
         #Optional external databases
-        self.externalDatabases = kwargs.get('externalDatabases',{}) # dict[str,ExternalDatabase]
+        self.externalDatabases = kwargs.get('externalDatabases',{}) # dict[str,cloudera.director.v2.models.ExternalDatabase]
         #Cluster name
         self.name = kwargs.get('name',None) # str
         #Optional list of cluster parcel repositories
@@ -55,5 +55,5 @@ class ClusterTemplate:
         #Cluster services configurations
         self.servicesConfigs = kwargs.get('servicesConfigs',{}) # dict[str,dict[str,str]]
         #List of virtual instances
-        self.virtualInstanceGroups = kwargs.get('virtualInstanceGroups',{}) # dict[str,VirtualInstanceGroup]
+        self.virtualInstanceGroups = kwargs.get('virtualInstanceGroups',{}) # dict[str,cloudera.director.v2.models.VirtualInstanceGroup]
         

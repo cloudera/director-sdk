@@ -23,11 +23,11 @@ class VirtualInstance:
     def __init__(self, **kwargs):
         self.swaggerTypes = {
             'id': 'str',
-            'template': 'InstanceTemplate'
+            'template': 'cloudera.director.v2.models.InstanceTemplate'
 
         }
 
 
         self.id = kwargs.get('id',None) # str
-        self.template = kwargs.get('template',None) # InstanceTemplate
+        self.template = kwargs.get('template',None) # cloudera.director.v2.models.InstanceTemplate
         

@@ -18,6 +18,7 @@
 
 package com.cloudera.director.client.v1.model;
 
+
 public class Capabilities {
   private Boolean iptablesEnabled;
   private String javaVendor;
@@ -28,21 +29,19 @@ public class Capabilities {
   private Boolean passwordlessSudoEnabled;
   private String pythonVersion;
   private String virtualizationType;
-  public interface JavaVendor{
+  public interface JavaVendor {
     String OPENJDK = "OPENJDK";
     String ORACLE = "ORACLE";
     String UNKNOWN = "UNKNOWN";
-    
   }
-  public interface OperatingSystemType{
+  public interface OperatingSystemType {
     String REDHAT_COMPATIBLE = "REDHAT_COMPATIBLE";
     String SLES = "SLES";
     String DEBIAN = "DEBIAN";
     String UBUNTU = "UBUNTU";
     String UNKNOWN = "UNKNOWN";
-    
   }
-  public interface OperatingSystemVersion{
+  public interface OperatingSystemVersion {
     String REDHAT_COMPATIBLE_5 = "REDHAT_COMPATIBLE_5";
     String REDHAT_COMPATIBLE_6 = "REDHAT_COMPATIBLE_6";
     String SLES_11 = "SLES_11";
@@ -50,21 +49,18 @@ public class Capabilities {
     String UBUNTU_LUCID = "UBUNTU_LUCID";
     String UBUNTU_PRECISE = "UBUNTU_PRECISE";
     String UNKNOWN = "UNKNOWN";
-    
   }
-  public interface PackageManager{
+  public interface PackageManager {
     String APT = "APT";
     String YUM = "YUM";
     String ZYPPER = "ZYPPER";
-    
   }
-  public interface VirtualizationType{
+  public interface VirtualizationType {
     String PARAVIRTUALIZATION = "PARAVIRTUALIZATION";
     String HARDWARE_ASSISTED = "HARDWARE_ASSISTED";
     String UNKNOWN = "UNKNOWN";
-    
   }
-  public Capabilities() {} 
+  public Capabilities() { }
 
   private Capabilities(Boolean iptablesEnabled, String javaVendor, String javaVersion, String operatingSystemType, String operatingSystemVersion, String packageManager, Boolean passwordlessSudoEnabled, String pythonVersion, String virtualizationType) {
     this.iptablesEnabled = iptablesEnabled;
@@ -76,10 +72,9 @@ public class Capabilities {
     this.passwordlessSudoEnabled = passwordlessSudoEnabled;
     this.pythonVersion = pythonVersion;
     this.virtualizationType = virtualizationType;
-    
   }
-  
-  private Capabilities (CapabilitiesBuilder builder) {
+
+  private Capabilities(CapabilitiesBuilder builder) {
     this.iptablesEnabled = builder.iptablesEnabled;
     this.javaVendor = builder.javaVendor;
     this.javaVersion = builder.javaVersion;
@@ -89,14 +84,12 @@ public class Capabilities {
     this.passwordlessSudoEnabled = builder.passwordlessSudoEnabled;
     this.pythonVersion = builder.pythonVersion;
     this.virtualizationType = builder.virtualizationType;
-    
   }
 
   public static CapabilitiesBuilder builder() {
     return new CapabilitiesBuilder();
   }
 
-  
   public static class CapabilitiesBuilder {
     private Boolean iptablesEnabled = null;
     private String javaVendor = null;
@@ -107,7 +100,7 @@ public class Capabilities {
     private Boolean passwordlessSudoEnabled = null;
     private String pythonVersion = null;
     private String virtualizationType = null;
-    
+
     public CapabilitiesBuilder iptablesEnabled(Boolean iptablesEnabled) {
       this.iptablesEnabled = iptablesEnabled;
       return this;
@@ -153,7 +146,7 @@ public class Capabilities {
       return this;
     }
 
-    public Capabilities build(){
+    public Capabilities build() {
       return new Capabilities(this);
     }
   }

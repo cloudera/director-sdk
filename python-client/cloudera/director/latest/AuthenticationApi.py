@@ -21,8 +21,6 @@
 import sys
 import os
 
-from models import *
-
 
 class AuthenticationApi(object):
 
@@ -31,18 +29,18 @@ class AuthenticationApi(object):
 
     
 
-    def login(self, login, **kwargs):
+    def login(self, body, **kwargs):
         """Log in to the API
 
         Args:
-            login, Login: login (required)
+            body, cloudera.director.latest.models.Login: login (required)
 
             
 
-        Returns: User
+        Returns: cloudera.director.latest.models.User
         """
 
-        allParams = ['login']
+        allParams = ['body']
 
         params = locals()
         for (key, val) in params['kwargs'].iteritems():
@@ -51,14 +49,14 @@ class AuthenticationApi(object):
             params[key] = val
         del params['kwargs']
 
-        resourcePath = '/api/v2/login'
+        resourcePath = '/api/v3/login'
         resourcePath = resourcePath.replace('{format}', 'json')
         method = 'POST'
 
         queryParams = {}
         headerParams = {}
 
-        postData = login
+        postData = body
 
         response = self.apiClient.callAPI(resourcePath, method, queryParams,
                                           postData, headerParams)
@@ -66,7 +64,7 @@ class AuthenticationApi(object):
         if not response:
             return None
 
-        responseObject = self.apiClient.deserialize(response, 'User')
+        responseObject = self.apiClient.deserialize(response, 'cloudera.director.latest.models.User')
         return responseObject
         
 
@@ -90,7 +88,7 @@ class AuthenticationApi(object):
             params[key] = val
         del params['kwargs']
 
-        resourcePath = '/api/v2/logout'
+        resourcePath = '/api/v3/logout'
         resourcePath = resourcePath.replace('{format}', 'json')
         method = 'POST'
 

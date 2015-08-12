@@ -18,8 +18,9 @@
 
 package com.cloudera.director.client.latest.model;
 
-import java.util.Map;
 import java.util.HashMap;
+import java.util.Map;
+
 public class ExternalDatabaseServerTemplate {
   private Map<String,String> config;
   /* Hostname for existing external database server */
@@ -35,13 +36,12 @@ public class ExternalDatabaseServerTemplate {
   private String type;
   /* Database username for administrative access */
   private String username;
-  public interface Type{
+  public interface Type {
     String POSTGRESQL = "POSTGRESQL";
     String MYSQL = "MYSQL";
     String ORACLE = "ORACLE";
-    
   }
-  public ExternalDatabaseServerTemplate() {} 
+  public ExternalDatabaseServerTemplate() { }
 
   private ExternalDatabaseServerTemplate(Map<String,String> config, String hostname, String name, String password, Integer port, Map<String,String> tags, String type, String username) {
     this.config = config;
@@ -52,10 +52,9 @@ public class ExternalDatabaseServerTemplate {
     this.tags = tags;
     this.type = type;
     this.username = username;
-    
   }
-  
-  private ExternalDatabaseServerTemplate (ExternalDatabaseServerTemplateBuilder builder) {
+
+  private ExternalDatabaseServerTemplate(ExternalDatabaseServerTemplateBuilder builder) {
     this.config = builder.config;
     this.hostname = builder.hostname;
     this.name = builder.name;
@@ -64,14 +63,12 @@ public class ExternalDatabaseServerTemplate {
     this.tags = builder.tags;
     this.type = builder.type;
     this.username = builder.username;
-    
   }
 
   public static ExternalDatabaseServerTemplateBuilder builder() {
     return new ExternalDatabaseServerTemplateBuilder();
   }
 
-  
   public static class ExternalDatabaseServerTemplateBuilder {
     private Map<String,String> config = new HashMap<String,String>();
     private String hostname = null;
@@ -81,7 +78,7 @@ public class ExternalDatabaseServerTemplate {
     private Map<String,String> tags = new HashMap<String,String>();
     private String type = null;
     private String username = null;
-    
+
     public ExternalDatabaseServerTemplateBuilder config(Map<String,String> config) {
       this.config = config;
       return this;
@@ -122,7 +119,7 @@ public class ExternalDatabaseServerTemplate {
       return this;
     }
 
-    public ExternalDatabaseServerTemplate build(){
+    public ExternalDatabaseServerTemplate build() {
       return new ExternalDatabaseServerTemplate(this);
     }
   }

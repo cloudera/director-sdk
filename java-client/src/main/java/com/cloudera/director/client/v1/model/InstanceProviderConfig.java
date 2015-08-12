@@ -18,41 +18,38 @@
 
 package com.cloudera.director.client.v1.model;
 
-import java.util.Map;
 import java.util.HashMap;
+import java.util.Map;
+
 public class InstanceProviderConfig {
   /* Provider specific configurations [redacted on read] */
   private Map<String,String> config;
   /* Provider type */
   private String type;
-  public interface Type{
+  public interface Type {
     String AWS = "aws";
     String BYON = "byon";
-    
   }
-  public InstanceProviderConfig() {} 
+  public InstanceProviderConfig() { }
 
   private InstanceProviderConfig(Map<String,String> config, String type) {
     this.config = config;
     this.type = type;
-    
   }
-  
-  private InstanceProviderConfig (InstanceProviderConfigBuilder builder) {
+
+  private InstanceProviderConfig(InstanceProviderConfigBuilder builder) {
     this.config = builder.config;
     this.type = builder.type;
-    
   }
 
   public static InstanceProviderConfigBuilder builder() {
     return new InstanceProviderConfigBuilder();
   }
 
-  
   public static class InstanceProviderConfigBuilder {
     private Map<String,String> config = new HashMap<String,String>();
     private String type = null;
-    
+
     public InstanceProviderConfigBuilder config(Map<String,String> config) {
       this.config = config;
       return this;
@@ -63,7 +60,7 @@ public class InstanceProviderConfig {
       return this;
     }
 
-    public InstanceProviderConfig build(){
+    public InstanceProviderConfig build() {
       return new InstanceProviderConfig(this);
     }
   }

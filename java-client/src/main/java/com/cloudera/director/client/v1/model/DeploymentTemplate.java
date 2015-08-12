@@ -18,9 +18,9 @@
 
 package com.cloudera.director.client.v1.model;
 
-import java.util.Map;
 import java.util.HashMap;
-import com.cloudera.director.client.v1.model.VirtualInstance;
+import java.util.Map;
+
 public class DeploymentTemplate {
   private Map<String,String> config;
   private Map<String,ExternalDatabase> externalDatabases;
@@ -28,35 +28,32 @@ public class DeploymentTemplate {
   private VirtualInstance managerVirtualInstance;
   /* Deployment name */
   private String name;
-  public DeploymentTemplate() {} 
+  public DeploymentTemplate() { }
 
   private DeploymentTemplate(Map<String,String> config, Map<String,ExternalDatabase> externalDatabases, VirtualInstance managerVirtualInstance, String name) {
     this.config = config;
     this.externalDatabases = externalDatabases;
     this.managerVirtualInstance = managerVirtualInstance;
     this.name = name;
-    
   }
-  
-  private DeploymentTemplate (DeploymentTemplateBuilder builder) {
+
+  private DeploymentTemplate(DeploymentTemplateBuilder builder) {
     this.config = builder.config;
     this.externalDatabases = builder.externalDatabases;
     this.managerVirtualInstance = builder.managerVirtualInstance;
     this.name = builder.name;
-    
   }
 
   public static DeploymentTemplateBuilder builder() {
     return new DeploymentTemplateBuilder();
   }
 
-  
   public static class DeploymentTemplateBuilder {
     private Map<String,String> config = new HashMap<String,String>();
     private Map<String,ExternalDatabase> externalDatabases = new HashMap<String,ExternalDatabase>();
     private VirtualInstance managerVirtualInstance = null;
     private String name = null;
-    
+
     public DeploymentTemplateBuilder config(Map<String,String> config) {
       this.config = config;
       return this;
@@ -77,7 +74,7 @@ public class DeploymentTemplate {
       return this;
     }
 
-    public DeploymentTemplate build(){
+    public DeploymentTemplate build() {
       return new DeploymentTemplate(this);
     }
   }

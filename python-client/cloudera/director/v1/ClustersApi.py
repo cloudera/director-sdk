@@ -21,8 +21,6 @@
 import sys
 import os
 
-from models import *
-
 
 class ClustersApi(object):
 
@@ -31,7 +29,7 @@ class ClustersApi(object):
 
     
 
-    def create(self, environment, deployment, clusterTemplate, **kwargs):
+    def create(self, environment, deployment, body, **kwargs):
         """Create a new cluster
 
         Args:
@@ -41,14 +39,14 @@ class ClustersApi(object):
 
             X-Request-Id, str: requestId (optional)
 
-            clusterTemplate, ClusterTemplate: clusterTemplate (required)
+            body, cloudera.director.v1.models.ClusterTemplate: clusterTemplate (required)
 
             
 
         Returns: 
         """
 
-        allParams = ['environment', 'deployment', 'X-Request-Id', 'clusterTemplate']
+        allParams = ['environment', 'deployment', 'X-Request-Id', 'body']
 
         params = locals()
         for (key, val) in params['kwargs'].iteritems():
@@ -74,7 +72,7 @@ class ClustersApi(object):
             replacement = str(self.apiClient.toPathValue(params['deployment']))
             resourcePath = resourcePath.replace('{' + 'deployment' + '}',
                                                 replacement)
-        postData = clusterTemplate
+        postData = body
 
         response = self.apiClient.callAPI(resourcePath, method, queryParams,
                                           postData, headerParams)
@@ -151,7 +149,7 @@ class ClustersApi(object):
 
             
 
-        Returns: Cluster
+        Returns: cloudera.director.v1.models.Cluster
         """
 
         allParams = ['environment', 'deployment', 'cluster']
@@ -190,7 +188,7 @@ class ClustersApi(object):
         if not response:
             return None
 
-        responseObject = self.apiClient.deserialize(response, 'Cluster')
+        responseObject = self.apiClient.deserialize(response, 'cloudera.director.v1.models.Cluster')
         return responseObject
         
 
@@ -208,7 +206,7 @@ class ClustersApi(object):
 
             
 
-        Returns: Status
+        Returns: cloudera.director.v1.models.Status
         """
 
         allParams = ['environment', 'deployment', 'cluster']
@@ -247,7 +245,7 @@ class ClustersApi(object):
         if not response:
             return None
 
-        responseObject = self.apiClient.deserialize(response, 'Status')
+        responseObject = self.apiClient.deserialize(response, 'cloudera.director.v1.models.Status')
         return responseObject
         
 
@@ -265,7 +263,7 @@ class ClustersApi(object):
 
             
 
-        Returns: ClusterTemplate
+        Returns: cloudera.director.v1.models.ClusterTemplate
         """
 
         allParams = ['environment', 'deployment', 'cluster']
@@ -304,7 +302,7 @@ class ClustersApi(object):
         if not response:
             return None
 
-        responseObject = self.apiClient.deserialize(response, 'ClusterTemplate')
+        responseObject = self.apiClient.deserialize(response, 'cloudera.director.v1.models.ClusterTemplate')
         return responseObject
         
 
@@ -361,7 +359,7 @@ class ClustersApi(object):
 
         
 
-    def update(self, environment, deployment, cluster, desired, **kwargs):
+    def update(self, environment, deployment, cluster, body, **kwargs):
         """Update an existing cluster
 
         Args:
@@ -373,14 +371,14 @@ class ClustersApi(object):
 
             X-Request-Id, str: requestId (optional)
 
-            desired, ClusterTemplate: desired (required)
+            body, cloudera.director.v1.models.ClusterTemplate: desired (required)
 
             
 
         Returns: 
         """
 
-        allParams = ['environment', 'deployment', 'cluster', 'X-Request-Id', 'desired']
+        allParams = ['environment', 'deployment', 'cluster', 'X-Request-Id', 'body']
 
         params = locals()
         for (key, val) in params['kwargs'].iteritems():
@@ -410,7 +408,7 @@ class ClustersApi(object):
             replacement = str(self.apiClient.toPathValue(params['cluster']))
             resourcePath = resourcePath.replace('{' + 'cluster' + '}',
                                                 replacement)
-        postData = desired
+        postData = body
 
         response = self.apiClient.callAPI(resourcePath, method, queryParams,
                                           postData, headerParams)

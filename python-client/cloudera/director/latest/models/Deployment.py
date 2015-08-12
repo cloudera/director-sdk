@@ -24,12 +24,15 @@ class Deployment:
         self.swaggerTypes = {
             'enableEnterpriseTrial': 'bool',
             'hostname': 'str',
-            'managerInstance': 'Instance',
+            'krbAdminPassword': 'str',
+            'krbAdminUsername': 'str',
+            'managerInstance': 'cloudera.director.latest.models.Instance',
             'name': 'str',
             'password': 'str',
             'port': 'int',
             'repository': 'str',
             'repositoryKeyUrl': 'str',
+            'unlimitedJce': 'bool',
             'username': 'str'
 
         }
@@ -39,7 +42,11 @@ class Deployment:
         self.enableEnterpriseTrial = kwargs.get('enableEnterpriseTrial',None) # bool
         #Hostname for existing Cloudera Manager installation
         self.hostname = kwargs.get('hostname',None) # str
-        self.managerInstance = kwargs.get('managerInstance',None) # Instance
+        #Password for Kerberos administrative principal used by Cloudera Manager [redacted on read]
+        self.krbAdminPassword = kwargs.get('krbAdminPassword',None) # str
+        #Username for Kerberos administrative principal used by Cloudera Manager
+        self.krbAdminUsername = kwargs.get('krbAdminUsername',None) # str
+        self.managerInstance = kwargs.get('managerInstance',None) # cloudera.director.latest.models.Instance
         #Deployment name
         self.name = kwargs.get('name',None) # str
         #Password for API access [redacted on read]
@@ -50,6 +57,8 @@ class Deployment:
         self.repository = kwargs.get('repository',None) # str
         #Custom Cloudera Manager public GPG key
         self.repositoryKeyUrl = kwargs.get('repositoryKeyUrl',None) # str
+        #Whether to install unlimited strength JCE policy files
+        self.unlimitedJce = kwargs.get('unlimitedJce',None) # bool
         #Username for API access
         self.username = kwargs.get('username',None) # str
         

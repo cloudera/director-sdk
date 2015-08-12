@@ -21,8 +21,6 @@
 import sys
 import os
 
-from models import *
-
 
 class DeploymentsApi(object):
 
@@ -31,7 +29,7 @@ class DeploymentsApi(object):
 
     
 
-    def create(self, environment, deploymentTemplate, **kwargs):
+    def create(self, environment, body, **kwargs):
         """Create a new deployment
 
         Args:
@@ -39,14 +37,14 @@ class DeploymentsApi(object):
 
             X-Request-Id, str: requestId (optional)
 
-            deploymentTemplate, DeploymentTemplate: deploymentTemplate (required)
+            body, cloudera.director.v1.models.DeploymentTemplate: deploymentTemplate (required)
 
             
 
         Returns: 
         """
 
-        allParams = ['environment', 'X-Request-Id', 'deploymentTemplate']
+        allParams = ['environment', 'X-Request-Id', 'body']
 
         params = locals()
         for (key, val) in params['kwargs'].iteritems():
@@ -68,7 +66,7 @@ class DeploymentsApi(object):
             replacement = str(self.apiClient.toPathValue(params['environment']))
             resourcePath = resourcePath.replace('{' + 'environment' + '}',
                                                 replacement)
-        postData = deploymentTemplate
+        postData = body
 
         response = self.apiClient.callAPI(resourcePath, method, queryParams,
                                           postData, headerParams)
@@ -137,7 +135,7 @@ class DeploymentsApi(object):
 
             
 
-        Returns: Deployment
+        Returns: cloudera.director.v1.models.Deployment
         """
 
         allParams = ['environment', 'deployment']
@@ -172,7 +170,7 @@ class DeploymentsApi(object):
         if not response:
             return None
 
-        responseObject = self.apiClient.deserialize(response, 'Deployment')
+        responseObject = self.apiClient.deserialize(response, 'cloudera.director.v1.models.Deployment')
         return responseObject
         
 
@@ -188,7 +186,7 @@ class DeploymentsApi(object):
 
             
 
-        Returns: Status
+        Returns: cloudera.director.v1.models.Status
         """
 
         allParams = ['environment', 'deployment']
@@ -223,7 +221,7 @@ class DeploymentsApi(object):
         if not response:
             return None
 
-        responseObject = self.apiClient.deserialize(response, 'Status')
+        responseObject = self.apiClient.deserialize(response, 'cloudera.director.v1.models.Status')
         return responseObject
         
 
@@ -239,7 +237,7 @@ class DeploymentsApi(object):
 
             
 
-        Returns: DeploymentTemplate
+        Returns: cloudera.director.v1.models.DeploymentTemplate
         """
 
         allParams = ['environment', 'deployment']
@@ -274,7 +272,7 @@ class DeploymentsApi(object):
         if not response:
             return None
 
-        responseObject = self.apiClient.deserialize(response, 'DeploymentTemplate')
+        responseObject = self.apiClient.deserialize(response, 'cloudera.director.v1.models.DeploymentTemplate')
         return responseObject
         
 
@@ -325,7 +323,7 @@ class DeploymentsApi(object):
 
         
 
-    def update(self, environment, deployment, updatedTemplate, **kwargs):
+    def update(self, environment, deployment, body, **kwargs):
         """Update an existing deployment (unsupported)
 
         Args:
@@ -335,14 +333,14 @@ class DeploymentsApi(object):
 
             X-Request-Id, str: requestId (optional)
 
-            updatedTemplate, DeploymentTemplate: updatedTemplate (required)
+            body, cloudera.director.v1.models.DeploymentTemplate: updatedTemplate (required)
 
             
 
         Returns: 
         """
 
-        allParams = ['environment', 'deployment', 'X-Request-Id', 'updatedTemplate']
+        allParams = ['environment', 'deployment', 'X-Request-Id', 'body']
 
         params = locals()
         for (key, val) in params['kwargs'].iteritems():
@@ -368,7 +366,7 @@ class DeploymentsApi(object):
             replacement = str(self.apiClient.toPathValue(params['deployment']))
             resourcePath = resourcePath.replace('{' + 'deployment' + '}',
                                                 replacement)
-        postData = updatedTemplate
+        postData = body
 
         response = self.apiClient.callAPI(resourcePath, method, queryParams,
                                           postData, headerParams)

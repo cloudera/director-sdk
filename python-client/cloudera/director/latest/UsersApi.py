@@ -21,8 +21,6 @@
 import sys
 import os
 
-from models import *
-
 
 class UsersApi(object):
 
@@ -31,18 +29,18 @@ class UsersApi(object):
 
     
 
-    def create(self, user, **kwargs):
+    def create(self, body, **kwargs):
         """Create a new user
 
         Args:
-            user, User: user (required)
+            body, cloudera.director.latest.models.User: user (required)
 
             
 
         Returns: 
         """
 
-        allParams = ['user']
+        allParams = ['body']
 
         params = locals()
         for (key, val) in params['kwargs'].iteritems():
@@ -51,14 +49,14 @@ class UsersApi(object):
             params[key] = val
         del params['kwargs']
 
-        resourcePath = '/api/v2/users'
+        resourcePath = '/api/v3/users'
         resourcePath = resourcePath.replace('{format}', 'json')
         method = 'POST'
 
         queryParams = {}
         headerParams = {}
 
-        postData = user
+        postData = body
 
         response = self.apiClient.callAPI(resourcePath, method, queryParams,
                                           postData, headerParams)
@@ -73,7 +71,7 @@ class UsersApi(object):
         Args:
             
 
-        Returns: User
+        Returns: cloudera.director.latest.models.User
         """
 
         allParams = []
@@ -85,7 +83,7 @@ class UsersApi(object):
             params[key] = val
         del params['kwargs']
 
-        resourcePath = '/api/v2/users/current'
+        resourcePath = '/api/v3/users/current'
         resourcePath = resourcePath.replace('{format}', 'json')
         method = 'GET'
 
@@ -100,7 +98,7 @@ class UsersApi(object):
         if not response:
             return None
 
-        responseObject = self.apiClient.deserialize(response, 'User')
+        responseObject = self.apiClient.deserialize(response, 'cloudera.director.latest.models.User')
         return responseObject
         
 
@@ -126,7 +124,7 @@ class UsersApi(object):
             params[key] = val
         del params['kwargs']
 
-        resourcePath = '/api/v2/users/{username}'
+        resourcePath = '/api/v3/users/{username}'
         resourcePath = resourcePath.replace('{format}', 'json')
         method = 'DELETE'
 
@@ -154,7 +152,7 @@ class UsersApi(object):
 
             
 
-        Returns: User
+        Returns: cloudera.director.latest.models.User
         """
 
         allParams = ['username']
@@ -166,7 +164,7 @@ class UsersApi(object):
             params[key] = val
         del params['kwargs']
 
-        resourcePath = '/api/v2/users/{username}'
+        resourcePath = '/api/v3/users/{username}'
         resourcePath = resourcePath.replace('{format}', 'json')
         method = 'GET'
 
@@ -185,7 +183,7 @@ class UsersApi(object):
         if not response:
             return None
 
-        responseObject = self.apiClient.deserialize(response, 'User')
+        responseObject = self.apiClient.deserialize(response, 'cloudera.director.latest.models.User')
         return responseObject
         
 
@@ -209,7 +207,7 @@ class UsersApi(object):
             params[key] = val
         del params['kwargs']
 
-        resourcePath = '/api/v2/users'
+        resourcePath = '/api/v3/users'
         resourcePath = resourcePath.replace('{format}', 'json')
         method = 'GET'
 
@@ -230,20 +228,20 @@ class UsersApi(object):
 
         
 
-    def update(self, username, user, **kwargs):
+    def update(self, username, body, **kwargs):
         """Update an existing user
 
         Args:
             username, str: username (required)
 
-            user, User: user (required)
+            body, cloudera.director.latest.models.User: user (required)
 
             
 
         Returns: 
         """
 
-        allParams = ['username', 'user']
+        allParams = ['username', 'body']
 
         params = locals()
         for (key, val) in params['kwargs'].iteritems():
@@ -252,7 +250,7 @@ class UsersApi(object):
             params[key] = val
         del params['kwargs']
 
-        resourcePath = '/api/v2/users/{username}'
+        resourcePath = '/api/v3/users/{username}'
         resourcePath = resourcePath.replace('{format}', 'json')
         method = 'PUT'
 
@@ -263,7 +261,7 @@ class UsersApi(object):
             replacement = str(self.apiClient.toPathValue(params['username']))
             resourcePath = resourcePath.replace('{' + 'username' + '}',
                                                 replacement)
-        postData = user
+        postData = body
 
         response = self.apiClient.callAPI(resourcePath, method, queryParams,
                                           postData, headerParams)
@@ -272,20 +270,20 @@ class UsersApi(object):
 
         
 
-    def updatePassword(self, username, passwords, **kwargs):
+    def updatePassword(self, username, body, **kwargs):
         """Update the password of an existing user
 
         Args:
             username, str: username (required)
 
-            passwords, PasswordChange: passwords (required)
+            body, cloudera.director.latest.models.PasswordChange: passwords (required)
 
             
 
         Returns: 
         """
 
-        allParams = ['username', 'passwords']
+        allParams = ['username', 'body']
 
         params = locals()
         for (key, val) in params['kwargs'].iteritems():
@@ -294,7 +292,7 @@ class UsersApi(object):
             params[key] = val
         del params['kwargs']
 
-        resourcePath = '/api/v2/users/{username}/password'
+        resourcePath = '/api/v3/users/{username}/password'
         resourcePath = resourcePath.replace('{format}', 'json')
         method = 'PUT'
 
@@ -305,7 +303,7 @@ class UsersApi(object):
             replacement = str(self.apiClient.toPathValue(params['username']))
             resourcePath = resourcePath.replace('{' + 'username' + '}',
                                                 replacement)
-        postData = passwords
+        postData = body
 
         response = self.apiClient.callAPI(resourcePath, method, queryParams,
                                           postData, headerParams)

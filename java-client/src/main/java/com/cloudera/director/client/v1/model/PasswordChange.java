@@ -18,34 +18,32 @@
 
 package com.cloudera.director.client.v1.model;
 
+
 public class PasswordChange {
   /* New password [redacted on read] */
   private String newPassword;
   /* Old password [redacted on read] */
   private String oldPassword;
-  public PasswordChange() {} 
+  public PasswordChange() { }
 
   private PasswordChange(String newPassword, String oldPassword) {
     this.newPassword = newPassword;
     this.oldPassword = oldPassword;
-    
   }
-  
-  private PasswordChange (PasswordChangeBuilder builder) {
+
+  private PasswordChange(PasswordChangeBuilder builder) {
     this.newPassword = builder.newPassword;
     this.oldPassword = builder.oldPassword;
-    
   }
 
   public static PasswordChangeBuilder builder() {
     return new PasswordChangeBuilder();
   }
 
-  
   public static class PasswordChangeBuilder {
     private String newPassword = null;
     private String oldPassword = null;
-    
+
     public PasswordChangeBuilder newPassword(String newPassword) {
       this.newPassword = newPassword;
       return this;
@@ -56,7 +54,7 @@ public class PasswordChange {
       return this;
     }
 
-    public PasswordChange build(){
+    public PasswordChange build() {
       return new PasswordChange(this);
     }
   }

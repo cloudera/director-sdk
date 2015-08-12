@@ -21,8 +21,6 @@
 import sys
 import os
 
-from models import *
-
 
 class ClustersApi(object):
 
@@ -31,7 +29,7 @@ class ClustersApi(object):
 
     
 
-    def create(self, environment, deployment, clusterTemplate, **kwargs):
+    def create(self, environment, deployment, body, **kwargs):
         """Create a new cluster
 
         Args:
@@ -39,16 +37,14 @@ class ClustersApi(object):
 
             deployment, str: deploymentName (required)
 
-            X-Request-Id, str: requestId (optional)
-
-            clusterTemplate, ClusterTemplate: clusterTemplate (required)
+            body, cloudera.director.latest.models.ClusterTemplate: clusterTemplate (required)
 
             
 
         Returns: 
         """
 
-        allParams = ['environment', 'deployment', 'X-Request-Id', 'clusterTemplate']
+        allParams = ['environment', 'deployment', 'body']
 
         params = locals()
         for (key, val) in params['kwargs'].iteritems():
@@ -57,15 +53,13 @@ class ClustersApi(object):
             params[key] = val
         del params['kwargs']
 
-        resourcePath = '/api/v2/environments/{environment}/deployments/{deployment}/clusters'
+        resourcePath = '/api/v3/environments/{environment}/deployments/{deployment}/clusters'
         resourcePath = resourcePath.replace('{format}', 'json')
         method = 'POST'
 
         queryParams = {}
         headerParams = {}
 
-        if ('X-Request-Id' in params):
-            headerParams['X-Request-Id'] = params['X-Request-Id']
         if ('environment' in params):
             replacement = str(self.apiClient.toPathValue(params['environment']))
             resourcePath = resourcePath.replace('{' + 'environment' + '}',
@@ -74,7 +68,7 @@ class ClustersApi(object):
             replacement = str(self.apiClient.toPathValue(params['deployment']))
             resourcePath = resourcePath.replace('{' + 'deployment' + '}',
                                                 replacement)
-        postData = clusterTemplate
+        postData = body
 
         response = self.apiClient.callAPI(resourcePath, method, queryParams,
                                           postData, headerParams)
@@ -93,14 +87,12 @@ class ClustersApi(object):
 
             cluster, str: clusterName (required)
 
-            X-Request-Id, str: requestId (optional)
-
             
 
         Returns: 
         """
 
-        allParams = ['environment', 'deployment', 'cluster', 'X-Request-Id']
+        allParams = ['environment', 'deployment', 'cluster']
 
         params = locals()
         for (key, val) in params['kwargs'].iteritems():
@@ -109,15 +101,13 @@ class ClustersApi(object):
             params[key] = val
         del params['kwargs']
 
-        resourcePath = '/api/v2/environments/{environment}/deployments/{deployment}/clusters/{cluster}'
+        resourcePath = '/api/v3/environments/{environment}/deployments/{deployment}/clusters/{cluster}'
         resourcePath = resourcePath.replace('{format}', 'json')
         method = 'DELETE'
 
         queryParams = {}
         headerParams = {}
 
-        if ('X-Request-Id' in params):
-            headerParams['X-Request-Id'] = params['X-Request-Id']
         if ('environment' in params):
             replacement = str(self.apiClient.toPathValue(params['environment']))
             resourcePath = resourcePath.replace('{' + 'environment' + '}',
@@ -151,7 +141,7 @@ class ClustersApi(object):
 
             
 
-        Returns: Cluster
+        Returns: cloudera.director.latest.models.Cluster
         """
 
         allParams = ['environment', 'deployment', 'cluster']
@@ -163,7 +153,7 @@ class ClustersApi(object):
             params[key] = val
         del params['kwargs']
 
-        resourcePath = '/api/v2/environments/{environment}/deployments/{deployment}/clusters/{cluster}'
+        resourcePath = '/api/v3/environments/{environment}/deployments/{deployment}/clusters/{cluster}'
         resourcePath = resourcePath.replace('{format}', 'json')
         method = 'GET'
 
@@ -190,7 +180,7 @@ class ClustersApi(object):
         if not response:
             return None
 
-        responseObject = self.apiClient.deserialize(response, 'Cluster')
+        responseObject = self.apiClient.deserialize(response, 'cloudera.director.latest.models.Cluster')
         return responseObject
         
 
@@ -208,7 +198,7 @@ class ClustersApi(object):
 
             
 
-        Returns: Status
+        Returns: cloudera.director.latest.models.Status
         """
 
         allParams = ['environment', 'deployment', 'cluster']
@@ -220,7 +210,7 @@ class ClustersApi(object):
             params[key] = val
         del params['kwargs']
 
-        resourcePath = '/api/v2/environments/{environment}/deployments/{deployment}/clusters/{cluster}/status'
+        resourcePath = '/api/v3/environments/{environment}/deployments/{deployment}/clusters/{cluster}/status'
         resourcePath = resourcePath.replace('{format}', 'json')
         method = 'GET'
 
@@ -247,7 +237,7 @@ class ClustersApi(object):
         if not response:
             return None
 
-        responseObject = self.apiClient.deserialize(response, 'Status')
+        responseObject = self.apiClient.deserialize(response, 'cloudera.director.latest.models.Status')
         return responseObject
         
 
@@ -265,7 +255,7 @@ class ClustersApi(object):
 
             
 
-        Returns: ClusterTemplate
+        Returns: cloudera.director.latest.models.ClusterTemplate
         """
 
         allParams = ['environment', 'deployment', 'cluster']
@@ -277,7 +267,7 @@ class ClustersApi(object):
             params[key] = val
         del params['kwargs']
 
-        resourcePath = '/api/v2/environments/{environment}/deployments/{deployment}/clusters/{cluster}/template'
+        resourcePath = '/api/v3/environments/{environment}/deployments/{deployment}/clusters/{cluster}/template'
         resourcePath = resourcePath.replace('{format}', 'json')
         method = 'GET'
 
@@ -304,7 +294,7 @@ class ClustersApi(object):
         if not response:
             return None
 
-        responseObject = self.apiClient.deserialize(response, 'ClusterTemplate')
+        responseObject = self.apiClient.deserialize(response, 'cloudera.director.latest.models.ClusterTemplate')
         return responseObject
         
 
@@ -332,7 +322,7 @@ class ClustersApi(object):
             params[key] = val
         del params['kwargs']
 
-        resourcePath = '/api/v2/environments/{environment}/deployments/{deployment}/clusters'
+        resourcePath = '/api/v3/environments/{environment}/deployments/{deployment}/clusters'
         resourcePath = resourcePath.replace('{format}', 'json')
         method = 'GET'
 
@@ -361,7 +351,7 @@ class ClustersApi(object):
 
         
 
-    def update(self, environment, deployment, cluster, desired, **kwargs):
+    def update(self, environment, deployment, cluster, body, **kwargs):
         """Update an existing cluster
 
         Args:
@@ -371,16 +361,14 @@ class ClustersApi(object):
 
             cluster, str: clusterName (required)
 
-            X-Request-Id, str: requestId (optional)
-
-            desired, ClusterTemplate: desired (required)
+            body, cloudera.director.latest.models.ClusterTemplate: desired (required)
 
             
 
         Returns: 
         """
 
-        allParams = ['environment', 'deployment', 'cluster', 'X-Request-Id', 'desired']
+        allParams = ['environment', 'deployment', 'cluster', 'body']
 
         params = locals()
         for (key, val) in params['kwargs'].iteritems():
@@ -389,15 +377,13 @@ class ClustersApi(object):
             params[key] = val
         del params['kwargs']
 
-        resourcePath = '/api/v2/environments/{environment}/deployments/{deployment}/clusters/{cluster}'
+        resourcePath = '/api/v3/environments/{environment}/deployments/{deployment}/clusters/{cluster}'
         resourcePath = resourcePath.replace('{format}', 'json')
         method = 'PUT'
 
         queryParams = {}
         headerParams = {}
 
-        if ('X-Request-Id' in params):
-            headerParams['X-Request-Id'] = params['X-Request-Id']
         if ('environment' in params):
             replacement = str(self.apiClient.toPathValue(params['environment']))
             resourcePath = resourcePath.replace('{' + 'environment' + '}',
@@ -410,7 +396,7 @@ class ClustersApi(object):
             replacement = str(self.apiClient.toPathValue(params['cluster']))
             resourcePath = resourcePath.replace('{' + 'cluster' + '}',
                                                 replacement)
-        postData = desired
+        postData = body
 
         response = self.apiClient.callAPI(resourcePath, method, queryParams,
                                           postData, headerParams)

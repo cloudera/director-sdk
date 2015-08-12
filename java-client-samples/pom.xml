@@ -22,14 +22,38 @@
 
     <groupId>com.cloudera.director</groupId>
     <artifactId>director-samples</artifactId>
-    <version>1.1.0</version>
+    <version>1.5.0</version>
 
     <properties>
-        <director-client.version>1.1.0</director-client.version>
+        <director-client.version>1.5.0</director-client.version>
+        <ini4j.version>0.5.4</ini4j.version>
         <jcommander.version>1.47</jcommander.version>
         <junit.version>4.11</junit.version>
-        <ini4j.version>0.5.4</ini4j.version>
+        <maven-checkstyle-plugin.version>2.13</maven-checkstyle-plugin.version>
+        <maven-findbugs-plugin.version>2.5.5</maven-findbugs-plugin.version>
     </properties>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-checkstyle-plugin</artifactId>
+                <version>${maven-checkstyle-plugin.version}</version>
+                <configuration>
+                    <configLocation>checkstyle.xml</configLocation>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>findbugs-maven-plugin</artifactId>
+                <version>${maven-findbugs-plugin.version}</version>
+                <configuration>
+                    <failOnError>false</failOnError>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 
     <dependencies>
         <dependency>
@@ -59,12 +83,4 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
-
-    <repositories>
-        <repository>
-            <id>cloudera.repo</id>
-            <url>https://repository.cloudera.com/artifactory/cloudera-repos</url>
-            <name>Cloudera Repository</name>
-        </repository>
-    </repositories>
 </project>

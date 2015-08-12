@@ -24,10 +24,10 @@ class DeploymentTemplate:
         self.swaggerTypes = {
             'configs': 'dict[str,dict[str,str]]',
             'enableEnterpriseTrial': 'bool',
-            'externalDatabaseTemplates': 'dict[str,ExternalDatabaseTemplate]',
-            'externalDatabases': 'dict[str,ExternalDatabase]',
+            'externalDatabaseTemplates': 'dict[str,cloudera.director.v2.models.ExternalDatabaseTemplate]',
+            'externalDatabases': 'dict[str,cloudera.director.v2.models.ExternalDatabase]',
             'hostname': 'str',
-            'managerVirtualInstance': 'VirtualInstance',
+            'managerVirtualInstance': 'cloudera.director.v2.models.VirtualInstance',
             'name': 'str',
             'password': 'str',
             'port': 'int',
@@ -43,13 +43,13 @@ class DeploymentTemplate:
         #Whether to enable Cloudera Enterprise Trial
         self.enableEnterpriseTrial = kwargs.get('enableEnterpriseTrial',None) # bool
         #External database template definitions
-        self.externalDatabaseTemplates = kwargs.get('externalDatabaseTemplates',{}) # dict[str,ExternalDatabaseTemplate]
+        self.externalDatabaseTemplates = kwargs.get('externalDatabaseTemplates',{}) # dict[str,cloudera.director.v2.models.ExternalDatabaseTemplate]
         #External database definitions
-        self.externalDatabases = kwargs.get('externalDatabases',{}) # dict[str,ExternalDatabase]
+        self.externalDatabases = kwargs.get('externalDatabases',{}) # dict[str,cloudera.director.v2.models.ExternalDatabase]
         #Hostname for existing Cloudera Manager installation
         self.hostname = kwargs.get('hostname',None) # str
         #Instance definition for a Cloudera Manager instance created from scratch
-        self.managerVirtualInstance = kwargs.get('managerVirtualInstance',None) # VirtualInstance
+        self.managerVirtualInstance = kwargs.get('managerVirtualInstance',None) # cloudera.director.v2.models.VirtualInstance
         #Deployment name
         self.name = kwargs.get('name',None) # str
         #Web UI and API password [redacted on read]

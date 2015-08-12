@@ -18,6 +18,7 @@
 
 package com.cloudera.director.client.latest.model;
 
+
 public class ExternalDatabaseTemplate {
   /* External database name prefix */
   private String databaseNamePrefix;
@@ -27,35 +28,32 @@ public class ExternalDatabaseTemplate {
   private String name;
   /* External database username prefix */
   private String usernamePrefix;
-  public ExternalDatabaseTemplate() {} 
+  public ExternalDatabaseTemplate() { }
 
   private ExternalDatabaseTemplate(String databaseNamePrefix, String databaseServerName, String name, String usernamePrefix) {
     this.databaseNamePrefix = databaseNamePrefix;
     this.databaseServerName = databaseServerName;
     this.name = name;
     this.usernamePrefix = usernamePrefix;
-    
   }
-  
-  private ExternalDatabaseTemplate (ExternalDatabaseTemplateBuilder builder) {
+
+  private ExternalDatabaseTemplate(ExternalDatabaseTemplateBuilder builder) {
     this.databaseNamePrefix = builder.databaseNamePrefix;
     this.databaseServerName = builder.databaseServerName;
     this.name = builder.name;
     this.usernamePrefix = builder.usernamePrefix;
-    
   }
 
   public static ExternalDatabaseTemplateBuilder builder() {
     return new ExternalDatabaseTemplateBuilder();
   }
 
-  
   public static class ExternalDatabaseTemplateBuilder {
     private String databaseNamePrefix = null;
     private String databaseServerName = null;
     private String name = null;
     private String usernamePrefix = null;
-    
+
     public ExternalDatabaseTemplateBuilder databaseNamePrefix(String databaseNamePrefix) {
       this.databaseNamePrefix = databaseNamePrefix;
       return this;
@@ -76,7 +74,7 @@ public class ExternalDatabaseTemplate {
       return this;
     }
 
-    public ExternalDatabaseTemplate build(){
+    public ExternalDatabaseTemplate build() {
       return new ExternalDatabaseTemplate(this);
     }
   }

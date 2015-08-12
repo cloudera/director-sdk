@@ -22,17 +22,17 @@ class Environment:
 
     def __init__(self, **kwargs):
         self.swaggerTypes = {
-            'credentials': 'SshCredentials',
+            'credentials': 'cloudera.director.latest.models.SshCredentials',
             'name': 'str',
-            'provider': 'InstanceProviderConfig'
+            'provider': 'cloudera.director.latest.models.InstanceProviderConfig'
 
         }
 
 
         #SSH credentials
-        self.credentials = kwargs.get('credentials',None) # SshCredentials
+        self.credentials = kwargs.get('credentials',None) # cloudera.director.latest.models.SshCredentials
         #Environment name
         self.name = kwargs.get('name',None) # str
         #IaaS provider config
-        self.provider = kwargs.get('provider',None) # InstanceProviderConfig
+        self.provider = kwargs.get('provider',None) # cloudera.director.latest.models.InstanceProviderConfig
         

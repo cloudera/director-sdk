@@ -18,8 +18,7 @@
 
 package com.cloudera.director.client.v1.model;
 
-import com.cloudera.director.client.v1.model.InstanceProviderConfig;
-import com.cloudera.director.client.v1.model.SshCredentials;
+
 public class Environment {
   /* SSH credentials */
   private SshCredentials credentials;
@@ -27,32 +26,29 @@ public class Environment {
   private String name;
   /* IaaS provider config */
   private InstanceProviderConfig provider;
-  public Environment() {} 
+  public Environment() { }
 
   private Environment(SshCredentials credentials, String name, InstanceProviderConfig provider) {
     this.credentials = credentials;
     this.name = name;
     this.provider = provider;
-    
   }
-  
-  private Environment (EnvironmentBuilder builder) {
+
+  private Environment(EnvironmentBuilder builder) {
     this.credentials = builder.credentials;
     this.name = builder.name;
     this.provider = builder.provider;
-    
   }
 
   public static EnvironmentBuilder builder() {
     return new EnvironmentBuilder();
   }
 
-  
   public static class EnvironmentBuilder {
     private SshCredentials credentials = null;
     private String name = null;
     private InstanceProviderConfig provider = null;
-    
+
     public EnvironmentBuilder credentials(SshCredentials credentials) {
       this.credentials = credentials;
       return this;
@@ -68,7 +64,7 @@ public class Environment {
       return this;
     }
 
-    public Environment build(){
+    public Environment build() {
       return new Environment(this);
     }
   }

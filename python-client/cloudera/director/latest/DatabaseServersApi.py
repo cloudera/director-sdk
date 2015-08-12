@@ -21,8 +21,6 @@
 import sys
 import os
 
-from models import *
-
 
 class DatabaseServersApi(object):
 
@@ -31,22 +29,20 @@ class DatabaseServersApi(object):
 
     
 
-    def create(self, environment, externalDatabaseServerTemplate, **kwargs):
+    def create(self, environment, body, **kwargs):
         """Create a new external database server
 
         Args:
             environment, str: environmentName (required)
 
-            X-Request-Id, str: requestId (optional)
-
-            externalDatabaseServerTemplate, ExternalDatabaseServerTemplate: externalDatabaseServerTemplate (required)
+            body, cloudera.director.latest.models.ExternalDatabaseServerTemplate: externalDatabaseServerTemplate (required)
 
             
 
         Returns: 
         """
 
-        allParams = ['environment', 'X-Request-Id', 'externalDatabaseServerTemplate']
+        allParams = ['environment', 'body']
 
         params = locals()
         for (key, val) in params['kwargs'].iteritems():
@@ -55,20 +51,18 @@ class DatabaseServersApi(object):
             params[key] = val
         del params['kwargs']
 
-        resourcePath = '/api/v2/environments/{environment}/databaseServers'
+        resourcePath = '/api/v3/environments/{environment}/databaseServers'
         resourcePath = resourcePath.replace('{format}', 'json')
         method = 'POST'
 
         queryParams = {}
         headerParams = {}
 
-        if ('X-Request-Id' in params):
-            headerParams['X-Request-Id'] = params['X-Request-Id']
         if ('environment' in params):
             replacement = str(self.apiClient.toPathValue(params['environment']))
             resourcePath = resourcePath.replace('{' + 'environment' + '}',
                                                 replacement)
-        postData = externalDatabaseServerTemplate
+        postData = body
 
         response = self.apiClient.callAPI(resourcePath, method, queryParams,
                                           postData, headerParams)
@@ -85,14 +79,12 @@ class DatabaseServersApi(object):
 
             externalDatabaseServer, str: externalDatabaseServerName (required)
 
-            X-Request-Id, str: requestId (optional)
-
             
 
         Returns: 
         """
 
-        allParams = ['environment', 'externalDatabaseServer', 'X-Request-Id']
+        allParams = ['environment', 'externalDatabaseServer']
 
         params = locals()
         for (key, val) in params['kwargs'].iteritems():
@@ -101,15 +93,13 @@ class DatabaseServersApi(object):
             params[key] = val
         del params['kwargs']
 
-        resourcePath = '/api/v2/environments/{environment}/databaseServers/{externalDatabaseServer}'
+        resourcePath = '/api/v3/environments/{environment}/databaseServers/{externalDatabaseServer}'
         resourcePath = resourcePath.replace('{format}', 'json')
         method = 'DELETE'
 
         queryParams = {}
         headerParams = {}
 
-        if ('X-Request-Id' in params):
-            headerParams['X-Request-Id'] = params['X-Request-Id']
         if ('environment' in params):
             replacement = str(self.apiClient.toPathValue(params['environment']))
             resourcePath = resourcePath.replace('{' + 'environment' + '}',
@@ -127,8 +117,8 @@ class DatabaseServersApi(object):
 
         
 
-    def getRedacted(self, environment, externalDatabaseServer, **kwargs):
-        """Get an external database server by name
+    def getDatabaseServerUsage(self, environment, externalDatabaseServer, **kwargs):
+        """Get an external database server usage by name
 
         Args:
             environment, str: environmentName (required)
@@ -137,7 +127,7 @@ class DatabaseServersApi(object):
 
             
 
-        Returns: ExternalDatabaseServer
+        Returns: cloudera.director.latest.models.ExternalDatabaseServerUsage
         """
 
         allParams = ['environment', 'externalDatabaseServer']
@@ -145,11 +135,11 @@ class DatabaseServersApi(object):
         params = locals()
         for (key, val) in params['kwargs'].iteritems():
             if key not in allParams:
-                raise TypeError("Got an unexpected keyword argument '%s' to method getRedacted" % key)
+                raise TypeError("Got an unexpected keyword argument '%s' to method getDatabaseServerUsage" % key)
             params[key] = val
         del params['kwargs']
 
-        resourcePath = '/api/v2/environments/{environment}/databaseServers/{externalDatabaseServer}'
+        resourcePath = '/api/v3/environments/{environment}/databaseServers/{externalDatabaseServer}/usage'
         resourcePath = resourcePath.replace('{format}', 'json')
         method = 'GET'
 
@@ -172,7 +162,58 @@ class DatabaseServersApi(object):
         if not response:
             return None
 
-        responseObject = self.apiClient.deserialize(response, 'ExternalDatabaseServer')
+        responseObject = self.apiClient.deserialize(response, 'cloudera.director.latest.models.ExternalDatabaseServerUsage')
+        return responseObject
+        
+
+        
+
+    def getRedacted(self, environment, externalDatabaseServer, **kwargs):
+        """Get an external database server by name
+
+        Args:
+            environment, str: environmentName (required)
+
+            externalDatabaseServer, str: externalDatabaseServerName (required)
+
+            
+
+        Returns: cloudera.director.latest.models.ExternalDatabaseServer
+        """
+
+        allParams = ['environment', 'externalDatabaseServer']
+
+        params = locals()
+        for (key, val) in params['kwargs'].iteritems():
+            if key not in allParams:
+                raise TypeError("Got an unexpected keyword argument '%s' to method getRedacted" % key)
+            params[key] = val
+        del params['kwargs']
+
+        resourcePath = '/api/v3/environments/{environment}/databaseServers/{externalDatabaseServer}'
+        resourcePath = resourcePath.replace('{format}', 'json')
+        method = 'GET'
+
+        queryParams = {}
+        headerParams = {}
+
+        if ('environment' in params):
+            replacement = str(self.apiClient.toPathValue(params['environment']))
+            resourcePath = resourcePath.replace('{' + 'environment' + '}',
+                                                replacement)
+        if ('externalDatabaseServer' in params):
+            replacement = str(self.apiClient.toPathValue(params['externalDatabaseServer']))
+            resourcePath = resourcePath.replace('{' + 'externalDatabaseServer' + '}',
+                                                replacement)
+        postData = None
+
+        response = self.apiClient.callAPI(resourcePath, method, queryParams,
+                                          postData, headerParams)
+
+        if not response:
+            return None
+
+        responseObject = self.apiClient.deserialize(response, 'cloudera.director.latest.models.ExternalDatabaseServer')
         return responseObject
         
 
@@ -188,7 +229,7 @@ class DatabaseServersApi(object):
 
             
 
-        Returns: Status
+        Returns: cloudera.director.latest.models.Status
         """
 
         allParams = ['environment', 'externalDatabaseServer']
@@ -200,7 +241,7 @@ class DatabaseServersApi(object):
             params[key] = val
         del params['kwargs']
 
-        resourcePath = '/api/v2/environments/{environment}/databaseServers/{externalDatabaseServer}/status'
+        resourcePath = '/api/v3/environments/{environment}/databaseServers/{externalDatabaseServer}/status'
         resourcePath = resourcePath.replace('{format}', 'json')
         method = 'GET'
 
@@ -223,7 +264,7 @@ class DatabaseServersApi(object):
         if not response:
             return None
 
-        responseObject = self.apiClient.deserialize(response, 'Status')
+        responseObject = self.apiClient.deserialize(response, 'cloudera.director.latest.models.Status')
         return responseObject
         
 
@@ -239,7 +280,7 @@ class DatabaseServersApi(object):
 
             
 
-        Returns: ExternalDatabaseServerTemplate
+        Returns: cloudera.director.latest.models.ExternalDatabaseServerTemplate
         """
 
         allParams = ['environment', 'externalDatabaseServer']
@@ -251,7 +292,7 @@ class DatabaseServersApi(object):
             params[key] = val
         del params['kwargs']
 
-        resourcePath = '/api/v2/environments/{environment}/databaseServers/{externalDatabaseServer}/template'
+        resourcePath = '/api/v3/environments/{environment}/databaseServers/{externalDatabaseServer}/template'
         resourcePath = resourcePath.replace('{format}', 'json')
         method = 'GET'
 
@@ -274,7 +315,7 @@ class DatabaseServersApi(object):
         if not response:
             return None
 
-        responseObject = self.apiClient.deserialize(response, 'ExternalDatabaseServerTemplate')
+        responseObject = self.apiClient.deserialize(response, 'cloudera.director.latest.models.ExternalDatabaseServerTemplate')
         return responseObject
         
 
@@ -300,7 +341,7 @@ class DatabaseServersApi(object):
             params[key] = val
         del params['kwargs']
 
-        resourcePath = '/api/v2/environments/{environment}/databaseServers'
+        resourcePath = '/api/v3/environments/{environment}/databaseServers'
         resourcePath = resourcePath.replace('{format}', 'json')
         method = 'GET'
 
@@ -325,7 +366,7 @@ class DatabaseServersApi(object):
 
         
 
-    def update(self, environment, externalDatabaseServer, updatedTemplate, **kwargs):
+    def update(self, environment, externalDatabaseServer, body, **kwargs):
         """Update an existing external database server (unsupported)
 
         Args:
@@ -333,16 +374,14 @@ class DatabaseServersApi(object):
 
             externalDatabaseServer, str: externalDatabaseServerName (required)
 
-            X-Request-Id, str: requestId (optional)
-
-            updatedTemplate, ExternalDatabaseServerTemplate: updatedTemplate (required)
+            body, cloudera.director.latest.models.ExternalDatabaseServerTemplate: updatedTemplate (required)
 
             
 
         Returns: 
         """
 
-        allParams = ['environment', 'externalDatabaseServer', 'X-Request-Id', 'updatedTemplate']
+        allParams = ['environment', 'externalDatabaseServer', 'body']
 
         params = locals()
         for (key, val) in params['kwargs'].iteritems():
@@ -351,15 +390,13 @@ class DatabaseServersApi(object):
             params[key] = val
         del params['kwargs']
 
-        resourcePath = '/api/v2/environments/{environment}/databaseServers/{externalDatabaseServer}'
+        resourcePath = '/api/v3/environments/{environment}/databaseServers/{externalDatabaseServer}'
         resourcePath = resourcePath.replace('{format}', 'json')
         method = 'PUT'
 
         queryParams = {}
         headerParams = {}
 
-        if ('X-Request-Id' in params):
-            headerParams['X-Request-Id'] = params['X-Request-Id']
         if ('environment' in params):
             replacement = str(self.apiClient.toPathValue(params['environment']))
             resourcePath = resourcePath.replace('{' + 'environment' + '}',
@@ -368,7 +405,7 @@ class DatabaseServersApi(object):
             replacement = str(self.apiClient.toPathValue(params['externalDatabaseServer']))
             resourcePath = resourcePath.replace('{' + 'externalDatabaseServer' + '}',
                                                 replacement)
-        postData = updatedTemplate
+        postData = body
 
         response = self.apiClient.callAPI(resourcePath, method, queryParams,
                                           postData, headerParams)

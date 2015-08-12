@@ -18,18 +18,16 @@
 
 package com.cloudera.director.client.latest.api;
 
-import com.cloudera.director.client.latest.common.ApiException;
-import com.cloudera.director.client.latest.common.ApiClient;
+import com.cloudera.director.client.common.ApiClient;
+import com.cloudera.director.client.common.ApiException;
 
 import com.cloudera.director.client.latest.model.User;
 import com.cloudera.director.client.latest.model.PasswordChange;
-import com.sun.jersey.multipart.FormDataMultiPart;
+import java.util.HashMap;
+import java.util.List; // NOPMD
+import java.util.Map;
 
-import javax.ws.rs.core.MediaType;
-
-import java.io.File;
-import java.util.*;
-
+@SuppressWarnings("parametername")
 public class UsersApi {
   ApiClient apiClient;
 
@@ -37,28 +35,28 @@ public class UsersApi {
     return apiClient;
   }
 
-  public UsersApi (ApiClient apiClient) {
+  public UsersApi(ApiClient apiClient) {
     this.apiClient = apiClient;
   }
 
   /**
   * Create a new user
-  * @param  user  user
-  * status code: 400 reason: "Invalid user"
+  * @param  body  user
   * status code: 201 reason: "User created"
+  * status code: 302 reason: "User already exists"
+  * status code: 400 reason: "Invalid user"
   * status code: 401 reason: "Unauthorized"
   * status code: 403 reason: "Forbidden"
   * status code: 404 reason: "Not Found"
-  * status code: 302 reason: "User already exists"
   */
-  public void create (User user) throws ApiException {
-    Object postBody = user;
+  public void create(User body) throws ApiException {
+    Object postBody = body;
     // verify required params are set
-    if(user == null ) {
+    if (body == null ) {
        throw new ApiException(400, "missing required params");
     }
     // create path and map variables
-    String path = "/api/v2/users".replaceAll("\\{format\\}","json");
+    String path = "/api/v3/users".replaceAll("\\{format\\}", "json");
 
     // query params
     Map<String, String> queryParams = new HashMap<String, String>();
@@ -69,22 +67,20 @@ public class UsersApi {
 
     try {
       String response = apiClient.invokeAPI(path, "POST", queryParams, postBody, headerParams, formParams, contentType);
-      if(response != null){
+      if (response != null) {
         return ;
-      }
-      else {
+      } else {
         return ;
       }
     } catch (ApiException ex) {
-      if(ex.getCode() == 404) {
-      	return ;
-      }
-      else {
+      if (ex.getCode() == 404) {
+        return ;
+      } else {
         throw ex;
       }
     }
   }
-  
+
   /**
   * Get the current user
   * status code: 200 reason: "OK"
@@ -92,10 +88,10 @@ public class UsersApi {
   * status code: 403 reason: "Forbidden"
   * status code: 404 reason: "Not Found"
   */
-  public User currentRedacted () throws ApiException {
+  public User currentRedacted() throws ApiException {
     Object postBody = null;
     // create path and map variables
-    String path = "/api/v2/users/current".replaceAll("\\{format\\}","json");
+    String path = "/api/v3/users/current".replaceAll("\\{format\\}", "json");
 
     // query params
     Map<String, String> queryParams = new HashMap<String, String>();
@@ -106,37 +102,35 @@ public class UsersApi {
 
     try {
       String response = apiClient.invokeAPI(path, "GET", queryParams, postBody, headerParams, formParams, contentType);
-      if(response != null){
+      if (response != null) {
         return (User) ApiClient.deserialize(response, "", User.class);
-      }
-      else {
+      } else {
         return null;
       }
     } catch (ApiException ex) {
-      if(ex.getCode() == 404) {
-      	return null;
-      }
-      else {
+      if (ex.getCode() == 404) {
+        return null;
+      } else {
         throw ex;
       }
     }
   }
-  
+
   /**
   * Delete a user by username
   * @param  username  username
+  * status code: 204 reason: "User deleted"
   * status code: 401 reason: "Unauthorized"
   * status code: 403 reason: "Forbidden"
-  * status code: 204 reason: "User deleted"
   */
-  public void delete (String username) throws ApiException {
+  public void delete(String username) throws ApiException {
     Object postBody = null;
     // verify required params are set
-    if(username == null ) {
+    if (username == null ) {
        throw new ApiException(400, "missing required params");
     }
     // create path and map variables
-    String path = "/api/v2/users/{username}".replaceAll("\\{format\\}","json").replaceAll("\\{" + "username" + "\\}", apiClient.escapeString(username.toString()));
+    String path = "/api/v3/users/{username}".replaceAll("\\{format\\}", "json").replaceAll("\\{" + "username" + "\\}", apiClient.escapeString(username.toString()));
 
     // query params
     Map<String, String> queryParams = new HashMap<String, String>();
@@ -147,22 +141,20 @@ public class UsersApi {
 
     try {
       String response = apiClient.invokeAPI(path, "DELETE", queryParams, postBody, headerParams, formParams, contentType);
-      if(response != null){
+      if (response != null) {
         return ;
-      }
-      else {
+      } else {
         return ;
       }
     } catch (ApiException ex) {
-      if(ex.getCode() == 404) {
-      	return ;
-      }
-      else {
+      if (ex.getCode() == 404) {
+        return ;
+      } else {
         throw ex;
       }
     }
   }
-  
+
   /**
   * Get a user by username
   * @param  username  username
@@ -171,14 +163,14 @@ public class UsersApi {
   * status code: 403 reason: "Forbidden"
   * status code: 404 reason: "User not found"
   */
-  public User getRedacted (String username) throws ApiException {
+  public User getRedacted(String username) throws ApiException {
     Object postBody = null;
     // verify required params are set
-    if(username == null ) {
+    if (username == null ) {
        throw new ApiException(400, "missing required params");
     }
     // create path and map variables
-    String path = "/api/v2/users/{username}".replaceAll("\\{format\\}","json").replaceAll("\\{" + "username" + "\\}", apiClient.escapeString(username.toString()));
+    String path = "/api/v3/users/{username}".replaceAll("\\{format\\}", "json").replaceAll("\\{" + "username" + "\\}", apiClient.escapeString(username.toString()));
 
     // query params
     Map<String, String> queryParams = new HashMap<String, String>();
@@ -189,22 +181,20 @@ public class UsersApi {
 
     try {
       String response = apiClient.invokeAPI(path, "GET", queryParams, postBody, headerParams, formParams, contentType);
-      if(response != null){
+      if (response != null) {
         return (User) ApiClient.deserialize(response, "", User.class);
-      }
-      else {
+      } else {
         return null;
       }
     } catch (ApiException ex) {
-      if(ex.getCode() == 404) {
-      	return null;
-      }
-      else {
+      if (ex.getCode() == 404) {
+        return null;
+      } else {
         throw ex;
       }
     }
   }
-  
+
   /**
   * List all users
   * status code: 200 reason: "OK"
@@ -212,10 +202,10 @@ public class UsersApi {
   * status code: 403 reason: "Forbidden"
   * status code: 404 reason: "Not Found"
   */
-  public List<String> list () throws ApiException {
+  public List<String> list() throws ApiException {
     Object postBody = null;
     // create path and map variables
-    String path = "/api/v2/users".replaceAll("\\{format\\}","json");
+    String path = "/api/v3/users".replaceAll("\\{format\\}", "json");
 
     // query params
     Map<String, String> queryParams = new HashMap<String, String>();
@@ -226,41 +216,39 @@ public class UsersApi {
 
     try {
       String response = apiClient.invokeAPI(path, "GET", queryParams, postBody, headerParams, formParams, contentType);
-      if(response != null){
+      if (response != null) {
         return (List<String>) ApiClient.deserialize(response, "List", String.class);
-      }
-      else {
+      } else {
         return null;
       }
     } catch (ApiException ex) {
-      if(ex.getCode() == 404) {
-      	return null;
-      }
-      else {
+      if (ex.getCode() == 404) {
+        return null;
+      } else {
         throw ex;
       }
     }
   }
-  
+
   /**
   * Update an existing user
   * @param  username  username
-  * @param  user  user
-  * status code: 400 reason: "Validation error or rename not allowed"
+  * @param  body  user
   * status code: 201 reason: "Created"
-  * status code: 401 reason: "Unauthorized"
   * status code: 202 reason: "Updated user accepted"
+  * status code: 400 reason: "Validation error or rename not allowed"
+  * status code: 401 reason: "Unauthorized"
   * status code: 403 reason: "Forbidden"
   * status code: 404 reason: "User not found"
   */
-  public void update (String username, User user) throws ApiException {
-    Object postBody = user;
+  public void update(String username, User body) throws ApiException {
+    Object postBody = body;
     // verify required params are set
-    if(username == null || user == null ) {
+    if (username == null || body == null ) {
        throw new ApiException(400, "missing required params");
     }
     // create path and map variables
-    String path = "/api/v2/users/{username}".replaceAll("\\{format\\}","json").replaceAll("\\{" + "username" + "\\}", apiClient.escapeString(username.toString()));
+    String path = "/api/v3/users/{username}".replaceAll("\\{format\\}", "json").replaceAll("\\{" + "username" + "\\}", apiClient.escapeString(username.toString()));
 
     // query params
     Map<String, String> queryParams = new HashMap<String, String>();
@@ -271,41 +259,39 @@ public class UsersApi {
 
     try {
       String response = apiClient.invokeAPI(path, "PUT", queryParams, postBody, headerParams, formParams, contentType);
-      if(response != null){
+      if (response != null) {
         return ;
-      }
-      else {
+      } else {
         return ;
       }
     } catch (ApiException ex) {
-      if(ex.getCode() == 404) {
-      	return ;
-      }
-      else {
+      if (ex.getCode() == 404) {
+        return ;
+      } else {
         throw ex;
       }
     }
   }
-  
+
   /**
   * Update the password of an existing user
   * @param  username  username
-  * @param  passwords  passwords
-  * status code: 400 reason: "Validation error or old password is missing or incorrect"
+  * @param  body  passwords
   * status code: 201 reason: "Created"
-  * status code: 401 reason: "Unauthorized"
   * status code: 202 reason: "Updated password accepted"
+  * status code: 400 reason: "Validation error or old password is missing or incorrect"
+  * status code: 401 reason: "Unauthorized"
   * status code: 403 reason: "May only change own password"
   * status code: 404 reason: "User not found"
   */
-  public void updatePassword (String username, PasswordChange passwords) throws ApiException {
-    Object postBody = passwords;
+  public void updatePassword(String username, PasswordChange body) throws ApiException {
+    Object postBody = body;
     // verify required params are set
-    if(username == null || passwords == null ) {
+    if (username == null || body == null ) {
        throw new ApiException(400, "missing required params");
     }
     // create path and map variables
-    String path = "/api/v2/users/{username}/password".replaceAll("\\{format\\}","json").replaceAll("\\{" + "username" + "\\}", apiClient.escapeString(username.toString()));
+    String path = "/api/v3/users/{username}/password".replaceAll("\\{format\\}", "json").replaceAll("\\{" + "username" + "\\}", apiClient.escapeString(username.toString()));
 
     // query params
     Map<String, String> queryParams = new HashMap<String, String>();
@@ -316,21 +302,19 @@ public class UsersApi {
 
     try {
       String response = apiClient.invokeAPI(path, "PUT", queryParams, postBody, headerParams, formParams, contentType);
-      if(response != null){
+      if (response != null) {
         return ;
-      }
-      else {
+      } else {
         return ;
       }
     } catch (ApiException ex) {
-      if(ex.getCode() == 404) {
-      	return ;
-      }
-      else {
+      if (ex.getCode() == 404) {
+        return ;
+      } else {
         throw ex;
       }
     }
   }
-  
+
   }
 

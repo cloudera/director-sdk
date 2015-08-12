@@ -22,28 +22,31 @@ class ClusterTemplate:
 
     def __init__(self, **kwargs):
         self.swaggerTypes = {
-            'externalDatabaseTemplates': 'dict[str,ExternalDatabaseTemplate]',
-            'externalDatabases': 'dict[str,ExternalDatabase]',
+            'externalDatabaseTemplates': 'dict[str,cloudera.director.latest.models.ExternalDatabaseTemplate]',
+            'externalDatabases': 'dict[str,cloudera.director.latest.models.ExternalDatabase]',
             'name': 'str',
             'parcelRepositories': 'set',
+            'postCreateScripts': 'list[str]',
             'productVersions': 'dict[str,str]',
             'redeployClientConfigsOnUpdate': 'bool',
             'restartClusterOnUpdate': 'bool',
             'services': 'list[str]',
             'servicesConfigs': 'dict[str,dict[str,str]]',
-            'virtualInstanceGroups': 'dict[str,VirtualInstanceGroup]'
+            'virtualInstanceGroups': 'dict[str,cloudera.director.latest.models.VirtualInstanceGroup]'
 
         }
 
 
         #Optional external database templates
-        self.externalDatabaseTemplates = kwargs.get('externalDatabaseTemplates',{}) # dict[str,ExternalDatabaseTemplate]
+        self.externalDatabaseTemplates = kwargs.get('externalDatabaseTemplates',{}) # dict[str,cloudera.director.latest.models.ExternalDatabaseTemplate]
         #Optional external databases
-        self.externalDatabases = kwargs.get('externalDatabases',{}) # dict[str,ExternalDatabase]
+        self.externalDatabases = kwargs.get('externalDatabases',{}) # dict[str,cloudera.director.latest.models.ExternalDatabase]
         #Cluster name
         self.name = kwargs.get('name',None) # str
         #Optional list of cluster parcel repositories
         self.parcelRepositories = kwargs.get('parcelRepositories',set()) # set
+        #A list of scripts to be run after cluster creation
+        self.postCreateScripts = kwargs.get('postCreateScripts',[]) # list[str]
         #Versions for cluster components
         self.productVersions = kwargs.get('productVersions',{}) # dict[str,str]
         #Whether to redeploy client configuration on cluster update
@@ -55,5 +58,5 @@ class ClusterTemplate:
         #Cluster services configurations
         self.servicesConfigs = kwargs.get('servicesConfigs',{}) # dict[str,dict[str,str]]
         #List of virtual instances
-        self.virtualInstanceGroups = kwargs.get('virtualInstanceGroups',{}) # dict[str,VirtualInstanceGroup]
+        self.virtualInstanceGroups = kwargs.get('virtualInstanceGroups',{}) # dict[str,cloudera.director.latest.models.VirtualInstanceGroup]
         

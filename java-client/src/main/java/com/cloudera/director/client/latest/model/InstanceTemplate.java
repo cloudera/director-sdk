@@ -18,8 +18,9 @@
 
 package com.cloudera.director.client.latest.model;
 
-import java.util.Map;
 import java.util.HashMap;
+import java.util.Map;
+
 public class InstanceTemplate {
   /* Custom script executed before anything else */
   private String bootstrapScript;
@@ -30,47 +31,49 @@ public class InstanceTemplate {
   private String name;
   /* Flag indicating whether to normalize the instance */
   private Boolean normalizeInstance;
+  /* Optional SSH username to override username specified in environment */
+  private String sshUsername;
   private Map<String,String> tags;
   /* Instance type */
   private String type;
-  public InstanceTemplate() {} 
+  public InstanceTemplate() { }
 
-  private InstanceTemplate(String bootstrapScript, Map<String,String> config, String image, String name, Boolean normalizeInstance, Map<String,String> tags, String type) {
+  private InstanceTemplate(String bootstrapScript, Map<String,String> config, String image, String name, Boolean normalizeInstance, String sshUsername, Map<String,String> tags, String type) {
     this.bootstrapScript = bootstrapScript;
     this.config = config;
     this.image = image;
     this.name = name;
     this.normalizeInstance = normalizeInstance;
+    this.sshUsername = sshUsername;
     this.tags = tags;
     this.type = type;
-    
   }
-  
-  private InstanceTemplate (InstanceTemplateBuilder builder) {
+
+  private InstanceTemplate(InstanceTemplateBuilder builder) {
     this.bootstrapScript = builder.bootstrapScript;
     this.config = builder.config;
     this.image = builder.image;
     this.name = builder.name;
     this.normalizeInstance = builder.normalizeInstance;
+    this.sshUsername = builder.sshUsername;
     this.tags = builder.tags;
     this.type = builder.type;
-    
   }
 
   public static InstanceTemplateBuilder builder() {
     return new InstanceTemplateBuilder();
   }
 
-  
   public static class InstanceTemplateBuilder {
     private String bootstrapScript = null;
     private Map<String,String> config = new HashMap<String,String>();
     private String image = null;
     private String name = null;
     private Boolean normalizeInstance = null;
+    private String sshUsername = null;
     private Map<String,String> tags = new HashMap<String,String>();
     private String type = null;
-    
+
     public InstanceTemplateBuilder bootstrapScript(String bootstrapScript) {
       this.bootstrapScript = bootstrapScript;
       return this;
@@ -96,6 +99,11 @@ public class InstanceTemplate {
       return this;
     }
 
+    public InstanceTemplateBuilder sshUsername(String sshUsername) {
+      this.sshUsername = sshUsername;
+      return this;
+    }
+
     public InstanceTemplateBuilder tags(Map<String,String> tags) {
       this.tags = tags;
       return this;
@@ -106,7 +114,7 @@ public class InstanceTemplate {
       return this;
     }
 
-    public InstanceTemplate build(){
+    public InstanceTemplate build() {
       return new InstanceTemplate(this);
     }
   }
@@ -118,6 +126,7 @@ public class InstanceTemplate {
       .image(image)
       .name(name)
       .normalizeInstance(normalizeInstance)
+      .sshUsername(sshUsername)
       .tags(tags)
       .type(type)
       ;
@@ -157,6 +166,13 @@ public class InstanceTemplate {
     this.normalizeInstance = normalizeInstance;
   }
 
+  public String getSshUsername() {
+    return sshUsername;
+  }
+  public void setSshUsername(String sshUsername) {
+    this.sshUsername = sshUsername;
+  }
+
   public Map<String,String> getTags() {
     return tags;
   }
@@ -181,6 +197,7 @@ public class InstanceTemplate {
     sb.append("  image: ").append(image).append(newLine);
     sb.append("  name: ").append(name).append(newLine);
     sb.append("  normalizeInstance: ").append(normalizeInstance).append(newLine);
+    sb.append("  sshUsername: ").append(sshUsername).append(newLine);
     sb.append("  tags: ").append(tags).append(newLine);
     sb.append("  type: ").append(type).append(newLine);
     sb.append("}" + newLine);

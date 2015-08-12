@@ -18,8 +18,9 @@
 
 package com.cloudera.director.client.v1.model;
 
-import java.util.Map;
 import java.util.HashMap;
+import java.util.Map;
+
 public class InstanceTemplate {
   /* Custom script executed before anything else */
   private String bootstrapScript;
@@ -31,7 +32,7 @@ public class InstanceTemplate {
   private Map<String,String> tags;
   /* Instance type */
   private String type;
-  public InstanceTemplate() {} 
+  public InstanceTemplate() { }
 
   private InstanceTemplate(String bootstrapScript, Map<String,String> config, String image, String name, Map<String,String> tags, String type) {
     this.bootstrapScript = bootstrapScript;
@@ -40,24 +41,21 @@ public class InstanceTemplate {
     this.name = name;
     this.tags = tags;
     this.type = type;
-    
   }
-  
-  private InstanceTemplate (InstanceTemplateBuilder builder) {
+
+  private InstanceTemplate(InstanceTemplateBuilder builder) {
     this.bootstrapScript = builder.bootstrapScript;
     this.config = builder.config;
     this.image = builder.image;
     this.name = builder.name;
     this.tags = builder.tags;
     this.type = builder.type;
-    
   }
 
   public static InstanceTemplateBuilder builder() {
     return new InstanceTemplateBuilder();
   }
 
-  
   public static class InstanceTemplateBuilder {
     private String bootstrapScript = null;
     private Map<String,String> config = new HashMap<String,String>();
@@ -65,7 +63,7 @@ public class InstanceTemplate {
     private String name = null;
     private Map<String,String> tags = new HashMap<String,String>();
     private String type = null;
-    
+
     public InstanceTemplateBuilder bootstrapScript(String bootstrapScript) {
       this.bootstrapScript = bootstrapScript;
       return this;
@@ -96,7 +94,7 @@ public class InstanceTemplate {
       return this;
     }
 
-    public InstanceTemplate build(){
+    public InstanceTemplate build() {
       return new InstanceTemplate(this);
     }
   }

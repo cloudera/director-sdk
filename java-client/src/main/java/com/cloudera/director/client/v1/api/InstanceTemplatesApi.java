@@ -18,17 +18,15 @@
 
 package com.cloudera.director.client.v1.api;
 
-import com.cloudera.director.client.v1.common.ApiException;
-import com.cloudera.director.client.v1.common.ApiClient;
+import com.cloudera.director.client.common.ApiClient;
+import com.cloudera.director.client.common.ApiException;
 
 import com.cloudera.director.client.v1.model.InstanceTemplate;
-import com.sun.jersey.multipart.FormDataMultiPart;
+import java.util.HashMap;
+import java.util.List; // NOPMD
+import java.util.Map;
 
-import javax.ws.rs.core.MediaType;
-
-import java.io.File;
-import java.util.*;
-
+@SuppressWarnings("parametername")
 public class InstanceTemplatesApi {
   ApiClient apiClient;
 
@@ -36,29 +34,29 @@ public class InstanceTemplatesApi {
     return apiClient;
   }
 
-  public InstanceTemplatesApi (ApiClient apiClient) {
+  public InstanceTemplatesApi(ApiClient apiClient) {
     this.apiClient = apiClient;
   }
 
   /**
   * Create a new instance template
   * @param  environment  environmentName
-  * @param  instanceTemplate  instanceTemplate
-  * status code: 400 reason: "Invalid instance template"
+  * @param  body  instanceTemplate
   * status code: 201 reason: "Instance template created"
+  * status code: 302 reason: "Instance template already exists"
+  * status code: 400 reason: "Invalid instance template"
   * status code: 401 reason: "Unauthorized"
   * status code: 403 reason: "Forbidden"
   * status code: 404 reason: "Environment not found"
-  * status code: 302 reason: "Instance template already exists"
   */
-  public void create (String environment, InstanceTemplate instanceTemplate) throws ApiException {
-    Object postBody = instanceTemplate;
+  public void create(String environment, InstanceTemplate body) throws ApiException {
+    Object postBody = body;
     // verify required params are set
-    if(environment == null || instanceTemplate == null ) {
+    if (environment == null || body == null ) {
        throw new ApiException(400, "missing required params");
     }
     // create path and map variables
-    String path = "/api/v1/environments/{environment}/templates/instances".replaceAll("\\{format\\}","json").replaceAll("\\{" + "environment" + "\\}", apiClient.escapeString(environment.toString()));
+    String path = "/api/v1/environments/{environment}/templates/instances".replaceAll("\\{format\\}", "json").replaceAll("\\{" + "environment" + "\\}", apiClient.escapeString(environment.toString()));
 
     // query params
     Map<String, String> queryParams = new HashMap<String, String>();
@@ -69,39 +67,37 @@ public class InstanceTemplatesApi {
 
     try {
       String response = apiClient.invokeAPI(path, "POST", queryParams, postBody, headerParams, formParams, contentType);
-      if(response != null){
+      if (response != null) {
         return ;
-      }
-      else {
+      } else {
         return ;
       }
     } catch (ApiException ex) {
-      if(ex.getCode() == 404) {
-      	return ;
-      }
-      else {
+      if (ex.getCode() == 404) {
+        return ;
+      } else {
         throw ex;
       }
     }
   }
-  
+
   /**
   * Delete an instance template by name
   * @param  environment  environmentName
   * @param  template  templateName
+  * status code: 204 reason: "Instance template deleted"
   * status code: 401 reason: "Unauthorized"
   * status code: 403 reason: "Forbidden"
-  * status code: 204 reason: "Instance template deleted"
   * status code: 404 reason: "Environment not found"
   */
-  public void delete (String environment, String template) throws ApiException {
+  public void delete(String environment, String template) throws ApiException {
     Object postBody = null;
     // verify required params are set
-    if(environment == null || template == null ) {
+    if (environment == null || template == null ) {
        throw new ApiException(400, "missing required params");
     }
     // create path and map variables
-    String path = "/api/v1/environments/{environment}/templates/instances/{template}".replaceAll("\\{format\\}","json").replaceAll("\\{" + "environment" + "\\}", apiClient.escapeString(environment.toString())).replaceAll("\\{" + "template" + "\\}", apiClient.escapeString(template.toString()));
+    String path = "/api/v1/environments/{environment}/templates/instances/{template}".replaceAll("\\{format\\}", "json").replaceAll("\\{" + "environment" + "\\}", apiClient.escapeString(environment.toString())).replaceAll("\\{" + "template" + "\\}", apiClient.escapeString(template.toString()));
 
     // query params
     Map<String, String> queryParams = new HashMap<String, String>();
@@ -112,22 +108,20 @@ public class InstanceTemplatesApi {
 
     try {
       String response = apiClient.invokeAPI(path, "DELETE", queryParams, postBody, headerParams, formParams, contentType);
-      if(response != null){
+      if (response != null) {
         return ;
-      }
-      else {
+      } else {
         return ;
       }
     } catch (ApiException ex) {
-      if(ex.getCode() == 404) {
-      	return ;
-      }
-      else {
+      if (ex.getCode() == 404) {
+        return ;
+      } else {
         throw ex;
       }
     }
   }
-  
+
   /**
   * Get an instance template by name
   * @param  environment  environmentName
@@ -137,14 +131,14 @@ public class InstanceTemplatesApi {
   * status code: 403 reason: "Forbidden"
   * status code: 404 reason: "Entity not found"
   */
-  public InstanceTemplate get (String environment, String template) throws ApiException {
+  public InstanceTemplate get(String environment, String template) throws ApiException {
     Object postBody = null;
     // verify required params are set
-    if(environment == null || template == null ) {
+    if (environment == null || template == null ) {
        throw new ApiException(400, "missing required params");
     }
     // create path and map variables
-    String path = "/api/v1/environments/{environment}/templates/instances/{template}".replaceAll("\\{format\\}","json").replaceAll("\\{" + "environment" + "\\}", apiClient.escapeString(environment.toString())).replaceAll("\\{" + "template" + "\\}", apiClient.escapeString(template.toString()));
+    String path = "/api/v1/environments/{environment}/templates/instances/{template}".replaceAll("\\{format\\}", "json").replaceAll("\\{" + "environment" + "\\}", apiClient.escapeString(environment.toString())).replaceAll("\\{" + "template" + "\\}", apiClient.escapeString(template.toString()));
 
     // query params
     Map<String, String> queryParams = new HashMap<String, String>();
@@ -155,22 +149,20 @@ public class InstanceTemplatesApi {
 
     try {
       String response = apiClient.invokeAPI(path, "GET", queryParams, postBody, headerParams, formParams, contentType);
-      if(response != null){
+      if (response != null) {
         return (InstanceTemplate) ApiClient.deserialize(response, "", InstanceTemplate.class);
-      }
-      else {
+      } else {
         return null;
       }
     } catch (ApiException ex) {
-      if(ex.getCode() == 404) {
-      	return null;
-      }
-      else {
+      if (ex.getCode() == 404) {
+        return null;
+      } else {
         throw ex;
       }
     }
   }
-  
+
   /**
   * List all instance templates
   * @param  environment  environmentName
@@ -179,14 +171,14 @@ public class InstanceTemplatesApi {
   * status code: 403 reason: "Forbidden"
   * status code: 404 reason: "Environment not found"
   */
-  public List<String> list (String environment) throws ApiException {
+  public List<String> list(String environment) throws ApiException {
     Object postBody = null;
     // verify required params are set
-    if(environment == null ) {
+    if (environment == null ) {
        throw new ApiException(400, "missing required params");
     }
     // create path and map variables
-    String path = "/api/v1/environments/{environment}/templates/instances".replaceAll("\\{format\\}","json").replaceAll("\\{" + "environment" + "\\}", apiClient.escapeString(environment.toString()));
+    String path = "/api/v1/environments/{environment}/templates/instances".replaceAll("\\{format\\}", "json").replaceAll("\\{" + "environment" + "\\}", apiClient.escapeString(environment.toString()));
 
     // query params
     Map<String, String> queryParams = new HashMap<String, String>();
@@ -197,42 +189,41 @@ public class InstanceTemplatesApi {
 
     try {
       String response = apiClient.invokeAPI(path, "GET", queryParams, postBody, headerParams, formParams, contentType);
-      if(response != null){
+      if (response != null) {
         return (List<String>) ApiClient.deserialize(response, "List", String.class);
-      }
-      else {
+      } else {
         return null;
       }
     } catch (ApiException ex) {
-      if(ex.getCode() == 404) {
-      	return null;
-      }
-      else {
+      if (ex.getCode() == 404) {
+        return null;
+      } else {
         throw ex;
       }
     }
   }
-  
+
   /**
   * Update an existing instance template
   * @param  environment  environmentName
   * @param  template  templateName
-  * @param  instanceTemplate  instanceTemplate
-  * status code: 400 reason: "Invalid instance template"
+  * @param  body  instanceTemplate
   * status code: 201 reason: "Created"
+  * status code: 202 reason: ""
+  * status code: 204 reason: "Accepted updated instance template"
+  * status code: 400 reason: "Invalid instance template"
   * status code: 401 reason: "Unauthorized"
   * status code: 403 reason: "Forbidden"
   * status code: 404 reason: "Not Found"
-  * status code: 204 reason: "Accepted updated instance template"
   */
-  public void update (String environment, String template, InstanceTemplate instanceTemplate) throws ApiException {
-    Object postBody = instanceTemplate;
+  public void update(String environment, String template, InstanceTemplate body) throws ApiException {
+    Object postBody = body;
     // verify required params are set
-    if(environment == null || template == null || instanceTemplate == null ) {
+    if (environment == null || template == null || body == null ) {
        throw new ApiException(400, "missing required params");
     }
     // create path and map variables
-    String path = "/api/v1/environments/{environment}/templates/instances/{template}".replaceAll("\\{format\\}","json").replaceAll("\\{" + "environment" + "\\}", apiClient.escapeString(environment.toString())).replaceAll("\\{" + "template" + "\\}", apiClient.escapeString(template.toString()));
+    String path = "/api/v1/environments/{environment}/templates/instances/{template}".replaceAll("\\{format\\}", "json").replaceAll("\\{" + "environment" + "\\}", apiClient.escapeString(environment.toString())).replaceAll("\\{" + "template" + "\\}", apiClient.escapeString(template.toString()));
 
     // query params
     Map<String, String> queryParams = new HashMap<String, String>();
@@ -243,21 +234,19 @@ public class InstanceTemplatesApi {
 
     try {
       String response = apiClient.invokeAPI(path, "PUT", queryParams, postBody, headerParams, formParams, contentType);
-      if(response != null){
+      if (response != null) {
         return ;
-      }
-      else {
+      } else {
         return ;
       }
     } catch (ApiException ex) {
-      if(ex.getCode() == 404) {
-      	return ;
-      }
-      else {
+      if (ex.getCode() == 404) {
+        return ;
+      } else {
         throw ex;
       }
     }
   }
-  
+
   }
 

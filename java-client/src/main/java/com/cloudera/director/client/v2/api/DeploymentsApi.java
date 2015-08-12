@@ -18,19 +18,17 @@
 
 package com.cloudera.director.client.v2.api;
 
-import com.cloudera.director.client.v2.common.ApiException;
-import com.cloudera.director.client.v2.common.ApiClient;
+import com.cloudera.director.client.common.ApiClient;
+import com.cloudera.director.client.common.ApiException;
 
 import com.cloudera.director.client.v2.model.Status;
 import com.cloudera.director.client.v2.model.DeploymentTemplate;
 import com.cloudera.director.client.v2.model.Deployment;
-import com.sun.jersey.multipart.FormDataMultiPart;
+import java.util.HashMap;
+import java.util.List; // NOPMD
+import java.util.Map;
 
-import javax.ws.rs.core.MediaType;
-
-import java.io.File;
-import java.util.*;
-
+@SuppressWarnings("parametername")
 public class DeploymentsApi {
   ApiClient apiClient;
 
@@ -38,7 +36,7 @@ public class DeploymentsApi {
     return apiClient;
   }
 
-  public DeploymentsApi (ApiClient apiClient) {
+  public DeploymentsApi(ApiClient apiClient) {
     this.apiClient = apiClient;
   }
 
@@ -46,22 +44,22 @@ public class DeploymentsApi {
   * Create a new deployment
   * @param  environment  environmentName
   * @param  XRequestId  requestId
-  * @param  deploymentTemplate  deploymentTemplate
-  * status code: 400 reason: "Invalid deployment template"
+  * @param  body  deploymentTemplate
   * status code: 201 reason: "Deployment template accepted"
+  * status code: 302 reason: "Deployment already exists"
+  * status code: 400 reason: "Invalid deployment template"
   * status code: 401 reason: "Unauthorized"
   * status code: 403 reason: "Forbidden"
   * status code: 404 reason: "Not Found"
-  * status code: 302 reason: "Deployment already exists"
   */
-  public void create (String environment, String XRequestId, DeploymentTemplate deploymentTemplate) throws ApiException {
-    Object postBody = deploymentTemplate;
+  public void create(String environment, String XRequestId, DeploymentTemplate body) throws ApiException {
+    Object postBody = body;
     // verify required params are set
-    if(environment == null || deploymentTemplate == null ) {
+    if (environment == null || body == null ) {
        throw new ApiException(400, "missing required params");
     }
     // create path and map variables
-    String path = "/api/v2/environments/{environment}/deployments".replaceAll("\\{format\\}","json").replaceAll("\\{" + "environment" + "\\}", apiClient.escapeString(environment.toString()));
+    String path = "/api/v2/environments/{environment}/deployments".replaceAll("\\{format\\}", "json").replaceAll("\\{" + "environment" + "\\}", apiClient.escapeString(environment.toString()));
 
     // query params
     Map<String, String> queryParams = new HashMap<String, String>();
@@ -73,43 +71,41 @@ public class DeploymentsApi {
 
     try {
       String response = apiClient.invokeAPI(path, "POST", queryParams, postBody, headerParams, formParams, contentType);
-      if(response != null){
+      if (response != null) {
         return ;
-      }
-      else {
+      } else {
         return ;
       }
     } catch (ApiException ex) {
-      if(ex.getCode() == 404) {
-      	return ;
-      }
-      else {
+      if (ex.getCode() == 404) {
+        return ;
+      } else {
         throw ex;
       }
     }
   }
-  
-  public void create (String environment, DeploymentTemplate deploymentTemplate) throws ApiException {
-      create(environment, null, deploymentTemplate);
+
+  public void create(String environment, DeploymentTemplate body) throws ApiException {
+      create(environment, null, body);
     }
   /**
   * Delete a deployment by name
   * @param  environment  environmentName
   * @param  deployment  deploymentName
   * @param  XRequestId  requestId
+  * status code: 204 reason: "Delete request accepted"
   * status code: 401 reason: "Unauthorized"
   * status code: 403 reason: "Forbidden"
-  * status code: 204 reason: "Delete request accepted"
   * status code: 404 reason: "Entity not found"
   */
-  public void delete (String environment, String deployment, String XRequestId) throws ApiException {
+  public void delete(String environment, String deployment, String XRequestId) throws ApiException {
     Object postBody = null;
     // verify required params are set
-    if(environment == null || deployment == null ) {
+    if (environment == null || deployment == null ) {
        throw new ApiException(400, "missing required params");
     }
     // create path and map variables
-    String path = "/api/v2/environments/{environment}/deployments/{deployment}".replaceAll("\\{format\\}","json").replaceAll("\\{" + "environment" + "\\}", apiClient.escapeString(environment.toString())).replaceAll("\\{" + "deployment" + "\\}", apiClient.escapeString(deployment.toString()));
+    String path = "/api/v2/environments/{environment}/deployments/{deployment}".replaceAll("\\{format\\}", "json").replaceAll("\\{" + "environment" + "\\}", apiClient.escapeString(environment.toString())).replaceAll("\\{" + "deployment" + "\\}", apiClient.escapeString(deployment.toString()));
 
     // query params
     Map<String, String> queryParams = new HashMap<String, String>();
@@ -121,23 +117,21 @@ public class DeploymentsApi {
 
     try {
       String response = apiClient.invokeAPI(path, "DELETE", queryParams, postBody, headerParams, formParams, contentType);
-      if(response != null){
+      if (response != null) {
         return ;
-      }
-      else {
+      } else {
         return ;
       }
     } catch (ApiException ex) {
-      if(ex.getCode() == 404) {
-      	return ;
-      }
-      else {
+      if (ex.getCode() == 404) {
+        return ;
+      } else {
         throw ex;
       }
     }
   }
-  
-  public void delete (String environment, String deployment) throws ApiException {
+
+  public void delete(String environment, String deployment) throws ApiException {
       delete(environment, deployment, null);
     }
   /**
@@ -145,19 +139,19 @@ public class DeploymentsApi {
   * @param  environment  environmentName
   * @param  deployment  deploymentName
   * status code: 200 reason: "OK"
+  * status code: 204 reason: "Deployment is in transition (no content)"
   * status code: 401 reason: "Unauthorized"
   * status code: 403 reason: "Forbidden"
   * status code: 404 reason: "Entity not found"
-  * status code: 204 reason: "Deployment is in transition (no content)"
   */
-  public Deployment getRedacted (String environment, String deployment) throws ApiException {
+  public Deployment getRedacted(String environment, String deployment) throws ApiException {
     Object postBody = null;
     // verify required params are set
-    if(environment == null || deployment == null ) {
+    if (environment == null || deployment == null ) {
        throw new ApiException(400, "missing required params");
     }
     // create path and map variables
-    String path = "/api/v2/environments/{environment}/deployments/{deployment}".replaceAll("\\{format\\}","json").replaceAll("\\{" + "environment" + "\\}", apiClient.escapeString(environment.toString())).replaceAll("\\{" + "deployment" + "\\}", apiClient.escapeString(deployment.toString()));
+    String path = "/api/v2/environments/{environment}/deployments/{deployment}".replaceAll("\\{format\\}", "json").replaceAll("\\{" + "environment" + "\\}", apiClient.escapeString(environment.toString())).replaceAll("\\{" + "deployment" + "\\}", apiClient.escapeString(deployment.toString()));
 
     // query params
     Map<String, String> queryParams = new HashMap<String, String>();
@@ -168,22 +162,20 @@ public class DeploymentsApi {
 
     try {
       String response = apiClient.invokeAPI(path, "GET", queryParams, postBody, headerParams, formParams, contentType);
-      if(response != null){
+      if (response != null) {
         return (Deployment) ApiClient.deserialize(response, "", Deployment.class);
-      }
-      else {
+      } else {
         return null;
       }
     } catch (ApiException ex) {
-      if(ex.getCode() == 404) {
-      	return null;
-      }
-      else {
+      if (ex.getCode() == 404) {
+        return null;
+      } else {
         throw ex;
       }
     }
   }
-  
+
   /**
   * Get a deployment status by name
   * @param  environment  environmentName
@@ -193,14 +185,14 @@ public class DeploymentsApi {
   * status code: 403 reason: "Forbidden"
   * status code: 404 reason: "Entity not found"
   */
-  public Status getStatus (String environment, String deployment) throws ApiException {
+  public Status getStatus(String environment, String deployment) throws ApiException {
     Object postBody = null;
     // verify required params are set
-    if(environment == null || deployment == null ) {
+    if (environment == null || deployment == null ) {
        throw new ApiException(400, "missing required params");
     }
     // create path and map variables
-    String path = "/api/v2/environments/{environment}/deployments/{deployment}/status".replaceAll("\\{format\\}","json").replaceAll("\\{" + "environment" + "\\}", apiClient.escapeString(environment.toString())).replaceAll("\\{" + "deployment" + "\\}", apiClient.escapeString(deployment.toString()));
+    String path = "/api/v2/environments/{environment}/deployments/{deployment}/status".replaceAll("\\{format\\}", "json").replaceAll("\\{" + "environment" + "\\}", apiClient.escapeString(environment.toString())).replaceAll("\\{" + "deployment" + "\\}", apiClient.escapeString(deployment.toString()));
 
     // query params
     Map<String, String> queryParams = new HashMap<String, String>();
@@ -211,22 +203,20 @@ public class DeploymentsApi {
 
     try {
       String response = apiClient.invokeAPI(path, "GET", queryParams, postBody, headerParams, formParams, contentType);
-      if(response != null){
+      if (response != null) {
         return (Status) ApiClient.deserialize(response, "", Status.class);
-      }
-      else {
+      } else {
         return null;
       }
     } catch (ApiException ex) {
-      if(ex.getCode() == 404) {
-      	return null;
-      }
-      else {
+      if (ex.getCode() == 404) {
+        return null;
+      } else {
         throw ex;
       }
     }
   }
-  
+
   /**
   * Get a deployment template by name
   * @param  environment  environmentName
@@ -236,14 +226,14 @@ public class DeploymentsApi {
   * status code: 403 reason: "Forbidden"
   * status code: 404 reason: "Entity not found"
   */
-  public DeploymentTemplate getTemplateRedacted (String environment, String deployment) throws ApiException {
+  public DeploymentTemplate getTemplateRedacted(String environment, String deployment) throws ApiException {
     Object postBody = null;
     // verify required params are set
-    if(environment == null || deployment == null ) {
+    if (environment == null || deployment == null ) {
        throw new ApiException(400, "missing required params");
     }
     // create path and map variables
-    String path = "/api/v2/environments/{environment}/deployments/{deployment}/template".replaceAll("\\{format\\}","json").replaceAll("\\{" + "environment" + "\\}", apiClient.escapeString(environment.toString())).replaceAll("\\{" + "deployment" + "\\}", apiClient.escapeString(deployment.toString()));
+    String path = "/api/v2/environments/{environment}/deployments/{deployment}/template".replaceAll("\\{format\\}", "json").replaceAll("\\{" + "environment" + "\\}", apiClient.escapeString(environment.toString())).replaceAll("\\{" + "deployment" + "\\}", apiClient.escapeString(deployment.toString()));
 
     // query params
     Map<String, String> queryParams = new HashMap<String, String>();
@@ -254,22 +244,20 @@ public class DeploymentsApi {
 
     try {
       String response = apiClient.invokeAPI(path, "GET", queryParams, postBody, headerParams, formParams, contentType);
-      if(response != null){
+      if (response != null) {
         return (DeploymentTemplate) ApiClient.deserialize(response, "", DeploymentTemplate.class);
-      }
-      else {
+      } else {
         return null;
       }
     } catch (ApiException ex) {
-      if(ex.getCode() == 404) {
-      	return null;
-      }
-      else {
+      if (ex.getCode() == 404) {
+        return null;
+      } else {
         throw ex;
       }
     }
   }
-  
+
   /**
   * List all deployments
   * @param  environment  environmentName
@@ -278,14 +266,14 @@ public class DeploymentsApi {
   * status code: 403 reason: "Forbidden"
   * status code: 404 reason: "Environment not found"
   */
-  public List<String> list (String environment) throws ApiException {
+  public List<String> list(String environment) throws ApiException {
     Object postBody = null;
     // verify required params are set
-    if(environment == null ) {
+    if (environment == null ) {
        throw new ApiException(400, "missing required params");
     }
     // create path and map variables
-    String path = "/api/v2/environments/{environment}/deployments".replaceAll("\\{format\\}","json").replaceAll("\\{" + "environment" + "\\}", apiClient.escapeString(environment.toString()));
+    String path = "/api/v2/environments/{environment}/deployments".replaceAll("\\{format\\}", "json").replaceAll("\\{" + "environment" + "\\}", apiClient.escapeString(environment.toString()));
 
     // query params
     Map<String, String> queryParams = new HashMap<String, String>();
@@ -296,42 +284,41 @@ public class DeploymentsApi {
 
     try {
       String response = apiClient.invokeAPI(path, "GET", queryParams, postBody, headerParams, formParams, contentType);
-      if(response != null){
+      if (response != null) {
         return (List<String>) ApiClient.deserialize(response, "List", String.class);
-      }
-      else {
+      } else {
         return null;
       }
     } catch (ApiException ex) {
-      if(ex.getCode() == 404) {
-      	return null;
-      }
-      else {
+      if (ex.getCode() == 404) {
+        return null;
+      } else {
         throw ex;
       }
     }
   }
-  
+
   /**
-  * Update an existing deployment (unsupported)
+  * Update an existing deployment
   * @param  environment  environmentName
   * @param  deployment  deploymentName
   * @param  XRequestId  requestId
-  * @param  updatedTemplate  updatedTemplate
-  * status code: 400 reason: "Deployment update not supported"
+  * @param  body  updatedTemplate
   * status code: 201 reason: "Created"
+  * status code: 202 reason: ""
+  * status code: 400 reason: "Deployment update not supported"
   * status code: 401 reason: "Unauthorized"
   * status code: 403 reason: "Forbidden"
   * status code: 404 reason: "Not Found"
   */
-  public void update (String environment, String deployment, String XRequestId, DeploymentTemplate updatedTemplate) throws ApiException {
-    Object postBody = updatedTemplate;
+  public void update(String environment, String deployment, String XRequestId, DeploymentTemplate body) throws ApiException {
+    Object postBody = body;
     // verify required params are set
-    if(environment == null || deployment == null || updatedTemplate == null ) {
+    if (environment == null || deployment == null || body == null ) {
        throw new ApiException(400, "missing required params");
     }
     // create path and map variables
-    String path = "/api/v2/environments/{environment}/deployments/{deployment}".replaceAll("\\{format\\}","json").replaceAll("\\{" + "environment" + "\\}", apiClient.escapeString(environment.toString())).replaceAll("\\{" + "deployment" + "\\}", apiClient.escapeString(deployment.toString()));
+    String path = "/api/v2/environments/{environment}/deployments/{deployment}".replaceAll("\\{format\\}", "json").replaceAll("\\{" + "environment" + "\\}", apiClient.escapeString(environment.toString())).replaceAll("\\{" + "deployment" + "\\}", apiClient.escapeString(deployment.toString()));
 
     // query params
     Map<String, String> queryParams = new HashMap<String, String>();
@@ -343,24 +330,22 @@ public class DeploymentsApi {
 
     try {
       String response = apiClient.invokeAPI(path, "PUT", queryParams, postBody, headerParams, formParams, contentType);
-      if(response != null){
+      if (response != null) {
         return ;
-      }
-      else {
+      } else {
         return ;
       }
     } catch (ApiException ex) {
-      if(ex.getCode() == 404) {
-      	return ;
-      }
-      else {
+      if (ex.getCode() == 404) {
+        return ;
+      } else {
         throw ex;
       }
     }
   }
-  
-  public void update (String environment, String deployment, DeploymentTemplate updatedTemplate) throws ApiException {
-      update(environment, deployment, null, updatedTemplate);
+
+  public void update(String environment, String deployment, DeploymentTemplate body) throws ApiException {
+      update(environment, deployment, null, body);
     }
   }
 

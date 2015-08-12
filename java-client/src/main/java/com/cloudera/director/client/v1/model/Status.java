@@ -18,15 +18,16 @@
 
 package com.cloudera.director.client.v1.model;
 
-import java.util.List;
 import java.util.ArrayList;
+import java.util.List;
+
 public class Status {
   private Integer completedSteps;
   private String description;
   private List<String> descriptionDetails;
   private Integer remainingSteps;
   private String stage;
-  public interface Stage{
+  public interface Stage {
     String BOOTSTRAPPING = "BOOTSTRAPPING";
     String BOOTSTRAP_FAILED = "BOOTSTRAP_FAILED";
     String READY = "READY";
@@ -36,9 +37,8 @@ public class Status {
     String TERMINATE_FAILED = "TERMINATE_FAILED";
     String TERMINATED = "TERMINATED";
     String UNKNOWN = "UNKNOWN";
-    
   }
-  public Status() {} 
+  public Status() { }
 
   private Status(Integer completedSteps, String description, List<String> descriptionDetails, Integer remainingSteps, String stage) {
     this.completedSteps = completedSteps;
@@ -46,30 +46,27 @@ public class Status {
     this.descriptionDetails = descriptionDetails;
     this.remainingSteps = remainingSteps;
     this.stage = stage;
-    
   }
-  
-  private Status (StatusBuilder builder) {
+
+  private Status(StatusBuilder builder) {
     this.completedSteps = builder.completedSteps;
     this.description = builder.description;
     this.descriptionDetails = builder.descriptionDetails;
     this.remainingSteps = builder.remainingSteps;
     this.stage = builder.stage;
-    
   }
 
   public static StatusBuilder builder() {
     return new StatusBuilder();
   }
 
-  
   public static class StatusBuilder {
     private Integer completedSteps = null;
     private String description = null;
     private List<String> descriptionDetails = new ArrayList<String>();
     private Integer remainingSteps = null;
     private String stage = null;
-    
+
     public StatusBuilder completedSteps(Integer completedSteps) {
       this.completedSteps = completedSteps;
       return this;
@@ -95,7 +92,7 @@ public class Status {
       return this;
     }
 
-    public Status build(){
+    public Status build() {
       return new Status(this);
     }
   }

@@ -18,6 +18,7 @@
 
 package com.cloudera.director.client.v1.model;
 
+
 public class SshCredentials {
   /*  */
   private String bastionHost;
@@ -33,7 +34,7 @@ public class SshCredentials {
   private String privateKey;
   /* SSH user */
   private String username;
-  public SshCredentials() {} 
+  public SshCredentials() { }
 
   private SshCredentials(String bastionHost, String hostKeyFingerprint, String passphrase, String password, Integer port, String privateKey, String username) {
     this.bastionHost = bastionHost;
@@ -43,10 +44,9 @@ public class SshCredentials {
     this.port = port;
     this.privateKey = privateKey;
     this.username = username;
-    
   }
-  
-  private SshCredentials (SshCredentialsBuilder builder) {
+
+  private SshCredentials(SshCredentialsBuilder builder) {
     this.bastionHost = builder.bastionHost;
     this.hostKeyFingerprint = builder.hostKeyFingerprint;
     this.passphrase = builder.passphrase;
@@ -54,14 +54,12 @@ public class SshCredentials {
     this.port = builder.port;
     this.privateKey = builder.privateKey;
     this.username = builder.username;
-    
   }
 
   public static SshCredentialsBuilder builder() {
     return new SshCredentialsBuilder();
   }
 
-  
   public static class SshCredentialsBuilder {
     private String bastionHost = null;
     private String hostKeyFingerprint = null;
@@ -70,7 +68,7 @@ public class SshCredentials {
     private Integer port = null;
     private String privateKey = null;
     private String username = null;
-    
+
     public SshCredentialsBuilder bastionHost(String bastionHost) {
       this.bastionHost = bastionHost;
       return this;
@@ -106,7 +104,7 @@ public class SshCredentials {
       return this;
     }
 
-    public SshCredentials build(){
+    public SshCredentials build() {
       return new SshCredentials(this);
     }
   }

@@ -18,7 +18,7 @@
 
 package com.cloudera.director.client.v2.model;
 
-import com.cloudera.director.client.v2.model.Instance;
+
 public class Deployment {
   /* Whether to enable Cloudera Enterprise Trial */
   private Boolean enableEnterpriseTrial;
@@ -37,7 +37,7 @@ public class Deployment {
   private String repositoryKeyUrl;
   /* Username for API access */
   private String username;
-  public Deployment() {} 
+  public Deployment() { }
 
   private Deployment(Boolean enableEnterpriseTrial, String hostname, Instance managerInstance, String name, String password, Integer port, String repository, String repositoryKeyUrl, String username) {
     this.enableEnterpriseTrial = enableEnterpriseTrial;
@@ -49,10 +49,9 @@ public class Deployment {
     this.repository = repository;
     this.repositoryKeyUrl = repositoryKeyUrl;
     this.username = username;
-    
   }
-  
-  private Deployment (DeploymentBuilder builder) {
+
+  private Deployment(DeploymentBuilder builder) {
     this.enableEnterpriseTrial = builder.enableEnterpriseTrial;
     this.hostname = builder.hostname;
     this.managerInstance = builder.managerInstance;
@@ -62,14 +61,12 @@ public class Deployment {
     this.repository = builder.repository;
     this.repositoryKeyUrl = builder.repositoryKeyUrl;
     this.username = builder.username;
-    
   }
 
   public static DeploymentBuilder builder() {
     return new DeploymentBuilder();
   }
 
-  
   public static class DeploymentBuilder {
     private Boolean enableEnterpriseTrial = null;
     private String hostname = null;
@@ -80,7 +77,7 @@ public class Deployment {
     private String repository = null;
     private String repositoryKeyUrl = null;
     private String username = null;
-    
+
     public DeploymentBuilder enableEnterpriseTrial(Boolean enableEnterpriseTrial) {
       this.enableEnterpriseTrial = enableEnterpriseTrial;
       return this;
@@ -126,7 +123,7 @@ public class Deployment {
       return this;
     }
 
-    public Deployment build(){
+    public Deployment build() {
       return new Deployment(this);
     }
   }

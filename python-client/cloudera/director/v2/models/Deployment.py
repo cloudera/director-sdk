@@ -24,7 +24,7 @@ class Deployment:
         self.swaggerTypes = {
             'enableEnterpriseTrial': 'bool',
             'hostname': 'str',
-            'managerInstance': 'Instance',
+            'managerInstance': 'cloudera.director.v2.models.Instance',
             'name': 'str',
             'password': 'str',
             'port': 'int',
@@ -39,7 +39,7 @@ class Deployment:
         self.enableEnterpriseTrial = kwargs.get('enableEnterpriseTrial',None) # bool
         #Hostname for existing Cloudera Manager installation
         self.hostname = kwargs.get('hostname',None) # str
-        self.managerInstance = kwargs.get('managerInstance',None) # Instance
+        self.managerInstance = kwargs.get('managerInstance',None) # cloudera.director.v2.models.Instance
         #Deployment name
         self.name = kwargs.get('name',None) # str
         #Password for API access [redacted on read]
