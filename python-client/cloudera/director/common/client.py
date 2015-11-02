@@ -165,12 +165,12 @@ class ApiClient:
         # Have to accept objClass as string or actual type. Type could be a
         # native Python type, or one of the model classes.
         if type(objClass) == str:
-            if 'list[' in objClass:
+            if objClass.startswith('list['):
                 match = re.match('list\[(.*)\]', objClass)
                 subClass = match.group(1)
                 return [self.deserialize(subObj, subClass) for subObj in obj]
 
-            if 'dict[' in objClass:
+            if objClass.startswith('dict['):
                 (key_class, value_class) = self._getKeyValue(objClass)
                 ret = {}
                 for key in obj:
@@ -178,7 +178,7 @@ class ApiClient:
                 return ret
 
 
-            if 'set' in objClass:
+            if objClass.startswith('set'):
                 ret = set()
                 for subObj in obj:
                     ret.add(self.deserialize(subObj, 'str'))
@@ -216,7 +216,7 @@ class ApiClient:
                 elif (attrType == 'datetime'):
                     setattr(instance, attr, datetime.datetime.strptime(value[:-5],
                                               "%Y-%m-%dT%H:%M:%S.%f"))
-                elif 'list[' in attrType:
+                elif attrType.startswith('list['):
                     match = re.match('list\[(.*)\]', attrType)
                     subClass = match.group(1)
                     subValues = []
