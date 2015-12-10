@@ -54,6 +54,7 @@ public class Capabilities {
     String APT = "APT";
     String YUM = "YUM";
     String ZYPPER = "ZYPPER";
+    String UNKNOWN = "UNKNOWN";
   }
   public interface VirtualizationType {
     String PARAVIRTUALIZATION = "PARAVIRTUALIZATION";
