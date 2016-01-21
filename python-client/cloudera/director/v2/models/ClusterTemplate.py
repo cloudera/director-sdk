@@ -25,7 +25,7 @@ class ClusterTemplate:
             'externalDatabaseTemplates': 'dict[str,cloudera.director.v2.models.ExternalDatabaseTemplate]',
             'externalDatabases': 'dict[str,cloudera.director.v2.models.ExternalDatabase]',
             'name': 'str',
-            'parcelRepositories': 'set',
+            'parcelRepositories': 'set[str]',
             'productVersions': 'dict[str,str]',
             'redeployClientConfigsOnUpdate': 'bool',
             'restartClusterOnUpdate': 'bool',
@@ -43,7 +43,7 @@ class ClusterTemplate:
         #Cluster name
         self.name = kwargs.get('name',None) # str
         #Optional list of cluster parcel repositories
-        self.parcelRepositories = kwargs.get('parcelRepositories',set()) # set
+        self.parcelRepositories = kwargs.get('parcelRepositories',set()) # set[str]
         #Versions for cluster components
         self.productVersions = kwargs.get('productVersions',{}) # dict[str,str]
         #Whether to redeploy client configuration on cluster update

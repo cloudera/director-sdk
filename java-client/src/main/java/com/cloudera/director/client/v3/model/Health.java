@@ -85,6 +85,26 @@ public class Health {
   }
 
   @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+
+    Health other = (Health) o; // NOPMD
+
+    if (lastReported != null ? !lastReported.equals(other.lastReported) : other.lastReported != null) return false;
+    if (status != null ? !status.equals(other.status) : other.status != null) return false;
+    return true;
+  }
+
+  @Override
+  public int hashCode() {
+    int result = 0;
+    result = 31 * result + (lastReported != null ? lastReported.hashCode() : 0);
+    result = 31 * result + (status != null ? status.hashCode() : 0);
+    return result;
+  }
+
+  @Override
   public String toString()  {
     StringBuilder sb = new StringBuilder();
     String newLine = System.getProperty("line.separator");

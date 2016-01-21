@@ -116,6 +116,30 @@ public class DeploymentTemplate {
   }
 
   @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+
+    DeploymentTemplate other = (DeploymentTemplate) o; // NOPMD
+
+    if (config != null ? !config.equals(other.config) : other.config != null) return false;
+    if (externalDatabases != null ? !externalDatabases.equals(other.externalDatabases) : other.externalDatabases != null) return false;
+    if (managerVirtualInstance != null ? !managerVirtualInstance.equals(other.managerVirtualInstance) : other.managerVirtualInstance != null) return false;
+    if (name != null ? !name.equals(other.name) : other.name != null) return false;
+    return true;
+  }
+
+  @Override
+  public int hashCode() {
+    int result = 0;
+    result = 31 * result + (config != null ? config.hashCode() : 0);
+    result = 31 * result + (externalDatabases != null ? externalDatabases.hashCode() : 0);
+    result = 31 * result + (managerVirtualInstance != null ? managerVirtualInstance.hashCode() : 0);
+    result = 31 * result + (name != null ? name.hashCode() : 0);
+    return result;
+  }
+
+  @Override
   public String toString()  {
     StringBuilder sb = new StringBuilder();
     String newLine = System.getProperty("line.separator");

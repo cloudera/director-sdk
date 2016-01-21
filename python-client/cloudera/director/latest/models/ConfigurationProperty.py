@@ -22,6 +22,7 @@ class ConfigurationProperty:
 
     def __init__(self, **kwargs):
         self.swaggerTypes = {
+            'basic': 'bool',
             'configKey': 'str',
             'defaultValue': 'str',
             'description': 'str',
@@ -37,6 +38,8 @@ class ConfigurationProperty:
         }
 
 
+        #Whether this property is basic
+        self.basic = kwargs.get('basic',None) # bool
         #Configuration property key
         self.configKey = kwargs.get('configKey',None) # str
         #The default value for this property

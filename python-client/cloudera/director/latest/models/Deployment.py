@@ -24,6 +24,7 @@ class Deployment:
         self.swaggerTypes = {
             'enableEnterpriseTrial': 'bool',
             'hostname': 'str',
+            'javaInstallationStrategy': 'str',
             'krbAdminPassword': 'str',
             'krbAdminUsername': 'str',
             'managerInstance': 'cloudera.director.latest.models.Instance',
@@ -42,6 +43,8 @@ class Deployment:
         self.enableEnterpriseTrial = kwargs.get('enableEnterpriseTrial',None) # bool
         #Hostname for existing Cloudera Manager installation
         self.hostname = kwargs.get('hostname',None) # str
+        #Cloudera Director and Cloudera Manager's Java installation strategy
+        self.javaInstallationStrategy = kwargs.get('javaInstallationStrategy',None) # str
         #Password for Kerberos administrative principal used by Cloudera Manager [redacted on read]
         self.krbAdminPassword = kwargs.get('krbAdminPassword',None) # str
         #Username for Kerberos administrative principal used by Cloudera Manager

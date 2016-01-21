@@ -78,6 +78,26 @@ public class Service {
   }
 
   @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+
+    Service other = (Service) o; // NOPMD
+
+    if (health != null ? !health.equals(other.health) : other.health != null) return false;
+    if (serviceName != null ? !serviceName.equals(other.serviceName) : other.serviceName != null) return false;
+    return true;
+  }
+
+  @Override
+  public int hashCode() {
+    int result = 0;
+    result = 31 * result + (health != null ? health.hashCode() : 0);
+    result = 31 * result + (serviceName != null ? serviceName.hashCode() : 0);
+    return result;
+  }
+
+  @Override
   public String toString()  {
     StringBuilder sb = new StringBuilder();
     String newLine = System.getProperty("line.separator");

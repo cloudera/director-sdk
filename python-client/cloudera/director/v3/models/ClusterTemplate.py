@@ -25,7 +25,7 @@ class ClusterTemplate:
             'externalDatabaseTemplates': 'dict[str,cloudera.director.v3.models.ExternalDatabaseTemplate]',
             'externalDatabases': 'dict[str,cloudera.director.v3.models.ExternalDatabase]',
             'name': 'str',
-            'parcelRepositories': 'set',
+            'parcelRepositories': 'set[str]',
             'postCreateScripts': 'list[str]',
             'productVersions': 'dict[str,str]',
             'redeployClientConfigsOnUpdate': 'bool',
@@ -44,7 +44,7 @@ class ClusterTemplate:
         #Cluster name
         self.name = kwargs.get('name',None) # str
         #Optional list of cluster parcel repositories
-        self.parcelRepositories = kwargs.get('parcelRepositories',set()) # set
+        self.parcelRepositories = kwargs.get('parcelRepositories',set()) # set[str]
         #A list of scripts to be run after cluster creation
         self.postCreateScripts = kwargs.get('postCreateScripts',[]) # list[str]
         #Versions for cluster components

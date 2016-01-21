@@ -24,7 +24,7 @@ class ClusterTemplate:
         self.swaggerTypes = {
             'externalDatabases': 'dict[str,cloudera.director.v1.models.ExternalDatabase]',
             'name': 'str',
-            'parcelRepositories': 'set',
+            'parcelRepositories': 'set[str]',
             'productVersions': 'dict[str,str]',
             'services': 'list[str]',
             'servicesConfigs': 'dict[str,dict[str,str]]',
@@ -38,7 +38,7 @@ class ClusterTemplate:
         #Cluster name
         self.name = kwargs.get('name',None) # str
         #Optional list of cluster parcel repositories
-        self.parcelRepositories = kwargs.get('parcelRepositories',set()) # set
+        self.parcelRepositories = kwargs.get('parcelRepositories',set()) # set[str]
         #Versions for cluster components
         self.productVersions = kwargs.get('productVersions',{}) # dict[str,str]
         #Cluster services

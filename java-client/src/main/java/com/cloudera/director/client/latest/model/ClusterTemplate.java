@@ -29,12 +29,16 @@ public class ClusterTemplate {
   private Map<String,ExternalDatabaseTemplate> externalDatabaseTemplates;
   /* Optional external databases */
   private Map<String,ExternalDatabase> externalDatabases;
+  /* A description of current manual migrations (read only) */
+  private Set<Migration> migrations;
   /* Cluster name */
   private String name;
   /* Optional list of cluster parcel repositories */
   private Set<String> parcelRepositories;
   /* A list of scripts to be run after cluster creation */
   private List<String> postCreateScripts;
+  /* A list of scripts to be run before cluster termination */
+  private List<String> preTerminateScripts;
   /* Versions for cluster components */
   private Map<String,String> productVersions;
   /* Whether to redeploy client configuration on cluster update */
@@ -49,12 +53,14 @@ public class ClusterTemplate {
   private Map<String,VirtualInstanceGroup> virtualInstanceGroups;
   public ClusterTemplate() { }
 
-  private ClusterTemplate(Map<String,ExternalDatabaseTemplate> externalDatabaseTemplates, Map<String,ExternalDatabase> externalDatabases, String name, Set<String> parcelRepositories, List<String> postCreateScripts, Map<String,String> productVersions, Boolean redeployClientConfigsOnUpdate, Boolean restartClusterOnUpdate, List<String> services, Map<String,Map<String,String>> servicesConfigs, Map<String,VirtualInstanceGroup> virtualInstanceGroups) {
+  private ClusterTemplate(Map<String,ExternalDatabaseTemplate> externalDatabaseTemplates, Map<String,ExternalDatabase> externalDatabases, Set<Migration> migrations, String name, Set<String> parcelRepositories, List<String> postCreateScripts, List<String> preTerminateScripts, Map<String,String> productVersions, Boolean redeployClientConfigsOnUpdate, Boolean restartClusterOnUpdate, List<String> services, Map<String,Map<String,String>> servicesConfigs, Map<String,VirtualInstanceGroup> virtualInstanceGroups) {
     this.externalDatabaseTemplates = externalDatabaseTemplates;
     this.externalDatabases = externalDatabases;
+    this.migrations = migrations;
     this.name = name;
     this.parcelRepositories = parcelRepositories;
     this.postCreateScripts = postCreateScripts;
+    this.preTerminateScripts = preTerminateScripts;
     this.productVersions = productVersions;
     this.redeployClientConfigsOnUpdate = redeployClientConfigsOnUpdate;
     this.restartClusterOnUpdate = restartClusterOnUpdate;
@@ -66,9 +72,11 @@ public class ClusterTemplate {
   private ClusterTemplate(ClusterTemplateBuilder builder) {
     this.externalDatabaseTemplates = builder.externalDatabaseTemplates;
     this.externalDatabases = builder.externalDatabases;
+    this.migrations = builder.migrations;
     this.name = builder.name;
     this.parcelRepositories = builder.parcelRepositories;
     this.postCreateScripts = builder.postCreateScripts;
+    this.preTerminateScripts = builder.preTerminateScripts;
     this.productVersions = builder.productVersions;
     this.redeployClientConfigsOnUpdate = builder.redeployClientConfigsOnUpdate;
     this.restartClusterOnUpdate = builder.restartClusterOnUpdate;
@@ -84,9 +92,11 @@ public class ClusterTemplate {
   public static class ClusterTemplateBuilder {
     private Map<String,ExternalDatabaseTemplate> externalDatabaseTemplates = new HashMap<String,ExternalDatabaseTemplate>();
     private Map<String,ExternalDatabase> externalDatabases = new HashMap<String,ExternalDatabase>();
+    private Set<Migration> migrations = null;
     private String name = null;
     private Set<String> parcelRepositories = null;
     private List<String> postCreateScripts = new ArrayList<String>();
+    private List<String> preTerminateScripts = new ArrayList<String>();
     private Map<String,String> productVersions = new HashMap<String,String>();
     private Boolean redeployClientConfigsOnUpdate = null;
     private Boolean restartClusterOnUpdate = null;
@@ -104,6 +114,11 @@ public class ClusterTemplate {
       return this;
     }
 
+    public ClusterTemplateBuilder migrations(Set<Migration> migrations) {
+      this.migrations = migrations;
+      return this;
+    }
+
     public ClusterTemplateBuilder name(String name) {
       this.name = name;
       return this;
@@ -116,6 +131,11 @@ public class ClusterTemplate {
 
     public ClusterTemplateBuilder postCreateScripts(List<String> postCreateScripts) {
       this.postCreateScripts = postCreateScripts;
+      return this;
+    }
+
+    public ClusterTemplateBuilder preTerminateScripts(List<String> preTerminateScripts) {
+      this.preTerminateScripts = preTerminateScripts;
       return this;
     }
 
@@ -158,9 +178,11 @@ public class ClusterTemplate {
     return builder()
       .externalDatabaseTemplates(externalDatabaseTemplates)
       .externalDatabases(externalDatabases)
+      .migrations(migrations)
       .name(name)
       .parcelRepositories(parcelRepositories)
       .postCreateScripts(postCreateScripts)
+      .preTerminateScripts(preTerminateScripts)
       .productVersions(productVersions)
       .redeployClientConfigsOnUpdate(redeployClientConfigsOnUpdate)
       .restartClusterOnUpdate(restartClusterOnUpdate)
@@ -183,6 +205,13 @@ public class ClusterTemplate {
     this.externalDatabases = externalDatabases;
   }
 
+  public Set<Migration> getMigrations() {
+    return migrations;
+  }
+  public void setMigrations(Set<Migration> migrations) {
+    this.migrations = migrations;
+  }
+
   public String getName() {
     return name;
   }
@@ -202,6 +231,13 @@ public class ClusterTemplate {
   }
   public void setPostCreateScripts(List<String> postCreateScripts) {
     this.postCreateScripts = postCreateScripts;
+  }
+
+  public List<String> getPreTerminateScripts() {
+    return preTerminateScripts;
+  }
+  public void setPreTerminateScripts(List<String> preTerminateScripts) {
+    this.preTerminateScripts = preTerminateScripts;
   }
 
   public Map<String,String> getProductVersions() {
@@ -247,15 +283,59 @@ public class ClusterTemplate {
   }
 
   @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+
+    ClusterTemplate other = (ClusterTemplate) o; // NOPMD
+
+    if (externalDatabaseTemplates != null ? !externalDatabaseTemplates.equals(other.externalDatabaseTemplates) : other.externalDatabaseTemplates != null) return false;
+    if (externalDatabases != null ? !externalDatabases.equals(other.externalDatabases) : other.externalDatabases != null) return false;
+    if (migrations != null ? !migrations.equals(other.migrations) : other.migrations != null) return false;
+    if (name != null ? !name.equals(other.name) : other.name != null) return false;
+    if (parcelRepositories != null ? !parcelRepositories.equals(other.parcelRepositories) : other.parcelRepositories != null) return false;
+    if (postCreateScripts != null ? !postCreateScripts.equals(other.postCreateScripts) : other.postCreateScripts != null) return false;
+    if (preTerminateScripts != null ? !preTerminateScripts.equals(other.preTerminateScripts) : other.preTerminateScripts != null) return false;
+    if (productVersions != null ? !productVersions.equals(other.productVersions) : other.productVersions != null) return false;
+    if (redeployClientConfigsOnUpdate != null ? !redeployClientConfigsOnUpdate.equals(other.redeployClientConfigsOnUpdate) : other.redeployClientConfigsOnUpdate != null) return false;
+    if (restartClusterOnUpdate != null ? !restartClusterOnUpdate.equals(other.restartClusterOnUpdate) : other.restartClusterOnUpdate != null) return false;
+    if (services != null ? !services.equals(other.services) : other.services != null) return false;
+    if (servicesConfigs != null ? !servicesConfigs.equals(other.servicesConfigs) : other.servicesConfigs != null) return false;
+    if (virtualInstanceGroups != null ? !virtualInstanceGroups.equals(other.virtualInstanceGroups) : other.virtualInstanceGroups != null) return false;
+    return true;
+  }
+
+  @Override
+  public int hashCode() {
+    int result = 0;
+    result = 31 * result + (externalDatabaseTemplates != null ? externalDatabaseTemplates.hashCode() : 0);
+    result = 31 * result + (externalDatabases != null ? externalDatabases.hashCode() : 0);
+    result = 31 * result + (migrations != null ? migrations.hashCode() : 0);
+    result = 31 * result + (name != null ? name.hashCode() : 0);
+    result = 31 * result + (parcelRepositories != null ? parcelRepositories.hashCode() : 0);
+    result = 31 * result + (postCreateScripts != null ? postCreateScripts.hashCode() : 0);
+    result = 31 * result + (preTerminateScripts != null ? preTerminateScripts.hashCode() : 0);
+    result = 31 * result + (productVersions != null ? productVersions.hashCode() : 0);
+    result = 31 * result + (redeployClientConfigsOnUpdate != null ? redeployClientConfigsOnUpdate.hashCode() : 0);
+    result = 31 * result + (restartClusterOnUpdate != null ? restartClusterOnUpdate.hashCode() : 0);
+    result = 31 * result + (services != null ? services.hashCode() : 0);
+    result = 31 * result + (servicesConfigs != null ? servicesConfigs.hashCode() : 0);
+    result = 31 * result + (virtualInstanceGroups != null ? virtualInstanceGroups.hashCode() : 0);
+    return result;
+  }
+
+  @Override
   public String toString()  {
     StringBuilder sb = new StringBuilder();
     String newLine = System.getProperty("line.separator");
     sb.append("class ClusterTemplate {" + newLine);
     sb.append("  externalDatabaseTemplates: ").append(externalDatabaseTemplates).append(newLine);
     sb.append("  externalDatabases: ").append(externalDatabases).append(newLine);
+    sb.append("  migrations: ").append(migrations).append(newLine);
     sb.append("  name: ").append(name).append(newLine);
     sb.append("  parcelRepositories: ").append(parcelRepositories).append(newLine);
     sb.append("  postCreateScripts: ").append(postCreateScripts).append(newLine);
+    sb.append("  preTerminateScripts: ").append(preTerminateScripts).append(newLine);
     sb.append("  productVersions: ").append(productVersions).append(newLine);
     sb.append("  redeployClientConfigsOnUpdate: ").append(redeployClientConfigsOnUpdate).append(newLine);
     sb.append("  restartClusterOnUpdate: ").append(restartClusterOnUpdate).append(newLine);

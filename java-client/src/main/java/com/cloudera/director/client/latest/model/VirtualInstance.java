@@ -78,6 +78,26 @@ public class VirtualInstance {
   }
 
   @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+
+    VirtualInstance other = (VirtualInstance) o; // NOPMD
+
+    if (id != null ? !id.equals(other.id) : other.id != null) return false;
+    if (template != null ? !template.equals(other.template) : other.template != null) return false;
+    return true;
+  }
+
+  @Override
+  public int hashCode() {
+    int result = 0;
+    result = 31 * result + (id != null ? id.hashCode() : 0);
+    result = 31 * result + (template != null ? template.hashCode() : 0);
+    return result;
+  }
+
+  @Override
   public String toString()  {
     StringBuilder sb = new StringBuilder();
     String newLine = System.getProperty("line.separator");

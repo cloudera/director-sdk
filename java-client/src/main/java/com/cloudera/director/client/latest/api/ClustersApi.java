@@ -22,8 +22,10 @@ import com.cloudera.director.client.common.ApiClient;
 import com.cloudera.director.client.common.ApiException;
 
 import com.cloudera.director.client.latest.model.Status;
+import com.cloudera.director.client.latest.model.Metrics;
 import com.cloudera.director.client.latest.model.Cluster;
 import com.cloudera.director.client.latest.model.ClusterTemplate;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List; // NOPMD
 import java.util.Map;
@@ -59,17 +61,23 @@ public class ClustersApi {
        throw new ApiException(400, "missing required params");
     }
     // create path and map variables
-    String path = "/api/v3/environments/{environment}/deployments/{deployment}/clusters".replaceAll("\\{format\\}", "json").replaceAll("\\{" + "environment" + "\\}", apiClient.escapeString(environment.toString())).replaceAll("\\{" + "deployment" + "\\}", apiClient.escapeString(deployment.toString()));
+    String path = "/api/v4/environments/{environment}/deployments/{deployment}/clusters".replaceAll("\\{format\\}", "json").replaceAll("\\{" + "environment" + "\\}", apiClient.escapeString(environment.toString())).replaceAll("\\{" + "deployment" + "\\}", apiClient.escapeString(deployment.toString()));
 
     // query params
     Map<String, String> queryParams = new HashMap<String, String>();
     Map<String, String> headerParams = new HashMap<String, String>();
     Map<String, String> formParams = new HashMap<String, String>();
 
-    String contentType = "application/json";
+    String[] contentTypes = { "application/json"};
+    if (contentTypes.length != 1) {
+      throw new IllegalArgumentException("An API client expects a single content type. Got: "
+        + Arrays.toString(contentTypes));
+    }
 
     try {
-      String response = apiClient.invokeAPI(path, "POST", queryParams, postBody, headerParams, formParams, contentType);
+      String response = apiClient.invokeAPI(path, "POST", queryParams, postBody,
+        headerParams, formParams, contentTypes[0]);
+
       if (response != null) {
         return ;
       } else {
@@ -101,17 +109,23 @@ public class ClustersApi {
        throw new ApiException(400, "missing required params");
     }
     // create path and map variables
-    String path = "/api/v3/environments/{environment}/deployments/{deployment}/clusters/{cluster}".replaceAll("\\{format\\}", "json").replaceAll("\\{" + "environment" + "\\}", apiClient.escapeString(environment.toString())).replaceAll("\\{" + "deployment" + "\\}", apiClient.escapeString(deployment.toString())).replaceAll("\\{" + "cluster" + "\\}", apiClient.escapeString(cluster.toString()));
+    String path = "/api/v4/environments/{environment}/deployments/{deployment}/clusters/{cluster}".replaceAll("\\{format\\}", "json").replaceAll("\\{" + "environment" + "\\}", apiClient.escapeString(environment.toString())).replaceAll("\\{" + "deployment" + "\\}", apiClient.escapeString(deployment.toString())).replaceAll("\\{" + "cluster" + "\\}", apiClient.escapeString(cluster.toString()));
 
     // query params
     Map<String, String> queryParams = new HashMap<String, String>();
     Map<String, String> headerParams = new HashMap<String, String>();
     Map<String, String> formParams = new HashMap<String, String>();
 
-    String contentType = "application/json";
+    String[] contentTypes = { "application/json"};
+    if (contentTypes.length != 1) {
+      throw new IllegalArgumentException("An API client expects a single content type. Got: "
+        + Arrays.toString(contentTypes));
+    }
 
     try {
-      String response = apiClient.invokeAPI(path, "DELETE", queryParams, postBody, headerParams, formParams, contentType);
+      String response = apiClient.invokeAPI(path, "DELETE", queryParams, postBody,
+        headerParams, formParams, contentTypes[0]);
+
       if (response != null) {
         return ;
       } else {
@@ -132,7 +146,7 @@ public class ClustersApi {
   * @param  deployment  deploymentName
   * @param  cluster  clusterName
   * status code: 200 reason: "OK"
-  * status code: 204 reason: "Cluster is in transition"
+  * status code: 204 reason: "Cluster is in transition or failed stage"
   * status code: 401 reason: "Unauthorized"
   * status code: 403 reason: "Forbidden"
   * status code: 404 reason: "Entity not found"
@@ -144,19 +158,74 @@ public class ClustersApi {
        throw new ApiException(400, "missing required params");
     }
     // create path and map variables
-    String path = "/api/v3/environments/{environment}/deployments/{deployment}/clusters/{cluster}".replaceAll("\\{format\\}", "json").replaceAll("\\{" + "environment" + "\\}", apiClient.escapeString(environment.toString())).replaceAll("\\{" + "deployment" + "\\}", apiClient.escapeString(deployment.toString())).replaceAll("\\{" + "cluster" + "\\}", apiClient.escapeString(cluster.toString()));
+    String path = "/api/v4/environments/{environment}/deployments/{deployment}/clusters/{cluster}".replaceAll("\\{format\\}", "json").replaceAll("\\{" + "environment" + "\\}", apiClient.escapeString(environment.toString())).replaceAll("\\{" + "deployment" + "\\}", apiClient.escapeString(deployment.toString())).replaceAll("\\{" + "cluster" + "\\}", apiClient.escapeString(cluster.toString()));
 
     // query params
     Map<String, String> queryParams = new HashMap<String, String>();
     Map<String, String> headerParams = new HashMap<String, String>();
     Map<String, String> formParams = new HashMap<String, String>();
 
-    String contentType = "application/json";
+    String[] contentTypes = { "application/json"};
+    if (contentTypes.length != 1) {
+      throw new IllegalArgumentException("An API client expects a single content type. Got: "
+        + Arrays.toString(contentTypes));
+    }
 
     try {
-      String response = apiClient.invokeAPI(path, "GET", queryParams, postBody, headerParams, formParams, contentType);
+      String response = apiClient.invokeAPI(path, "GET", queryParams, postBody,
+        headerParams, formParams, contentTypes[0]);
+
       if (response != null) {
         return (Cluster) ApiClient.deserialize(response, "", Cluster.class);
+      } else {
+        return null;
+      }
+    } catch (ApiException ex) {
+      if (ex.getCode() == 404) {
+        return null;
+      } else {
+        throw ex;
+      }
+    }
+  }
+
+  /**
+  * Get cluster metrics by name
+  * @param  environment  environmentName
+  * @param  deployment  deploymentName
+  * @param  cluster  clusterName
+  * status code: 200 reason: "OK"
+  * status code: 204 reason: "Cluster is in transition or a failed stage"
+  * status code: 401 reason: "Unauthorized"
+  * status code: 403 reason: "Forbidden"
+  * status code: 404 reason: "Entity not found"
+  */
+  public Metrics getMetrics(String environment, String deployment, String cluster) throws ApiException {
+    Object postBody = null;
+    // verify required params are set
+    if (environment == null || deployment == null || cluster == null ) {
+       throw new ApiException(400, "missing required params");
+    }
+    // create path and map variables
+    String path = "/api/v4/environments/{environment}/deployments/{deployment}/clusters/{cluster}/metrics".replaceAll("\\{format\\}", "json").replaceAll("\\{" + "environment" + "\\}", apiClient.escapeString(environment.toString())).replaceAll("\\{" + "deployment" + "\\}", apiClient.escapeString(deployment.toString())).replaceAll("\\{" + "cluster" + "\\}", apiClient.escapeString(cluster.toString()));
+
+    // query params
+    Map<String, String> queryParams = new HashMap<String, String>();
+    Map<String, String> headerParams = new HashMap<String, String>();
+    Map<String, String> formParams = new HashMap<String, String>();
+
+    String[] contentTypes = { "application/json"};
+    if (contentTypes.length != 1) {
+      throw new IllegalArgumentException("An API client expects a single content type. Got: "
+        + Arrays.toString(contentTypes));
+    }
+
+    try {
+      String response = apiClient.invokeAPI(path, "GET", queryParams, postBody,
+        headerParams, formParams, contentTypes[0]);
+
+      if (response != null) {
+        return (Metrics) ApiClient.deserialize(response, "", Metrics.class);
       } else {
         return null;
       }
@@ -186,17 +255,23 @@ public class ClustersApi {
        throw new ApiException(400, "missing required params");
     }
     // create path and map variables
-    String path = "/api/v3/environments/{environment}/deployments/{deployment}/clusters/{cluster}/status".replaceAll("\\{format\\}", "json").replaceAll("\\{" + "environment" + "\\}", apiClient.escapeString(environment.toString())).replaceAll("\\{" + "deployment" + "\\}", apiClient.escapeString(deployment.toString())).replaceAll("\\{" + "cluster" + "\\}", apiClient.escapeString(cluster.toString()));
+    String path = "/api/v4/environments/{environment}/deployments/{deployment}/clusters/{cluster}/status".replaceAll("\\{format\\}", "json").replaceAll("\\{" + "environment" + "\\}", apiClient.escapeString(environment.toString())).replaceAll("\\{" + "deployment" + "\\}", apiClient.escapeString(deployment.toString())).replaceAll("\\{" + "cluster" + "\\}", apiClient.escapeString(cluster.toString()));
 
     // query params
     Map<String, String> queryParams = new HashMap<String, String>();
     Map<String, String> headerParams = new HashMap<String, String>();
     Map<String, String> formParams = new HashMap<String, String>();
 
-    String contentType = "application/json";
+    String[] contentTypes = { "application/json"};
+    if (contentTypes.length != 1) {
+      throw new IllegalArgumentException("An API client expects a single content type. Got: "
+        + Arrays.toString(contentTypes));
+    }
 
     try {
-      String response = apiClient.invokeAPI(path, "GET", queryParams, postBody, headerParams, formParams, contentType);
+      String response = apiClient.invokeAPI(path, "GET", queryParams, postBody,
+        headerParams, formParams, contentTypes[0]);
+
       if (response != null) {
         return (Status) ApiClient.deserialize(response, "", Status.class);
       } else {
@@ -228,17 +303,23 @@ public class ClustersApi {
        throw new ApiException(400, "missing required params");
     }
     // create path and map variables
-    String path = "/api/v3/environments/{environment}/deployments/{deployment}/clusters/{cluster}/template".replaceAll("\\{format\\}", "json").replaceAll("\\{" + "environment" + "\\}", apiClient.escapeString(environment.toString())).replaceAll("\\{" + "deployment" + "\\}", apiClient.escapeString(deployment.toString())).replaceAll("\\{" + "cluster" + "\\}", apiClient.escapeString(cluster.toString()));
+    String path = "/api/v4/environments/{environment}/deployments/{deployment}/clusters/{cluster}/template".replaceAll("\\{format\\}", "json").replaceAll("\\{" + "environment" + "\\}", apiClient.escapeString(environment.toString())).replaceAll("\\{" + "deployment" + "\\}", apiClient.escapeString(deployment.toString())).replaceAll("\\{" + "cluster" + "\\}", apiClient.escapeString(cluster.toString()));
 
     // query params
     Map<String, String> queryParams = new HashMap<String, String>();
     Map<String, String> headerParams = new HashMap<String, String>();
     Map<String, String> formParams = new HashMap<String, String>();
 
-    String contentType = "application/json";
+    String[] contentTypes = { "application/json"};
+    if (contentTypes.length != 1) {
+      throw new IllegalArgumentException("An API client expects a single content type. Got: "
+        + Arrays.toString(contentTypes));
+    }
 
     try {
-      String response = apiClient.invokeAPI(path, "GET", queryParams, postBody, headerParams, formParams, contentType);
+      String response = apiClient.invokeAPI(path, "GET", queryParams, postBody,
+        headerParams, formParams, contentTypes[0]);
+
       if (response != null) {
         return (ClusterTemplate) ApiClient.deserialize(response, "", ClusterTemplate.class);
       } else {
@@ -269,17 +350,23 @@ public class ClustersApi {
        throw new ApiException(400, "missing required params");
     }
     // create path and map variables
-    String path = "/api/v3/environments/{environment}/deployments/{deployment}/clusters".replaceAll("\\{format\\}", "json").replaceAll("\\{" + "environment" + "\\}", apiClient.escapeString(environment.toString())).replaceAll("\\{" + "deployment" + "\\}", apiClient.escapeString(deployment.toString()));
+    String path = "/api/v4/environments/{environment}/deployments/{deployment}/clusters".replaceAll("\\{format\\}", "json").replaceAll("\\{" + "environment" + "\\}", apiClient.escapeString(environment.toString())).replaceAll("\\{" + "deployment" + "\\}", apiClient.escapeString(deployment.toString()));
 
     // query params
     Map<String, String> queryParams = new HashMap<String, String>();
     Map<String, String> headerParams = new HashMap<String, String>();
     Map<String, String> formParams = new HashMap<String, String>();
 
-    String contentType = "application/json";
+    String[] contentTypes = { "application/json"};
+    if (contentTypes.length != 1) {
+      throw new IllegalArgumentException("An API client expects a single content type. Got: "
+        + Arrays.toString(contentTypes));
+    }
 
     try {
-      String response = apiClient.invokeAPI(path, "GET", queryParams, postBody, headerParams, formParams, contentType);
+      String response = apiClient.invokeAPI(path, "GET", queryParams, postBody,
+        headerParams, formParams, contentTypes[0]);
+
       if (response != null) {
         return (List<String>) ApiClient.deserialize(response, "List", String.class);
       } else {
@@ -315,17 +402,23 @@ public class ClustersApi {
        throw new ApiException(400, "missing required params");
     }
     // create path and map variables
-    String path = "/api/v3/environments/{environment}/deployments/{deployment}/clusters/{cluster}".replaceAll("\\{format\\}", "json").replaceAll("\\{" + "environment" + "\\}", apiClient.escapeString(environment.toString())).replaceAll("\\{" + "deployment" + "\\}", apiClient.escapeString(deployment.toString())).replaceAll("\\{" + "cluster" + "\\}", apiClient.escapeString(cluster.toString()));
+    String path = "/api/v4/environments/{environment}/deployments/{deployment}/clusters/{cluster}".replaceAll("\\{format\\}", "json").replaceAll("\\{" + "environment" + "\\}", apiClient.escapeString(environment.toString())).replaceAll("\\{" + "deployment" + "\\}", apiClient.escapeString(deployment.toString())).replaceAll("\\{" + "cluster" + "\\}", apiClient.escapeString(cluster.toString()));
 
     // query params
     Map<String, String> queryParams = new HashMap<String, String>();
     Map<String, String> headerParams = new HashMap<String, String>();
     Map<String, String> formParams = new HashMap<String, String>();
 
-    String contentType = "application/json";
+    String[] contentTypes = { "application/json"};
+    if (contentTypes.length != 1) {
+      throw new IllegalArgumentException("An API client expects a single content type. Got: "
+        + Arrays.toString(contentTypes));
+    }
 
     try {
-      String response = apiClient.invokeAPI(path, "PUT", queryParams, postBody, headerParams, formParams, contentType);
+      String response = apiClient.invokeAPI(path, "PUT", queryParams, postBody,
+        headerParams, formParams, contentTypes[0]);
+
       if (response != null) {
         return ;
       } else {

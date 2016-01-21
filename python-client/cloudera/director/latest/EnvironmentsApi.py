@@ -49,7 +49,7 @@ class EnvironmentsApi(object):
             params[key] = val
         del params['kwargs']
 
-        resourcePath = '/api/v3/environments'
+        resourcePath = '/api/v4/environments'
         resourcePath = resourcePath.replace('{format}', 'json')
         method = 'POST'
 
@@ -58,8 +58,12 @@ class EnvironmentsApi(object):
 
         postData = body
 
+        contentTypes = ["application/json"]
+        if len(contentTypes) != 1:
+            raise ValueError("An API client expects a single content type. Got: %s" % contentTypes)
+
         response = self.apiClient.callAPI(resourcePath, method, queryParams,
-                                          postData, headerParams)
+                                          postData, headerParams, contentTypes[0])
 
         
 
@@ -85,7 +89,7 @@ class EnvironmentsApi(object):
             params[key] = val
         del params['kwargs']
 
-        resourcePath = '/api/v3/environments/{name}'
+        resourcePath = '/api/v4/environments/{name}'
         resourcePath = resourcePath.replace('{format}', 'json')
         method = 'DELETE'
 
@@ -98,8 +102,12 @@ class EnvironmentsApi(object):
                                                 replacement)
         postData = None
 
+        contentTypes = ["application/json"]
+        if len(contentTypes) != 1:
+            raise ValueError("An API client expects a single content type. Got: %s" % contentTypes)
+
         response = self.apiClient.callAPI(resourcePath, method, queryParams,
-                                          postData, headerParams)
+                                          postData, headerParams, contentTypes[0])
 
         
 
@@ -125,7 +133,7 @@ class EnvironmentsApi(object):
             params[key] = val
         del params['kwargs']
 
-        resourcePath = '/api/v3/environments/{name}'
+        resourcePath = '/api/v4/environments/{name}'
         resourcePath = resourcePath.replace('{format}', 'json')
         method = 'GET'
 
@@ -138,8 +146,12 @@ class EnvironmentsApi(object):
                                                 replacement)
         postData = None
 
+        contentTypes = ["application/json"]
+        if len(contentTypes) != 1:
+            raise ValueError("An API client expects a single content type. Got: %s" % contentTypes)
+
         response = self.apiClient.callAPI(resourcePath, method, queryParams,
-                                          postData, headerParams)
+                                          postData, headerParams, contentTypes[0])
 
         if not response:
             return None
@@ -168,7 +180,7 @@ class EnvironmentsApi(object):
             params[key] = val
         del params['kwargs']
 
-        resourcePath = '/api/v3/environments'
+        resourcePath = '/api/v4/environments'
         resourcePath = resourcePath.replace('{format}', 'json')
         method = 'GET'
 
@@ -177,8 +189,12 @@ class EnvironmentsApi(object):
 
         postData = None
 
+        contentTypes = ["application/json"]
+        if len(contentTypes) != 1:
+            raise ValueError("An API client expects a single content type. Got: %s" % contentTypes)
+
         response = self.apiClient.callAPI(resourcePath, method, queryParams,
-                                          postData, headerParams)
+                                          postData, headerParams, contentTypes[0])
 
         if not response:
             return None
@@ -211,7 +227,7 @@ class EnvironmentsApi(object):
             params[key] = val
         del params['kwargs']
 
-        resourcePath = '/api/v3/environments/{name}'
+        resourcePath = '/api/v4/environments/{name}'
         resourcePath = resourcePath.replace('{format}', 'json')
         method = 'PUT'
 
@@ -224,8 +240,58 @@ class EnvironmentsApi(object):
                                                 replacement)
         postData = body
 
+        contentTypes = ["application/json"]
+        if len(contentTypes) != 1:
+            raise ValueError("An API client expects a single content type. Got: %s" % contentTypes)
+
         response = self.apiClient.callAPI(resourcePath, method, queryParams,
-                                          postData, headerParams)
+                                          postData, headerParams, contentTypes[0])
+
+        
+
+        
+
+    def updateProviderCredentials(self, name, body, **kwargs):
+        """Update provider credentials for a specific environment
+
+        Args:
+            name, str: environmentName (required)
+
+            body, dict[str,str]: credentials (required)
+
+            
+
+        Returns: 
+        """
+
+        allParams = ['name', 'body']
+
+        params = locals()
+        for (key, val) in params['kwargs'].iteritems():
+            if key not in allParams:
+                raise TypeError("Got an unexpected keyword argument '%s' to method updateProviderCredentials" % key)
+            params[key] = val
+        del params['kwargs']
+
+        resourcePath = '/api/v4/environments/{name}/provider/credentials'
+        resourcePath = resourcePath.replace('{format}', 'json')
+        method = 'PUT'
+
+        queryParams = {}
+        headerParams = {}
+
+        if ('name' in params):
+            replacement = str(self.apiClient.toPathValue(params['name']))
+            resourcePath = resourcePath.replace('{' + 'name' + '}',
+                                                replacement)
+        postData = body
+
+        contentTypes = ["application/json"]
+        if len(contentTypes) != 1:
+            raise ValueError("An API client expects a single content type. Got: %s" % contentTypes)
+
+        response = self.apiClient.callAPI(resourcePath, method, queryParams,
+                                          postData, headerParams, contentTypes[0])
 
         
 

@@ -24,9 +24,11 @@ class ClusterTemplate:
         self.swaggerTypes = {
             'externalDatabaseTemplates': 'dict[str,cloudera.director.latest.models.ExternalDatabaseTemplate]',
             'externalDatabases': 'dict[str,cloudera.director.latest.models.ExternalDatabase]',
+            'migrations': 'set[cloudera.director.latest.models.Migration]',
             'name': 'str',
-            'parcelRepositories': 'set',
+            'parcelRepositories': 'set[str]',
             'postCreateScripts': 'list[str]',
+            'preTerminateScripts': 'list[str]',
             'productVersions': 'dict[str,str]',
             'redeployClientConfigsOnUpdate': 'bool',
             'restartClusterOnUpdate': 'bool',
@@ -41,12 +43,16 @@ class ClusterTemplate:
         self.externalDatabaseTemplates = kwargs.get('externalDatabaseTemplates',{}) # dict[str,cloudera.director.latest.models.ExternalDatabaseTemplate]
         #Optional external databases
         self.externalDatabases = kwargs.get('externalDatabases',{}) # dict[str,cloudera.director.latest.models.ExternalDatabase]
+        #A description of current manual migrations (read only)
+        self.migrations = kwargs.get('migrations',set()) # set[cloudera.director.latest.models.Migration]
         #Cluster name
         self.name = kwargs.get('name',None) # str
         #Optional list of cluster parcel repositories
-        self.parcelRepositories = kwargs.get('parcelRepositories',set()) # set
+        self.parcelRepositories = kwargs.get('parcelRepositories',set()) # set[str]
         #A list of scripts to be run after cluster creation
         self.postCreateScripts = kwargs.get('postCreateScripts',[]) # list[str]
+        #A list of scripts to be run before cluster termination
+        self.preTerminateScripts = kwargs.get('preTerminateScripts',[]) # list[str]
         #Versions for cluster components
         self.productVersions = kwargs.get('productVersions',{}) # dict[str,str]
         #Whether to redeploy client configuration on cluster update

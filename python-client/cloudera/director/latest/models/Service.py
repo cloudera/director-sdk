@@ -23,11 +23,22 @@ class Service:
     def __init__(self, **kwargs):
         self.swaggerTypes = {
             'health': 'cloudera.director.latest.models.Health',
-            'serviceName': 'str'
+            'healthChecks': 'list[cloudera.director.latest.models.HealthCheck]',
+            'roleInstancesUrl': 'str',
+            'serviceName': 'str',
+            'url': 'str'
 
         }
 
 
+        #Service health
         self.health = kwargs.get('health',None) # cloudera.director.latest.models.Health
+        #Health checks performed on service
+        self.healthChecks = kwargs.get('healthChecks',[]) # list[cloudera.director.latest.models.HealthCheck]
+        #URL for service instances
+        self.roleInstancesUrl = kwargs.get('roleInstancesUrl',None) # str
+        #Service name
         self.serviceName = kwargs.get('serviceName',None) # str
+        #URL for service
+        self.url = kwargs.get('url',None) # str
         

@@ -51,7 +51,7 @@ class InstanceTemplatesApi(object):
             params[key] = val
         del params['kwargs']
 
-        resourcePath = '/api/v3/environments/{environment}/templates/instances'
+        resourcePath = '/api/v4/environments/{environment}/templates/instances'
         resourcePath = resourcePath.replace('{format}', 'json')
         method = 'POST'
 
@@ -64,8 +64,12 @@ class InstanceTemplatesApi(object):
                                                 replacement)
         postData = body
 
+        contentTypes = ["application/json"]
+        if len(contentTypes) != 1:
+            raise ValueError("An API client expects a single content type. Got: %s" % contentTypes)
+
         response = self.apiClient.callAPI(resourcePath, method, queryParams,
-                                          postData, headerParams)
+                                          postData, headerParams, contentTypes[0])
 
         
 
@@ -93,7 +97,7 @@ class InstanceTemplatesApi(object):
             params[key] = val
         del params['kwargs']
 
-        resourcePath = '/api/v3/environments/{environment}/templates/instances/{template}'
+        resourcePath = '/api/v4/environments/{environment}/templates/instances/{template}'
         resourcePath = resourcePath.replace('{format}', 'json')
         method = 'DELETE'
 
@@ -110,8 +114,12 @@ class InstanceTemplatesApi(object):
                                                 replacement)
         postData = None
 
+        contentTypes = ["application/json"]
+        if len(contentTypes) != 1:
+            raise ValueError("An API client expects a single content type. Got: %s" % contentTypes)
+
         response = self.apiClient.callAPI(resourcePath, method, queryParams,
-                                          postData, headerParams)
+                                          postData, headerParams, contentTypes[0])
 
         
 
@@ -139,7 +147,7 @@ class InstanceTemplatesApi(object):
             params[key] = val
         del params['kwargs']
 
-        resourcePath = '/api/v3/environments/{environment}/templates/instances/{template}'
+        resourcePath = '/api/v4/environments/{environment}/templates/instances/{template}'
         resourcePath = resourcePath.replace('{format}', 'json')
         method = 'GET'
 
@@ -156,8 +164,12 @@ class InstanceTemplatesApi(object):
                                                 replacement)
         postData = None
 
+        contentTypes = ["application/json"]
+        if len(contentTypes) != 1:
+            raise ValueError("An API client expects a single content type. Got: %s" % contentTypes)
+
         response = self.apiClient.callAPI(resourcePath, method, queryParams,
-                                          postData, headerParams)
+                                          postData, headerParams, contentTypes[0])
 
         if not response:
             return None
@@ -188,7 +200,7 @@ class InstanceTemplatesApi(object):
             params[key] = val
         del params['kwargs']
 
-        resourcePath = '/api/v3/environments/{environment}/templates/instances'
+        resourcePath = '/api/v4/environments/{environment}/templates/instances'
         resourcePath = resourcePath.replace('{format}', 'json')
         method = 'GET'
 
@@ -201,8 +213,12 @@ class InstanceTemplatesApi(object):
                                                 replacement)
         postData = None
 
+        contentTypes = ["application/json"]
+        if len(contentTypes) != 1:
+            raise ValueError("An API client expects a single content type. Got: %s" % contentTypes)
+
         response = self.apiClient.callAPI(resourcePath, method, queryParams,
-                                          postData, headerParams)
+                                          postData, headerParams, contentTypes[0])
 
         if not response:
             return None
@@ -237,7 +253,7 @@ class InstanceTemplatesApi(object):
             params[key] = val
         del params['kwargs']
 
-        resourcePath = '/api/v3/environments/{environment}/templates/instances/{template}'
+        resourcePath = '/api/v4/environments/{environment}/templates/instances/{template}'
         resourcePath = resourcePath.replace('{format}', 'json')
         method = 'PUT'
 
@@ -254,8 +270,12 @@ class InstanceTemplatesApi(object):
                                                 replacement)
         postData = body
 
+        contentTypes = ["application/json"]
+        if len(contentTypes) != 1:
+            raise ValueError("An API client expects a single content type. Got: %s" % contentTypes)
+
         response = self.apiClient.callAPI(resourcePath, method, queryParams,
-                                          postData, headerParams)
+                                          postData, headerParams, contentTypes[0])
 
         
 

@@ -100,6 +100,28 @@ public class Cluster {
   }
 
   @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+
+    Cluster other = (Cluster) o; // NOPMD
+
+    if (instances != null ? !instances.equals(other.instances) : other.instances != null) return false;
+    if (name != null ? !name.equals(other.name) : other.name != null) return false;
+    if (services != null ? !services.equals(other.services) : other.services != null) return false;
+    return true;
+  }
+
+  @Override
+  public int hashCode() {
+    int result = 0;
+    result = 31 * result + (instances != null ? instances.hashCode() : 0);
+    result = 31 * result + (name != null ? name.hashCode() : 0);
+    result = 31 * result + (services != null ? services.hashCode() : 0);
+    return result;
+  }
+
+  @Override
   public String toString()  {
     StringBuilder sb = new StringBuilder();
     String newLine = System.getProperty("line.separator");

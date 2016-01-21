@@ -86,6 +86,24 @@ public class InstanceProviderConfig {
   }
 
   @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+
+    InstanceProviderConfig other = (InstanceProviderConfig) o; // NOPMD
+
+    if (type != null ? !type.equals(other.type) : other.type != null) return false;
+    return true;
+  }
+
+  @Override
+  public int hashCode() {
+    int result = 0;
+    result = 31 * result + (type != null ? type.hashCode() : 0);
+    return result;
+  }
+
+  @Override
   public String toString()  {
     StringBuilder sb = new StringBuilder();
     String newLine = System.getProperty("line.separator");

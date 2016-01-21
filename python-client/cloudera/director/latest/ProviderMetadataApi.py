@@ -49,7 +49,7 @@ class ProviderMetadataApi(object):
             params[key] = val
         del params['kwargs']
 
-        resourcePath = '/api/v3/metadata/providers/{providerId}'
+        resourcePath = '/api/v4/metadata/providers/{providerId}'
         resourcePath = resourcePath.replace('{format}', 'json')
         method = 'GET'
 
@@ -62,8 +62,12 @@ class ProviderMetadataApi(object):
                                                 replacement)
         postData = None
 
+        contentTypes = ["application/json"]
+        if len(contentTypes) != 1:
+            raise ValueError("An API client expects a single content type. Got: %s" % contentTypes)
+
         response = self.apiClient.callAPI(resourcePath, method, queryParams,
-                                          postData, headerParams)
+                                          postData, headerParams, contentTypes[0])
 
         if not response:
             return None
@@ -92,7 +96,7 @@ class ProviderMetadataApi(object):
             params[key] = val
         del params['kwargs']
 
-        resourcePath = '/api/v3/metadata/providers'
+        resourcePath = '/api/v4/metadata/providers'
         resourcePath = resourcePath.replace('{format}', 'json')
         method = 'GET'
 
@@ -101,8 +105,12 @@ class ProviderMetadataApi(object):
 
         postData = None
 
+        contentTypes = ["application/json"]
+        if len(contentTypes) != 1:
+            raise ValueError("An API client expects a single content type. Got: %s" % contentTypes)
+
         response = self.apiClient.callAPI(resourcePath, method, queryParams,
-                                          postData, headerParams)
+                                          postData, headerParams, contentTypes[0])
 
         if not response:
             return None

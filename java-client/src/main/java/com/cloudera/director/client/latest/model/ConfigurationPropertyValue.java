@@ -78,6 +78,26 @@ public class ConfigurationPropertyValue {
   }
 
   @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+
+    ConfigurationPropertyValue other = (ConfigurationPropertyValue) o; // NOPMD
+
+    if (label != null ? !label.equals(other.label) : other.label != null) return false;
+    if (value != null ? !value.equals(other.value) : other.value != null) return false;
+    return true;
+  }
+
+  @Override
+  public int hashCode() {
+    int result = 0;
+    result = 31 * result + (label != null ? label.hashCode() : 0);
+    result = 31 * result + (value != null ? value.hashCode() : 0);
+    return result;
+  }
+
+  @Override
   public String toString()  {
     StringBuilder sb = new StringBuilder();
     String newLine = System.getProperty("line.separator");

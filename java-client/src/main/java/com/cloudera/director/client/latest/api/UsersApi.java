@@ -23,6 +23,7 @@ import com.cloudera.director.client.common.ApiException;
 
 import com.cloudera.director.client.latest.model.User;
 import com.cloudera.director.client.latest.model.PasswordChange;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List; // NOPMD
 import java.util.Map;
@@ -56,17 +57,23 @@ public class UsersApi {
        throw new ApiException(400, "missing required params");
     }
     // create path and map variables
-    String path = "/api/v3/users".replaceAll("\\{format\\}", "json");
+    String path = "/api/v4/users".replaceAll("\\{format\\}", "json");
 
     // query params
     Map<String, String> queryParams = new HashMap<String, String>();
     Map<String, String> headerParams = new HashMap<String, String>();
     Map<String, String> formParams = new HashMap<String, String>();
 
-    String contentType = "application/json";
+    String[] contentTypes = { "application/json"};
+    if (contentTypes.length != 1) {
+      throw new IllegalArgumentException("An API client expects a single content type. Got: "
+        + Arrays.toString(contentTypes));
+    }
 
     try {
-      String response = apiClient.invokeAPI(path, "POST", queryParams, postBody, headerParams, formParams, contentType);
+      String response = apiClient.invokeAPI(path, "POST", queryParams, postBody,
+        headerParams, formParams, contentTypes[0]);
+
       if (response != null) {
         return ;
       } else {
@@ -91,17 +98,23 @@ public class UsersApi {
   public User currentRedacted() throws ApiException {
     Object postBody = null;
     // create path and map variables
-    String path = "/api/v3/users/current".replaceAll("\\{format\\}", "json");
+    String path = "/api/v4/users/current".replaceAll("\\{format\\}", "json");
 
     // query params
     Map<String, String> queryParams = new HashMap<String, String>();
     Map<String, String> headerParams = new HashMap<String, String>();
     Map<String, String> formParams = new HashMap<String, String>();
 
-    String contentType = "application/json";
+    String[] contentTypes = { "application/json"};
+    if (contentTypes.length != 1) {
+      throw new IllegalArgumentException("An API client expects a single content type. Got: "
+        + Arrays.toString(contentTypes));
+    }
 
     try {
-      String response = apiClient.invokeAPI(path, "GET", queryParams, postBody, headerParams, formParams, contentType);
+      String response = apiClient.invokeAPI(path, "GET", queryParams, postBody,
+        headerParams, formParams, contentTypes[0]);
+
       if (response != null) {
         return (User) ApiClient.deserialize(response, "", User.class);
       } else {
@@ -130,17 +143,23 @@ public class UsersApi {
        throw new ApiException(400, "missing required params");
     }
     // create path and map variables
-    String path = "/api/v3/users/{username}".replaceAll("\\{format\\}", "json").replaceAll("\\{" + "username" + "\\}", apiClient.escapeString(username.toString()));
+    String path = "/api/v4/users/{username}".replaceAll("\\{format\\}", "json").replaceAll("\\{" + "username" + "\\}", apiClient.escapeString(username.toString()));
 
     // query params
     Map<String, String> queryParams = new HashMap<String, String>();
     Map<String, String> headerParams = new HashMap<String, String>();
     Map<String, String> formParams = new HashMap<String, String>();
 
-    String contentType = "application/json";
+    String[] contentTypes = { "application/json"};
+    if (contentTypes.length != 1) {
+      throw new IllegalArgumentException("An API client expects a single content type. Got: "
+        + Arrays.toString(contentTypes));
+    }
 
     try {
-      String response = apiClient.invokeAPI(path, "DELETE", queryParams, postBody, headerParams, formParams, contentType);
+      String response = apiClient.invokeAPI(path, "DELETE", queryParams, postBody,
+        headerParams, formParams, contentTypes[0]);
+
       if (response != null) {
         return ;
       } else {
@@ -170,17 +189,23 @@ public class UsersApi {
        throw new ApiException(400, "missing required params");
     }
     // create path and map variables
-    String path = "/api/v3/users/{username}".replaceAll("\\{format\\}", "json").replaceAll("\\{" + "username" + "\\}", apiClient.escapeString(username.toString()));
+    String path = "/api/v4/users/{username}".replaceAll("\\{format\\}", "json").replaceAll("\\{" + "username" + "\\}", apiClient.escapeString(username.toString()));
 
     // query params
     Map<String, String> queryParams = new HashMap<String, String>();
     Map<String, String> headerParams = new HashMap<String, String>();
     Map<String, String> formParams = new HashMap<String, String>();
 
-    String contentType = "application/json";
+    String[] contentTypes = { "application/json"};
+    if (contentTypes.length != 1) {
+      throw new IllegalArgumentException("An API client expects a single content type. Got: "
+        + Arrays.toString(contentTypes));
+    }
 
     try {
-      String response = apiClient.invokeAPI(path, "GET", queryParams, postBody, headerParams, formParams, contentType);
+      String response = apiClient.invokeAPI(path, "GET", queryParams, postBody,
+        headerParams, formParams, contentTypes[0]);
+
       if (response != null) {
         return (User) ApiClient.deserialize(response, "", User.class);
       } else {
@@ -205,17 +230,23 @@ public class UsersApi {
   public List<String> list() throws ApiException {
     Object postBody = null;
     // create path and map variables
-    String path = "/api/v3/users".replaceAll("\\{format\\}", "json");
+    String path = "/api/v4/users".replaceAll("\\{format\\}", "json");
 
     // query params
     Map<String, String> queryParams = new HashMap<String, String>();
     Map<String, String> headerParams = new HashMap<String, String>();
     Map<String, String> formParams = new HashMap<String, String>();
 
-    String contentType = "application/json";
+    String[] contentTypes = { "application/json"};
+    if (contentTypes.length != 1) {
+      throw new IllegalArgumentException("An API client expects a single content type. Got: "
+        + Arrays.toString(contentTypes));
+    }
 
     try {
-      String response = apiClient.invokeAPI(path, "GET", queryParams, postBody, headerParams, formParams, contentType);
+      String response = apiClient.invokeAPI(path, "GET", queryParams, postBody,
+        headerParams, formParams, contentTypes[0]);
+
       if (response != null) {
         return (List<String>) ApiClient.deserialize(response, "List", String.class);
       } else {
@@ -248,17 +279,23 @@ public class UsersApi {
        throw new ApiException(400, "missing required params");
     }
     // create path and map variables
-    String path = "/api/v3/users/{username}".replaceAll("\\{format\\}", "json").replaceAll("\\{" + "username" + "\\}", apiClient.escapeString(username.toString()));
+    String path = "/api/v4/users/{username}".replaceAll("\\{format\\}", "json").replaceAll("\\{" + "username" + "\\}", apiClient.escapeString(username.toString()));
 
     // query params
     Map<String, String> queryParams = new HashMap<String, String>();
     Map<String, String> headerParams = new HashMap<String, String>();
     Map<String, String> formParams = new HashMap<String, String>();
 
-    String contentType = "application/json";
+    String[] contentTypes = { "application/json"};
+    if (contentTypes.length != 1) {
+      throw new IllegalArgumentException("An API client expects a single content type. Got: "
+        + Arrays.toString(contentTypes));
+    }
 
     try {
-      String response = apiClient.invokeAPI(path, "PUT", queryParams, postBody, headerParams, formParams, contentType);
+      String response = apiClient.invokeAPI(path, "PUT", queryParams, postBody,
+        headerParams, formParams, contentTypes[0]);
+
       if (response != null) {
         return ;
       } else {
@@ -291,17 +328,23 @@ public class UsersApi {
        throw new ApiException(400, "missing required params");
     }
     // create path and map variables
-    String path = "/api/v3/users/{username}/password".replaceAll("\\{format\\}", "json").replaceAll("\\{" + "username" + "\\}", apiClient.escapeString(username.toString()));
+    String path = "/api/v4/users/{username}/password".replaceAll("\\{format\\}", "json").replaceAll("\\{" + "username" + "\\}", apiClient.escapeString(username.toString()));
 
     // query params
     Map<String, String> queryParams = new HashMap<String, String>();
     Map<String, String> headerParams = new HashMap<String, String>();
     Map<String, String> formParams = new HashMap<String, String>();
 
-    String contentType = "application/json";
+    String[] contentTypes = { "application/json"};
+    if (contentTypes.length != 1) {
+      throw new IllegalArgumentException("An API client expects a single content type. Got: "
+        + Arrays.toString(contentTypes));
+    }
 
     try {
-      String response = apiClient.invokeAPI(path, "PUT", queryParams, postBody, headerParams, formParams, contentType);
+      String response = apiClient.invokeAPI(path, "PUT", queryParams, postBody,
+        headerParams, formParams, contentTypes[0]);
+
       if (response != null) {
         return ;
       } else {

@@ -116,6 +116,30 @@ public class ExternalDatabaseTemplate {
   }
 
   @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+
+    ExternalDatabaseTemplate other = (ExternalDatabaseTemplate) o; // NOPMD
+
+    if (databaseNamePrefix != null ? !databaseNamePrefix.equals(other.databaseNamePrefix) : other.databaseNamePrefix != null) return false;
+    if (databaseServerName != null ? !databaseServerName.equals(other.databaseServerName) : other.databaseServerName != null) return false;
+    if (name != null ? !name.equals(other.name) : other.name != null) return false;
+    if (usernamePrefix != null ? !usernamePrefix.equals(other.usernamePrefix) : other.usernamePrefix != null) return false;
+    return true;
+  }
+
+  @Override
+  public int hashCode() {
+    int result = 0;
+    result = 31 * result + (databaseNamePrefix != null ? databaseNamePrefix.hashCode() : 0);
+    result = 31 * result + (databaseServerName != null ? databaseServerName.hashCode() : 0);
+    result = 31 * result + (name != null ? name.hashCode() : 0);
+    result = 31 * result + (usernamePrefix != null ? usernamePrefix.hashCode() : 0);
+    return result;
+  }
+
+  @Override
   public String toString()  {
     StringBuilder sb = new StringBuilder();
     String newLine = System.getProperty("line.separator");

@@ -24,6 +24,7 @@ import com.cloudera.director.client.common.ApiException;
 import com.cloudera.director.client.v1.model.Status;
 import com.cloudera.director.client.v1.model.Cluster;
 import com.cloudera.director.client.v1.model.ClusterTemplate;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List; // NOPMD
 import java.util.Map;
@@ -68,10 +69,16 @@ public class ClustersApi {
     Map<String, String> formParams = new HashMap<String, String>();
 
     headerParams.put("X-Request-Id", XRequestId);
-    String contentType = "application/json";
+    String[] contentTypes = { "application/json"};
+    if (contentTypes.length != 1) {
+      throw new IllegalArgumentException("An API client expects a single content type. Got: "
+        + Arrays.toString(contentTypes));
+    }
 
     try {
-      String response = apiClient.invokeAPI(path, "POST", queryParams, postBody, headerParams, formParams, contentType);
+      String response = apiClient.invokeAPI(path, "POST", queryParams, postBody,
+        headerParams, formParams, contentTypes[0]);
+
       if (response != null) {
         return ;
       } else {
@@ -87,7 +94,7 @@ public class ClustersApi {
   }
 
   public void create(String environment, String deployment, ClusterTemplate body) throws ApiException {
-      create(environment, deployment, null, body);
+     create(environment, deployment, null, body);
     }
   /**
   * Delete a cluster by name
@@ -115,10 +122,16 @@ public class ClustersApi {
     Map<String, String> formParams = new HashMap<String, String>();
 
     headerParams.put("X-Request-Id", XRequestId);
-    String contentType = "application/json";
+    String[] contentTypes = { "application/json"};
+    if (contentTypes.length != 1) {
+      throw new IllegalArgumentException("An API client expects a single content type. Got: "
+        + Arrays.toString(contentTypes));
+    }
 
     try {
-      String response = apiClient.invokeAPI(path, "DELETE", queryParams, postBody, headerParams, formParams, contentType);
+      String response = apiClient.invokeAPI(path, "DELETE", queryParams, postBody,
+        headerParams, formParams, contentTypes[0]);
+
       if (response != null) {
         return ;
       } else {
@@ -134,7 +147,7 @@ public class ClustersApi {
   }
 
   public void delete(String environment, String deployment, String cluster) throws ApiException {
-      delete(environment, deployment, cluster, null);
+     delete(environment, deployment, cluster, null);
     }
   /**
   * Get a cluster by name
@@ -146,6 +159,7 @@ public class ClustersApi {
   * status code: 401 reason: "Unauthorized"
   * status code: 403 reason: "Forbidden"
   * status code: 404 reason: "Entity not found"
+  * status code: 500 reason: "Cluster is in a failed stage"
   */
   public Cluster get(String environment, String deployment, String cluster) throws ApiException {
     Object postBody = null;
@@ -161,10 +175,16 @@ public class ClustersApi {
     Map<String, String> headerParams = new HashMap<String, String>();
     Map<String, String> formParams = new HashMap<String, String>();
 
-    String contentType = "application/json";
+    String[] contentTypes = { "application/json"};
+    if (contentTypes.length != 1) {
+      throw new IllegalArgumentException("An API client expects a single content type. Got: "
+        + Arrays.toString(contentTypes));
+    }
 
     try {
-      String response = apiClient.invokeAPI(path, "GET", queryParams, postBody, headerParams, formParams, contentType);
+      String response = apiClient.invokeAPI(path, "GET", queryParams, postBody,
+        headerParams, formParams, contentTypes[0]);
+
       if (response != null) {
         return (Cluster) ApiClient.deserialize(response, "", Cluster.class);
       } else {
@@ -203,10 +223,16 @@ public class ClustersApi {
     Map<String, String> headerParams = new HashMap<String, String>();
     Map<String, String> formParams = new HashMap<String, String>();
 
-    String contentType = "application/json";
+    String[] contentTypes = { "application/json"};
+    if (contentTypes.length != 1) {
+      throw new IllegalArgumentException("An API client expects a single content type. Got: "
+        + Arrays.toString(contentTypes));
+    }
 
     try {
-      String response = apiClient.invokeAPI(path, "GET", queryParams, postBody, headerParams, formParams, contentType);
+      String response = apiClient.invokeAPI(path, "GET", queryParams, postBody,
+        headerParams, formParams, contentTypes[0]);
+
       if (response != null) {
         return (Status) ApiClient.deserialize(response, "", Status.class);
       } else {
@@ -245,10 +271,16 @@ public class ClustersApi {
     Map<String, String> headerParams = new HashMap<String, String>();
     Map<String, String> formParams = new HashMap<String, String>();
 
-    String contentType = "application/json";
+    String[] contentTypes = { "application/json"};
+    if (contentTypes.length != 1) {
+      throw new IllegalArgumentException("An API client expects a single content type. Got: "
+        + Arrays.toString(contentTypes));
+    }
 
     try {
-      String response = apiClient.invokeAPI(path, "GET", queryParams, postBody, headerParams, formParams, contentType);
+      String response = apiClient.invokeAPI(path, "GET", queryParams, postBody,
+        headerParams, formParams, contentTypes[0]);
+
       if (response != null) {
         return (ClusterTemplate) ApiClient.deserialize(response, "", ClusterTemplate.class);
       } else {
@@ -286,10 +318,16 @@ public class ClustersApi {
     Map<String, String> headerParams = new HashMap<String, String>();
     Map<String, String> formParams = new HashMap<String, String>();
 
-    String contentType = "application/json";
+    String[] contentTypes = { "application/json"};
+    if (contentTypes.length != 1) {
+      throw new IllegalArgumentException("An API client expects a single content type. Got: "
+        + Arrays.toString(contentTypes));
+    }
 
     try {
-      String response = apiClient.invokeAPI(path, "GET", queryParams, postBody, headerParams, formParams, contentType);
+      String response = apiClient.invokeAPI(path, "GET", queryParams, postBody,
+        headerParams, formParams, contentTypes[0]);
+
       if (response != null) {
         return (List<String>) ApiClient.deserialize(response, "List", String.class);
       } else {
@@ -334,10 +372,16 @@ public class ClustersApi {
     Map<String, String> formParams = new HashMap<String, String>();
 
     headerParams.put("X-Request-Id", XRequestId);
-    String contentType = "application/json";
+    String[] contentTypes = { "application/json"};
+    if (contentTypes.length != 1) {
+      throw new IllegalArgumentException("An API client expects a single content type. Got: "
+        + Arrays.toString(contentTypes));
+    }
 
     try {
-      String response = apiClient.invokeAPI(path, "PUT", queryParams, postBody, headerParams, formParams, contentType);
+      String response = apiClient.invokeAPI(path, "PUT", queryParams, postBody,
+        headerParams, formParams, contentTypes[0]);
+
       if (response != null) {
         return ;
       } else {
@@ -353,7 +397,7 @@ public class ClustersApi {
   }
 
   public void update(String environment, String deployment, String cluster, ClusterTemplate body) throws ApiException {
-      update(environment, deployment, cluster, null, body);
+     update(environment, deployment, cluster, null, body);
     }
   }
 

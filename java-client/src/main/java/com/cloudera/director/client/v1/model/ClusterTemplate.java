@@ -175,6 +175,36 @@ public class ClusterTemplate {
   }
 
   @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+
+    ClusterTemplate other = (ClusterTemplate) o; // NOPMD
+
+    if (externalDatabases != null ? !externalDatabases.equals(other.externalDatabases) : other.externalDatabases != null) return false;
+    if (name != null ? !name.equals(other.name) : other.name != null) return false;
+    if (parcelRepositories != null ? !parcelRepositories.equals(other.parcelRepositories) : other.parcelRepositories != null) return false;
+    if (productVersions != null ? !productVersions.equals(other.productVersions) : other.productVersions != null) return false;
+    if (services != null ? !services.equals(other.services) : other.services != null) return false;
+    if (servicesConfigs != null ? !servicesConfigs.equals(other.servicesConfigs) : other.servicesConfigs != null) return false;
+    if (virtualInstanceGroups != null ? !virtualInstanceGroups.equals(other.virtualInstanceGroups) : other.virtualInstanceGroups != null) return false;
+    return true;
+  }
+
+  @Override
+  public int hashCode() {
+    int result = 0;
+    result = 31 * result + (externalDatabases != null ? externalDatabases.hashCode() : 0);
+    result = 31 * result + (name != null ? name.hashCode() : 0);
+    result = 31 * result + (parcelRepositories != null ? parcelRepositories.hashCode() : 0);
+    result = 31 * result + (productVersions != null ? productVersions.hashCode() : 0);
+    result = 31 * result + (services != null ? services.hashCode() : 0);
+    result = 31 * result + (servicesConfigs != null ? servicesConfigs.hashCode() : 0);
+    result = 31 * result + (virtualInstanceGroups != null ? virtualInstanceGroups.hashCode() : 0);
+    return result;
+  }
+
+  @Override
   public String toString()  {
     StringBuilder sb = new StringBuilder();
     String newLine = System.getProperty("line.separator");

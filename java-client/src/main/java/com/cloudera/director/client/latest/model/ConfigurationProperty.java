@@ -22,6 +22,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ConfigurationProperty {
+  /* Whether this property is basic */
+  private Boolean basic;
   /* Configuration property key */
   private String configKey;
   /* The default value for this property */
@@ -65,7 +67,8 @@ public class ConfigurationProperty {
   }
   public ConfigurationProperty() { }
 
-  private ConfigurationProperty(String configKey, String defaultValue, String description, String listSeparator, String name, String placeholder, Boolean required, Boolean sensitive, String type, List<ConfigurationPropertyValue> validValues, String widget) {
+  private ConfigurationProperty(Boolean basic, String configKey, String defaultValue, String description, String listSeparator, String name, String placeholder, Boolean required, Boolean sensitive, String type, List<ConfigurationPropertyValue> validValues, String widget) {
+    this.basic = basic;
     this.configKey = configKey;
     this.defaultValue = defaultValue;
     this.description = description;
@@ -80,6 +83,7 @@ public class ConfigurationProperty {
   }
 
   private ConfigurationProperty(ConfigurationPropertyBuilder builder) {
+    this.basic = builder.basic;
     this.configKey = builder.configKey;
     this.defaultValue = builder.defaultValue;
     this.description = builder.description;
@@ -98,6 +102,7 @@ public class ConfigurationProperty {
   }
 
   public static class ConfigurationPropertyBuilder {
+    private Boolean basic = null;
     private String configKey = null;
     private String defaultValue = null;
     private String description = null;
@@ -109,6 +114,11 @@ public class ConfigurationProperty {
     private String type = null;
     private List<ConfigurationPropertyValue> validValues = new ArrayList<ConfigurationPropertyValue>();
     private String widget = null;
+
+    public ConfigurationPropertyBuilder basic(Boolean basic) {
+      this.basic = basic;
+      return this;
+    }
 
     public ConfigurationPropertyBuilder configKey(String configKey) {
       this.configKey = configKey;
@@ -172,6 +182,7 @@ public class ConfigurationProperty {
 
   public ConfigurationPropertyBuilder toBuilder() {
     return builder()
+      .basic(basic)
       .configKey(configKey)
       .defaultValue(defaultValue)
       .description(description)
@@ -185,6 +196,13 @@ public class ConfigurationProperty {
       .widget(widget)
       ;
   }
+  public Boolean getBasic() {
+    return basic;
+  }
+  public void setBasic(Boolean basic) {
+    this.basic = basic;
+  }
+
   public String getConfigKey() {
     return configKey;
   }
@@ -263,10 +281,51 @@ public class ConfigurationProperty {
   }
 
   @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+
+    ConfigurationProperty other = (ConfigurationProperty) o; // NOPMD
+
+    if (basic != null ? !basic.equals(other.basic) : other.basic != null) return false;
+    if (configKey != null ? !configKey.equals(other.configKey) : other.configKey != null) return false;
+    if (defaultValue != null ? !defaultValue.equals(other.defaultValue) : other.defaultValue != null) return false;
+    if (description != null ? !description.equals(other.description) : other.description != null) return false;
+    if (listSeparator != null ? !listSeparator.equals(other.listSeparator) : other.listSeparator != null) return false;
+    if (name != null ? !name.equals(other.name) : other.name != null) return false;
+    if (placeholder != null ? !placeholder.equals(other.placeholder) : other.placeholder != null) return false;
+    if (required != null ? !required.equals(other.required) : other.required != null) return false;
+    if (sensitive != null ? !sensitive.equals(other.sensitive) : other.sensitive != null) return false;
+    if (type != null ? !type.equals(other.type) : other.type != null) return false;
+    if (validValues != null ? !validValues.equals(other.validValues) : other.validValues != null) return false;
+    if (widget != null ? !widget.equals(other.widget) : other.widget != null) return false;
+    return true;
+  }
+
+  @Override
+  public int hashCode() {
+    int result = 0;
+    result = 31 * result + (basic != null ? basic.hashCode() : 0);
+    result = 31 * result + (configKey != null ? configKey.hashCode() : 0);
+    result = 31 * result + (defaultValue != null ? defaultValue.hashCode() : 0);
+    result = 31 * result + (description != null ? description.hashCode() : 0);
+    result = 31 * result + (listSeparator != null ? listSeparator.hashCode() : 0);
+    result = 31 * result + (name != null ? name.hashCode() : 0);
+    result = 31 * result + (placeholder != null ? placeholder.hashCode() : 0);
+    result = 31 * result + (required != null ? required.hashCode() : 0);
+    result = 31 * result + (sensitive != null ? sensitive.hashCode() : 0);
+    result = 31 * result + (type != null ? type.hashCode() : 0);
+    result = 31 * result + (validValues != null ? validValues.hashCode() : 0);
+    result = 31 * result + (widget != null ? widget.hashCode() : 0);
+    return result;
+  }
+
+  @Override
   public String toString()  {
     StringBuilder sb = new StringBuilder();
     String newLine = System.getProperty("line.separator");
     sb.append("class ConfigurationProperty {" + newLine);
+    sb.append("  basic: ").append(basic).append(newLine);
     sb.append("  configKey: ").append(configKey).append(newLine);
     sb.append("  defaultValue: ").append(defaultValue).append(newLine);
     sb.append("  description: ").append(description).append(newLine);

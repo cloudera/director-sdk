@@ -98,6 +98,28 @@ public class Environment {
   }
 
   @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+
+    Environment other = (Environment) o; // NOPMD
+
+    if (credentials != null ? !credentials.equals(other.credentials) : other.credentials != null) return false;
+    if (name != null ? !name.equals(other.name) : other.name != null) return false;
+    if (provider != null ? !provider.equals(other.provider) : other.provider != null) return false;
+    return true;
+  }
+
+  @Override
+  public int hashCode() {
+    int result = 0;
+    result = 31 * result + (credentials != null ? credentials.hashCode() : 0);
+    result = 31 * result + (name != null ? name.hashCode() : 0);
+    result = 31 * result + (provider != null ? provider.hashCode() : 0);
+    return result;
+  }
+
+  @Override
   public String toString()  {
     StringBuilder sb = new StringBuilder();
     String newLine = System.getProperty("line.separator");

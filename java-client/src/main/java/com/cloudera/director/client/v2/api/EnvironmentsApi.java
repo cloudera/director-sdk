@@ -22,6 +22,7 @@ import com.cloudera.director.client.common.ApiClient;
 import com.cloudera.director.client.common.ApiException;
 
 import com.cloudera.director.client.v2.model.Environment;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List; // NOPMD
 import java.util.Map;
@@ -62,10 +63,16 @@ public class EnvironmentsApi {
     Map<String, String> headerParams = new HashMap<String, String>();
     Map<String, String> formParams = new HashMap<String, String>();
 
-    String contentType = "application/json";
+    String[] contentTypes = { "application/json"};
+    if (contentTypes.length != 1) {
+      throw new IllegalArgumentException("An API client expects a single content type. Got: "
+        + Arrays.toString(contentTypes));
+    }
 
     try {
-      String response = apiClient.invokeAPI(path, "POST", queryParams, postBody, headerParams, formParams, contentType);
+      String response = apiClient.invokeAPI(path, "POST", queryParams, postBody,
+        headerParams, formParams, contentTypes[0]);
+
       if (response != null) {
         return ;
       } else {
@@ -101,10 +108,16 @@ public class EnvironmentsApi {
     Map<String, String> headerParams = new HashMap<String, String>();
     Map<String, String> formParams = new HashMap<String, String>();
 
-    String contentType = "application/json";
+    String[] contentTypes = { "application/json"};
+    if (contentTypes.length != 1) {
+      throw new IllegalArgumentException("An API client expects a single content type. Got: "
+        + Arrays.toString(contentTypes));
+    }
 
     try {
-      String response = apiClient.invokeAPI(path, "DELETE", queryParams, postBody, headerParams, formParams, contentType);
+      String response = apiClient.invokeAPI(path, "DELETE", queryParams, postBody,
+        headerParams, formParams, contentTypes[0]);
+
       if (response != null) {
         return ;
       } else {
@@ -141,10 +154,16 @@ public class EnvironmentsApi {
     Map<String, String> headerParams = new HashMap<String, String>();
     Map<String, String> formParams = new HashMap<String, String>();
 
-    String contentType = "application/json";
+    String[] contentTypes = { "application/json"};
+    if (contentTypes.length != 1) {
+      throw new IllegalArgumentException("An API client expects a single content type. Got: "
+        + Arrays.toString(contentTypes));
+    }
 
     try {
-      String response = apiClient.invokeAPI(path, "GET", queryParams, postBody, headerParams, formParams, contentType);
+      String response = apiClient.invokeAPI(path, "GET", queryParams, postBody,
+        headerParams, formParams, contentTypes[0]);
+
       if (response != null) {
         return (Environment) ApiClient.deserialize(response, "", Environment.class);
       } else {
@@ -176,10 +195,16 @@ public class EnvironmentsApi {
     Map<String, String> headerParams = new HashMap<String, String>();
     Map<String, String> formParams = new HashMap<String, String>();
 
-    String contentType = "application/json";
+    String[] contentTypes = { "application/json"};
+    if (contentTypes.length != 1) {
+      throw new IllegalArgumentException("An API client expects a single content type. Got: "
+        + Arrays.toString(contentTypes));
+    }
 
     try {
-      String response = apiClient.invokeAPI(path, "GET", queryParams, postBody, headerParams, formParams, contentType);
+      String response = apiClient.invokeAPI(path, "GET", queryParams, postBody,
+        headerParams, formParams, contentTypes[0]);
+
       if (response != null) {
         return (List<String>) ApiClient.deserialize(response, "List", String.class);
       } else {
@@ -219,10 +244,16 @@ public class EnvironmentsApi {
     Map<String, String> headerParams = new HashMap<String, String>();
     Map<String, String> formParams = new HashMap<String, String>();
 
-    String contentType = "application/json";
+    String[] contentTypes = { "application/json"};
+    if (contentTypes.length != 1) {
+      throw new IllegalArgumentException("An API client expects a single content type. Got: "
+        + Arrays.toString(contentTypes));
+    }
 
     try {
-      String response = apiClient.invokeAPI(path, "PUT", queryParams, postBody, headerParams, formParams, contentType);
+      String response = apiClient.invokeAPI(path, "PUT", queryParams, postBody,
+        headerParams, formParams, contentTypes[0]);
+
       if (response != null) {
         return ;
       } else {

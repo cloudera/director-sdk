@@ -11,6 +11,7 @@ import os
 import re
 import urllib
 import urllib2
+import base64
 import httplib
 import json
 import datetime
@@ -21,10 +22,11 @@ import cloudera
 class ApiClient:
     """Generic API client for Swagger client library builds"""
 
-    def __init__(self, apiServer=None, apiKey=""):
-        self.apiKey = apiKey
+    def __init__(self, apiServer=None, username=None, password=None):
         self.apiServer = apiServer
         self.cookie = None
+        self.username = username
+        self.password = password
 
     # Return key value as a tuple from "dict[key,value]", handles nested structures
     def _getKeyValue(self, dict_str):
@@ -46,8 +48,8 @@ class ApiClient:
         return key, value
 
     def callAPI(self, resourcePath, method, queryParams, postData,
-                          headerParams=None):
-        string = self.callAPIAndGetRawString(resourcePath, method, queryParams, postData, headerParams)
+                          headerParams=None, contentType=None):
+        string = self.callAPIAndGetRawString(resourcePath, method, queryParams, postData, headerParams, contentType)
 
         try:
             data = json.loads(string)
@@ -57,7 +59,7 @@ class ApiClient:
         return data
 
     def callAPIAndGetRawString(self, resourcePath, method, queryParams, postData,
-                headerParams=None):
+                headerParams=None, contentType=None):
 
         url = self.apiServer + resourcePath
         headers = {}
@@ -66,8 +68,6 @@ class ApiClient:
                 headers[param] = value
 
         #headers['Content-type'] = 'application/json'
-        headers['api_key'] = self.apiKey
-
         if self.cookie:
             headers['Cookie'] = self.cookie
 
@@ -89,15 +89,22 @@ class ApiClient:
         elif method in ['POST', 'PUT', 'DELETE']:
 
             if postData:
-                headers['Content-type'] = 'application/json'
-                data = self.sanitizeForSerialization(postData)
-                data = json.dumps(data)
+                headers['Content-type'] = contentType
+                if contentType == "application/json":
+                  data = self.sanitizeForSerialization(postData)
+                  data = json.dumps(data)
+
+                elif contentType == "text/plain":
+                  data = postData
 
         else:
             raise Exception('Method ' + method + ' is not recognized.')
 
         request = MethodRequest(method=method, url=url, headers=headers,
                                 data=data)
+        if not (self.username is None or self.password is None):
+            base64string = base64.encodestring('%s:%s' % (self.username, self.password)).replace('\n', '')
+            request.add_header("Authorization", "Basic %s" % base64string)
 
         # Make the request
         response = urllib2.urlopen(request)
@@ -178,11 +185,10 @@ class ApiClient:
                 return ret
 
 
-            if objClass.startswith('set'):
-                ret = set()
-                for subObj in obj:
-                    ret.add(self.deserialize(subObj, 'str'))
-                return ret
+            if objClass.startswith('set['):
+                match = re.match('set\[(.*)\]', objClass)
+                subClass = match.group(1)
+                return {self.deserialize(subObj, subClass) for subObj in obj}
 
 
             if (objClass in ['int', 'float', 'long', 'dict', 'list', 'str', 'bool', 'datetime']):
@@ -216,7 +222,7 @@ class ApiClient:
                 elif (attrType == 'datetime'):
                     setattr(instance, attr, datetime.datetime.strptime(value[:-5],
                                               "%Y-%m-%dT%H:%M:%S.%f"))
-                elif 'list[' in attrType:
+                elif attrType.startswith('list['):
                     match = re.match('list\[(.*)\]', attrType)
                     subClass = match.group(1)
                     subValues = []

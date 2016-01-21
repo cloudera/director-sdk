@@ -22,17 +22,26 @@ class Cluster:
 
     def __init__(self, **kwargs):
         self.swaggerTypes = {
+            'health': 'cloudera.director.latest.models.Health',
             'instances': 'list[cloudera.director.latest.models.Instance]',
+            'instancesUrl': 'str',
             'name': 'str',
-            'services': 'list[cloudera.director.latest.models.Service]'
+            'services': 'list[cloudera.director.latest.models.Service]',
+            'url': 'str'
 
         }
 
 
+        #Overall cluster health
+        self.health = kwargs.get('health',None) # cloudera.director.latest.models.Health
         #All instances making this cluster
         self.instances = kwargs.get('instances',[]) # list[cloudera.director.latest.models.Instance]
+        #Optional URL for cluster instances in Cloudera Manager
+        self.instancesUrl = kwargs.get('instancesUrl',None) # str
         #Cluster name
         self.name = kwargs.get('name',None) # str
         #The services that belong to this cluster
         self.services = kwargs.get('services',[]) # list[cloudera.director.latest.models.Service]
+        #Optional URL for cluster in Cloudera Manager
+        self.url = kwargs.get('url',None) # str
         

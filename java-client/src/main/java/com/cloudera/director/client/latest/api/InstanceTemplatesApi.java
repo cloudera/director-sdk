@@ -22,6 +22,7 @@ import com.cloudera.director.client.common.ApiClient;
 import com.cloudera.director.client.common.ApiException;
 
 import com.cloudera.director.client.latest.model.InstanceTemplate;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List; // NOPMD
 import java.util.Map;
@@ -56,17 +57,23 @@ public class InstanceTemplatesApi {
        throw new ApiException(400, "missing required params");
     }
     // create path and map variables
-    String path = "/api/v3/environments/{environment}/templates/instances".replaceAll("\\{format\\}", "json").replaceAll("\\{" + "environment" + "\\}", apiClient.escapeString(environment.toString()));
+    String path = "/api/v4/environments/{environment}/templates/instances".replaceAll("\\{format\\}", "json").replaceAll("\\{" + "environment" + "\\}", apiClient.escapeString(environment.toString()));
 
     // query params
     Map<String, String> queryParams = new HashMap<String, String>();
     Map<String, String> headerParams = new HashMap<String, String>();
     Map<String, String> formParams = new HashMap<String, String>();
 
-    String contentType = "application/json";
+    String[] contentTypes = { "application/json"};
+    if (contentTypes.length != 1) {
+      throw new IllegalArgumentException("An API client expects a single content type. Got: "
+        + Arrays.toString(contentTypes));
+    }
 
     try {
-      String response = apiClient.invokeAPI(path, "POST", queryParams, postBody, headerParams, formParams, contentType);
+      String response = apiClient.invokeAPI(path, "POST", queryParams, postBody,
+        headerParams, formParams, contentTypes[0]);
+
       if (response != null) {
         return ;
       } else {
@@ -97,17 +104,23 @@ public class InstanceTemplatesApi {
        throw new ApiException(400, "missing required params");
     }
     // create path and map variables
-    String path = "/api/v3/environments/{environment}/templates/instances/{template}".replaceAll("\\{format\\}", "json").replaceAll("\\{" + "environment" + "\\}", apiClient.escapeString(environment.toString())).replaceAll("\\{" + "template" + "\\}", apiClient.escapeString(template.toString()));
+    String path = "/api/v4/environments/{environment}/templates/instances/{template}".replaceAll("\\{format\\}", "json").replaceAll("\\{" + "environment" + "\\}", apiClient.escapeString(environment.toString())).replaceAll("\\{" + "template" + "\\}", apiClient.escapeString(template.toString()));
 
     // query params
     Map<String, String> queryParams = new HashMap<String, String>();
     Map<String, String> headerParams = new HashMap<String, String>();
     Map<String, String> formParams = new HashMap<String, String>();
 
-    String contentType = "application/json";
+    String[] contentTypes = { "application/json"};
+    if (contentTypes.length != 1) {
+      throw new IllegalArgumentException("An API client expects a single content type. Got: "
+        + Arrays.toString(contentTypes));
+    }
 
     try {
-      String response = apiClient.invokeAPI(path, "DELETE", queryParams, postBody, headerParams, formParams, contentType);
+      String response = apiClient.invokeAPI(path, "DELETE", queryParams, postBody,
+        headerParams, formParams, contentTypes[0]);
+
       if (response != null) {
         return ;
       } else {
@@ -138,17 +151,23 @@ public class InstanceTemplatesApi {
        throw new ApiException(400, "missing required params");
     }
     // create path and map variables
-    String path = "/api/v3/environments/{environment}/templates/instances/{template}".replaceAll("\\{format\\}", "json").replaceAll("\\{" + "environment" + "\\}", apiClient.escapeString(environment.toString())).replaceAll("\\{" + "template" + "\\}", apiClient.escapeString(template.toString()));
+    String path = "/api/v4/environments/{environment}/templates/instances/{template}".replaceAll("\\{format\\}", "json").replaceAll("\\{" + "environment" + "\\}", apiClient.escapeString(environment.toString())).replaceAll("\\{" + "template" + "\\}", apiClient.escapeString(template.toString()));
 
     // query params
     Map<String, String> queryParams = new HashMap<String, String>();
     Map<String, String> headerParams = new HashMap<String, String>();
     Map<String, String> formParams = new HashMap<String, String>();
 
-    String contentType = "application/json";
+    String[] contentTypes = { "application/json"};
+    if (contentTypes.length != 1) {
+      throw new IllegalArgumentException("An API client expects a single content type. Got: "
+        + Arrays.toString(contentTypes));
+    }
 
     try {
-      String response = apiClient.invokeAPI(path, "GET", queryParams, postBody, headerParams, formParams, contentType);
+      String response = apiClient.invokeAPI(path, "GET", queryParams, postBody,
+        headerParams, formParams, contentTypes[0]);
+
       if (response != null) {
         return (InstanceTemplate) ApiClient.deserialize(response, "", InstanceTemplate.class);
       } else {
@@ -178,17 +197,23 @@ public class InstanceTemplatesApi {
        throw new ApiException(400, "missing required params");
     }
     // create path and map variables
-    String path = "/api/v3/environments/{environment}/templates/instances".replaceAll("\\{format\\}", "json").replaceAll("\\{" + "environment" + "\\}", apiClient.escapeString(environment.toString()));
+    String path = "/api/v4/environments/{environment}/templates/instances".replaceAll("\\{format\\}", "json").replaceAll("\\{" + "environment" + "\\}", apiClient.escapeString(environment.toString()));
 
     // query params
     Map<String, String> queryParams = new HashMap<String, String>();
     Map<String, String> headerParams = new HashMap<String, String>();
     Map<String, String> formParams = new HashMap<String, String>();
 
-    String contentType = "application/json";
+    String[] contentTypes = { "application/json"};
+    if (contentTypes.length != 1) {
+      throw new IllegalArgumentException("An API client expects a single content type. Got: "
+        + Arrays.toString(contentTypes));
+    }
 
     try {
-      String response = apiClient.invokeAPI(path, "GET", queryParams, postBody, headerParams, formParams, contentType);
+      String response = apiClient.invokeAPI(path, "GET", queryParams, postBody,
+        headerParams, formParams, contentTypes[0]);
+
       if (response != null) {
         return (List<String>) ApiClient.deserialize(response, "List", String.class);
       } else {
@@ -223,17 +248,23 @@ public class InstanceTemplatesApi {
        throw new ApiException(400, "missing required params");
     }
     // create path and map variables
-    String path = "/api/v3/environments/{environment}/templates/instances/{template}".replaceAll("\\{format\\}", "json").replaceAll("\\{" + "environment" + "\\}", apiClient.escapeString(environment.toString())).replaceAll("\\{" + "template" + "\\}", apiClient.escapeString(template.toString()));
+    String path = "/api/v4/environments/{environment}/templates/instances/{template}".replaceAll("\\{format\\}", "json").replaceAll("\\{" + "environment" + "\\}", apiClient.escapeString(environment.toString())).replaceAll("\\{" + "template" + "\\}", apiClient.escapeString(template.toString()));
 
     // query params
     Map<String, String> queryParams = new HashMap<String, String>();
     Map<String, String> headerParams = new HashMap<String, String>();
     Map<String, String> formParams = new HashMap<String, String>();
 
-    String contentType = "application/json";
+    String[] contentTypes = { "application/json"};
+    if (contentTypes.length != 1) {
+      throw new IllegalArgumentException("An API client expects a single content type. Got: "
+        + Arrays.toString(contentTypes));
+    }
 
     try {
-      String response = apiClient.invokeAPI(path, "PUT", queryParams, postBody, headerParams, formParams, contentType);
+      String response = apiClient.invokeAPI(path, "PUT", queryParams, postBody,
+        headerParams, formParams, contentTypes[0]);
+
       if (response != null) {
         return ;
       } else {

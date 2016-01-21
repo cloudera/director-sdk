@@ -334,6 +334,48 @@ public class DeploymentTemplate {
   }
 
   @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+
+    DeploymentTemplate other = (DeploymentTemplate) o; // NOPMD
+
+    if (configs != null ? !configs.equals(other.configs) : other.configs != null) return false;
+    if (enableEnterpriseTrial != null ? !enableEnterpriseTrial.equals(other.enableEnterpriseTrial) : other.enableEnterpriseTrial != null) return false;
+    if (externalDatabaseTemplates != null ? !externalDatabaseTemplates.equals(other.externalDatabaseTemplates) : other.externalDatabaseTemplates != null) return false;
+    if (externalDatabases != null ? !externalDatabases.equals(other.externalDatabases) : other.externalDatabases != null) return false;
+    if (hostname != null ? !hostname.equals(other.hostname) : other.hostname != null) return false;
+    if (krbAdminUsername != null ? !krbAdminUsername.equals(other.krbAdminUsername) : other.krbAdminUsername != null) return false;
+    if (managerVirtualInstance != null ? !managerVirtualInstance.equals(other.managerVirtualInstance) : other.managerVirtualInstance != null) return false;
+    if (name != null ? !name.equals(other.name) : other.name != null) return false;
+    if (port != null ? !port.equals(other.port) : other.port != null) return false;
+    if (repository != null ? !repository.equals(other.repository) : other.repository != null) return false;
+    if (repositoryKeyUrl != null ? !repositoryKeyUrl.equals(other.repositoryKeyUrl) : other.repositoryKeyUrl != null) return false;
+    if (unlimitedJce != null ? !unlimitedJce.equals(other.unlimitedJce) : other.unlimitedJce != null) return false;
+    if (username != null ? !username.equals(other.username) : other.username != null) return false;
+    return true;
+  }
+
+  @Override
+  public int hashCode() {
+    int result = 0;
+    result = 31 * result + (configs != null ? configs.hashCode() : 0);
+    result = 31 * result + (enableEnterpriseTrial != null ? enableEnterpriseTrial.hashCode() : 0);
+    result = 31 * result + (externalDatabaseTemplates != null ? externalDatabaseTemplates.hashCode() : 0);
+    result = 31 * result + (externalDatabases != null ? externalDatabases.hashCode() : 0);
+    result = 31 * result + (hostname != null ? hostname.hashCode() : 0);
+    result = 31 * result + (krbAdminUsername != null ? krbAdminUsername.hashCode() : 0);
+    result = 31 * result + (managerVirtualInstance != null ? managerVirtualInstance.hashCode() : 0);
+    result = 31 * result + (name != null ? name.hashCode() : 0);
+    result = 31 * result + (port != null ? port.hashCode() : 0);
+    result = 31 * result + (repository != null ? repository.hashCode() : 0);
+    result = 31 * result + (repositoryKeyUrl != null ? repositoryKeyUrl.hashCode() : 0);
+    result = 31 * result + (unlimitedJce != null ? unlimitedJce.hashCode() : 0);
+    result = 31 * result + (username != null ? username.hashCode() : 0);
+    return result;
+  }
+
+  @Override
   public String toString()  {
     StringBuilder sb = new StringBuilder();
     String newLine = System.getProperty("line.separator");

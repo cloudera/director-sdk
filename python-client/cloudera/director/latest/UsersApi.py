@@ -49,7 +49,7 @@ class UsersApi(object):
             params[key] = val
         del params['kwargs']
 
-        resourcePath = '/api/v3/users'
+        resourcePath = '/api/v4/users'
         resourcePath = resourcePath.replace('{format}', 'json')
         method = 'POST'
 
@@ -58,8 +58,12 @@ class UsersApi(object):
 
         postData = body
 
+        contentTypes = ["application/json"]
+        if len(contentTypes) != 1:
+            raise ValueError("An API client expects a single content type. Got: %s" % contentTypes)
+
         response = self.apiClient.callAPI(resourcePath, method, queryParams,
-                                          postData, headerParams)
+                                          postData, headerParams, contentTypes[0])
 
         
 
@@ -83,7 +87,7 @@ class UsersApi(object):
             params[key] = val
         del params['kwargs']
 
-        resourcePath = '/api/v3/users/current'
+        resourcePath = '/api/v4/users/current'
         resourcePath = resourcePath.replace('{format}', 'json')
         method = 'GET'
 
@@ -92,8 +96,12 @@ class UsersApi(object):
 
         postData = None
 
+        contentTypes = ["application/json"]
+        if len(contentTypes) != 1:
+            raise ValueError("An API client expects a single content type. Got: %s" % contentTypes)
+
         response = self.apiClient.callAPI(resourcePath, method, queryParams,
-                                          postData, headerParams)
+                                          postData, headerParams, contentTypes[0])
 
         if not response:
             return None
@@ -124,7 +132,7 @@ class UsersApi(object):
             params[key] = val
         del params['kwargs']
 
-        resourcePath = '/api/v3/users/{username}'
+        resourcePath = '/api/v4/users/{username}'
         resourcePath = resourcePath.replace('{format}', 'json')
         method = 'DELETE'
 
@@ -137,8 +145,12 @@ class UsersApi(object):
                                                 replacement)
         postData = None
 
+        contentTypes = ["application/json"]
+        if len(contentTypes) != 1:
+            raise ValueError("An API client expects a single content type. Got: %s" % contentTypes)
+
         response = self.apiClient.callAPI(resourcePath, method, queryParams,
-                                          postData, headerParams)
+                                          postData, headerParams, contentTypes[0])
 
         
 
@@ -164,7 +176,7 @@ class UsersApi(object):
             params[key] = val
         del params['kwargs']
 
-        resourcePath = '/api/v3/users/{username}'
+        resourcePath = '/api/v4/users/{username}'
         resourcePath = resourcePath.replace('{format}', 'json')
         method = 'GET'
 
@@ -177,8 +189,12 @@ class UsersApi(object):
                                                 replacement)
         postData = None
 
+        contentTypes = ["application/json"]
+        if len(contentTypes) != 1:
+            raise ValueError("An API client expects a single content type. Got: %s" % contentTypes)
+
         response = self.apiClient.callAPI(resourcePath, method, queryParams,
-                                          postData, headerParams)
+                                          postData, headerParams, contentTypes[0])
 
         if not response:
             return None
@@ -207,7 +223,7 @@ class UsersApi(object):
             params[key] = val
         del params['kwargs']
 
-        resourcePath = '/api/v3/users'
+        resourcePath = '/api/v4/users'
         resourcePath = resourcePath.replace('{format}', 'json')
         method = 'GET'
 
@@ -216,8 +232,12 @@ class UsersApi(object):
 
         postData = None
 
+        contentTypes = ["application/json"]
+        if len(contentTypes) != 1:
+            raise ValueError("An API client expects a single content type. Got: %s" % contentTypes)
+
         response = self.apiClient.callAPI(resourcePath, method, queryParams,
-                                          postData, headerParams)
+                                          postData, headerParams, contentTypes[0])
 
         if not response:
             return None
@@ -250,7 +270,7 @@ class UsersApi(object):
             params[key] = val
         del params['kwargs']
 
-        resourcePath = '/api/v3/users/{username}'
+        resourcePath = '/api/v4/users/{username}'
         resourcePath = resourcePath.replace('{format}', 'json')
         method = 'PUT'
 
@@ -263,8 +283,12 @@ class UsersApi(object):
                                                 replacement)
         postData = body
 
+        contentTypes = ["application/json"]
+        if len(contentTypes) != 1:
+            raise ValueError("An API client expects a single content type. Got: %s" % contentTypes)
+
         response = self.apiClient.callAPI(resourcePath, method, queryParams,
-                                          postData, headerParams)
+                                          postData, headerParams, contentTypes[0])
 
         
 
@@ -292,7 +316,7 @@ class UsersApi(object):
             params[key] = val
         del params['kwargs']
 
-        resourcePath = '/api/v3/users/{username}/password'
+        resourcePath = '/api/v4/users/{username}/password'
         resourcePath = resourcePath.replace('{format}', 'json')
         method = 'PUT'
 
@@ -305,8 +329,12 @@ class UsersApi(object):
                                                 replacement)
         postData = body
 
+        contentTypes = ["application/json"]
+        if len(contentTypes) != 1:
+            raise ValueError("An API client expects a single content type. Got: %s" % contentTypes)
+
         response = self.apiClient.callAPI(resourcePath, method, queryParams,
-                                          postData, headerParams)
+                                          postData, headerParams, contentTypes[0])
 
         
 

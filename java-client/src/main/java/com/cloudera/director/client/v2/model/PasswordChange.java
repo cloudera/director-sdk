@@ -80,6 +80,22 @@ public class PasswordChange {
   }
 
   @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+
+    PasswordChange other = (PasswordChange) o; // NOPMD
+
+    return true;
+  }
+
+  @Override
+  public int hashCode() {
+    int result = 0;
+    return result;
+  }
+
+  @Override
   public String toString()  {
     StringBuilder sb = new StringBuilder();
     String newLine = System.getProperty("line.separator");

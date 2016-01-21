@@ -154,6 +154,34 @@ public class CloudProviderMetadata {
   }
 
   @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+
+    CloudProviderMetadata other = (CloudProviderMetadata) o; // NOPMD
+
+    if (configurationProperties != null ? !configurationProperties.equals(other.configurationProperties) : other.configurationProperties != null) return false;
+    if (credentialsProperties != null ? !credentialsProperties.equals(other.credentialsProperties) : other.credentialsProperties != null) return false;
+    if (description != null ? !description.equals(other.description) : other.description != null) return false;
+    if (id != null ? !id.equals(other.id) : other.id != null) return false;
+    if (name != null ? !name.equals(other.name) : other.name != null) return false;
+    if (resourceProviders != null ? !resourceProviders.equals(other.resourceProviders) : other.resourceProviders != null) return false;
+    return true;
+  }
+
+  @Override
+  public int hashCode() {
+    int result = 0;
+    result = 31 * result + (configurationProperties != null ? configurationProperties.hashCode() : 0);
+    result = 31 * result + (credentialsProperties != null ? credentialsProperties.hashCode() : 0);
+    result = 31 * result + (description != null ? description.hashCode() : 0);
+    result = 31 * result + (id != null ? id.hashCode() : 0);
+    result = 31 * result + (name != null ? name.hashCode() : 0);
+    result = 31 * result + (resourceProviders != null ? resourceProviders.hashCode() : 0);
+    return result;
+  }
+
+  @Override
   public String toString()  {
     StringBuilder sb = new StringBuilder();
     String newLine = System.getProperty("line.separator");

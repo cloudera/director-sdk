@@ -18,6 +18,8 @@
 
 package com.cloudera.director.client.latest.model;
 
+import java.util.HashMap;
+import java.util.Map;
 
 public class ExternalDatabaseServer {
   /* Hostname for existing external database server */
@@ -28,6 +30,8 @@ public class ExternalDatabaseServer {
   private String password;
   /* Port for an existing external database server */
   private Integer port;
+  /* External database display properties */
+  private Map<String,String> properties;
   /* External database server type */
   private String type;
   /* Database username for administrative access */
@@ -39,11 +43,12 @@ public class ExternalDatabaseServer {
   }
   public ExternalDatabaseServer() { }
 
-  private ExternalDatabaseServer(String hostname, String name, String password, Integer port, String type, String username) {
+  private ExternalDatabaseServer(String hostname, String name, String password, Integer port, Map<String,String> properties, String type, String username) {
     this.hostname = hostname;
     this.name = name;
     this.password = password;
     this.port = port;
+    this.properties = properties;
     this.type = type;
     this.username = username;
   }
@@ -53,6 +58,7 @@ public class ExternalDatabaseServer {
     this.name = builder.name;
     this.password = builder.password;
     this.port = builder.port;
+    this.properties = builder.properties;
     this.type = builder.type;
     this.username = builder.username;
   }
@@ -66,6 +72,7 @@ public class ExternalDatabaseServer {
     private String name = null;
     private String password = null;
     private Integer port = null;
+    private Map<String,String> properties = new HashMap<String,String>();
     private String type = null;
     private String username = null;
 
@@ -86,6 +93,11 @@ public class ExternalDatabaseServer {
 
     public ExternalDatabaseServerBuilder port(Integer port) {
       this.port = port;
+      return this;
+    }
+
+    public ExternalDatabaseServerBuilder properties(Map<String,String> properties) {
+      this.properties = properties;
       return this;
     }
 
@@ -110,6 +122,7 @@ public class ExternalDatabaseServer {
       .name(name)
       .password(password)
       .port(port)
+      .properties(properties)
       .type(type)
       .username(username)
       ;
@@ -142,6 +155,13 @@ public class ExternalDatabaseServer {
     this.port = port;
   }
 
+  public Map<String,String> getProperties() {
+    return properties;
+  }
+  public void setProperties(Map<String,String> properties) {
+    this.properties = properties;
+  }
+
   public String getType() {
     return type;
   }
@@ -157,6 +177,34 @@ public class ExternalDatabaseServer {
   }
 
   @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+
+    ExternalDatabaseServer other = (ExternalDatabaseServer) o; // NOPMD
+
+    if (hostname != null ? !hostname.equals(other.hostname) : other.hostname != null) return false;
+    if (name != null ? !name.equals(other.name) : other.name != null) return false;
+    if (port != null ? !port.equals(other.port) : other.port != null) return false;
+    if (properties != null ? !properties.equals(other.properties) : other.properties != null) return false;
+    if (type != null ? !type.equals(other.type) : other.type != null) return false;
+    if (username != null ? !username.equals(other.username) : other.username != null) return false;
+    return true;
+  }
+
+  @Override
+  public int hashCode() {
+    int result = 0;
+    result = 31 * result + (hostname != null ? hostname.hashCode() : 0);
+    result = 31 * result + (name != null ? name.hashCode() : 0);
+    result = 31 * result + (port != null ? port.hashCode() : 0);
+    result = 31 * result + (properties != null ? properties.hashCode() : 0);
+    result = 31 * result + (type != null ? type.hashCode() : 0);
+    result = 31 * result + (username != null ? username.hashCode() : 0);
+    return result;
+  }
+
+  @Override
   public String toString()  {
     StringBuilder sb = new StringBuilder();
     String newLine = System.getProperty("line.separator");
@@ -165,6 +213,7 @@ public class ExternalDatabaseServer {
     sb.append("  name: ").append(name).append(newLine);
     sb.append("  password: ").append("REDACTED").append(newLine);
     sb.append("  port: ").append(port).append(newLine);
+    sb.append("  properties: ").append(properties).append(newLine);
     sb.append("  type: ").append(type).append(newLine);
     sb.append("  username: ").append(username).append(newLine);
     sb.append("}" + newLine);

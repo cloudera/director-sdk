@@ -58,8 +58,12 @@ class EnvironmentsApi(object):
 
         postData = body
 
+        contentTypes = ["application/json"]
+        if len(contentTypes) != 1:
+            raise ValueError("An API client expects a single content type. Got: %s" % contentTypes)
+
         response = self.apiClient.callAPI(resourcePath, method, queryParams,
-                                          postData, headerParams)
+                                          postData, headerParams, contentTypes[0])
 
         
 
@@ -98,8 +102,12 @@ class EnvironmentsApi(object):
                                                 replacement)
         postData = None
 
+        contentTypes = ["application/json"]
+        if len(contentTypes) != 1:
+            raise ValueError("An API client expects a single content type. Got: %s" % contentTypes)
+
         response = self.apiClient.callAPI(resourcePath, method, queryParams,
-                                          postData, headerParams)
+                                          postData, headerParams, contentTypes[0])
 
         
 
@@ -138,8 +146,12 @@ class EnvironmentsApi(object):
                                                 replacement)
         postData = None
 
+        contentTypes = ["application/json"]
+        if len(contentTypes) != 1:
+            raise ValueError("An API client expects a single content type. Got: %s" % contentTypes)
+
         response = self.apiClient.callAPI(resourcePath, method, queryParams,
-                                          postData, headerParams)
+                                          postData, headerParams, contentTypes[0])
 
         if not response:
             return None
@@ -177,8 +189,12 @@ class EnvironmentsApi(object):
 
         postData = None
 
+        contentTypes = ["application/json"]
+        if len(contentTypes) != 1:
+            raise ValueError("An API client expects a single content type. Got: %s" % contentTypes)
+
         response = self.apiClient.callAPI(resourcePath, method, queryParams,
-                                          postData, headerParams)
+                                          postData, headerParams, contentTypes[0])
 
         if not response:
             return None
@@ -224,8 +240,12 @@ class EnvironmentsApi(object):
                                                 replacement)
         postData = body
 
+        contentTypes = ["application/json"]
+        if len(contentTypes) != 1:
+            raise ValueError("An API client expects a single content type. Got: %s" % contentTypes)
+
         response = self.apiClient.callAPI(resourcePath, method, queryParams,
-                                          postData, headerParams)
+                                          postData, headerParams, contentTypes[0])
 
         
 

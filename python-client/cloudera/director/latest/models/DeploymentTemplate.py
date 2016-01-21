@@ -27,6 +27,7 @@ class DeploymentTemplate:
             'externalDatabaseTemplates': 'dict[str,cloudera.director.latest.models.ExternalDatabaseTemplate]',
             'externalDatabases': 'dict[str,cloudera.director.latest.models.ExternalDatabase]',
             'hostname': 'str',
+            'javaInstallationStrategy': 'str',
             'krbAdminPassword': 'str',
             'krbAdminUsername': 'str',
             'license': 'str',
@@ -52,6 +53,8 @@ class DeploymentTemplate:
         self.externalDatabases = kwargs.get('externalDatabases',{}) # dict[str,cloudera.director.latest.models.ExternalDatabase]
         #Hostname for existing Cloudera Manager installation
         self.hostname = kwargs.get('hostname',None) # str
+        #Cloudera Director and Cloudera Manager's Java installation strategy
+        self.javaInstallationStrategy = kwargs.get('javaInstallationStrategy',None) # str
         #Password for Kerberos administrative principal used by Cloudera Manager [redacted on read]
         self.krbAdminPassword = kwargs.get('krbAdminPassword',None) # str
         #Username for Kerberos administrative principal used by Cloudera Manager

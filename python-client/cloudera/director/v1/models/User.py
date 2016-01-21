@@ -24,7 +24,7 @@ class User:
         self.swaggerTypes = {
             'enabled': 'bool',
             'password': 'str',
-            'roles': 'set',
+            'roles': 'set[str]',
             'username': 'str'
 
         }
@@ -35,7 +35,7 @@ class User:
         #Password [redacted on read]
         self.password = kwargs.get('password',None) # str
         #Roles
-        self.roles = kwargs.get('roles',set()) # set
+        self.roles = kwargs.get('roles',set()) # set[str]
         #User name
         self.username = kwargs.get('username',None) # str
         

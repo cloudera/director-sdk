@@ -117,6 +117,28 @@ public class User {
   }
 
   @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+
+    User other = (User) o; // NOPMD
+
+    if (enabled != null ? !enabled.equals(other.enabled) : other.enabled != null) return false;
+    if (roles != null ? !roles.equals(other.roles) : other.roles != null) return false;
+    if (username != null ? !username.equals(other.username) : other.username != null) return false;
+    return true;
+  }
+
+  @Override
+  public int hashCode() {
+    int result = 0;
+    result = 31 * result + (enabled != null ? enabled.hashCode() : 0);
+    result = 31 * result + (roles != null ? roles.hashCode() : 0);
+    result = 31 * result + (username != null ? username.hashCode() : 0);
+    return result;
+  }
+
+  @Override
   public String toString()  {
     StringBuilder sb = new StringBuilder();
     String newLine = System.getProperty("line.separator");

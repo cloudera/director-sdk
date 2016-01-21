@@ -29,7 +29,10 @@ import com.fasterxml.jackson.databind.JavaType;
 
 import com.sun.jersey.api.client.Client;
 import com.sun.jersey.api.client.ClientResponse;
+import com.sun.jersey.api.client.config.ClientConfig;
+import com.sun.jersey.api.client.config.DefaultClientConfig;
 import com.sun.jersey.api.client.WebResource.Builder;
+import com.sun.jersey.api.client.filter.HTTPBasicAuthFilter;
 import com.sun.jersey.api.client.filter.LoggingFilter;
 import com.sun.jersey.multipart.FormDataMultiPart;
 
@@ -52,6 +55,8 @@ public class ApiClient {
   private Set<Cookie> cookies = new HashSet<Cookie>();
   private String basePath;
   private boolean isDebug = false;
+  private String username;
+  private String password;
 
   public void enableDebug() {
     isDebug = true;
@@ -74,7 +79,13 @@ public class ApiClient {
   }
 
   public ApiClient(String apiServer) {
-    this.basePath = apiServer;
+    this.basePath = Preconditions.checkNotNull(apiServer, "apiServer is null");
+  }
+
+  public ApiClient(String apiServer, String username, String password) {
+    this.basePath = Preconditions.checkNotNull(apiServer, "apiServer is null");
+    this.username = Preconditions.checkNotNull(username, "username is null");
+    this.password = Preconditions.checkNotNull(password, "password is null");
   }
 
   public static Object deserialize(String json, String containerType, Class cls) throws ApiException {
@@ -108,9 +119,17 @@ public class ApiClient {
   }
 
   @SuppressWarnings("PMD.EmptyCatchBlock")
-  public String invokeAPI(String path, String method, Map<String, String> queryParams, Object body, Map<String, String> headerParams, Map<String, String> formParams, String contentType) throws ApiException {
+  public String invokeAPI(String path, String method, Map<String, String> queryParams, Object body,
+    Map<String, String> headerParams, Map<String, String> formParams, String contentType) throws ApiException {
+
     String host = getBasePath();
-    Client client = getClient(host);
+    Client client;
+
+    if (username == null || password == null) {
+      client = getClient(host);
+    } else {
+      client = getClient(host, username, password);
+    }
 
     StringBuilder b = new StringBuilder();
 
@@ -150,7 +169,11 @@ public class ApiClient {
       } else if (body instanceof FormDataMultiPart) {
         response = builder.type(contentType).post(ClientResponse.class, body);
       } else {
-        response = builder.type(contentType).post(ClientResponse.class, serialize(body));
+        if ("text/plain".equals(contentType)) {
+          response = builder.type(contentType).post(ClientResponse.class, body);
+        } else {
+          response = builder.type(contentType).post(ClientResponse.class, serialize(body));
+        }
       }
     } else if ("PUT".equals(method)) {
       if (body == null) {
@@ -206,8 +229,25 @@ public class ApiClient {
   private Client getClient(String host) {
     if (!hostMap.containsKey(host)) {
       Client client = Client.create();
-      if (isDebug)
+      if (isDebug) {
         client.addFilter(new LoggingFilter());
+      }
+
+      hostMap.put(host, client);
+    }
+    return hostMap.get(host);
+  }
+
+  private Client getClient(String host, String username, String password) {
+    if (!hostMap.containsKey(host)) {
+      ClientConfig clientConfig = new DefaultClientConfig();
+      Client client = Client.create(clientConfig);
+      client.addFilter(new HTTPBasicAuthFilter(username, password));
+
+      if (isDebug) {
+        client.addFilter(new LoggingFilter());
+      }
+
       hostMap.put(host, client);
     }
     return hostMap.get(host);

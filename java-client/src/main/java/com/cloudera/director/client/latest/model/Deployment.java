@@ -24,6 +24,8 @@ public class Deployment {
   private Boolean enableEnterpriseTrial;
   /* Hostname for existing Cloudera Manager installation */
   private String hostname;
+  /* Cloudera Director and Cloudera Manager's Java installation strategy */
+  private String javaInstallationStrategy;
   /* Password for Kerberos administrative principal used by Cloudera Manager [redacted on read] */
   private String krbAdminPassword;
   /* Username for Kerberos administrative principal used by Cloudera Manager */
@@ -43,11 +45,16 @@ public class Deployment {
   private Boolean unlimitedJce;
   /* Username for API access */
   private String username;
+  public interface JavaInstallationStrategy {
+    String AUTO = "AUTO";
+    String NONE = "NONE";
+  }
   public Deployment() { }
 
-  private Deployment(Boolean enableEnterpriseTrial, String hostname, String krbAdminPassword, String krbAdminUsername, Instance managerInstance, String name, String password, Integer port, String repository, String repositoryKeyUrl, Boolean unlimitedJce, String username) {
+  private Deployment(Boolean enableEnterpriseTrial, String hostname, String javaInstallationStrategy, String krbAdminPassword, String krbAdminUsername, Instance managerInstance, String name, String password, Integer port, String repository, String repositoryKeyUrl, Boolean unlimitedJce, String username) {
     this.enableEnterpriseTrial = enableEnterpriseTrial;
     this.hostname = hostname;
+    this.javaInstallationStrategy = javaInstallationStrategy;
     this.krbAdminPassword = krbAdminPassword;
     this.krbAdminUsername = krbAdminUsername;
     this.managerInstance = managerInstance;
@@ -63,6 +70,7 @@ public class Deployment {
   private Deployment(DeploymentBuilder builder) {
     this.enableEnterpriseTrial = builder.enableEnterpriseTrial;
     this.hostname = builder.hostname;
+    this.javaInstallationStrategy = builder.javaInstallationStrategy;
     this.krbAdminPassword = builder.krbAdminPassword;
     this.krbAdminUsername = builder.krbAdminUsername;
     this.managerInstance = builder.managerInstance;
@@ -82,6 +90,7 @@ public class Deployment {
   public static class DeploymentBuilder {
     private Boolean enableEnterpriseTrial = null;
     private String hostname = null;
+    private String javaInstallationStrategy = null;
     private String krbAdminPassword = null;
     private String krbAdminUsername = null;
     private Instance managerInstance = null;
@@ -100,6 +109,11 @@ public class Deployment {
 
     public DeploymentBuilder hostname(String hostname) {
       this.hostname = hostname;
+      return this;
+    }
+
+    public DeploymentBuilder javaInstallationStrategy(String javaInstallationStrategy) {
+      this.javaInstallationStrategy = javaInstallationStrategy;
       return this;
     }
 
@@ -162,6 +176,7 @@ public class Deployment {
     return builder()
       .enableEnterpriseTrial(enableEnterpriseTrial)
       .hostname(hostname)
+      .javaInstallationStrategy(javaInstallationStrategy)
       .krbAdminPassword(krbAdminPassword)
       .krbAdminUsername(krbAdminUsername)
       .managerInstance(managerInstance)
@@ -186,6 +201,13 @@ public class Deployment {
   }
   public void setHostname(String hostname) {
     this.hostname = hostname;
+  }
+
+  public String getJavaInstallationStrategy() {
+    return javaInstallationStrategy;
+  }
+  public void setJavaInstallationStrategy(String javaInstallationStrategy) {
+    this.javaInstallationStrategy = javaInstallationStrategy;
   }
 
   public String getKrbAdminPassword() {
@@ -259,12 +281,51 @@ public class Deployment {
   }
 
   @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+
+    Deployment other = (Deployment) o; // NOPMD
+
+    if (enableEnterpriseTrial != null ? !enableEnterpriseTrial.equals(other.enableEnterpriseTrial) : other.enableEnterpriseTrial != null) return false;
+    if (hostname != null ? !hostname.equals(other.hostname) : other.hostname != null) return false;
+    if (javaInstallationStrategy != null ? !javaInstallationStrategy.equals(other.javaInstallationStrategy) : other.javaInstallationStrategy != null) return false;
+    if (krbAdminUsername != null ? !krbAdminUsername.equals(other.krbAdminUsername) : other.krbAdminUsername != null) return false;
+    if (managerInstance != null ? !managerInstance.equals(other.managerInstance) : other.managerInstance != null) return false;
+    if (name != null ? !name.equals(other.name) : other.name != null) return false;
+    if (port != null ? !port.equals(other.port) : other.port != null) return false;
+    if (repository != null ? !repository.equals(other.repository) : other.repository != null) return false;
+    if (repositoryKeyUrl != null ? !repositoryKeyUrl.equals(other.repositoryKeyUrl) : other.repositoryKeyUrl != null) return false;
+    if (unlimitedJce != null ? !unlimitedJce.equals(other.unlimitedJce) : other.unlimitedJce != null) return false;
+    if (username != null ? !username.equals(other.username) : other.username != null) return false;
+    return true;
+  }
+
+  @Override
+  public int hashCode() {
+    int result = 0;
+    result = 31 * result + (enableEnterpriseTrial != null ? enableEnterpriseTrial.hashCode() : 0);
+    result = 31 * result + (hostname != null ? hostname.hashCode() : 0);
+    result = 31 * result + (javaInstallationStrategy != null ? javaInstallationStrategy.hashCode() : 0);
+    result = 31 * result + (krbAdminUsername != null ? krbAdminUsername.hashCode() : 0);
+    result = 31 * result + (managerInstance != null ? managerInstance.hashCode() : 0);
+    result = 31 * result + (name != null ? name.hashCode() : 0);
+    result = 31 * result + (port != null ? port.hashCode() : 0);
+    result = 31 * result + (repository != null ? repository.hashCode() : 0);
+    result = 31 * result + (repositoryKeyUrl != null ? repositoryKeyUrl.hashCode() : 0);
+    result = 31 * result + (unlimitedJce != null ? unlimitedJce.hashCode() : 0);
+    result = 31 * result + (username != null ? username.hashCode() : 0);
+    return result;
+  }
+
+  @Override
   public String toString()  {
     StringBuilder sb = new StringBuilder();
     String newLine = System.getProperty("line.separator");
     sb.append("class Deployment {" + newLine);
     sb.append("  enableEnterpriseTrial: ").append(enableEnterpriseTrial).append(newLine);
     sb.append("  hostname: ").append(hostname).append(newLine);
+    sb.append("  javaInstallationStrategy: ").append(javaInstallationStrategy).append(newLine);
     sb.append("  krbAdminPassword: ").append("REDACTED").append(newLine);
     sb.append("  krbAdminUsername: ").append(krbAdminUsername).append(newLine);
     sb.append("  managerInstance: ").append(managerInstance).append(newLine);

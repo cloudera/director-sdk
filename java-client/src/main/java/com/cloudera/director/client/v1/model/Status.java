@@ -142,6 +142,32 @@ public class Status {
   }
 
   @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+
+    Status other = (Status) o; // NOPMD
+
+    if (completedSteps != null ? !completedSteps.equals(other.completedSteps) : other.completedSteps != null) return false;
+    if (description != null ? !description.equals(other.description) : other.description != null) return false;
+    if (descriptionDetails != null ? !descriptionDetails.equals(other.descriptionDetails) : other.descriptionDetails != null) return false;
+    if (remainingSteps != null ? !remainingSteps.equals(other.remainingSteps) : other.remainingSteps != null) return false;
+    if (stage != null ? !stage.equals(other.stage) : other.stage != null) return false;
+    return true;
+  }
+
+  @Override
+  public int hashCode() {
+    int result = 0;
+    result = 31 * result + (completedSteps != null ? completedSteps.hashCode() : 0);
+    result = 31 * result + (description != null ? description.hashCode() : 0);
+    result = 31 * result + (descriptionDetails != null ? descriptionDetails.hashCode() : 0);
+    result = 31 * result + (remainingSteps != null ? remainingSteps.hashCode() : 0);
+    result = 31 * result + (stage != null ? stage.hashCode() : 0);
+    return result;
+  }
+
+  @Override
   public String toString()  {
     StringBuilder sb = new StringBuilder();
     String newLine = System.getProperty("line.separator");

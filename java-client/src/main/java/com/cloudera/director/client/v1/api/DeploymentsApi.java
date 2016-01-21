@@ -24,6 +24,7 @@ import com.cloudera.director.client.common.ApiException;
 import com.cloudera.director.client.v1.model.Status;
 import com.cloudera.director.client.v1.model.DeploymentTemplate;
 import com.cloudera.director.client.v1.model.Deployment;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List; // NOPMD
 import java.util.Map;
@@ -67,10 +68,16 @@ public class DeploymentsApi {
     Map<String, String> formParams = new HashMap<String, String>();
 
     headerParams.put("X-Request-Id", XRequestId);
-    String contentType = "application/json";
+    String[] contentTypes = { "application/json"};
+    if (contentTypes.length != 1) {
+      throw new IllegalArgumentException("An API client expects a single content type. Got: "
+        + Arrays.toString(contentTypes));
+    }
 
     try {
-      String response = apiClient.invokeAPI(path, "POST", queryParams, postBody, headerParams, formParams, contentType);
+      String response = apiClient.invokeAPI(path, "POST", queryParams, postBody,
+        headerParams, formParams, contentTypes[0]);
+
       if (response != null) {
         return ;
       } else {
@@ -86,7 +93,7 @@ public class DeploymentsApi {
   }
 
   public void create(String environment, DeploymentTemplate body) throws ApiException {
-      create(environment, null, body);
+     create(environment, null, body);
     }
   /**
   * Delete a deployment by name
@@ -113,10 +120,16 @@ public class DeploymentsApi {
     Map<String, String> formParams = new HashMap<String, String>();
 
     headerParams.put("X-Request-Id", XRequestId);
-    String contentType = "application/json";
+    String[] contentTypes = { "application/json"};
+    if (contentTypes.length != 1) {
+      throw new IllegalArgumentException("An API client expects a single content type. Got: "
+        + Arrays.toString(contentTypes));
+    }
 
     try {
-      String response = apiClient.invokeAPI(path, "DELETE", queryParams, postBody, headerParams, formParams, contentType);
+      String response = apiClient.invokeAPI(path, "DELETE", queryParams, postBody,
+        headerParams, formParams, contentTypes[0]);
+
       if (response != null) {
         return ;
       } else {
@@ -132,7 +145,7 @@ public class DeploymentsApi {
   }
 
   public void delete(String environment, String deployment) throws ApiException {
-      delete(environment, deployment, null);
+     delete(environment, deployment, null);
     }
   /**
   * Get a deployment by name
@@ -143,6 +156,7 @@ public class DeploymentsApi {
   * status code: 401 reason: "Unauthorized"
   * status code: 403 reason: "Forbidden"
   * status code: 404 reason: "Entity not found"
+  * status code: 500 reason: "Deployment is in a failed stage"
   */
   public Deployment getRedacted(String environment, String deployment) throws ApiException {
     Object postBody = null;
@@ -158,10 +172,16 @@ public class DeploymentsApi {
     Map<String, String> headerParams = new HashMap<String, String>();
     Map<String, String> formParams = new HashMap<String, String>();
 
-    String contentType = "application/json";
+    String[] contentTypes = { "application/json"};
+    if (contentTypes.length != 1) {
+      throw new IllegalArgumentException("An API client expects a single content type. Got: "
+        + Arrays.toString(contentTypes));
+    }
 
     try {
-      String response = apiClient.invokeAPI(path, "GET", queryParams, postBody, headerParams, formParams, contentType);
+      String response = apiClient.invokeAPI(path, "GET", queryParams, postBody,
+        headerParams, formParams, contentTypes[0]);
+
       if (response != null) {
         return (Deployment) ApiClient.deserialize(response, "", Deployment.class);
       } else {
@@ -199,10 +219,16 @@ public class DeploymentsApi {
     Map<String, String> headerParams = new HashMap<String, String>();
     Map<String, String> formParams = new HashMap<String, String>();
 
-    String contentType = "application/json";
+    String[] contentTypes = { "application/json"};
+    if (contentTypes.length != 1) {
+      throw new IllegalArgumentException("An API client expects a single content type. Got: "
+        + Arrays.toString(contentTypes));
+    }
 
     try {
-      String response = apiClient.invokeAPI(path, "GET", queryParams, postBody, headerParams, formParams, contentType);
+      String response = apiClient.invokeAPI(path, "GET", queryParams, postBody,
+        headerParams, formParams, contentTypes[0]);
+
       if (response != null) {
         return (Status) ApiClient.deserialize(response, "", Status.class);
       } else {
@@ -240,10 +266,16 @@ public class DeploymentsApi {
     Map<String, String> headerParams = new HashMap<String, String>();
     Map<String, String> formParams = new HashMap<String, String>();
 
-    String contentType = "application/json";
+    String[] contentTypes = { "application/json"};
+    if (contentTypes.length != 1) {
+      throw new IllegalArgumentException("An API client expects a single content type. Got: "
+        + Arrays.toString(contentTypes));
+    }
 
     try {
-      String response = apiClient.invokeAPI(path, "GET", queryParams, postBody, headerParams, formParams, contentType);
+      String response = apiClient.invokeAPI(path, "GET", queryParams, postBody,
+        headerParams, formParams, contentTypes[0]);
+
       if (response != null) {
         return (DeploymentTemplate) ApiClient.deserialize(response, "", DeploymentTemplate.class);
       } else {
@@ -280,10 +312,16 @@ public class DeploymentsApi {
     Map<String, String> headerParams = new HashMap<String, String>();
     Map<String, String> formParams = new HashMap<String, String>();
 
-    String contentType = "application/json";
+    String[] contentTypes = { "application/json"};
+    if (contentTypes.length != 1) {
+      throw new IllegalArgumentException("An API client expects a single content type. Got: "
+        + Arrays.toString(contentTypes));
+    }
 
     try {
-      String response = apiClient.invokeAPI(path, "GET", queryParams, postBody, headerParams, formParams, contentType);
+      String response = apiClient.invokeAPI(path, "GET", queryParams, postBody,
+        headerParams, formParams, contentTypes[0]);
+
       if (response != null) {
         return (List<String>) ApiClient.deserialize(response, "List", String.class);
       } else {
@@ -326,10 +364,16 @@ public class DeploymentsApi {
     Map<String, String> formParams = new HashMap<String, String>();
 
     headerParams.put("X-Request-Id", XRequestId);
-    String contentType = "application/json";
+    String[] contentTypes = { "application/json"};
+    if (contentTypes.length != 1) {
+      throw new IllegalArgumentException("An API client expects a single content type. Got: "
+        + Arrays.toString(contentTypes));
+    }
 
     try {
-      String response = apiClient.invokeAPI(path, "PUT", queryParams, postBody, headerParams, formParams, contentType);
+      String response = apiClient.invokeAPI(path, "PUT", queryParams, postBody,
+        headerParams, formParams, contentTypes[0]);
+
       if (response != null) {
         return ;
       } else {
@@ -345,7 +389,7 @@ public class DeploymentsApi {
   }
 
   public void update(String environment, String deployment, DeploymentTemplate body) throws ApiException {
-      update(environment, deployment, null, body);
+     update(environment, deployment, null, body);
     }
   }
 

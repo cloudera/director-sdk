@@ -44,10 +44,15 @@ public class Capabilities {
   public interface OperatingSystemVersion {
     String REDHAT_COMPATIBLE_5 = "REDHAT_COMPATIBLE_5";
     String REDHAT_COMPATIBLE_6 = "REDHAT_COMPATIBLE_6";
-    String SLES_11 = "SLES_11";
+    String REDHAT_COMPATIBLE_7 = "REDHAT_COMPATIBLE_7";
+    String SLES_11_SP1 = "SLES_11_SP1";
+    String SLES_11_SP2 = "SLES_11_SP2";
+    String SLES_11_SP3 = "SLES_11_SP3";
     String DEBIAN_SQUEEZE = "DEBIAN_SQUEEZE";
+    String DEBIAN_WHEEZY = "DEBIAN_WHEEZY";
     String UBUNTU_LUCID = "UBUNTU_LUCID";
     String UBUNTU_PRECISE = "UBUNTU_PRECISE";
+    String UBUNTU_TRUSTY = "UBUNTU_TRUSTY";
     String UNKNOWN = "UNKNOWN";
   }
   public interface PackageManager {
@@ -226,6 +231,40 @@ public class Capabilities {
   }
   public void setVirtualizationType(String virtualizationType) {
     this.virtualizationType = virtualizationType;
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+
+    Capabilities other = (Capabilities) o; // NOPMD
+
+    if (iptablesEnabled != null ? !iptablesEnabled.equals(other.iptablesEnabled) : other.iptablesEnabled != null) return false;
+    if (javaVendor != null ? !javaVendor.equals(other.javaVendor) : other.javaVendor != null) return false;
+    if (javaVersion != null ? !javaVersion.equals(other.javaVersion) : other.javaVersion != null) return false;
+    if (operatingSystemType != null ? !operatingSystemType.equals(other.operatingSystemType) : other.operatingSystemType != null) return false;
+    if (operatingSystemVersion != null ? !operatingSystemVersion.equals(other.operatingSystemVersion) : other.operatingSystemVersion != null) return false;
+    if (packageManager != null ? !packageManager.equals(other.packageManager) : other.packageManager != null) return false;
+    if (passwordlessSudoEnabled != null ? !passwordlessSudoEnabled.equals(other.passwordlessSudoEnabled) : other.passwordlessSudoEnabled != null) return false;
+    if (pythonVersion != null ? !pythonVersion.equals(other.pythonVersion) : other.pythonVersion != null) return false;
+    if (virtualizationType != null ? !virtualizationType.equals(other.virtualizationType) : other.virtualizationType != null) return false;
+    return true;
+  }
+
+  @Override
+  public int hashCode() {
+    int result = 0;
+    result = 31 * result + (iptablesEnabled != null ? iptablesEnabled.hashCode() : 0);
+    result = 31 * result + (javaVendor != null ? javaVendor.hashCode() : 0);
+    result = 31 * result + (javaVersion != null ? javaVersion.hashCode() : 0);
+    result = 31 * result + (operatingSystemType != null ? operatingSystemType.hashCode() : 0);
+    result = 31 * result + (operatingSystemVersion != null ? operatingSystemVersion.hashCode() : 0);
+    result = 31 * result + (packageManager != null ? packageManager.hashCode() : 0);
+    result = 31 * result + (passwordlessSudoEnabled != null ? passwordlessSudoEnabled.hashCode() : 0);
+    result = 31 * result + (pythonVersion != null ? pythonVersion.hashCode() : 0);
+    result = 31 * result + (virtualizationType != null ? virtualizationType.hashCode() : 0);
+    return result;
   }
 
   @Override

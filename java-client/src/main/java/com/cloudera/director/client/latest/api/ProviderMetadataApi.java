@@ -22,6 +22,7 @@ import com.cloudera.director.client.common.ApiClient;
 import com.cloudera.director.client.common.ApiException;
 
 import com.cloudera.director.client.latest.model.CloudProviderMetadata;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List; // NOPMD
 import java.util.Map;
@@ -53,17 +54,23 @@ public class ProviderMetadataApi {
        throw new ApiException(400, "missing required params");
     }
     // create path and map variables
-    String path = "/api/v3/metadata/providers/{providerId}".replaceAll("\\{format\\}", "json").replaceAll("\\{" + "providerId" + "\\}", apiClient.escapeString(providerId.toString()));
+    String path = "/api/v4/metadata/providers/{providerId}".replaceAll("\\{format\\}", "json").replaceAll("\\{" + "providerId" + "\\}", apiClient.escapeString(providerId.toString()));
 
     // query params
     Map<String, String> queryParams = new HashMap<String, String>();
     Map<String, String> headerParams = new HashMap<String, String>();
     Map<String, String> formParams = new HashMap<String, String>();
 
-    String contentType = "application/json";
+    String[] contentTypes = { "application/json"};
+    if (contentTypes.length != 1) {
+      throw new IllegalArgumentException("An API client expects a single content type. Got: "
+        + Arrays.toString(contentTypes));
+    }
 
     try {
-      String response = apiClient.invokeAPI(path, "GET", queryParams, postBody, headerParams, formParams, contentType);
+      String response = apiClient.invokeAPI(path, "GET", queryParams, postBody,
+        headerParams, formParams, contentTypes[0]);
+
       if (response != null) {
         return (CloudProviderMetadata) ApiClient.deserialize(response, "", CloudProviderMetadata.class);
       } else {
@@ -88,17 +95,23 @@ public class ProviderMetadataApi {
   public List<CloudProviderMetadata> list() throws ApiException {
     Object postBody = null;
     // create path and map variables
-    String path = "/api/v3/metadata/providers".replaceAll("\\{format\\}", "json");
+    String path = "/api/v4/metadata/providers".replaceAll("\\{format\\}", "json");
 
     // query params
     Map<String, String> queryParams = new HashMap<String, String>();
     Map<String, String> headerParams = new HashMap<String, String>();
     Map<String, String> formParams = new HashMap<String, String>();
 
-    String contentType = "application/json";
+    String[] contentTypes = { "application/json"};
+    if (contentTypes.length != 1) {
+      throw new IllegalArgumentException("An API client expects a single content type. Got: "
+        + Arrays.toString(contentTypes));
+    }
 
     try {
-      String response = apiClient.invokeAPI(path, "GET", queryParams, postBody, headerParams, formParams, contentType);
+      String response = apiClient.invokeAPI(path, "GET", queryParams, postBody,
+        headerParams, formParams, contentTypes[0]);
+
       if (response != null) {
         return (List<CloudProviderMetadata>) ApiClient.deserialize(response, "List", CloudProviderMetadata.class);
       } else {

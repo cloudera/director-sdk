@@ -133,6 +133,32 @@ public class VirtualInstanceGroup {
   }
 
   @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+
+    VirtualInstanceGroup other = (VirtualInstanceGroup) o; // NOPMD
+
+    if (minCount != null ? !minCount.equals(other.minCount) : other.minCount != null) return false;
+    if (name != null ? !name.equals(other.name) : other.name != null) return false;
+    if (roleTypesConfigs != null ? !roleTypesConfigs.equals(other.roleTypesConfigs) : other.roleTypesConfigs != null) return false;
+    if (serviceTypeToRoleTypes != null ? !serviceTypeToRoleTypes.equals(other.serviceTypeToRoleTypes) : other.serviceTypeToRoleTypes != null) return false;
+    if (virtualInstances != null ? !virtualInstances.equals(other.virtualInstances) : other.virtualInstances != null) return false;
+    return true;
+  }
+
+  @Override
+  public int hashCode() {
+    int result = 0;
+    result = 31 * result + (minCount != null ? minCount.hashCode() : 0);
+    result = 31 * result + (name != null ? name.hashCode() : 0);
+    result = 31 * result + (roleTypesConfigs != null ? roleTypesConfigs.hashCode() : 0);
+    result = 31 * result + (serviceTypeToRoleTypes != null ? serviceTypeToRoleTypes.hashCode() : 0);
+    result = 31 * result + (virtualInstances != null ? virtualInstances.hashCode() : 0);
+    return result;
+  }
+
+  @Override
   public String toString()  {
     StringBuilder sb = new StringBuilder();
     String newLine = System.getProperty("line.separator");

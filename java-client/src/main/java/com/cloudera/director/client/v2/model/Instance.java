@@ -112,6 +112,30 @@ public class Instance {
   }
 
   @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+
+    Instance other = (Instance) o; // NOPMD
+
+    if (capabilities != null ? !capabilities.equals(other.capabilities) : other.capabilities != null) return false;
+    if (health != null ? !health.equals(other.health) : other.health != null) return false;
+    if (ipAddress != null ? !ipAddress.equals(other.ipAddress) : other.ipAddress != null) return false;
+    if (virtualInstance != null ? !virtualInstance.equals(other.virtualInstance) : other.virtualInstance != null) return false;
+    return true;
+  }
+
+  @Override
+  public int hashCode() {
+    int result = 0;
+    result = 31 * result + (capabilities != null ? capabilities.hashCode() : 0);
+    result = 31 * result + (health != null ? health.hashCode() : 0);
+    result = 31 * result + (ipAddress != null ? ipAddress.hashCode() : 0);
+    result = 31 * result + (virtualInstance != null ? virtualInstance.hashCode() : 0);
+    return result;
+  }
+
+  @Override
   public String toString()  {
     StringBuilder sb = new StringBuilder();
     String newLine = System.getProperty("line.separator");

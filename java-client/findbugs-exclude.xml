@@ -22,5 +22,9 @@ Note: This file is auto generated. Do not edit manually.
         <Class name="~com\.cloudera\.director\.client\..*\.api\..*" />
         <Bug pattern="NP_BOOLEAN_RETURN_NULL" />
     </Match>
+    <Match>
+        <Class name="~com\.cloudera\.director\.client\..*\.model\.PasswordChange" />
+        <Bug pattern="DLS_DEAD_LOCAL_STORE" />
+    </Match>
 </FindBugsFilter>
 

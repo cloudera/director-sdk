@@ -23,7 +23,7 @@ class ExternalDatabaseServerUsage:
     def __init__(self, **kwargs):
         self.swaggerTypes = {
             'clusters': 'dict[str,list[str]]',
-            'deployments': 'set'
+            'deployments': 'set[str]'
 
         }
 
@@ -31,5 +31,5 @@ class ExternalDatabaseServerUsage:
         #Clusters that use the specified database
         self.clusters = kwargs.get('clusters',{}) # dict[str,list[str]]
         #Deployments that use the specified database
-        self.deployments = kwargs.get('deployments',set()) # set
+        self.deployments = kwargs.get('deployments',set()) # set[str]
         
