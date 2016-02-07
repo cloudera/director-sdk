@@ -20,7 +20,7 @@ Basic Usage
 Let's go through a quick example that shows how to list all of the environments:
 
 ```python
-from cloudera.director.latest.client import ApiClient
+from cloudera.director.common.client import ApiClient
 from cloudera.director.latest import AuthenticationApi, EnvironmentsApi
 from cloudera.director.latest.models import Login
 
@@ -39,7 +39,7 @@ Another example on how to create and delete a user account:
 
 ```python
 from cloudera.director.latest.models import Login, User
-from cloudera.director.latest.client import ApiClient
+from cloudera.director.common.client import ApiClient
 from cloudera.director.latest import AuthenticationApi, UsersApi
 
 # Cloudera Director server runs at http://127.0.0.1:7189
