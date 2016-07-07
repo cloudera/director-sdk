@@ -211,14 +211,30 @@ public class Deployment {
 
     Deployment other = (Deployment) o; // NOPMD
 
-    if (enableEnterpriseTrial != null ? !enableEnterpriseTrial.equals(other.enableEnterpriseTrial) : other.enableEnterpriseTrial != null) return false;
-    if (hostname != null ? !hostname.equals(other.hostname) : other.hostname != null) return false;
-    if (managerInstance != null ? !managerInstance.equals(other.managerInstance) : other.managerInstance != null) return false;
-    if (name != null ? !name.equals(other.name) : other.name != null) return false;
-    if (port != null ? !port.equals(other.port) : other.port != null) return false;
-    if (repository != null ? !repository.equals(other.repository) : other.repository != null) return false;
-    if (repositoryKeyUrl != null ? !repositoryKeyUrl.equals(other.repositoryKeyUrl) : other.repositoryKeyUrl != null) return false;
-    if (username != null ? !username.equals(other.username) : other.username != null) return false;
+    if (enableEnterpriseTrial != null ?
+        !enableEnterpriseTrial.equals(other.enableEnterpriseTrial) :
+        other.enableEnterpriseTrial != null) return false;
+    if (hostname != null ?
+        !hostname.equals(other.hostname) :
+        other.hostname != null) return false;
+    if (managerInstance != null ?
+        !managerInstance.equals(other.managerInstance) :
+        other.managerInstance != null) return false;
+    if (name != null ?
+        !name.equals(other.name) :
+        other.name != null) return false;
+    if (port != null ?
+        !port.equals(other.port) :
+        other.port != null) return false;
+    if (repository != null ?
+        !repository.equals(other.repository) :
+        other.repository != null) return false;
+    if (repositoryKeyUrl != null ?
+        !repositoryKeyUrl.equals(other.repositoryKeyUrl) :
+        other.repositoryKeyUrl != null) return false;
+    if (username != null ?
+        !username.equals(other.username) :
+        other.username != null) return false;
     return true;
   }
 

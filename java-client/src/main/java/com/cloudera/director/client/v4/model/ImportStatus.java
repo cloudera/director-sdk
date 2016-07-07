@@ -86,8 +86,12 @@ public class ImportStatus {
 
     ImportStatus other = (ImportStatus) o; // NOPMD
 
-    if (name != null ? !name.equals(other.name) : other.name != null) return false;
-    if (skipped != null ? !skipped.equals(other.skipped) : other.skipped != null) return false;
+    if (name != null ?
+        !name.equals(other.name) :
+        other.name != null) return false;
+    if (skipped != null ?
+        !skipped.equals(other.skipped) :
+        other.skipped != null) return false;
     return true;
   }
 

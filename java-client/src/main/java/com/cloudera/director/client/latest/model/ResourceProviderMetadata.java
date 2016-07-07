@@ -183,13 +183,27 @@ public class ResourceProviderMetadata {
 
     ResourceProviderMetadata other = (ResourceProviderMetadata) o; // NOPMD
 
-    if (configurationProperties != null ? !configurationProperties.equals(other.configurationProperties) : other.configurationProperties != null) return false;
-    if (description != null ? !description.equals(other.description) : other.description != null) return false;
-    if (id != null ? !id.equals(other.id) : other.id != null) return false;
-    if (name != null ? !name.equals(other.name) : other.name != null) return false;
-    if (resourceDisplayProperties != null ? !resourceDisplayProperties.equals(other.resourceDisplayProperties) : other.resourceDisplayProperties != null) return false;
-    if (templateProperties != null ? !templateProperties.equals(other.templateProperties) : other.templateProperties != null) return false;
-    if (type != null ? !type.equals(other.type) : other.type != null) return false;
+    if (configurationProperties != null ?
+        !configurationProperties.equals(other.configurationProperties) :
+        other.configurationProperties != null) return false;
+    if (description != null ?
+        !description.equals(other.description) :
+        other.description != null) return false;
+    if (id != null ?
+        !id.equals(other.id) :
+        other.id != null) return false;
+    if (name != null ?
+        !name.equals(other.name) :
+        other.name != null) return false;
+    if (resourceDisplayProperties != null ?
+        !resourceDisplayProperties.equals(other.resourceDisplayProperties) :
+        other.resourceDisplayProperties != null) return false;
+    if (templateProperties != null ?
+        !templateProperties.equals(other.templateProperties) :
+        other.templateProperties != null) return false;
+    if (type != null ?
+        !type.equals(other.type) :
+        other.type != null) return false;
     return true;
   }
 

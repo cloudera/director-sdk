@@ -22,7 +22,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class ExternalDatabaseServerTemplate {
-  private Map<String,String> config;
+  private Map<String, String> config;
   /* Hostname for existing external database server */
   private String hostname;
   /* External database server name */
@@ -31,7 +31,7 @@ public class ExternalDatabaseServerTemplate {
   private String password;
   /* Port for an existing external database server */
   private Integer port;
-  private Map<String,String> tags;
+  private Map<String, String> tags;
   /* External database server type */
   private String type;
   /* Database username for administrative access */
@@ -43,7 +43,7 @@ public class ExternalDatabaseServerTemplate {
   }
   public ExternalDatabaseServerTemplate() { }
 
-  private ExternalDatabaseServerTemplate(Map<String,String> config, String hostname, String name, String password, Integer port, Map<String,String> tags, String type, String username) {
+  private ExternalDatabaseServerTemplate(Map<String, String> config, String hostname, String name, String password, Integer port, Map<String, String> tags, String type, String username) {
     this.config = config;
     this.hostname = hostname;
     this.name = name;
@@ -70,16 +70,16 @@ public class ExternalDatabaseServerTemplate {
   }
 
   public static class ExternalDatabaseServerTemplateBuilder {
-    private Map<String,String> config = new HashMap<String,String>();
+    private Map<String, String> config = new HashMap<String, String>();
     private String hostname = null;
     private String name = null;
     private String password = null;
     private Integer port = null;
-    private Map<String,String> tags = new HashMap<String,String>();
+    private Map<String, String> tags = new HashMap<String, String>();
     private String type = null;
     private String username = null;
 
-    public ExternalDatabaseServerTemplateBuilder config(Map<String,String> config) {
+    public ExternalDatabaseServerTemplateBuilder config(Map<String, String> config) {
       this.config = config;
       return this;
     }
@@ -104,7 +104,7 @@ public class ExternalDatabaseServerTemplate {
       return this;
     }
 
-    public ExternalDatabaseServerTemplateBuilder tags(Map<String,String> tags) {
+    public ExternalDatabaseServerTemplateBuilder tags(Map<String, String> tags) {
       this.tags = tags;
       return this;
     }
@@ -136,10 +136,10 @@ public class ExternalDatabaseServerTemplate {
       .username(username)
       ;
   }
-  public Map<String,String> getConfig() {
+  public Map<String, String> getConfig() {
     return config;
   }
-  public void setConfig(Map<String,String> config) {
+  public void setConfig(Map<String, String> config) {
     this.config = config;
   }
 
@@ -171,10 +171,10 @@ public class ExternalDatabaseServerTemplate {
     this.port = port;
   }
 
-  public Map<String,String> getTags() {
+  public Map<String, String> getTags() {
     return tags;
   }
-  public void setTags(Map<String,String> tags) {
+  public void setTags(Map<String, String> tags) {
     this.tags = tags;
   }
 
@@ -199,13 +199,27 @@ public class ExternalDatabaseServerTemplate {
 
     ExternalDatabaseServerTemplate other = (ExternalDatabaseServerTemplate) o; // NOPMD
 
-    if (config != null ? !config.equals(other.config) : other.config != null) return false;
-    if (hostname != null ? !hostname.equals(other.hostname) : other.hostname != null) return false;
-    if (name != null ? !name.equals(other.name) : other.name != null) return false;
-    if (port != null ? !port.equals(other.port) : other.port != null) return false;
-    if (tags != null ? !tags.equals(other.tags) : other.tags != null) return false;
-    if (type != null ? !type.equals(other.type) : other.type != null) return false;
-    if (username != null ? !username.equals(other.username) : other.username != null) return false;
+    if (config != null ?
+        !config.equals(other.config) :
+        other.config != null) return false;
+    if (hostname != null ?
+        !hostname.equals(other.hostname) :
+        other.hostname != null) return false;
+    if (name != null ?
+        !name.equals(other.name) :
+        other.name != null) return false;
+    if (port != null ?
+        !port.equals(other.port) :
+        other.port != null) return false;
+    if (tags != null ?
+        !tags.equals(other.tags) :
+        other.tags != null) return false;
+    if (type != null ?
+        !type.equals(other.type) :
+        other.type != null) return false;
+    if (username != null ?
+        !username.equals(other.username) :
+        other.username != null) return false;
     return true;
   }
 

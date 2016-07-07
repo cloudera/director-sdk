@@ -31,9 +31,9 @@ class Status:
         }
 
 
-        self.completedSteps = kwargs.get('completedSteps',0) # int
+        self.completedSteps = kwargs.get('completedSteps',None) # int
         self.description = kwargs.get('description',None) # str
         self.descriptionDetails = kwargs.get('descriptionDetails',[]) # list[str]
-        self.remainingSteps = kwargs.get('remainingSteps',0) # int
+        self.remainingSteps = kwargs.get('remainingSteps',None) # int
         self.stage = kwargs.get('stage',None) # str
         

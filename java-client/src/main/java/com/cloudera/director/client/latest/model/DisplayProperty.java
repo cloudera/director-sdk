@@ -177,12 +177,24 @@ public class DisplayProperty {
 
     DisplayProperty other = (DisplayProperty) o; // NOPMD
 
-    if (description != null ? !description.equals(other.description) : other.description != null) return false;
-    if (displayKey != null ? !displayKey.equals(other.displayKey) : other.displayKey != null) return false;
-    if (name != null ? !name.equals(other.name) : other.name != null) return false;
-    if (sensitive != null ? !sensitive.equals(other.sensitive) : other.sensitive != null) return false;
-    if (type != null ? !type.equals(other.type) : other.type != null) return false;
-    if (widget != null ? !widget.equals(other.widget) : other.widget != null) return false;
+    if (description != null ?
+        !description.equals(other.description) :
+        other.description != null) return false;
+    if (displayKey != null ?
+        !displayKey.equals(other.displayKey) :
+        other.displayKey != null) return false;
+    if (name != null ?
+        !name.equals(other.name) :
+        other.name != null) return false;
+    if (sensitive != null ?
+        !sensitive.equals(other.sensitive) :
+        other.sensitive != null) return false;
+    if (type != null ?
+        !type.equals(other.type) :
+        other.type != null) return false;
+    if (widget != null ?
+        !widget.equals(other.widget) :
+        other.widget != null) return false;
     return true;
   }
 

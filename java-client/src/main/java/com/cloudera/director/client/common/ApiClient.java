@@ -154,9 +154,10 @@ public class ApiClient {
       builder.cookie(c);
     }
 
-    for (String key : defaultHeaderMap.keySet()) {
+    for (Map.Entry<String, String> entry : defaultHeaderMap.entrySet()) {
+      String key = entry.getKey();
       if (!headerParams.containsKey(key)) {
-        builder.header(key, defaultHeaderMap.get(key));
+        builder.header(key, entry.getValue());
       }
     }
     ClientResponse response = null;

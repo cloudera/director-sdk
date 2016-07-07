@@ -41,7 +41,7 @@ public class UsersApi {
   }
 
   /**
-  * Create a new user
+  * Create a new user.
   * @param  body  user
   * status code: 201 reason: "User created"
   * status code: 302 reason: "User already exists"
@@ -57,7 +57,9 @@ public class UsersApi {
        throw new ApiException(400, "missing required params");
     }
     // create path and map variables
-    String path = "/api/v1/users".replaceAll("\\{format\\}", "json");
+    String path = "/api/v1/users"
+      .replaceAll("\\{format\\}", "json")
+      ;
 
     // query params
     Map<String, String> queryParams = new HashMap<String, String>();
@@ -89,7 +91,7 @@ public class UsersApi {
   }
 
   /**
-  * Get the current user
+  * Get the current user.
   * status code: 200 reason: "OK"
   * status code: 401 reason: "Unauthorized"
   * status code: 403 reason: "Forbidden"
@@ -98,7 +100,9 @@ public class UsersApi {
   public User currentRedacted() throws ApiException {
     Object postBody = null;
     // create path and map variables
-    String path = "/api/v1/users/current".replaceAll("\\{format\\}", "json");
+    String path = "/api/v1/users/current"
+      .replaceAll("\\{format\\}", "json")
+      ;
 
     // query params
     Map<String, String> queryParams = new HashMap<String, String>();
@@ -130,7 +134,7 @@ public class UsersApi {
   }
 
   /**
-  * Delete a user by username
+  * Delete a user by username.
   * @param  username  username
   * status code: 204 reason: "User deleted"
   * status code: 401 reason: "Unauthorized"
@@ -143,7 +147,11 @@ public class UsersApi {
        throw new ApiException(400, "missing required params");
     }
     // create path and map variables
-    String path = "/api/v1/users/{username}".replaceAll("\\{format\\}", "json").replaceAll("\\{" + "username" + "\\}", apiClient.escapeString(username.toString()));
+    String path = "/api/v1/users/{username}"
+      .replaceAll("\\{format\\}", "json")
+      .replaceAll("\\{" + "username" + "\\}",
+                  apiClient.escapeString(username.toString()))
+      ;
 
     // query params
     Map<String, String> queryParams = new HashMap<String, String>();
@@ -175,7 +183,7 @@ public class UsersApi {
   }
 
   /**
-  * Get a user by username
+  * Get a user by username.
   * @param  username  username
   * status code: 200 reason: "OK"
   * status code: 401 reason: "Unauthorized"
@@ -189,7 +197,11 @@ public class UsersApi {
        throw new ApiException(400, "missing required params");
     }
     // create path and map variables
-    String path = "/api/v1/users/{username}".replaceAll("\\{format\\}", "json").replaceAll("\\{" + "username" + "\\}", apiClient.escapeString(username.toString()));
+    String path = "/api/v1/users/{username}"
+      .replaceAll("\\{format\\}", "json")
+      .replaceAll("\\{" + "username" + "\\}",
+                  apiClient.escapeString(username.toString()))
+      ;
 
     // query params
     Map<String, String> queryParams = new HashMap<String, String>();
@@ -221,7 +233,7 @@ public class UsersApi {
   }
 
   /**
-  * List all users
+  * List all users.
   * status code: 200 reason: "OK"
   * status code: 401 reason: "Unauthorized"
   * status code: 403 reason: "Forbidden"
@@ -230,7 +242,9 @@ public class UsersApi {
   public List<String> list() throws ApiException {
     Object postBody = null;
     // create path and map variables
-    String path = "/api/v1/users".replaceAll("\\{format\\}", "json");
+    String path = "/api/v1/users"
+      .replaceAll("\\{format\\}", "json")
+      ;
 
     // query params
     Map<String, String> queryParams = new HashMap<String, String>();
@@ -262,7 +276,7 @@ public class UsersApi {
   }
 
   /**
-  * Update an existing user
+  * Update an existing user.
   * @param  username  username
   * @param  body  user
   * status code: 201 reason: "Created"
@@ -279,7 +293,11 @@ public class UsersApi {
        throw new ApiException(400, "missing required params");
     }
     // create path and map variables
-    String path = "/api/v1/users/{username}".replaceAll("\\{format\\}", "json").replaceAll("\\{" + "username" + "\\}", apiClient.escapeString(username.toString()));
+    String path = "/api/v1/users/{username}"
+      .replaceAll("\\{format\\}", "json")
+      .replaceAll("\\{" + "username" + "\\}",
+                  apiClient.escapeString(username.toString()))
+      ;
 
     // query params
     Map<String, String> queryParams = new HashMap<String, String>();
@@ -311,7 +329,7 @@ public class UsersApi {
   }
 
   /**
-  * Update the password of an existing user
+  * Update the password of an existing user.
   * @param  username  username
   * @param  body  passwords
   * status code: 201 reason: "Created"
@@ -328,7 +346,11 @@ public class UsersApi {
        throw new ApiException(400, "missing required params");
     }
     // create path and map variables
-    String path = "/api/v1/users/{username}/password".replaceAll("\\{format\\}", "json").replaceAll("\\{" + "username" + "\\}", apiClient.escapeString(username.toString()));
+    String path = "/api/v1/users/{username}/password"
+      .replaceAll("\\{format\\}", "json")
+      .replaceAll("\\{" + "username" + "\\}",
+                  apiClient.escapeString(username.toString()))
+      ;
 
     // query params
     Map<String, String> queryParams = new HashMap<String, String>();

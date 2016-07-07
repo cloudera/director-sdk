@@ -23,13 +23,13 @@ import java.util.Map;
 
 public class DeploymentTemplate {
   /* Optional configurations for Cloudera Manager and its management services */
-  private Map<String,Map<String,String>> configs;
+  private Map<String, Map<String, String>> configs;
   /* Whether to enable Cloudera Enterprise Trial */
   private Boolean enableEnterpriseTrial;
   /* External database template definitions */
-  private Map<String,ExternalDatabaseTemplate> externalDatabaseTemplates;
+  private Map<String, ExternalDatabaseTemplate> externalDatabaseTemplates;
   /* External database definitions */
-  private Map<String,ExternalDatabase> externalDatabases;
+  private Map<String, ExternalDatabase> externalDatabases;
   /* Hostname for existing Cloudera Manager installation */
   private String hostname;
   /* Password for Kerberos administrative principal used by Cloudera Manager [redacted on read] */
@@ -56,7 +56,7 @@ public class DeploymentTemplate {
   private String username;
   public DeploymentTemplate() { }
 
-  private DeploymentTemplate(Map<String,Map<String,String>> configs, Boolean enableEnterpriseTrial, Map<String,ExternalDatabaseTemplate> externalDatabaseTemplates, Map<String,ExternalDatabase> externalDatabases, String hostname, String krbAdminPassword, String krbAdminUsername, String license, VirtualInstance managerVirtualInstance, String name, String password, Integer port, String repository, String repositoryKeyUrl, Boolean unlimitedJce, String username) {
+  private DeploymentTemplate(Map<String, Map<String, String>> configs, Boolean enableEnterpriseTrial, Map<String, ExternalDatabaseTemplate> externalDatabaseTemplates, Map<String, ExternalDatabase> externalDatabases, String hostname, String krbAdminPassword, String krbAdminUsername, String license, VirtualInstance managerVirtualInstance, String name, String password, Integer port, String repository, String repositoryKeyUrl, Boolean unlimitedJce, String username) {
     this.configs = configs;
     this.enableEnterpriseTrial = enableEnterpriseTrial;
     this.externalDatabaseTemplates = externalDatabaseTemplates;
@@ -99,10 +99,10 @@ public class DeploymentTemplate {
   }
 
   public static class DeploymentTemplateBuilder {
-    private Map<String,Map<String,String>> configs = new HashMap<String,Map<String,String>>();
+    private Map<String, Map<String, String>> configs = new HashMap<String, Map<String, String>>();
     private Boolean enableEnterpriseTrial = null;
-    private Map<String,ExternalDatabaseTemplate> externalDatabaseTemplates = new HashMap<String,ExternalDatabaseTemplate>();
-    private Map<String,ExternalDatabase> externalDatabases = new HashMap<String,ExternalDatabase>();
+    private Map<String, ExternalDatabaseTemplate> externalDatabaseTemplates = new HashMap<String, ExternalDatabaseTemplate>();
+    private Map<String, ExternalDatabase> externalDatabases = new HashMap<String, ExternalDatabase>();
     private String hostname = null;
     private String krbAdminPassword = null;
     private String krbAdminUsername = null;
@@ -116,7 +116,7 @@ public class DeploymentTemplate {
     private Boolean unlimitedJce = null;
     private String username = null;
 
-    public DeploymentTemplateBuilder configs(Map<String,Map<String,String>> configs) {
+    public DeploymentTemplateBuilder configs(Map<String, Map<String, String>> configs) {
       this.configs = configs;
       return this;
     }
@@ -126,12 +126,12 @@ public class DeploymentTemplate {
       return this;
     }
 
-    public DeploymentTemplateBuilder externalDatabaseTemplates(Map<String,ExternalDatabaseTemplate> externalDatabaseTemplates) {
+    public DeploymentTemplateBuilder externalDatabaseTemplates(Map<String, ExternalDatabaseTemplate> externalDatabaseTemplates) {
       this.externalDatabaseTemplates = externalDatabaseTemplates;
       return this;
     }
 
-    public DeploymentTemplateBuilder externalDatabases(Map<String,ExternalDatabase> externalDatabases) {
+    public DeploymentTemplateBuilder externalDatabases(Map<String, ExternalDatabase> externalDatabases) {
       this.externalDatabases = externalDatabases;
       return this;
     }
@@ -221,10 +221,10 @@ public class DeploymentTemplate {
       .username(username)
       ;
   }
-  public Map<String,Map<String,String>> getConfigs() {
+  public Map<String, Map<String, String>> getConfigs() {
     return configs;
   }
-  public void setConfigs(Map<String,Map<String,String>> configs) {
+  public void setConfigs(Map<String, Map<String, String>> configs) {
     this.configs = configs;
   }
 
@@ -235,17 +235,17 @@ public class DeploymentTemplate {
     this.enableEnterpriseTrial = enableEnterpriseTrial;
   }
 
-  public Map<String,ExternalDatabaseTemplate> getExternalDatabaseTemplates() {
+  public Map<String, ExternalDatabaseTemplate> getExternalDatabaseTemplates() {
     return externalDatabaseTemplates;
   }
-  public void setExternalDatabaseTemplates(Map<String,ExternalDatabaseTemplate> externalDatabaseTemplates) {
+  public void setExternalDatabaseTemplates(Map<String, ExternalDatabaseTemplate> externalDatabaseTemplates) {
     this.externalDatabaseTemplates = externalDatabaseTemplates;
   }
 
-  public Map<String,ExternalDatabase> getExternalDatabases() {
+  public Map<String, ExternalDatabase> getExternalDatabases() {
     return externalDatabases;
   }
-  public void setExternalDatabases(Map<String,ExternalDatabase> externalDatabases) {
+  public void setExternalDatabases(Map<String, ExternalDatabase> externalDatabases) {
     this.externalDatabases = externalDatabases;
   }
 
@@ -340,19 +340,45 @@ public class DeploymentTemplate {
 
     DeploymentTemplate other = (DeploymentTemplate) o; // NOPMD
 
-    if (configs != null ? !configs.equals(other.configs) : other.configs != null) return false;
-    if (enableEnterpriseTrial != null ? !enableEnterpriseTrial.equals(other.enableEnterpriseTrial) : other.enableEnterpriseTrial != null) return false;
-    if (externalDatabaseTemplates != null ? !externalDatabaseTemplates.equals(other.externalDatabaseTemplates) : other.externalDatabaseTemplates != null) return false;
-    if (externalDatabases != null ? !externalDatabases.equals(other.externalDatabases) : other.externalDatabases != null) return false;
-    if (hostname != null ? !hostname.equals(other.hostname) : other.hostname != null) return false;
-    if (krbAdminUsername != null ? !krbAdminUsername.equals(other.krbAdminUsername) : other.krbAdminUsername != null) return false;
-    if (managerVirtualInstance != null ? !managerVirtualInstance.equals(other.managerVirtualInstance) : other.managerVirtualInstance != null) return false;
-    if (name != null ? !name.equals(other.name) : other.name != null) return false;
-    if (port != null ? !port.equals(other.port) : other.port != null) return false;
-    if (repository != null ? !repository.equals(other.repository) : other.repository != null) return false;
-    if (repositoryKeyUrl != null ? !repositoryKeyUrl.equals(other.repositoryKeyUrl) : other.repositoryKeyUrl != null) return false;
-    if (unlimitedJce != null ? !unlimitedJce.equals(other.unlimitedJce) : other.unlimitedJce != null) return false;
-    if (username != null ? !username.equals(other.username) : other.username != null) return false;
+    if (configs != null ?
+        !configs.equals(other.configs) :
+        other.configs != null) return false;
+    if (enableEnterpriseTrial != null ?
+        !enableEnterpriseTrial.equals(other.enableEnterpriseTrial) :
+        other.enableEnterpriseTrial != null) return false;
+    if (externalDatabaseTemplates != null ?
+        !externalDatabaseTemplates.equals(other.externalDatabaseTemplates) :
+        other.externalDatabaseTemplates != null) return false;
+    if (externalDatabases != null ?
+        !externalDatabases.equals(other.externalDatabases) :
+        other.externalDatabases != null) return false;
+    if (hostname != null ?
+        !hostname.equals(other.hostname) :
+        other.hostname != null) return false;
+    if (krbAdminUsername != null ?
+        !krbAdminUsername.equals(other.krbAdminUsername) :
+        other.krbAdminUsername != null) return false;
+    if (managerVirtualInstance != null ?
+        !managerVirtualInstance.equals(other.managerVirtualInstance) :
+        other.managerVirtualInstance != null) return false;
+    if (name != null ?
+        !name.equals(other.name) :
+        other.name != null) return false;
+    if (port != null ?
+        !port.equals(other.port) :
+        other.port != null) return false;
+    if (repository != null ?
+        !repository.equals(other.repository) :
+        other.repository != null) return false;
+    if (repositoryKeyUrl != null ?
+        !repositoryKeyUrl.equals(other.repositoryKeyUrl) :
+        other.repositoryKeyUrl != null) return false;
+    if (unlimitedJce != null ?
+        !unlimitedJce.equals(other.unlimitedJce) :
+        other.unlimitedJce != null) return false;
+    if (username != null ?
+        !username.equals(other.username) :
+        other.username != null) return false;
     return true;
   }
 

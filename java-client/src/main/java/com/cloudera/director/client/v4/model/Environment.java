@@ -104,9 +104,15 @@ public class Environment {
 
     Environment other = (Environment) o; // NOPMD
 
-    if (credentials != null ? !credentials.equals(other.credentials) : other.credentials != null) return false;
-    if (name != null ? !name.equals(other.name) : other.name != null) return false;
-    if (provider != null ? !provider.equals(other.provider) : other.provider != null) return false;
+    if (credentials != null ?
+        !credentials.equals(other.credentials) :
+        other.credentials != null) return false;
+    if (name != null ?
+        !name.equals(other.name) :
+        other.name != null) return false;
+    if (provider != null ?
+        !provider.equals(other.provider) :
+        other.provider != null) return false;
     return true;
   }
 

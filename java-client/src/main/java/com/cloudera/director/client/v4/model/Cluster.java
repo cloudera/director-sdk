@@ -160,12 +160,24 @@ public class Cluster {
 
     Cluster other = (Cluster) o; // NOPMD
 
-    if (health != null ? !health.equals(other.health) : other.health != null) return false;
-    if (instances != null ? !instances.equals(other.instances) : other.instances != null) return false;
-    if (instancesUrl != null ? !instancesUrl.equals(other.instancesUrl) : other.instancesUrl != null) return false;
-    if (name != null ? !name.equals(other.name) : other.name != null) return false;
-    if (services != null ? !services.equals(other.services) : other.services != null) return false;
-    if (url != null ? !url.equals(other.url) : other.url != null) return false;
+    if (health != null ?
+        !health.equals(other.health) :
+        other.health != null) return false;
+    if (instances != null ?
+        !instances.equals(other.instances) :
+        other.instances != null) return false;
+    if (instancesUrl != null ?
+        !instancesUrl.equals(other.instancesUrl) :
+        other.instancesUrl != null) return false;
+    if (name != null ?
+        !name.equals(other.name) :
+        other.name != null) return false;
+    if (services != null ?
+        !services.equals(other.services) :
+        other.services != null) return false;
+    if (url != null ?
+        !url.equals(other.url) :
+        other.url != null) return false;
     return true;
   }
 

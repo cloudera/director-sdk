@@ -8,7 +8,7 @@ import com.beust.jcommander.Parameter;
 
 /**
  * A common list of parameters for all commands that need to talk
- * with a Cloudera Director Server over the public API
+ * with a Cloudera Director Server over the public API.
  */
 public class CommonParameters {
 

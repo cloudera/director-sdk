@@ -22,6 +22,7 @@ class DeploymentTemplate:
 
     def __init__(self, **kwargs):
         self.swaggerTypes = {
+            'billingId': 'str',
             'configs': 'dict[str,dict[str,str]]',
             'enableEnterpriseTrial': 'bool',
             'externalDatabaseTemplates': 'dict[str,cloudera.director.latest.models.ExternalDatabaseTemplate]',
@@ -43,6 +44,8 @@ class DeploymentTemplate:
         }
 
 
+        #BillingId for Cloudera Manager [redacted on read]
+        self.billingId = kwargs.get('billingId',None) # str
         #Optional configurations for Cloudera Manager and its management services
         self.configs = kwargs.get('configs',{}) # dict[str,dict[str,str]]
         #Whether to enable Cloudera Enterprise Trial
@@ -68,7 +71,7 @@ class DeploymentTemplate:
         #Web UI and API password [redacted on read]
         self.password = kwargs.get('password',None) # str
         #Port for existing Cloudera Manager installation
-        self.port = kwargs.get('port',0) # int
+        self.port = kwargs.get('port',None) # int
         #Custom Cloudera Manager repository URL
         self.repository = kwargs.get('repository',None) # str
         #Custom Cloudera Manager public GPG key

@@ -20,10 +20,11 @@ package com.cloudera.director.client.latest.api;
 
 import com.cloudera.director.client.common.ApiClient;
 import com.cloudera.director.client.common.ApiException;
-import com.cloudera.director.client.latest.model.ImportResult;
 
+import com.cloudera.director.client.latest.model.ImportResult;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List; // NOPMD
 import java.util.Map;
 
 @SuppressWarnings("parametername")
@@ -39,7 +40,7 @@ public class ImportClientConfigApi {
   }
 
   /**
-  * Import Client Config
+  * Import Client Config.
   * @param  body  clientConfig
   * @param  clusterName  clusterName
   * @param  deploymentName  deploymentName
@@ -57,7 +58,9 @@ public class ImportClientConfigApi {
        throw new ApiException(400, "missing required params");
     }
     // create path and map variables
-    String path = "/api/v4/import".replaceAll("\\{format\\}", "json");
+    String path = "/api/v5/import"
+      .replaceAll("\\{format\\}", "json")
+      ;
 
     // query params
     Map<String, String> queryParams = new HashMap<String, String>();

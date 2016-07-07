@@ -122,10 +122,18 @@ public class TimeSeriesRow {
 
     TimeSeriesRow other = (TimeSeriesRow) o; // NOPMD
 
-    if (entityName != null ? !entityName.equals(other.entityName) : other.entityName != null) return false;
-    if (metricName != null ? !metricName.equals(other.metricName) : other.metricName != null) return false;
-    if (timestamp != null ? !timestamp.equals(other.timestamp) : other.timestamp != null) return false;
-    if (value != null ? !value.equals(other.value) : other.value != null) return false;
+    if (entityName != null ?
+        !entityName.equals(other.entityName) :
+        other.entityName != null) return false;
+    if (metricName != null ?
+        !metricName.equals(other.metricName) :
+        other.metricName != null) return false;
+    if (timestamp != null ?
+        !timestamp.equals(other.timestamp) :
+        other.timestamp != null) return false;
+    if (value != null ?
+        !value.equals(other.value) :
+        other.value != null) return false;
     return true;
   }
 

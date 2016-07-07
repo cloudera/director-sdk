@@ -188,7 +188,10 @@ class ApiClient:
             if objClass.startswith('set['):
                 match = re.match('set\[(.*)\]', objClass)
                 subClass = match.group(1)
-                return {self.deserialize(subObj, subClass) for subObj in obj}
+                ret = set()
+                for subObj in obj:
+                  ret.add(self.deserialize(subObj, subClass))
+                return ret
 
 
             if (objClass in ['int', 'float', 'long', 'dict', 'list', 'str', 'bool', 'datetime']):

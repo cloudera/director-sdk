@@ -148,11 +148,21 @@ public class Status {
 
     Status other = (Status) o; // NOPMD
 
-    if (completedSteps != null ? !completedSteps.equals(other.completedSteps) : other.completedSteps != null) return false;
-    if (description != null ? !description.equals(other.description) : other.description != null) return false;
-    if (descriptionDetails != null ? !descriptionDetails.equals(other.descriptionDetails) : other.descriptionDetails != null) return false;
-    if (remainingSteps != null ? !remainingSteps.equals(other.remainingSteps) : other.remainingSteps != null) return false;
-    if (stage != null ? !stage.equals(other.stage) : other.stage != null) return false;
+    if (completedSteps != null ?
+        !completedSteps.equals(other.completedSteps) :
+        other.completedSteps != null) return false;
+    if (description != null ?
+        !description.equals(other.description) :
+        other.description != null) return false;
+    if (descriptionDetails != null ?
+        !descriptionDetails.equals(other.descriptionDetails) :
+        other.descriptionDetails != null) return false;
+    if (remainingSteps != null ?
+        !remainingSteps.equals(other.remainingSteps) :
+        other.remainingSteps != null) return false;
+    if (stage != null ?
+        !stage.equals(other.stage) :
+        other.stage != null) return false;
     return true;
   }
 

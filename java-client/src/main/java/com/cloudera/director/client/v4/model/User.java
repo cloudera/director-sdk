@@ -123,9 +123,15 @@ public class User {
 
     User other = (User) o; // NOPMD
 
-    if (enabled != null ? !enabled.equals(other.enabled) : other.enabled != null) return false;
-    if (roles != null ? !roles.equals(other.roles) : other.roles != null) return false;
-    if (username != null ? !username.equals(other.username) : other.username != null) return false;
+    if (enabled != null ?
+        !enabled.equals(other.enabled) :
+        other.enabled != null) return false;
+    if (roles != null ?
+        !roles.equals(other.roles) :
+        other.roles != null) return false;
+    if (username != null ?
+        !username.equals(other.username) :
+        other.username != null) return false;
     return true;
   }
 

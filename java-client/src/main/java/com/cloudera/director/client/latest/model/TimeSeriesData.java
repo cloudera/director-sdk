@@ -122,10 +122,18 @@ public class TimeSeriesData {
 
     TimeSeriesData other = (TimeSeriesData) o; // NOPMD
 
-    if (aggregateStatistics != null ? !aggregateStatistics.equals(other.aggregateStatistics) : other.aggregateStatistics != null) return false;
-    if (timestamp != null ? !timestamp.equals(other.timestamp) : other.timestamp != null) return false;
-    if (type != null ? !type.equals(other.type) : other.type != null) return false;
-    if (value != null ? !value.equals(other.value) : other.value != null) return false;
+    if (aggregateStatistics != null ?
+        !aggregateStatistics.equals(other.aggregateStatistics) :
+        other.aggregateStatistics != null) return false;
+    if (timestamp != null ?
+        !timestamp.equals(other.timestamp) :
+        other.timestamp != null) return false;
+    if (type != null ?
+        !type.equals(other.type) :
+        other.type != null) return false;
+    if (value != null ?
+        !value.equals(other.value) :
+        other.value != null) return false;
     return true;
   }
 

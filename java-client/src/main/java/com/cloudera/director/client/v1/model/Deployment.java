@@ -22,7 +22,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Deployment {
-  private Map<String,String> config;
+  private Map<String, String> config;
   /* Hostname for existing Cloudera Manager installation */
   private String hostname;
   private Instance managerInstance;
@@ -36,7 +36,7 @@ public class Deployment {
   private String username;
   public Deployment() { }
 
-  private Deployment(Map<String,String> config, String hostname, Instance managerInstance, String name, String password, Integer port, String username) {
+  private Deployment(Map<String, String> config, String hostname, Instance managerInstance, String name, String password, Integer port, String username) {
     this.config = config;
     this.hostname = hostname;
     this.managerInstance = managerInstance;
@@ -61,7 +61,7 @@ public class Deployment {
   }
 
   public static class DeploymentBuilder {
-    private Map<String,String> config = new HashMap<String,String>();
+    private Map<String, String> config = new HashMap<String, String>();
     private String hostname = null;
     private Instance managerInstance = null;
     private String name = null;
@@ -69,7 +69,7 @@ public class Deployment {
     private Integer port = null;
     private String username = null;
 
-    public DeploymentBuilder config(Map<String,String> config) {
+    public DeploymentBuilder config(Map<String, String> config) {
       this.config = config;
       return this;
     }
@@ -120,10 +120,10 @@ public class Deployment {
       .username(username)
       ;
   }
-  public Map<String,String> getConfig() {
+  public Map<String, String> getConfig() {
     return config;
   }
-  public void setConfig(Map<String,String> config) {
+  public void setConfig(Map<String, String> config) {
     this.config = config;
   }
 
@@ -176,12 +176,24 @@ public class Deployment {
 
     Deployment other = (Deployment) o; // NOPMD
 
-    if (config != null ? !config.equals(other.config) : other.config != null) return false;
-    if (hostname != null ? !hostname.equals(other.hostname) : other.hostname != null) return false;
-    if (managerInstance != null ? !managerInstance.equals(other.managerInstance) : other.managerInstance != null) return false;
-    if (name != null ? !name.equals(other.name) : other.name != null) return false;
-    if (port != null ? !port.equals(other.port) : other.port != null) return false;
-    if (username != null ? !username.equals(other.username) : other.username != null) return false;
+    if (config != null ?
+        !config.equals(other.config) :
+        other.config != null) return false;
+    if (hostname != null ?
+        !hostname.equals(other.hostname) :
+        other.hostname != null) return false;
+    if (managerInstance != null ?
+        !managerInstance.equals(other.managerInstance) :
+        other.managerInstance != null) return false;
+    if (name != null ?
+        !name.equals(other.name) :
+        other.name != null) return false;
+    if (port != null ?
+        !port.equals(other.port) :
+        other.port != null) return false;
+    if (username != null ?
+        !username.equals(other.username) :
+        other.username != null) return false;
     return true;
   }
 

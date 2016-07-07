@@ -86,8 +86,12 @@ public class Migration {
 
     Migration other = (Migration) o; // NOPMD
 
-    if (fromGroup != null ? !fromGroup.equals(other.fromGroup) : other.fromGroup != null) return false;
-    if (toGroup != null ? !toGroup.equals(other.toGroup) : other.toGroup != null) return false;
+    if (fromGroup != null ?
+        !fromGroup.equals(other.fromGroup) :
+        other.fromGroup != null) return false;
+    if (toGroup != null ?
+        !toGroup.equals(other.toGroup) :
+        other.toGroup != null) return false;
     return true;
   }
 

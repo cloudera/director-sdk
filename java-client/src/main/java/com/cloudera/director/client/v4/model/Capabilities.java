@@ -240,15 +240,33 @@ public class Capabilities {
 
     Capabilities other = (Capabilities) o; // NOPMD
 
-    if (iptablesEnabled != null ? !iptablesEnabled.equals(other.iptablesEnabled) : other.iptablesEnabled != null) return false;
-    if (javaVendor != null ? !javaVendor.equals(other.javaVendor) : other.javaVendor != null) return false;
-    if (javaVersion != null ? !javaVersion.equals(other.javaVersion) : other.javaVersion != null) return false;
-    if (operatingSystemType != null ? !operatingSystemType.equals(other.operatingSystemType) : other.operatingSystemType != null) return false;
-    if (operatingSystemVersion != null ? !operatingSystemVersion.equals(other.operatingSystemVersion) : other.operatingSystemVersion != null) return false;
-    if (packageManager != null ? !packageManager.equals(other.packageManager) : other.packageManager != null) return false;
-    if (passwordlessSudoEnabled != null ? !passwordlessSudoEnabled.equals(other.passwordlessSudoEnabled) : other.passwordlessSudoEnabled != null) return false;
-    if (pythonVersion != null ? !pythonVersion.equals(other.pythonVersion) : other.pythonVersion != null) return false;
-    if (virtualizationType != null ? !virtualizationType.equals(other.virtualizationType) : other.virtualizationType != null) return false;
+    if (iptablesEnabled != null ?
+        !iptablesEnabled.equals(other.iptablesEnabled) :
+        other.iptablesEnabled != null) return false;
+    if (javaVendor != null ?
+        !javaVendor.equals(other.javaVendor) :
+        other.javaVendor != null) return false;
+    if (javaVersion != null ?
+        !javaVersion.equals(other.javaVersion) :
+        other.javaVersion != null) return false;
+    if (operatingSystemType != null ?
+        !operatingSystemType.equals(other.operatingSystemType) :
+        other.operatingSystemType != null) return false;
+    if (operatingSystemVersion != null ?
+        !operatingSystemVersion.equals(other.operatingSystemVersion) :
+        other.operatingSystemVersion != null) return false;
+    if (packageManager != null ?
+        !packageManager.equals(other.packageManager) :
+        other.packageManager != null) return false;
+    if (passwordlessSudoEnabled != null ?
+        !passwordlessSudoEnabled.equals(other.passwordlessSudoEnabled) :
+        other.passwordlessSudoEnabled != null) return false;
+    if (pythonVersion != null ?
+        !pythonVersion.equals(other.pythonVersion) :
+        other.pythonVersion != null) return false;
+    if (virtualizationType != null ?
+        !virtualizationType.equals(other.virtualizationType) :
+        other.virtualizationType != null) return false;
     return true;
   }
 

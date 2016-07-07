@@ -41,7 +41,9 @@ public Boolean getAccepted() {
 
     Eula other = (Eula) o; // NOPMD
 
-    if (accepted != null ? !accepted.equals(other.accepted) : other.accepted != null) return false;
+    if (accepted != null ?
+        !accepted.equals(other.accepted) :
+        other.accepted != null) return false;
     return true;
   }
 

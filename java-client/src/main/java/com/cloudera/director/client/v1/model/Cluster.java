@@ -88,8 +88,12 @@ public class Cluster {
 
     Cluster other = (Cluster) o; // NOPMD
 
-    if (instances != null ? !instances.equals(other.instances) : other.instances != null) return false;
-    if (name != null ? !name.equals(other.name) : other.name != null) return false;
+    if (instances != null ?
+        !instances.equals(other.instances) :
+        other.instances != null) return false;
+    if (name != null ?
+        !name.equals(other.name) :
+        other.name != null) return false;
     return true;
   }
 

@@ -22,15 +22,15 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class DeploymentTemplate {
-  private Map<String,String> config;
-  private Map<String,ExternalDatabase> externalDatabases;
+  private Map<String, String> config;
+  private Map<String, ExternalDatabase> externalDatabases;
   /* Instance definition for a Cloudera Manager instance created from scratch */
   private VirtualInstance managerVirtualInstance;
   /* Deployment name */
   private String name;
   public DeploymentTemplate() { }
 
-  private DeploymentTemplate(Map<String,String> config, Map<String,ExternalDatabase> externalDatabases, VirtualInstance managerVirtualInstance, String name) {
+  private DeploymentTemplate(Map<String, String> config, Map<String, ExternalDatabase> externalDatabases, VirtualInstance managerVirtualInstance, String name) {
     this.config = config;
     this.externalDatabases = externalDatabases;
     this.managerVirtualInstance = managerVirtualInstance;
@@ -49,17 +49,17 @@ public class DeploymentTemplate {
   }
 
   public static class DeploymentTemplateBuilder {
-    private Map<String,String> config = new HashMap<String,String>();
-    private Map<String,ExternalDatabase> externalDatabases = new HashMap<String,ExternalDatabase>();
+    private Map<String, String> config = new HashMap<String, String>();
+    private Map<String, ExternalDatabase> externalDatabases = new HashMap<String, ExternalDatabase>();
     private VirtualInstance managerVirtualInstance = null;
     private String name = null;
 
-    public DeploymentTemplateBuilder config(Map<String,String> config) {
+    public DeploymentTemplateBuilder config(Map<String, String> config) {
       this.config = config;
       return this;
     }
 
-    public DeploymentTemplateBuilder externalDatabases(Map<String,ExternalDatabase> externalDatabases) {
+    public DeploymentTemplateBuilder externalDatabases(Map<String, ExternalDatabase> externalDatabases) {
       this.externalDatabases = externalDatabases;
       return this;
     }
@@ -87,17 +87,17 @@ public class DeploymentTemplate {
       .name(name)
       ;
   }
-  public Map<String,String> getConfig() {
+  public Map<String, String> getConfig() {
     return config;
   }
-  public void setConfig(Map<String,String> config) {
+  public void setConfig(Map<String, String> config) {
     this.config = config;
   }
 
-  public Map<String,ExternalDatabase> getExternalDatabases() {
+  public Map<String, ExternalDatabase> getExternalDatabases() {
     return externalDatabases;
   }
-  public void setExternalDatabases(Map<String,ExternalDatabase> externalDatabases) {
+  public void setExternalDatabases(Map<String, ExternalDatabase> externalDatabases) {
     this.externalDatabases = externalDatabases;
   }
 
@@ -122,10 +122,18 @@ public class DeploymentTemplate {
 
     DeploymentTemplate other = (DeploymentTemplate) o; // NOPMD
 
-    if (config != null ? !config.equals(other.config) : other.config != null) return false;
-    if (externalDatabases != null ? !externalDatabases.equals(other.externalDatabases) : other.externalDatabases != null) return false;
-    if (managerVirtualInstance != null ? !managerVirtualInstance.equals(other.managerVirtualInstance) : other.managerVirtualInstance != null) return false;
-    if (name != null ? !name.equals(other.name) : other.name != null) return false;
+    if (config != null ?
+        !config.equals(other.config) :
+        other.config != null) return false;
+    if (externalDatabases != null ?
+        !externalDatabases.equals(other.externalDatabases) :
+        other.externalDatabases != null) return false;
+    if (managerVirtualInstance != null ?
+        !managerVirtualInstance.equals(other.managerVirtualInstance) :
+        other.managerVirtualInstance != null) return false;
+    if (name != null ?
+        !name.equals(other.name) :
+        other.name != null) return false;
     return true;
   }
 

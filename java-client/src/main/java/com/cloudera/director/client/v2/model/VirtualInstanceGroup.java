@@ -26,12 +26,12 @@ import java.util.Map;
 public class VirtualInstanceGroup {
   private Integer minCount;
   private String name;
-  private Map<String,Map<String,Map<String,String>>> roleTypesConfigs;
-  private Map<String,List<String>> serviceTypeToRoleTypes;
+  private Map<String, Map<String, Map<String, String>>> roleTypesConfigs;
+  private Map<String, List<String>> serviceTypeToRoleTypes;
   private List<VirtualInstance> virtualInstances;
   public VirtualInstanceGroup() { }
 
-  private VirtualInstanceGroup(Integer minCount, String name, Map<String,Map<String,Map<String,String>>> roleTypesConfigs, Map<String,List<String>> serviceTypeToRoleTypes, List<VirtualInstance> virtualInstances) {
+  private VirtualInstanceGroup(Integer minCount, String name, Map<String, Map<String, Map<String, String>>> roleTypesConfigs, Map<String, List<String>> serviceTypeToRoleTypes, List<VirtualInstance> virtualInstances) {
     this.minCount = minCount;
     this.name = name;
     this.roleTypesConfigs = roleTypesConfigs;
@@ -54,8 +54,8 @@ public class VirtualInstanceGroup {
   public static class VirtualInstanceGroupBuilder {
     private Integer minCount = null;
     private String name = null;
-    private Map<String,Map<String,Map<String,String>>> roleTypesConfigs = new HashMap<String,Map<String,Map<String,String>>>();
-    private Map<String,List<String>> serviceTypeToRoleTypes = new HashMap<String,List<String>>();
+    private Map<String, Map<String, Map<String, String>>> roleTypesConfigs = new HashMap<String, Map<String, Map<String, String>>>();
+    private Map<String, List<String>> serviceTypeToRoleTypes = new HashMap<String, List<String>>();
     private List<VirtualInstance> virtualInstances = new ArrayList<VirtualInstance>();
 
     public VirtualInstanceGroupBuilder minCount(Integer minCount) {
@@ -68,12 +68,12 @@ public class VirtualInstanceGroup {
       return this;
     }
 
-    public VirtualInstanceGroupBuilder roleTypesConfigs(Map<String,Map<String,Map<String,String>>> roleTypesConfigs) {
+    public VirtualInstanceGroupBuilder roleTypesConfigs(Map<String, Map<String, Map<String, String>>> roleTypesConfigs) {
       this.roleTypesConfigs = roleTypesConfigs;
       return this;
     }
 
-    public VirtualInstanceGroupBuilder serviceTypeToRoleTypes(Map<String,List<String>> serviceTypeToRoleTypes) {
+    public VirtualInstanceGroupBuilder serviceTypeToRoleTypes(Map<String, List<String>> serviceTypeToRoleTypes) {
       this.serviceTypeToRoleTypes = serviceTypeToRoleTypes;
       return this;
     }
@@ -111,17 +111,17 @@ public class VirtualInstanceGroup {
     this.name = name;
   }
 
-  public Map<String,Map<String,Map<String,String>>> getRoleTypesConfigs() {
+  public Map<String, Map<String, Map<String, String>>> getRoleTypesConfigs() {
     return roleTypesConfigs;
   }
-  public void setRoleTypesConfigs(Map<String,Map<String,Map<String,String>>> roleTypesConfigs) {
+  public void setRoleTypesConfigs(Map<String, Map<String, Map<String, String>>> roleTypesConfigs) {
     this.roleTypesConfigs = roleTypesConfigs;
   }
 
-  public Map<String,List<String>> getServiceTypeToRoleTypes() {
+  public Map<String, List<String>> getServiceTypeToRoleTypes() {
     return serviceTypeToRoleTypes;
   }
-  public void setServiceTypeToRoleTypes(Map<String,List<String>> serviceTypeToRoleTypes) {
+  public void setServiceTypeToRoleTypes(Map<String, List<String>> serviceTypeToRoleTypes) {
     this.serviceTypeToRoleTypes = serviceTypeToRoleTypes;
   }
 
@@ -139,11 +139,21 @@ public class VirtualInstanceGroup {
 
     VirtualInstanceGroup other = (VirtualInstanceGroup) o; // NOPMD
 
-    if (minCount != null ? !minCount.equals(other.minCount) : other.minCount != null) return false;
-    if (name != null ? !name.equals(other.name) : other.name != null) return false;
-    if (roleTypesConfigs != null ? !roleTypesConfigs.equals(other.roleTypesConfigs) : other.roleTypesConfigs != null) return false;
-    if (serviceTypeToRoleTypes != null ? !serviceTypeToRoleTypes.equals(other.serviceTypeToRoleTypes) : other.serviceTypeToRoleTypes != null) return false;
-    if (virtualInstances != null ? !virtualInstances.equals(other.virtualInstances) : other.virtualInstances != null) return false;
+    if (minCount != null ?
+        !minCount.equals(other.minCount) :
+        other.minCount != null) return false;
+    if (name != null ?
+        !name.equals(other.name) :
+        other.name != null) return false;
+    if (roleTypesConfigs != null ?
+        !roleTypesConfigs.equals(other.roleTypesConfigs) :
+        other.roleTypesConfigs != null) return false;
+    if (serviceTypeToRoleTypes != null ?
+        !serviceTypeToRoleTypes.equals(other.serviceTypeToRoleTypes) :
+        other.serviceTypeToRoleTypes != null) return false;
+    if (virtualInstances != null ?
+        !virtualInstances.equals(other.virtualInstances) :
+        other.virtualInstances != null) return false;
     return true;
   }
 

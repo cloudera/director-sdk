@@ -40,7 +40,7 @@ public class ImportClientConfigApi {
   }
 
   /**
-  * Import Client Config
+  * Import Client Config.
   * @param  body  clientConfig
   * @param  clusterName  clusterName
   * @param  deploymentName  deploymentName
@@ -58,7 +58,9 @@ public class ImportClientConfigApi {
        throw new ApiException(400, "missing required params");
     }
     // create path and map variables
-    String path = "/api/v4/import".replaceAll("\\{format\\}", "json");
+    String path = "/api/v4/import"
+      .replaceAll("\\{format\\}", "json")
+      ;
 
     // query params
     Map<String, String> queryParams = new HashMap<String, String>();

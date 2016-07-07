@@ -142,11 +142,21 @@ public class Service {
 
     Service other = (Service) o; // NOPMD
 
-    if (health != null ? !health.equals(other.health) : other.health != null) return false;
-    if (healthChecks != null ? !healthChecks.equals(other.healthChecks) : other.healthChecks != null) return false;
-    if (roleInstancesUrl != null ? !roleInstancesUrl.equals(other.roleInstancesUrl) : other.roleInstancesUrl != null) return false;
-    if (serviceName != null ? !serviceName.equals(other.serviceName) : other.serviceName != null) return false;
-    if (url != null ? !url.equals(other.url) : other.url != null) return false;
+    if (health != null ?
+        !health.equals(other.health) :
+        other.health != null) return false;
+    if (healthChecks != null ?
+        !healthChecks.equals(other.healthChecks) :
+        other.healthChecks != null) return false;
+    if (roleInstancesUrl != null ?
+        !roleInstancesUrl.equals(other.roleInstancesUrl) :
+        other.roleInstancesUrl != null) return false;
+    if (serviceName != null ?
+        !serviceName.equals(other.serviceName) :
+        other.serviceName != null) return false;
+    if (url != null ?
+        !url.equals(other.url) :
+        other.url != null) return false;
     return true;
   }
 

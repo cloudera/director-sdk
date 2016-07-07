@@ -51,7 +51,7 @@ class DeploymentsApi(object):
             params[key] = val
         del params['kwargs']
 
-        resourcePath = '/api/v4/environments/{environment}/deployments'
+        resourcePath = '/api/v5/environments/{environment}/deployments'
         resourcePath = resourcePath.replace('{format}', 'json')
         method = 'POST'
 
@@ -97,7 +97,7 @@ class DeploymentsApi(object):
             params[key] = val
         del params['kwargs']
 
-        resourcePath = '/api/v4/environments/{environment}/deployments/{deployment}'
+        resourcePath = '/api/v5/environments/{environment}/deployments/{deployment}'
         resourcePath = resourcePath.replace('{format}', 'json')
         method = 'DELETE'
 
@@ -147,7 +147,7 @@ class DeploymentsApi(object):
             params[key] = val
         del params['kwargs']
 
-        resourcePath = '/api/v4/environments/{environment}/deployments/{deployment}'
+        resourcePath = '/api/v5/environments/{environment}/deployments/{deployment}'
         resourcePath = resourcePath.replace('{format}', 'json')
         method = 'GET'
 
@@ -202,7 +202,7 @@ class DeploymentsApi(object):
             params[key] = val
         del params['kwargs']
 
-        resourcePath = '/api/v4/environments/{environment}/deployments/{deployment}/status'
+        resourcePath = '/api/v5/environments/{environment}/deployments/{deployment}/status'
         resourcePath = resourcePath.replace('{format}', 'json')
         method = 'GET'
 
@@ -257,7 +257,7 @@ class DeploymentsApi(object):
             params[key] = val
         del params['kwargs']
 
-        resourcePath = '/api/v4/environments/{environment}/deployments/{deployment}/template'
+        resourcePath = '/api/v5/environments/{environment}/deployments/{deployment}/template'
         resourcePath = resourcePath.replace('{format}', 'json')
         method = 'GET'
 
@@ -310,7 +310,7 @@ class DeploymentsApi(object):
             params[key] = val
         del params['kwargs']
 
-        resourcePath = '/api/v4/environments/{environment}/deployments'
+        resourcePath = '/api/v5/environments/{environment}/deployments'
         resourcePath = resourcePath.replace('{format}', 'json')
         method = 'GET'
 
@@ -340,7 +340,7 @@ class DeploymentsApi(object):
         
 
     def update(self, environment, deployment, body, **kwargs):
-        """Update an existing deployment
+        """Update an existing deployment template
 
         Args:
             environment, str: environmentName (required)
@@ -363,7 +363,59 @@ class DeploymentsApi(object):
             params[key] = val
         del params['kwargs']
 
-        resourcePath = '/api/v4/environments/{environment}/deployments/{deployment}'
+        resourcePath = '/api/v5/environments/{environment}/deployments/{deployment}'
+        resourcePath = resourcePath.replace('{format}', 'json')
+        method = 'PUT'
+
+        queryParams = {}
+        headerParams = {}
+
+        if ('environment' in params):
+            replacement = str(self.apiClient.toPathValue(params['environment']))
+            resourcePath = resourcePath.replace('{' + 'environment' + '}',
+                                                replacement)
+        if ('deployment' in params):
+            replacement = str(self.apiClient.toPathValue(params['deployment']))
+            resourcePath = resourcePath.replace('{' + 'deployment' + '}',
+                                                replacement)
+        postData = body
+
+        contentTypes = ["application/json"]
+        if len(contentTypes) != 1:
+            raise ValueError("An API client expects a single content type. Got: %s" % contentTypes)
+
+        response = self.apiClient.callAPI(resourcePath, method, queryParams,
+                                          postData, headerParams, contentTypes[0])
+
+        
+
+        
+
+    def updateMeteringSetting(self, environment, deployment, body, **kwargs):
+        """Update billing ID for an existing deployment
+
+        Args:
+            environment, str: environmentName (required)
+
+            deployment, str: deploymentName (required)
+
+            body, cloudera.director.latest.models.MeteringSetting: meteringSetting (required)
+
+            
+
+        Returns: 
+        """
+
+        allParams = ['environment', 'deployment', 'body']
+
+        params = locals()
+        for (key, val) in params['kwargs'].iteritems():
+            if key not in allParams:
+                raise TypeError("Got an unexpected keyword argument '%s' to method updateMeteringSetting" % key)
+            params[key] = val
+        del params['kwargs']
+
+        resourcePath = '/api/v5/environments/{environment}/deployments/{deployment}/metering'
         resourcePath = resourcePath.replace('{format}', 'json')
         method = 'PUT'
 

@@ -31,7 +31,7 @@ public class ExternalDatabaseServer {
   /* Port for an existing external database server */
   private Integer port;
   /* External database display properties */
-  private Map<String,String> properties;
+  private Map<String, String> properties;
   /* External database server type */
   private String type;
   /* Database username for administrative access */
@@ -43,7 +43,7 @@ public class ExternalDatabaseServer {
   }
   public ExternalDatabaseServer() { }
 
-  private ExternalDatabaseServer(String hostname, String name, String password, Integer port, Map<String,String> properties, String type, String username) {
+  private ExternalDatabaseServer(String hostname, String name, String password, Integer port, Map<String, String> properties, String type, String username) {
     this.hostname = hostname;
     this.name = name;
     this.password = password;
@@ -72,7 +72,7 @@ public class ExternalDatabaseServer {
     private String name = null;
     private String password = null;
     private Integer port = null;
-    private Map<String,String> properties = new HashMap<String,String>();
+    private Map<String, String> properties = new HashMap<String, String>();
     private String type = null;
     private String username = null;
 
@@ -96,7 +96,7 @@ public class ExternalDatabaseServer {
       return this;
     }
 
-    public ExternalDatabaseServerBuilder properties(Map<String,String> properties) {
+    public ExternalDatabaseServerBuilder properties(Map<String, String> properties) {
       this.properties = properties;
       return this;
     }
@@ -155,10 +155,10 @@ public class ExternalDatabaseServer {
     this.port = port;
   }
 
-  public Map<String,String> getProperties() {
+  public Map<String, String> getProperties() {
     return properties;
   }
-  public void setProperties(Map<String,String> properties) {
+  public void setProperties(Map<String, String> properties) {
     this.properties = properties;
   }
 
@@ -183,12 +183,24 @@ public class ExternalDatabaseServer {
 
     ExternalDatabaseServer other = (ExternalDatabaseServer) o; // NOPMD
 
-    if (hostname != null ? !hostname.equals(other.hostname) : other.hostname != null) return false;
-    if (name != null ? !name.equals(other.name) : other.name != null) return false;
-    if (port != null ? !port.equals(other.port) : other.port != null) return false;
-    if (properties != null ? !properties.equals(other.properties) : other.properties != null) return false;
-    if (type != null ? !type.equals(other.type) : other.type != null) return false;
-    if (username != null ? !username.equals(other.username) : other.username != null) return false;
+    if (hostname != null ?
+        !hostname.equals(other.hostname) :
+        other.hostname != null) return false;
+    if (name != null ?
+        !name.equals(other.name) :
+        other.name != null) return false;
+    if (port != null ?
+        !port.equals(other.port) :
+        other.port != null) return false;
+    if (properties != null ?
+        !properties.equals(other.properties) :
+        other.properties != null) return false;
+    if (type != null ?
+        !type.equals(other.type) :
+        other.type != null) return false;
+    if (username != null ?
+        !username.equals(other.username) :
+        other.username != null) return false;
     return true;
   }
 

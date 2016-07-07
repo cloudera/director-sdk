@@ -25,10 +25,10 @@ public class Metrics {
   /* Cluster name */
   private String clusterName;
   /* Metrics tracked for this cluster */
-  private Map<String,TimeSeriesResponseList> timeSeriesMetrics;
+  private Map<String, TimeSeriesResponseList> timeSeriesMetrics;
   public Metrics() { }
 
-  private Metrics(String clusterName, Map<String,TimeSeriesResponseList> timeSeriesMetrics) {
+  private Metrics(String clusterName, Map<String, TimeSeriesResponseList> timeSeriesMetrics) {
     this.clusterName = clusterName;
     this.timeSeriesMetrics = timeSeriesMetrics;
   }
@@ -44,14 +44,14 @@ public class Metrics {
 
   public static class MetricsBuilder {
     private String clusterName = null;
-    private Map<String,TimeSeriesResponseList> timeSeriesMetrics = new HashMap<String,TimeSeriesResponseList>();
+    private Map<String, TimeSeriesResponseList> timeSeriesMetrics = new HashMap<String, TimeSeriesResponseList>();
 
     public MetricsBuilder clusterName(String clusterName) {
       this.clusterName = clusterName;
       return this;
     }
 
-    public MetricsBuilder timeSeriesMetrics(Map<String,TimeSeriesResponseList> timeSeriesMetrics) {
+    public MetricsBuilder timeSeriesMetrics(Map<String, TimeSeriesResponseList> timeSeriesMetrics) {
       this.timeSeriesMetrics = timeSeriesMetrics;
       return this;
     }
@@ -74,10 +74,10 @@ public class Metrics {
     this.clusterName = clusterName;
   }
 
-  public Map<String,TimeSeriesResponseList> getTimeSeriesMetrics() {
+  public Map<String, TimeSeriesResponseList> getTimeSeriesMetrics() {
     return timeSeriesMetrics;
   }
-  public void setTimeSeriesMetrics(Map<String,TimeSeriesResponseList> timeSeriesMetrics) {
+  public void setTimeSeriesMetrics(Map<String, TimeSeriesResponseList> timeSeriesMetrics) {
     this.timeSeriesMetrics = timeSeriesMetrics;
   }
 
@@ -88,8 +88,12 @@ public class Metrics {
 
     Metrics other = (Metrics) o; // NOPMD
 
-    if (clusterName != null ? !clusterName.equals(other.clusterName) : other.clusterName != null) return false;
-    if (timeSeriesMetrics != null ? !timeSeriesMetrics.equals(other.timeSeriesMetrics) : other.timeSeriesMetrics != null) return false;
+    if (clusterName != null ?
+        !clusterName.equals(other.clusterName) :
+        other.clusterName != null) return false;
+    if (timeSeriesMetrics != null ?
+        !timeSeriesMetrics.equals(other.timeSeriesMetrics) :
+        other.timeSeriesMetrics != null) return false;
     return true;
   }
 

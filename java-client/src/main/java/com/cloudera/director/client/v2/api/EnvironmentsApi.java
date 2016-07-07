@@ -40,7 +40,7 @@ public class EnvironmentsApi {
   }
 
   /**
-  * Create a new environment
+  * Create a new environment.
   * @param  body  environment
   * status code: 201 reason: "Environment created"
   * status code: 302 reason: "Environment already exists"
@@ -56,7 +56,9 @@ public class EnvironmentsApi {
        throw new ApiException(400, "missing required params");
     }
     // create path and map variables
-    String path = "/api/v2/environments".replaceAll("\\{format\\}", "json");
+    String path = "/api/v2/environments"
+      .replaceAll("\\{format\\}", "json")
+      ;
 
     // query params
     Map<String, String> queryParams = new HashMap<String, String>();
@@ -88,7 +90,7 @@ public class EnvironmentsApi {
   }
 
   /**
-  * Delete an environment by name
+  * Delete an environment by name.
   * @param  name  environmentName
   * status code: 204 reason: "Environment deleted"
   * status code: 401 reason: "Unauthorized"
@@ -101,7 +103,11 @@ public class EnvironmentsApi {
        throw new ApiException(400, "missing required params");
     }
     // create path and map variables
-    String path = "/api/v2/environments/{name}".replaceAll("\\{format\\}", "json").replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()));
+    String path = "/api/v2/environments/{name}"
+      .replaceAll("\\{format\\}", "json")
+      .replaceAll("\\{" + "name" + "\\}",
+                  apiClient.escapeString(name.toString()))
+      ;
 
     // query params
     Map<String, String> queryParams = new HashMap<String, String>();
@@ -133,7 +139,7 @@ public class EnvironmentsApi {
   }
 
   /**
-  * Get an environment by name
+  * Get an environment by name.
   * @param  name  name
   * status code: 200 reason: "OK"
   * status code: 401 reason: "Unauthorized"
@@ -147,7 +153,11 @@ public class EnvironmentsApi {
        throw new ApiException(400, "missing required params");
     }
     // create path and map variables
-    String path = "/api/v2/environments/{name}".replaceAll("\\{format\\}", "json").replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()));
+    String path = "/api/v2/environments/{name}"
+      .replaceAll("\\{format\\}", "json")
+      .replaceAll("\\{" + "name" + "\\}",
+                  apiClient.escapeString(name.toString()))
+      ;
 
     // query params
     Map<String, String> queryParams = new HashMap<String, String>();
@@ -179,7 +189,7 @@ public class EnvironmentsApi {
   }
 
   /**
-  * List all environments
+  * List all environments.
   * status code: 200 reason: "OK"
   * status code: 401 reason: "Unauthorized"
   * status code: 403 reason: "Forbidden"
@@ -188,7 +198,9 @@ public class EnvironmentsApi {
   public List<String> list() throws ApiException {
     Object postBody = null;
     // create path and map variables
-    String path = "/api/v2/environments".replaceAll("\\{format\\}", "json");
+    String path = "/api/v2/environments"
+      .replaceAll("\\{format\\}", "json")
+      ;
 
     // query params
     Map<String, String> queryParams = new HashMap<String, String>();
@@ -220,7 +232,7 @@ public class EnvironmentsApi {
   }
 
   /**
-  * Update an existing environment
+  * Update an existing environment.
   * @param  name  environmentName
   * @param  body  environment
   * status code: 201 reason: "Created"
@@ -237,7 +249,11 @@ public class EnvironmentsApi {
        throw new ApiException(400, "missing required params");
     }
     // create path and map variables
-    String path = "/api/v2/environments/{name}".replaceAll("\\{format\\}", "json").replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()));
+    String path = "/api/v2/environments/{name}"
+      .replaceAll("\\{format\\}", "json")
+      .replaceAll("\\{" + "name" + "\\}",
+                  apiClient.escapeString(name.toString()))
+      ;
 
     // query params
     Map<String, String> queryParams = new HashMap<String, String>();

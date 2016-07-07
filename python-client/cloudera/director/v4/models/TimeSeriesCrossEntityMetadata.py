@@ -40,5 +40,5 @@ class TimeSeriesCrossEntityMetadata:
         #Name for minimum entity
         self.minEntityName = kwargs.get('minEntityName',None) # str
         #Number of entities
-        self.numEntities = kwargs.get('numEntities',0.0) # float
+        self.numEntities = kwargs.get('numEntities',None) # float
         

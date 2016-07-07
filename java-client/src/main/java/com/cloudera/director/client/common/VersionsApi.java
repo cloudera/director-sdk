@@ -27,7 +27,7 @@ public class VersionsApi {
   }
 
   /**
-   * Returns the current version information
+   * Returns the current version information.
    *
    * @return The current version information.
    * @throws ApiException

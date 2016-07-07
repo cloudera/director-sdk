@@ -160,12 +160,24 @@ public class CloudProviderMetadata {
 
     CloudProviderMetadata other = (CloudProviderMetadata) o; // NOPMD
 
-    if (configurationProperties != null ? !configurationProperties.equals(other.configurationProperties) : other.configurationProperties != null) return false;
-    if (credentialsProperties != null ? !credentialsProperties.equals(other.credentialsProperties) : other.credentialsProperties != null) return false;
-    if (description != null ? !description.equals(other.description) : other.description != null) return false;
-    if (id != null ? !id.equals(other.id) : other.id != null) return false;
-    if (name != null ? !name.equals(other.name) : other.name != null) return false;
-    if (resourceProviders != null ? !resourceProviders.equals(other.resourceProviders) : other.resourceProviders != null) return false;
+    if (configurationProperties != null ?
+        !configurationProperties.equals(other.configurationProperties) :
+        other.configurationProperties != null) return false;
+    if (credentialsProperties != null ?
+        !credentialsProperties.equals(other.credentialsProperties) :
+        other.credentialsProperties != null) return false;
+    if (description != null ?
+        !description.equals(other.description) :
+        other.description != null) return false;
+    if (id != null ?
+        !id.equals(other.id) :
+        other.id != null) return false;
+    if (name != null ?
+        !name.equals(other.name) :
+        other.name != null) return false;
+    if (resourceProviders != null ?
+        !resourceProviders.equals(other.resourceProviders) :
+        other.resourceProviders != null) return false;
     return true;
   }
 

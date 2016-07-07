@@ -40,7 +40,7 @@ class ExternalDatabaseServer:
         #Database password for administrative access [redacted on read]
         self.password = kwargs.get('password',None) # str
         #Port for an existing external database server
-        self.port = kwargs.get('port',0) # int
+        self.port = kwargs.get('port',None) # int
         #External database display properties
         self.properties = kwargs.get('properties',{}) # dict[str,str]
         #External database server type

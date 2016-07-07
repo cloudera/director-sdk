@@ -40,7 +40,7 @@ public class EulaApi {
   }
 
   /**
-  * Get the EULA
+  * Get the EULA.
   * status code: 200 reason: "OK"
   * status code: 401 reason: "Unauthorized"
   * status code: 403 reason: "Forbidden"
@@ -49,7 +49,9 @@ public class EulaApi {
   public Eula get() throws ApiException {
     Object postBody = null;
     // create path and map variables
-    String path = "/api/v4/eula".replaceAll("\\{format\\}", "json");
+    String path = "/api/v4/eula"
+      .replaceAll("\\{format\\}", "json")
+      ;
 
     // query params
     Map<String, String> queryParams = new HashMap<String, String>();
@@ -81,7 +83,7 @@ public class EulaApi {
   }
 
   /**
-  * Update the EULA
+  * Update the EULA.
   * @param  body  eula
   * status code: 200 reason: "OK"
   * status code: 201 reason: "Created"
@@ -98,7 +100,9 @@ public class EulaApi {
        throw new ApiException(400, "missing required params");
     }
     // create path and map variables
-    String path = "/api/v4/eula".replaceAll("\\{format\\}", "json");
+    String path = "/api/v4/eula"
+      .replaceAll("\\{format\\}", "json")
+      ;
 
     // query params
     Map<String, String> queryParams = new HashMap<String, String>();

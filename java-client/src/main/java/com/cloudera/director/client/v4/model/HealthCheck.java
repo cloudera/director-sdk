@@ -129,10 +129,18 @@ public class HealthCheck {
 
     HealthCheck other = (HealthCheck) o; // NOPMD
 
-    if (checkName != null ? !checkName.equals(other.checkName) : other.checkName != null) return false;
-    if (explanation != null ? !explanation.equals(other.explanation) : other.explanation != null) return false;
-    if (healthStatus != null ? !healthStatus.equals(other.healthStatus) : other.healthStatus != null) return false;
-    if (suppressed != null ? !suppressed.equals(other.suppressed) : other.suppressed != null) return false;
+    if (checkName != null ?
+        !checkName.equals(other.checkName) :
+        other.checkName != null) return false;
+    if (explanation != null ?
+        !explanation.equals(other.explanation) :
+        other.explanation != null) return false;
+    if (healthStatus != null ?
+        !healthStatus.equals(other.healthStatus) :
+        other.healthStatus != null) return false;
+    if (suppressed != null ?
+        !suppressed.equals(other.suppressed) :
+        other.suppressed != null) return false;
     return true;
   }
 

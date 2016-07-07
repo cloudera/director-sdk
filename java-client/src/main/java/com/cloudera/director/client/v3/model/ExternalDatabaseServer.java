@@ -163,11 +163,21 @@ public class ExternalDatabaseServer {
 
     ExternalDatabaseServer other = (ExternalDatabaseServer) o; // NOPMD
 
-    if (hostname != null ? !hostname.equals(other.hostname) : other.hostname != null) return false;
-    if (name != null ? !name.equals(other.name) : other.name != null) return false;
-    if (port != null ? !port.equals(other.port) : other.port != null) return false;
-    if (type != null ? !type.equals(other.type) : other.type != null) return false;
-    if (username != null ? !username.equals(other.username) : other.username != null) return false;
+    if (hostname != null ?
+        !hostname.equals(other.hostname) :
+        other.hostname != null) return false;
+    if (name != null ?
+        !name.equals(other.name) :
+        other.name != null) return false;
+    if (port != null ?
+        !port.equals(other.port) :
+        other.port != null) return false;
+    if (type != null ?
+        !type.equals(other.type) :
+        other.type != null) return false;
+    if (username != null ?
+        !username.equals(other.username) :
+        other.username != null) return false;
     return true;
   }
 

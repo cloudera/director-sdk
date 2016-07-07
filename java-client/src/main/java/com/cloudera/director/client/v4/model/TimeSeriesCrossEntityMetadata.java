@@ -140,11 +140,21 @@ public class TimeSeriesCrossEntityMetadata {
 
     TimeSeriesCrossEntityMetadata other = (TimeSeriesCrossEntityMetadata) o; // NOPMD
 
-    if (maxEntityDisplayName != null ? !maxEntityDisplayName.equals(other.maxEntityDisplayName) : other.maxEntityDisplayName != null) return false;
-    if (maxEntityName != null ? !maxEntityName.equals(other.maxEntityName) : other.maxEntityName != null) return false;
-    if (minEntityDisplayName != null ? !minEntityDisplayName.equals(other.minEntityDisplayName) : other.minEntityDisplayName != null) return false;
-    if (minEntityName != null ? !minEntityName.equals(other.minEntityName) : other.minEntityName != null) return false;
-    if (numEntities != null ? !numEntities.equals(other.numEntities) : other.numEntities != null) return false;
+    if (maxEntityDisplayName != null ?
+        !maxEntityDisplayName.equals(other.maxEntityDisplayName) :
+        other.maxEntityDisplayName != null) return false;
+    if (maxEntityName != null ?
+        !maxEntityName.equals(other.maxEntityName) :
+        other.maxEntityName != null) return false;
+    if (minEntityDisplayName != null ?
+        !minEntityDisplayName.equals(other.minEntityDisplayName) :
+        other.minEntityDisplayName != null) return false;
+    if (minEntityName != null ?
+        !minEntityName.equals(other.minEntityName) :
+        other.minEntityName != null) return false;
+    if (numEntities != null ?
+        !numEntities.equals(other.numEntities) :
+        other.numEntities != null) return false;
     return true;
   }
 

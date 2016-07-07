@@ -37,5 +37,5 @@ class TimeSeriesData:
         #Type
         self.type = kwargs.get('type',None) # str
         #Value
-        self.value = kwargs.get('value',0.0) # float
+        self.value = kwargs.get('value',None) # float
         

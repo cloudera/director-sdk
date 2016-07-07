@@ -31,7 +31,7 @@ class VirtualInstanceGroup:
         }
 
 
-        self.minCount = kwargs.get('minCount',0) # int
+        self.minCount = kwargs.get('minCount',None) # int
         self.name = kwargs.get('name',None) # str
         self.roleTypesConfigs = kwargs.get('roleTypesConfigs',{}) # dict[str,dict[str,dict[str,str]]]
         self.serviceTypeToRoleTypes = kwargs.get('serviceTypeToRoleTypes',{}) # dict[str,list[str]]

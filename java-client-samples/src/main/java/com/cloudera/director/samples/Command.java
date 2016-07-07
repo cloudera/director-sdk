@@ -7,7 +7,7 @@ package com.cloudera.director.samples;
 public interface Command {
 
   /**
-   * Implement this command for your logic
+   * Implement this command for your logic.
    *
    * @param commonParameters common parameters
    */

@@ -36,7 +36,7 @@ class ExternalDatabase:
         self.name = kwargs.get('name',None) # str
         #password [redacted on read]
         self.password = kwargs.get('password',None) # str
-        self.port = kwargs.get('port',0) # int
+        self.port = kwargs.get('port',None) # int
         self.type = kwargs.get('type',None) # str
         self.user = kwargs.get('user',None) # str
         

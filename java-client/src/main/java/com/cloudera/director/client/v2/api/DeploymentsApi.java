@@ -42,7 +42,7 @@ public class DeploymentsApi {
   }
 
   /**
-  * Create a new deployment
+  * Create a new deployment.
   * @param  environment  environmentName
   * @param  XRequestId  requestId
   * @param  body  deploymentTemplate
@@ -60,7 +60,11 @@ public class DeploymentsApi {
        throw new ApiException(400, "missing required params");
     }
     // create path and map variables
-    String path = "/api/v2/environments/{environment}/deployments".replaceAll("\\{format\\}", "json").replaceAll("\\{" + "environment" + "\\}", apiClient.escapeString(environment.toString()));
+    String path = "/api/v2/environments/{environment}/deployments"
+      .replaceAll("\\{format\\}", "json")
+      .replaceAll("\\{" + "environment" + "\\}",
+                  apiClient.escapeString(environment.toString()))
+      ;
 
     // query params
     Map<String, String> queryParams = new HashMap<String, String>();
@@ -96,7 +100,7 @@ public class DeploymentsApi {
      create(environment, null, body);
     }
   /**
-  * Delete a deployment by name
+  * Delete a deployment by name.
   * @param  environment  environmentName
   * @param  deployment  deploymentName
   * @param  XRequestId  requestId
@@ -112,7 +116,13 @@ public class DeploymentsApi {
        throw new ApiException(400, "missing required params");
     }
     // create path and map variables
-    String path = "/api/v2/environments/{environment}/deployments/{deployment}".replaceAll("\\{format\\}", "json").replaceAll("\\{" + "environment" + "\\}", apiClient.escapeString(environment.toString())).replaceAll("\\{" + "deployment" + "\\}", apiClient.escapeString(deployment.toString()));
+    String path = "/api/v2/environments/{environment}/deployments/{deployment}"
+      .replaceAll("\\{format\\}", "json")
+      .replaceAll("\\{" + "environment" + "\\}",
+                  apiClient.escapeString(environment.toString()))
+      .replaceAll("\\{" + "deployment" + "\\}",
+                  apiClient.escapeString(deployment.toString()))
+      ;
 
     // query params
     Map<String, String> queryParams = new HashMap<String, String>();
@@ -148,7 +158,7 @@ public class DeploymentsApi {
      delete(environment, deployment, null);
     }
   /**
-  * Get a deployment by name
+  * Get a deployment by name.
   * @param  environment  environmentName
   * @param  deployment  deploymentName
   * status code: 200 reason: "OK"
@@ -164,7 +174,13 @@ public class DeploymentsApi {
        throw new ApiException(400, "missing required params");
     }
     // create path and map variables
-    String path = "/api/v2/environments/{environment}/deployments/{deployment}".replaceAll("\\{format\\}", "json").replaceAll("\\{" + "environment" + "\\}", apiClient.escapeString(environment.toString())).replaceAll("\\{" + "deployment" + "\\}", apiClient.escapeString(deployment.toString()));
+    String path = "/api/v2/environments/{environment}/deployments/{deployment}"
+      .replaceAll("\\{format\\}", "json")
+      .replaceAll("\\{" + "environment" + "\\}",
+                  apiClient.escapeString(environment.toString()))
+      .replaceAll("\\{" + "deployment" + "\\}",
+                  apiClient.escapeString(deployment.toString()))
+      ;
 
     // query params
     Map<String, String> queryParams = new HashMap<String, String>();
@@ -196,7 +212,7 @@ public class DeploymentsApi {
   }
 
   /**
-  * Get a deployment status by name
+  * Get a deployment status by name.
   * @param  environment  environmentName
   * @param  deployment  deploymentName
   * status code: 200 reason: "OK"
@@ -211,7 +227,13 @@ public class DeploymentsApi {
        throw new ApiException(400, "missing required params");
     }
     // create path and map variables
-    String path = "/api/v2/environments/{environment}/deployments/{deployment}/status".replaceAll("\\{format\\}", "json").replaceAll("\\{" + "environment" + "\\}", apiClient.escapeString(environment.toString())).replaceAll("\\{" + "deployment" + "\\}", apiClient.escapeString(deployment.toString()));
+    String path = "/api/v2/environments/{environment}/deployments/{deployment}/status"
+      .replaceAll("\\{format\\}", "json")
+      .replaceAll("\\{" + "environment" + "\\}",
+                  apiClient.escapeString(environment.toString()))
+      .replaceAll("\\{" + "deployment" + "\\}",
+                  apiClient.escapeString(deployment.toString()))
+      ;
 
     // query params
     Map<String, String> queryParams = new HashMap<String, String>();
@@ -243,7 +265,7 @@ public class DeploymentsApi {
   }
 
   /**
-  * Get a deployment template by name
+  * Get a deployment template by name.
   * @param  environment  environmentName
   * @param  deployment  deploymentName
   * status code: 200 reason: "OK"
@@ -258,7 +280,13 @@ public class DeploymentsApi {
        throw new ApiException(400, "missing required params");
     }
     // create path and map variables
-    String path = "/api/v2/environments/{environment}/deployments/{deployment}/template".replaceAll("\\{format\\}", "json").replaceAll("\\{" + "environment" + "\\}", apiClient.escapeString(environment.toString())).replaceAll("\\{" + "deployment" + "\\}", apiClient.escapeString(deployment.toString()));
+    String path = "/api/v2/environments/{environment}/deployments/{deployment}/template"
+      .replaceAll("\\{format\\}", "json")
+      .replaceAll("\\{" + "environment" + "\\}",
+                  apiClient.escapeString(environment.toString()))
+      .replaceAll("\\{" + "deployment" + "\\}",
+                  apiClient.escapeString(deployment.toString()))
+      ;
 
     // query params
     Map<String, String> queryParams = new HashMap<String, String>();
@@ -290,7 +318,7 @@ public class DeploymentsApi {
   }
 
   /**
-  * List all deployments
+  * List all deployments.
   * @param  environment  environmentName
   * status code: 200 reason: "OK"
   * status code: 401 reason: "Unauthorized"
@@ -304,7 +332,11 @@ public class DeploymentsApi {
        throw new ApiException(400, "missing required params");
     }
     // create path and map variables
-    String path = "/api/v2/environments/{environment}/deployments".replaceAll("\\{format\\}", "json").replaceAll("\\{" + "environment" + "\\}", apiClient.escapeString(environment.toString()));
+    String path = "/api/v2/environments/{environment}/deployments"
+      .replaceAll("\\{format\\}", "json")
+      .replaceAll("\\{" + "environment" + "\\}",
+                  apiClient.escapeString(environment.toString()))
+      ;
 
     // query params
     Map<String, String> queryParams = new HashMap<String, String>();
@@ -336,14 +368,14 @@ public class DeploymentsApi {
   }
 
   /**
-  * Update an existing deployment
+  * Update an existing deployment template.
   * @param  environment  environmentName
   * @param  deployment  deploymentName
   * @param  XRequestId  requestId
   * @param  body  updatedTemplate
   * status code: 201 reason: "Created"
   * status code: 202 reason: ""
-  * status code: 400 reason: "Deployment update not supported"
+  * status code: 400 reason: "Deployment template update not supported"
   * status code: 401 reason: "Unauthorized"
   * status code: 403 reason: "Forbidden"
   * status code: 404 reason: "Not Found"
@@ -355,7 +387,13 @@ public class DeploymentsApi {
        throw new ApiException(400, "missing required params");
     }
     // create path and map variables
-    String path = "/api/v2/environments/{environment}/deployments/{deployment}".replaceAll("\\{format\\}", "json").replaceAll("\\{" + "environment" + "\\}", apiClient.escapeString(environment.toString())).replaceAll("\\{" + "deployment" + "\\}", apiClient.escapeString(deployment.toString()));
+    String path = "/api/v2/environments/{environment}/deployments/{deployment}"
+      .replaceAll("\\{format\\}", "json")
+      .replaceAll("\\{" + "environment" + "\\}",
+                  apiClient.escapeString(environment.toString()))
+      .replaceAll("\\{" + "deployment" + "\\}",
+                  apiClient.escapeString(deployment.toString()))
+      ;
 
     // query params
     Map<String, String> queryParams = new HashMap<String, String>();

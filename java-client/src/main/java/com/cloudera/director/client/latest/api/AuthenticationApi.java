@@ -41,7 +41,7 @@ public class AuthenticationApi {
   }
 
   /**
-  * Log in to the API
+  * Log in to the API.
   * @param  body  login
   * status code: 200 reason: "Login successful"
   * status code: 201 reason: "Created"
@@ -57,7 +57,9 @@ public class AuthenticationApi {
        throw new ApiException(400, "missing required params");
     }
     // create path and map variables
-    String path = "/api/v4/login".replaceAll("\\{format\\}", "json");
+    String path = "/api/v5/login"
+      .replaceAll("\\{format\\}", "json")
+      ;
 
     // query params
     Map<String, String> queryParams = new HashMap<String, String>();
@@ -89,7 +91,7 @@ public class AuthenticationApi {
   }
 
   /**
-  * Log out from the API
+  * Log out from the API.
   * status code: 200 reason: "Logout successful"
   * status code: 201 reason: "Created"
   * status code: 401 reason: "Not logged in"
@@ -99,7 +101,9 @@ public class AuthenticationApi {
   public Boolean logout() throws ApiException {
     Object postBody = null;
     // create path and map variables
-    String path = "/api/v4/logout".replaceAll("\\{format\\}", "json");
+    String path = "/api/v5/logout"
+      .replaceAll("\\{format\\}", "json")
+      ;
 
     // query params
     Map<String, String> queryParams = new HashMap<String, String>();

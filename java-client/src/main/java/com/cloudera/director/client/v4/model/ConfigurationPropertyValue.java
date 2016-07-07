@@ -84,8 +84,12 @@ public class ConfigurationPropertyValue {
 
     ConfigurationPropertyValue other = (ConfigurationPropertyValue) o; // NOPMD
 
-    if (label != null ? !label.equals(other.label) : other.label != null) return false;
-    if (value != null ? !value.equals(other.value) : other.value != null) return false;
+    if (label != null ?
+        !label.equals(other.label) :
+        other.label != null) return false;
+    if (value != null ?
+        !value.equals(other.value) :
+        other.value != null) return false;
     return true;
   }
 

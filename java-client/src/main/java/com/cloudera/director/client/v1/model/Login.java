@@ -86,7 +86,9 @@ public class Login {
 
     Login other = (Login) o; // NOPMD
 
-    if (username != null ? !username.equals(other.username) : other.username != null) return false;
+    if (username != null ?
+        !username.equals(other.username) :
+        other.username != null) return false;
     return true;
   }
 

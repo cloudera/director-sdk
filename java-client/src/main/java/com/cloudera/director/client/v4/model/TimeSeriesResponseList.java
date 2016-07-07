@@ -88,8 +88,12 @@ public class TimeSeriesResponseList {
 
     TimeSeriesResponseList other = (TimeSeriesResponseList) o; // NOPMD
 
-    if (responses != null ? !responses.equals(other.responses) : other.responses != null) return false;
-    if (rows != null ? !rows.equals(other.rows) : other.rows != null) return false;
+    if (responses != null ?
+        !responses.equals(other.responses) :
+        other.responses != null) return false;
+    if (rows != null ?
+        !rows.equals(other.rows) :
+        other.rows != null) return false;
     return true;
   }
 

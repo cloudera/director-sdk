@@ -53,7 +53,7 @@ class ClustersApi(object):
             params[key] = val
         del params['kwargs']
 
-        resourcePath = '/api/v4/environments/{environment}/deployments/{deployment}/clusters'
+        resourcePath = '/api/v5/environments/{environment}/deployments/{deployment}/clusters'
         resourcePath = resourcePath.replace('{format}', 'json')
         method = 'POST'
 
@@ -105,7 +105,7 @@ class ClustersApi(object):
             params[key] = val
         del params['kwargs']
 
-        resourcePath = '/api/v4/environments/{environment}/deployments/{deployment}/clusters/{cluster}'
+        resourcePath = '/api/v5/environments/{environment}/deployments/{deployment}/clusters/{cluster}'
         resourcePath = resourcePath.replace('{format}', 'json')
         method = 'DELETE'
 
@@ -161,7 +161,7 @@ class ClustersApi(object):
             params[key] = val
         del params['kwargs']
 
-        resourcePath = '/api/v4/environments/{environment}/deployments/{deployment}/clusters/{cluster}'
+        resourcePath = '/api/v5/environments/{environment}/deployments/{deployment}/clusters/{cluster}'
         resourcePath = resourcePath.replace('{format}', 'json')
         method = 'GET'
 
@@ -222,7 +222,7 @@ class ClustersApi(object):
             params[key] = val
         del params['kwargs']
 
-        resourcePath = '/api/v4/environments/{environment}/deployments/{deployment}/clusters/{cluster}/metrics'
+        resourcePath = '/api/v5/environments/{environment}/deployments/{deployment}/clusters/{cluster}/metrics'
         resourcePath = resourcePath.replace('{format}', 'json')
         method = 'GET'
 
@@ -283,7 +283,7 @@ class ClustersApi(object):
             params[key] = val
         del params['kwargs']
 
-        resourcePath = '/api/v4/environments/{environment}/deployments/{deployment}/clusters/{cluster}/status'
+        resourcePath = '/api/v5/environments/{environment}/deployments/{deployment}/clusters/{cluster}/status'
         resourcePath = resourcePath.replace('{format}', 'json')
         method = 'GET'
 
@@ -344,7 +344,7 @@ class ClustersApi(object):
             params[key] = val
         del params['kwargs']
 
-        resourcePath = '/api/v4/environments/{environment}/deployments/{deployment}/clusters/{cluster}/template'
+        resourcePath = '/api/v5/environments/{environment}/deployments/{deployment}/clusters/{cluster}/template'
         resourcePath = resourcePath.replace('{format}', 'json')
         method = 'GET'
 
@@ -403,7 +403,7 @@ class ClustersApi(object):
             params[key] = val
         del params['kwargs']
 
-        resourcePath = '/api/v4/environments/{environment}/deployments/{deployment}/clusters'
+        resourcePath = '/api/v5/environments/{environment}/deployments/{deployment}/clusters'
         resourcePath = resourcePath.replace('{format}', 'json')
         method = 'GET'
 
@@ -462,7 +462,7 @@ class ClustersApi(object):
             params[key] = val
         del params['kwargs']
 
-        resourcePath = '/api/v4/environments/{environment}/deployments/{deployment}/clusters/{cluster}'
+        resourcePath = '/api/v5/environments/{environment}/deployments/{deployment}/clusters/{cluster}'
         resourcePath = resourcePath.replace('{format}', 'json')
         method = 'PUT'
 

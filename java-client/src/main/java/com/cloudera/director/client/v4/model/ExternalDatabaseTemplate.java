@@ -122,10 +122,18 @@ public class ExternalDatabaseTemplate {
 
     ExternalDatabaseTemplate other = (ExternalDatabaseTemplate) o; // NOPMD
 
-    if (databaseNamePrefix != null ? !databaseNamePrefix.equals(other.databaseNamePrefix) : other.databaseNamePrefix != null) return false;
-    if (databaseServerName != null ? !databaseServerName.equals(other.databaseServerName) : other.databaseServerName != null) return false;
-    if (name != null ? !name.equals(other.name) : other.name != null) return false;
-    if (usernamePrefix != null ? !usernamePrefix.equals(other.usernamePrefix) : other.usernamePrefix != null) return false;
+    if (databaseNamePrefix != null ?
+        !databaseNamePrefix.equals(other.databaseNamePrefix) :
+        other.databaseNamePrefix != null) return false;
+    if (databaseServerName != null ?
+        !databaseServerName.equals(other.databaseServerName) :
+        other.databaseServerName != null) return false;
+    if (name != null ?
+        !name.equals(other.name) :
+        other.name != null) return false;
+    if (usernamePrefix != null ?
+        !usernamePrefix.equals(other.usernamePrefix) :
+        other.usernamePrefix != null) return false;
     return true;
   }
 

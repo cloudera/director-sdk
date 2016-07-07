@@ -27,7 +27,7 @@ public class TimeSeriesMetadata {
   /* Alias */
   private String alias;
   /* Attributes */
-  private Map<String,String> attributes;
+  private Map<String, String> attributes;
   /* End time */
   private Long endTime;
   /* Entity name */
@@ -48,7 +48,7 @@ public class TimeSeriesMetadata {
   private List<String> unitNumerators;
   public TimeSeriesMetadata() { }
 
-  private TimeSeriesMetadata(String alias, Map<String,String> attributes, Long endTime, String entityName, String expression, Long metricCollectionFrequencyMs, String metricName, String rollupUsed, Long startTime, List<String> unitDenominators, List<String> unitNumerators) {
+  private TimeSeriesMetadata(String alias, Map<String, String> attributes, Long endTime, String entityName, String expression, Long metricCollectionFrequencyMs, String metricName, String rollupUsed, Long startTime, List<String> unitDenominators, List<String> unitNumerators) {
     this.alias = alias;
     this.attributes = attributes;
     this.endTime = endTime;
@@ -82,7 +82,7 @@ public class TimeSeriesMetadata {
 
   public static class TimeSeriesMetadataBuilder {
     private String alias = null;
-    private Map<String,String> attributes = new HashMap<String,String>();
+    private Map<String, String> attributes = new HashMap<String, String>();
     private Long endTime = null;
     private String entityName = null;
     private String expression = null;
@@ -98,7 +98,7 @@ public class TimeSeriesMetadata {
       return this;
     }
 
-    public TimeSeriesMetadataBuilder attributes(Map<String,String> attributes) {
+    public TimeSeriesMetadataBuilder attributes(Map<String, String> attributes) {
       this.attributes = attributes;
       return this;
     }
@@ -175,10 +175,10 @@ public class TimeSeriesMetadata {
     this.alias = alias;
   }
 
-  public Map<String,String> getAttributes() {
+  public Map<String, String> getAttributes() {
     return attributes;
   }
-  public void setAttributes(Map<String,String> attributes) {
+  public void setAttributes(Map<String, String> attributes) {
     this.attributes = attributes;
   }
 
@@ -252,17 +252,39 @@ public class TimeSeriesMetadata {
 
     TimeSeriesMetadata other = (TimeSeriesMetadata) o; // NOPMD
 
-    if (alias != null ? !alias.equals(other.alias) : other.alias != null) return false;
-    if (attributes != null ? !attributes.equals(other.attributes) : other.attributes != null) return false;
-    if (endTime != null ? !endTime.equals(other.endTime) : other.endTime != null) return false;
-    if (entityName != null ? !entityName.equals(other.entityName) : other.entityName != null) return false;
-    if (expression != null ? !expression.equals(other.expression) : other.expression != null) return false;
-    if (metricCollectionFrequencyMs != null ? !metricCollectionFrequencyMs.equals(other.metricCollectionFrequencyMs) : other.metricCollectionFrequencyMs != null) return false;
-    if (metricName != null ? !metricName.equals(other.metricName) : other.metricName != null) return false;
-    if (rollupUsed != null ? !rollupUsed.equals(other.rollupUsed) : other.rollupUsed != null) return false;
-    if (startTime != null ? !startTime.equals(other.startTime) : other.startTime != null) return false;
-    if (unitDenominators != null ? !unitDenominators.equals(other.unitDenominators) : other.unitDenominators != null) return false;
-    if (unitNumerators != null ? !unitNumerators.equals(other.unitNumerators) : other.unitNumerators != null) return false;
+    if (alias != null ?
+        !alias.equals(other.alias) :
+        other.alias != null) return false;
+    if (attributes != null ?
+        !attributes.equals(other.attributes) :
+        other.attributes != null) return false;
+    if (endTime != null ?
+        !endTime.equals(other.endTime) :
+        other.endTime != null) return false;
+    if (entityName != null ?
+        !entityName.equals(other.entityName) :
+        other.entityName != null) return false;
+    if (expression != null ?
+        !expression.equals(other.expression) :
+        other.expression != null) return false;
+    if (metricCollectionFrequencyMs != null ?
+        !metricCollectionFrequencyMs.equals(other.metricCollectionFrequencyMs) :
+        other.metricCollectionFrequencyMs != null) return false;
+    if (metricName != null ?
+        !metricName.equals(other.metricName) :
+        other.metricName != null) return false;
+    if (rollupUsed != null ?
+        !rollupUsed.equals(other.rollupUsed) :
+        other.rollupUsed != null) return false;
+    if (startTime != null ?
+        !startTime.equals(other.startTime) :
+        other.startTime != null) return false;
+    if (unitDenominators != null ?
+        !unitDenominators.equals(other.unitDenominators) :
+        other.unitDenominators != null) return false;
+    if (unitNumerators != null ?
+        !unitNumerators.equals(other.unitNumerators) :
+        other.unitNumerators != null) return false;
     return true;
   }
 

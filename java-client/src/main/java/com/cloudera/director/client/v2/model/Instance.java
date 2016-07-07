@@ -118,10 +118,18 @@ public class Instance {
 
     Instance other = (Instance) o; // NOPMD
 
-    if (capabilities != null ? !capabilities.equals(other.capabilities) : other.capabilities != null) return false;
-    if (health != null ? !health.equals(other.health) : other.health != null) return false;
-    if (ipAddress != null ? !ipAddress.equals(other.ipAddress) : other.ipAddress != null) return false;
-    if (virtualInstance != null ? !virtualInstance.equals(other.virtualInstance) : other.virtualInstance != null) return false;
+    if (capabilities != null ?
+        !capabilities.equals(other.capabilities) :
+        other.capabilities != null) return false;
+    if (health != null ?
+        !health.equals(other.health) :
+        other.health != null) return false;
+    if (ipAddress != null ?
+        !ipAddress.equals(other.ipAddress) :
+        other.ipAddress != null) return false;
+    if (virtualInstance != null ?
+        !virtualInstance.equals(other.virtualInstance) :
+        other.virtualInstance != null) return false;
     return true;
   }
 

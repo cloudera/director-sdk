@@ -124,10 +124,18 @@ public class ImportResult {
 
     ImportResult other = (ImportResult) o; // NOPMD
 
-    if (cluster != null ? !cluster.equals(other.cluster) : other.cluster != null) return false;
-    if (databaseSevers != null ? !databaseSevers.equals(other.databaseSevers) : other.databaseSevers != null) return false;
-    if (deployment != null ? !deployment.equals(other.deployment) : other.deployment != null) return false;
-    if (environment != null ? !environment.equals(other.environment) : other.environment != null) return false;
+    if (cluster != null ?
+        !cluster.equals(other.cluster) :
+        other.cluster != null) return false;
+    if (databaseSevers != null ?
+        !databaseSevers.equals(other.databaseSevers) :
+        other.databaseSevers != null) return false;
+    if (deployment != null ?
+        !deployment.equals(other.deployment) :
+        other.deployment != null) return false;
+    if (environment != null ?
+        !environment.equals(other.environment) :
+        other.environment != null) return false;
     return true;
   }
 

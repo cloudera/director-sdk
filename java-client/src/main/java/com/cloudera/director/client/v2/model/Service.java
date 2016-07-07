@@ -84,8 +84,12 @@ public class Service {
 
     Service other = (Service) o; // NOPMD
 
-    if (health != null ? !health.equals(other.health) : other.health != null) return false;
-    if (serviceName != null ? !serviceName.equals(other.serviceName) : other.serviceName != null) return false;
+    if (health != null ?
+        !health.equals(other.health) :
+        other.health != null) return false;
+    if (serviceName != null ?
+        !serviceName.equals(other.serviceName) :
+        other.serviceName != null) return false;
     return true;
   }
 

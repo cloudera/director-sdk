@@ -25,12 +25,12 @@ import java.util.Set;
 
 public class ExternalDatabaseServerUsage {
   /* Clusters that use the specified database */
-  private Map<String,List<String>> clusters;
+  private Map<String, List<String>> clusters;
   /* Deployments that use the specified database */
   private Set<String> deployments;
   public ExternalDatabaseServerUsage() { }
 
-  private ExternalDatabaseServerUsage(Map<String,List<String>> clusters, Set<String> deployments) {
+  private ExternalDatabaseServerUsage(Map<String, List<String>> clusters, Set<String> deployments) {
     this.clusters = clusters;
     this.deployments = deployments;
   }
@@ -45,10 +45,10 @@ public class ExternalDatabaseServerUsage {
   }
 
   public static class ExternalDatabaseServerUsageBuilder {
-    private Map<String,List<String>> clusters = new HashMap<String,List<String>>();
+    private Map<String, List<String>> clusters = new HashMap<String, List<String>>();
     private Set<String> deployments = null;
 
-    public ExternalDatabaseServerUsageBuilder clusters(Map<String,List<String>> clusters) {
+    public ExternalDatabaseServerUsageBuilder clusters(Map<String, List<String>> clusters) {
       this.clusters = clusters;
       return this;
     }
@@ -69,10 +69,10 @@ public class ExternalDatabaseServerUsage {
       .deployments(deployments)
       ;
   }
-  public Map<String,List<String>> getClusters() {
+  public Map<String, List<String>> getClusters() {
     return clusters;
   }
-  public void setClusters(Map<String,List<String>> clusters) {
+  public void setClusters(Map<String, List<String>> clusters) {
     this.clusters = clusters;
   }
 
@@ -90,8 +90,12 @@ public class ExternalDatabaseServerUsage {
 
     ExternalDatabaseServerUsage other = (ExternalDatabaseServerUsage) o; // NOPMD
 
-    if (clusters != null ? !clusters.equals(other.clusters) : other.clusters != null) return false;
-    if (deployments != null ? !deployments.equals(other.deployments) : other.deployments != null) return false;
+    if (clusters != null ?
+        !clusters.equals(other.clusters) :
+        other.clusters != null) return false;
+    if (deployments != null ?
+        !deployments.equals(other.deployments) :
+        other.deployments != null) return false;
     return true;
   }
 

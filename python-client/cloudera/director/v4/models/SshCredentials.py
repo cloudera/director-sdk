@@ -42,7 +42,7 @@ class SshCredentials:
         #Optional SSH password [redacted on read]
         self.password = kwargs.get('password',None) # str
         #SSH server port
-        self.port = kwargs.get('port',0) # int
+        self.port = kwargs.get('port',None) # int
         #Optional SSH PKCS8 private key [redacted on read]
         self.privateKey = kwargs.get('privateKey',None) # str
         #SSH user

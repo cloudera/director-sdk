@@ -176,10 +176,18 @@ public class SshCredentials {
 
     SshCredentials other = (SshCredentials) o; // NOPMD
 
-    if (bastionHost != null ? !bastionHost.equals(other.bastionHost) : other.bastionHost != null) return false;
-    if (hostKeyFingerprint != null ? !hostKeyFingerprint.equals(other.hostKeyFingerprint) : other.hostKeyFingerprint != null) return false;
-    if (port != null ? !port.equals(other.port) : other.port != null) return false;
-    if (username != null ? !username.equals(other.username) : other.username != null) return false;
+    if (bastionHost != null ?
+        !bastionHost.equals(other.bastionHost) :
+        other.bastionHost != null) return false;
+    if (hostKeyFingerprint != null ?
+        !hostKeyFingerprint.equals(other.hostKeyFingerprint) :
+        other.hostKeyFingerprint != null) return false;
+    if (port != null ?
+        !port.equals(other.port) :
+        other.port != null) return false;
+    if (username != null ?
+        !username.equals(other.username) :
+        other.username != null) return false;
     return true;
   }
 

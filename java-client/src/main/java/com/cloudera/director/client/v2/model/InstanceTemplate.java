@@ -24,19 +24,19 @@ import java.util.Map;
 public class InstanceTemplate {
   /* Custom script executed before anything else */
   private String bootstrapScript;
-  private Map<String,String> config;
+  private Map<String, String> config;
   /* Operating system image */
   private String image;
   /* Instance template name */
   private String name;
   /* Flag indicating whether to normalize the instance */
   private Boolean normalizeInstance;
-  private Map<String,String> tags;
+  private Map<String, String> tags;
   /* Instance type */
   private String type;
   public InstanceTemplate() { }
 
-  private InstanceTemplate(String bootstrapScript, Map<String,String> config, String image, String name, Boolean normalizeInstance, Map<String,String> tags, String type) {
+  private InstanceTemplate(String bootstrapScript, Map<String, String> config, String image, String name, Boolean normalizeInstance, Map<String, String> tags, String type) {
     this.bootstrapScript = bootstrapScript;
     this.config = config;
     this.image = image;
@@ -62,11 +62,11 @@ public class InstanceTemplate {
 
   public static class InstanceTemplateBuilder {
     private String bootstrapScript = null;
-    private Map<String,String> config = new HashMap<String,String>();
+    private Map<String, String> config = new HashMap<String, String>();
     private String image = null;
     private String name = null;
     private Boolean normalizeInstance = null;
-    private Map<String,String> tags = new HashMap<String,String>();
+    private Map<String, String> tags = new HashMap<String, String>();
     private String type = null;
 
     public InstanceTemplateBuilder bootstrapScript(String bootstrapScript) {
@@ -74,7 +74,7 @@ public class InstanceTemplate {
       return this;
     }
 
-    public InstanceTemplateBuilder config(Map<String,String> config) {
+    public InstanceTemplateBuilder config(Map<String, String> config) {
       this.config = config;
       return this;
     }
@@ -94,7 +94,7 @@ public class InstanceTemplate {
       return this;
     }
 
-    public InstanceTemplateBuilder tags(Map<String,String> tags) {
+    public InstanceTemplateBuilder tags(Map<String, String> tags) {
       this.tags = tags;
       return this;
     }
@@ -127,10 +127,10 @@ public class InstanceTemplate {
     this.bootstrapScript = bootstrapScript;
   }
 
-  public Map<String,String> getConfig() {
+  public Map<String, String> getConfig() {
     return config;
   }
-  public void setConfig(Map<String,String> config) {
+  public void setConfig(Map<String, String> config) {
     this.config = config;
   }
 
@@ -155,10 +155,10 @@ public class InstanceTemplate {
     this.normalizeInstance = normalizeInstance;
   }
 
-  public Map<String,String> getTags() {
+  public Map<String, String> getTags() {
     return tags;
   }
-  public void setTags(Map<String,String> tags) {
+  public void setTags(Map<String, String> tags) {
     this.tags = tags;
   }
 
@@ -176,13 +176,27 @@ public class InstanceTemplate {
 
     InstanceTemplate other = (InstanceTemplate) o; // NOPMD
 
-    if (bootstrapScript != null ? !bootstrapScript.equals(other.bootstrapScript) : other.bootstrapScript != null) return false;
-    if (config != null ? !config.equals(other.config) : other.config != null) return false;
-    if (image != null ? !image.equals(other.image) : other.image != null) return false;
-    if (name != null ? !name.equals(other.name) : other.name != null) return false;
-    if (normalizeInstance != null ? !normalizeInstance.equals(other.normalizeInstance) : other.normalizeInstance != null) return false;
-    if (tags != null ? !tags.equals(other.tags) : other.tags != null) return false;
-    if (type != null ? !type.equals(other.type) : other.type != null) return false;
+    if (bootstrapScript != null ?
+        !bootstrapScript.equals(other.bootstrapScript) :
+        other.bootstrapScript != null) return false;
+    if (config != null ?
+        !config.equals(other.config) :
+        other.config != null) return false;
+    if (image != null ?
+        !image.equals(other.image) :
+        other.image != null) return false;
+    if (name != null ?
+        !name.equals(other.name) :
+        other.name != null) return false;
+    if (normalizeInstance != null ?
+        !normalizeInstance.equals(other.normalizeInstance) :
+        other.normalizeInstance != null) return false;
+    if (tags != null ?
+        !tags.equals(other.tags) :
+        other.tags != null) return false;
+    if (type != null ?
+        !type.equals(other.type) :
+        other.type != null) return false;
     return true;
   }
 

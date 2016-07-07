@@ -68,7 +68,7 @@ class DeploymentTemplate:
         #Web UI and API password [redacted on read]
         self.password = kwargs.get('password',None) # str
         #Port for existing Cloudera Manager installation
-        self.port = kwargs.get('port',0) # int
+        self.port = kwargs.get('port',None) # int
         #Custom Cloudera Manager repository URL
         self.repository = kwargs.get('repository',None) # str
         #Custom Cloudera Manager public GPG key

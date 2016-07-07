@@ -40,7 +40,7 @@ public class ProviderMetadataApi {
   }
 
   /**
-  * Get a provider by name
+  * Get a provider by name.
   * @param  providerId  providerId
   * status code: 200 reason: "OK"
   * status code: 401 reason: "Unauthorized"
@@ -54,7 +54,11 @@ public class ProviderMetadataApi {
        throw new ApiException(400, "missing required params");
     }
     // create path and map variables
-    String path = "/api/v3/metadata/providers/{providerId}".replaceAll("\\{format\\}", "json").replaceAll("\\{" + "providerId" + "\\}", apiClient.escapeString(providerId.toString()));
+    String path = "/api/v3/metadata/providers/{providerId}"
+      .replaceAll("\\{format\\}", "json")
+      .replaceAll("\\{" + "providerId" + "\\}",
+                  apiClient.escapeString(providerId.toString()))
+      ;
 
     // query params
     Map<String, String> queryParams = new HashMap<String, String>();
@@ -86,7 +90,7 @@ public class ProviderMetadataApi {
   }
 
   /**
-  * List all provider metadata
+  * List all provider metadata.
   * status code: 200 reason: "OK"
   * status code: 401 reason: "Unauthorized"
   * status code: 403 reason: "Forbidden"
@@ -95,7 +99,9 @@ public class ProviderMetadataApi {
   public List<CloudProviderMetadata> list() throws ApiException {
     Object postBody = null;
     // create path and map variables
-    String path = "/api/v3/metadata/providers".replaceAll("\\{format\\}", "json");
+    String path = "/api/v3/metadata/providers"
+      .replaceAll("\\{format\\}", "json")
+      ;
 
     // query params
     Map<String, String> queryParams = new HashMap<String, String>();

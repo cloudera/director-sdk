@@ -41,19 +41,19 @@ class TimeSeriesAggregateStatistics:
         #Cross-entity metadata
         self.crossEntityMetadata = kwargs.get('crossEntityMetadata',None) # cloudera.director.v4.models.TimeSeriesCrossEntityMetadata
         #Maximum value
-        self.max = kwargs.get('max',0.0) # float
+        self.max = kwargs.get('max',None) # float
         #Timestamp for maximum value
         self.maxTime = kwargs.get('maxTime',0L) # long
         #Mean
-        self.mean = kwargs.get('mean',0.0) # float
+        self.mean = kwargs.get('mean',None) # float
         #Minimum value
-        self.min = kwargs.get('min',0.0) # float
+        self.min = kwargs.get('min',None) # float
         #Timestamp for minimum value
         self.minTime = kwargs.get('minTime',0L) # long
         #Sample time
         self.sampleTime = kwargs.get('sampleTime',0L) # long
         #Sample value
-        self.sampleValue = kwargs.get('sampleValue',0.0) # float
+        self.sampleValue = kwargs.get('sampleValue',None) # float
         #Standard deviation
-        self.stdDev = kwargs.get('stdDev',0.0) # float
+        self.stdDev = kwargs.get('stdDev',None) # float
         

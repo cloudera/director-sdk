@@ -106,9 +106,15 @@ public class TimeSeriesResponse {
 
     TimeSeriesResponse other = (TimeSeriesResponse) o; // NOPMD
 
-    if (timeSeries != null ? !timeSeries.equals(other.timeSeries) : other.timeSeries != null) return false;
-    if (timeSeriesQuery != null ? !timeSeriesQuery.equals(other.timeSeriesQuery) : other.timeSeriesQuery != null) return false;
-    if (warnings != null ? !warnings.equals(other.warnings) : other.warnings != null) return false;
+    if (timeSeries != null ?
+        !timeSeries.equals(other.timeSeries) :
+        other.timeSeries != null) return false;
+    if (timeSeriesQuery != null ?
+        !timeSeriesQuery.equals(other.timeSeriesQuery) :
+        other.timeSeriesQuery != null) return false;
+    if (warnings != null ?
+        !warnings.equals(other.warnings) :
+        other.warnings != null) return false;
     return true;
   }
 

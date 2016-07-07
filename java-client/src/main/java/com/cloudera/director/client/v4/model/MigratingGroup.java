@@ -87,8 +87,12 @@ public class MigratingGroup {
 
     MigratingGroup other = (MigratingGroup) o; // NOPMD
 
-    if (virtualInstanceGroupName != null ? !virtualInstanceGroupName.equals(other.virtualInstanceGroupName) : other.virtualInstanceGroupName != null) return false;
-    if (virtualInstanceIds != null ? !virtualInstanceIds.equals(other.virtualInstanceIds) : other.virtualInstanceIds != null) return false;
+    if (virtualInstanceGroupName != null ?
+        !virtualInstanceGroupName.equals(other.virtualInstanceGroupName) :
+        other.virtualInstanceGroupName != null) return false;
+    if (virtualInstanceIds != null ?
+        !virtualInstanceIds.equals(other.virtualInstanceIds) :
+        other.virtualInstanceIds != null) return false;
     return true;
   }
 

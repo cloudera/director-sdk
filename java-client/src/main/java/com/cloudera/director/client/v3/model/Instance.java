@@ -25,11 +25,11 @@ public class Instance {
   private Capabilities capabilities;
   private Health health;
   private String ipAddress;
-  private Map<String,String> properties;
+  private Map<String, String> properties;
   private VirtualInstance virtualInstance;
   public Instance() { }
 
-  private Instance(Capabilities capabilities, Health health, String ipAddress, Map<String,String> properties, VirtualInstance virtualInstance) {
+  private Instance(Capabilities capabilities, Health health, String ipAddress, Map<String, String> properties, VirtualInstance virtualInstance) {
     this.capabilities = capabilities;
     this.health = health;
     this.ipAddress = ipAddress;
@@ -53,7 +53,7 @@ public class Instance {
     private Capabilities capabilities = null;
     private Health health = null;
     private String ipAddress = null;
-    private Map<String,String> properties = new HashMap<String,String>();
+    private Map<String, String> properties = new HashMap<String, String>();
     private VirtualInstance virtualInstance = null;
 
     public InstanceBuilder capabilities(Capabilities capabilities) {
@@ -71,7 +71,7 @@ public class Instance {
       return this;
     }
 
-    public InstanceBuilder properties(Map<String,String> properties) {
+    public InstanceBuilder properties(Map<String, String> properties) {
       this.properties = properties;
       return this;
     }
@@ -116,10 +116,10 @@ public class Instance {
     this.ipAddress = ipAddress;
   }
 
-  public Map<String,String> getProperties() {
+  public Map<String, String> getProperties() {
     return properties;
   }
-  public void setProperties(Map<String,String> properties) {
+  public void setProperties(Map<String, String> properties) {
     this.properties = properties;
   }
 
@@ -137,11 +137,21 @@ public class Instance {
 
     Instance other = (Instance) o; // NOPMD
 
-    if (capabilities != null ? !capabilities.equals(other.capabilities) : other.capabilities != null) return false;
-    if (health != null ? !health.equals(other.health) : other.health != null) return false;
-    if (ipAddress != null ? !ipAddress.equals(other.ipAddress) : other.ipAddress != null) return false;
-    if (properties != null ? !properties.equals(other.properties) : other.properties != null) return false;
-    if (virtualInstance != null ? !virtualInstance.equals(other.virtualInstance) : other.virtualInstance != null) return false;
+    if (capabilities != null ?
+        !capabilities.equals(other.capabilities) :
+        other.capabilities != null) return false;
+    if (health != null ?
+        !health.equals(other.health) :
+        other.health != null) return false;
+    if (ipAddress != null ?
+        !ipAddress.equals(other.ipAddress) :
+        other.ipAddress != null) return false;
+    if (properties != null ?
+        !properties.equals(other.properties) :
+        other.properties != null) return false;
+    if (virtualInstance != null ?
+        !virtualInstance.equals(other.virtualInstance) :
+        other.virtualInstance != null) return false;
     return true;
   }
 

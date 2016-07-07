@@ -43,7 +43,7 @@ public class DatabaseServersApi {
   }
 
   /**
-  * Create a new external database server
+  * Create a new external database server.
   * @param  environment  environmentName
   * @param  body  externalDatabaseServerTemplate
   * status code: 201 reason: "External database server template accepted"
@@ -60,7 +60,11 @@ public class DatabaseServersApi {
        throw new ApiException(400, "missing required params");
     }
     // create path and map variables
-    String path = "/api/v4/environments/{environment}/databaseServers".replaceAll("\\{format\\}", "json").replaceAll("\\{" + "environment" + "\\}", apiClient.escapeString(environment.toString()));
+    String path = "/api/v4/environments/{environment}/databaseServers"
+      .replaceAll("\\{format\\}", "json")
+      .replaceAll("\\{" + "environment" + "\\}",
+                  apiClient.escapeString(environment.toString()))
+      ;
 
     // query params
     Map<String, String> queryParams = new HashMap<String, String>();
@@ -92,7 +96,7 @@ public class DatabaseServersApi {
   }
 
   /**
-  * Delete an external database server by name
+  * Delete an external database server by name.
   * @param  environment  environmentName
   * @param  externalDatabaseServer  externalDatabaseServerName
   * status code: 204 reason: "Delete request accepted"
@@ -107,7 +111,13 @@ public class DatabaseServersApi {
        throw new ApiException(400, "missing required params");
     }
     // create path and map variables
-    String path = "/api/v4/environments/{environment}/databaseServers/{externalDatabaseServer}".replaceAll("\\{format\\}", "json").replaceAll("\\{" + "environment" + "\\}", apiClient.escapeString(environment.toString())).replaceAll("\\{" + "externalDatabaseServer" + "\\}", apiClient.escapeString(externalDatabaseServer.toString()));
+    String path = "/api/v4/environments/{environment}/databaseServers/{externalDatabaseServer}"
+      .replaceAll("\\{format\\}", "json")
+      .replaceAll("\\{" + "environment" + "\\}",
+                  apiClient.escapeString(environment.toString()))
+      .replaceAll("\\{" + "externalDatabaseServer" + "\\}",
+                  apiClient.escapeString(externalDatabaseServer.toString()))
+      ;
 
     // query params
     Map<String, String> queryParams = new HashMap<String, String>();
@@ -139,7 +149,7 @@ public class DatabaseServersApi {
   }
 
   /**
-  * Get an external database server usage by name
+  * Get an external database server usage by name.
   * @param  environment  environmentName
   * @param  externalDatabaseServer  externalDatabaseServerName
   * status code: 200 reason: "OK"
@@ -154,7 +164,13 @@ public class DatabaseServersApi {
        throw new ApiException(400, "missing required params");
     }
     // create path and map variables
-    String path = "/api/v4/environments/{environment}/databaseServers/{externalDatabaseServer}/usage".replaceAll("\\{format\\}", "json").replaceAll("\\{" + "environment" + "\\}", apiClient.escapeString(environment.toString())).replaceAll("\\{" + "externalDatabaseServer" + "\\}", apiClient.escapeString(externalDatabaseServer.toString()));
+    String path = "/api/v4/environments/{environment}/databaseServers/{externalDatabaseServer}/usage"
+      .replaceAll("\\{format\\}", "json")
+      .replaceAll("\\{" + "environment" + "\\}",
+                  apiClient.escapeString(environment.toString()))
+      .replaceAll("\\{" + "externalDatabaseServer" + "\\}",
+                  apiClient.escapeString(externalDatabaseServer.toString()))
+      ;
 
     // query params
     Map<String, String> queryParams = new HashMap<String, String>();
@@ -186,7 +202,7 @@ public class DatabaseServersApi {
   }
 
   /**
-  * Get an external database server by name
+  * Get an external database server by name.
   * @param  environment  environmentName
   * @param  externalDatabaseServer  externalDatabaseServerName
   * status code: 200 reason: "OK"
@@ -202,7 +218,13 @@ public class DatabaseServersApi {
        throw new ApiException(400, "missing required params");
     }
     // create path and map variables
-    String path = "/api/v4/environments/{environment}/databaseServers/{externalDatabaseServer}".replaceAll("\\{format\\}", "json").replaceAll("\\{" + "environment" + "\\}", apiClient.escapeString(environment.toString())).replaceAll("\\{" + "externalDatabaseServer" + "\\}", apiClient.escapeString(externalDatabaseServer.toString()));
+    String path = "/api/v4/environments/{environment}/databaseServers/{externalDatabaseServer}"
+      .replaceAll("\\{format\\}", "json")
+      .replaceAll("\\{" + "environment" + "\\}",
+                  apiClient.escapeString(environment.toString()))
+      .replaceAll("\\{" + "externalDatabaseServer" + "\\}",
+                  apiClient.escapeString(externalDatabaseServer.toString()))
+      ;
 
     // query params
     Map<String, String> queryParams = new HashMap<String, String>();
@@ -234,7 +256,7 @@ public class DatabaseServersApi {
   }
 
   /**
-  * Get an external database server status by name
+  * Get an external database server status by name.
   * @param  environment  environmentName
   * @param  externalDatabaseServer  externalDatabaseServerName
   * status code: 200 reason: "OK"
@@ -249,7 +271,13 @@ public class DatabaseServersApi {
        throw new ApiException(400, "missing required params");
     }
     // create path and map variables
-    String path = "/api/v4/environments/{environment}/databaseServers/{externalDatabaseServer}/status".replaceAll("\\{format\\}", "json").replaceAll("\\{" + "environment" + "\\}", apiClient.escapeString(environment.toString())).replaceAll("\\{" + "externalDatabaseServer" + "\\}", apiClient.escapeString(externalDatabaseServer.toString()));
+    String path = "/api/v4/environments/{environment}/databaseServers/{externalDatabaseServer}/status"
+      .replaceAll("\\{format\\}", "json")
+      .replaceAll("\\{" + "environment" + "\\}",
+                  apiClient.escapeString(environment.toString()))
+      .replaceAll("\\{" + "externalDatabaseServer" + "\\}",
+                  apiClient.escapeString(externalDatabaseServer.toString()))
+      ;
 
     // query params
     Map<String, String> queryParams = new HashMap<String, String>();
@@ -281,7 +309,7 @@ public class DatabaseServersApi {
   }
 
   /**
-  * Get an external database server template by name
+  * Get an external database server template by name.
   * @param  environment  environmentName
   * @param  externalDatabaseServer  externalDatabaseServerName
   * status code: 200 reason: "OK"
@@ -296,7 +324,13 @@ public class DatabaseServersApi {
        throw new ApiException(400, "missing required params");
     }
     // create path and map variables
-    String path = "/api/v4/environments/{environment}/databaseServers/{externalDatabaseServer}/template".replaceAll("\\{format\\}", "json").replaceAll("\\{" + "environment" + "\\}", apiClient.escapeString(environment.toString())).replaceAll("\\{" + "externalDatabaseServer" + "\\}", apiClient.escapeString(externalDatabaseServer.toString()));
+    String path = "/api/v4/environments/{environment}/databaseServers/{externalDatabaseServer}/template"
+      .replaceAll("\\{format\\}", "json")
+      .replaceAll("\\{" + "environment" + "\\}",
+                  apiClient.escapeString(environment.toString()))
+      .replaceAll("\\{" + "externalDatabaseServer" + "\\}",
+                  apiClient.escapeString(externalDatabaseServer.toString()))
+      ;
 
     // query params
     Map<String, String> queryParams = new HashMap<String, String>();
@@ -328,7 +362,7 @@ public class DatabaseServersApi {
   }
 
   /**
-  * List all externalDatabaseServers
+  * List all externalDatabaseServers.
   * @param  environment  environmentName
   * status code: 200 reason: "OK"
   * status code: 401 reason: "Unauthorized"
@@ -342,7 +376,11 @@ public class DatabaseServersApi {
        throw new ApiException(400, "missing required params");
     }
     // create path and map variables
-    String path = "/api/v4/environments/{environment}/databaseServers".replaceAll("\\{format\\}", "json").replaceAll("\\{" + "environment" + "\\}", apiClient.escapeString(environment.toString()));
+    String path = "/api/v4/environments/{environment}/databaseServers"
+      .replaceAll("\\{format\\}", "json")
+      .replaceAll("\\{" + "environment" + "\\}",
+                  apiClient.escapeString(environment.toString()))
+      ;
 
     // query params
     Map<String, String> queryParams = new HashMap<String, String>();
@@ -374,7 +412,7 @@ public class DatabaseServersApi {
   }
 
   /**
-  * Update an existing external database server (unsupported)
+  * Update an existing external database server (unsupported).
   * @param  environment  environmentName
   * @param  externalDatabaseServer  externalDatabaseServerName
   * @param  body  updatedTemplate
@@ -392,7 +430,13 @@ public class DatabaseServersApi {
        throw new ApiException(400, "missing required params");
     }
     // create path and map variables
-    String path = "/api/v4/environments/{environment}/databaseServers/{externalDatabaseServer}".replaceAll("\\{format\\}", "json").replaceAll("\\{" + "environment" + "\\}", apiClient.escapeString(environment.toString())).replaceAll("\\{" + "externalDatabaseServer" + "\\}", apiClient.escapeString(externalDatabaseServer.toString()));
+    String path = "/api/v4/environments/{environment}/databaseServers/{externalDatabaseServer}"
+      .replaceAll("\\{format\\}", "json")
+      .replaceAll("\\{" + "environment" + "\\}",
+                  apiClient.escapeString(environment.toString()))
+      .replaceAll("\\{" + "externalDatabaseServer" + "\\}",
+                  apiClient.escapeString(externalDatabaseServer.toString()))
+      ;
 
     // query params
     Map<String, String> queryParams = new HashMap<String, String>();

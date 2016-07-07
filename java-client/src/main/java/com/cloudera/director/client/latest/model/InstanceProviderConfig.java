@@ -23,7 +23,7 @@ import java.util.Map;
 
 public class InstanceProviderConfig {
   /* Provider specific configurations [redacted on read] */
-  private Map<String,String> config;
+  private Map<String, String> config;
   /* Provider type */
   private String type;
   public interface Type {
@@ -32,7 +32,7 @@ public class InstanceProviderConfig {
   }
   public InstanceProviderConfig() { }
 
-  private InstanceProviderConfig(Map<String,String> config, String type) {
+  private InstanceProviderConfig(Map<String, String> config, String type) {
     this.config = config;
     this.type = type;
   }
@@ -47,10 +47,10 @@ public class InstanceProviderConfig {
   }
 
   public static class InstanceProviderConfigBuilder {
-    private Map<String,String> config = new HashMap<String,String>();
+    private Map<String, String> config = new HashMap<String, String>();
     private String type = null;
 
-    public InstanceProviderConfigBuilder config(Map<String,String> config) {
+    public InstanceProviderConfigBuilder config(Map<String, String> config) {
       this.config = config;
       return this;
     }
@@ -71,10 +71,10 @@ public class InstanceProviderConfig {
       .type(type)
       ;
   }
-  public Map<String,String> getConfig() {
+  public Map<String, String> getConfig() {
     return config;
   }
-  public void setConfig(Map<String,String> config) {
+  public void setConfig(Map<String, String> config) {
     this.config = config;
   }
 
@@ -92,7 +92,9 @@ public class InstanceProviderConfig {
 
     InstanceProviderConfig other = (InstanceProviderConfig) o; // NOPMD
 
-    if (type != null ? !type.equals(other.type) : other.type != null) return false;
+    if (type != null ?
+        !type.equals(other.type) :
+        other.type != null) return false;
     return true;
   }
 

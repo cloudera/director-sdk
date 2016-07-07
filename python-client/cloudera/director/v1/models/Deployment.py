@@ -42,7 +42,7 @@ class Deployment:
         #Password for API access [redacted on read]
         self.password = kwargs.get('password',None) # str
         #API port for an existing Cloudera Manager installation
-        self.port = kwargs.get('port',0) # int
+        self.port = kwargs.get('port',None) # int
         #Username for API access
         self.username = kwargs.get('username',None) # str
         

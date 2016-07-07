@@ -91,8 +91,12 @@ public class Health {
 
     Health other = (Health) o; // NOPMD
 
-    if (lastReported != null ? !lastReported.equals(other.lastReported) : other.lastReported != null) return false;
-    if (status != null ? !status.equals(other.status) : other.status != null) return false;
+    if (lastReported != null ?
+        !lastReported.equals(other.lastReported) :
+        other.lastReported != null) return false;
+    if (status != null ?
+        !status.equals(other.status) :
+        other.status != null) return false;
     return true;
   }
 

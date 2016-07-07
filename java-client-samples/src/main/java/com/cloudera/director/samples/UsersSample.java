@@ -32,7 +32,7 @@ import java.util.Map;
 import java.util.Set;
 
 /**
- * Example code on how to use the API to manage user accounts
+ * Example code on how to use the API to manage user accounts.
  */
 public class UsersSample {
 
@@ -50,7 +50,7 @@ public class UsersSample {
   }
 
   /**
-   * A command to list all the user accounts
+   * A command to list all the user accounts.
    */
   @Parameters(commandDescription = "List all the user accounts")
   public static class ListCommand implements Command {
@@ -68,7 +68,7 @@ public class UsersSample {
   }
 
   /**
-   * A command that will create a new user with admin rights
+   * A command that will create a new user with admin rights.
    */
   @Parameters(commandDescription = "Create a new user with admin rights")
   public static class AddCommand implements Command {
@@ -110,7 +110,7 @@ public class UsersSample {
   }
 
   /**
-   * A command that will delete an existing user account
+   * A command that will delete an existing user account.
    */
   @Parameters(commandDescription = "Delete a user account by name")
   public static class DeleteCommand implements Command {

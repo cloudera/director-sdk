@@ -88,8 +88,12 @@ public class TimeSeries {
 
     TimeSeries other = (TimeSeries) o; // NOPMD
 
-    if (data != null ? !data.equals(other.data) : other.data != null) return false;
-    if (metadata != null ? !metadata.equals(other.metadata) : other.metadata != null) return false;
+    if (data != null ?
+        !data.equals(other.data) :
+        other.data != null) return false;
+    if (metadata != null ?
+        !metadata.equals(other.metadata) :
+        other.metadata != null) return false;
     return true;
   }
 

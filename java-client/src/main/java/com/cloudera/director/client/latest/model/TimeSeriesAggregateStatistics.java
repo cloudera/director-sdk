@@ -230,16 +230,36 @@ public class TimeSeriesAggregateStatistics {
 
     TimeSeriesAggregateStatistics other = (TimeSeriesAggregateStatistics) o; // NOPMD
 
-    if (count != null ? !count.equals(other.count) : other.count != null) return false;
-    if (crossEntityMetadata != null ? !crossEntityMetadata.equals(other.crossEntityMetadata) : other.crossEntityMetadata != null) return false;
-    if (max != null ? !max.equals(other.max) : other.max != null) return false;
-    if (maxTime != null ? !maxTime.equals(other.maxTime) : other.maxTime != null) return false;
-    if (mean != null ? !mean.equals(other.mean) : other.mean != null) return false;
-    if (min != null ? !min.equals(other.min) : other.min != null) return false;
-    if (minTime != null ? !minTime.equals(other.minTime) : other.minTime != null) return false;
-    if (sampleTime != null ? !sampleTime.equals(other.sampleTime) : other.sampleTime != null) return false;
-    if (sampleValue != null ? !sampleValue.equals(other.sampleValue) : other.sampleValue != null) return false;
-    if (stdDev != null ? !stdDev.equals(other.stdDev) : other.stdDev != null) return false;
+    if (count != null ?
+        !count.equals(other.count) :
+        other.count != null) return false;
+    if (crossEntityMetadata != null ?
+        !crossEntityMetadata.equals(other.crossEntityMetadata) :
+        other.crossEntityMetadata != null) return false;
+    if (max != null ?
+        !max.equals(other.max) :
+        other.max != null) return false;
+    if (maxTime != null ?
+        !maxTime.equals(other.maxTime) :
+        other.maxTime != null) return false;
+    if (mean != null ?
+        !mean.equals(other.mean) :
+        other.mean != null) return false;
+    if (min != null ?
+        !min.equals(other.min) :
+        other.min != null) return false;
+    if (minTime != null ?
+        !minTime.equals(other.minTime) :
+        other.minTime != null) return false;
+    if (sampleTime != null ?
+        !sampleTime.equals(other.sampleTime) :
+        other.sampleTime != null) return false;
+    if (sampleValue != null ?
+        !sampleValue.equals(other.sampleValue) :
+        other.sampleValue != null) return false;
+    if (stdDev != null ?
+        !stdDev.equals(other.stdDev) :
+        other.stdDev != null) return false;
     return true;
   }
 

@@ -84,8 +84,12 @@ public class VirtualInstance {
 
     VirtualInstance other = (VirtualInstance) o; // NOPMD
 
-    if (id != null ? !id.equals(other.id) : other.id != null) return false;
-    if (template != null ? !template.equals(other.template) : other.template != null) return false;
+    if (id != null ?
+        !id.equals(other.id) :
+        other.id != null) return false;
+    if (template != null ?
+        !template.equals(other.template) :
+        other.template != null) return false;
     return true;
   }
 

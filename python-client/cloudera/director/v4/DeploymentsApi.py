@@ -340,7 +340,7 @@ class DeploymentsApi(object):
         
 
     def update(self, environment, deployment, body, **kwargs):
-        """Update an existing deployment
+        """Update an existing deployment template
 
         Args:
             environment, str: environmentName (required)

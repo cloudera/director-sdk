@@ -26,9 +26,9 @@ import java.util.Set;
 
 public class ClusterTemplate {
   /* Optional external database templates */
-  private Map<String,ExternalDatabaseTemplate> externalDatabaseTemplates;
+  private Map<String, ExternalDatabaseTemplate> externalDatabaseTemplates;
   /* Optional external databases */
-  private Map<String,ExternalDatabase> externalDatabases;
+  private Map<String, ExternalDatabase> externalDatabases;
   /* A description of current manual migrations (read only) */
   private Set<Migration> migrations;
   /* Cluster name */
@@ -40,7 +40,7 @@ public class ClusterTemplate {
   /* A list of scripts to be run before cluster termination */
   private List<String> preTerminateScripts;
   /* Versions for cluster components */
-  private Map<String,String> productVersions;
+  private Map<String, String> productVersions;
   /* Whether to redeploy client configuration on cluster update */
   private Boolean redeployClientConfigsOnUpdate;
   /* Whether to restart the cluster on cluster update */
@@ -48,12 +48,12 @@ public class ClusterTemplate {
   /* Cluster services */
   private List<String> services;
   /* Cluster services configurations */
-  private Map<String,Map<String,String>> servicesConfigs;
+  private Map<String, Map<String, String>> servicesConfigs;
   /* List of virtual instances */
-  private Map<String,VirtualInstanceGroup> virtualInstanceGroups;
+  private Map<String, VirtualInstanceGroup> virtualInstanceGroups;
   public ClusterTemplate() { }
 
-  private ClusterTemplate(Map<String,ExternalDatabaseTemplate> externalDatabaseTemplates, Map<String,ExternalDatabase> externalDatabases, Set<Migration> migrations, String name, Set<String> parcelRepositories, List<String> postCreateScripts, List<String> preTerminateScripts, Map<String,String> productVersions, Boolean redeployClientConfigsOnUpdate, Boolean restartClusterOnUpdate, List<String> services, Map<String,Map<String,String>> servicesConfigs, Map<String,VirtualInstanceGroup> virtualInstanceGroups) {
+  private ClusterTemplate(Map<String, ExternalDatabaseTemplate> externalDatabaseTemplates, Map<String, ExternalDatabase> externalDatabases, Set<Migration> migrations, String name, Set<String> parcelRepositories, List<String> postCreateScripts, List<String> preTerminateScripts, Map<String, String> productVersions, Boolean redeployClientConfigsOnUpdate, Boolean restartClusterOnUpdate, List<String> services, Map<String, Map<String, String>> servicesConfigs, Map<String, VirtualInstanceGroup> virtualInstanceGroups) {
     this.externalDatabaseTemplates = externalDatabaseTemplates;
     this.externalDatabases = externalDatabases;
     this.migrations = migrations;
@@ -90,26 +90,26 @@ public class ClusterTemplate {
   }
 
   public static class ClusterTemplateBuilder {
-    private Map<String,ExternalDatabaseTemplate> externalDatabaseTemplates = new HashMap<String,ExternalDatabaseTemplate>();
-    private Map<String,ExternalDatabase> externalDatabases = new HashMap<String,ExternalDatabase>();
+    private Map<String, ExternalDatabaseTemplate> externalDatabaseTemplates = new HashMap<String, ExternalDatabaseTemplate>();
+    private Map<String, ExternalDatabase> externalDatabases = new HashMap<String, ExternalDatabase>();
     private Set<Migration> migrations = null;
     private String name = null;
     private Set<String> parcelRepositories = null;
     private List<String> postCreateScripts = new ArrayList<String>();
     private List<String> preTerminateScripts = new ArrayList<String>();
-    private Map<String,String> productVersions = new HashMap<String,String>();
+    private Map<String, String> productVersions = new HashMap<String, String>();
     private Boolean redeployClientConfigsOnUpdate = null;
     private Boolean restartClusterOnUpdate = null;
     private List<String> services = new ArrayList<String>();
-    private Map<String,Map<String,String>> servicesConfigs = new HashMap<String,Map<String,String>>();
-    private Map<String,VirtualInstanceGroup> virtualInstanceGroups = new HashMap<String,VirtualInstanceGroup>();
+    private Map<String, Map<String, String>> servicesConfigs = new HashMap<String, Map<String, String>>();
+    private Map<String, VirtualInstanceGroup> virtualInstanceGroups = new HashMap<String, VirtualInstanceGroup>();
 
-    public ClusterTemplateBuilder externalDatabaseTemplates(Map<String,ExternalDatabaseTemplate> externalDatabaseTemplates) {
+    public ClusterTemplateBuilder externalDatabaseTemplates(Map<String, ExternalDatabaseTemplate> externalDatabaseTemplates) {
       this.externalDatabaseTemplates = externalDatabaseTemplates;
       return this;
     }
 
-    public ClusterTemplateBuilder externalDatabases(Map<String,ExternalDatabase> externalDatabases) {
+    public ClusterTemplateBuilder externalDatabases(Map<String, ExternalDatabase> externalDatabases) {
       this.externalDatabases = externalDatabases;
       return this;
     }
@@ -139,7 +139,7 @@ public class ClusterTemplate {
       return this;
     }
 
-    public ClusterTemplateBuilder productVersions(Map<String,String> productVersions) {
+    public ClusterTemplateBuilder productVersions(Map<String, String> productVersions) {
       this.productVersions = productVersions;
       return this;
     }
@@ -159,12 +159,12 @@ public class ClusterTemplate {
       return this;
     }
 
-    public ClusterTemplateBuilder servicesConfigs(Map<String,Map<String,String>> servicesConfigs) {
+    public ClusterTemplateBuilder servicesConfigs(Map<String, Map<String, String>> servicesConfigs) {
       this.servicesConfigs = servicesConfigs;
       return this;
     }
 
-    public ClusterTemplateBuilder virtualInstanceGroups(Map<String,VirtualInstanceGroup> virtualInstanceGroups) {
+    public ClusterTemplateBuilder virtualInstanceGroups(Map<String, VirtualInstanceGroup> virtualInstanceGroups) {
       this.virtualInstanceGroups = virtualInstanceGroups;
       return this;
     }
@@ -191,17 +191,17 @@ public class ClusterTemplate {
       .virtualInstanceGroups(virtualInstanceGroups)
       ;
   }
-  public Map<String,ExternalDatabaseTemplate> getExternalDatabaseTemplates() {
+  public Map<String, ExternalDatabaseTemplate> getExternalDatabaseTemplates() {
     return externalDatabaseTemplates;
   }
-  public void setExternalDatabaseTemplates(Map<String,ExternalDatabaseTemplate> externalDatabaseTemplates) {
+  public void setExternalDatabaseTemplates(Map<String, ExternalDatabaseTemplate> externalDatabaseTemplates) {
     this.externalDatabaseTemplates = externalDatabaseTemplates;
   }
 
-  public Map<String,ExternalDatabase> getExternalDatabases() {
+  public Map<String, ExternalDatabase> getExternalDatabases() {
     return externalDatabases;
   }
-  public void setExternalDatabases(Map<String,ExternalDatabase> externalDatabases) {
+  public void setExternalDatabases(Map<String, ExternalDatabase> externalDatabases) {
     this.externalDatabases = externalDatabases;
   }
 
@@ -240,10 +240,10 @@ public class ClusterTemplate {
     this.preTerminateScripts = preTerminateScripts;
   }
 
-  public Map<String,String> getProductVersions() {
+  public Map<String, String> getProductVersions() {
     return productVersions;
   }
-  public void setProductVersions(Map<String,String> productVersions) {
+  public void setProductVersions(Map<String, String> productVersions) {
     this.productVersions = productVersions;
   }
 
@@ -268,17 +268,17 @@ public class ClusterTemplate {
     this.services = services;
   }
 
-  public Map<String,Map<String,String>> getServicesConfigs() {
+  public Map<String, Map<String, String>> getServicesConfigs() {
     return servicesConfigs;
   }
-  public void setServicesConfigs(Map<String,Map<String,String>> servicesConfigs) {
+  public void setServicesConfigs(Map<String, Map<String, String>> servicesConfigs) {
     this.servicesConfigs = servicesConfigs;
   }
 
-  public Map<String,VirtualInstanceGroup> getVirtualInstanceGroups() {
+  public Map<String, VirtualInstanceGroup> getVirtualInstanceGroups() {
     return virtualInstanceGroups;
   }
-  public void setVirtualInstanceGroups(Map<String,VirtualInstanceGroup> virtualInstanceGroups) {
+  public void setVirtualInstanceGroups(Map<String, VirtualInstanceGroup> virtualInstanceGroups) {
     this.virtualInstanceGroups = virtualInstanceGroups;
   }
 
@@ -289,19 +289,45 @@ public class ClusterTemplate {
 
     ClusterTemplate other = (ClusterTemplate) o; // NOPMD
 
-    if (externalDatabaseTemplates != null ? !externalDatabaseTemplates.equals(other.externalDatabaseTemplates) : other.externalDatabaseTemplates != null) return false;
-    if (externalDatabases != null ? !externalDatabases.equals(other.externalDatabases) : other.externalDatabases != null) return false;
-    if (migrations != null ? !migrations.equals(other.migrations) : other.migrations != null) return false;
-    if (name != null ? !name.equals(other.name) : other.name != null) return false;
-    if (parcelRepositories != null ? !parcelRepositories.equals(other.parcelRepositories) : other.parcelRepositories != null) return false;
-    if (postCreateScripts != null ? !postCreateScripts.equals(other.postCreateScripts) : other.postCreateScripts != null) return false;
-    if (preTerminateScripts != null ? !preTerminateScripts.equals(other.preTerminateScripts) : other.preTerminateScripts != null) return false;
-    if (productVersions != null ? !productVersions.equals(other.productVersions) : other.productVersions != null) return false;
-    if (redeployClientConfigsOnUpdate != null ? !redeployClientConfigsOnUpdate.equals(other.redeployClientConfigsOnUpdate) : other.redeployClientConfigsOnUpdate != null) return false;
-    if (restartClusterOnUpdate != null ? !restartClusterOnUpdate.equals(other.restartClusterOnUpdate) : other.restartClusterOnUpdate != null) return false;
-    if (services != null ? !services.equals(other.services) : other.services != null) return false;
-    if (servicesConfigs != null ? !servicesConfigs.equals(other.servicesConfigs) : other.servicesConfigs != null) return false;
-    if (virtualInstanceGroups != null ? !virtualInstanceGroups.equals(other.virtualInstanceGroups) : other.virtualInstanceGroups != null) return false;
+    if (externalDatabaseTemplates != null ?
+        !externalDatabaseTemplates.equals(other.externalDatabaseTemplates) :
+        other.externalDatabaseTemplates != null) return false;
+    if (externalDatabases != null ?
+        !externalDatabases.equals(other.externalDatabases) :
+        other.externalDatabases != null) return false;
+    if (migrations != null ?
+        !migrations.equals(other.migrations) :
+        other.migrations != null) return false;
+    if (name != null ?
+        !name.equals(other.name) :
+        other.name != null) return false;
+    if (parcelRepositories != null ?
+        !parcelRepositories.equals(other.parcelRepositories) :
+        other.parcelRepositories != null) return false;
+    if (postCreateScripts != null ?
+        !postCreateScripts.equals(other.postCreateScripts) :
+        other.postCreateScripts != null) return false;
+    if (preTerminateScripts != null ?
+        !preTerminateScripts.equals(other.preTerminateScripts) :
+        other.preTerminateScripts != null) return false;
+    if (productVersions != null ?
+        !productVersions.equals(other.productVersions) :
+        other.productVersions != null) return false;
+    if (redeployClientConfigsOnUpdate != null ?
+        !redeployClientConfigsOnUpdate.equals(other.redeployClientConfigsOnUpdate) :
+        other.redeployClientConfigsOnUpdate != null) return false;
+    if (restartClusterOnUpdate != null ?
+        !restartClusterOnUpdate.equals(other.restartClusterOnUpdate) :
+        other.restartClusterOnUpdate != null) return false;
+    if (services != null ?
+        !services.equals(other.services) :
+        other.services != null) return false;
+    if (servicesConfigs != null ?
+        !servicesConfigs.equals(other.servicesConfigs) :
+        other.servicesConfigs != null) return false;
+    if (virtualInstanceGroups != null ?
+        !virtualInstanceGroups.equals(other.virtualInstanceGroups) :
+        other.virtualInstanceGroups != null) return false;
     return true;
   }
 

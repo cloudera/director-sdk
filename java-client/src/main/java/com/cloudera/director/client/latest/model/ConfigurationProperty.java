@@ -287,18 +287,42 @@ public class ConfigurationProperty {
 
     ConfigurationProperty other = (ConfigurationProperty) o; // NOPMD
 
-    if (basic != null ? !basic.equals(other.basic) : other.basic != null) return false;
-    if (configKey != null ? !configKey.equals(other.configKey) : other.configKey != null) return false;
-    if (defaultValue != null ? !defaultValue.equals(other.defaultValue) : other.defaultValue != null) return false;
-    if (description != null ? !description.equals(other.description) : other.description != null) return false;
-    if (listSeparator != null ? !listSeparator.equals(other.listSeparator) : other.listSeparator != null) return false;
-    if (name != null ? !name.equals(other.name) : other.name != null) return false;
-    if (placeholder != null ? !placeholder.equals(other.placeholder) : other.placeholder != null) return false;
-    if (required != null ? !required.equals(other.required) : other.required != null) return false;
-    if (sensitive != null ? !sensitive.equals(other.sensitive) : other.sensitive != null) return false;
-    if (type != null ? !type.equals(other.type) : other.type != null) return false;
-    if (validValues != null ? !validValues.equals(other.validValues) : other.validValues != null) return false;
-    if (widget != null ? !widget.equals(other.widget) : other.widget != null) return false;
+    if (basic != null ?
+        !basic.equals(other.basic) :
+        other.basic != null) return false;
+    if (configKey != null ?
+        !configKey.equals(other.configKey) :
+        other.configKey != null) return false;
+    if (defaultValue != null ?
+        !defaultValue.equals(other.defaultValue) :
+        other.defaultValue != null) return false;
+    if (description != null ?
+        !description.equals(other.description) :
+        other.description != null) return false;
+    if (listSeparator != null ?
+        !listSeparator.equals(other.listSeparator) :
+        other.listSeparator != null) return false;
+    if (name != null ?
+        !name.equals(other.name) :
+        other.name != null) return false;
+    if (placeholder != null ?
+        !placeholder.equals(other.placeholder) :
+        other.placeholder != null) return false;
+    if (required != null ?
+        !required.equals(other.required) :
+        other.required != null) return false;
+    if (sensitive != null ?
+        !sensitive.equals(other.sensitive) :
+        other.sensitive != null) return false;
+    if (type != null ?
+        !type.equals(other.type) :
+        other.type != null) return false;
+    if (validValues != null ?
+        !validValues.equals(other.validValues) :
+        other.validValues != null) return false;
+    if (widget != null ?
+        !widget.equals(other.widget) :
+        other.widget != null) return false;
     return true;
   }
 

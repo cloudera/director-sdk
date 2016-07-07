@@ -37,5 +37,5 @@ class TimeSeriesRow:
         #Timestamp
         self.timestamp = kwargs.get('timestamp',0L) # long
         #Value
-        self.value = kwargs.get('value',0.0) # float
+        self.value = kwargs.get('value',None) # float
         

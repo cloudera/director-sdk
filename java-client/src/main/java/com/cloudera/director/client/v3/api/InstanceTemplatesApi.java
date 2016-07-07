@@ -40,7 +40,7 @@ public class InstanceTemplatesApi {
   }
 
   /**
-  * Create a new instance template
+  * Create a new instance template.
   * @param  environment  environmentName
   * @param  body  instanceTemplate
   * status code: 201 reason: "Instance template created"
@@ -57,7 +57,11 @@ public class InstanceTemplatesApi {
        throw new ApiException(400, "missing required params");
     }
     // create path and map variables
-    String path = "/api/v3/environments/{environment}/templates/instances".replaceAll("\\{format\\}", "json").replaceAll("\\{" + "environment" + "\\}", apiClient.escapeString(environment.toString()));
+    String path = "/api/v3/environments/{environment}/templates/instances"
+      .replaceAll("\\{format\\}", "json")
+      .replaceAll("\\{" + "environment" + "\\}",
+                  apiClient.escapeString(environment.toString()))
+      ;
 
     // query params
     Map<String, String> queryParams = new HashMap<String, String>();
@@ -89,7 +93,7 @@ public class InstanceTemplatesApi {
   }
 
   /**
-  * Delete an instance template by name
+  * Delete an instance template by name.
   * @param  environment  environmentName
   * @param  template  templateName
   * status code: 204 reason: "Instance template deleted"
@@ -104,7 +108,13 @@ public class InstanceTemplatesApi {
        throw new ApiException(400, "missing required params");
     }
     // create path and map variables
-    String path = "/api/v3/environments/{environment}/templates/instances/{template}".replaceAll("\\{format\\}", "json").replaceAll("\\{" + "environment" + "\\}", apiClient.escapeString(environment.toString())).replaceAll("\\{" + "template" + "\\}", apiClient.escapeString(template.toString()));
+    String path = "/api/v3/environments/{environment}/templates/instances/{template}"
+      .replaceAll("\\{format\\}", "json")
+      .replaceAll("\\{" + "environment" + "\\}",
+                  apiClient.escapeString(environment.toString()))
+      .replaceAll("\\{" + "template" + "\\}",
+                  apiClient.escapeString(template.toString()))
+      ;
 
     // query params
     Map<String, String> queryParams = new HashMap<String, String>();
@@ -136,7 +146,7 @@ public class InstanceTemplatesApi {
   }
 
   /**
-  * Get an instance template by name
+  * Get an instance template by name.
   * @param  environment  environmentName
   * @param  template  templateName
   * status code: 200 reason: "OK"
@@ -151,7 +161,13 @@ public class InstanceTemplatesApi {
        throw new ApiException(400, "missing required params");
     }
     // create path and map variables
-    String path = "/api/v3/environments/{environment}/templates/instances/{template}".replaceAll("\\{format\\}", "json").replaceAll("\\{" + "environment" + "\\}", apiClient.escapeString(environment.toString())).replaceAll("\\{" + "template" + "\\}", apiClient.escapeString(template.toString()));
+    String path = "/api/v3/environments/{environment}/templates/instances/{template}"
+      .replaceAll("\\{format\\}", "json")
+      .replaceAll("\\{" + "environment" + "\\}",
+                  apiClient.escapeString(environment.toString()))
+      .replaceAll("\\{" + "template" + "\\}",
+                  apiClient.escapeString(template.toString()))
+      ;
 
     // query params
     Map<String, String> queryParams = new HashMap<String, String>();
@@ -183,7 +199,7 @@ public class InstanceTemplatesApi {
   }
 
   /**
-  * List all instance templates
+  * List all instance templates.
   * @param  environment  environmentName
   * status code: 200 reason: "OK"
   * status code: 401 reason: "Unauthorized"
@@ -197,7 +213,11 @@ public class InstanceTemplatesApi {
        throw new ApiException(400, "missing required params");
     }
     // create path and map variables
-    String path = "/api/v3/environments/{environment}/templates/instances".replaceAll("\\{format\\}", "json").replaceAll("\\{" + "environment" + "\\}", apiClient.escapeString(environment.toString()));
+    String path = "/api/v3/environments/{environment}/templates/instances"
+      .replaceAll("\\{format\\}", "json")
+      .replaceAll("\\{" + "environment" + "\\}",
+                  apiClient.escapeString(environment.toString()))
+      ;
 
     // query params
     Map<String, String> queryParams = new HashMap<String, String>();
@@ -229,7 +249,7 @@ public class InstanceTemplatesApi {
   }
 
   /**
-  * Update an existing instance template
+  * Update an existing instance template.
   * @param  environment  environmentName
   * @param  template  templateName
   * @param  body  instanceTemplate
@@ -248,7 +268,13 @@ public class InstanceTemplatesApi {
        throw new ApiException(400, "missing required params");
     }
     // create path and map variables
-    String path = "/api/v3/environments/{environment}/templates/instances/{template}".replaceAll("\\{format\\}", "json").replaceAll("\\{" + "environment" + "\\}", apiClient.escapeString(environment.toString())).replaceAll("\\{" + "template" + "\\}", apiClient.escapeString(template.toString()));
+    String path = "/api/v3/environments/{environment}/templates/instances/{template}"
+      .replaceAll("\\{format\\}", "json")
+      .replaceAll("\\{" + "environment" + "\\}",
+                  apiClient.escapeString(environment.toString()))
+      .replaceAll("\\{" + "template" + "\\}",
+                  apiClient.escapeString(template.toString()))
+      ;
 
     // query params
     Map<String, String> queryParams = new HashMap<String, String>();
