@@ -57,7 +57,7 @@ public class AuthenticationApi {
        throw new ApiException(400, "missing required params");
     }
     // create path and map variables
-    String path = "/api/v5/login"
+    String path = "/api/v6/login"
       .replaceAll("\\{format\\}", "json")
       ;
 
@@ -101,7 +101,7 @@ public class AuthenticationApi {
   public Boolean logout() throws ApiException {
     Object postBody = null;
     // create path and map variables
-    String path = "/api/v5/logout"
+    String path = "/api/v6/logout"
       .replaceAll("\\{format\\}", "json")
       ;
 

@@ -49,7 +49,7 @@ public class NotificationsApi {
   public List<Notification> get() throws ApiException {
     Object postBody = null;
     // create path and map variables
-    String path = "/api/v5/notifications"
+    String path = "/api/v6/notifications"
       .replaceAll("\\{format\\}", "json")
       ;
 

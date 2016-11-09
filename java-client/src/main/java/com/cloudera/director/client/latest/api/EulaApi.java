@@ -49,7 +49,7 @@ public class EulaApi {
   public Eula get() throws ApiException {
     Object postBody = null;
     // create path and map variables
-    String path = "/api/v5/eula"
+    String path = "/api/v6/eula"
       .replaceAll("\\{format\\}", "json")
       ;
 
@@ -100,7 +100,7 @@ public class EulaApi {
        throw new ApiException(400, "missing required params");
     }
     // create path and map variables
-    String path = "/api/v5/eula"
+    String path = "/api/v6/eula"
       .replaceAll("\\{format\\}", "json")
       ;
 

@@ -47,7 +47,7 @@ class NotificationsApi(object):
             params[key] = val
         del params['kwargs']
 
-        resourcePath = '/api/v5/notifications'
+        resourcePath = '/api/v6/notifications'
         resourcePath = resourcePath.replace('{format}', 'json')
         method = 'GET'
 

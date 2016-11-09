@@ -58,7 +58,7 @@ public class ImportClientConfigApi {
        throw new ApiException(400, "missing required params");
     }
     // create path and map variables
-    String path = "/api/v5/import"
+    String path = "/api/v6/import"
       .replaceAll("\\{format\\}", "json")
       ;
 

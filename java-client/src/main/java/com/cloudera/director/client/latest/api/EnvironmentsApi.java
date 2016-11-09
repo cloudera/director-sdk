@@ -56,7 +56,7 @@ public class EnvironmentsApi {
        throw new ApiException(400, "missing required params");
     }
     // create path and map variables
-    String path = "/api/v5/environments"
+    String path = "/api/v6/environments"
       .replaceAll("\\{format\\}", "json")
       ;
 
@@ -103,7 +103,7 @@ public class EnvironmentsApi {
        throw new ApiException(400, "missing required params");
     }
     // create path and map variables
-    String path = "/api/v5/environments/{name}"
+    String path = "/api/v6/environments/{name}"
       .replaceAll("\\{format\\}", "json")
       .replaceAll("\\{" + "name" + "\\}",
                   apiClient.escapeString(name.toString()))
@@ -153,7 +153,7 @@ public class EnvironmentsApi {
        throw new ApiException(400, "missing required params");
     }
     // create path and map variables
-    String path = "/api/v5/environments/{name}"
+    String path = "/api/v6/environments/{name}"
       .replaceAll("\\{format\\}", "json")
       .replaceAll("\\{" + "name" + "\\}",
                   apiClient.escapeString(name.toString()))
@@ -198,7 +198,7 @@ public class EnvironmentsApi {
   public List<String> list() throws ApiException {
     Object postBody = null;
     // create path and map variables
-    String path = "/api/v5/environments"
+    String path = "/api/v6/environments"
       .replaceAll("\\{format\\}", "json")
       ;
 
@@ -249,7 +249,7 @@ public class EnvironmentsApi {
        throw new ApiException(400, "missing required params");
     }
     // create path and map variables
-    String path = "/api/v5/environments/{name}"
+    String path = "/api/v6/environments/{name}"
       .replaceAll("\\{format\\}", "json")
       .replaceAll("\\{" + "name" + "\\}",
                   apiClient.escapeString(name.toString()))
@@ -302,7 +302,7 @@ public class EnvironmentsApi {
        throw new ApiException(400, "missing required params");
     }
     // create path and map variables
-    String path = "/api/v5/environments/{name}/provider/credentials"
+    String path = "/api/v6/environments/{name}/provider/credentials"
       .replaceAll("\\{format\\}", "json")
       .replaceAll("\\{" + "name" + "\\}",
                   apiClient.escapeString(name.toString()))

@@ -57,7 +57,7 @@ public class UsersApi {
        throw new ApiException(400, "missing required params");
     }
     // create path and map variables
-    String path = "/api/v5/users"
+    String path = "/api/v6/users"
       .replaceAll("\\{format\\}", "json")
       ;
 
@@ -100,7 +100,7 @@ public class UsersApi {
   public User currentRedacted() throws ApiException {
     Object postBody = null;
     // create path and map variables
-    String path = "/api/v5/users/current"
+    String path = "/api/v6/users/current"
       .replaceAll("\\{format\\}", "json")
       ;
 
@@ -147,7 +147,7 @@ public class UsersApi {
        throw new ApiException(400, "missing required params");
     }
     // create path and map variables
-    String path = "/api/v5/users/{username}"
+    String path = "/api/v6/users/{username}"
       .replaceAll("\\{format\\}", "json")
       .replaceAll("\\{" + "username" + "\\}",
                   apiClient.escapeString(username.toString()))
@@ -197,7 +197,7 @@ public class UsersApi {
        throw new ApiException(400, "missing required params");
     }
     // create path and map variables
-    String path = "/api/v5/users/{username}"
+    String path = "/api/v6/users/{username}"
       .replaceAll("\\{format\\}", "json")
       .replaceAll("\\{" + "username" + "\\}",
                   apiClient.escapeString(username.toString()))
@@ -242,7 +242,7 @@ public class UsersApi {
   public List<String> list() throws ApiException {
     Object postBody = null;
     // create path and map variables
-    String path = "/api/v5/users"
+    String path = "/api/v6/users"
       .replaceAll("\\{format\\}", "json")
       ;
 
@@ -293,7 +293,7 @@ public class UsersApi {
        throw new ApiException(400, "missing required params");
     }
     // create path and map variables
-    String path = "/api/v5/users/{username}"
+    String path = "/api/v6/users/{username}"
       .replaceAll("\\{format\\}", "json")
       .replaceAll("\\{" + "username" + "\\}",
                   apiClient.escapeString(username.toString()))
@@ -346,7 +346,7 @@ public class UsersApi {
        throw new ApiException(400, "missing required params");
     }
     // create path and map variables
-    String path = "/api/v5/users/{username}/password"
+    String path = "/api/v6/users/{username}/password"
       .replaceAll("\\{format\\}", "json")
       .replaceAll("\\{" + "username" + "\\}",
                   apiClient.escapeString(username.toString()))

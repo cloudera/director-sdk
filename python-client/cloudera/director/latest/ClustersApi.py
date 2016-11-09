@@ -29,6 +29,62 @@ class ClustersApi(object):
 
     
 
+    def collectDiagnosticData(self, environment, deployment, cluster, **kwargs):
+        """Collects diagnostic data
+
+        Args:
+            environment, str: environmentName (required)
+
+            deployment, str: deploymentName (required)
+
+            cluster, str: clusterName (required)
+
+            
+
+        Returns: 
+        """
+
+        allParams = ['environment', 'deployment', 'cluster']
+
+        params = locals()
+        for (key, val) in params['kwargs'].iteritems():
+            if key not in allParams:
+                raise TypeError("Got an unexpected keyword argument '%s' to method collectDiagnosticData" % key)
+            params[key] = val
+        del params['kwargs']
+
+        resourcePath = '/api/v6/environments/{environment}/deployments/{deployment}/clusters/{cluster}/diagnosticData'
+        resourcePath = resourcePath.replace('{format}', 'json')
+        method = 'POST'
+
+        queryParams = {}
+        headerParams = {}
+
+        if ('environment' in params):
+            replacement = str(self.apiClient.toPathValue(params['environment']))
+            resourcePath = resourcePath.replace('{' + 'environment' + '}',
+                                                replacement)
+        if ('deployment' in params):
+            replacement = str(self.apiClient.toPathValue(params['deployment']))
+            resourcePath = resourcePath.replace('{' + 'deployment' + '}',
+                                                replacement)
+        if ('cluster' in params):
+            replacement = str(self.apiClient.toPathValue(params['cluster']))
+            resourcePath = resourcePath.replace('{' + 'cluster' + '}',
+                                                replacement)
+        postData = None
+
+        contentTypes = ["application/json"]
+        if len(contentTypes) != 1:
+            raise ValueError("An API client expects a single content type. Got: %s" % contentTypes)
+
+        response = self.apiClient.callAPI(resourcePath, method, queryParams,
+                                          postData, headerParams, contentTypes[0])
+
+        
+
+        
+
     def create(self, environment, deployment, body, **kwargs):
         """Create a new cluster
 
@@ -53,7 +109,7 @@ class ClustersApi(object):
             params[key] = val
         del params['kwargs']
 
-        resourcePath = '/api/v5/environments/{environment}/deployments/{deployment}/clusters'
+        resourcePath = '/api/v6/environments/{environment}/deployments/{deployment}/clusters'
         resourcePath = resourcePath.replace('{format}', 'json')
         method = 'POST'
 
@@ -105,7 +161,7 @@ class ClustersApi(object):
             params[key] = val
         del params['kwargs']
 
-        resourcePath = '/api/v5/environments/{environment}/deployments/{deployment}/clusters/{cluster}'
+        resourcePath = '/api/v6/environments/{environment}/deployments/{deployment}/clusters/{cluster}'
         resourcePath = resourcePath.replace('{format}', 'json')
         method = 'DELETE'
 
@@ -161,7 +217,7 @@ class ClustersApi(object):
             params[key] = val
         del params['kwargs']
 
-        resourcePath = '/api/v5/environments/{environment}/deployments/{deployment}/clusters/{cluster}'
+        resourcePath = '/api/v6/environments/{environment}/deployments/{deployment}/clusters/{cluster}'
         resourcePath = resourcePath.replace('{format}', 'json')
         method = 'GET'
 
@@ -222,7 +278,7 @@ class ClustersApi(object):
             params[key] = val
         del params['kwargs']
 
-        resourcePath = '/api/v5/environments/{environment}/deployments/{deployment}/clusters/{cluster}/metrics'
+        resourcePath = '/api/v6/environments/{environment}/deployments/{deployment}/clusters/{cluster}/metrics'
         resourcePath = resourcePath.replace('{format}', 'json')
         method = 'GET'
 
@@ -283,7 +339,7 @@ class ClustersApi(object):
             params[key] = val
         del params['kwargs']
 
-        resourcePath = '/api/v5/environments/{environment}/deployments/{deployment}/clusters/{cluster}/status'
+        resourcePath = '/api/v6/environments/{environment}/deployments/{deployment}/clusters/{cluster}/status'
         resourcePath = resourcePath.replace('{format}', 'json')
         method = 'GET'
 
@@ -344,7 +400,7 @@ class ClustersApi(object):
             params[key] = val
         del params['kwargs']
 
-        resourcePath = '/api/v5/environments/{environment}/deployments/{deployment}/clusters/{cluster}/template'
+        resourcePath = '/api/v6/environments/{environment}/deployments/{deployment}/clusters/{cluster}/template'
         resourcePath = resourcePath.replace('{format}', 'json')
         method = 'GET'
 
@@ -403,7 +459,7 @@ class ClustersApi(object):
             params[key] = val
         del params['kwargs']
 
-        resourcePath = '/api/v5/environments/{environment}/deployments/{deployment}/clusters'
+        resourcePath = '/api/v6/environments/{environment}/deployments/{deployment}/clusters'
         resourcePath = resourcePath.replace('{format}', 'json')
         method = 'GET'
 
@@ -462,7 +518,7 @@ class ClustersApi(object):
             params[key] = val
         del params['kwargs']
 
-        resourcePath = '/api/v5/environments/{environment}/deployments/{deployment}/clusters/{cluster}'
+        resourcePath = '/api/v6/environments/{environment}/deployments/{deployment}/clusters/{cluster}'
         resourcePath = resourcePath.replace('{format}', 'json')
         method = 'PUT'
 

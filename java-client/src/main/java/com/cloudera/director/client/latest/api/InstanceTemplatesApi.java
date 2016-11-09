@@ -57,7 +57,7 @@ public class InstanceTemplatesApi {
        throw new ApiException(400, "missing required params");
     }
     // create path and map variables
-    String path = "/api/v5/environments/{environment}/templates/instances"
+    String path = "/api/v6/environments/{environment}/templates/instances"
       .replaceAll("\\{format\\}", "json")
       .replaceAll("\\{" + "environment" + "\\}",
                   apiClient.escapeString(environment.toString()))
@@ -108,7 +108,7 @@ public class InstanceTemplatesApi {
        throw new ApiException(400, "missing required params");
     }
     // create path and map variables
-    String path = "/api/v5/environments/{environment}/templates/instances/{template}"
+    String path = "/api/v6/environments/{environment}/templates/instances/{template}"
       .replaceAll("\\{format\\}", "json")
       .replaceAll("\\{" + "environment" + "\\}",
                   apiClient.escapeString(environment.toString()))
@@ -161,7 +161,7 @@ public class InstanceTemplatesApi {
        throw new ApiException(400, "missing required params");
     }
     // create path and map variables
-    String path = "/api/v5/environments/{environment}/templates/instances/{template}"
+    String path = "/api/v6/environments/{environment}/templates/instances/{template}"
       .replaceAll("\\{format\\}", "json")
       .replaceAll("\\{" + "environment" + "\\}",
                   apiClient.escapeString(environment.toString()))
@@ -213,7 +213,7 @@ public class InstanceTemplatesApi {
        throw new ApiException(400, "missing required params");
     }
     // create path and map variables
-    String path = "/api/v5/environments/{environment}/templates/instances"
+    String path = "/api/v6/environments/{environment}/templates/instances"
       .replaceAll("\\{format\\}", "json")
       .replaceAll("\\{" + "environment" + "\\}",
                   apiClient.escapeString(environment.toString()))
@@ -268,7 +268,7 @@ public class InstanceTemplatesApi {
        throw new ApiException(400, "missing required params");
     }
     // create path and map variables
-    String path = "/api/v5/environments/{environment}/templates/instances/{template}"
+    String path = "/api/v6/environments/{environment}/templates/instances/{template}"
       .replaceAll("\\{format\\}", "json")
       .replaceAll("\\{" + "environment" + "\\}",
                   apiClient.escapeString(environment.toString()))

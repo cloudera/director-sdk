@@ -60,7 +60,7 @@ public class DatabaseServersApi {
        throw new ApiException(400, "missing required params");
     }
     // create path and map variables
-    String path = "/api/v5/environments/{environment}/databaseServers"
+    String path = "/api/v6/environments/{environment}/databaseServers"
       .replaceAll("\\{format\\}", "json")
       .replaceAll("\\{" + "environment" + "\\}",
                   apiClient.escapeString(environment.toString()))
@@ -111,7 +111,7 @@ public class DatabaseServersApi {
        throw new ApiException(400, "missing required params");
     }
     // create path and map variables
-    String path = "/api/v5/environments/{environment}/databaseServers/{externalDatabaseServer}"
+    String path = "/api/v6/environments/{environment}/databaseServers/{externalDatabaseServer}"
       .replaceAll("\\{format\\}", "json")
       .replaceAll("\\{" + "environment" + "\\}",
                   apiClient.escapeString(environment.toString()))
@@ -164,7 +164,7 @@ public class DatabaseServersApi {
        throw new ApiException(400, "missing required params");
     }
     // create path and map variables
-    String path = "/api/v5/environments/{environment}/databaseServers/{externalDatabaseServer}/usage"
+    String path = "/api/v6/environments/{environment}/databaseServers/{externalDatabaseServer}/usage"
       .replaceAll("\\{format\\}", "json")
       .replaceAll("\\{" + "environment" + "\\}",
                   apiClient.escapeString(environment.toString()))
@@ -218,7 +218,7 @@ public class DatabaseServersApi {
        throw new ApiException(400, "missing required params");
     }
     // create path and map variables
-    String path = "/api/v5/environments/{environment}/databaseServers/{externalDatabaseServer}"
+    String path = "/api/v6/environments/{environment}/databaseServers/{externalDatabaseServer}"
       .replaceAll("\\{format\\}", "json")
       .replaceAll("\\{" + "environment" + "\\}",
                   apiClient.escapeString(environment.toString()))
@@ -271,7 +271,7 @@ public class DatabaseServersApi {
        throw new ApiException(400, "missing required params");
     }
     // create path and map variables
-    String path = "/api/v5/environments/{environment}/databaseServers/{externalDatabaseServer}/status"
+    String path = "/api/v6/environments/{environment}/databaseServers/{externalDatabaseServer}/status"
       .replaceAll("\\{format\\}", "json")
       .replaceAll("\\{" + "environment" + "\\}",
                   apiClient.escapeString(environment.toString()))
@@ -324,7 +324,7 @@ public class DatabaseServersApi {
        throw new ApiException(400, "missing required params");
     }
     // create path and map variables
-    String path = "/api/v5/environments/{environment}/databaseServers/{externalDatabaseServer}/template"
+    String path = "/api/v6/environments/{environment}/databaseServers/{externalDatabaseServer}/template"
       .replaceAll("\\{format\\}", "json")
       .replaceAll("\\{" + "environment" + "\\}",
                   apiClient.escapeString(environment.toString()))
@@ -376,7 +376,7 @@ public class DatabaseServersApi {
        throw new ApiException(400, "missing required params");
     }
     // create path and map variables
-    String path = "/api/v5/environments/{environment}/databaseServers"
+    String path = "/api/v6/environments/{environment}/databaseServers"
       .replaceAll("\\{format\\}", "json")
       .replaceAll("\\{" + "environment" + "\\}",
                   apiClient.escapeString(environment.toString()))
@@ -430,7 +430,7 @@ public class DatabaseServersApi {
        throw new ApiException(400, "missing required params");
     }
     // create path and map variables
-    String path = "/api/v5/environments/{environment}/databaseServers/{externalDatabaseServer}"
+    String path = "/api/v6/environments/{environment}/databaseServers/{externalDatabaseServer}"
       .replaceAll("\\{format\\}", "json")
       .replaceAll("\\{" + "environment" + "\\}",
                   apiClient.escapeString(environment.toString()))

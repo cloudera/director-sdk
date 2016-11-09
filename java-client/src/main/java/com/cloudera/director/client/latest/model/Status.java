@@ -25,6 +25,7 @@ public class Status {
   private Integer completedSteps;
   private String description;
   private List<String> descriptionDetails;
+  private List<DiagnosticDataSummary> diagnosticDataSummaries;
   private Health health;
   private Integer remainingSteps;
   private String stage;
@@ -41,10 +42,11 @@ public class Status {
   }
   public Status() { }
 
-  private Status(Integer completedSteps, String description, List<String> descriptionDetails, Health health, Integer remainingSteps, String stage) {
+  private Status(Integer completedSteps, String description, List<String> descriptionDetails, List<DiagnosticDataSummary> diagnosticDataSummaries, Health health, Integer remainingSteps, String stage) {
     this.completedSteps = completedSteps;
     this.description = description;
     this.descriptionDetails = descriptionDetails;
+    this.diagnosticDataSummaries = diagnosticDataSummaries;
     this.health = health;
     this.remainingSteps = remainingSteps;
     this.stage = stage;
@@ -54,6 +56,7 @@ public class Status {
     this.completedSteps = builder.completedSteps;
     this.description = builder.description;
     this.descriptionDetails = builder.descriptionDetails;
+    this.diagnosticDataSummaries = builder.diagnosticDataSummaries;
     this.health = builder.health;
     this.remainingSteps = builder.remainingSteps;
     this.stage = builder.stage;
@@ -67,6 +70,7 @@ public class Status {
     private Integer completedSteps = null;
     private String description = null;
     private List<String> descriptionDetails = new ArrayList<String>();
+    private List<DiagnosticDataSummary> diagnosticDataSummaries = new ArrayList<DiagnosticDataSummary>();
     private Health health = null;
     private Integer remainingSteps = null;
     private String stage = null;
@@ -83,6 +87,11 @@ public class Status {
 
     public StatusBuilder descriptionDetails(List<String> descriptionDetails) {
       this.descriptionDetails = descriptionDetails;
+      return this;
+    }
+
+    public StatusBuilder diagnosticDataSummaries(List<DiagnosticDataSummary> diagnosticDataSummaries) {
+      this.diagnosticDataSummaries = diagnosticDataSummaries;
       return this;
     }
 
@@ -111,6 +120,7 @@ public class Status {
       .completedSteps(completedSteps)
       .description(description)
       .descriptionDetails(descriptionDetails)
+      .diagnosticDataSummaries(diagnosticDataSummaries)
       .health(health)
       .remainingSteps(remainingSteps)
       .stage(stage)
@@ -135,6 +145,13 @@ public class Status {
   }
   public void setDescriptionDetails(List<String> descriptionDetails) {
     this.descriptionDetails = descriptionDetails;
+  }
+
+  public List<DiagnosticDataSummary> getDiagnosticDataSummaries() {
+    return diagnosticDataSummaries;
+  }
+  public void setDiagnosticDataSummaries(List<DiagnosticDataSummary> diagnosticDataSummaries) {
+    this.diagnosticDataSummaries = diagnosticDataSummaries;
   }
 
   public Health getHealth() {
@@ -174,6 +191,9 @@ public class Status {
     if (descriptionDetails != null ?
         !descriptionDetails.equals(other.descriptionDetails) :
         other.descriptionDetails != null) return false;
+    if (diagnosticDataSummaries != null ?
+        !diagnosticDataSummaries.equals(other.diagnosticDataSummaries) :
+        other.diagnosticDataSummaries != null) return false;
     if (health != null ?
         !health.equals(other.health) :
         other.health != null) return false;
@@ -192,6 +212,7 @@ public class Status {
     result = 31 * result + (completedSteps != null ? completedSteps.hashCode() : 0);
     result = 31 * result + (description != null ? description.hashCode() : 0);
     result = 31 * result + (descriptionDetails != null ? descriptionDetails.hashCode() : 0);
+    result = 31 * result + (diagnosticDataSummaries != null ? diagnosticDataSummaries.hashCode() : 0);
     result = 31 * result + (health != null ? health.hashCode() : 0);
     result = 31 * result + (remainingSteps != null ? remainingSteps.hashCode() : 0);
     result = 31 * result + (stage != null ? stage.hashCode() : 0);
@@ -206,6 +227,7 @@ public class Status {
     sb.append("  completedSteps: ").append(completedSteps).append(newLine);
     sb.append("  description: ").append(description).append(newLine);
     sb.append("  descriptionDetails: ").append(descriptionDetails).append(newLine);
+    sb.append("  diagnosticDataSummaries: ").append(diagnosticDataSummaries).append(newLine);
     sb.append("  health: ").append(health).append(newLine);
     sb.append("  remainingSteps: ").append(remainingSteps).append(newLine);
     sb.append("  stage: ").append(stage).append(newLine);

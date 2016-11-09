@@ -25,6 +25,7 @@ class Status:
             'completedSteps': 'int',
             'description': 'str',
             'descriptionDetails': 'list[str]',
+            'diagnosticDataSummaries': 'list[cloudera.director.latest.models.DiagnosticDataSummary]',
             'health': 'cloudera.director.latest.models.Health',
             'remainingSteps': 'int',
             'stage': 'str'
@@ -35,6 +36,7 @@ class Status:
         self.completedSteps = kwargs.get('completedSteps',None) # int
         self.description = kwargs.get('description',None) # str
         self.descriptionDetails = kwargs.get('descriptionDetails',[]) # list[str]
+        self.diagnosticDataSummaries = kwargs.get('diagnosticDataSummaries',[]) # list[cloudera.director.latest.models.DiagnosticDataSummary]
         self.health = kwargs.get('health',None) # cloudera.director.latest.models.Health
         self.remainingSteps = kwargs.get('remainingSteps',None) # int
         self.stage = kwargs.get('stage',None) # str
