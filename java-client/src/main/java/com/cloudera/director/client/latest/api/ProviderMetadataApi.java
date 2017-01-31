@@ -54,7 +54,7 @@ public class ProviderMetadataApi {
        throw new ApiException(400, "missing required params");
     }
     // create path and map variables
-    String path = "/api/v6/metadata/providers/{providerId}"
+    String path = "/api/v7/metadata/providers/{providerId}"
       .replaceAll("\\{format\\}", "json")
       .replaceAll("\\{" + "providerId" + "\\}",
                   apiClient.escapeString(providerId.toString()))
@@ -71,21 +71,13 @@ public class ProviderMetadataApi {
         + Arrays.toString(contentTypes));
     }
 
-    try {
-      String response = apiClient.invokeAPI(path, "GET", queryParams, postBody,
-        headerParams, formParams, contentTypes[0]);
+    String response = apiClient.invokeAPI(path, "GET", queryParams, postBody,
+      headerParams, formParams, contentTypes[0]);
 
-      if (response != null) {
-        return (CloudProviderMetadata) ApiClient.deserialize(response, "", CloudProviderMetadata.class);
-      } else {
-        return null;
-      }
-    } catch (ApiException ex) {
-      if (ex.getCode() == 404) {
-        return null;
-      } else {
-        throw ex;
-      }
+    if (response != null) {
+      return (CloudProviderMetadata) ApiClient.deserialize(response, "", CloudProviderMetadata.class);
+    } else {
+      return null;
     }
   }
 
@@ -99,7 +91,7 @@ public class ProviderMetadataApi {
   public List<CloudProviderMetadata> list() throws ApiException {
     Object postBody = null;
     // create path and map variables
-    String path = "/api/v6/metadata/providers"
+    String path = "/api/v7/metadata/providers"
       .replaceAll("\\{format\\}", "json")
       ;
 
@@ -114,21 +106,13 @@ public class ProviderMetadataApi {
         + Arrays.toString(contentTypes));
     }
 
-    try {
-      String response = apiClient.invokeAPI(path, "GET", queryParams, postBody,
-        headerParams, formParams, contentTypes[0]);
+    String response = apiClient.invokeAPI(path, "GET", queryParams, postBody,
+      headerParams, formParams, contentTypes[0]);
 
-      if (response != null) {
-        return (List<CloudProviderMetadata>) ApiClient.deserialize(response, "List", CloudProviderMetadata.class);
-      } else {
-        return null;
-      }
-    } catch (ApiException ex) {
-      if (ex.getCode() == 404) {
-        return null;
-      } else {
-        throw ex;
-      }
+    if (response != null) {
+      return (List<CloudProviderMetadata>) ApiClient.deserialize(response, "List", CloudProviderMetadata.class);
+    } else {
+      return null;
     }
   }
 

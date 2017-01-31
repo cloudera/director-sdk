@@ -40,7 +40,6 @@ api_classes = ["DatabaseServersApi",
                 "ImportClientConfigApi",
                 "ClustersApi",
                 "UsersApi",
-                "WorkflowsApi",
                 "EnvironmentsApi",
                 ]
 

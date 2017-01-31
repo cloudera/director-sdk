@@ -57,7 +57,7 @@ public class InstanceTemplatesApi {
        throw new ApiException(400, "missing required params");
     }
     // create path and map variables
-    String path = "/api/v6/environments/{environment}/templates/instances"
+    String path = "/api/v7/environments/{environment}/templates/instances"
       .replaceAll("\\{format\\}", "json")
       .replaceAll("\\{" + "environment" + "\\}",
                   apiClient.escapeString(environment.toString()))
@@ -74,21 +74,13 @@ public class InstanceTemplatesApi {
         + Arrays.toString(contentTypes));
     }
 
-    try {
-      String response = apiClient.invokeAPI(path, "POST", queryParams, postBody,
-        headerParams, formParams, contentTypes[0]);
+    String response = apiClient.invokeAPI(path, "POST", queryParams, postBody,
+      headerParams, formParams, contentTypes[0]);
 
-      if (response != null) {
-        return ;
-      } else {
-        return ;
-      }
-    } catch (ApiException ex) {
-      if (ex.getCode() == 404) {
-        return ;
-      } else {
-        throw ex;
-      }
+    if (response != null) {
+      return ;
+    } else {
+      return ;
     }
   }
 
@@ -108,7 +100,7 @@ public class InstanceTemplatesApi {
        throw new ApiException(400, "missing required params");
     }
     // create path and map variables
-    String path = "/api/v6/environments/{environment}/templates/instances/{template}"
+    String path = "/api/v7/environments/{environment}/templates/instances/{template}"
       .replaceAll("\\{format\\}", "json")
       .replaceAll("\\{" + "environment" + "\\}",
                   apiClient.escapeString(environment.toString()))
@@ -127,21 +119,13 @@ public class InstanceTemplatesApi {
         + Arrays.toString(contentTypes));
     }
 
-    try {
-      String response = apiClient.invokeAPI(path, "DELETE", queryParams, postBody,
-        headerParams, formParams, contentTypes[0]);
+    String response = apiClient.invokeAPI(path, "DELETE", queryParams, postBody,
+      headerParams, formParams, contentTypes[0]);
 
-      if (response != null) {
-        return ;
-      } else {
-        return ;
-      }
-    } catch (ApiException ex) {
-      if (ex.getCode() == 404) {
-        return ;
-      } else {
-        throw ex;
-      }
+    if (response != null) {
+      return ;
+    } else {
+      return ;
     }
   }
 
@@ -161,7 +145,7 @@ public class InstanceTemplatesApi {
        throw new ApiException(400, "missing required params");
     }
     // create path and map variables
-    String path = "/api/v6/environments/{environment}/templates/instances/{template}"
+    String path = "/api/v7/environments/{environment}/templates/instances/{template}"
       .replaceAll("\\{format\\}", "json")
       .replaceAll("\\{" + "environment" + "\\}",
                   apiClient.escapeString(environment.toString()))
@@ -180,21 +164,13 @@ public class InstanceTemplatesApi {
         + Arrays.toString(contentTypes));
     }
 
-    try {
-      String response = apiClient.invokeAPI(path, "GET", queryParams, postBody,
-        headerParams, formParams, contentTypes[0]);
+    String response = apiClient.invokeAPI(path, "GET", queryParams, postBody,
+      headerParams, formParams, contentTypes[0]);
 
-      if (response != null) {
-        return (InstanceTemplate) ApiClient.deserialize(response, "", InstanceTemplate.class);
-      } else {
-        return null;
-      }
-    } catch (ApiException ex) {
-      if (ex.getCode() == 404) {
-        return null;
-      } else {
-        throw ex;
-      }
+    if (response != null) {
+      return (InstanceTemplate) ApiClient.deserialize(response, "", InstanceTemplate.class);
+    } else {
+      return null;
     }
   }
 
@@ -213,7 +189,7 @@ public class InstanceTemplatesApi {
        throw new ApiException(400, "missing required params");
     }
     // create path and map variables
-    String path = "/api/v6/environments/{environment}/templates/instances"
+    String path = "/api/v7/environments/{environment}/templates/instances"
       .replaceAll("\\{format\\}", "json")
       .replaceAll("\\{" + "environment" + "\\}",
                   apiClient.escapeString(environment.toString()))
@@ -230,21 +206,13 @@ public class InstanceTemplatesApi {
         + Arrays.toString(contentTypes));
     }
 
-    try {
-      String response = apiClient.invokeAPI(path, "GET", queryParams, postBody,
-        headerParams, formParams, contentTypes[0]);
+    String response = apiClient.invokeAPI(path, "GET", queryParams, postBody,
+      headerParams, formParams, contentTypes[0]);
 
-      if (response != null) {
-        return (List<String>) ApiClient.deserialize(response, "List", String.class);
-      } else {
-        return null;
-      }
-    } catch (ApiException ex) {
-      if (ex.getCode() == 404) {
-        return null;
-      } else {
-        throw ex;
-      }
+    if (response != null) {
+      return (List<String>) ApiClient.deserialize(response, "List", String.class);
+    } else {
+      return null;
     }
   }
 
@@ -268,7 +236,7 @@ public class InstanceTemplatesApi {
        throw new ApiException(400, "missing required params");
     }
     // create path and map variables
-    String path = "/api/v6/environments/{environment}/templates/instances/{template}"
+    String path = "/api/v7/environments/{environment}/templates/instances/{template}"
       .replaceAll("\\{format\\}", "json")
       .replaceAll("\\{" + "environment" + "\\}",
                   apiClient.escapeString(environment.toString()))
@@ -287,21 +255,13 @@ public class InstanceTemplatesApi {
         + Arrays.toString(contentTypes));
     }
 
-    try {
-      String response = apiClient.invokeAPI(path, "PUT", queryParams, postBody,
-        headerParams, formParams, contentTypes[0]);
+    String response = apiClient.invokeAPI(path, "PUT", queryParams, postBody,
+      headerParams, formParams, contentTypes[0]);
 
-      if (response != null) {
-        return ;
-      } else {
-        return ;
-      }
-    } catch (ApiException ex) {
-      if (ex.getCode() == 404) {
-        return ;
-      } else {
-        throw ex;
-      }
+    if (response != null) {
+      return ;
+    } else {
+      return ;
     }
   }
 

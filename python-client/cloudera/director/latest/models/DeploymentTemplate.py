@@ -36,6 +36,7 @@ class DeploymentTemplate:
             'name': 'str',
             'password': 'str',
             'port': 'int',
+            'postCreateScripts': 'list[str]',
             'repository': 'str',
             'repositoryKeyUrl': 'str',
             'unlimitedJce': 'bool',
@@ -72,6 +73,8 @@ class DeploymentTemplate:
         self.password = kwargs.get('password',None) # str
         #Port for existing Cloudera Manager installation
         self.port = kwargs.get('port',None) # int
+        #A list of scripts to be run after deployment creation
+        self.postCreateScripts = kwargs.get('postCreateScripts',[]) # list[str]
         #Custom Cloudera Manager repository URL
         self.repository = kwargs.get('repository',None) # str
         #Custom Cloudera Manager public GPG key

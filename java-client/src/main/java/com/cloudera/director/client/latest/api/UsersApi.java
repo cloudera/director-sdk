@@ -57,7 +57,7 @@ public class UsersApi {
        throw new ApiException(400, "missing required params");
     }
     // create path and map variables
-    String path = "/api/v6/users"
+    String path = "/api/v7/users"
       .replaceAll("\\{format\\}", "json")
       ;
 
@@ -72,21 +72,13 @@ public class UsersApi {
         + Arrays.toString(contentTypes));
     }
 
-    try {
-      String response = apiClient.invokeAPI(path, "POST", queryParams, postBody,
-        headerParams, formParams, contentTypes[0]);
+    String response = apiClient.invokeAPI(path, "POST", queryParams, postBody,
+      headerParams, formParams, contentTypes[0]);
 
-      if (response != null) {
-        return ;
-      } else {
-        return ;
-      }
-    } catch (ApiException ex) {
-      if (ex.getCode() == 404) {
-        return ;
-      } else {
-        throw ex;
-      }
+    if (response != null) {
+      return ;
+    } else {
+      return ;
     }
   }
 
@@ -100,7 +92,7 @@ public class UsersApi {
   public User currentRedacted() throws ApiException {
     Object postBody = null;
     // create path and map variables
-    String path = "/api/v6/users/current"
+    String path = "/api/v7/users/current"
       .replaceAll("\\{format\\}", "json")
       ;
 
@@ -115,21 +107,13 @@ public class UsersApi {
         + Arrays.toString(contentTypes));
     }
 
-    try {
-      String response = apiClient.invokeAPI(path, "GET", queryParams, postBody,
-        headerParams, formParams, contentTypes[0]);
+    String response = apiClient.invokeAPI(path, "GET", queryParams, postBody,
+      headerParams, formParams, contentTypes[0]);
 
-      if (response != null) {
-        return (User) ApiClient.deserialize(response, "", User.class);
-      } else {
-        return null;
-      }
-    } catch (ApiException ex) {
-      if (ex.getCode() == 404) {
-        return null;
-      } else {
-        throw ex;
-      }
+    if (response != null) {
+      return (User) ApiClient.deserialize(response, "", User.class);
+    } else {
+      return null;
     }
   }
 
@@ -147,7 +131,7 @@ public class UsersApi {
        throw new ApiException(400, "missing required params");
     }
     // create path and map variables
-    String path = "/api/v6/users/{username}"
+    String path = "/api/v7/users/{username}"
       .replaceAll("\\{format\\}", "json")
       .replaceAll("\\{" + "username" + "\\}",
                   apiClient.escapeString(username.toString()))
@@ -164,21 +148,13 @@ public class UsersApi {
         + Arrays.toString(contentTypes));
     }
 
-    try {
-      String response = apiClient.invokeAPI(path, "DELETE", queryParams, postBody,
-        headerParams, formParams, contentTypes[0]);
+    String response = apiClient.invokeAPI(path, "DELETE", queryParams, postBody,
+      headerParams, formParams, contentTypes[0]);
 
-      if (response != null) {
-        return ;
-      } else {
-        return ;
-      }
-    } catch (ApiException ex) {
-      if (ex.getCode() == 404) {
-        return ;
-      } else {
-        throw ex;
-      }
+    if (response != null) {
+      return ;
+    } else {
+      return ;
     }
   }
 
@@ -197,7 +173,7 @@ public class UsersApi {
        throw new ApiException(400, "missing required params");
     }
     // create path and map variables
-    String path = "/api/v6/users/{username}"
+    String path = "/api/v7/users/{username}"
       .replaceAll("\\{format\\}", "json")
       .replaceAll("\\{" + "username" + "\\}",
                   apiClient.escapeString(username.toString()))
@@ -214,21 +190,13 @@ public class UsersApi {
         + Arrays.toString(contentTypes));
     }
 
-    try {
-      String response = apiClient.invokeAPI(path, "GET", queryParams, postBody,
-        headerParams, formParams, contentTypes[0]);
+    String response = apiClient.invokeAPI(path, "GET", queryParams, postBody,
+      headerParams, formParams, contentTypes[0]);
 
-      if (response != null) {
-        return (User) ApiClient.deserialize(response, "", User.class);
-      } else {
-        return null;
-      }
-    } catch (ApiException ex) {
-      if (ex.getCode() == 404) {
-        return null;
-      } else {
-        throw ex;
-      }
+    if (response != null) {
+      return (User) ApiClient.deserialize(response, "", User.class);
+    } else {
+      return null;
     }
   }
 
@@ -242,7 +210,7 @@ public class UsersApi {
   public List<String> list() throws ApiException {
     Object postBody = null;
     // create path and map variables
-    String path = "/api/v6/users"
+    String path = "/api/v7/users"
       .replaceAll("\\{format\\}", "json")
       ;
 
@@ -257,21 +225,13 @@ public class UsersApi {
         + Arrays.toString(contentTypes));
     }
 
-    try {
-      String response = apiClient.invokeAPI(path, "GET", queryParams, postBody,
-        headerParams, formParams, contentTypes[0]);
+    String response = apiClient.invokeAPI(path, "GET", queryParams, postBody,
+      headerParams, formParams, contentTypes[0]);
 
-      if (response != null) {
-        return (List<String>) ApiClient.deserialize(response, "List", String.class);
-      } else {
-        return null;
-      }
-    } catch (ApiException ex) {
-      if (ex.getCode() == 404) {
-        return null;
-      } else {
-        throw ex;
-      }
+    if (response != null) {
+      return (List<String>) ApiClient.deserialize(response, "List", String.class);
+    } else {
+      return null;
     }
   }
 
@@ -293,7 +253,7 @@ public class UsersApi {
        throw new ApiException(400, "missing required params");
     }
     // create path and map variables
-    String path = "/api/v6/users/{username}"
+    String path = "/api/v7/users/{username}"
       .replaceAll("\\{format\\}", "json")
       .replaceAll("\\{" + "username" + "\\}",
                   apiClient.escapeString(username.toString()))
@@ -310,21 +270,13 @@ public class UsersApi {
         + Arrays.toString(contentTypes));
     }
 
-    try {
-      String response = apiClient.invokeAPI(path, "PUT", queryParams, postBody,
-        headerParams, formParams, contentTypes[0]);
+    String response = apiClient.invokeAPI(path, "PUT", queryParams, postBody,
+      headerParams, formParams, contentTypes[0]);
 
-      if (response != null) {
-        return ;
-      } else {
-        return ;
-      }
-    } catch (ApiException ex) {
-      if (ex.getCode() == 404) {
-        return ;
-      } else {
-        throw ex;
-      }
+    if (response != null) {
+      return ;
+    } else {
+      return ;
     }
   }
 
@@ -346,7 +298,7 @@ public class UsersApi {
        throw new ApiException(400, "missing required params");
     }
     // create path and map variables
-    String path = "/api/v6/users/{username}/password"
+    String path = "/api/v7/users/{username}/password"
       .replaceAll("\\{format\\}", "json")
       .replaceAll("\\{" + "username" + "\\}",
                   apiClient.escapeString(username.toString()))
@@ -363,21 +315,13 @@ public class UsersApi {
         + Arrays.toString(contentTypes));
     }
 
-    try {
-      String response = apiClient.invokeAPI(path, "PUT", queryParams, postBody,
-        headerParams, formParams, contentTypes[0]);
+    String response = apiClient.invokeAPI(path, "PUT", queryParams, postBody,
+      headerParams, formParams, contentTypes[0]);
 
-      if (response != null) {
-        return ;
-      } else {
-        return ;
-      }
-    } catch (ApiException ex) {
-      if (ex.getCode() == 404) {
-        return ;
-      } else {
-        throw ex;
-      }
+    if (response != null) {
+      return ;
+    } else {
+      return ;
     }
   }
 

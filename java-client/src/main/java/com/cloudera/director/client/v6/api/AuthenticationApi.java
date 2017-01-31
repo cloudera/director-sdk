@@ -72,21 +72,13 @@ public class AuthenticationApi {
         + Arrays.toString(contentTypes));
     }
 
-    try {
-      String response = apiClient.invokeAPI(path, "POST", queryParams, postBody,
-        headerParams, formParams, contentTypes[0]);
+    String response = apiClient.invokeAPI(path, "POST", queryParams, postBody,
+      headerParams, formParams, contentTypes[0]);
 
-      if (response != null) {
-        return (User) ApiClient.deserialize(response, "", User.class);
-      } else {
-        return null;
-      }
-    } catch (ApiException ex) {
-      if (ex.getCode() == 404) {
-        return null;
-      } else {
-        throw ex;
-      }
+    if (response != null) {
+      return (User) ApiClient.deserialize(response, "", User.class);
+    } else {
+      return null;
     }
   }
 
@@ -116,21 +108,13 @@ public class AuthenticationApi {
         + Arrays.toString(contentTypes));
     }
 
-    try {
-      String response = apiClient.invokeAPI(path, "POST", queryParams, postBody,
-        headerParams, formParams, contentTypes[0]);
+    String response = apiClient.invokeAPI(path, "POST", queryParams, postBody,
+      headerParams, formParams, contentTypes[0]);
 
-      if (response != null) {
-        return (Boolean) ApiClient.deserialize(response, "", Boolean.class);
-      } else {
-        return null;
-      }
-    } catch (ApiException ex) {
-      if (ex.getCode() == 404) {
-        return null;
-      } else {
-        throw ex;
-      }
+    if (response != null) {
+      return (Boolean) ApiClient.deserialize(response, "", Boolean.class);
+    } else {
+      return null;
     }
   }
 

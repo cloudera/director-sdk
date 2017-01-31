@@ -24,6 +24,7 @@ class ClusterTemplate:
         self.swaggerTypes = {
             'externalDatabaseTemplates': 'dict[str,cloudera.director.latest.models.ExternalDatabaseTemplate]',
             'externalDatabases': 'dict[str,cloudera.director.latest.models.ExternalDatabase]',
+            'instancePostCreateScripts': 'list[str]',
             'migrations': 'set[cloudera.director.latest.models.Migration]',
             'name': 'str',
             'parcelRepositories': 'set[str]',
@@ -43,6 +44,8 @@ class ClusterTemplate:
         self.externalDatabaseTemplates = kwargs.get('externalDatabaseTemplates',{}) # dict[str,cloudera.director.latest.models.ExternalDatabaseTemplate]
         #Optional external databases
         self.externalDatabases = kwargs.get('externalDatabases',{}) # dict[str,cloudera.director.latest.models.ExternalDatabase]
+        #A list of scripts to be run after cluster creation on all cluster instances
+        self.instancePostCreateScripts = kwargs.get('instancePostCreateScripts',[]) # list[str]
         #A description of current manual migrations (read only)
         self.migrations = kwargs.get('migrations',set()) # set[cloudera.director.latest.models.Migration]
         #Cluster name

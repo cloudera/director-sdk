@@ -49,7 +49,7 @@ public class EulaApi {
   public Eula get() throws ApiException {
     Object postBody = null;
     // create path and map variables
-    String path = "/api/v6/eula"
+    String path = "/api/v7/eula"
       .replaceAll("\\{format\\}", "json")
       ;
 
@@ -64,21 +64,13 @@ public class EulaApi {
         + Arrays.toString(contentTypes));
     }
 
-    try {
-      String response = apiClient.invokeAPI(path, "GET", queryParams, postBody,
-        headerParams, formParams, contentTypes[0]);
+    String response = apiClient.invokeAPI(path, "GET", queryParams, postBody,
+      headerParams, formParams, contentTypes[0]);
 
-      if (response != null) {
-        return (Eula) ApiClient.deserialize(response, "", Eula.class);
-      } else {
-        return null;
-      }
-    } catch (ApiException ex) {
-      if (ex.getCode() == 404) {
-        return null;
-      } else {
-        throw ex;
-      }
+    if (response != null) {
+      return (Eula) ApiClient.deserialize(response, "", Eula.class);
+    } else {
+      return null;
     }
   }
 
@@ -100,7 +92,7 @@ public class EulaApi {
        throw new ApiException(400, "missing required params");
     }
     // create path and map variables
-    String path = "/api/v6/eula"
+    String path = "/api/v7/eula"
       .replaceAll("\\{format\\}", "json")
       ;
 
@@ -115,21 +107,13 @@ public class EulaApi {
         + Arrays.toString(contentTypes));
     }
 
-    try {
-      String response = apiClient.invokeAPI(path, "PUT", queryParams, postBody,
-        headerParams, formParams, contentTypes[0]);
+    String response = apiClient.invokeAPI(path, "PUT", queryParams, postBody,
+      headerParams, formParams, contentTypes[0]);
 
-      if (response != null) {
-        return ;
-      } else {
-        return ;
-      }
-    } catch (ApiException ex) {
-      if (ex.getCode() == 404) {
-        return ;
-      } else {
-        throw ex;
-      }
+    if (response != null) {
+      return ;
+    } else {
+      return ;
     }
   }
 

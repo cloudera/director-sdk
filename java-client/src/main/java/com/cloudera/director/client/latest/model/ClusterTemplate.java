@@ -29,6 +29,8 @@ public class ClusterTemplate {
   private Map<String, ExternalDatabaseTemplate> externalDatabaseTemplates;
   /* Optional external databases */
   private Map<String, ExternalDatabase> externalDatabases;
+  /* A list of scripts to be run after cluster creation on all cluster instances */
+  private List<String> instancePostCreateScripts;
   /* A description of current manual migrations (read only) */
   private Set<Migration> migrations;
   /* Cluster name */
@@ -53,9 +55,10 @@ public class ClusterTemplate {
   private Map<String, VirtualInstanceGroup> virtualInstanceGroups;
   public ClusterTemplate() { }
 
-  private ClusterTemplate(Map<String, ExternalDatabaseTemplate> externalDatabaseTemplates, Map<String, ExternalDatabase> externalDatabases, Set<Migration> migrations, String name, Set<String> parcelRepositories, List<String> postCreateScripts, List<String> preTerminateScripts, Map<String, String> productVersions, Boolean redeployClientConfigsOnUpdate, Boolean restartClusterOnUpdate, List<String> services, Map<String, Map<String, String>> servicesConfigs, Map<String, VirtualInstanceGroup> virtualInstanceGroups) {
+  private ClusterTemplate(Map<String, ExternalDatabaseTemplate> externalDatabaseTemplates, Map<String, ExternalDatabase> externalDatabases, List<String> instancePostCreateScripts, Set<Migration> migrations, String name, Set<String> parcelRepositories, List<String> postCreateScripts, List<String> preTerminateScripts, Map<String, String> productVersions, Boolean redeployClientConfigsOnUpdate, Boolean restartClusterOnUpdate, List<String> services, Map<String, Map<String, String>> servicesConfigs, Map<String, VirtualInstanceGroup> virtualInstanceGroups) {
     this.externalDatabaseTemplates = externalDatabaseTemplates;
     this.externalDatabases = externalDatabases;
+    this.instancePostCreateScripts = instancePostCreateScripts;
     this.migrations = migrations;
     this.name = name;
     this.parcelRepositories = parcelRepositories;
@@ -72,6 +75,7 @@ public class ClusterTemplate {
   private ClusterTemplate(ClusterTemplateBuilder builder) {
     this.externalDatabaseTemplates = builder.externalDatabaseTemplates;
     this.externalDatabases = builder.externalDatabases;
+    this.instancePostCreateScripts = builder.instancePostCreateScripts;
     this.migrations = builder.migrations;
     this.name = builder.name;
     this.parcelRepositories = builder.parcelRepositories;
@@ -92,6 +96,7 @@ public class ClusterTemplate {
   public static class ClusterTemplateBuilder {
     private Map<String, ExternalDatabaseTemplate> externalDatabaseTemplates = new HashMap<String, ExternalDatabaseTemplate>();
     private Map<String, ExternalDatabase> externalDatabases = new HashMap<String, ExternalDatabase>();
+    private List<String> instancePostCreateScripts = new ArrayList<String>();
     private Set<Migration> migrations = null;
     private String name = null;
     private Set<String> parcelRepositories = null;
@@ -111,6 +116,11 @@ public class ClusterTemplate {
 
     public ClusterTemplateBuilder externalDatabases(Map<String, ExternalDatabase> externalDatabases) {
       this.externalDatabases = externalDatabases;
+      return this;
+    }
+
+    public ClusterTemplateBuilder instancePostCreateScripts(List<String> instancePostCreateScripts) {
+      this.instancePostCreateScripts = instancePostCreateScripts;
       return this;
     }
 
@@ -178,6 +188,7 @@ public class ClusterTemplate {
     return builder()
       .externalDatabaseTemplates(externalDatabaseTemplates)
       .externalDatabases(externalDatabases)
+      .instancePostCreateScripts(instancePostCreateScripts)
       .migrations(migrations)
       .name(name)
       .parcelRepositories(parcelRepositories)
@@ -203,6 +214,13 @@ public class ClusterTemplate {
   }
   public void setExternalDatabases(Map<String, ExternalDatabase> externalDatabases) {
     this.externalDatabases = externalDatabases;
+  }
+
+  public List<String> getInstancePostCreateScripts() {
+    return instancePostCreateScripts;
+  }
+  public void setInstancePostCreateScripts(List<String> instancePostCreateScripts) {
+    this.instancePostCreateScripts = instancePostCreateScripts;
   }
 
   public Set<Migration> getMigrations() {
@@ -295,6 +313,9 @@ public class ClusterTemplate {
     if (externalDatabases != null ?
         !externalDatabases.equals(other.externalDatabases) :
         other.externalDatabases != null) return false;
+    if (instancePostCreateScripts != null ?
+        !instancePostCreateScripts.equals(other.instancePostCreateScripts) :
+        other.instancePostCreateScripts != null) return false;
     if (migrations != null ?
         !migrations.equals(other.migrations) :
         other.migrations != null) return false;
@@ -336,6 +357,7 @@ public class ClusterTemplate {
     int result = 0;
     result = 31 * result + (externalDatabaseTemplates != null ? externalDatabaseTemplates.hashCode() : 0);
     result = 31 * result + (externalDatabases != null ? externalDatabases.hashCode() : 0);
+    result = 31 * result + (instancePostCreateScripts != null ? instancePostCreateScripts.hashCode() : 0);
     result = 31 * result + (migrations != null ? migrations.hashCode() : 0);
     result = 31 * result + (name != null ? name.hashCode() : 0);
     result = 31 * result + (parcelRepositories != null ? parcelRepositories.hashCode() : 0);
@@ -357,6 +379,7 @@ public class ClusterTemplate {
     sb.append("class ClusterTemplate {" + newLine);
     sb.append("  externalDatabaseTemplates: ").append(externalDatabaseTemplates).append(newLine);
     sb.append("  externalDatabases: ").append(externalDatabases).append(newLine);
+    sb.append("  instancePostCreateScripts: ").append(instancePostCreateScripts).append(newLine);
     sb.append("  migrations: ").append(migrations).append(newLine);
     sb.append("  name: ").append(name).append(newLine);
     sb.append("  parcelRepositories: ").append(parcelRepositories).append(newLine);

@@ -49,7 +49,7 @@ class EnvironmentsApi(object):
             params[key] = val
         del params['kwargs']
 
-        resourcePath = '/api/v6/environments'
+        resourcePath = '/api/v7/environments'
         resourcePath = resourcePath.replace('{format}', 'json')
         method = 'POST'
 
@@ -89,7 +89,7 @@ class EnvironmentsApi(object):
             params[key] = val
         del params['kwargs']
 
-        resourcePath = '/api/v6/environments/{name}'
+        resourcePath = '/api/v7/environments/{name}'
         resourcePath = resourcePath.replace('{format}', 'json')
         method = 'DELETE'
 
@@ -133,7 +133,7 @@ class EnvironmentsApi(object):
             params[key] = val
         del params['kwargs']
 
-        resourcePath = '/api/v6/environments/{name}'
+        resourcePath = '/api/v7/environments/{name}'
         resourcePath = resourcePath.replace('{format}', 'json')
         method = 'GET'
 
@@ -180,7 +180,7 @@ class EnvironmentsApi(object):
             params[key] = val
         del params['kwargs']
 
-        resourcePath = '/api/v6/environments'
+        resourcePath = '/api/v7/environments'
         resourcePath = resourcePath.replace('{format}', 'json')
         method = 'GET'
 
@@ -227,7 +227,7 @@ class EnvironmentsApi(object):
             params[key] = val
         del params['kwargs']
 
-        resourcePath = '/api/v6/environments/{name}'
+        resourcePath = '/api/v7/environments/{name}'
         resourcePath = resourcePath.replace('{format}', 'json')
         method = 'PUT'
 
@@ -273,7 +273,7 @@ class EnvironmentsApi(object):
             params[key] = val
         del params['kwargs']
 
-        resourcePath = '/api/v6/environments/{name}/provider/credentials'
+        resourcePath = '/api/v7/environments/{name}/provider/credentials'
         resourcePath = resourcePath.replace('{format}', 'json')
         method = 'PUT'
 

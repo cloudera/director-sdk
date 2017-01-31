@@ -16,14 +16,13 @@
 
 # Simple script that shows how to use the Cloudera Director API to manage user accounts
 
-import sys
 import argparse
-
-from urllib2 import HTTPError
-
-from cloudera.director.latest.models import Login, User
+import sys
 from cloudera.director.common.client import ApiClient
 from cloudera.director.latest import AuthenticationApi, UsersApi
+from cloudera.director.latest.models import Login, User
+from urllib2 import HTTPError
+
 
 class ExitCodes(object):
     OK = 0

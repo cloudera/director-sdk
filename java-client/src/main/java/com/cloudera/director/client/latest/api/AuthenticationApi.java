@@ -57,7 +57,7 @@ public class AuthenticationApi {
        throw new ApiException(400, "missing required params");
     }
     // create path and map variables
-    String path = "/api/v6/login"
+    String path = "/api/v7/login"
       .replaceAll("\\{format\\}", "json")
       ;
 
@@ -72,21 +72,13 @@ public class AuthenticationApi {
         + Arrays.toString(contentTypes));
     }
 
-    try {
-      String response = apiClient.invokeAPI(path, "POST", queryParams, postBody,
-        headerParams, formParams, contentTypes[0]);
+    String response = apiClient.invokeAPI(path, "POST", queryParams, postBody,
+      headerParams, formParams, contentTypes[0]);
 
-      if (response != null) {
-        return (User) ApiClient.deserialize(response, "", User.class);
-      } else {
-        return null;
-      }
-    } catch (ApiException ex) {
-      if (ex.getCode() == 404) {
-        return null;
-      } else {
-        throw ex;
-      }
+    if (response != null) {
+      return (User) ApiClient.deserialize(response, "", User.class);
+    } else {
+      return null;
     }
   }
 
@@ -101,7 +93,7 @@ public class AuthenticationApi {
   public Boolean logout() throws ApiException {
     Object postBody = null;
     // create path and map variables
-    String path = "/api/v6/logout"
+    String path = "/api/v7/logout"
       .replaceAll("\\{format\\}", "json")
       ;
 
@@ -116,21 +108,13 @@ public class AuthenticationApi {
         + Arrays.toString(contentTypes));
     }
 
-    try {
-      String response = apiClient.invokeAPI(path, "POST", queryParams, postBody,
-        headerParams, formParams, contentTypes[0]);
+    String response = apiClient.invokeAPI(path, "POST", queryParams, postBody,
+      headerParams, formParams, contentTypes[0]);
 
-      if (response != null) {
-        return (Boolean) ApiClient.deserialize(response, "", Boolean.class);
-      } else {
-        return null;
-      }
-    } catch (ApiException ex) {
-      if (ex.getCode() == 404) {
-        return null;
-      } else {
-        throw ex;
-      }
+    if (response != null) {
+      return (Boolean) ApiClient.deserialize(response, "", Boolean.class);
+    } else {
+      return null;
     }
   }
 

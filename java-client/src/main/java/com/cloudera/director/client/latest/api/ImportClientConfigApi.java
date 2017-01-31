@@ -58,7 +58,7 @@ public class ImportClientConfigApi {
        throw new ApiException(400, "missing required params");
     }
     // create path and map variables
-    String path = "/api/v6/import"
+    String path = "/api/v7/import"
       .replaceAll("\\{format\\}", "json")
       ;
 
@@ -79,21 +79,13 @@ public class ImportClientConfigApi {
         + Arrays.toString(contentTypes));
     }
 
-    try {
-      String response = apiClient.invokeAPI(path, "POST", queryParams, postBody,
-        headerParams, formParams, contentTypes[0]);
+    String response = apiClient.invokeAPI(path, "POST", queryParams, postBody,
+      headerParams, formParams, contentTypes[0]);
 
-      if (response != null) {
-        return (ImportResult) ApiClient.deserialize(response, "", ImportResult.class);
-      } else {
-        return null;
-      }
-    } catch (ApiException ex) {
-      if (ex.getCode() == 404) {
-        return null;
-      } else {
-        throw ex;
-      }
+    if (response != null) {
+      return (ImportResult) ApiClient.deserialize(response, "", ImportResult.class);
+    } else {
+      return null;
     }
   }
 

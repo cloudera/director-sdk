@@ -72,21 +72,13 @@ public class UsersApi {
         + Arrays.toString(contentTypes));
     }
 
-    try {
-      String response = apiClient.invokeAPI(path, "POST", queryParams, postBody,
-        headerParams, formParams, contentTypes[0]);
+    String response = apiClient.invokeAPI(path, "POST", queryParams, postBody,
+      headerParams, formParams, contentTypes[0]);
 
-      if (response != null) {
-        return ;
-      } else {
-        return ;
-      }
-    } catch (ApiException ex) {
-      if (ex.getCode() == 404) {
-        return ;
-      } else {
-        throw ex;
-      }
+    if (response != null) {
+      return ;
+    } else {
+      return ;
     }
   }
 
@@ -115,21 +107,13 @@ public class UsersApi {
         + Arrays.toString(contentTypes));
     }
 
-    try {
-      String response = apiClient.invokeAPI(path, "GET", queryParams, postBody,
-        headerParams, formParams, contentTypes[0]);
+    String response = apiClient.invokeAPI(path, "GET", queryParams, postBody,
+      headerParams, formParams, contentTypes[0]);
 
-      if (response != null) {
-        return (User) ApiClient.deserialize(response, "", User.class);
-      } else {
-        return null;
-      }
-    } catch (ApiException ex) {
-      if (ex.getCode() == 404) {
-        return null;
-      } else {
-        throw ex;
-      }
+    if (response != null) {
+      return (User) ApiClient.deserialize(response, "", User.class);
+    } else {
+      return null;
     }
   }
 
@@ -164,21 +148,13 @@ public class UsersApi {
         + Arrays.toString(contentTypes));
     }
 
-    try {
-      String response = apiClient.invokeAPI(path, "DELETE", queryParams, postBody,
-        headerParams, formParams, contentTypes[0]);
+    String response = apiClient.invokeAPI(path, "DELETE", queryParams, postBody,
+      headerParams, formParams, contentTypes[0]);
 
-      if (response != null) {
-        return ;
-      } else {
-        return ;
-      }
-    } catch (ApiException ex) {
-      if (ex.getCode() == 404) {
-        return ;
-      } else {
-        throw ex;
-      }
+    if (response != null) {
+      return ;
+    } else {
+      return ;
     }
   }
 
@@ -214,21 +190,13 @@ public class UsersApi {
         + Arrays.toString(contentTypes));
     }
 
-    try {
-      String response = apiClient.invokeAPI(path, "GET", queryParams, postBody,
-        headerParams, formParams, contentTypes[0]);
+    String response = apiClient.invokeAPI(path, "GET", queryParams, postBody,
+      headerParams, formParams, contentTypes[0]);
 
-      if (response != null) {
-        return (User) ApiClient.deserialize(response, "", User.class);
-      } else {
-        return null;
-      }
-    } catch (ApiException ex) {
-      if (ex.getCode() == 404) {
-        return null;
-      } else {
-        throw ex;
-      }
+    if (response != null) {
+      return (User) ApiClient.deserialize(response, "", User.class);
+    } else {
+      return null;
     }
   }
 
@@ -257,21 +225,13 @@ public class UsersApi {
         + Arrays.toString(contentTypes));
     }
 
-    try {
-      String response = apiClient.invokeAPI(path, "GET", queryParams, postBody,
-        headerParams, formParams, contentTypes[0]);
+    String response = apiClient.invokeAPI(path, "GET", queryParams, postBody,
+      headerParams, formParams, contentTypes[0]);
 
-      if (response != null) {
-        return (List<String>) ApiClient.deserialize(response, "List", String.class);
-      } else {
-        return null;
-      }
-    } catch (ApiException ex) {
-      if (ex.getCode() == 404) {
-        return null;
-      } else {
-        throw ex;
-      }
+    if (response != null) {
+      return (List<String>) ApiClient.deserialize(response, "List", String.class);
+    } else {
+      return null;
     }
   }
 
@@ -310,21 +270,13 @@ public class UsersApi {
         + Arrays.toString(contentTypes));
     }
 
-    try {
-      String response = apiClient.invokeAPI(path, "PUT", queryParams, postBody,
-        headerParams, formParams, contentTypes[0]);
+    String response = apiClient.invokeAPI(path, "PUT", queryParams, postBody,
+      headerParams, formParams, contentTypes[0]);
 
-      if (response != null) {
-        return ;
-      } else {
-        return ;
-      }
-    } catch (ApiException ex) {
-      if (ex.getCode() == 404) {
-        return ;
-      } else {
-        throw ex;
-      }
+    if (response != null) {
+      return ;
+    } else {
+      return ;
     }
   }
 
@@ -363,21 +315,13 @@ public class UsersApi {
         + Arrays.toString(contentTypes));
     }
 
-    try {
-      String response = apiClient.invokeAPI(path, "PUT", queryParams, postBody,
-        headerParams, formParams, contentTypes[0]);
+    String response = apiClient.invokeAPI(path, "PUT", queryParams, postBody,
+      headerParams, formParams, contentTypes[0]);
 
-      if (response != null) {
-        return ;
-      } else {
-        return ;
-      }
-    } catch (ApiException ex) {
-      if (ex.getCode() == 404) {
-        return ;
-      } else {
-        throw ex;
-      }
+    if (response != null) {
+      return ;
+    } else {
+      return ;
     }
   }
 

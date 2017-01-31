@@ -16,23 +16,21 @@
 
 # Simple script that shows how to use the Cloudera Director API to start a cluster
 
-import sys
 import ConfigParser
 import argparse
-import uuid
+import sys
 import time
-
-from os.path import isfile
-from urllib2 import HTTPError
-
+import uuid
+from cloudera.director.common.client import ApiClient
+from cloudera.director.latest import (AuthenticationApi, EnvironmentsApi,
+    DeploymentsApi, ClustersApi)
 from cloudera.director.latest.models import (Login, SshCredentials,
     InstanceProviderConfig, Environment, InstanceTemplate,
     VirtualInstance, DeploymentTemplate, ClusterTemplate,
     VirtualInstanceGroup)
+from os.path import isfile
+from urllib2 import HTTPError
 
-from cloudera.director.common.client import ApiClient
-from cloudera.director.latest import (AuthenticationApi, EnvironmentsApi,
-    DeploymentsApi, ClustersApi)
 
 def get_authenticated_client(args):
     """

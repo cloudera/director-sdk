@@ -16,16 +16,14 @@
 
 # Simple script that shows how to use the API to import a client config file
 
-import sys
 import argparse
-
+import sys
+from cloudera.director.common.client import ApiClient
+from cloudera.director.latest import (AuthenticationApi, ImportClientConfigApi)
+from cloudera.director.latest.models import Login
 from os.path import isfile
 from urllib2 import HTTPError
 
-from cloudera.director.latest.models import Login
-
-from cloudera.director.common.client import ApiClient
-from cloudera.director.latest import (AuthenticationApi, ImportClientConfigApi)
 
 def get_authenticated_client(args):
   """

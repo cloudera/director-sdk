@@ -20,6 +20,8 @@ package com.cloudera.director.client.latest.model;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.ArrayList;
+import java.util.List;
 
 public class DeploymentTemplate {
   /* BillingId for Cloudera Manager [redacted on read] */
@@ -50,6 +52,8 @@ public class DeploymentTemplate {
   private String password;
   /* Port for existing Cloudera Manager installation */
   private Integer port;
+  /* A list of scripts to be run after deployment creation */
+  private List<String> postCreateScripts;
   /* Custom Cloudera Manager repository URL */
   private String repository;
   /* Custom Cloudera Manager public GPG key */
@@ -64,7 +68,7 @@ public class DeploymentTemplate {
   }
   public DeploymentTemplate() { }
 
-  private DeploymentTemplate(String billingId, Map<String, Map<String, String>> configs, Boolean enableEnterpriseTrial, Map<String, ExternalDatabaseTemplate> externalDatabaseTemplates, Map<String, ExternalDatabase> externalDatabases, String hostname, String javaInstallationStrategy, String krbAdminPassword, String krbAdminUsername, String license, VirtualInstance managerVirtualInstance, String name, String password, Integer port, String repository, String repositoryKeyUrl, Boolean unlimitedJce, String username) {
+  private DeploymentTemplate(String billingId, Map<String, Map<String, String>> configs, Boolean enableEnterpriseTrial, Map<String, ExternalDatabaseTemplate> externalDatabaseTemplates, Map<String, ExternalDatabase> externalDatabases, String hostname, String javaInstallationStrategy, String krbAdminPassword, String krbAdminUsername, String license, VirtualInstance managerVirtualInstance, String name, String password, Integer port, List<String> postCreateScripts, String repository, String repositoryKeyUrl, Boolean unlimitedJce, String username) {
     this.billingId = billingId;
     this.configs = configs;
     this.enableEnterpriseTrial = enableEnterpriseTrial;
@@ -79,6 +83,7 @@ public class DeploymentTemplate {
     this.name = name;
     this.password = password;
     this.port = port;
+    this.postCreateScripts = postCreateScripts;
     this.repository = repository;
     this.repositoryKeyUrl = repositoryKeyUrl;
     this.unlimitedJce = unlimitedJce;
@@ -100,6 +105,7 @@ public class DeploymentTemplate {
     this.name = builder.name;
     this.password = builder.password;
     this.port = builder.port;
+    this.postCreateScripts = builder.postCreateScripts;
     this.repository = builder.repository;
     this.repositoryKeyUrl = builder.repositoryKeyUrl;
     this.unlimitedJce = builder.unlimitedJce;
@@ -125,6 +131,7 @@ public class DeploymentTemplate {
     private String name = null;
     private String password = null;
     private Integer port = null;
+    private List<String> postCreateScripts = new ArrayList<String>();
     private String repository = null;
     private String repositoryKeyUrl = null;
     private Boolean unlimitedJce = null;
@@ -200,6 +207,11 @@ public class DeploymentTemplate {
       return this;
     }
 
+    public DeploymentTemplateBuilder postCreateScripts(List<String> postCreateScripts) {
+      this.postCreateScripts = postCreateScripts;
+      return this;
+    }
+
     public DeploymentTemplateBuilder repository(String repository) {
       this.repository = repository;
       return this;
@@ -241,6 +253,7 @@ public class DeploymentTemplate {
       .name(name)
       .password(password)
       .port(port)
+      .postCreateScripts(postCreateScripts)
       .repository(repository)
       .repositoryKeyUrl(repositoryKeyUrl)
       .unlimitedJce(unlimitedJce)
@@ -345,6 +358,13 @@ public class DeploymentTemplate {
     this.port = port;
   }
 
+  public List<String> getPostCreateScripts() {
+    return postCreateScripts;
+  }
+  public void setPostCreateScripts(List<String> postCreateScripts) {
+    this.postCreateScripts = postCreateScripts;
+  }
+
   public String getRepository() {
     return repository;
   }
@@ -410,6 +430,9 @@ public class DeploymentTemplate {
     if (port != null ?
         !port.equals(other.port) :
         other.port != null) return false;
+    if (postCreateScripts != null ?
+        !postCreateScripts.equals(other.postCreateScripts) :
+        other.postCreateScripts != null) return false;
     if (repository != null ?
         !repository.equals(other.repository) :
         other.repository != null) return false;
@@ -438,6 +461,7 @@ public class DeploymentTemplate {
     result = 31 * result + (managerVirtualInstance != null ? managerVirtualInstance.hashCode() : 0);
     result = 31 * result + (name != null ? name.hashCode() : 0);
     result = 31 * result + (port != null ? port.hashCode() : 0);
+    result = 31 * result + (postCreateScripts != null ? postCreateScripts.hashCode() : 0);
     result = 31 * result + (repository != null ? repository.hashCode() : 0);
     result = 31 * result + (repositoryKeyUrl != null ? repositoryKeyUrl.hashCode() : 0);
     result = 31 * result + (unlimitedJce != null ? unlimitedJce.hashCode() : 0);
@@ -464,6 +488,7 @@ public class DeploymentTemplate {
     sb.append("  name: ").append(name).append(newLine);
     sb.append("  password: ").append("REDACTED").append(newLine);
     sb.append("  port: ").append(port).append(newLine);
+    sb.append("  postCreateScripts: ").append(postCreateScripts).append(newLine);
     sb.append("  repository: ").append(repository).append(newLine);
     sb.append("  repositoryKeyUrl: ").append(repositoryKeyUrl).append(newLine);
     sb.append("  unlimitedJce: ").append(unlimitedJce).append(newLine);
