@@ -24,6 +24,7 @@ import java.util.Map;
 public class InstanceTemplate {
   /* Custom script executed before anything else */
   private String bootstrapScript;
+  /* Instance configuration properties */
   private Map<String, String> config;
   /* Operating system image */
   private String image;
@@ -33,6 +34,7 @@ public class InstanceTemplate {
   private Boolean normalizeInstance;
   /* Optional SSH username to override username specified in environment */
   private String sshUsername;
+  /* Instance tags */
   private Map<String, String> tags;
   /* Instance type */
   private String type;

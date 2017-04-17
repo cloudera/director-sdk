@@ -21,8 +21,8 @@ package com.cloudera.director.client.latest.api;
 import com.cloudera.director.client.common.ApiClient;
 import com.cloudera.director.client.common.ApiException;
 
-import com.cloudera.director.client.latest.model.User;
 import com.cloudera.director.client.latest.model.PasswordChange;
+import com.cloudera.director.client.latest.model.User;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List; // NOPMD
@@ -57,7 +57,7 @@ public class UsersApi {
        throw new ApiException(400, "missing required params");
     }
     // create path and map variables
-    String path = "/api/v7/users"
+    String path = "/api/v8/users"
       .replaceAll("\\{format\\}", "json")
       ;
 
@@ -92,7 +92,7 @@ public class UsersApi {
   public User currentRedacted() throws ApiException {
     Object postBody = null;
     // create path and map variables
-    String path = "/api/v7/users/current"
+    String path = "/api/v8/users/current"
       .replaceAll("\\{format\\}", "json")
       ;
 
@@ -131,7 +131,7 @@ public class UsersApi {
        throw new ApiException(400, "missing required params");
     }
     // create path and map variables
-    String path = "/api/v7/users/{username}"
+    String path = "/api/v8/users/{username}"
       .replaceAll("\\{format\\}", "json")
       .replaceAll("\\{" + "username" + "\\}",
                   apiClient.escapeString(username.toString()))
@@ -173,7 +173,7 @@ public class UsersApi {
        throw new ApiException(400, "missing required params");
     }
     // create path and map variables
-    String path = "/api/v7/users/{username}"
+    String path = "/api/v8/users/{username}"
       .replaceAll("\\{format\\}", "json")
       .replaceAll("\\{" + "username" + "\\}",
                   apiClient.escapeString(username.toString()))
@@ -210,7 +210,7 @@ public class UsersApi {
   public List<String> list() throws ApiException {
     Object postBody = null;
     // create path and map variables
-    String path = "/api/v7/users"
+    String path = "/api/v8/users"
       .replaceAll("\\{format\\}", "json")
       ;
 
@@ -253,7 +253,7 @@ public class UsersApi {
        throw new ApiException(400, "missing required params");
     }
     // create path and map variables
-    String path = "/api/v7/users/{username}"
+    String path = "/api/v8/users/{username}"
       .replaceAll("\\{format\\}", "json")
       .replaceAll("\\{" + "username" + "\\}",
                   apiClient.escapeString(username.toString()))
@@ -298,7 +298,7 @@ public class UsersApi {
        throw new ApiException(400, "missing required params");
     }
     // create path and map variables
-    String path = "/api/v7/users/{username}/password"
+    String path = "/api/v8/users/{username}/password"
       .replaceAll("\\{format\\}", "json")
       .replaceAll("\\{" + "username" + "\\}",
                   apiClient.escapeString(username.toString()))

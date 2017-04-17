@@ -18,12 +18,15 @@
 
 package com.cloudera.director.client.latest.model;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class InstanceTemplate {
-  /* Custom script executed before anything else */
-  private String bootstrapScript;
+  /* List of instance bootstrap scripts. */
+  private List<String> bootstrapScripts;
+  /* Instance configuration properties */
   private Map<String, String> config;
   /* Operating system image */
   private String image;
@@ -33,13 +36,14 @@ public class InstanceTemplate {
   private Boolean normalizeInstance;
   /* Optional SSH username to override username specified in environment */
   private String sshUsername;
+  /* Instance tags */
   private Map<String, String> tags;
   /* Instance type */
   private String type;
   public InstanceTemplate() { }
 
-  private InstanceTemplate(String bootstrapScript, Map<String, String> config, String image, String name, Boolean normalizeInstance, String sshUsername, Map<String, String> tags, String type) {
-    this.bootstrapScript = bootstrapScript;
+  private InstanceTemplate(List<String> bootstrapScripts, Map<String, String> config, String image, String name, Boolean normalizeInstance, String sshUsername, Map<String, String> tags, String type) {
+    this.bootstrapScripts = bootstrapScripts;
     this.config = config;
     this.image = image;
     this.name = name;
@@ -50,7 +54,7 @@ public class InstanceTemplate {
   }
 
   private InstanceTemplate(InstanceTemplateBuilder builder) {
-    this.bootstrapScript = builder.bootstrapScript;
+    this.bootstrapScripts = builder.bootstrapScripts;
     this.config = builder.config;
     this.image = builder.image;
     this.name = builder.name;
@@ -65,7 +69,7 @@ public class InstanceTemplate {
   }
 
   public static class InstanceTemplateBuilder {
-    private String bootstrapScript = null;
+    private List<String> bootstrapScripts = new ArrayList<String>();
     private Map<String, String> config = new HashMap<String, String>();
     private String image = null;
     private String name = null;
@@ -74,8 +78,8 @@ public class InstanceTemplate {
     private Map<String, String> tags = new HashMap<String, String>();
     private String type = null;
 
-    public InstanceTemplateBuilder bootstrapScript(String bootstrapScript) {
-      this.bootstrapScript = bootstrapScript;
+    public InstanceTemplateBuilder bootstrapScripts(List<String> bootstrapScripts) {
+      this.bootstrapScripts = bootstrapScripts;
       return this;
     }
 
@@ -121,7 +125,7 @@ public class InstanceTemplate {
 
   public InstanceTemplateBuilder toBuilder() {
     return builder()
-      .bootstrapScript(bootstrapScript)
+      .bootstrapScripts(bootstrapScripts)
       .config(config)
       .image(image)
       .name(name)
@@ -131,11 +135,11 @@ public class InstanceTemplate {
       .type(type)
       ;
   }
-  public String getBootstrapScript() {
-    return bootstrapScript;
+  public List<String> getBootstrapScripts() {
+    return bootstrapScripts;
   }
-  public void setBootstrapScript(String bootstrapScript) {
-    this.bootstrapScript = bootstrapScript;
+  public void setBootstrapScripts(List<String> bootstrapScripts) {
+    this.bootstrapScripts = bootstrapScripts;
   }
 
   public Map<String, String> getConfig() {
@@ -194,9 +198,9 @@ public class InstanceTemplate {
 
     InstanceTemplate other = (InstanceTemplate) o; // NOPMD
 
-    if (bootstrapScript != null ?
-        !bootstrapScript.equals(other.bootstrapScript) :
-        other.bootstrapScript != null) return false;
+    if (bootstrapScripts != null ?
+        !bootstrapScripts.equals(other.bootstrapScripts) :
+        other.bootstrapScripts != null) return false;
     if (config != null ?
         !config.equals(other.config) :
         other.config != null) return false;
@@ -224,7 +228,7 @@ public class InstanceTemplate {
   @Override
   public int hashCode() {
     int result = 0;
-    result = 31 * result + (bootstrapScript != null ? bootstrapScript.hashCode() : 0);
+    result = 31 * result + (bootstrapScripts != null ? bootstrapScripts.hashCode() : 0);
     result = 31 * result + (config != null ? config.hashCode() : 0);
     result = 31 * result + (image != null ? image.hashCode() : 0);
     result = 31 * result + (name != null ? name.hashCode() : 0);
@@ -240,7 +244,7 @@ public class InstanceTemplate {
     StringBuilder sb = new StringBuilder();
     String newLine = System.getProperty("line.separator");
     sb.append("class InstanceTemplate {" + newLine);
-    sb.append("  bootstrapScript: ").append(bootstrapScript).append(newLine);
+    sb.append("  bootstrapScripts: ").append(bootstrapScripts).append(newLine);
     sb.append("  config: ").append(config).append(newLine);
     sb.append("  image: ").append(image).append(newLine);
     sb.append("  name: ").append(name).append(newLine);

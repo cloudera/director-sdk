@@ -21,10 +21,10 @@ package com.cloudera.director.client.latest.api;
 import com.cloudera.director.client.common.ApiClient;
 import com.cloudera.director.client.common.ApiException;
 
-import com.cloudera.director.client.latest.model.Status;
-import com.cloudera.director.client.latest.model.Metrics;
 import com.cloudera.director.client.latest.model.Cluster;
 import com.cloudera.director.client.latest.model.ClusterTemplate;
+import com.cloudera.director.client.latest.model.Metrics;
+import com.cloudera.director.client.latest.model.Status;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List; // NOPMD
@@ -62,7 +62,7 @@ public class ClustersApi {
        throw new ApiException(400, "missing required params");
     }
     // create path and map variables
-    String path = "/api/v7/environments/{environment}/deployments/{deployment}/clusters/{cluster}/diagnosticData"
+    String path = "/api/v8/environments/{environment}/deployments/{deployment}/clusters/{cluster}/diagnosticData"
       .replaceAll("\\{format\\}", "json")
       .replaceAll("\\{" + "environment" + "\\}",
                   apiClient.escapeString(environment.toString()))
@@ -112,7 +112,7 @@ public class ClustersApi {
        throw new ApiException(400, "missing required params");
     }
     // create path and map variables
-    String path = "/api/v7/environments/{environment}/deployments/{deployment}/clusters"
+    String path = "/api/v8/environments/{environment}/deployments/{deployment}/clusters"
       .replaceAll("\\{format\\}", "json")
       .replaceAll("\\{" + "environment" + "\\}",
                   apiClient.escapeString(environment.toString()))
@@ -158,7 +158,7 @@ public class ClustersApi {
        throw new ApiException(400, "missing required params");
     }
     // create path and map variables
-    String path = "/api/v7/environments/{environment}/deployments/{deployment}/clusters/{cluster}"
+    String path = "/api/v8/environments/{environment}/deployments/{deployment}/clusters/{cluster}"
       .replaceAll("\\{format\\}", "json")
       .replaceAll("\\{" + "environment" + "\\}",
                   apiClient.escapeString(environment.toString()))
@@ -207,7 +207,7 @@ public class ClustersApi {
        throw new ApiException(400, "missing required params");
     }
     // create path and map variables
-    String path = "/api/v7/environments/{environment}/deployments/{deployment}/clusters/{cluster}"
+    String path = "/api/v8/environments/{environment}/deployments/{deployment}/clusters/{cluster}"
       .replaceAll("\\{format\\}", "json")
       .replaceAll("\\{" + "environment" + "\\}",
                   apiClient.escapeString(environment.toString()))
@@ -256,7 +256,7 @@ public class ClustersApi {
        throw new ApiException(400, "missing required params");
     }
     // create path and map variables
-    String path = "/api/v7/environments/{environment}/deployments/{deployment}/clusters/{cluster}/metrics"
+    String path = "/api/v8/environments/{environment}/deployments/{deployment}/clusters/{cluster}/metrics"
       .replaceAll("\\{format\\}", "json")
       .replaceAll("\\{" + "environment" + "\\}",
                   apiClient.escapeString(environment.toString()))
@@ -304,7 +304,7 @@ public class ClustersApi {
        throw new ApiException(400, "missing required params");
     }
     // create path and map variables
-    String path = "/api/v7/environments/{environment}/deployments/{deployment}/clusters/{cluster}/status"
+    String path = "/api/v8/environments/{environment}/deployments/{deployment}/clusters/{cluster}/status"
       .replaceAll("\\{format\\}", "json")
       .replaceAll("\\{" + "environment" + "\\}",
                   apiClient.escapeString(environment.toString()))
@@ -352,7 +352,7 @@ public class ClustersApi {
        throw new ApiException(400, "missing required params");
     }
     // create path and map variables
-    String path = "/api/v7/environments/{environment}/deployments/{deployment}/clusters/{cluster}/template"
+    String path = "/api/v8/environments/{environment}/deployments/{deployment}/clusters/{cluster}/template"
       .replaceAll("\\{format\\}", "json")
       .replaceAll("\\{" + "environment" + "\\}",
                   apiClient.escapeString(environment.toString()))
@@ -399,7 +399,7 @@ public class ClustersApi {
        throw new ApiException(400, "missing required params");
     }
     // create path and map variables
-    String path = "/api/v7/environments/{environment}/deployments/{deployment}/clusters"
+    String path = "/api/v8/environments/{environment}/deployments/{deployment}/clusters"
       .replaceAll("\\{format\\}", "json")
       .replaceAll("\\{" + "environment" + "\\}",
                   apiClient.escapeString(environment.toString()))
@@ -436,11 +436,11 @@ public class ClustersApi {
   * @param  body  desired
   * status code: 201 reason: "Created"
   * status code: 202 reason: "Cluster update accepted"
-  * status code: 204 reason: "Cluster is in transition"
   * status code: 400 reason: "Cluster update not supported"
   * status code: 401 reason: "Unauthorized"
   * status code: 403 reason: "Forbidden"
   * status code: 404 reason: "Not found"
+  * status code: 409 reason: "Cluster is in a non-updatable state"
   */
   public void update(String environment, String deployment, String cluster, ClusterTemplate body) throws ApiException {
     Object postBody = body;
@@ -449,7 +449,7 @@ public class ClustersApi {
        throw new ApiException(400, "missing required params");
     }
     // create path and map variables
-    String path = "/api/v7/environments/{environment}/deployments/{deployment}/clusters/{cluster}"
+    String path = "/api/v8/environments/{environment}/deployments/{deployment}/clusters/{cluster}"
       .replaceAll("\\{format\\}", "json")
       .replaceAll("\\{" + "environment" + "\\}",
                   apiClient.escapeString(environment.toString()))

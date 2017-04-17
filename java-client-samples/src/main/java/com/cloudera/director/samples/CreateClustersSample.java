@@ -22,7 +22,6 @@ import com.beust.jcommander.ParameterException;
 import com.beust.jcommander.Parameters;
 import com.cloudera.director.client.common.ApiClient;
 import com.cloudera.director.client.common.ApiException;
-import com.cloudera.director.client.latest.api.AuthenticationApi;
 import com.cloudera.director.client.latest.api.ClustersApi;
 import com.cloudera.director.client.latest.api.DeploymentsApi;
 import com.cloudera.director.client.latest.api.EnvironmentsApi;
@@ -31,7 +30,6 @@ import com.cloudera.director.client.latest.model.DeploymentTemplate;
 import com.cloudera.director.client.latest.model.Environment;
 import com.cloudera.director.client.latest.model.InstanceProviderConfig;
 import com.cloudera.director.client.latest.model.InstanceTemplate;
-import com.cloudera.director.client.latest.model.Login;
 import com.cloudera.director.client.latest.model.SshCredentials;
 import com.cloudera.director.client.latest.model.Status;
 import com.cloudera.director.client.latest.model.VirtualInstance;
@@ -46,7 +44,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 import java.util.UUID;
-import java.util.concurrent.TimeUnit;
 
 import org.ini4j.Ini;
 
@@ -54,25 +51,11 @@ import org.ini4j.Ini;
  * Example on how to use the API to create a cluster.
  */
 @Parameters(commandDescription = "Create a Cloudera cluster")
-public class ClustersSample extends CommonParameters {
+public class CreateClustersSample extends CommonParameters {
 
   @Parameter(names = "--config", required = true,
       description = "Path to the cluster configuration file")
   private String configFile;
-
-  private ApiClient newAuthenticatedApiClient(CommonParameters common)
-      throws ApiException {
-    ApiClient client = new ApiClient(common.getServerUrl());
-
-    Login login = Login.builder()
-        .username(common.getAdminUsername())
-        .password(common.getAdminPassword())
-        .build();
-
-    new AuthenticationApi(client).login(login);
-
-    return client;
-  }
 
   /**
    * Create a new environment with data from the configuration file.
@@ -256,52 +239,6 @@ public class ClustersSample extends CommonParameters {
         .build();
   }
 
-  /**
-   * Wait for deployment bootstrap process to complete.
-   */
-  private void waitForDeployment(ApiClient client, String environmentName,
-      String deploymentName) throws InterruptedException, ApiException {
-
-    DeploymentsApi api = new DeploymentsApi(client);
-    String stage = null;
-    do {
-      waitAndReportProgress();
-      stage = api.getStatus(environmentName, deploymentName).getStage();
-
-    } while (!readyOrFailed(stage));
-
-    System.out.printf("%nDeployment '%s' current stage is '%s'%n", deploymentName, stage);
-
-  }
-
-  /**
-   * Wait for cluster bootstrap process to complete.
-   */
-  private void waitForCluster(ApiClient client, String environmentName, String deploymentName,
-      String clusterName) throws InterruptedException, ApiException {
-
-    ClustersApi api = new ClustersApi(client);
-    String stage = null;
-    do {
-      waitAndReportProgress();
-      stage = api.getStatus(environmentName, deploymentName, clusterName).getStage();
-
-    } while (!readyOrFailed(stage));
-
-    System.out.printf("%nCluster '%s' current stage is '%s'%n", clusterName, stage);
-  }
-
-  private boolean readyOrFailed(String stage) {
-    return Status.Stage.READY.equals(stage) || Status.Stage.BOOTSTRAP_FAILED.equals(stage);
-  }
-
-  private void waitAndReportProgress() throws InterruptedException {
-    System.out.print(".");
-    System.out.flush();
-
-    TimeUnit.SECONDS.sleep(1);
-  }
-
   private String readFile(String path) throws FileNotFoundException {
     Scanner scanner = new Scanner(new File(path), "UTF-8");
     try {
@@ -333,10 +270,10 @@ public class ClustersSample extends CommonParameters {
 
     } catch (FileNotFoundException e) {
       System.err.println("Configuration file not found: " + configFile);
-      return -2;
+      return ExitCodes.CONFIG_FILE_ERROR;
     }
 
-    ApiClient client = newAuthenticatedApiClient(this);
+    ApiClient client = ClientUtil.newAuthenticatedApiClient(this);
 
     System.out.println("Creating a new environment...");
     String environmentName = createEnvironment(client, config);
@@ -348,19 +285,29 @@ public class ClustersSample extends CommonParameters {
     String clusterName = createCluster(client, environmentName, deploymentName, config);
 
     System.out.println("Waiting for deployment to be ready. Check the web interface for details.");
-    waitForDeployment(client, environmentName, deploymentName);
+    String stage = ClientUtil.waitForDeployment(client, environmentName, deploymentName);
+
+    if (!stage.equals(Status.Stage.READY)) {
+      System.err.println("Deployment went into an unexpected stage");
+      return ExitCodes.UNEXPECTED_STAGE;
+    }
 
     System.out.println("Waiting for the cluster to be ready. Check the web interface for details.");
-    waitForCluster(client, environmentName, deploymentName, clusterName);
+    stage = ClientUtil.waitForCluster(client, environmentName, deploymentName, clusterName);
 
-    return 0;
+    if (!stage.equals(Status.Stage.READY)) {
+      System.err.println("Cluster went into an unexpected stage");
+      return ExitCodes.UNEXPECTED_STAGE;
+    }
+
+    return ExitCodes.OK;
   }
 
   public static void main(String[] args) throws Exception {
-    ClustersSample sample = new ClustersSample();
+    CreateClustersSample sample = new CreateClustersSample();
 
     JCommander jc = new JCommander(sample);
-    jc.setProgramName("ClustersSample");
+    jc.setProgramName("CreateClustersSample");
 
     try {
       jc.parse(args);
@@ -368,7 +315,7 @@ public class ClustersSample extends CommonParameters {
     } catch (ParameterException e) {
       System.err.println(e.getMessage());
       jc.usage();
-      System.exit(-1);
+      System.exit(ExitCodes.PARAMETER_EXCEPTION);
     }
 
     System.exit(sample.run());

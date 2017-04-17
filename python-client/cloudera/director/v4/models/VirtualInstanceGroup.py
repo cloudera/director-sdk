@@ -31,9 +31,14 @@ class VirtualInstanceGroup:
         }
 
 
+        #Minimum acceptable number of instances in this group
         self.minCount = kwargs.get('minCount',None) # int
+        #Virtual instance group name
         self.name = kwargs.get('name',None) # str
+        #Custom role configurations
         self.roleTypesConfigs = kwargs.get('roleTypesConfigs',{}) # dict[str,dict[str,dict[str,str]]]
+        #Role assignments
         self.serviceTypeToRoleTypes = kwargs.get('serviceTypeToRoleTypes',{}) # dict[str,list[str]]
+        #List of virtual instances in this group
         self.virtualInstances = kwargs.get('virtualInstances',[]) # list[cloudera.director.v4.models.VirtualInstance]
         

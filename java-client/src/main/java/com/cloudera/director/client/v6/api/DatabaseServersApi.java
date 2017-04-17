@@ -21,10 +21,10 @@ package com.cloudera.director.client.v6.api;
 import com.cloudera.director.client.common.ApiClient;
 import com.cloudera.director.client.common.ApiException;
 
-import com.cloudera.director.client.v6.model.Status;
+import com.cloudera.director.client.v6.model.ExternalDatabaseServer;
 import com.cloudera.director.client.v6.model.ExternalDatabaseServerTemplate;
 import com.cloudera.director.client.v6.model.ExternalDatabaseServerUsage;
-import com.cloudera.director.client.v6.model.ExternalDatabaseServer;
+import com.cloudera.director.client.v6.model.Status;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List; // NOPMD

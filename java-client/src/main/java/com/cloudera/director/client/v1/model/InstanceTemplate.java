@@ -24,11 +24,13 @@ import java.util.Map;
 public class InstanceTemplate {
   /* Custom script executed before anything else */
   private String bootstrapScript;
+  /* Instance configuration properties */
   private Map<String, String> config;
   /* Operating system image */
   private String image;
   /* Instance template name */
   private String name;
+  /* Instance tags */
   private Map<String, String> tags;
   /* Instance type */
   private String type;

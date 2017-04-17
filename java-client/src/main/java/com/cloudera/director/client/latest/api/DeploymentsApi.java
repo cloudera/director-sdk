@@ -21,10 +21,10 @@ package com.cloudera.director.client.latest.api;
 import com.cloudera.director.client.common.ApiClient;
 import com.cloudera.director.client.common.ApiException;
 
+import com.cloudera.director.client.latest.model.Deployment;
+import com.cloudera.director.client.latest.model.DeploymentTemplate;
 import com.cloudera.director.client.latest.model.MeteringSetting;
 import com.cloudera.director.client.latest.model.Status;
-import com.cloudera.director.client.latest.model.DeploymentTemplate;
-import com.cloudera.director.client.latest.model.Deployment;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List; // NOPMD
@@ -61,7 +61,7 @@ public class DeploymentsApi {
        throw new ApiException(400, "missing required params");
     }
     // create path and map variables
-    String path = "/api/v7/environments/{environment}/deployments/{deployment}/diagnosticData"
+    String path = "/api/v8/environments/{environment}/deployments/{deployment}/diagnosticData"
       .replaceAll("\\{format\\}", "json")
       .replaceAll("\\{" + "environment" + "\\}",
                   apiClient.escapeString(environment.toString()))
@@ -108,7 +108,7 @@ public class DeploymentsApi {
        throw new ApiException(400, "missing required params");
     }
     // create path and map variables
-    String path = "/api/v7/environments/{environment}/deployments"
+    String path = "/api/v8/environments/{environment}/deployments"
       .replaceAll("\\{format\\}", "json")
       .replaceAll("\\{" + "environment" + "\\}",
                   apiClient.escapeString(environment.toString()))
@@ -151,7 +151,7 @@ public class DeploymentsApi {
        throw new ApiException(400, "missing required params");
     }
     // create path and map variables
-    String path = "/api/v7/environments/{environment}/deployments/{deployment}"
+    String path = "/api/v8/environments/{environment}/deployments/{deployment}"
       .replaceAll("\\{format\\}", "json")
       .replaceAll("\\{" + "environment" + "\\}",
                   apiClient.escapeString(environment.toString()))
@@ -197,7 +197,7 @@ public class DeploymentsApi {
        throw new ApiException(400, "missing required params");
     }
     // create path and map variables
-    String path = "/api/v7/environments/{environment}/deployments/{deployment}"
+    String path = "/api/v8/environments/{environment}/deployments/{deployment}"
       .replaceAll("\\{format\\}", "json")
       .replaceAll("\\{" + "environment" + "\\}",
                   apiClient.escapeString(environment.toString()))
@@ -242,7 +242,7 @@ public class DeploymentsApi {
        throw new ApiException(400, "missing required params");
     }
     // create path and map variables
-    String path = "/api/v7/environments/{environment}/deployments/{deployment}/status"
+    String path = "/api/v8/environments/{environment}/deployments/{deployment}/status"
       .replaceAll("\\{format\\}", "json")
       .replaceAll("\\{" + "environment" + "\\}",
                   apiClient.escapeString(environment.toString()))
@@ -287,7 +287,7 @@ public class DeploymentsApi {
        throw new ApiException(400, "missing required params");
     }
     // create path and map variables
-    String path = "/api/v7/environments/{environment}/deployments/{deployment}/template"
+    String path = "/api/v8/environments/{environment}/deployments/{deployment}/template"
       .replaceAll("\\{format\\}", "json")
       .replaceAll("\\{" + "environment" + "\\}",
                   apiClient.escapeString(environment.toString()))
@@ -331,7 +331,7 @@ public class DeploymentsApi {
        throw new ApiException(400, "missing required params");
     }
     // create path and map variables
-    String path = "/api/v7/environments/{environment}/deployments"
+    String path = "/api/v8/environments/{environment}/deployments"
       .replaceAll("\\{format\\}", "json")
       .replaceAll("\\{" + "environment" + "\\}",
                   apiClient.escapeString(environment.toString()))
@@ -377,7 +377,7 @@ public class DeploymentsApi {
        throw new ApiException(400, "missing required params");
     }
     // create path and map variables
-    String path = "/api/v7/environments/{environment}/deployments/{deployment}"
+    String path = "/api/v8/environments/{environment}/deployments/{deployment}"
       .replaceAll("\\{format\\}", "json")
       .replaceAll("\\{" + "environment" + "\\}",
                   apiClient.escapeString(environment.toString()))
@@ -425,7 +425,7 @@ public class DeploymentsApi {
        throw new ApiException(400, "missing required params");
     }
     // create path and map variables
-    String path = "/api/v7/environments/{environment}/deployments/{deployment}/metering"
+    String path = "/api/v8/environments/{environment}/deployments/{deployment}/metering"
       .replaceAll("\\{format\\}", "json")
       .replaceAll("\\{" + "environment" + "\\}",
                   apiClient.escapeString(environment.toString()))

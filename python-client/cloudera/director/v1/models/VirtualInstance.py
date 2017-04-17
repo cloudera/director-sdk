@@ -28,6 +28,8 @@ class VirtualInstance:
         }
 
 
+        #Virtual instance id
         self.id = kwargs.get('id',None) # str
+        #Instance template
         self.template = kwargs.get('template',None) # cloudera.director.v1.models.InstanceTemplate
         

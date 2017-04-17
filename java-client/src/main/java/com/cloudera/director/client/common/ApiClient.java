@@ -27,11 +27,13 @@ package com.cloudera.director.client.common;
 
 import com.fasterxml.jackson.databind.JavaType;
 
+import com.google.json.JsonSanitizer;
+
 import com.sun.jersey.api.client.Client;
 import com.sun.jersey.api.client.ClientResponse;
+import com.sun.jersey.api.client.WebResource.Builder;
 import com.sun.jersey.api.client.config.ClientConfig;
 import com.sun.jersey.api.client.config.DefaultClientConfig;
-import com.sun.jersey.api.client.WebResource.Builder;
 import com.sun.jersey.api.client.filter.HTTPBasicAuthFilter;
 import com.sun.jersey.api.client.filter.LoggingFilter;
 import com.sun.jersey.multipart.FormDataMultiPart;
@@ -92,7 +94,8 @@ public class ApiClient {
     try {
       if ("List".equals(containerType)) {
         JavaType typeInfo = JsonUtil.getJsonMapper().getTypeFactory().constructCollectionType(List.class, cls);
-        List response = (List<?>) JsonUtil.getJsonMapper().readValue(json, typeInfo);
+        String sanitizedJson = JsonSanitizer.sanitize(json);
+        List response = (List<?>) JsonUtil.getJsonMapper().readValue(sanitizedJson, typeInfo);
         return response;
       } else if (String.class.equals(cls)) {
         if (json != null && json.startsWith("\"") && json.endsWith("\"") && json.length() > 1)
@@ -100,7 +103,8 @@ public class ApiClient {
         else
           return json;
       } else {
-        return JsonUtil.getJsonMapper().readValue(json, cls);
+        String sanitizedJson = JsonSanitizer.sanitize(json);
+        return JsonUtil.getJsonMapper().readValue(sanitizedJson, cls);
       }
     } catch (IOException e) {
       throw new ApiException(500, e.getMessage());

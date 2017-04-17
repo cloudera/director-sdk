@@ -21,10 +21,10 @@ package com.cloudera.director.client.v7.api;
 import com.cloudera.director.client.common.ApiClient;
 import com.cloudera.director.client.common.ApiException;
 
+import com.cloudera.director.client.v7.model.Deployment;
+import com.cloudera.director.client.v7.model.DeploymentTemplate;
 import com.cloudera.director.client.v7.model.MeteringSetting;
 import com.cloudera.director.client.v7.model.Status;
-import com.cloudera.director.client.v7.model.DeploymentTemplate;
-import com.cloudera.director.client.v7.model.Deployment;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List; // NOPMD

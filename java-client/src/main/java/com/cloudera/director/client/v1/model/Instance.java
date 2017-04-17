@@ -20,8 +20,11 @@ package com.cloudera.director.client.v1.model;
 
 
 public class Instance {
+  /* Optional instance capabilities */
   private Capabilities capabilities;
+  /* IP address of instance */
   private String ipAddress;
+  /* Virtual instance */
   private VirtualInstance virtualInstance;
   public Instance() { }
 

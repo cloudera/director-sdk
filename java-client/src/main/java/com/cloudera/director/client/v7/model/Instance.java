@@ -22,10 +22,15 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Instance {
+  /* Optional instance capabilities */
   private Capabilities capabilities;
+  /* Instance health */
   private Health health;
+  /* IP address of instance */
   private String ipAddress;
+  /* Instance properties */
   private Map<String, String> properties;
+  /* Virtual instance */
   private VirtualInstance virtualInstance;
   public Instance() { }
 

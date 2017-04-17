@@ -21,8 +21,8 @@ package com.cloudera.director.client.v2.api;
 import com.cloudera.director.client.common.ApiClient;
 import com.cloudera.director.client.common.ApiException;
 
-import com.cloudera.director.client.v2.model.User;
 import com.cloudera.director.client.v2.model.PasswordChange;
+import com.cloudera.director.client.v2.model.User;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List; // NOPMD

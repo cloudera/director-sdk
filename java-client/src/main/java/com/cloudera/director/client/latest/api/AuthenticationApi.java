@@ -21,8 +21,8 @@ package com.cloudera.director.client.latest.api;
 import com.cloudera.director.client.common.ApiClient;
 import com.cloudera.director.client.common.ApiException;
 
-import com.cloudera.director.client.latest.model.User;
 import com.cloudera.director.client.latest.model.Login;
+import com.cloudera.director.client.latest.model.User;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List; // NOPMD
@@ -57,7 +57,7 @@ public class AuthenticationApi {
        throw new ApiException(400, "missing required params");
     }
     // create path and map variables
-    String path = "/api/v7/login"
+    String path = "/api/v8/login"
       .replaceAll("\\{format\\}", "json")
       ;
 
@@ -93,7 +93,7 @@ public class AuthenticationApi {
   public Boolean logout() throws ApiException {
     Object postBody = null;
     // create path and map variables
-    String path = "/api/v7/logout"
+    String path = "/api/v8/logout"
       .replaceAll("\\{format\\}", "json")
       ;
 

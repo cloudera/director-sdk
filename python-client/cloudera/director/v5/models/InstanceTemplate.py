@@ -36,6 +36,7 @@ class InstanceTemplate:
 
         #Custom script executed before anything else
         self.bootstrapScript = kwargs.get('bootstrapScript',None) # str
+        #Instance configuration properties
         self.config = kwargs.get('config',{}) # dict[str,str]
         #Operating system image
         self.image = kwargs.get('image',None) # str
@@ -45,6 +46,7 @@ class InstanceTemplate:
         self.normalizeInstance = kwargs.get('normalizeInstance',None) # bool
         #Optional SSH username to override username specified in environment
         self.sshUsername = kwargs.get('sshUsername',None) # str
+        #Instance tags
         self.tags = kwargs.get('tags',{}) # dict[str,str]
         #Instance type
         self.type = kwargs.get('type',None) # str

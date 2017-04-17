@@ -21,10 +21,10 @@ package com.cloudera.director.client.latest.api;
 import com.cloudera.director.client.common.ApiClient;
 import com.cloudera.director.client.common.ApiException;
 
-import com.cloudera.director.client.latest.model.Status;
+import com.cloudera.director.client.latest.model.ExternalDatabaseServer;
 import com.cloudera.director.client.latest.model.ExternalDatabaseServerTemplate;
 import com.cloudera.director.client.latest.model.ExternalDatabaseServerUsage;
-import com.cloudera.director.client.latest.model.ExternalDatabaseServer;
+import com.cloudera.director.client.latest.model.Status;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List; // NOPMD
@@ -60,7 +60,7 @@ public class DatabaseServersApi {
        throw new ApiException(400, "missing required params");
     }
     // create path and map variables
-    String path = "/api/v7/environments/{environment}/databaseServers"
+    String path = "/api/v8/environments/{environment}/databaseServers"
       .replaceAll("\\{format\\}", "json")
       .replaceAll("\\{" + "environment" + "\\}",
                   apiClient.escapeString(environment.toString()))
@@ -103,7 +103,7 @@ public class DatabaseServersApi {
        throw new ApiException(400, "missing required params");
     }
     // create path and map variables
-    String path = "/api/v7/environments/{environment}/databaseServers/{externalDatabaseServer}"
+    String path = "/api/v8/environments/{environment}/databaseServers/{externalDatabaseServer}"
       .replaceAll("\\{format\\}", "json")
       .replaceAll("\\{" + "environment" + "\\}",
                   apiClient.escapeString(environment.toString()))
@@ -148,7 +148,7 @@ public class DatabaseServersApi {
        throw new ApiException(400, "missing required params");
     }
     // create path and map variables
-    String path = "/api/v7/environments/{environment}/databaseServers/{externalDatabaseServer}/usage"
+    String path = "/api/v8/environments/{environment}/databaseServers/{externalDatabaseServer}/usage"
       .replaceAll("\\{format\\}", "json")
       .replaceAll("\\{" + "environment" + "\\}",
                   apiClient.escapeString(environment.toString()))
@@ -194,7 +194,7 @@ public class DatabaseServersApi {
        throw new ApiException(400, "missing required params");
     }
     // create path and map variables
-    String path = "/api/v7/environments/{environment}/databaseServers/{externalDatabaseServer}"
+    String path = "/api/v8/environments/{environment}/databaseServers/{externalDatabaseServer}"
       .replaceAll("\\{format\\}", "json")
       .replaceAll("\\{" + "environment" + "\\}",
                   apiClient.escapeString(environment.toString()))
@@ -239,7 +239,7 @@ public class DatabaseServersApi {
        throw new ApiException(400, "missing required params");
     }
     // create path and map variables
-    String path = "/api/v7/environments/{environment}/databaseServers/{externalDatabaseServer}/status"
+    String path = "/api/v8/environments/{environment}/databaseServers/{externalDatabaseServer}/status"
       .replaceAll("\\{format\\}", "json")
       .replaceAll("\\{" + "environment" + "\\}",
                   apiClient.escapeString(environment.toString()))
@@ -284,7 +284,7 @@ public class DatabaseServersApi {
        throw new ApiException(400, "missing required params");
     }
     // create path and map variables
-    String path = "/api/v7/environments/{environment}/databaseServers/{externalDatabaseServer}/template"
+    String path = "/api/v8/environments/{environment}/databaseServers/{externalDatabaseServer}/template"
       .replaceAll("\\{format\\}", "json")
       .replaceAll("\\{" + "environment" + "\\}",
                   apiClient.escapeString(environment.toString()))
@@ -328,7 +328,7 @@ public class DatabaseServersApi {
        throw new ApiException(400, "missing required params");
     }
     // create path and map variables
-    String path = "/api/v7/environments/{environment}/databaseServers"
+    String path = "/api/v8/environments/{environment}/databaseServers"
       .replaceAll("\\{format\\}", "json")
       .replaceAll("\\{" + "environment" + "\\}",
                   apiClient.escapeString(environment.toString()))
@@ -374,7 +374,7 @@ public class DatabaseServersApi {
        throw new ApiException(400, "missing required params");
     }
     // create path and map variables
-    String path = "/api/v7/environments/{environment}/databaseServers/{externalDatabaseServer}"
+    String path = "/api/v8/environments/{environment}/databaseServers/{externalDatabaseServer}"
       .replaceAll("\\{format\\}", "json")
       .replaceAll("\\{" + "environment" + "\\}",
                   apiClient.escapeString(environment.toString()))

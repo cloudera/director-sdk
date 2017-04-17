@@ -30,8 +30,12 @@ class Instance:
         }
 
 
+        #Optional instance capabilities
         self.capabilities = kwargs.get('capabilities',None) # cloudera.director.v2.models.Capabilities
+        #Instance health
         self.health = kwargs.get('health',None) # cloudera.director.v2.models.Health
+        #IP address of instance
         self.ipAddress = kwargs.get('ipAddress',None) # str
+        #Virtual instance
         self.virtualInstance = kwargs.get('virtualInstance',None) # cloudera.director.v2.models.VirtualInstance
         

@@ -34,5 +34,9 @@ Note: This file is auto generated. Do not edit manually.
         <Class name="~com\.cloudera\.director\.client\..*\.model\.WorkflowStatus.*" />
         <Bug pattern="EI_EXPOSE_REP,EI_EXPOSE_REP2" />
     </Match>
+    <Match>
+        <Class name="~com\.cloudera\.director\.client\..*\.model\.WorkflowActionStatus.*" />
+        <Bug pattern="EI_EXPOSE_REP,EI_EXPOSE_REP2" />
+    </Match>
 </FindBugsFilter>
 

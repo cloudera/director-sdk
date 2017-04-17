@@ -21,9 +21,9 @@ package com.cloudera.director.client.v1.api;
 import com.cloudera.director.client.common.ApiClient;
 import com.cloudera.director.client.common.ApiException;
 
-import com.cloudera.director.client.v1.model.Status;
 import com.cloudera.director.client.v1.model.Cluster;
 import com.cloudera.director.client.v1.model.ClusterTemplate;
+import com.cloudera.director.client.v1.model.Status;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List; // NOPMD
@@ -347,11 +347,11 @@ public class ClustersApi {
   * @param  body  desired
   * status code: 201 reason: "Created"
   * status code: 202 reason: "Cluster update accepted"
-  * status code: 204 reason: "Cluster is in transition"
   * status code: 400 reason: "Cluster update not supported"
   * status code: 401 reason: "Unauthorized"
   * status code: 403 reason: "Forbidden"
   * status code: 404 reason: "Not found"
+  * status code: 409 reason: "Cluster is in a non-updatable state"
   */
   public void update(String environment, String deployment, String cluster, String XRequestId, ClusterTemplate body) throws ApiException {
     Object postBody = body;

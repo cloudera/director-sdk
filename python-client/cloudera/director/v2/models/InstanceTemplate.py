@@ -35,6 +35,7 @@ class InstanceTemplate:
 
         #Custom script executed before anything else
         self.bootstrapScript = kwargs.get('bootstrapScript',None) # str
+        #Instance configuration properties
         self.config = kwargs.get('config',{}) # dict[str,str]
         #Operating system image
         self.image = kwargs.get('image',None) # str
@@ -42,6 +43,7 @@ class InstanceTemplate:
         self.name = kwargs.get('name',None) # str
         #Flag indicating whether to normalize the instance
         self.normalizeInstance = kwargs.get('normalizeInstance',None) # bool
+        #Instance tags
         self.tags = kwargs.get('tags',{}) # dict[str,str]
         #Instance type
         self.type = kwargs.get('type',None) # str

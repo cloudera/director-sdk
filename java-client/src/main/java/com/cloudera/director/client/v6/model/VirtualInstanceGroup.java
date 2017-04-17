@@ -19,15 +19,20 @@
 package com.cloudera.director.client.v6.model;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class VirtualInstanceGroup {
+  /* Minimum acceptable number of instances in this group */
   private Integer minCount;
+  /* Virtual instance group name */
   private String name;
+  /* Custom role configurations */
   private Map<String, Map<String, Map<String, String>>> roleTypesConfigs;
+  /* Role assignments */
   private Map<String, List<String>> serviceTypeToRoleTypes;
+  /* List of virtual instances in this group */
   private List<VirtualInstance> virtualInstances;
   public VirtualInstanceGroup() { }
 

@@ -20,11 +20,8 @@ import com.beust.jcommander.Parameter;
 import com.beust.jcommander.ParameterException;
 import com.beust.jcommander.Parameters;
 import com.cloudera.director.client.common.ApiClient;
-import com.cloudera.director.client.common.ApiException;
-import com.cloudera.director.client.latest.api.AuthenticationApi;
 import com.cloudera.director.client.latest.api.ImportClientConfigApi;
 import com.cloudera.director.client.latest.model.ImportResult;
-import com.cloudera.director.client.latest.model.Login;
 
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
@@ -53,20 +50,6 @@ public class DispatchSample extends CommonParameters {
     description = "Optional override for cluster name")
   private String clusterName = null;
 
-  private ApiClient newAuthenticatedApiClient(CommonParameters common)
-    throws ApiException {
-    ApiClient client = new ApiClient(common.getServerUrl());
-
-    Login login = Login.builder()
-      .username(common.getAdminUsername())
-      .password(common.getAdminPassword())
-      .build();
-
-    new AuthenticationApi(client).login(login);
-
-    return client;
-  }
-
   /**
    * Import client config file.
    */
@@ -77,17 +60,17 @@ public class DispatchSample extends CommonParameters {
 
     } catch (IOException e) {
       System.err.println("Unable to read configuration file: " + configFile);
-      return -2;
+      return ExitCodes.CONFIG_FILE_ERROR;
     }
 
-    ApiClient client = newAuthenticatedApiClient(this);
+    ApiClient client = ClientUtil.newAuthenticatedApiClient(this);
 
     ImportClientConfigApi api = new ImportClientConfigApi(client);
     ImportResult result = api.importClientConfig(config, clusterName, deploymentName, environmentName);
 
     System.out.println(result.toString());
 
-    return 0;
+    return ExitCodes.OK;
   }
 
   public static void main(String[] args) throws Exception {
@@ -102,7 +85,7 @@ public class DispatchSample extends CommonParameters {
     } catch (ParameterException e) {
       System.err.println(e.getMessage());
       jc.usage();
-      System.exit(-1);
+      System.exit(ExitCodes.OK);
     }
 
     System.exit(sample.run());

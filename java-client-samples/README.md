@@ -11,11 +11,22 @@ You can run them from an IDE or via Maven like this:
 
     OR
 
-    mvn compile exec:java -Dexec.mainClass="com.cloudera.director.samples.ClustersSample" \
+    mvn compile exec:java -Dexec.mainClass="com.cloudera.director.samples.CreateClustersSample" \
         -Dexec.args="--admin-username admin --admin-password --server \"http://localhost:7189\" --config cluster.ini"
-        
-    OR 
-    
+
+    OR
+
     mvn compile exec:java -Dexec.mainClass="com.cloudera.director.samples.DispatchSample" \
         -Dexec.args="--admin-username admin --admin-password --server \"http://localhost:7189\" --config sandbox.sample.conf"
 
+    OR
+
+    mvn compile exec:java -Dexec.mainClass="com.cloudera.director.samples.ResizeClusterSample" \
+        -Dexec.args="--admin-username admin --admin-password --server \"http://localhost:7189\" \
+        --environment environmentName --deployment deploymentName --cluster clusterName --group workers --size 6"
+
+    OR
+
+    mvn compile exec:java -Dexec.mainClass="com.cloudera.director.samples.RepairClusterSample" \
+        -Dexec.args="--admin-username admin --admin-password --server \"http://localhost:7189\" \
+        --environment environmentName --deployment deploymentName --cluster clusterName --instanceId REPLACE-ME"

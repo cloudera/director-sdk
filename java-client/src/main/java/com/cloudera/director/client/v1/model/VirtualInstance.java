@@ -20,7 +20,9 @@ package com.cloudera.director.client.v1.model;
 
 
 public class VirtualInstance {
+  /* Virtual instance id */
   private String id;
+  /* Instance template */
   private InstanceTemplate template;
   public VirtualInstance() { }
 

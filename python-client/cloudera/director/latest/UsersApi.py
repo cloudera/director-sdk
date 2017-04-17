@@ -49,7 +49,7 @@ class UsersApi(object):
             params[key] = val
         del params['kwargs']
 
-        resourcePath = '/api/v7/users'
+        resourcePath = '/api/v8/users'
         resourcePath = resourcePath.replace('{format}', 'json')
         method = 'POST'
 
@@ -87,7 +87,7 @@ class UsersApi(object):
             params[key] = val
         del params['kwargs']
 
-        resourcePath = '/api/v7/users/current'
+        resourcePath = '/api/v8/users/current'
         resourcePath = resourcePath.replace('{format}', 'json')
         method = 'GET'
 
@@ -132,7 +132,7 @@ class UsersApi(object):
             params[key] = val
         del params['kwargs']
 
-        resourcePath = '/api/v7/users/{username}'
+        resourcePath = '/api/v8/users/{username}'
         resourcePath = resourcePath.replace('{format}', 'json')
         method = 'DELETE'
 
@@ -176,7 +176,7 @@ class UsersApi(object):
             params[key] = val
         del params['kwargs']
 
-        resourcePath = '/api/v7/users/{username}'
+        resourcePath = '/api/v8/users/{username}'
         resourcePath = resourcePath.replace('{format}', 'json')
         method = 'GET'
 
@@ -223,7 +223,7 @@ class UsersApi(object):
             params[key] = val
         del params['kwargs']
 
-        resourcePath = '/api/v7/users'
+        resourcePath = '/api/v8/users'
         resourcePath = resourcePath.replace('{format}', 'json')
         method = 'GET'
 
@@ -270,7 +270,7 @@ class UsersApi(object):
             params[key] = val
         del params['kwargs']
 
-        resourcePath = '/api/v7/users/{username}'
+        resourcePath = '/api/v8/users/{username}'
         resourcePath = resourcePath.replace('{format}', 'json')
         method = 'PUT'
 
@@ -316,7 +316,7 @@ class UsersApi(object):
             params[key] = val
         del params['kwargs']
 
-        resourcePath = '/api/v7/users/{username}/password'
+        resourcePath = '/api/v8/users/{username}/password'
         resourcePath = resourcePath.replace('{format}', 'json')
         method = 'PUT'
 

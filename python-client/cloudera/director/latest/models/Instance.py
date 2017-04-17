@@ -23,17 +23,31 @@ class Instance:
     def __init__(self, **kwargs):
         self.swaggerTypes = {
             'capabilities': 'cloudera.director.latest.models.Capabilities',
+            'cmHostId': 'str',
             'health': 'cloudera.director.latest.models.Health',
             'ipAddress': 'str',
             'properties': 'dict[str,str]',
+            'state': 'cloudera.director.latest.models.InstanceState',
+            'validationConditions': 'set[cloudera.director.latest.models.ValidationExceptionCondition]',
             'virtualInstance': 'cloudera.director.latest.models.VirtualInstance'
 
         }
 
 
+        #Optional instance capabilities
         self.capabilities = kwargs.get('capabilities',None) # cloudera.director.latest.models.Capabilities
+        #Optional Cloudera Manager HostId
+        self.cmHostId = kwargs.get('cmHostId',None) # str
+        #Instance health
         self.health = kwargs.get('health',None) # cloudera.director.latest.models.Health
+        #IP address of instance
         self.ipAddress = kwargs.get('ipAddress',None) # str
+        #Instance properties
         self.properties = kwargs.get('properties',{}) # dict[str,str]
+        #Instance state
+        self.state = kwargs.get('state',None) # cloudera.director.latest.models.InstanceState
+        #Validation conditions
+        self.validationConditions = kwargs.get('validationConditions',set()) # set[cloudera.director.latest.models.ValidationExceptionCondition]
+        #Virtual instance
         self.virtualInstance = kwargs.get('virtualInstance',None) # cloudera.director.latest.models.VirtualInstance
         

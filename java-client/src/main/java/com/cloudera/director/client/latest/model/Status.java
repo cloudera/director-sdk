@@ -26,6 +26,7 @@ public class Status {
   private String description;
   private List<String> descriptionDetails;
   private List<DiagnosticDataSummary> diagnosticDataSummaries;
+  private ErrorInfo errorInfo;
   private Health health;
   private Integer remainingSteps;
   private String stage;
@@ -42,11 +43,12 @@ public class Status {
   }
   public Status() { }
 
-  private Status(Integer completedSteps, String description, List<String> descriptionDetails, List<DiagnosticDataSummary> diagnosticDataSummaries, Health health, Integer remainingSteps, String stage) {
+  private Status(Integer completedSteps, String description, List<String> descriptionDetails, List<DiagnosticDataSummary> diagnosticDataSummaries, ErrorInfo errorInfo, Health health, Integer remainingSteps, String stage) {
     this.completedSteps = completedSteps;
     this.description = description;
     this.descriptionDetails = descriptionDetails;
     this.diagnosticDataSummaries = diagnosticDataSummaries;
+    this.errorInfo = errorInfo;
     this.health = health;
     this.remainingSteps = remainingSteps;
     this.stage = stage;
@@ -57,6 +59,7 @@ public class Status {
     this.description = builder.description;
     this.descriptionDetails = builder.descriptionDetails;
     this.diagnosticDataSummaries = builder.diagnosticDataSummaries;
+    this.errorInfo = builder.errorInfo;
     this.health = builder.health;
     this.remainingSteps = builder.remainingSteps;
     this.stage = builder.stage;
@@ -71,6 +74,7 @@ public class Status {
     private String description = null;
     private List<String> descriptionDetails = new ArrayList<String>();
     private List<DiagnosticDataSummary> diagnosticDataSummaries = new ArrayList<DiagnosticDataSummary>();
+    private ErrorInfo errorInfo = null;
     private Health health = null;
     private Integer remainingSteps = null;
     private String stage = null;
@@ -92,6 +96,11 @@ public class Status {
 
     public StatusBuilder diagnosticDataSummaries(List<DiagnosticDataSummary> diagnosticDataSummaries) {
       this.diagnosticDataSummaries = diagnosticDataSummaries;
+      return this;
+    }
+
+    public StatusBuilder errorInfo(ErrorInfo errorInfo) {
+      this.errorInfo = errorInfo;
       return this;
     }
 
@@ -121,6 +130,7 @@ public class Status {
       .description(description)
       .descriptionDetails(descriptionDetails)
       .diagnosticDataSummaries(diagnosticDataSummaries)
+      .errorInfo(errorInfo)
       .health(health)
       .remainingSteps(remainingSteps)
       .stage(stage)
@@ -152,6 +162,13 @@ public class Status {
   }
   public void setDiagnosticDataSummaries(List<DiagnosticDataSummary> diagnosticDataSummaries) {
     this.diagnosticDataSummaries = diagnosticDataSummaries;
+  }
+
+  public ErrorInfo getErrorInfo() {
+    return errorInfo;
+  }
+  public void setErrorInfo(ErrorInfo errorInfo) {
+    this.errorInfo = errorInfo;
   }
 
   public Health getHealth() {
@@ -194,6 +211,9 @@ public class Status {
     if (diagnosticDataSummaries != null ?
         !diagnosticDataSummaries.equals(other.diagnosticDataSummaries) :
         other.diagnosticDataSummaries != null) return false;
+    if (errorInfo != null ?
+        !errorInfo.equals(other.errorInfo) :
+        other.errorInfo != null) return false;
     if (health != null ?
         !health.equals(other.health) :
         other.health != null) return false;
@@ -213,6 +233,7 @@ public class Status {
     result = 31 * result + (description != null ? description.hashCode() : 0);
     result = 31 * result + (descriptionDetails != null ? descriptionDetails.hashCode() : 0);
     result = 31 * result + (diagnosticDataSummaries != null ? diagnosticDataSummaries.hashCode() : 0);
+    result = 31 * result + (errorInfo != null ? errorInfo.hashCode() : 0);
     result = 31 * result + (health != null ? health.hashCode() : 0);
     result = 31 * result + (remainingSteps != null ? remainingSteps.hashCode() : 0);
     result = 31 * result + (stage != null ? stage.hashCode() : 0);
@@ -228,6 +249,7 @@ public class Status {
     sb.append("  description: ").append(description).append(newLine);
     sb.append("  descriptionDetails: ").append(descriptionDetails).append(newLine);
     sb.append("  diagnosticDataSummaries: ").append(diagnosticDataSummaries).append(newLine);
+    sb.append("  errorInfo: ").append(errorInfo).append(newLine);
     sb.append("  health: ").append(health).append(newLine);
     sb.append("  remainingSteps: ").append(remainingSteps).append(newLine);
     sb.append("  stage: ").append(stage).append(newLine);

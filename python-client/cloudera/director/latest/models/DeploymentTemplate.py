@@ -24,6 +24,7 @@ class DeploymentTemplate:
         self.swaggerTypes = {
             'billingId': 'str',
             'configs': 'dict[str,dict[str,str]]',
+            'csds': 'list[str]',
             'enableEnterpriseTrial': 'bool',
             'externalDatabaseTemplates': 'dict[str,cloudera.director.latest.models.ExternalDatabaseTemplate]',
             'externalDatabases': 'dict[str,cloudera.director.latest.models.ExternalDatabase]',
@@ -49,6 +50,8 @@ class DeploymentTemplate:
         self.billingId = kwargs.get('billingId',None) # str
         #Optional configurations for Cloudera Manager and its management services
         self.configs = kwargs.get('configs',{}) # dict[str,dict[str,str]]
+        #A list of CSD package URLs
+        self.csds = kwargs.get('csds',[]) # list[str]
         #Whether to enable Cloudera Enterprise Trial
         self.enableEnterpriseTrial = kwargs.get('enableEnterpriseTrial',None) # bool
         #External database template definitions

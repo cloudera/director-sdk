@@ -18,16 +18,18 @@
 
 package com.cloudera.director.client.latest.model;
 
-import java.util.HashMap;
-import java.util.Map;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class DeploymentTemplate {
   /* BillingId for Cloudera Manager [redacted on read] */
   private String billingId;
   /* Optional configurations for Cloudera Manager and its management services */
   private Map<String, Map<String, String>> configs;
+  /* A list of CSD package URLs */
+  private List<String> csds;
   /* Whether to enable Cloudera Enterprise Trial */
   private Boolean enableEnterpriseTrial;
   /* External database template definitions */
@@ -68,9 +70,10 @@ public class DeploymentTemplate {
   }
   public DeploymentTemplate() { }
 
-  private DeploymentTemplate(String billingId, Map<String, Map<String, String>> configs, Boolean enableEnterpriseTrial, Map<String, ExternalDatabaseTemplate> externalDatabaseTemplates, Map<String, ExternalDatabase> externalDatabases, String hostname, String javaInstallationStrategy, String krbAdminPassword, String krbAdminUsername, String license, VirtualInstance managerVirtualInstance, String name, String password, Integer port, List<String> postCreateScripts, String repository, String repositoryKeyUrl, Boolean unlimitedJce, String username) {
+  private DeploymentTemplate(String billingId, Map<String, Map<String, String>> configs, List<String> csds, Boolean enableEnterpriseTrial, Map<String, ExternalDatabaseTemplate> externalDatabaseTemplates, Map<String, ExternalDatabase> externalDatabases, String hostname, String javaInstallationStrategy, String krbAdminPassword, String krbAdminUsername, String license, VirtualInstance managerVirtualInstance, String name, String password, Integer port, List<String> postCreateScripts, String repository, String repositoryKeyUrl, Boolean unlimitedJce, String username) {
     this.billingId = billingId;
     this.configs = configs;
+    this.csds = csds;
     this.enableEnterpriseTrial = enableEnterpriseTrial;
     this.externalDatabaseTemplates = externalDatabaseTemplates;
     this.externalDatabases = externalDatabases;
@@ -93,6 +96,7 @@ public class DeploymentTemplate {
   private DeploymentTemplate(DeploymentTemplateBuilder builder) {
     this.billingId = builder.billingId;
     this.configs = builder.configs;
+    this.csds = builder.csds;
     this.enableEnterpriseTrial = builder.enableEnterpriseTrial;
     this.externalDatabaseTemplates = builder.externalDatabaseTemplates;
     this.externalDatabases = builder.externalDatabases;
@@ -119,6 +123,7 @@ public class DeploymentTemplate {
   public static class DeploymentTemplateBuilder {
     private String billingId = null;
     private Map<String, Map<String, String>> configs = new HashMap<String, Map<String, String>>();
+    private List<String> csds = new ArrayList<String>();
     private Boolean enableEnterpriseTrial = null;
     private Map<String, ExternalDatabaseTemplate> externalDatabaseTemplates = new HashMap<String, ExternalDatabaseTemplate>();
     private Map<String, ExternalDatabase> externalDatabases = new HashMap<String, ExternalDatabase>();
@@ -144,6 +149,11 @@ public class DeploymentTemplate {
 
     public DeploymentTemplateBuilder configs(Map<String, Map<String, String>> configs) {
       this.configs = configs;
+      return this;
+    }
+
+    public DeploymentTemplateBuilder csds(List<String> csds) {
+      this.csds = csds;
       return this;
     }
 
@@ -241,6 +251,7 @@ public class DeploymentTemplate {
     return builder()
       .billingId(billingId)
       .configs(configs)
+      .csds(csds)
       .enableEnterpriseTrial(enableEnterpriseTrial)
       .externalDatabaseTemplates(externalDatabaseTemplates)
       .externalDatabases(externalDatabases)
@@ -272,6 +283,13 @@ public class DeploymentTemplate {
   }
   public void setConfigs(Map<String, Map<String, String>> configs) {
     this.configs = configs;
+  }
+
+  public List<String> getCsds() {
+    return csds;
+  }
+  public void setCsds(List<String> csds) {
+    this.csds = csds;
   }
 
   public Boolean getEnableEnterpriseTrial() {
@@ -403,6 +421,9 @@ public class DeploymentTemplate {
     if (configs != null ?
         !configs.equals(other.configs) :
         other.configs != null) return false;
+    if (csds != null ?
+        !csds.equals(other.csds) :
+        other.csds != null) return false;
     if (enableEnterpriseTrial != null ?
         !enableEnterpriseTrial.equals(other.enableEnterpriseTrial) :
         other.enableEnterpriseTrial != null) return false;
@@ -452,6 +473,7 @@ public class DeploymentTemplate {
   public int hashCode() {
     int result = 0;
     result = 31 * result + (configs != null ? configs.hashCode() : 0);
+    result = 31 * result + (csds != null ? csds.hashCode() : 0);
     result = 31 * result + (enableEnterpriseTrial != null ? enableEnterpriseTrial.hashCode() : 0);
     result = 31 * result + (externalDatabaseTemplates != null ? externalDatabaseTemplates.hashCode() : 0);
     result = 31 * result + (externalDatabases != null ? externalDatabases.hashCode() : 0);
@@ -476,6 +498,7 @@ public class DeploymentTemplate {
     sb.append("class DeploymentTemplate {" + newLine);
     sb.append("  billingId: ").append("REDACTED").append(newLine);
     sb.append("  configs: ").append(configs).append(newLine);
+    sb.append("  csds: ").append(csds).append(newLine);
     sb.append("  enableEnterpriseTrial: ").append(enableEnterpriseTrial).append(newLine);
     sb.append("  externalDatabaseTemplates: ").append(externalDatabaseTemplates).append(newLine);
     sb.append("  externalDatabases: ").append(externalDatabases).append(newLine);

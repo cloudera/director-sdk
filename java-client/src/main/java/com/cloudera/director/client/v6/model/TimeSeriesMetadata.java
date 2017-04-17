@@ -19,8 +19,8 @@
 package com.cloudera.director.client.v6.model;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class TimeSeriesMetadata {
