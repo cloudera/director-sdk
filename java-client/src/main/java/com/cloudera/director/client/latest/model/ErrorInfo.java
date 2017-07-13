@@ -20,8 +20,11 @@ package com.cloudera.director.client.latest.model;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 
 public class ErrorInfo {
+  /* Causes */
+  private Set<ErrorInfo> causes;
   /* Error code */
   private String errorCode;
   /* Error type */
@@ -34,6 +37,7 @@ public class ErrorInfo {
     String CLUSTER_DEPLOYMENT_IN_WRONG_STAGE = "CLUSTER_DEPLOYMENT_IN_WRONG_STAGE";
     String CLUSTER_DEPLOYMENT_FAIL = "CLUSTER_DEPLOYMENT_FAIL";
     String CLUSTER_GET_PARCEL_FAIL = "CLUSTER_GET_PARCEL_FAIL";
+    String CLUSTER_HOST_DECOMMISSION_FAIL = "CLUSTER_HOST_DECOMMISSION_FAIL";
     String CLUSTER_MISSING_PRODUCT_PARCEL = "CLUSTER_MISSING_PRODUCT_PARCEL";
     String CLUSTER_PARCEL_VALIDATION_FAIL = "CLUSTER_PARCEL_VALIDATION_FAIL";
     String CLUSTER_UNSUPPORTED_UPDATE_STEP = "CLUSTER_UNSUPPORTED_UPDATE_STEP";
@@ -47,8 +51,9 @@ public class ErrorInfo {
     String CM_REPO_MULTIPLE_URL = "CM_REPO_MULTIPLE_URL";
     String CM_UNAUTHORIZED_OPERATION = "CM_UNAUTHORIZED_OPERATION";
     String CM_UNSUPPORTED_OPERATION = "CM_UNSUPPORTED_OPERATION";
-    String CM_UNSUPPORTED_SERVICE_VERSIONS = "CM_UNSUPPORTED_SERVICE_VERSIONS";
+    String CM_UNSUPPORTED_SERVICES_AND_VERSIONS = "CM_UNSUPPORTED_SERVICES_AND_VERSIONS";
     String CM_REDEPLOY_CLIENT_CONFIGS_FAIL = "CM_REDEPLOY_CLIENT_CONFIGS_FAIL";
+    String CM_HOST_INSTALL_CANCELLATION_FAIL = "CM_HOST_INSTALL_CANCELLATION_FAIL";
     String CM_IMPORT_KERBEROS_MISSING_PRINCIPAL = "CM_IMPORT_KERBEROS_MISSING_PRINCIPAL";
     String CM_IMPORT_KERBEROS_INCORRECT_PASSWORD = "CM_IMPORT_KERBEROS_INCORRECT_PASSWORD";
     String CM_SERVICE_HOST_NOT_FOUND = "CM_SERVICE_HOST_NOT_FOUND";
@@ -59,6 +64,7 @@ public class ErrorInfo {
     String CM_FIRSTRUN_AUTH_FAIL = "CM_FIRSTRUN_AUTH_FAIL";
     String CM_FIRSTRUN_IO_ERROR = "CM_FIRSTRUN_IO_ERROR";
     String CM_FIRSTRUN_BAD_RESPONSE = "CM_FIRSTRUN_BAD_RESPONSE";
+    String CM_MISSING_PARCEL_PRODUCTS = "CM_MISSING_PARCEL_PRODUCTS";
     String DB_SERVER_CREATION_FAIL = "DB_SERVER_CREATION_FAIL";
     String DB_SERVER_IN_FAILURE_STAGE = "DB_SERVER_IN_FAILURE_STAGE";
     String DB_SERVER_MISSING = "DB_SERVER_MISSING";
@@ -69,14 +75,18 @@ public class ErrorInfo {
     String INSTANCE_MISSING_CAPABILITIES = "INSTANCE_MISSING_CAPABILITIES";
     String INSTANCE_MISSING_FQDN = "INSTANCE_MISSING_FQDN";
     String INSTANCE_NOT_FOUND = "INSTANCE_NOT_FOUND";
+    String INSTANCE_SSH_PORT_UNAVAILABLE = "INSTANCE_SSH_PORT_UNAVAILABLE";
     String INSTANCE_SSH_CONNECTION_FAIL = "INSTANCE_SSH_CONNECTION_FAIL";
+    String INSTANCE_ALLOCATION_FAILURE = "INSTANCE_ALLOCATION_FAILURE";
     String INSTANCE_ALLOCATION_TIME_OUT = "INSTANCE_ALLOCATION_TIME_OUT";
     String INSTANCE_ALLOCATION_ILLEGAL_ARGUMENT = "INSTANCE_ALLOCATION_ILLEGAL_ARGUMENT";
     String INSTANCE_ALLOCATION_ILLEGAL_STATE = "INSTANCE_ALLOCATION_ILLEGAL_STATE";
     String INSTANCE_ROOT_PARTITION_RESIZE_FAIL = "INSTANCE_ROOT_PARTITION_RESIZE_FAIL";
     String INSTANCE_TERMINATION_FAIL = "INSTANCE_TERMINATION_FAIL";
+    String NOT_PERSISTED = "NOT_PERSISTED";
     String JOB_CANCELLATION_FAIL = "JOB_CANCELLATION_FAIL";
     String JOB_CANCELLATION_TIMEOUT = "JOB_CANCELLATION_TIMEOUT";
+    String JOB_EXECUTION_ILLEGAL_STATE = "JOB_EXECUTION_ILLEGAL_STATE";
     String JOB_EXECUTION_FAIL = "JOB_EXECUTION_FAIL";
     String JOB_COMBINATION_INVALID_MAP_ENTRY = "JOB_COMBINATION_INVALID_MAP_ENTRY";
     String JOB_COMBINATION_DUPLICATE_ENTRIES = "JOB_COMBINATION_DUPLICATE_ENTRIES";
@@ -84,6 +94,33 @@ public class ErrorInfo {
     String RUN_SCRIPT_FAIL = "RUN_SCRIPT_FAIL";
     String SSH_BACKGROUND_COMMAND_FAIL = "SSH_BACKGROUND_COMMAND_FAIL";
     String SSH_JOB_MISSING_BACKGROUND_PROCESS_STATE_FILE = "SSH_JOB_MISSING_BACKGROUND_PROCESS_STATE_FILE";
+    String INVALID_CLIENT_CONFIG_PROPERTY_NOT_FOUND = "INVALID_CLIENT_CONFIG_PROPERTY_NOT_FOUND";
+    String INVALID_CLIENT_CONFIG_ILLEGAL_ARGUMENT = "INVALID_CLIENT_CONFIG_ILLEGAL_ARGUMENT";
+    String MALFORMED_DEBIAN_URL = "MALFORMED_DEBIAN_URL";
+    String INVALID_URL = "INVALID_URL";
+    String UNSUCCESSFUL_RESPONSE_FROM_URL = "UNSUCCESSFUL_RESPONSE_FROM_URL";
+    String MALFORMED_URL = "MALFORMED_URL";
+    String UNABLE_TO_CONNECT_URL = "UNABLE_TO_CONNECT_URL";
+    String NO_PARCEL_FOUND = "NO_PARCEL_FOUND";
+    String NO_PARCEL_FOUND_WITH_VERSION = "NO_PARCEL_FOUND_WITH_VERSION";
+    String MULTIPLE_PARCELS_FOUND = "MULTIPLE_PARCELS_FOUND";
+    String DUPLICATE_SERVICE = "DUPLICATE_SERVICE";
+    String UNSUPPORTED_PROVIDER_TYPE = "UNSUPPORTED_PROVIDER_TYPE";
+    String INVALID_EXTERNAL_DATABASE_SERVERS = "INVALID_EXTERNAL_DATABASE_SERVERS";
+    String INVALID_NAME = "INVALID_NAME";
+    String NEED_BOTH_KRB_ADMIN_ITEMS = "NEED_BOTH_KRB_ADMIN_ITEMS";
+    String NEED_KDC_TYPE = "NEED_KDC_TYPE";
+    String MISSING_COMPONENT_DB_TEMPLATE = "MISSING_COMPONENT_DB_TEMPLATE";
+    String MISSING_COMPONENT_DB = "MISSING_COMPONENT_DB";
+    String EMPTY_BILLING_ID = "EMPTY_BILLING_ID";
+    String CM_CONNECTION_FAIL = "CM_CONNECTION_FAIL";
+    String HETEROGENEOUS_INSTANCE_TEMPLATES_IN_VIRTUAL_INSTANCE_GROUP = "HETEROGENEOUS_INSTANCE_TEMPLATES_IN_VIRTUAL_INSTANCE_GROUP";
+    String SSH_UNREADABLE_OR_UNDECRYPTABLE_PRIVATE_KEY = "SSH_UNREADABLE_OR_UNDECRYPTABLE_PRIVATE_KEY";
+    String SSH_UNSUPPORTED_PRIVATE_KEY = "SSH_UNSUPPORTED_PRIVATE_KEY";
+    String SSH_MISSING_PASSPHRASE = "SSH_MISSING_PASSPHRASE";
+    String INVALID_LICENSE_BILLING_ID = "INVALID_LICENSE_BILLING_ID";
+    String SCRIPT_NO_INSTANCES_AVAILABLE = "SCRIPT_NO_INSTANCES_AVAILABLE";
+    String SCRIPT_NON_ZERO_EXIT_CODE = "SCRIPT_NON_ZERO_EXIT_CODE";
     String UNDEFINED = "UNDEFINED";
   }
   public interface ErrorType {
@@ -93,7 +130,8 @@ public class ErrorInfo {
   }
   public ErrorInfo() { }
 
-  private ErrorInfo(String errorCode, String errorType, Map<String, String> properties, Boolean retryable) {
+  private ErrorInfo(Set<ErrorInfo> causes, String errorCode, String errorType, Map<String, String> properties, Boolean retryable) {
+    this.causes = causes;
     this.errorCode = errorCode;
     this.errorType = errorType;
     this.properties = properties;
@@ -101,6 +139,7 @@ public class ErrorInfo {
   }
 
   private ErrorInfo(ErrorInfoBuilder builder) {
+    this.causes = builder.causes;
     this.errorCode = builder.errorCode;
     this.errorType = builder.errorType;
     this.properties = builder.properties;
@@ -112,10 +151,16 @@ public class ErrorInfo {
   }
 
   public static class ErrorInfoBuilder {
+    private Set<ErrorInfo> causes = null;
     private String errorCode = null;
     private String errorType = null;
     private Map<String, String> properties = new HashMap<String, String>();
     private Boolean retryable = null;
+
+    public ErrorInfoBuilder causes(Set<ErrorInfo> causes) {
+      this.causes = causes;
+      return this;
+    }
 
     public ErrorInfoBuilder errorCode(String errorCode) {
       this.errorCode = errorCode;
@@ -144,12 +189,20 @@ public class ErrorInfo {
 
   public ErrorInfoBuilder toBuilder() {
     return builder()
+      .causes(causes)
       .errorCode(errorCode)
       .errorType(errorType)
       .properties(properties)
       .retryable(retryable)
       ;
   }
+  public Set<ErrorInfo> getCauses() {
+    return causes;
+  }
+  public void setCauses(Set<ErrorInfo> causes) {
+    this.causes = causes;
+  }
+
   public String getErrorCode() {
     return errorCode;
   }
@@ -185,6 +238,9 @@ public class ErrorInfo {
 
     ErrorInfo other = (ErrorInfo) o; // NOPMD
 
+    if (causes != null ?
+        !causes.equals(other.causes) :
+        other.causes != null) return false;
     if (errorCode != null ?
         !errorCode.equals(other.errorCode) :
         other.errorCode != null) return false;
@@ -203,6 +259,7 @@ public class ErrorInfo {
   @Override
   public int hashCode() {
     int result = 0;
+    result = 31 * result + (causes != null ? causes.hashCode() : 0);
     result = 31 * result + (errorCode != null ? errorCode.hashCode() : 0);
     result = 31 * result + (errorType != null ? errorType.hashCode() : 0);
     result = 31 * result + (properties != null ? properties.hashCode() : 0);
@@ -215,6 +272,7 @@ public class ErrorInfo {
     StringBuilder sb = new StringBuilder();
     String newLine = System.getProperty("line.separator");
     sb.append("class ErrorInfo {" + newLine);
+    sb.append("  causes: ").append(causes).append(newLine);
     sb.append("  errorCode: ").append(errorCode).append(newLine);
     sb.append("  errorType: ").append(errorType).append(newLine);
     sb.append("  properties: ").append(properties).append(newLine);

@@ -85,11 +85,22 @@ limitations under the License.
 
         <!-- Checks for Javadoc comments.                     -->
         <!-- See http://checkstyle.sf.net/config_javadoc.html -->
-        <!-- <module name="JavadocMethod"/> -->
-        <!-- <module name="JavadocType"/> -->
         <!-- <module name="JavadocVariable"/> -->
         <module name="JavadocStyle"/>
-
+        <module name="JavadocMethod">
+            <property name="scope" value="package" />
+            <property name="allowUndeclaredRTE" value="true" />
+            <property name="allowMissingParamTags" value="true" />
+            <property name="allowMissingThrowsTags" value="true" />
+            <property name="allowMissingReturnTag" value="true" />
+            <property name="allowMissingPropertyJavadoc" value="true" />
+            <property name="severity" value="info" />
+        </module>
+        <module name="JavadocType">
+            <property name="scope" value="package" />
+            <property name="allowMissingParamTags" value="true" />
+            <property name="severity" value="info" />
+        </module>
 
         <!-- Checks for Naming Conventions.                  -->
         <!-- See http://checkstyle.sf.net/config_naming.html -->

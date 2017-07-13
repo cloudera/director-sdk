@@ -22,6 +22,7 @@ class ClusterTemplate:
 
     def __init__(self, **kwargs):
         self.swaggerTypes = {
+            'administrationSettings': 'cloudera.director.latest.models.ClusterAdministrationSettings',
             'externalDatabaseTemplates': 'dict[str,cloudera.director.latest.models.ExternalDatabaseTemplate]',
             'externalDatabases': 'dict[str,cloudera.director.latest.models.ExternalDatabase]',
             'instancePostCreateScripts': 'list[str]',
@@ -40,6 +41,8 @@ class ClusterTemplate:
         }
 
 
+        #Optional cluster administration settings
+        self.administrationSettings = kwargs.get('administrationSettings',None) # cloudera.director.latest.models.ClusterAdministrationSettings
         #Optional external database templates
         self.externalDatabaseTemplates = kwargs.get('externalDatabaseTemplates',{}) # dict[str,cloudera.director.latest.models.ExternalDatabaseTemplate]
         #Optional external databases

@@ -26,6 +26,7 @@ class DeploymentTemplate:
             'configs': 'dict[str,dict[str,str]]',
             'csds': 'list[str]',
             'enableEnterpriseTrial': 'bool',
+            'externalAccounts': 'dict[str,cloudera.director.latest.models.ExternalAccount]',
             'externalDatabaseTemplates': 'dict[str,cloudera.director.latest.models.ExternalDatabaseTemplate]',
             'externalDatabases': 'dict[str,cloudera.director.latest.models.ExternalDatabase]',
             'hostname': 'str',
@@ -54,6 +55,8 @@ class DeploymentTemplate:
         self.csds = kwargs.get('csds',[]) # list[str]
         #Whether to enable Cloudera Enterprise Trial
         self.enableEnterpriseTrial = kwargs.get('enableEnterpriseTrial',None) # bool
+        #External account definitions
+        self.externalAccounts = kwargs.get('externalAccounts',{}) # dict[str,cloudera.director.latest.models.ExternalAccount]
         #External database template definitions
         self.externalDatabaseTemplates = kwargs.get('externalDatabaseTemplates',{}) # dict[str,cloudera.director.latest.models.ExternalDatabaseTemplate]
         #External database definitions

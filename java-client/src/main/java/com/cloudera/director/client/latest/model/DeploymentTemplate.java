@@ -32,6 +32,8 @@ public class DeploymentTemplate {
   private List<String> csds;
   /* Whether to enable Cloudera Enterprise Trial */
   private Boolean enableEnterpriseTrial;
+  /* External account definitions */
+  private Map<String, ExternalAccount> externalAccounts;
   /* External database template definitions */
   private Map<String, ExternalDatabaseTemplate> externalDatabaseTemplates;
   /* External database definitions */
@@ -70,11 +72,12 @@ public class DeploymentTemplate {
   }
   public DeploymentTemplate() { }
 
-  private DeploymentTemplate(String billingId, Map<String, Map<String, String>> configs, List<String> csds, Boolean enableEnterpriseTrial, Map<String, ExternalDatabaseTemplate> externalDatabaseTemplates, Map<String, ExternalDatabase> externalDatabases, String hostname, String javaInstallationStrategy, String krbAdminPassword, String krbAdminUsername, String license, VirtualInstance managerVirtualInstance, String name, String password, Integer port, List<String> postCreateScripts, String repository, String repositoryKeyUrl, Boolean unlimitedJce, String username) {
+  private DeploymentTemplate(String billingId, Map<String, Map<String, String>> configs, List<String> csds, Boolean enableEnterpriseTrial, Map<String, ExternalAccount> externalAccounts, Map<String, ExternalDatabaseTemplate> externalDatabaseTemplates, Map<String, ExternalDatabase> externalDatabases, String hostname, String javaInstallationStrategy, String krbAdminPassword, String krbAdminUsername, String license, VirtualInstance managerVirtualInstance, String name, String password, Integer port, List<String> postCreateScripts, String repository, String repositoryKeyUrl, Boolean unlimitedJce, String username) {
     this.billingId = billingId;
     this.configs = configs;
     this.csds = csds;
     this.enableEnterpriseTrial = enableEnterpriseTrial;
+    this.externalAccounts = externalAccounts;
     this.externalDatabaseTemplates = externalDatabaseTemplates;
     this.externalDatabases = externalDatabases;
     this.hostname = hostname;
@@ -98,6 +101,7 @@ public class DeploymentTemplate {
     this.configs = builder.configs;
     this.csds = builder.csds;
     this.enableEnterpriseTrial = builder.enableEnterpriseTrial;
+    this.externalAccounts = builder.externalAccounts;
     this.externalDatabaseTemplates = builder.externalDatabaseTemplates;
     this.externalDatabases = builder.externalDatabases;
     this.hostname = builder.hostname;
@@ -125,6 +129,7 @@ public class DeploymentTemplate {
     private Map<String, Map<String, String>> configs = new HashMap<String, Map<String, String>>();
     private List<String> csds = new ArrayList<String>();
     private Boolean enableEnterpriseTrial = null;
+    private Map<String, ExternalAccount> externalAccounts = new HashMap<String, ExternalAccount>();
     private Map<String, ExternalDatabaseTemplate> externalDatabaseTemplates = new HashMap<String, ExternalDatabaseTemplate>();
     private Map<String, ExternalDatabase> externalDatabases = new HashMap<String, ExternalDatabase>();
     private String hostname = null;
@@ -159,6 +164,11 @@ public class DeploymentTemplate {
 
     public DeploymentTemplateBuilder enableEnterpriseTrial(Boolean enableEnterpriseTrial) {
       this.enableEnterpriseTrial = enableEnterpriseTrial;
+      return this;
+    }
+
+    public DeploymentTemplateBuilder externalAccounts(Map<String, ExternalAccount> externalAccounts) {
+      this.externalAccounts = externalAccounts;
       return this;
     }
 
@@ -253,6 +263,7 @@ public class DeploymentTemplate {
       .configs(configs)
       .csds(csds)
       .enableEnterpriseTrial(enableEnterpriseTrial)
+      .externalAccounts(externalAccounts)
       .externalDatabaseTemplates(externalDatabaseTemplates)
       .externalDatabases(externalDatabases)
       .hostname(hostname)
@@ -297,6 +308,13 @@ public class DeploymentTemplate {
   }
   public void setEnableEnterpriseTrial(Boolean enableEnterpriseTrial) {
     this.enableEnterpriseTrial = enableEnterpriseTrial;
+  }
+
+  public Map<String, ExternalAccount> getExternalAccounts() {
+    return externalAccounts;
+  }
+  public void setExternalAccounts(Map<String, ExternalAccount> externalAccounts) {
+    this.externalAccounts = externalAccounts;
   }
 
   public Map<String, ExternalDatabaseTemplate> getExternalDatabaseTemplates() {
@@ -427,6 +445,9 @@ public class DeploymentTemplate {
     if (enableEnterpriseTrial != null ?
         !enableEnterpriseTrial.equals(other.enableEnterpriseTrial) :
         other.enableEnterpriseTrial != null) return false;
+    if (externalAccounts != null ?
+        !externalAccounts.equals(other.externalAccounts) :
+        other.externalAccounts != null) return false;
     if (externalDatabaseTemplates != null ?
         !externalDatabaseTemplates.equals(other.externalDatabaseTemplates) :
         other.externalDatabaseTemplates != null) return false;
@@ -475,6 +496,7 @@ public class DeploymentTemplate {
     result = 31 * result + (configs != null ? configs.hashCode() : 0);
     result = 31 * result + (csds != null ? csds.hashCode() : 0);
     result = 31 * result + (enableEnterpriseTrial != null ? enableEnterpriseTrial.hashCode() : 0);
+    result = 31 * result + (externalAccounts != null ? externalAccounts.hashCode() : 0);
     result = 31 * result + (externalDatabaseTemplates != null ? externalDatabaseTemplates.hashCode() : 0);
     result = 31 * result + (externalDatabases != null ? externalDatabases.hashCode() : 0);
     result = 31 * result + (hostname != null ? hostname.hashCode() : 0);
@@ -500,6 +522,7 @@ public class DeploymentTemplate {
     sb.append("  configs: ").append(configs).append(newLine);
     sb.append("  csds: ").append(csds).append(newLine);
     sb.append("  enableEnterpriseTrial: ").append(enableEnterpriseTrial).append(newLine);
+    sb.append("  externalAccounts: ").append(externalAccounts).append(newLine);
     sb.append("  externalDatabaseTemplates: ").append(externalDatabaseTemplates).append(newLine);
     sb.append("  externalDatabases: ").append(externalDatabases).append(newLine);
     sb.append("  hostname: ").append(hostname).append(newLine);

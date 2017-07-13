@@ -51,7 +51,7 @@ class DatabaseServersApi(object):
             params[key] = val
         del params['kwargs']
 
-        resourcePath = '/api/v8/environments/{environment}/databaseServers'
+        resourcePath = '/api/v9/environments/{environment}/databaseServers'
         resourcePath = resourcePath.replace('{format}', 'json')
         method = 'POST'
 
@@ -97,7 +97,7 @@ class DatabaseServersApi(object):
             params[key] = val
         del params['kwargs']
 
-        resourcePath = '/api/v8/environments/{environment}/databaseServers/{externalDatabaseServer}'
+        resourcePath = '/api/v9/environments/{environment}/databaseServers/{externalDatabaseServer}'
         resourcePath = resourcePath.replace('{format}', 'json')
         method = 'DELETE'
 
@@ -147,7 +147,7 @@ class DatabaseServersApi(object):
             params[key] = val
         del params['kwargs']
 
-        resourcePath = '/api/v8/environments/{environment}/databaseServers/{externalDatabaseServer}/usage'
+        resourcePath = '/api/v9/environments/{environment}/databaseServers/{externalDatabaseServer}/usage'
         resourcePath = resourcePath.replace('{format}', 'json')
         method = 'GET'
 
@@ -202,7 +202,7 @@ class DatabaseServersApi(object):
             params[key] = val
         del params['kwargs']
 
-        resourcePath = '/api/v8/environments/{environment}/databaseServers/{externalDatabaseServer}'
+        resourcePath = '/api/v9/environments/{environment}/databaseServers/{externalDatabaseServer}'
         resourcePath = resourcePath.replace('{format}', 'json')
         method = 'GET'
 
@@ -257,7 +257,7 @@ class DatabaseServersApi(object):
             params[key] = val
         del params['kwargs']
 
-        resourcePath = '/api/v8/environments/{environment}/databaseServers/{externalDatabaseServer}/status'
+        resourcePath = '/api/v9/environments/{environment}/databaseServers/{externalDatabaseServer}/status'
         resourcePath = resourcePath.replace('{format}', 'json')
         method = 'GET'
 
@@ -312,7 +312,7 @@ class DatabaseServersApi(object):
             params[key] = val
         del params['kwargs']
 
-        resourcePath = '/api/v8/environments/{environment}/databaseServers/{externalDatabaseServer}/template'
+        resourcePath = '/api/v9/environments/{environment}/databaseServers/{externalDatabaseServer}/template'
         resourcePath = resourcePath.replace('{format}', 'json')
         method = 'GET'
 
@@ -365,7 +365,7 @@ class DatabaseServersApi(object):
             params[key] = val
         del params['kwargs']
 
-        resourcePath = '/api/v8/environments/{environment}/databaseServers'
+        resourcePath = '/api/v9/environments/{environment}/databaseServers'
         resourcePath = resourcePath.replace('{format}', 'json')
         method = 'GET'
 
@@ -418,7 +418,7 @@ class DatabaseServersApi(object):
             params[key] = val
         del params['kwargs']
 
-        resourcePath = '/api/v8/environments/{environment}/databaseServers/{externalDatabaseServer}'
+        resourcePath = '/api/v9/environments/{environment}/databaseServers/{externalDatabaseServer}'
         resourcePath = resourcePath.replace('{format}', 'json')
         method = 'PUT'
 

@@ -19,9 +19,13 @@
 package com.cloudera.director.client.latest.model;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class Cluster {
+  /* Availability information for features */
+  private Map<String, String> featureAvailability;
   /* Overall cluster health */
   private Health health;
   /* All instances making this cluster */
@@ -36,7 +40,8 @@ public class Cluster {
   private String url;
   public Cluster() { }
 
-  private Cluster(Health health, List<Instance> instances, String instancesUrl, String name, List<Service> services, String url) {
+  private Cluster(Map<String, String> featureAvailability, Health health, List<Instance> instances, String instancesUrl, String name, List<Service> services, String url) {
+    this.featureAvailability = featureAvailability;
     this.health = health;
     this.instances = instances;
     this.instancesUrl = instancesUrl;
@@ -46,6 +51,7 @@ public class Cluster {
   }
 
   private Cluster(ClusterBuilder builder) {
+    this.featureAvailability = builder.featureAvailability;
     this.health = builder.health;
     this.instances = builder.instances;
     this.instancesUrl = builder.instancesUrl;
@@ -59,12 +65,18 @@ public class Cluster {
   }
 
   public static class ClusterBuilder {
+    private Map<String, String> featureAvailability = new HashMap<String, String>();
     private Health health = null;
     private List<Instance> instances = new ArrayList<Instance>();
     private String instancesUrl = null;
     private String name = null;
     private List<Service> services = new ArrayList<Service>();
     private String url = null;
+
+    public ClusterBuilder featureAvailability(Map<String, String> featureAvailability) {
+      this.featureAvailability = featureAvailability;
+      return this;
+    }
 
     public ClusterBuilder health(Health health) {
       this.health = health;
@@ -103,6 +115,7 @@ public class Cluster {
 
   public ClusterBuilder toBuilder() {
     return builder()
+      .featureAvailability(featureAvailability)
       .health(health)
       .instances(instances)
       .instancesUrl(instancesUrl)
@@ -111,6 +124,13 @@ public class Cluster {
       .url(url)
       ;
   }
+  public Map<String, String> getFeatureAvailability() {
+    return featureAvailability;
+  }
+  public void setFeatureAvailability(Map<String, String> featureAvailability) {
+    this.featureAvailability = featureAvailability;
+  }
+
   public Health getHealth() {
     return health;
   }
@@ -160,6 +180,9 @@ public class Cluster {
 
     Cluster other = (Cluster) o; // NOPMD
 
+    if (featureAvailability != null ?
+        !featureAvailability.equals(other.featureAvailability) :
+        other.featureAvailability != null) return false;
     if (health != null ?
         !health.equals(other.health) :
         other.health != null) return false;
@@ -184,6 +207,7 @@ public class Cluster {
   @Override
   public int hashCode() {
     int result = 0;
+    result = 31 * result + (featureAvailability != null ? featureAvailability.hashCode() : 0);
     result = 31 * result + (health != null ? health.hashCode() : 0);
     result = 31 * result + (instances != null ? instances.hashCode() : 0);
     result = 31 * result + (instancesUrl != null ? instancesUrl.hashCode() : 0);
@@ -198,6 +222,7 @@ public class Cluster {
     StringBuilder sb = new StringBuilder();
     String newLine = System.getProperty("line.separator");
     sb.append("class Cluster {" + newLine);
+    sb.append("  featureAvailability: ").append(featureAvailability).append(newLine);
     sb.append("  health: ").append(health).append(newLine);
     sb.append("  instances: ").append(instances).append(newLine);
     sb.append("  instancesUrl: ").append(instancesUrl).append(newLine);

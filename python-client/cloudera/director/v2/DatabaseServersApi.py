@@ -35,8 +35,6 @@ class DatabaseServersApi(object):
         Args:
             environment, str: environmentName (required)
 
-            X-Request-Id, str: requestId (optional)
-
             body, cloudera.director.v2.models.ExternalDatabaseServerTemplate: externalDatabaseServerTemplate (required)
 
             
@@ -44,7 +42,7 @@ class DatabaseServersApi(object):
         Returns: 
         """
 
-        allParams = ['environment', 'X-Request-Id', 'body']
+        allParams = ['environment', 'body']
 
         params = locals()
         for (key, val) in params['kwargs'].iteritems():
@@ -60,8 +58,6 @@ class DatabaseServersApi(object):
         queryParams = {}
         headerParams = {}
 
-        if ('X-Request-Id' in params):
-            headerParams['X-Request-Id'] = params['X-Request-Id']
         if ('environment' in params):
             replacement = str(self.apiClient.toPathValue(params['environment']))
             resourcePath = resourcePath.replace('{' + 'environment' + '}',
@@ -87,14 +83,12 @@ class DatabaseServersApi(object):
 
             externalDatabaseServer, str: externalDatabaseServerName (required)
 
-            X-Request-Id, str: requestId (optional)
-
             
 
         Returns: 
         """
 
-        allParams = ['environment', 'externalDatabaseServer', 'X-Request-Id']
+        allParams = ['environment', 'externalDatabaseServer']
 
         params = locals()
         for (key, val) in params['kwargs'].iteritems():
@@ -110,8 +104,6 @@ class DatabaseServersApi(object):
         queryParams = {}
         headerParams = {}
 
-        if ('X-Request-Id' in params):
-            headerParams['X-Request-Id'] = params['X-Request-Id']
         if ('environment' in params):
             replacement = str(self.apiClient.toPathValue(params['environment']))
             resourcePath = resourcePath.replace('{' + 'environment' + '}',
@@ -355,8 +347,6 @@ class DatabaseServersApi(object):
 
             externalDatabaseServer, str: externalDatabaseServerName (required)
 
-            X-Request-Id, str: requestId (optional)
-
             body, cloudera.director.v2.models.ExternalDatabaseServerTemplate: updatedTemplate (required)
 
             
@@ -364,7 +354,7 @@ class DatabaseServersApi(object):
         Returns: 
         """
 
-        allParams = ['environment', 'externalDatabaseServer', 'X-Request-Id', 'body']
+        allParams = ['environment', 'externalDatabaseServer', 'body']
 
         params = locals()
         for (key, val) in params['kwargs'].iteritems():
@@ -380,8 +370,6 @@ class DatabaseServersApi(object):
         queryParams = {}
         headerParams = {}
 
-        if ('X-Request-Id' in params):
-            headerParams['X-Request-Id'] = params['X-Request-Id']
         if ('environment' in params):
             replacement = str(self.apiClient.toPathValue(params['environment']))
             resourcePath = resourcePath.replace('{' + 'environment' + '}',

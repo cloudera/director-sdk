@@ -44,7 +44,6 @@ public class DatabaseServersApi {
   /**
   * Create a new external database server.
   * @param  environment  environmentName
-  * @param  XRequestId  requestId
   * @param  body  externalDatabaseServerTemplate
   * status code: 201 reason: "External database server template accepted"
   * status code: 302 reason: "External database server already exists"
@@ -53,7 +52,7 @@ public class DatabaseServersApi {
   * status code: 403 reason: "Forbidden"
   * status code: 404 reason: "Not Found"
   */
-  public void create(String environment, String XRequestId, ExternalDatabaseServerTemplate body) throws ApiException {
+  public void create(String environment, ExternalDatabaseServerTemplate body) throws ApiException {
     Object postBody = body;
     // verify required params are set
     if (environment == null || body == null ) {
@@ -71,7 +70,6 @@ public class DatabaseServersApi {
     Map<String, String> headerParams = new HashMap<String, String>();
     Map<String, String> formParams = new HashMap<String, String>();
 
-    headerParams.put("X-Request-Id", XRequestId);
     String[] contentTypes = { "application/json"};
     if (contentTypes.length != 1) {
       throw new IllegalArgumentException("An API client expects a single content type. Got: "
@@ -88,20 +86,16 @@ public class DatabaseServersApi {
     }
   }
 
-  public void create(String environment, ExternalDatabaseServerTemplate body) throws ApiException {
-     create(environment, null, body);
-    }
   /**
   * Delete an external database server by name.
   * @param  environment  environmentName
   * @param  externalDatabaseServer  externalDatabaseServerName
-  * @param  XRequestId  requestId
   * status code: 204 reason: "Delete request accepted"
   * status code: 401 reason: "Unauthorized"
   * status code: 403 reason: "Forbidden"
   * status code: 404 reason: "Entity not found"
   */
-  public void delete(String environment, String externalDatabaseServer, String XRequestId) throws ApiException {
+  public void delete(String environment, String externalDatabaseServer) throws ApiException {
     Object postBody = null;
     // verify required params are set
     if (environment == null || externalDatabaseServer == null ) {
@@ -121,7 +115,6 @@ public class DatabaseServersApi {
     Map<String, String> headerParams = new HashMap<String, String>();
     Map<String, String> formParams = new HashMap<String, String>();
 
-    headerParams.put("X-Request-Id", XRequestId);
     String[] contentTypes = { "application/json"};
     if (contentTypes.length != 1) {
       throw new IllegalArgumentException("An API client expects a single content type. Got: "
@@ -138,9 +131,6 @@ public class DatabaseServersApi {
     }
   }
 
-  public void delete(String environment, String externalDatabaseServer) throws ApiException {
-     delete(environment, externalDatabaseServer, null);
-    }
   /**
   * Get an external database server by name.
   * @param  environment  environmentName
@@ -324,7 +314,6 @@ public class DatabaseServersApi {
   * Update an existing external database server (unsupported).
   * @param  environment  environmentName
   * @param  externalDatabaseServer  externalDatabaseServerName
-  * @param  XRequestId  requestId
   * @param  body  updatedTemplate
   * status code: 201 reason: "Created"
   * status code: 202 reason: ""
@@ -333,7 +322,7 @@ public class DatabaseServersApi {
   * status code: 403 reason: "Forbidden"
   * status code: 404 reason: "Not Found"
   */
-  public void update(String environment, String externalDatabaseServer, String XRequestId, ExternalDatabaseServerTemplate body) throws ApiException {
+  public void update(String environment, String externalDatabaseServer, ExternalDatabaseServerTemplate body) throws ApiException {
     Object postBody = body;
     // verify required params are set
     if (environment == null || externalDatabaseServer == null || body == null ) {
@@ -353,7 +342,6 @@ public class DatabaseServersApi {
     Map<String, String> headerParams = new HashMap<String, String>();
     Map<String, String> formParams = new HashMap<String, String>();
 
-    headerParams.put("X-Request-Id", XRequestId);
     String[] contentTypes = { "application/json"};
     if (contentTypes.length != 1) {
       throw new IllegalArgumentException("An API client expects a single content type. Got: "
@@ -370,8 +358,5 @@ public class DatabaseServersApi {
     }
   }
 
-  public void update(String environment, String externalDatabaseServer, ExternalDatabaseServerTemplate body) throws ApiException {
-     update(environment, externalDatabaseServer, null, body);
-    }
   }
 

@@ -53,7 +53,7 @@ class ClustersApi(object):
             params[key] = val
         del params['kwargs']
 
-        resourcePath = '/api/v8/environments/{environment}/deployments/{deployment}/clusters/{cluster}/diagnosticData'
+        resourcePath = '/api/v9/environments/{environment}/deployments/{deployment}/clusters/{cluster}/diagnosticData'
         resourcePath = resourcePath.replace('{format}', 'json')
         method = 'POST'
 
@@ -109,7 +109,7 @@ class ClustersApi(object):
             params[key] = val
         del params['kwargs']
 
-        resourcePath = '/api/v8/environments/{environment}/deployments/{deployment}/clusters'
+        resourcePath = '/api/v9/environments/{environment}/deployments/{deployment}/clusters'
         resourcePath = resourcePath.replace('{format}', 'json')
         method = 'POST'
 
@@ -161,7 +161,7 @@ class ClustersApi(object):
             params[key] = val
         del params['kwargs']
 
-        resourcePath = '/api/v8/environments/{environment}/deployments/{deployment}/clusters/{cluster}'
+        resourcePath = '/api/v9/environments/{environment}/deployments/{deployment}/clusters/{cluster}'
         resourcePath = resourcePath.replace('{format}', 'json')
         method = 'DELETE'
 
@@ -217,7 +217,7 @@ class ClustersApi(object):
             params[key] = val
         del params['kwargs']
 
-        resourcePath = '/api/v8/environments/{environment}/deployments/{deployment}/clusters/{cluster}'
+        resourcePath = '/api/v9/environments/{environment}/deployments/{deployment}/clusters/{cluster}'
         resourcePath = resourcePath.replace('{format}', 'json')
         method = 'GET'
 
@@ -254,6 +254,136 @@ class ClustersApi(object):
 
         
 
+    def getAdministrationSettings(self, environment, deployment, cluster, **kwargs):
+        """Get administration settings for a cluster
+
+        Args:
+            environment, str: environmentName (required)
+
+            deployment, str: deploymentName (required)
+
+            cluster, str: clusterName (required)
+
+            
+
+        Returns: cloudera.director.latest.models.ClusterAdministrationSettings
+        """
+
+        allParams = ['environment', 'deployment', 'cluster']
+
+        params = locals()
+        for (key, val) in params['kwargs'].iteritems():
+            if key not in allParams:
+                raise TypeError("Got an unexpected keyword argument '%s' to method getAdministrationSettings" % key)
+            params[key] = val
+        del params['kwargs']
+
+        resourcePath = '/api/v9/environments/{environment}/deployments/{deployment}/clusters/{cluster}/settings'
+        resourcePath = resourcePath.replace('{format}', 'json')
+        method = 'GET'
+
+        queryParams = {}
+        headerParams = {}
+
+        if ('environment' in params):
+            replacement = str(self.apiClient.toPathValue(params['environment']))
+            resourcePath = resourcePath.replace('{' + 'environment' + '}',
+                                                replacement)
+        if ('deployment' in params):
+            replacement = str(self.apiClient.toPathValue(params['deployment']))
+            resourcePath = resourcePath.replace('{' + 'deployment' + '}',
+                                                replacement)
+        if ('cluster' in params):
+            replacement = str(self.apiClient.toPathValue(params['cluster']))
+            resourcePath = resourcePath.replace('{' + 'cluster' + '}',
+                                                replacement)
+        postData = None
+
+        contentTypes = ["application/json"]
+        if len(contentTypes) != 1:
+            raise ValueError("An API client expects a single content type. Got: %s" % contentTypes)
+
+        response = self.apiClient.callAPI(resourcePath, method, queryParams,
+                                          postData, headerParams, contentTypes[0])
+
+        if not response:
+            return None
+
+        responseObject = self.apiClient.deserialize(response, 'cloudera.director.latest.models.ClusterAdministrationSettings')
+        return responseObject
+        
+
+        
+
+    def getHistory(self, environment, deployment, cluster, numEvents= None, page= None, **kwargs):
+        """Get history of updates for a cluster
+
+        Args:
+            environment, str: environmentName (required)
+
+            deployment, str: deploymentName (required)
+
+            cluster, str: clusterName (required)
+
+            numEvents, int: numEvents (required)
+
+            page, int: page (required)
+
+            
+
+        Returns: list[cloudera.director.latest.models.ClusterUpdateEventSummary]
+        """
+
+        allParams = ['environment', 'deployment', 'cluster', 'numEvents', 'page']
+
+        params = locals()
+        for (key, val) in params['kwargs'].iteritems():
+            if key not in allParams:
+                raise TypeError("Got an unexpected keyword argument '%s' to method getHistory" % key)
+            params[key] = val
+        del params['kwargs']
+
+        resourcePath = '/api/v9/environments/{environment}/deployments/{deployment}/clusters/{cluster}/history'
+        resourcePath = resourcePath.replace('{format}', 'json')
+        method = 'GET'
+
+        queryParams = {}
+        headerParams = {}
+
+        if ('numEvents' in params):
+            queryParams['numEvents'] = self.apiClient.toPathValue(params['numEvents'])
+        if ('page' in params):
+            queryParams['page'] = self.apiClient.toPathValue(params['page'])
+        if ('environment' in params):
+            replacement = str(self.apiClient.toPathValue(params['environment']))
+            resourcePath = resourcePath.replace('{' + 'environment' + '}',
+                                                replacement)
+        if ('deployment' in params):
+            replacement = str(self.apiClient.toPathValue(params['deployment']))
+            resourcePath = resourcePath.replace('{' + 'deployment' + '}',
+                                                replacement)
+        if ('cluster' in params):
+            replacement = str(self.apiClient.toPathValue(params['cluster']))
+            resourcePath = resourcePath.replace('{' + 'cluster' + '}',
+                                                replacement)
+        postData = None
+
+        contentTypes = ["application/json"]
+        if len(contentTypes) != 1:
+            raise ValueError("An API client expects a single content type. Got: %s" % contentTypes)
+
+        response = self.apiClient.callAPI(resourcePath, method, queryParams,
+                                          postData, headerParams, contentTypes[0])
+
+        if not response:
+            return None
+
+        responseObject = self.apiClient.deserialize(response, 'list[cloudera.director.latest.models.ClusterUpdateEventSummary]')
+        return responseObject
+        
+
+        
+
     def getMetrics(self, environment, deployment, cluster, **kwargs):
         """Get cluster metrics by name
 
@@ -278,7 +408,7 @@ class ClustersApi(object):
             params[key] = val
         del params['kwargs']
 
-        resourcePath = '/api/v8/environments/{environment}/deployments/{deployment}/clusters/{cluster}/metrics'
+        resourcePath = '/api/v9/environments/{environment}/deployments/{deployment}/clusters/{cluster}/metrics'
         resourcePath = resourcePath.replace('{format}', 'json')
         method = 'GET'
 
@@ -339,7 +469,7 @@ class ClustersApi(object):
             params[key] = val
         del params['kwargs']
 
-        resourcePath = '/api/v8/environments/{environment}/deployments/{deployment}/clusters/{cluster}/status'
+        resourcePath = '/api/v9/environments/{environment}/deployments/{deployment}/clusters/{cluster}/status'
         resourcePath = resourcePath.replace('{format}', 'json')
         method = 'GET'
 
@@ -400,7 +530,7 @@ class ClustersApi(object):
             params[key] = val
         del params['kwargs']
 
-        resourcePath = '/api/v8/environments/{environment}/deployments/{deployment}/clusters/{cluster}/template'
+        resourcePath = '/api/v9/environments/{environment}/deployments/{deployment}/clusters/{cluster}/template'
         resourcePath = resourcePath.replace('{format}', 'json')
         method = 'GET'
 
@@ -459,7 +589,7 @@ class ClustersApi(object):
             params[key] = val
         del params['kwargs']
 
-        resourcePath = '/api/v8/environments/{environment}/deployments/{deployment}/clusters'
+        resourcePath = '/api/v9/environments/{environment}/deployments/{deployment}/clusters'
         resourcePath = resourcePath.replace('{format}', 'json')
         method = 'GET'
 
@@ -518,7 +648,65 @@ class ClustersApi(object):
             params[key] = val
         del params['kwargs']
 
-        resourcePath = '/api/v8/environments/{environment}/deployments/{deployment}/clusters/{cluster}'
+        resourcePath = '/api/v9/environments/{environment}/deployments/{deployment}/clusters/{cluster}'
+        resourcePath = resourcePath.replace('{format}', 'json')
+        method = 'PUT'
+
+        queryParams = {}
+        headerParams = {}
+
+        if ('environment' in params):
+            replacement = str(self.apiClient.toPathValue(params['environment']))
+            resourcePath = resourcePath.replace('{' + 'environment' + '}',
+                                                replacement)
+        if ('deployment' in params):
+            replacement = str(self.apiClient.toPathValue(params['deployment']))
+            resourcePath = resourcePath.replace('{' + 'deployment' + '}',
+                                                replacement)
+        if ('cluster' in params):
+            replacement = str(self.apiClient.toPathValue(params['cluster']))
+            resourcePath = resourcePath.replace('{' + 'cluster' + '}',
+                                                replacement)
+        postData = body
+
+        contentTypes = ["application/json"]
+        if len(contentTypes) != 1:
+            raise ValueError("An API client expects a single content type. Got: %s" % contentTypes)
+
+        response = self.apiClient.callAPI(resourcePath, method, queryParams,
+                                          postData, headerParams, contentTypes[0])
+
+        
+
+        
+
+    def updateAdministrationSettings(self, environment, deployment, cluster, body, **kwargs):
+        """Update administration settings for a cluster
+
+        Args:
+            environment, str: environmentName (required)
+
+            deployment, str: deploymentName (required)
+
+            cluster, str: clusterName (required)
+
+            body, cloudera.director.latest.models.ClusterAdministrationSettings: administrationSettings (required)
+
+            
+
+        Returns: 
+        """
+
+        allParams = ['environment', 'deployment', 'cluster', 'body']
+
+        params = locals()
+        for (key, val) in params['kwargs'].iteritems():
+            if key not in allParams:
+                raise TypeError("Got an unexpected keyword argument '%s' to method updateAdministrationSettings" % key)
+            params[key] = val
+        del params['kwargs']
+
+        resourcePath = '/api/v9/environments/{environment}/deployments/{deployment}/clusters/{cluster}/settings'
         resourcePath = resourcePath.replace('{format}', 'json')
         method = 'PUT'
 

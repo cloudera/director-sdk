@@ -24,6 +24,7 @@ class Instance:
         self.swaggerTypes = {
             'capabilities': 'cloudera.director.latest.models.Capabilities',
             'cmHostId': 'str',
+            'cmHostUrl': 'str',
             'health': 'cloudera.director.latest.models.Health',
             'ipAddress': 'str',
             'properties': 'dict[str,str]',
@@ -38,6 +39,8 @@ class Instance:
         self.capabilities = kwargs.get('capabilities',None) # cloudera.director.latest.models.Capabilities
         #Optional Cloudera Manager HostId
         self.cmHostId = kwargs.get('cmHostId',None) # str
+        #Optional Cloudera Manager Host URL
+        self.cmHostUrl = kwargs.get('cmHostUrl',None) # str
         #Instance health
         self.health = kwargs.get('health',None) # cloudera.director.latest.models.Health
         #IP address of instance

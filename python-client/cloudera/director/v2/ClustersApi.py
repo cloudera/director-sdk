@@ -37,8 +37,6 @@ class ClustersApi(object):
 
             deployment, str: deploymentName (required)
 
-            X-Request-Id, str: requestId (optional)
-
             body, cloudera.director.v2.models.ClusterTemplate: clusterTemplate (required)
 
             
@@ -46,7 +44,7 @@ class ClustersApi(object):
         Returns: 
         """
 
-        allParams = ['environment', 'deployment', 'X-Request-Id', 'body']
+        allParams = ['environment', 'deployment', 'body']
 
         params = locals()
         for (key, val) in params['kwargs'].iteritems():
@@ -62,8 +60,6 @@ class ClustersApi(object):
         queryParams = {}
         headerParams = {}
 
-        if ('X-Request-Id' in params):
-            headerParams['X-Request-Id'] = params['X-Request-Id']
         if ('environment' in params):
             replacement = str(self.apiClient.toPathValue(params['environment']))
             resourcePath = resourcePath.replace('{' + 'environment' + '}',
@@ -95,14 +91,12 @@ class ClustersApi(object):
 
             cluster, str: clusterName (required)
 
-            X-Request-Id, str: requestId (optional)
-
             
 
         Returns: 
         """
 
-        allParams = ['environment', 'deployment', 'cluster', 'X-Request-Id']
+        allParams = ['environment', 'deployment', 'cluster']
 
         params = locals()
         for (key, val) in params['kwargs'].iteritems():
@@ -118,8 +112,6 @@ class ClustersApi(object):
         queryParams = {}
         headerParams = {}
 
-        if ('X-Request-Id' in params):
-            headerParams['X-Request-Id'] = params['X-Request-Id']
         if ('environment' in params):
             replacement = str(self.apiClient.toPathValue(params['environment']))
             resourcePath = resourcePath.replace('{' + 'environment' + '}',
@@ -393,8 +385,6 @@ class ClustersApi(object):
 
             cluster, str: clusterName (required)
 
-            X-Request-Id, str: requestId (optional)
-
             body, cloudera.director.v2.models.ClusterTemplate: desired (required)
 
             
@@ -402,7 +392,7 @@ class ClustersApi(object):
         Returns: 
         """
 
-        allParams = ['environment', 'deployment', 'cluster', 'X-Request-Id', 'body']
+        allParams = ['environment', 'deployment', 'cluster', 'body']
 
         params = locals()
         for (key, val) in params['kwargs'].iteritems():
@@ -418,8 +408,6 @@ class ClustersApi(object):
         queryParams = {}
         headerParams = {}
 
-        if ('X-Request-Id' in params):
-            headerParams['X-Request-Id'] = params['X-Request-Id']
         if ('environment' in params):
             replacement = str(self.apiClient.toPathValue(params['environment']))
             resourcePath = resourcePath.replace('{' + 'environment' + '}',

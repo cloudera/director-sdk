@@ -51,7 +51,7 @@ class InstanceTemplatesApi(object):
             params[key] = val
         del params['kwargs']
 
-        resourcePath = '/api/v8/environments/{environment}/templates/instances'
+        resourcePath = '/api/v9/environments/{environment}/templates/instances'
         resourcePath = resourcePath.replace('{format}', 'json')
         method = 'POST'
 
@@ -97,7 +97,7 @@ class InstanceTemplatesApi(object):
             params[key] = val
         del params['kwargs']
 
-        resourcePath = '/api/v8/environments/{environment}/templates/instances/{template}'
+        resourcePath = '/api/v9/environments/{environment}/templates/instances/{template}'
         resourcePath = resourcePath.replace('{format}', 'json')
         method = 'DELETE'
 
@@ -147,7 +147,7 @@ class InstanceTemplatesApi(object):
             params[key] = val
         del params['kwargs']
 
-        resourcePath = '/api/v8/environments/{environment}/templates/instances/{template}'
+        resourcePath = '/api/v9/environments/{environment}/templates/instances/{template}'
         resourcePath = resourcePath.replace('{format}', 'json')
         method = 'GET'
 
@@ -200,7 +200,7 @@ class InstanceTemplatesApi(object):
             params[key] = val
         del params['kwargs']
 
-        resourcePath = '/api/v8/environments/{environment}/templates/instances'
+        resourcePath = '/api/v9/environments/{environment}/templates/instances'
         resourcePath = resourcePath.replace('{format}', 'json')
         method = 'GET'
 
@@ -253,7 +253,7 @@ class InstanceTemplatesApi(object):
             params[key] = val
         del params['kwargs']
 
-        resourcePath = '/api/v8/environments/{environment}/templates/instances/{template}'
+        resourcePath = '/api/v9/environments/{environment}/templates/instances/{template}'
         resourcePath = resourcePath.replace('{format}', 'json')
         method = 'PUT'
 

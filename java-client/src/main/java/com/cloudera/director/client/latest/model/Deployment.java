@@ -20,6 +20,8 @@ package com.cloudera.director.client.latest.model;
 
 
 public class Deployment {
+  /* Cloudera Manager Version */
+  private String cmVersion;
   /* Whether to enable Cloudera Enterprise Trial */
   private Boolean enableEnterpriseTrial;
   /* Hostname for existing Cloudera Manager installation */
@@ -51,7 +53,8 @@ public class Deployment {
   }
   public Deployment() { }
 
-  private Deployment(Boolean enableEnterpriseTrial, String hostname, String javaInstallationStrategy, String krbAdminPassword, String krbAdminUsername, Instance managerInstance, String name, String password, Integer port, String repository, String repositoryKeyUrl, Boolean unlimitedJce, String username) {
+  private Deployment(String cmVersion, Boolean enableEnterpriseTrial, String hostname, String javaInstallationStrategy, String krbAdminPassword, String krbAdminUsername, Instance managerInstance, String name, String password, Integer port, String repository, String repositoryKeyUrl, Boolean unlimitedJce, String username) {
+    this.cmVersion = cmVersion;
     this.enableEnterpriseTrial = enableEnterpriseTrial;
     this.hostname = hostname;
     this.javaInstallationStrategy = javaInstallationStrategy;
@@ -68,6 +71,7 @@ public class Deployment {
   }
 
   private Deployment(DeploymentBuilder builder) {
+    this.cmVersion = builder.cmVersion;
     this.enableEnterpriseTrial = builder.enableEnterpriseTrial;
     this.hostname = builder.hostname;
     this.javaInstallationStrategy = builder.javaInstallationStrategy;
@@ -88,6 +92,7 @@ public class Deployment {
   }
 
   public static class DeploymentBuilder {
+    private String cmVersion = null;
     private Boolean enableEnterpriseTrial = null;
     private String hostname = null;
     private String javaInstallationStrategy = null;
@@ -101,6 +106,11 @@ public class Deployment {
     private String repositoryKeyUrl = null;
     private Boolean unlimitedJce = null;
     private String username = null;
+
+    public DeploymentBuilder cmVersion(String cmVersion) {
+      this.cmVersion = cmVersion;
+      return this;
+    }
 
     public DeploymentBuilder enableEnterpriseTrial(Boolean enableEnterpriseTrial) {
       this.enableEnterpriseTrial = enableEnterpriseTrial;
@@ -174,6 +184,7 @@ public class Deployment {
 
   public DeploymentBuilder toBuilder() {
     return builder()
+      .cmVersion(cmVersion)
       .enableEnterpriseTrial(enableEnterpriseTrial)
       .hostname(hostname)
       .javaInstallationStrategy(javaInstallationStrategy)
@@ -189,6 +200,13 @@ public class Deployment {
       .username(username)
       ;
   }
+  public String getCmVersion() {
+    return cmVersion;
+  }
+  public void setCmVersion(String cmVersion) {
+    this.cmVersion = cmVersion;
+  }
+
   public Boolean getEnableEnterpriseTrial() {
     return enableEnterpriseTrial;
   }
@@ -287,6 +305,9 @@ public class Deployment {
 
     Deployment other = (Deployment) o; // NOPMD
 
+    if (cmVersion != null ?
+        !cmVersion.equals(other.cmVersion) :
+        other.cmVersion != null) return false;
     if (enableEnterpriseTrial != null ?
         !enableEnterpriseTrial.equals(other.enableEnterpriseTrial) :
         other.enableEnterpriseTrial != null) return false;
@@ -326,6 +347,7 @@ public class Deployment {
   @Override
   public int hashCode() {
     int result = 0;
+    result = 31 * result + (cmVersion != null ? cmVersion.hashCode() : 0);
     result = 31 * result + (enableEnterpriseTrial != null ? enableEnterpriseTrial.hashCode() : 0);
     result = 31 * result + (hostname != null ? hostname.hashCode() : 0);
     result = 31 * result + (javaInstallationStrategy != null ? javaInstallationStrategy.hashCode() : 0);
@@ -345,6 +367,7 @@ public class Deployment {
     StringBuilder sb = new StringBuilder();
     String newLine = System.getProperty("line.separator");
     sb.append("class Deployment {" + newLine);
+    sb.append("  cmVersion: ").append(cmVersion).append(newLine);
     sb.append("  enableEnterpriseTrial: ").append(enableEnterpriseTrial).append(newLine);
     sb.append("  hostname: ").append(hostname).append(newLine);
     sb.append("  javaInstallationStrategy: ").append(javaInstallationStrategy).append(newLine);

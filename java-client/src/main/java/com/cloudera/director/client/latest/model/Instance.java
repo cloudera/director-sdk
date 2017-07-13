@@ -27,6 +27,8 @@ public class Instance {
   private Capabilities capabilities;
   /* Optional Cloudera Manager HostId */
   private String cmHostId;
+  /* Optional Cloudera Manager Host URL */
+  private String cmHostUrl;
   /* Instance health */
   private Health health;
   /* IP address of instance */
@@ -41,9 +43,10 @@ public class Instance {
   private VirtualInstance virtualInstance;
   public Instance() { }
 
-  private Instance(Capabilities capabilities, String cmHostId, Health health, String ipAddress, Map<String, String> properties, InstanceState state, Set<ValidationExceptionCondition> validationConditions, VirtualInstance virtualInstance) {
+  private Instance(Capabilities capabilities, String cmHostId, String cmHostUrl, Health health, String ipAddress, Map<String, String> properties, InstanceState state, Set<ValidationExceptionCondition> validationConditions, VirtualInstance virtualInstance) {
     this.capabilities = capabilities;
     this.cmHostId = cmHostId;
+    this.cmHostUrl = cmHostUrl;
     this.health = health;
     this.ipAddress = ipAddress;
     this.properties = properties;
@@ -55,6 +58,7 @@ public class Instance {
   private Instance(InstanceBuilder builder) {
     this.capabilities = builder.capabilities;
     this.cmHostId = builder.cmHostId;
+    this.cmHostUrl = builder.cmHostUrl;
     this.health = builder.health;
     this.ipAddress = builder.ipAddress;
     this.properties = builder.properties;
@@ -70,6 +74,7 @@ public class Instance {
   public static class InstanceBuilder {
     private Capabilities capabilities = null;
     private String cmHostId = null;
+    private String cmHostUrl = null;
     private Health health = null;
     private String ipAddress = null;
     private Map<String, String> properties = new HashMap<String, String>();
@@ -84,6 +89,11 @@ public class Instance {
 
     public InstanceBuilder cmHostId(String cmHostId) {
       this.cmHostId = cmHostId;
+      return this;
+    }
+
+    public InstanceBuilder cmHostUrl(String cmHostUrl) {
+      this.cmHostUrl = cmHostUrl;
       return this;
     }
 
@@ -126,6 +136,7 @@ public class Instance {
     return builder()
       .capabilities(capabilities)
       .cmHostId(cmHostId)
+      .cmHostUrl(cmHostUrl)
       .health(health)
       .ipAddress(ipAddress)
       .properties(properties)
@@ -146,6 +157,13 @@ public class Instance {
   }
   public void setCmHostId(String cmHostId) {
     this.cmHostId = cmHostId;
+  }
+
+  public String getCmHostUrl() {
+    return cmHostUrl;
+  }
+  public void setCmHostUrl(String cmHostUrl) {
+    this.cmHostUrl = cmHostUrl;
   }
 
   public Health getHealth() {
@@ -203,6 +221,9 @@ public class Instance {
     if (cmHostId != null ?
         !cmHostId.equals(other.cmHostId) :
         other.cmHostId != null) return false;
+    if (cmHostUrl != null ?
+        !cmHostUrl.equals(other.cmHostUrl) :
+        other.cmHostUrl != null) return false;
     if (health != null ?
         !health.equals(other.health) :
         other.health != null) return false;
@@ -229,6 +250,7 @@ public class Instance {
     int result = 0;
     result = 31 * result + (capabilities != null ? capabilities.hashCode() : 0);
     result = 31 * result + (cmHostId != null ? cmHostId.hashCode() : 0);
+    result = 31 * result + (cmHostUrl != null ? cmHostUrl.hashCode() : 0);
     result = 31 * result + (health != null ? health.hashCode() : 0);
     result = 31 * result + (ipAddress != null ? ipAddress.hashCode() : 0);
     result = 31 * result + (properties != null ? properties.hashCode() : 0);
@@ -245,6 +267,7 @@ public class Instance {
     sb.append("class Instance {" + newLine);
     sb.append("  capabilities: ").append(capabilities).append(newLine);
     sb.append("  cmHostId: ").append(cmHostId).append(newLine);
+    sb.append("  cmHostUrl: ").append(cmHostUrl).append(newLine);
     sb.append("  health: ").append(health).append(newLine);
     sb.append("  ipAddress: ").append(ipAddress).append(newLine);
     sb.append("  properties: ").append(properties).append(newLine);

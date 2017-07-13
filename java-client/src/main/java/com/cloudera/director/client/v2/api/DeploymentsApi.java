@@ -44,7 +44,6 @@ public class DeploymentsApi {
   /**
   * Create a new deployment.
   * @param  environment  environmentName
-  * @param  XRequestId  requestId
   * @param  body  deploymentTemplate
   * status code: 201 reason: "Deployment template accepted"
   * status code: 302 reason: "Deployment already exists"
@@ -53,7 +52,7 @@ public class DeploymentsApi {
   * status code: 403 reason: "Forbidden"
   * status code: 404 reason: "Not Found"
   */
-  public void create(String environment, String XRequestId, DeploymentTemplate body) throws ApiException {
+  public void create(String environment, DeploymentTemplate body) throws ApiException {
     Object postBody = body;
     // verify required params are set
     if (environment == null || body == null ) {
@@ -71,7 +70,6 @@ public class DeploymentsApi {
     Map<String, String> headerParams = new HashMap<String, String>();
     Map<String, String> formParams = new HashMap<String, String>();
 
-    headerParams.put("X-Request-Id", XRequestId);
     String[] contentTypes = { "application/json"};
     if (contentTypes.length != 1) {
       throw new IllegalArgumentException("An API client expects a single content type. Got: "
@@ -88,20 +86,16 @@ public class DeploymentsApi {
     }
   }
 
-  public void create(String environment, DeploymentTemplate body) throws ApiException {
-     create(environment, null, body);
-    }
   /**
   * Delete a deployment by name.
   * @param  environment  environmentName
   * @param  deployment  deploymentName
-  * @param  XRequestId  requestId
   * status code: 204 reason: "Delete request accepted"
   * status code: 401 reason: "Unauthorized"
   * status code: 403 reason: "Forbidden"
   * status code: 404 reason: "Entity not found"
   */
-  public void delete(String environment, String deployment, String XRequestId) throws ApiException {
+  public void delete(String environment, String deployment) throws ApiException {
     Object postBody = null;
     // verify required params are set
     if (environment == null || deployment == null ) {
@@ -121,7 +115,6 @@ public class DeploymentsApi {
     Map<String, String> headerParams = new HashMap<String, String>();
     Map<String, String> formParams = new HashMap<String, String>();
 
-    headerParams.put("X-Request-Id", XRequestId);
     String[] contentTypes = { "application/json"};
     if (contentTypes.length != 1) {
       throw new IllegalArgumentException("An API client expects a single content type. Got: "
@@ -138,9 +131,6 @@ public class DeploymentsApi {
     }
   }
 
-  public void delete(String environment, String deployment) throws ApiException {
-     delete(environment, deployment, null);
-    }
   /**
   * Get a deployment by name.
   * @param  environment  environmentName
@@ -323,7 +313,6 @@ public class DeploymentsApi {
   * Update an existing deployment template.
   * @param  environment  environmentName
   * @param  deployment  deploymentName
-  * @param  XRequestId  requestId
   * @param  body  updatedTemplate
   * status code: 201 reason: "Created"
   * status code: 202 reason: ""
@@ -332,7 +321,7 @@ public class DeploymentsApi {
   * status code: 403 reason: "Forbidden"
   * status code: 404 reason: "Not Found"
   */
-  public void update(String environment, String deployment, String XRequestId, DeploymentTemplate body) throws ApiException {
+  public void update(String environment, String deployment, DeploymentTemplate body) throws ApiException {
     Object postBody = body;
     // verify required params are set
     if (environment == null || deployment == null || body == null ) {
@@ -352,7 +341,6 @@ public class DeploymentsApi {
     Map<String, String> headerParams = new HashMap<String, String>();
     Map<String, String> formParams = new HashMap<String, String>();
 
-    headerParams.put("X-Request-Id", XRequestId);
     String[] contentTypes = { "application/json"};
     if (contentTypes.length != 1) {
       throw new IllegalArgumentException("An API client expects a single content type. Got: "
@@ -369,8 +357,5 @@ public class DeploymentsApi {
     }
   }
 
-  public void update(String environment, String deployment, DeploymentTemplate body) throws ApiException {
-     update(environment, deployment, null, body);
-    }
   }
 

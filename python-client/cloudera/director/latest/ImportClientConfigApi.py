@@ -55,7 +55,7 @@ class ImportClientConfigApi(object):
             params[key] = val
         del params['kwargs']
 
-        resourcePath = '/api/v8/import'
+        resourcePath = '/api/v9/import'
         resourcePath = resourcePath.replace('{format}', 'json')
         method = 'POST'
 
@@ -81,6 +81,63 @@ class ImportClientConfigApi(object):
             return None
 
         responseObject = self.apiClient.deserialize(response, 'cloudera.director.latest.models.ImportResult')
+        return responseObject
+        
+
+        
+
+    def validate(self, body, **kwargs):
+        """Validate Client Config
+
+        Args:
+            body, str: clientConfig (required)
+
+            clusterName, str: clusterName (optional)
+
+            deploymentName, str: deploymentName (optional)
+
+            environmentName, str: environmentName (optional)
+
+            
+
+        Returns: cloudera.director.latest.models.ValidationResult
+        """
+
+        allParams = ['body', 'clusterName', 'deploymentName', 'environmentName']
+
+        params = locals()
+        for (key, val) in params['kwargs'].iteritems():
+            if key not in allParams:
+                raise TypeError("Got an unexpected keyword argument '%s' to method validate" % key)
+            params[key] = val
+        del params['kwargs']
+
+        resourcePath = '/api/v9/import/clientConfig/validate'
+        resourcePath = resourcePath.replace('{format}', 'json')
+        method = 'POST'
+
+        queryParams = {}
+        headerParams = {}
+
+        if ('clusterName' in params):
+            queryParams['clusterName'] = self.apiClient.toPathValue(params['clusterName'])
+        if ('deploymentName' in params):
+            queryParams['deploymentName'] = self.apiClient.toPathValue(params['deploymentName'])
+        if ('environmentName' in params):
+            queryParams['environmentName'] = self.apiClient.toPathValue(params['environmentName'])
+        postData = body
+
+        contentTypes = ["text/plain"]
+        if len(contentTypes) != 1:
+            raise ValueError("An API client expects a single content type. Got: %s" % contentTypes)
+
+        response = self.apiClient.callAPI(resourcePath, method, queryParams,
+                                          postData, headerParams, contentTypes[0])
+
+        if not response:
+            return None
+
+        responseObject = self.apiClient.deserialize(response, 'cloudera.director.latest.models.ValidationResult')
         return responseObject
         
 

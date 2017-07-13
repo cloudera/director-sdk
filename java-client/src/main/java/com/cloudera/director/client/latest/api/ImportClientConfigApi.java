@@ -22,6 +22,7 @@ import com.cloudera.director.client.common.ApiClient;
 import com.cloudera.director.client.common.ApiException;
 
 import com.cloudera.director.client.latest.model.ImportResult;
+import com.cloudera.director.client.latest.model.ValidationResult;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List; // NOPMD
@@ -58,7 +59,7 @@ public class ImportClientConfigApi {
        throw new ApiException(400, "missing required params");
     }
     // create path and map variables
-    String path = "/api/v8/import"
+    String path = "/api/v9/import"
       .replaceAll("\\{format\\}", "json")
       ;
 
@@ -91,6 +92,59 @@ public class ImportClientConfigApi {
 
   public ImportResult importClientConfig(String body) throws ApiException {
      return importClientConfig(body, null, null, null);
+    }
+  /**
+  * Validate Client Config.
+  * @param  body  clientConfig
+  * @param  clusterName  clusterName
+  * @param  deploymentName  deploymentName
+  * @param  environmentName  environmentName
+  * status code: 201 reason: "Validation completed"
+  * status code: 202 reason: "Validation request accepted"
+  * status code: 401 reason: "Unauthorized"
+  * status code: 403 reason: "Forbidden"
+  * status code: 404 reason: "Not Found"
+  */
+  public ValidationResult validate(String body, String clusterName, String deploymentName, String environmentName) throws ApiException {
+    Object postBody = body;
+    // verify required params are set
+    if (body == null ) {
+       throw new ApiException(400, "missing required params");
+    }
+    // create path and map variables
+    String path = "/api/v9/import/clientConfig/validate"
+      .replaceAll("\\{format\\}", "json")
+      ;
+
+    // query params
+    Map<String, String> queryParams = new HashMap<String, String>();
+    Map<String, String> headerParams = new HashMap<String, String>();
+    Map<String, String> formParams = new HashMap<String, String>();
+
+    if (!"null".equals(String.valueOf(clusterName)))
+      queryParams.put("clusterName", String.valueOf(clusterName));
+    if (!"null".equals(String.valueOf(deploymentName)))
+      queryParams.put("deploymentName", String.valueOf(deploymentName));
+    if (!"null".equals(String.valueOf(environmentName)))
+      queryParams.put("environmentName", String.valueOf(environmentName));
+    String[] contentTypes = { "text/plain"};
+    if (contentTypes.length != 1) {
+      throw new IllegalArgumentException("An API client expects a single content type. Got: "
+        + Arrays.toString(contentTypes));
+    }
+
+    String response = apiClient.invokeAPI(path, "POST", queryParams, postBody,
+      headerParams, formParams, contentTypes[0]);
+
+    if (response != null) {
+      return (ValidationResult) ApiClient.deserialize(response, "", ValidationResult.class);
+    } else {
+      return null;
+    }
+  }
+
+  public ValidationResult validate(String body) throws ApiException {
+     return validate(body, null, null, null);
     }
   }
 

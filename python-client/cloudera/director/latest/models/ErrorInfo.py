@@ -22,6 +22,7 @@ class ErrorInfo:
 
     def __init__(self, **kwargs):
         self.swaggerTypes = {
+            'causes': 'set[cloudera.director.latest.models.ErrorInfo]',
             'errorCode': 'str',
             'errorType': 'str',
             'properties': 'dict[str,str]',
@@ -30,6 +31,8 @@ class ErrorInfo:
         }
 
 
+        #Causes
+        self.causes = kwargs.get('causes',set()) # set[cloudera.director.latest.models.ErrorInfo]
         #Error code
         self.errorCode = kwargs.get('errorCode',None) # str
         #Error type

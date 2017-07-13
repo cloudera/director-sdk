@@ -25,6 +25,8 @@ import java.util.Map;
 import java.util.Set;
 
 public class ClusterTemplate {
+  /* Optional cluster administration settings */
+  private ClusterAdministrationSettings administrationSettings;
   /* Optional external database templates */
   private Map<String, ExternalDatabaseTemplate> externalDatabaseTemplates;
   /* Optional external databases */
@@ -55,7 +57,8 @@ public class ClusterTemplate {
   private Map<String, VirtualInstanceGroup> virtualInstanceGroups;
   public ClusterTemplate() { }
 
-  private ClusterTemplate(Map<String, ExternalDatabaseTemplate> externalDatabaseTemplates, Map<String, ExternalDatabase> externalDatabases, List<String> instancePostCreateScripts, Set<Migration> migrations, String name, Set<String> parcelRepositories, List<String> postCreateScripts, List<String> preTerminateScripts, Map<String, String> productVersions, Boolean redeployClientConfigsOnUpdate, Boolean restartClusterOnUpdate, List<String> services, Map<String, Map<String, String>> servicesConfigs, Map<String, VirtualInstanceGroup> virtualInstanceGroups) {
+  private ClusterTemplate(ClusterAdministrationSettings administrationSettings, Map<String, ExternalDatabaseTemplate> externalDatabaseTemplates, Map<String, ExternalDatabase> externalDatabases, List<String> instancePostCreateScripts, Set<Migration> migrations, String name, Set<String> parcelRepositories, List<String> postCreateScripts, List<String> preTerminateScripts, Map<String, String> productVersions, Boolean redeployClientConfigsOnUpdate, Boolean restartClusterOnUpdate, List<String> services, Map<String, Map<String, String>> servicesConfigs, Map<String, VirtualInstanceGroup> virtualInstanceGroups) {
+    this.administrationSettings = administrationSettings;
     this.externalDatabaseTemplates = externalDatabaseTemplates;
     this.externalDatabases = externalDatabases;
     this.instancePostCreateScripts = instancePostCreateScripts;
@@ -73,6 +76,7 @@ public class ClusterTemplate {
   }
 
   private ClusterTemplate(ClusterTemplateBuilder builder) {
+    this.administrationSettings = builder.administrationSettings;
     this.externalDatabaseTemplates = builder.externalDatabaseTemplates;
     this.externalDatabases = builder.externalDatabases;
     this.instancePostCreateScripts = builder.instancePostCreateScripts;
@@ -94,6 +98,7 @@ public class ClusterTemplate {
   }
 
   public static class ClusterTemplateBuilder {
+    private ClusterAdministrationSettings administrationSettings = null;
     private Map<String, ExternalDatabaseTemplate> externalDatabaseTemplates = new HashMap<String, ExternalDatabaseTemplate>();
     private Map<String, ExternalDatabase> externalDatabases = new HashMap<String, ExternalDatabase>();
     private List<String> instancePostCreateScripts = new ArrayList<String>();
@@ -108,6 +113,11 @@ public class ClusterTemplate {
     private List<String> services = new ArrayList<String>();
     private Map<String, Map<String, String>> servicesConfigs = new HashMap<String, Map<String, String>>();
     private Map<String, VirtualInstanceGroup> virtualInstanceGroups = new HashMap<String, VirtualInstanceGroup>();
+
+    public ClusterTemplateBuilder administrationSettings(ClusterAdministrationSettings administrationSettings) {
+      this.administrationSettings = administrationSettings;
+      return this;
+    }
 
     public ClusterTemplateBuilder externalDatabaseTemplates(Map<String, ExternalDatabaseTemplate> externalDatabaseTemplates) {
       this.externalDatabaseTemplates = externalDatabaseTemplates;
@@ -186,6 +196,7 @@ public class ClusterTemplate {
 
   public ClusterTemplateBuilder toBuilder() {
     return builder()
+      .administrationSettings(administrationSettings)
       .externalDatabaseTemplates(externalDatabaseTemplates)
       .externalDatabases(externalDatabases)
       .instancePostCreateScripts(instancePostCreateScripts)
@@ -202,6 +213,13 @@ public class ClusterTemplate {
       .virtualInstanceGroups(virtualInstanceGroups)
       ;
   }
+  public ClusterAdministrationSettings getAdministrationSettings() {
+    return administrationSettings;
+  }
+  public void setAdministrationSettings(ClusterAdministrationSettings administrationSettings) {
+    this.administrationSettings = administrationSettings;
+  }
+
   public Map<String, ExternalDatabaseTemplate> getExternalDatabaseTemplates() {
     return externalDatabaseTemplates;
   }
@@ -307,6 +325,9 @@ public class ClusterTemplate {
 
     ClusterTemplate other = (ClusterTemplate) o; // NOPMD
 
+    if (administrationSettings != null ?
+        !administrationSettings.equals(other.administrationSettings) :
+        other.administrationSettings != null) return false;
     if (externalDatabaseTemplates != null ?
         !externalDatabaseTemplates.equals(other.externalDatabaseTemplates) :
         other.externalDatabaseTemplates != null) return false;
@@ -355,6 +376,7 @@ public class ClusterTemplate {
   @Override
   public int hashCode() {
     int result = 0;
+    result = 31 * result + (administrationSettings != null ? administrationSettings.hashCode() : 0);
     result = 31 * result + (externalDatabaseTemplates != null ? externalDatabaseTemplates.hashCode() : 0);
     result = 31 * result + (externalDatabases != null ? externalDatabases.hashCode() : 0);
     result = 31 * result + (instancePostCreateScripts != null ? instancePostCreateScripts.hashCode() : 0);
@@ -377,6 +399,7 @@ public class ClusterTemplate {
     StringBuilder sb = new StringBuilder();
     String newLine = System.getProperty("line.separator");
     sb.append("class ClusterTemplate {" + newLine);
+    sb.append("  administrationSettings: ").append(administrationSettings).append(newLine);
     sb.append("  externalDatabaseTemplates: ").append(externalDatabaseTemplates).append(newLine);
     sb.append("  externalDatabases: ").append(externalDatabases).append(newLine);
     sb.append("  instancePostCreateScripts: ").append(instancePostCreateScripts).append(newLine);

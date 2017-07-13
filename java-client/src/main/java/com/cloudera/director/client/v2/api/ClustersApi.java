@@ -45,7 +45,6 @@ public class ClustersApi {
   * Create a new cluster.
   * @param  environment  environmentName
   * @param  deployment  deploymentName
-  * @param  XRequestId  requestId
   * @param  body  clusterTemplate
   * status code: 201 reason: "Cluster template accepted"
   * status code: 302 reason: "Cluster already exists"
@@ -54,7 +53,7 @@ public class ClustersApi {
   * status code: 403 reason: "Forbidden"
   * status code: 404 reason: "Not Found"
   */
-  public void create(String environment, String deployment, String XRequestId, ClusterTemplate body) throws ApiException {
+  public void create(String environment, String deployment, ClusterTemplate body) throws ApiException {
     Object postBody = body;
     // verify required params are set
     if (environment == null || deployment == null || body == null ) {
@@ -74,7 +73,6 @@ public class ClustersApi {
     Map<String, String> headerParams = new HashMap<String, String>();
     Map<String, String> formParams = new HashMap<String, String>();
 
-    headerParams.put("X-Request-Id", XRequestId);
     String[] contentTypes = { "application/json"};
     if (contentTypes.length != 1) {
       throw new IllegalArgumentException("An API client expects a single content type. Got: "
@@ -91,21 +89,17 @@ public class ClustersApi {
     }
   }
 
-  public void create(String environment, String deployment, ClusterTemplate body) throws ApiException {
-     create(environment, deployment, null, body);
-    }
   /**
   * Delete a cluster by name.
   * @param  environment  environmentName
   * @param  deployment  deploymentName
   * @param  cluster  clusterName
-  * @param  XRequestId  requestId
   * status code: 204 reason: "Delete request accepted"
   * status code: 401 reason: "Unauthorized"
   * status code: 403 reason: "Forbidden"
   * status code: 404 reason: "Entity not found"
   */
-  public void delete(String environment, String deployment, String cluster, String XRequestId) throws ApiException {
+  public void delete(String environment, String deployment, String cluster) throws ApiException {
     Object postBody = null;
     // verify required params are set
     if (environment == null || deployment == null || cluster == null ) {
@@ -127,7 +121,6 @@ public class ClustersApi {
     Map<String, String> headerParams = new HashMap<String, String>();
     Map<String, String> formParams = new HashMap<String, String>();
 
-    headerParams.put("X-Request-Id", XRequestId);
     String[] contentTypes = { "application/json"};
     if (contentTypes.length != 1) {
       throw new IllegalArgumentException("An API client expects a single content type. Got: "
@@ -144,9 +137,6 @@ public class ClustersApi {
     }
   }
 
-  public void delete(String environment, String deployment, String cluster) throws ApiException {
-     delete(environment, deployment, cluster, null);
-    }
   /**
   * Get a cluster by name.
   * @param  environment  environmentName
@@ -343,7 +333,6 @@ public class ClustersApi {
   * @param  environment  environmentName
   * @param  deployment  deploymentName
   * @param  cluster  clusterName
-  * @param  XRequestId  requestId
   * @param  body  desired
   * status code: 201 reason: "Created"
   * status code: 202 reason: "Cluster update accepted"
@@ -353,7 +342,7 @@ public class ClustersApi {
   * status code: 404 reason: "Not found"
   * status code: 409 reason: "Cluster is in a non-updatable state"
   */
-  public void update(String environment, String deployment, String cluster, String XRequestId, ClusterTemplate body) throws ApiException {
+  public void update(String environment, String deployment, String cluster, ClusterTemplate body) throws ApiException {
     Object postBody = body;
     // verify required params are set
     if (environment == null || deployment == null || cluster == null || body == null ) {
@@ -375,7 +364,6 @@ public class ClustersApi {
     Map<String, String> headerParams = new HashMap<String, String>();
     Map<String, String> formParams = new HashMap<String, String>();
 
-    headerParams.put("X-Request-Id", XRequestId);
     String[] contentTypes = { "application/json"};
     if (contentTypes.length != 1) {
       throw new IllegalArgumentException("An API client expects a single content type. Got: "
@@ -392,8 +380,5 @@ public class ClustersApi {
     }
   }
 
-  public void update(String environment, String deployment, String cluster, ClusterTemplate body) throws ApiException {
-     update(environment, deployment, cluster, null, body);
-    }
   }
 

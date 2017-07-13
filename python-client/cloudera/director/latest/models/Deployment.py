@@ -22,6 +22,7 @@ class Deployment:
 
     def __init__(self, **kwargs):
         self.swaggerTypes = {
+            'cmVersion': 'str',
             'enableEnterpriseTrial': 'bool',
             'hostname': 'str',
             'javaInstallationStrategy': 'str',
@@ -39,6 +40,8 @@ class Deployment:
         }
 
 
+        #Cloudera Manager Version
+        self.cmVersion = kwargs.get('cmVersion',None) # str
         #Whether to enable Cloudera Enterprise Trial
         self.enableEnterpriseTrial = kwargs.get('enableEnterpriseTrial',None) # bool
         #Hostname for existing Cloudera Manager installation

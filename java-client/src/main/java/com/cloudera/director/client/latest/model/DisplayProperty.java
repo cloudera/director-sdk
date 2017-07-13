@@ -20,6 +20,8 @@ package com.cloudera.director.client.latest.model;
 
 
 public class DisplayProperty {
+  /* The backing configuration property key */
+  private String backingConfigKey;
   /* Description of the display property */
   private String description;
   /* Display property key */
@@ -53,7 +55,8 @@ public class DisplayProperty {
   }
   public DisplayProperty() { }
 
-  private DisplayProperty(String description, String displayKey, String name, Boolean sensitive, String type, String widget) {
+  private DisplayProperty(String backingConfigKey, String description, String displayKey, String name, Boolean sensitive, String type, String widget) {
+    this.backingConfigKey = backingConfigKey;
     this.description = description;
     this.displayKey = displayKey;
     this.name = name;
@@ -63,6 +66,7 @@ public class DisplayProperty {
   }
 
   private DisplayProperty(DisplayPropertyBuilder builder) {
+    this.backingConfigKey = builder.backingConfigKey;
     this.description = builder.description;
     this.displayKey = builder.displayKey;
     this.name = builder.name;
@@ -76,12 +80,18 @@ public class DisplayProperty {
   }
 
   public static class DisplayPropertyBuilder {
+    private String backingConfigKey = null;
     private String description = null;
     private String displayKey = null;
     private String name = null;
     private Boolean sensitive = null;
     private String type = null;
     private String widget = null;
+
+    public DisplayPropertyBuilder backingConfigKey(String backingConfigKey) {
+      this.backingConfigKey = backingConfigKey;
+      return this;
+    }
 
     public DisplayPropertyBuilder description(String description) {
       this.description = description;
@@ -120,6 +130,7 @@ public class DisplayProperty {
 
   public DisplayPropertyBuilder toBuilder() {
     return builder()
+      .backingConfigKey(backingConfigKey)
       .description(description)
       .displayKey(displayKey)
       .name(name)
@@ -128,6 +139,13 @@ public class DisplayProperty {
       .widget(widget)
       ;
   }
+  public String getBackingConfigKey() {
+    return backingConfigKey;
+  }
+  public void setBackingConfigKey(String backingConfigKey) {
+    this.backingConfigKey = backingConfigKey;
+  }
+
   public String getDescription() {
     return description;
   }
@@ -177,6 +195,9 @@ public class DisplayProperty {
 
     DisplayProperty other = (DisplayProperty) o; // NOPMD
 
+    if (backingConfigKey != null ?
+        !backingConfigKey.equals(other.backingConfigKey) :
+        other.backingConfigKey != null) return false;
     if (description != null ?
         !description.equals(other.description) :
         other.description != null) return false;
@@ -201,6 +222,7 @@ public class DisplayProperty {
   @Override
   public int hashCode() {
     int result = 0;
+    result = 31 * result + (backingConfigKey != null ? backingConfigKey.hashCode() : 0);
     result = 31 * result + (description != null ? description.hashCode() : 0);
     result = 31 * result + (displayKey != null ? displayKey.hashCode() : 0);
     result = 31 * result + (name != null ? name.hashCode() : 0);
@@ -215,6 +237,7 @@ public class DisplayProperty {
     StringBuilder sb = new StringBuilder();
     String newLine = System.getProperty("line.separator");
     sb.append("class DisplayProperty {" + newLine);
+    sb.append("  backingConfigKey: ").append(backingConfigKey).append(newLine);
     sb.append("  description: ").append(description).append(newLine);
     sb.append("  displayKey: ").append(displayKey).append(newLine);
     sb.append("  name: ").append(name).append(newLine);

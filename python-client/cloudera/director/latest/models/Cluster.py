@@ -22,6 +22,7 @@ class Cluster:
 
     def __init__(self, **kwargs):
         self.swaggerTypes = {
+            'featureAvailability': 'dict[str,str]',
             'health': 'cloudera.director.latest.models.Health',
             'instances': 'list[cloudera.director.latest.models.Instance]',
             'instancesUrl': 'str',
@@ -32,6 +33,8 @@ class Cluster:
         }
 
 
+        #Availability information for features
+        self.featureAvailability = kwargs.get('featureAvailability',{}) # dict[str,str]
         #Overall cluster health
         self.health = kwargs.get('health',None) # cloudera.director.latest.models.Health
         #All instances making this cluster

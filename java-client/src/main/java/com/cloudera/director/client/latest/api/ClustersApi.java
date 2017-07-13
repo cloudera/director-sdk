@@ -22,7 +22,9 @@ import com.cloudera.director.client.common.ApiClient;
 import com.cloudera.director.client.common.ApiException;
 
 import com.cloudera.director.client.latest.model.Cluster;
+import com.cloudera.director.client.latest.model.ClusterAdministrationSettings;
 import com.cloudera.director.client.latest.model.ClusterTemplate;
+import com.cloudera.director.client.latest.model.ClusterUpdateEventSummary;
 import com.cloudera.director.client.latest.model.Metrics;
 import com.cloudera.director.client.latest.model.Status;
 import java.util.Arrays;
@@ -62,7 +64,7 @@ public class ClustersApi {
        throw new ApiException(400, "missing required params");
     }
     // create path and map variables
-    String path = "/api/v8/environments/{environment}/deployments/{deployment}/clusters/{cluster}/diagnosticData"
+    String path = "/api/v9/environments/{environment}/deployments/{deployment}/clusters/{cluster}/diagnosticData"
       .replaceAll("\\{format\\}", "json")
       .replaceAll("\\{" + "environment" + "\\}",
                   apiClient.escapeString(environment.toString()))
@@ -112,7 +114,7 @@ public class ClustersApi {
        throw new ApiException(400, "missing required params");
     }
     // create path and map variables
-    String path = "/api/v8/environments/{environment}/deployments/{deployment}/clusters"
+    String path = "/api/v9/environments/{environment}/deployments/{deployment}/clusters"
       .replaceAll("\\{format\\}", "json")
       .replaceAll("\\{" + "environment" + "\\}",
                   apiClient.escapeString(environment.toString()))
@@ -158,7 +160,7 @@ public class ClustersApi {
        throw new ApiException(400, "missing required params");
     }
     // create path and map variables
-    String path = "/api/v8/environments/{environment}/deployments/{deployment}/clusters/{cluster}"
+    String path = "/api/v9/environments/{environment}/deployments/{deployment}/clusters/{cluster}"
       .replaceAll("\\{format\\}", "json")
       .replaceAll("\\{" + "environment" + "\\}",
                   apiClient.escapeString(environment.toString()))
@@ -207,7 +209,7 @@ public class ClustersApi {
        throw new ApiException(400, "missing required params");
     }
     // create path and map variables
-    String path = "/api/v8/environments/{environment}/deployments/{deployment}/clusters/{cluster}"
+    String path = "/api/v9/environments/{environment}/deployments/{deployment}/clusters/{cluster}"
       .replaceAll("\\{format\\}", "json")
       .replaceAll("\\{" + "environment" + "\\}",
                   apiClient.escapeString(environment.toString()))
@@ -239,6 +241,108 @@ public class ClustersApi {
   }
 
   /**
+  * Get administration settings for a cluster.
+  * @param  environment  environmentName
+  * @param  deployment  deploymentName
+  * @param  cluster  clusterName
+  * status code: 200 reason: "OK"
+  * status code: 401 reason: "Unauthorized"
+  * status code: 403 reason: "Forbidden"
+  * status code: 404 reason: "Entity not found"
+  */
+  public ClusterAdministrationSettings getAdministrationSettings(String environment, String deployment, String cluster) throws ApiException {
+    Object postBody = null;
+    // verify required params are set
+    if (environment == null || deployment == null || cluster == null ) {
+       throw new ApiException(400, "missing required params");
+    }
+    // create path and map variables
+    String path = "/api/v9/environments/{environment}/deployments/{deployment}/clusters/{cluster}/settings"
+      .replaceAll("\\{format\\}", "json")
+      .replaceAll("\\{" + "environment" + "\\}",
+                  apiClient.escapeString(environment.toString()))
+      .replaceAll("\\{" + "deployment" + "\\}",
+                  apiClient.escapeString(deployment.toString()))
+      .replaceAll("\\{" + "cluster" + "\\}",
+                  apiClient.escapeString(cluster.toString()))
+      ;
+
+    // query params
+    Map<String, String> queryParams = new HashMap<String, String>();
+    Map<String, String> headerParams = new HashMap<String, String>();
+    Map<String, String> formParams = new HashMap<String, String>();
+
+    String[] contentTypes = { "application/json"};
+    if (contentTypes.length != 1) {
+      throw new IllegalArgumentException("An API client expects a single content type. Got: "
+        + Arrays.toString(contentTypes));
+    }
+
+    String response = apiClient.invokeAPI(path, "GET", queryParams, postBody,
+      headerParams, formParams, contentTypes[0]);
+
+    if (response != null) {
+      return (ClusterAdministrationSettings) ApiClient.deserialize(response, "", ClusterAdministrationSettings.class);
+    } else {
+      return null;
+    }
+  }
+
+  /**
+  * Get history of updates for a cluster.
+  * @param  environment  environmentName
+  * @param  deployment  deploymentName
+  * @param  cluster  clusterName
+  * @param  numEvents  numEvents
+  * @param  page  page
+  * status code: 200 reason: "OK"
+  * status code: 401 reason: "Unauthorized"
+  * status code: 403 reason: "Forbidden"
+  * status code: 404 reason: "Entity not found"
+  */
+  public List<ClusterUpdateEventSummary> getHistory(String environment, String deployment, String cluster, Integer numEvents, Integer page) throws ApiException {
+    Object postBody = null;
+    // verify required params are set
+    if (environment == null || deployment == null || cluster == null || numEvents == null || page == null ) {
+       throw new ApiException(400, "missing required params");
+    }
+    // create path and map variables
+    String path = "/api/v9/environments/{environment}/deployments/{deployment}/clusters/{cluster}/history"
+      .replaceAll("\\{format\\}", "json")
+      .replaceAll("\\{" + "environment" + "\\}",
+                  apiClient.escapeString(environment.toString()))
+      .replaceAll("\\{" + "deployment" + "\\}",
+                  apiClient.escapeString(deployment.toString()))
+      .replaceAll("\\{" + "cluster" + "\\}",
+                  apiClient.escapeString(cluster.toString()))
+      ;
+
+    // query params
+    Map<String, String> queryParams = new HashMap<String, String>();
+    Map<String, String> headerParams = new HashMap<String, String>();
+    Map<String, String> formParams = new HashMap<String, String>();
+
+    if (!"null".equals(String.valueOf(numEvents)))
+      queryParams.put("numEvents", String.valueOf(numEvents));
+    if (!"null".equals(String.valueOf(page)))
+      queryParams.put("page", String.valueOf(page));
+    String[] contentTypes = { "application/json"};
+    if (contentTypes.length != 1) {
+      throw new IllegalArgumentException("An API client expects a single content type. Got: "
+        + Arrays.toString(contentTypes));
+    }
+
+    String response = apiClient.invokeAPI(path, "GET", queryParams, postBody,
+      headerParams, formParams, contentTypes[0]);
+
+    if (response != null) {
+      return (List<ClusterUpdateEventSummary>) ApiClient.deserialize(response, "List", ClusterUpdateEventSummary.class);
+    } else {
+      return null;
+    }
+  }
+
+  /**
   * Get cluster metrics by name.
   * @param  environment  environmentName
   * @param  deployment  deploymentName
@@ -256,7 +360,7 @@ public class ClustersApi {
        throw new ApiException(400, "missing required params");
     }
     // create path and map variables
-    String path = "/api/v8/environments/{environment}/deployments/{deployment}/clusters/{cluster}/metrics"
+    String path = "/api/v9/environments/{environment}/deployments/{deployment}/clusters/{cluster}/metrics"
       .replaceAll("\\{format\\}", "json")
       .replaceAll("\\{" + "environment" + "\\}",
                   apiClient.escapeString(environment.toString()))
@@ -304,7 +408,7 @@ public class ClustersApi {
        throw new ApiException(400, "missing required params");
     }
     // create path and map variables
-    String path = "/api/v8/environments/{environment}/deployments/{deployment}/clusters/{cluster}/status"
+    String path = "/api/v9/environments/{environment}/deployments/{deployment}/clusters/{cluster}/status"
       .replaceAll("\\{format\\}", "json")
       .replaceAll("\\{" + "environment" + "\\}",
                   apiClient.escapeString(environment.toString()))
@@ -352,7 +456,7 @@ public class ClustersApi {
        throw new ApiException(400, "missing required params");
     }
     // create path and map variables
-    String path = "/api/v8/environments/{environment}/deployments/{deployment}/clusters/{cluster}/template"
+    String path = "/api/v9/environments/{environment}/deployments/{deployment}/clusters/{cluster}/template"
       .replaceAll("\\{format\\}", "json")
       .replaceAll("\\{" + "environment" + "\\}",
                   apiClient.escapeString(environment.toString()))
@@ -399,7 +503,7 @@ public class ClustersApi {
        throw new ApiException(400, "missing required params");
     }
     // create path and map variables
-    String path = "/api/v8/environments/{environment}/deployments/{deployment}/clusters"
+    String path = "/api/v9/environments/{environment}/deployments/{deployment}/clusters"
       .replaceAll("\\{format\\}", "json")
       .replaceAll("\\{" + "environment" + "\\}",
                   apiClient.escapeString(environment.toString()))
@@ -449,7 +553,57 @@ public class ClustersApi {
        throw new ApiException(400, "missing required params");
     }
     // create path and map variables
-    String path = "/api/v8/environments/{environment}/deployments/{deployment}/clusters/{cluster}"
+    String path = "/api/v9/environments/{environment}/deployments/{deployment}/clusters/{cluster}"
+      .replaceAll("\\{format\\}", "json")
+      .replaceAll("\\{" + "environment" + "\\}",
+                  apiClient.escapeString(environment.toString()))
+      .replaceAll("\\{" + "deployment" + "\\}",
+                  apiClient.escapeString(deployment.toString()))
+      .replaceAll("\\{" + "cluster" + "\\}",
+                  apiClient.escapeString(cluster.toString()))
+      ;
+
+    // query params
+    Map<String, String> queryParams = new HashMap<String, String>();
+    Map<String, String> headerParams = new HashMap<String, String>();
+    Map<String, String> formParams = new HashMap<String, String>();
+
+    String[] contentTypes = { "application/json"};
+    if (contentTypes.length != 1) {
+      throw new IllegalArgumentException("An API client expects a single content type. Got: "
+        + Arrays.toString(contentTypes));
+    }
+
+    String response = apiClient.invokeAPI(path, "PUT", queryParams, postBody,
+      headerParams, formParams, contentTypes[0]);
+
+    if (response != null) {
+      return ;
+    } else {
+      return ;
+    }
+  }
+
+  /**
+  * Update administration settings for a cluster.
+  * @param  environment  environmentName
+  * @param  deployment  deploymentName
+  * @param  cluster  clusterName
+  * @param  body  administrationSettings
+  * status code: 201 reason: "Created"
+  * status code: 202 reason: "Cluster update accepted"
+  * status code: 401 reason: "Unauthorized"
+  * status code: 403 reason: "Forbidden"
+  * status code: 404 reason: "Not found"
+  */
+  public void updateAdministrationSettings(String environment, String deployment, String cluster, ClusterAdministrationSettings body) throws ApiException {
+    Object postBody = body;
+    // verify required params are set
+    if (environment == null || deployment == null || cluster == null || body == null ) {
+       throw new ApiException(400, "missing required params");
+    }
+    // create path and map variables
+    String path = "/api/v9/environments/{environment}/deployments/{deployment}/clusters/{cluster}/settings"
       .replaceAll("\\{format\\}", "json")
       .replaceAll("\\{" + "environment" + "\\}",
                   apiClient.escapeString(environment.toString()))
