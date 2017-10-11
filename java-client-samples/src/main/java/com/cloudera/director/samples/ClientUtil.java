@@ -18,7 +18,8 @@ public class ClientUtil {
 
   public static ApiClient newAuthenticatedApiClient(CommonParameters common)
       throws ApiException {
-    ApiClient client = new ApiClient(common.getServerUrl());
+    ApiClient client = new ApiClient(common.getServerUrl(), common.isTlsEnabled(),
+                                     common.isHostnameVerificationEnabled());
 
     Login login = Login.builder()
         .username(common.getAdminUsername())

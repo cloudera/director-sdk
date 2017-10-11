@@ -36,17 +36,23 @@ import com.sun.jersey.api.client.config.ClientConfig;
 import com.sun.jersey.api.client.config.DefaultClientConfig;
 import com.sun.jersey.api.client.filter.HTTPBasicAuthFilter;
 import com.sun.jersey.api.client.filter.LoggingFilter;
+import com.sun.jersey.client.urlconnection.HTTPSProperties;
 import com.sun.jersey.multipart.FormDataMultiPart;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
+import java.security.NoSuchAlgorithmException;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import javax.net.ssl.HostnameVerifier;
+import javax.net.ssl.HttpsURLConnection;
+import javax.net.ssl.SSLContext;
+import javax.net.ssl.SSLSession;
 import javax.ws.rs.core.Cookie;
 import javax.ws.rs.core.NewCookie;
 import javax.ws.rs.core.Response.Status.Family;
@@ -59,6 +65,9 @@ public class ApiClient {
   private boolean isDebug = false;
   private String username;
   private String password;
+  private boolean tlsEnabled;
+  private boolean hostnameVerificationEnabled;
+  private String directorClientType = "SDK-Java";
 
   public void enableDebug() {
     isDebug = true;
@@ -81,13 +90,38 @@ public class ApiClient {
   }
 
   public ApiClient(String apiServer) {
+    this(apiServer, apiServer.startsWith("https"), true);
+  }
+
+  public ApiClient(String apiServer, boolean tlsEnabled, boolean hostnameVerificationEnabled,
+    String directorClientType) {
+    this(apiServer, tlsEnabled, hostnameVerificationEnabled);
+    this.directorClientType = Preconditions.checkNotNull(directorClientType, "directorClientType is null");
+  }
+
+  public ApiClient(String apiServer, boolean tlsEnabled, boolean hostnameVerificationEnabled) {
     this.basePath = Preconditions.checkNotNull(apiServer, "apiServer is null");
+    this.tlsEnabled = tlsEnabled;
+    this.hostnameVerificationEnabled = hostnameVerificationEnabled;
   }
 
   public ApiClient(String apiServer, String username, String password) {
+    this(apiServer, username, password, apiServer.startsWith("https"), true);
+  }
+
+  public ApiClient(String apiServer, String username, String password, boolean tlsEnabled,
+    boolean hostnameVerificationEnabled) {
     this.basePath = Preconditions.checkNotNull(apiServer, "apiServer is null");
     this.username = Preconditions.checkNotNull(username, "username is null");
     this.password = Preconditions.checkNotNull(password, "password is null");
+    this.tlsEnabled = tlsEnabled;
+    this.hostnameVerificationEnabled = hostnameVerificationEnabled;
+  }
+
+  public ApiClient(String apiServer, String username, String password, boolean tlsEnabled,
+    boolean hostnameVerificationEnabled, String directorClientType) {
+    this(apiServer, username, password, tlsEnabled, hostnameVerificationEnabled);
+    this.directorClientType = Preconditions.checkNotNull(directorClientType, "directorClientType is null");
   }
 
   public static Object deserialize(String json, String containerType, Class cls) throws ApiException {
@@ -129,10 +163,14 @@ public class ApiClient {
     String host = getBasePath();
     Client client;
 
-    if (username == null || password == null) {
-      client = getClient(host);
-    } else {
-      client = getClient(host, username, password);
+    try {
+      if (username == null || password == null) {
+        client = getClient(host, tlsEnabled, hostnameVerificationEnabled);
+      } else {
+        client = getClient(host, username, password, tlsEnabled, hostnameVerificationEnabled);
+      }
+    } catch (NoSuchAlgorithmException e) {
+      throw new ApiException(500, e.getMessage());
     }
 
     StringBuilder b = new StringBuilder();
@@ -154,6 +192,10 @@ public class ApiClient {
     for (Map.Entry<String, String> entry : headerParams.entrySet()) {
       builder.header(entry.getKey(), entry.getValue());
     }
+
+    // Inject a custom header that Director can use to distinguish what type of client is being used (SDK, CLI, etc.)
+    builder.header("X-Director-Client", directorClientType);
+
     for (Cookie c : cookies) {
       builder.cookie(c);
     }
@@ -164,6 +206,7 @@ public class ApiClient {
         builder.header(key, entry.getValue());
       }
     }
+
     ClientResponse response = null;
 
     if ("GET".equals(method)) {
@@ -231,9 +274,11 @@ public class ApiClient {
     }
   }
 
-  private Client getClient(String host) {
+  private Client getClient(String host, boolean tlsEnabled, boolean hostnameVerificationEnabled)
+    throws NoSuchAlgorithmException {
     if (!hostMap.containsKey(host)) {
-      Client client = Client.create();
+      ClientConfig clientConfig = getClientConfig(tlsEnabled, hostnameVerificationEnabled);
+      Client client = Client.create(clientConfig);
       if (isDebug) {
         client.addFilter(new LoggingFilter());
       }
@@ -243,9 +288,10 @@ public class ApiClient {
     return hostMap.get(host);
   }
 
-  private Client getClient(String host, String username, String password) {
+  private Client getClient(String host, String username, String password, boolean tlsEnabled,
+    boolean hostnameVerificationEnabled) throws NoSuchAlgorithmException {
     if (!hostMap.containsKey(host)) {
-      ClientConfig clientConfig = new DefaultClientConfig();
+      ClientConfig clientConfig = getClientConfig(tlsEnabled, hostnameVerificationEnabled);
       Client client = Client.create(clientConfig);
       client.addFilter(new HTTPBasicAuthFilter(username, password));
 
@@ -256,6 +302,25 @@ public class ApiClient {
       hostMap.put(host, client);
     }
     return hostMap.get(host);
+  }
+
+  private static final HostnameVerifier ALLOW_ALL_HOSTNAME_VERIFIER = new HostnameVerifier() {
+    @Override
+    public boolean verify(String hostname, SSLSession session) {
+      return true;
+    }
+  };
+
+  private ClientConfig getClientConfig(boolean tlsEnabled, boolean hostnameVerificationEnabled)
+    throws NoSuchAlgorithmException {
+    ClientConfig clientConfig = new DefaultClientConfig();
+    if (tlsEnabled) {
+      HostnameVerifier verifier = hostnameVerificationEnabled ?
+        HttpsURLConnection.getDefaultHostnameVerifier() : ALLOW_ALL_HOSTNAME_VERIFIER;
+      clientConfig.getProperties().put(HTTPSProperties.PROPERTY_HTTPS_PROPERTIES,
+        new HTTPSProperties(verifier, SSLContext.getDefault()));
+    }
+    return clientConfig;
   }
 }
 

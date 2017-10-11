@@ -41,6 +41,9 @@ class DeploymentTemplate:
             'postCreateScripts': 'list[str]',
             'repository': 'str',
             'repositoryKeyUrl': 'str',
+            'tlsConfigurationProperties': 'dict[str,str]',
+            'tlsEnabled': 'bool',
+            'trustedCertificate': 'str',
             'unlimitedJce': 'bool',
             'username': 'str'
 
@@ -85,6 +88,12 @@ class DeploymentTemplate:
         self.repository = kwargs.get('repository',None) # str
         #Custom Cloudera Manager public GPG key
         self.repositoryKeyUrl = kwargs.get('repositoryKeyUrl',None) # str
+        #TLS configuration properties
+        self.tlsConfigurationProperties = kwargs.get('tlsConfigurationProperties',{}) # dict[str,str]
+        #Whether to enable TLS
+        self.tlsEnabled = kwargs.get('tlsEnabled',None) # bool
+        #Trusted certificate for the Cloudera Manager server
+        self.trustedCertificate = kwargs.get('trustedCertificate',None) # str
         #Whether to install unlimited strength JCE policy files
         self.unlimitedJce = kwargs.get('unlimitedJce',None) # bool
         #Web UI and API username

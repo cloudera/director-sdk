@@ -26,6 +26,7 @@ class Instance:
             'cmHostId': 'str',
             'cmHostUrl': 'str',
             'health': 'cloudera.director.latest.models.Health',
+            'hostKeyFingerprints': 'set[str]',
             'ipAddress': 'str',
             'properties': 'dict[str,str]',
             'state': 'cloudera.director.latest.models.InstanceState',
@@ -43,6 +44,8 @@ class Instance:
         self.cmHostUrl = kwargs.get('cmHostUrl',None) # str
         #Instance health
         self.health = kwargs.get('health',None) # cloudera.director.latest.models.Health
+        #Optional Host Key Fingerprints
+        self.hostKeyFingerprints = kwargs.get('hostKeyFingerprints',set()) # set[str]
         #IP address of instance
         self.ipAddress = kwargs.get('ipAddress',None) # str
         #Instance properties

@@ -11,6 +11,7 @@ import os
 import re
 import urllib
 import urllib2
+import ssl
 import base64
 import httplib
 import json
@@ -22,11 +23,16 @@ import cloudera
 class ApiClient:
     """Generic API client for Swagger client library builds"""
 
-    def __init__(self, apiServer=None, username=None, password=None):
+    def __init__(self, apiServer=None, username=None, password=None, tls_enabled=False,
+                 cafile=None, hostname_verification_enabled=True, directorClientType="SDK-Python"):
         self.apiServer = apiServer
         self.cookie = None
         self.username = username
         self.password = password
+        self.tls_enabled = tls_enabled
+        self.cafile = cafile
+        self.hostname_verification_enabled = hostname_verification_enabled
+        self.directorClientType = directorClientType
 
     # Return key value as a tuple from "dict[key,value]", handles nested structures
     def _getKeyValue(self, dict_str):
@@ -67,9 +73,11 @@ class ApiClient:
             for param, value in headerParams.iteritems():
                 headers[param] = value
 
-        #headers['Content-type'] = 'application/json'
         if self.cookie:
             headers['Cookie'] = self.cookie
+
+        # Inject a custom header that Director can use to distinguish what type of client is being used (SDK, CLI, etc.)
+        headers["X-Director-Client"] = self.directorClientType
 
         data = None
 
@@ -107,7 +115,18 @@ class ApiClient:
             request.add_header("Authorization", "Basic %s" % base64string)
 
         # Make the request
-        response = urllib2.urlopen(request)
+        if self.tls_enabled:
+            if sys.version_info < (2, 7, 9):
+                raise Exception('TLS support requires Python 2.7.9+')
+
+            ssl_context = ssl.create_default_context()
+            ssl_context.load_verify_locations(cafile=self.cafile)
+            if not self.hostname_verification_enabled:
+                ssl_context.check_hostname = False
+            response = urllib2.urlopen(request, context=ssl_context)
+        else:
+            response = urllib2.urlopen(request)
+
         if 'Set-Cookie' in response.headers:
             self.cookie = response.headers['Set-Cookie']
         string = response.read()

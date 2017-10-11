@@ -23,6 +23,10 @@ public class CommonParameters {
   @Parameter(names = "--server", description = "Cloudera Director server URL")
   private String serverUrl = "http://localhost:7189";
 
+  @Parameter(names = "--disable-hostname-verification",
+      description = "Disable HTTPS hostname verification")
+  private boolean disableHostnameVerification = false;
+
   public String getAdminUsername() {
     return adminUsername;
   }
@@ -33,5 +37,13 @@ public class CommonParameters {
 
   public String getServerUrl() {
     return serverUrl;
+  }
+
+  public boolean isTlsEnabled() {
+    return serverUrl.startsWith("https");
+  }
+
+  public boolean isHostnameVerificationEnabled() {
+    return !disableHostnameVerification;
   }
 }

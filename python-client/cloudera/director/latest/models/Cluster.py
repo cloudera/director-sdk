@@ -22,6 +22,7 @@ class Cluster:
 
     def __init__(self, **kwargs):
         self.swaggerTypes = {
+            'createdExternalDatabases': 'list[cloudera.director.latest.models.ExternalDatabase]',
             'featureAvailability': 'dict[str,str]',
             'health': 'cloudera.director.latest.models.Health',
             'instances': 'list[cloudera.director.latest.models.Instance]',
@@ -33,6 +34,8 @@ class Cluster:
         }
 
 
+        #Created external databases
+        self.createdExternalDatabases = kwargs.get('createdExternalDatabases',[]) # list[cloudera.director.latest.models.ExternalDatabase]
         #Availability information for features
         self.featureAvailability = kwargs.get('featureAvailability',{}) # dict[str,str]
         #Overall cluster health

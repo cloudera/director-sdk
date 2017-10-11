@@ -32,7 +32,7 @@ Note: This file is auto generated. Do not edit manually.
     <artifactId>java-client</artifactId>
     <packaging>jar</packaging>
     <name>Cloudera Director :: java-client</name>
-    <version>2.5.0</version>
+    <version>2.6.0</version>
 
     <prerequisites>
         <maven>3.0.5</maven>
@@ -91,6 +91,7 @@ Note: This file is auto generated. Do not edit manually.
             </plugin>
             <plugin>
                 <artifactId>maven-dependency-plugin</artifactId>
+                <version>3.0.2</version>
                 <executions>
                     <execution>
                         <phase>package</phase>

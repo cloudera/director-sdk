@@ -62,6 +62,12 @@ public class DeploymentTemplate {
   private String repository;
   /* Custom Cloudera Manager public GPG key */
   private String repositoryKeyUrl;
+  /* TLS configuration properties */
+  private Map<String, String> tlsConfigurationProperties;
+  /* Whether to enable TLS */
+  private Boolean tlsEnabled;
+  /* Trusted certificate for the Cloudera Manager server */
+  private String trustedCertificate;
   /* Whether to install unlimited strength JCE policy files */
   private Boolean unlimitedJce;
   /* Web UI and API username */
@@ -72,7 +78,7 @@ public class DeploymentTemplate {
   }
   public DeploymentTemplate() { }
 
-  private DeploymentTemplate(String billingId, Map<String, Map<String, String>> configs, List<String> csds, Boolean enableEnterpriseTrial, Map<String, ExternalAccount> externalAccounts, Map<String, ExternalDatabaseTemplate> externalDatabaseTemplates, Map<String, ExternalDatabase> externalDatabases, String hostname, String javaInstallationStrategy, String krbAdminPassword, String krbAdminUsername, String license, VirtualInstance managerVirtualInstance, String name, String password, Integer port, List<String> postCreateScripts, String repository, String repositoryKeyUrl, Boolean unlimitedJce, String username) {
+  private DeploymentTemplate(String billingId, Map<String, Map<String, String>> configs, List<String> csds, Boolean enableEnterpriseTrial, Map<String, ExternalAccount> externalAccounts, Map<String, ExternalDatabaseTemplate> externalDatabaseTemplates, Map<String, ExternalDatabase> externalDatabases, String hostname, String javaInstallationStrategy, String krbAdminPassword, String krbAdminUsername, String license, VirtualInstance managerVirtualInstance, String name, String password, Integer port, List<String> postCreateScripts, String repository, String repositoryKeyUrl, Map<String, String> tlsConfigurationProperties, Boolean tlsEnabled, String trustedCertificate, Boolean unlimitedJce, String username) {
     this.billingId = billingId;
     this.configs = configs;
     this.csds = csds;
@@ -92,6 +98,9 @@ public class DeploymentTemplate {
     this.postCreateScripts = postCreateScripts;
     this.repository = repository;
     this.repositoryKeyUrl = repositoryKeyUrl;
+    this.tlsConfigurationProperties = tlsConfigurationProperties;
+    this.tlsEnabled = tlsEnabled;
+    this.trustedCertificate = trustedCertificate;
     this.unlimitedJce = unlimitedJce;
     this.username = username;
   }
@@ -116,6 +125,9 @@ public class DeploymentTemplate {
     this.postCreateScripts = builder.postCreateScripts;
     this.repository = builder.repository;
     this.repositoryKeyUrl = builder.repositoryKeyUrl;
+    this.tlsConfigurationProperties = builder.tlsConfigurationProperties;
+    this.tlsEnabled = builder.tlsEnabled;
+    this.trustedCertificate = builder.trustedCertificate;
     this.unlimitedJce = builder.unlimitedJce;
     this.username = builder.username;
   }
@@ -144,6 +156,9 @@ public class DeploymentTemplate {
     private List<String> postCreateScripts = new ArrayList<String>();
     private String repository = null;
     private String repositoryKeyUrl = null;
+    private Map<String, String> tlsConfigurationProperties = new HashMap<String, String>();
+    private Boolean tlsEnabled = null;
+    private String trustedCertificate = null;
     private Boolean unlimitedJce = null;
     private String username = null;
 
@@ -242,6 +257,21 @@ public class DeploymentTemplate {
       return this;
     }
 
+    public DeploymentTemplateBuilder tlsConfigurationProperties(Map<String, String> tlsConfigurationProperties) {
+      this.tlsConfigurationProperties = tlsConfigurationProperties;
+      return this;
+    }
+
+    public DeploymentTemplateBuilder tlsEnabled(Boolean tlsEnabled) {
+      this.tlsEnabled = tlsEnabled;
+      return this;
+    }
+
+    public DeploymentTemplateBuilder trustedCertificate(String trustedCertificate) {
+      this.trustedCertificate = trustedCertificate;
+      return this;
+    }
+
     public DeploymentTemplateBuilder unlimitedJce(Boolean unlimitedJce) {
       this.unlimitedJce = unlimitedJce;
       return this;
@@ -278,6 +308,9 @@ public class DeploymentTemplate {
       .postCreateScripts(postCreateScripts)
       .repository(repository)
       .repositoryKeyUrl(repositoryKeyUrl)
+      .tlsConfigurationProperties(tlsConfigurationProperties)
+      .tlsEnabled(tlsEnabled)
+      .trustedCertificate(trustedCertificate)
       .unlimitedJce(unlimitedJce)
       .username(username)
       ;
@@ -415,6 +448,27 @@ public class DeploymentTemplate {
     this.repositoryKeyUrl = repositoryKeyUrl;
   }
 
+  public Map<String, String> getTlsConfigurationProperties() {
+    return tlsConfigurationProperties;
+  }
+  public void setTlsConfigurationProperties(Map<String, String> tlsConfigurationProperties) {
+    this.tlsConfigurationProperties = tlsConfigurationProperties;
+  }
+
+  public Boolean getTlsEnabled() {
+    return tlsEnabled;
+  }
+  public void setTlsEnabled(Boolean tlsEnabled) {
+    this.tlsEnabled = tlsEnabled;
+  }
+
+  public String getTrustedCertificate() {
+    return trustedCertificate;
+  }
+  public void setTrustedCertificate(String trustedCertificate) {
+    this.trustedCertificate = trustedCertificate;
+  }
+
   public Boolean getUnlimitedJce() {
     return unlimitedJce;
   }
@@ -481,6 +535,15 @@ public class DeploymentTemplate {
     if (repositoryKeyUrl != null ?
         !repositoryKeyUrl.equals(other.repositoryKeyUrl) :
         other.repositoryKeyUrl != null) return false;
+    if (tlsConfigurationProperties != null ?
+        !tlsConfigurationProperties.equals(other.tlsConfigurationProperties) :
+        other.tlsConfigurationProperties != null) return false;
+    if (tlsEnabled != null ?
+        !tlsEnabled.equals(other.tlsEnabled) :
+        other.tlsEnabled != null) return false;
+    if (trustedCertificate != null ?
+        !trustedCertificate.equals(other.trustedCertificate) :
+        other.trustedCertificate != null) return false;
     if (unlimitedJce != null ?
         !unlimitedJce.equals(other.unlimitedJce) :
         other.unlimitedJce != null) return false;
@@ -508,6 +571,9 @@ public class DeploymentTemplate {
     result = 31 * result + (postCreateScripts != null ? postCreateScripts.hashCode() : 0);
     result = 31 * result + (repository != null ? repository.hashCode() : 0);
     result = 31 * result + (repositoryKeyUrl != null ? repositoryKeyUrl.hashCode() : 0);
+    result = 31 * result + (tlsConfigurationProperties != null ? tlsConfigurationProperties.hashCode() : 0);
+    result = 31 * result + (tlsEnabled != null ? tlsEnabled.hashCode() : 0);
+    result = 31 * result + (trustedCertificate != null ? trustedCertificate.hashCode() : 0);
     result = 31 * result + (unlimitedJce != null ? unlimitedJce.hashCode() : 0);
     result = 31 * result + (username != null ? username.hashCode() : 0);
     return result;
@@ -537,6 +603,9 @@ public class DeploymentTemplate {
     sb.append("  postCreateScripts: ").append(postCreateScripts).append(newLine);
     sb.append("  repository: ").append(repository).append(newLine);
     sb.append("  repositoryKeyUrl: ").append(repositoryKeyUrl).append(newLine);
+    sb.append("  tlsConfigurationProperties: ").append(tlsConfigurationProperties).append(newLine);
+    sb.append("  tlsEnabled: ").append(tlsEnabled).append(newLine);
+    sb.append("  trustedCertificate: ").append(trustedCertificate).append(newLine);
     sb.append("  unlimitedJce: ").append(unlimitedJce).append(newLine);
     sb.append("  username: ").append(username).append(newLine);
     sb.append("}" + newLine);

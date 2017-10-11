@@ -24,6 +24,8 @@ import java.util.List;
 import java.util.Map;
 
 public class Cluster {
+  /* Created external databases */
+  private List<ExternalDatabase> createdExternalDatabases;
   /* Availability information for features */
   private Map<String, String> featureAvailability;
   /* Overall cluster health */
@@ -40,7 +42,8 @@ public class Cluster {
   private String url;
   public Cluster() { }
 
-  private Cluster(Map<String, String> featureAvailability, Health health, List<Instance> instances, String instancesUrl, String name, List<Service> services, String url) {
+  private Cluster(List<ExternalDatabase> createdExternalDatabases, Map<String, String> featureAvailability, Health health, List<Instance> instances, String instancesUrl, String name, List<Service> services, String url) {
+    this.createdExternalDatabases = createdExternalDatabases;
     this.featureAvailability = featureAvailability;
     this.health = health;
     this.instances = instances;
@@ -51,6 +54,7 @@ public class Cluster {
   }
 
   private Cluster(ClusterBuilder builder) {
+    this.createdExternalDatabases = builder.createdExternalDatabases;
     this.featureAvailability = builder.featureAvailability;
     this.health = builder.health;
     this.instances = builder.instances;
@@ -65,6 +69,7 @@ public class Cluster {
   }
 
   public static class ClusterBuilder {
+    private List<ExternalDatabase> createdExternalDatabases = new ArrayList<ExternalDatabase>();
     private Map<String, String> featureAvailability = new HashMap<String, String>();
     private Health health = null;
     private List<Instance> instances = new ArrayList<Instance>();
@@ -72,6 +77,11 @@ public class Cluster {
     private String name = null;
     private List<Service> services = new ArrayList<Service>();
     private String url = null;
+
+    public ClusterBuilder createdExternalDatabases(List<ExternalDatabase> createdExternalDatabases) {
+      this.createdExternalDatabases = createdExternalDatabases;
+      return this;
+    }
 
     public ClusterBuilder featureAvailability(Map<String, String> featureAvailability) {
       this.featureAvailability = featureAvailability;
@@ -115,6 +125,7 @@ public class Cluster {
 
   public ClusterBuilder toBuilder() {
     return builder()
+      .createdExternalDatabases(createdExternalDatabases)
       .featureAvailability(featureAvailability)
       .health(health)
       .instances(instances)
@@ -124,6 +135,13 @@ public class Cluster {
       .url(url)
       ;
   }
+  public List<ExternalDatabase> getCreatedExternalDatabases() {
+    return createdExternalDatabases;
+  }
+  public void setCreatedExternalDatabases(List<ExternalDatabase> createdExternalDatabases) {
+    this.createdExternalDatabases = createdExternalDatabases;
+  }
+
   public Map<String, String> getFeatureAvailability() {
     return featureAvailability;
   }
@@ -180,6 +198,9 @@ public class Cluster {
 
     Cluster other = (Cluster) o; // NOPMD
 
+    if (createdExternalDatabases != null ?
+        !createdExternalDatabases.equals(other.createdExternalDatabases) :
+        other.createdExternalDatabases != null) return false;
     if (featureAvailability != null ?
         !featureAvailability.equals(other.featureAvailability) :
         other.featureAvailability != null) return false;
@@ -207,6 +228,7 @@ public class Cluster {
   @Override
   public int hashCode() {
     int result = 0;
+    result = 31 * result + (createdExternalDatabases != null ? createdExternalDatabases.hashCode() : 0);
     result = 31 * result + (featureAvailability != null ? featureAvailability.hashCode() : 0);
     result = 31 * result + (health != null ? health.hashCode() : 0);
     result = 31 * result + (instances != null ? instances.hashCode() : 0);
@@ -222,6 +244,7 @@ public class Cluster {
     StringBuilder sb = new StringBuilder();
     String newLine = System.getProperty("line.separator");
     sb.append("class Cluster {" + newLine);
+    sb.append("  createdExternalDatabases: ").append(createdExternalDatabases).append(newLine);
     sb.append("  featureAvailability: ").append(featureAvailability).append(newLine);
     sb.append("  health: ").append(health).append(newLine);
     sb.append("  instances: ").append(instances).append(newLine);

@@ -25,6 +25,9 @@ public class Health {
   public interface Status {
     String DISABLED = "DISABLED";
     String NOT_AVAILABLE = "NOT_AVAILABLE";
+    String STARTING = "STARTING";
+    String STOPPING = "STOPPING";
+    String STOPPED = "STOPPED";
     String GOOD = "GOOD";
     String CONCERNING = "CONCERNING";
     String BAD = "BAD";

@@ -31,6 +31,8 @@ public class Instance {
   private String cmHostUrl;
   /* Instance health */
   private Health health;
+  /* Optional Host Key Fingerprints */
+  private Set<String> hostKeyFingerprints;
   /* IP address of instance */
   private String ipAddress;
   /* Instance properties */
@@ -43,11 +45,12 @@ public class Instance {
   private VirtualInstance virtualInstance;
   public Instance() { }
 
-  private Instance(Capabilities capabilities, String cmHostId, String cmHostUrl, Health health, String ipAddress, Map<String, String> properties, InstanceState state, Set<ValidationExceptionCondition> validationConditions, VirtualInstance virtualInstance) {
+  private Instance(Capabilities capabilities, String cmHostId, String cmHostUrl, Health health, Set<String> hostKeyFingerprints, String ipAddress, Map<String, String> properties, InstanceState state, Set<ValidationExceptionCondition> validationConditions, VirtualInstance virtualInstance) {
     this.capabilities = capabilities;
     this.cmHostId = cmHostId;
     this.cmHostUrl = cmHostUrl;
     this.health = health;
+    this.hostKeyFingerprints = hostKeyFingerprints;
     this.ipAddress = ipAddress;
     this.properties = properties;
     this.state = state;
@@ -60,6 +63,7 @@ public class Instance {
     this.cmHostId = builder.cmHostId;
     this.cmHostUrl = builder.cmHostUrl;
     this.health = builder.health;
+    this.hostKeyFingerprints = builder.hostKeyFingerprints;
     this.ipAddress = builder.ipAddress;
     this.properties = builder.properties;
     this.state = builder.state;
@@ -76,6 +80,7 @@ public class Instance {
     private String cmHostId = null;
     private String cmHostUrl = null;
     private Health health = null;
+    private Set<String> hostKeyFingerprints = null;
     private String ipAddress = null;
     private Map<String, String> properties = new HashMap<String, String>();
     private InstanceState state = null;
@@ -99,6 +104,11 @@ public class Instance {
 
     public InstanceBuilder health(Health health) {
       this.health = health;
+      return this;
+    }
+
+    public InstanceBuilder hostKeyFingerprints(Set<String> hostKeyFingerprints) {
+      this.hostKeyFingerprints = hostKeyFingerprints;
       return this;
     }
 
@@ -138,6 +148,7 @@ public class Instance {
       .cmHostId(cmHostId)
       .cmHostUrl(cmHostUrl)
       .health(health)
+      .hostKeyFingerprints(hostKeyFingerprints)
       .ipAddress(ipAddress)
       .properties(properties)
       .state(state)
@@ -171,6 +182,13 @@ public class Instance {
   }
   public void setHealth(Health health) {
     this.health = health;
+  }
+
+  public Set<String> getHostKeyFingerprints() {
+    return hostKeyFingerprints;
+  }
+  public void setHostKeyFingerprints(Set<String> hostKeyFingerprints) {
+    this.hostKeyFingerprints = hostKeyFingerprints;
   }
 
   public String getIpAddress() {
@@ -227,6 +245,9 @@ public class Instance {
     if (health != null ?
         !health.equals(other.health) :
         other.health != null) return false;
+    if (hostKeyFingerprints != null ?
+        !hostKeyFingerprints.equals(other.hostKeyFingerprints) :
+        other.hostKeyFingerprints != null) return false;
     if (ipAddress != null ?
         !ipAddress.equals(other.ipAddress) :
         other.ipAddress != null) return false;
@@ -252,6 +273,7 @@ public class Instance {
     result = 31 * result + (cmHostId != null ? cmHostId.hashCode() : 0);
     result = 31 * result + (cmHostUrl != null ? cmHostUrl.hashCode() : 0);
     result = 31 * result + (health != null ? health.hashCode() : 0);
+    result = 31 * result + (hostKeyFingerprints != null ? hostKeyFingerprints.hashCode() : 0);
     result = 31 * result + (ipAddress != null ? ipAddress.hashCode() : 0);
     result = 31 * result + (properties != null ? properties.hashCode() : 0);
     result = 31 * result + (state != null ? state.hashCode() : 0);
@@ -269,6 +291,7 @@ public class Instance {
     sb.append("  cmHostId: ").append(cmHostId).append(newLine);
     sb.append("  cmHostUrl: ").append(cmHostUrl).append(newLine);
     sb.append("  health: ").append(health).append(newLine);
+    sb.append("  hostKeyFingerprints: ").append(hostKeyFingerprints).append(newLine);
     sb.append("  ipAddress: ").append(ipAddress).append(newLine);
     sb.append("  properties: ").append(properties).append(newLine);
     sb.append("  state: ").append(state).append(newLine);

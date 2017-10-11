@@ -64,6 +64,16 @@ users.list()
 # ['admin', 'guest']
 ```
 
+TLS
+---
+
+The client automatically supports communicating with the Cloudera Director
+server over TLS when the server URL begins with "https". Pass the path to a
+file containing trusted certificates (either for the server itself or for a
+relevant CA) to the client constructor for successful certificate verification.
+
+TLS support requires Python 2.7.9 or higher.
+
 More samples
 ------------
 

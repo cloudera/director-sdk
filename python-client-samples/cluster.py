@@ -43,7 +43,9 @@ def get_authenticated_client(args):
     """
 
     # Start by creating a client pointing to the right server
-    client = ApiClient(args.server)
+    tls_enabled = args.server.startswith('https')
+    client = ApiClient(args.server, tls_enabled=tls_enabled, cafile=args.cafile,
+                       hostname_verification_enabled=True)
 
     # Authenticate. This will start a session and store the cookie
     auth = AuthenticationApi(client)
@@ -279,6 +281,8 @@ def main():
                         help='Password for the administrative user (defaults to %(default)s)')
     parser.add_argument('--server', default="http://localhost:7189",
                         help="Cloudera Director server URL (defaults to %(default)s)")
+    parser.add_argument('--cafile', default=None,
+                        help='Path to file containing trusted certificate(s) (defaults to %(default)s)')
 
     parser.add_argument('config_file', help="Cluster configuration file (.ini)")
 
