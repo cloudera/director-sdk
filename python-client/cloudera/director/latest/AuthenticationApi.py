@@ -49,7 +49,7 @@ class AuthenticationApi(object):
             params[key] = val
         del params['kwargs']
 
-        resourcePath = '/api/v10/login'
+        resourcePath = '/api/v11/login'
         resourcePath = resourcePath.replace('{format}', 'json')
         method = 'POST'
 
@@ -92,7 +92,7 @@ class AuthenticationApi(object):
             params[key] = val
         del params['kwargs']
 
-        resourcePath = '/api/v10/logout'
+        resourcePath = '/api/v11/logout'
         resourcePath = resourcePath.replace('{format}', 'json')
         method = 'POST'
 

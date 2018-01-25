@@ -59,7 +59,7 @@ public class ImportClientConfigApi {
        throw new ApiException(400, "missing required params");
     }
     // create path and map variables
-    String path = "/api/v10/import"
+    String path = "/api/v11/import"
       .replaceAll("\\{format\\}", "json")
       ;
 
@@ -112,7 +112,7 @@ public class ImportClientConfigApi {
        throw new ApiException(400, "missing required params");
     }
     // create path and map variables
-    String path = "/api/v10/import/clientConfig/validate"
+    String path = "/api/v11/import/clientConfig/validate"
       .replaceAll("\\{format\\}", "json")
       ;
 

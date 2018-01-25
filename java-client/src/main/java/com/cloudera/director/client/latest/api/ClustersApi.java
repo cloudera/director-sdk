@@ -64,7 +64,7 @@ public class ClustersApi {
        throw new ApiException(400, "missing required params");
     }
     // create path and map variables
-    String path = "/api/v10/environments/{environment}/deployments/{deployment}/clusters/{cluster}/diagnosticData"
+    String path = "/api/v11/environments/{environment}/deployments/{deployment}/clusters/{cluster}/diagnosticData"
       .replaceAll("\\{format\\}", "json")
       .replaceAll("\\{" + "environment" + "\\}",
                   apiClient.escapeString(environment.toString()))
@@ -114,7 +114,7 @@ public class ClustersApi {
        throw new ApiException(400, "missing required params");
     }
     // create path and map variables
-    String path = "/api/v10/environments/{environment}/deployments/{deployment}/clusters"
+    String path = "/api/v11/environments/{environment}/deployments/{deployment}/clusters"
       .replaceAll("\\{format\\}", "json")
       .replaceAll("\\{" + "environment" + "\\}",
                   apiClient.escapeString(environment.toString()))
@@ -160,7 +160,7 @@ public class ClustersApi {
        throw new ApiException(400, "missing required params");
     }
     // create path and map variables
-    String path = "/api/v10/environments/{environment}/deployments/{deployment}/clusters/{cluster}"
+    String path = "/api/v11/environments/{environment}/deployments/{deployment}/clusters/{cluster}"
       .replaceAll("\\{format\\}", "json")
       .replaceAll("\\{" + "environment" + "\\}",
                   apiClient.escapeString(environment.toString()))
@@ -209,7 +209,7 @@ public class ClustersApi {
        throw new ApiException(400, "missing required params");
     }
     // create path and map variables
-    String path = "/api/v10/environments/{environment}/deployments/{deployment}/clusters/{cluster}"
+    String path = "/api/v11/environments/{environment}/deployments/{deployment}/clusters/{cluster}"
       .replaceAll("\\{format\\}", "json")
       .replaceAll("\\{" + "environment" + "\\}",
                   apiClient.escapeString(environment.toString()))
@@ -257,7 +257,7 @@ public class ClustersApi {
        throw new ApiException(400, "missing required params");
     }
     // create path and map variables
-    String path = "/api/v10/environments/{environment}/deployments/{deployment}/clusters/{cluster}/settings"
+    String path = "/api/v11/environments/{environment}/deployments/{deployment}/clusters/{cluster}/settings"
       .replaceAll("\\{format\\}", "json")
       .replaceAll("\\{" + "environment" + "\\}",
                   apiClient.escapeString(environment.toString()))
@@ -307,7 +307,7 @@ public class ClustersApi {
        throw new ApiException(400, "missing required params");
     }
     // create path and map variables
-    String path = "/api/v10/environments/{environment}/deployments/{deployment}/clusters/{cluster}/history"
+    String path = "/api/v11/environments/{environment}/deployments/{deployment}/clusters/{cluster}/history"
       .replaceAll("\\{format\\}", "json")
       .replaceAll("\\{" + "environment" + "\\}",
                   apiClient.escapeString(environment.toString()))
@@ -360,7 +360,7 @@ public class ClustersApi {
        throw new ApiException(400, "missing required params");
     }
     // create path and map variables
-    String path = "/api/v10/environments/{environment}/deployments/{deployment}/clusters/{cluster}/metrics"
+    String path = "/api/v11/environments/{environment}/deployments/{deployment}/clusters/{cluster}/metrics"
       .replaceAll("\\{format\\}", "json")
       .replaceAll("\\{" + "environment" + "\\}",
                   apiClient.escapeString(environment.toString()))
@@ -408,7 +408,7 @@ public class ClustersApi {
        throw new ApiException(400, "missing required params");
     }
     // create path and map variables
-    String path = "/api/v10/environments/{environment}/deployments/{deployment}/clusters/{cluster}/status"
+    String path = "/api/v11/environments/{environment}/deployments/{deployment}/clusters/{cluster}/status"
       .replaceAll("\\{format\\}", "json")
       .replaceAll("\\{" + "environment" + "\\}",
                   apiClient.escapeString(environment.toString()))
@@ -456,7 +456,7 @@ public class ClustersApi {
        throw new ApiException(400, "missing required params");
     }
     // create path and map variables
-    String path = "/api/v10/environments/{environment}/deployments/{deployment}/clusters/{cluster}/template"
+    String path = "/api/v11/environments/{environment}/deployments/{deployment}/clusters/{cluster}/template"
       .replaceAll("\\{format\\}", "json")
       .replaceAll("\\{" + "environment" + "\\}",
                   apiClient.escapeString(environment.toString()))
@@ -503,7 +503,7 @@ public class ClustersApi {
        throw new ApiException(400, "missing required params");
     }
     // create path and map variables
-    String path = "/api/v10/environments/{environment}/deployments/{deployment}/clusters"
+    String path = "/api/v11/environments/{environment}/deployments/{deployment}/clusters"
       .replaceAll("\\{format\\}", "json")
       .replaceAll("\\{" + "environment" + "\\}",
                   apiClient.escapeString(environment.toString()))
@@ -553,7 +553,7 @@ public class ClustersApi {
        throw new ApiException(400, "missing required params");
     }
     // create path and map variables
-    String path = "/api/v10/environments/{environment}/deployments/{deployment}/clusters/{cluster}"
+    String path = "/api/v11/environments/{environment}/deployments/{deployment}/clusters/{cluster}"
       .replaceAll("\\{format\\}", "json")
       .replaceAll("\\{" + "environment" + "\\}",
                   apiClient.escapeString(environment.toString()))
@@ -603,7 +603,7 @@ public class ClustersApi {
        throw new ApiException(400, "missing required params");
     }
     // create path and map variables
-    String path = "/api/v10/environments/{environment}/deployments/{deployment}/clusters/{cluster}/settings"
+    String path = "/api/v11/environments/{environment}/deployments/{deployment}/clusters/{cluster}/settings"
       .replaceAll("\\{format\\}", "json")
       .replaceAll("\\{" + "environment" + "\\}",
                   apiClient.escapeString(environment.toString()))

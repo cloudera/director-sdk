@@ -32,6 +32,8 @@ public class InstanceTemplate {
   private String image;
   /* Instance template name */
   private String name;
+  /* Normalization configuration */
+  private NormalizationConfiguration normalizationConfig;
   /* Flag indicating whether to normalize the instance */
   private Boolean normalizeInstance;
   /* Instance virtual rack ID */
@@ -52,11 +54,12 @@ public class InstanceTemplate {
   }
   public InstanceTemplate() { }
 
-  private InstanceTemplate(List<String> bootstrapScripts, Map<String, String> config, String image, String name, Boolean normalizeInstance, String rackId, String sshHostKeyRetrievalType, String sshUsername, Map<String, String> tags, String type) {
+  private InstanceTemplate(List<String> bootstrapScripts, Map<String, String> config, String image, String name, NormalizationConfiguration normalizationConfig, Boolean normalizeInstance, String rackId, String sshHostKeyRetrievalType, String sshUsername, Map<String, String> tags, String type) {
     this.bootstrapScripts = bootstrapScripts;
     this.config = config;
     this.image = image;
     this.name = name;
+    this.normalizationConfig = normalizationConfig;
     this.normalizeInstance = normalizeInstance;
     this.rackId = rackId;
     this.sshHostKeyRetrievalType = sshHostKeyRetrievalType;
@@ -70,6 +73,7 @@ public class InstanceTemplate {
     this.config = builder.config;
     this.image = builder.image;
     this.name = builder.name;
+    this.normalizationConfig = builder.normalizationConfig;
     this.normalizeInstance = builder.normalizeInstance;
     this.rackId = builder.rackId;
     this.sshHostKeyRetrievalType = builder.sshHostKeyRetrievalType;
@@ -87,6 +91,7 @@ public class InstanceTemplate {
     private Map<String, String> config = new HashMap<String, String>();
     private String image = null;
     private String name = null;
+    private NormalizationConfiguration normalizationConfig = null;
     private Boolean normalizeInstance = null;
     private String rackId = null;
     private String sshHostKeyRetrievalType = null;
@@ -111,6 +116,11 @@ public class InstanceTemplate {
 
     public InstanceTemplateBuilder name(String name) {
       this.name = name;
+      return this;
+    }
+
+    public InstanceTemplateBuilder normalizationConfig(NormalizationConfiguration normalizationConfig) {
+      this.normalizationConfig = normalizationConfig;
       return this;
     }
 
@@ -155,6 +165,7 @@ public class InstanceTemplate {
       .config(config)
       .image(image)
       .name(name)
+      .normalizationConfig(normalizationConfig)
       .normalizeInstance(normalizeInstance)
       .rackId(rackId)
       .sshHostKeyRetrievalType(sshHostKeyRetrievalType)
@@ -189,6 +200,13 @@ public class InstanceTemplate {
   }
   public void setName(String name) {
     this.name = name;
+  }
+
+  public NormalizationConfiguration getNormalizationConfig() {
+    return normalizationConfig;
+  }
+  public void setNormalizationConfig(NormalizationConfiguration normalizationConfig) {
+    this.normalizationConfig = normalizationConfig;
   }
 
   public Boolean getNormalizeInstance() {
@@ -252,6 +270,9 @@ public class InstanceTemplate {
     if (name != null ?
         !name.equals(other.name) :
         other.name != null) return false;
+    if (normalizationConfig != null ?
+        !normalizationConfig.equals(other.normalizationConfig) :
+        other.normalizationConfig != null) return false;
     if (normalizeInstance != null ?
         !normalizeInstance.equals(other.normalizeInstance) :
         other.normalizeInstance != null) return false;
@@ -280,6 +301,7 @@ public class InstanceTemplate {
     result = 31 * result + (config != null ? config.hashCode() : 0);
     result = 31 * result + (image != null ? image.hashCode() : 0);
     result = 31 * result + (name != null ? name.hashCode() : 0);
+    result = 31 * result + (normalizationConfig != null ? normalizationConfig.hashCode() : 0);
     result = 31 * result + (normalizeInstance != null ? normalizeInstance.hashCode() : 0);
     result = 31 * result + (rackId != null ? rackId.hashCode() : 0);
     result = 31 * result + (sshHostKeyRetrievalType != null ? sshHostKeyRetrievalType.hashCode() : 0);
@@ -298,6 +320,7 @@ public class InstanceTemplate {
     sb.append("  config: ").append(config).append(newLine);
     sb.append("  image: ").append(image).append(newLine);
     sb.append("  name: ").append(name).append(newLine);
+    sb.append("  normalizationConfig: ").append(normalizationConfig).append(newLine);
     sb.append("  normalizeInstance: ").append(normalizeInstance).append(newLine);
     sb.append("  rackId: ").append(rackId).append(newLine);
     sb.append("  sshHostKeyRetrievalType: ").append(sshHostKeyRetrievalType).append(newLine);

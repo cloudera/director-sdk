@@ -49,7 +49,7 @@ class UsersApi(object):
             params[key] = val
         del params['kwargs']
 
-        resourcePath = '/api/v10/users'
+        resourcePath = '/api/v11/users'
         resourcePath = resourcePath.replace('{format}', 'json')
         method = 'POST'
 
@@ -87,7 +87,7 @@ class UsersApi(object):
             params[key] = val
         del params['kwargs']
 
-        resourcePath = '/api/v10/users/current'
+        resourcePath = '/api/v11/users/current'
         resourcePath = resourcePath.replace('{format}', 'json')
         method = 'GET'
 
@@ -132,7 +132,7 @@ class UsersApi(object):
             params[key] = val
         del params['kwargs']
 
-        resourcePath = '/api/v10/users/{username}'
+        resourcePath = '/api/v11/users/{username}'
         resourcePath = resourcePath.replace('{format}', 'json')
         method = 'DELETE'
 
@@ -176,7 +176,7 @@ class UsersApi(object):
             params[key] = val
         del params['kwargs']
 
-        resourcePath = '/api/v10/users/{username}'
+        resourcePath = '/api/v11/users/{username}'
         resourcePath = resourcePath.replace('{format}', 'json')
         method = 'GET'
 
@@ -205,6 +205,49 @@ class UsersApi(object):
 
         
 
+    def getUserManagementStatus(self, **kwargs):
+        """Gets user management status
+
+        Args:
+            
+
+        Returns: cloudera.director.latest.models.UserManagementStatus
+        """
+
+        allParams = []
+
+        params = locals()
+        for (key, val) in params['kwargs'].iteritems():
+            if key not in allParams:
+                raise TypeError("Got an unexpected keyword argument '%s' to method getUserManagementStatus" % key)
+            params[key] = val
+        del params['kwargs']
+
+        resourcePath = '/api/v11/users/managementStatus'
+        resourcePath = resourcePath.replace('{format}', 'json')
+        method = 'GET'
+
+        queryParams = {}
+        headerParams = {}
+
+        postData = None
+
+        contentTypes = ["application/json"]
+        if len(contentTypes) != 1:
+            raise ValueError("An API client expects a single content type. Got: %s" % contentTypes)
+
+        response = self.apiClient.callAPI(resourcePath, method, queryParams,
+                                          postData, headerParams, contentTypes[0])
+
+        if not response:
+            return None
+
+        responseObject = self.apiClient.deserialize(response, 'cloudera.director.latest.models.UserManagementStatus')
+        return responseObject
+        
+
+        
+
     def list(self, **kwargs):
         """List all users
 
@@ -223,7 +266,7 @@ class UsersApi(object):
             params[key] = val
         del params['kwargs']
 
-        resourcePath = '/api/v10/users'
+        resourcePath = '/api/v11/users'
         resourcePath = resourcePath.replace('{format}', 'json')
         method = 'GET'
 
@@ -270,7 +313,7 @@ class UsersApi(object):
             params[key] = val
         del params['kwargs']
 
-        resourcePath = '/api/v10/users/{username}'
+        resourcePath = '/api/v11/users/{username}'
         resourcePath = resourcePath.replace('{format}', 'json')
         method = 'PUT'
 
@@ -316,7 +359,7 @@ class UsersApi(object):
             params[key] = val
         del params['kwargs']
 
-        resourcePath = '/api/v10/users/{username}/password'
+        resourcePath = '/api/v11/users/{username}/password'
         resourcePath = resourcePath.replace('{format}', 'json')
         method = 'PUT'
 

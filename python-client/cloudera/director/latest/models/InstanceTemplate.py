@@ -26,6 +26,7 @@ class InstanceTemplate:
             'config': 'dict[str,str]',
             'image': 'str',
             'name': 'str',
+            'normalizationConfig': 'cloudera.director.latest.models.NormalizationConfiguration',
             'normalizeInstance': 'bool',
             'rackId': 'str',
             'sshHostKeyRetrievalType': 'str',
@@ -44,6 +45,8 @@ class InstanceTemplate:
         self.image = kwargs.get('image',None) # str
         #Instance template name
         self.name = kwargs.get('name',None) # str
+        #Normalization configuration
+        self.normalizationConfig = kwargs.get('normalizationConfig',None) # cloudera.director.latest.models.NormalizationConfiguration
         #Flag indicating whether to normalize the instance
         self.normalizeInstance = kwargs.get('normalizeInstance',None) # bool
         #Instance virtual rack ID

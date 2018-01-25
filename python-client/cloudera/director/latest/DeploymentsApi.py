@@ -51,7 +51,7 @@ class DeploymentsApi(object):
             params[key] = val
         del params['kwargs']
 
-        resourcePath = '/api/v10/environments/{environment}/deployments/{deployment}/diagnosticData'
+        resourcePath = '/api/v11/environments/{environment}/deployments/{deployment}/diagnosticData'
         resourcePath = resourcePath.replace('{format}', 'json')
         method = 'POST'
 
@@ -101,7 +101,7 @@ class DeploymentsApi(object):
             params[key] = val
         del params['kwargs']
 
-        resourcePath = '/api/v10/environments/{environment}/deployments'
+        resourcePath = '/api/v11/environments/{environment}/deployments'
         resourcePath = resourcePath.replace('{format}', 'json')
         method = 'POST'
 
@@ -147,7 +147,7 @@ class DeploymentsApi(object):
             params[key] = val
         del params['kwargs']
 
-        resourcePath = '/api/v10/environments/{environment}/deployments/{deployment}'
+        resourcePath = '/api/v11/environments/{environment}/deployments/{deployment}'
         resourcePath = resourcePath.replace('{format}', 'json')
         method = 'DELETE'
 
@@ -197,7 +197,7 @@ class DeploymentsApi(object):
             params[key] = val
         del params['kwargs']
 
-        resourcePath = '/api/v10/environments/{environment}/deployments/{deployment}'
+        resourcePath = '/api/v11/environments/{environment}/deployments/{deployment}'
         resourcePath = resourcePath.replace('{format}', 'json')
         method = 'GET'
 
@@ -252,7 +252,7 @@ class DeploymentsApi(object):
             params[key] = val
         del params['kwargs']
 
-        resourcePath = '/api/v10/environments/{environment}/deployments/{deployment}/status'
+        resourcePath = '/api/v11/environments/{environment}/deployments/{deployment}/status'
         resourcePath = resourcePath.replace('{format}', 'json')
         method = 'GET'
 
@@ -307,7 +307,7 @@ class DeploymentsApi(object):
             params[key] = val
         del params['kwargs']
 
-        resourcePath = '/api/v10/environments/{environment}/deployments/{deployment}/template'
+        resourcePath = '/api/v11/environments/{environment}/deployments/{deployment}/template'
         resourcePath = resourcePath.replace('{format}', 'json')
         method = 'GET'
 
@@ -360,7 +360,7 @@ class DeploymentsApi(object):
             params[key] = val
         del params['kwargs']
 
-        resourcePath = '/api/v10/environments/{environment}/deployments'
+        resourcePath = '/api/v11/environments/{environment}/deployments'
         resourcePath = resourcePath.replace('{format}', 'json')
         method = 'GET'
 
@@ -413,7 +413,7 @@ class DeploymentsApi(object):
             params[key] = val
         del params['kwargs']
 
-        resourcePath = '/api/v10/environments/{environment}/deployments/{deployment}'
+        resourcePath = '/api/v11/environments/{environment}/deployments/{deployment}'
         resourcePath = resourcePath.replace('{format}', 'json')
         method = 'PUT'
 
@@ -465,7 +465,7 @@ class DeploymentsApi(object):
             params[key] = val
         del params['kwargs']
 
-        resourcePath = '/api/v10/environments/{environment}/deployments/{deployment}/metering'
+        resourcePath = '/api/v11/environments/{environment}/deployments/{deployment}/metering'
         resourcePath = resourcePath.replace('{format}', 'json')
         method = 'PUT'
 

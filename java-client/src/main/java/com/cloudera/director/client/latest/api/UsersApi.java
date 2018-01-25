@@ -23,6 +23,7 @@ import com.cloudera.director.client.common.ApiException;
 
 import com.cloudera.director.client.latest.model.PasswordChange;
 import com.cloudera.director.client.latest.model.User;
+import com.cloudera.director.client.latest.model.UserManagementStatus;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List; // NOPMD
@@ -57,7 +58,7 @@ public class UsersApi {
        throw new ApiException(400, "missing required params");
     }
     // create path and map variables
-    String path = "/api/v10/users"
+    String path = "/api/v11/users"
       .replaceAll("\\{format\\}", "json")
       ;
 
@@ -92,7 +93,7 @@ public class UsersApi {
   public User currentRedacted() throws ApiException {
     Object postBody = null;
     // create path and map variables
-    String path = "/api/v10/users/current"
+    String path = "/api/v11/users/current"
       .replaceAll("\\{format\\}", "json")
       ;
 
@@ -131,7 +132,7 @@ public class UsersApi {
        throw new ApiException(400, "missing required params");
     }
     // create path and map variables
-    String path = "/api/v10/users/{username}"
+    String path = "/api/v11/users/{username}"
       .replaceAll("\\{format\\}", "json")
       .replaceAll("\\{" + "username" + "\\}",
                   apiClient.escapeString(username.toString()))
@@ -173,7 +174,7 @@ public class UsersApi {
        throw new ApiException(400, "missing required params");
     }
     // create path and map variables
-    String path = "/api/v10/users/{username}"
+    String path = "/api/v11/users/{username}"
       .replaceAll("\\{format\\}", "json")
       .replaceAll("\\{" + "username" + "\\}",
                   apiClient.escapeString(username.toString()))
@@ -201,6 +202,42 @@ public class UsersApi {
   }
 
   /**
+  * Gets user management status.
+  * status code: 200 reason: "OK"
+  * status code: 400 reason: "Local user management is disabled"
+  * status code: 401 reason: "Unauthorized"
+  * status code: 403 reason: "Forbidden"
+  * status code: 404 reason: "Not Found"
+  */
+  public UserManagementStatus getUserManagementStatus() throws ApiException {
+    Object postBody = null;
+    // create path and map variables
+    String path = "/api/v11/users/managementStatus"
+      .replaceAll("\\{format\\}", "json")
+      ;
+
+    // query params
+    Map<String, String> queryParams = new HashMap<String, String>();
+    Map<String, String> headerParams = new HashMap<String, String>();
+    Map<String, String> formParams = new HashMap<String, String>();
+
+    String[] contentTypes = { "application/json"};
+    if (contentTypes.length != 1) {
+      throw new IllegalArgumentException("An API client expects a single content type. Got: "
+        + Arrays.toString(contentTypes));
+    }
+
+    String response = apiClient.invokeAPI(path, "GET", queryParams, postBody,
+      headerParams, formParams, contentTypes[0]);
+
+    if (response != null) {
+      return (UserManagementStatus) ApiClient.deserialize(response, "", UserManagementStatus.class);
+    } else {
+      return null;
+    }
+  }
+
+  /**
   * List all users.
   * status code: 200 reason: "OK"
   * status code: 401 reason: "Unauthorized"
@@ -210,7 +247,7 @@ public class UsersApi {
   public List<String> list() throws ApiException {
     Object postBody = null;
     // create path and map variables
-    String path = "/api/v10/users"
+    String path = "/api/v11/users"
       .replaceAll("\\{format\\}", "json")
       ;
 
@@ -253,7 +290,7 @@ public class UsersApi {
        throw new ApiException(400, "missing required params");
     }
     // create path and map variables
-    String path = "/api/v10/users/{username}"
+    String path = "/api/v11/users/{username}"
       .replaceAll("\\{format\\}", "json")
       .replaceAll("\\{" + "username" + "\\}",
                   apiClient.escapeString(username.toString()))
@@ -298,7 +335,7 @@ public class UsersApi {
        throw new ApiException(400, "missing required params");
     }
     // create path and map variables
-    String path = "/api/v10/users/{username}/password"
+    String path = "/api/v11/users/{username}/password"
       .replaceAll("\\{format\\}", "json")
       .replaceAll("\\{" + "username" + "\\}",
                   apiClient.escapeString(username.toString()))

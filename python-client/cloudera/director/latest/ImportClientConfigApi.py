@@ -55,7 +55,7 @@ class ImportClientConfigApi(object):
             params[key] = val
         del params['kwargs']
 
-        resourcePath = '/api/v10/import'
+        resourcePath = '/api/v11/import'
         resourcePath = resourcePath.replace('{format}', 'json')
         method = 'POST'
 
@@ -112,7 +112,7 @@ class ImportClientConfigApi(object):
             params[key] = val
         del params['kwargs']
 
-        resourcePath = '/api/v10/import/clientConfig/validate'
+        resourcePath = '/api/v11/import/clientConfig/validate'
         resourcePath = resourcePath.replace('{format}', 'json')
         method = 'POST'
 

@@ -54,7 +54,7 @@ public class ProviderMetadataApi {
        throw new ApiException(400, "missing required params");
     }
     // create path and map variables
-    String path = "/api/v10/metadata/providers/{providerId}"
+    String path = "/api/v11/metadata/providers/{providerId}"
       .replaceAll("\\{format\\}", "json")
       .replaceAll("\\{" + "providerId" + "\\}",
                   apiClient.escapeString(providerId.toString()))
@@ -91,7 +91,7 @@ public class ProviderMetadataApi {
   public List<CloudProviderMetadata> list() throws ApiException {
     Object postBody = null;
     // create path and map variables
-    String path = "/api/v10/metadata/providers"
+    String path = "/api/v11/metadata/providers"
       .replaceAll("\\{format\\}", "json")
       ;
 
