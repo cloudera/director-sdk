@@ -134,6 +134,9 @@ public class ErrorInfo {
     String SERVICE_NOT_FOUND = "SERVICE_NOT_FOUND";
     String ROLE_NOT_FOUND = "ROLE_NOT_FOUND";
     String CM_HOST_FQDN_MISSING = "CM_HOST_FQDN_MISSING";
+    String WORKFLOW_FAILED = "WORKFLOW_FAILED";
+    String SCRIPT_NOT_FOUND = "SCRIPT_NOT_FOUND";
+    String SHELL_COMMAND_FAILED = "SHELL_COMMAND_FAILED";
     String UNDEFINED = "UNDEFINED";
   }
   public interface ErrorType {

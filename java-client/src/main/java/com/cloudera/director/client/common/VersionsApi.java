@@ -16,10 +16,14 @@
 
 package com.cloudera.director.client.common;
 
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
 public class VersionsApi {
+
+  private static final Map<String, String> EMPTY_MAP =
+    Collections.unmodifiableMap(new HashMap<String, String>());
   private ApiClient apiClient;
 
   public VersionsApi(ApiClient apiClient) {
@@ -33,8 +37,8 @@ public class VersionsApi {
    * @throws ApiException
    */
   public Version get() throws ApiException {
-    return (Version) ApiClient.deserialize(getResponse("/api/versions"), "",
-        Version.class);
+    return (Version) apiClient.invokeAPI("/api/versions", "GET", EMPTY_MAP, null,
+      EMPTY_MAP, EMPTY_MAP, "application/json", "", Version.class);
   }
 
   /**
@@ -44,20 +48,8 @@ public class VersionsApi {
    * @throws ApiException
    */
   public String getLatestApiVersion() throws ApiException {
-    return (String) ApiClient.deserialize(getResponse("/api/versions/latest"), "", String.class);
-  }
-
-  // Gets the response as a string from the given endpoint
-  private String getResponse(String endpoint) throws ApiException {
-    // query params
-    Map<String, String> queryParams = new HashMap<String, String>();
-    Map<String, String> headerParams = new HashMap<String, String>();
-    Map<String, String> formParams = new HashMap<String, String>();
-
-    String contentType = "application/json";
-
-    return apiClient.invokeAPI(endpoint, "GET", queryParams, null, headerParams, formParams,
-        contentType);
+    return (String) apiClient.invokeAPI("/api/versions/latest", "GET", EMPTY_MAP, null, EMPTY_MAP,
+      EMPTY_MAP, "application/json", "", String.class);
   }
 }
 

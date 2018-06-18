@@ -80,15 +80,10 @@ public class ImportClientConfigApi {
         + Arrays.toString(contentTypes));
     }
 
-    String response = apiClient.invokeAPI(path, "POST", queryParams, postBody,
-      headerParams, formParams, contentTypes[0]);
+    Object response = apiClient.invokeAPI(path, "POST", queryParams, postBody,
+      headerParams, formParams, contentTypes[0], "", ImportResult.class);
+    return (ImportResult) response;}
 
-    if (response != null) {
-      return (ImportResult) ApiClient.deserialize(response, "", ImportResult.class);
-    } else {
-      return null;
-    }
-  }
 
   public ImportResult importClientConfig(String body) throws ApiException {
      return importClientConfig(body, null, null, null);
@@ -133,15 +128,10 @@ public class ImportClientConfigApi {
         + Arrays.toString(contentTypes));
     }
 
-    String response = apiClient.invokeAPI(path, "POST", queryParams, postBody,
-      headerParams, formParams, contentTypes[0]);
+    Object response = apiClient.invokeAPI(path, "POST", queryParams, postBody,
+      headerParams, formParams, contentTypes[0], "", ValidationResult.class);
+    return (ValidationResult) response;}
 
-    if (response != null) {
-      return (ValidationResult) ApiClient.deserialize(response, "", ValidationResult.class);
-    } else {
-      return null;
-    }
-  }
 
   public ValidationResult validate(String body) throws ApiException {
      return validate(body, null, null, null);

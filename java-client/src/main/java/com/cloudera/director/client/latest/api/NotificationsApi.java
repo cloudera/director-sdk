@@ -49,7 +49,7 @@ public class NotificationsApi {
   public List<Notification> get() throws ApiException {
     Object postBody = null;
     // create path and map variables
-    String path = "/api/v11/notifications"
+    String path = "/api/v12/notifications"
       .replaceAll("\\{format\\}", "json")
       ;
 
@@ -64,15 +64,10 @@ public class NotificationsApi {
         + Arrays.toString(contentTypes));
     }
 
-    String response = apiClient.invokeAPI(path, "GET", queryParams, postBody,
-      headerParams, formParams, contentTypes[0]);
+    Object response = apiClient.invokeAPI(path, "GET", queryParams, postBody,
+      headerParams, formParams, contentTypes[0], "List", Notification.class);
+    return (List<Notification>) response;}
 
-    if (response != null) {
-      return (List<Notification>) ApiClient.deserialize(response, "List", Notification.class);
-    } else {
-      return null;
-    }
-  }
 
   }
 

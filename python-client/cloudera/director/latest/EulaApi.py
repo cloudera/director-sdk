@@ -47,7 +47,7 @@ class EulaApi(object):
             params[key] = val
         del params['kwargs']
 
-        resourcePath = '/api/v11/eula'
+        resourcePath = '/api/v12/eula'
         resourcePath = resourcePath.replace('{format}', 'json')
         method = 'GET'
 
@@ -92,7 +92,7 @@ class EulaApi(object):
             params[key] = val
         del params['kwargs']
 
-        resourcePath = '/api/v11/eula'
+        resourcePath = '/api/v12/eula'
         resourcePath = resourcePath.replace('{format}', 'json')
         method = 'PUT'
 

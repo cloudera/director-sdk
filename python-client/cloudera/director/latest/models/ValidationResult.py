@@ -23,6 +23,7 @@ class ValidationResult:
     def __init__(self, **kwargs):
         self.swaggerTypes = {
             'errors': 'set[cloudera.director.latest.models.ErrorInfo]',
+            'formatWarnings': 'set[cloudera.director.latest.models.WarningInfo]',
             'warnings': 'set[cloudera.director.latest.models.WarningInfo]'
 
         }
@@ -30,6 +31,8 @@ class ValidationResult:
 
         #Validation Errors
         self.errors = kwargs.get('errors',set()) # set[cloudera.director.latest.models.ErrorInfo]
+        #Format Warnings
+        self.formatWarnings = kwargs.get('formatWarnings',set()) # set[cloudera.director.latest.models.WarningInfo]
         #Validation Warnings
         self.warnings = kwargs.get('warnings',set()) # set[cloudera.director.latest.models.WarningInfo]
         

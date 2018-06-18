@@ -67,6 +67,7 @@ public class DeploymentTemplate {
   public interface JavaInstallationStrategy {
     String AUTO = "AUTO";
     String NONE = "NONE";
+    String DIRECTOR_MANAGED = "DIRECTOR_MANAGED";
   }
   public DeploymentTemplate() { }
 

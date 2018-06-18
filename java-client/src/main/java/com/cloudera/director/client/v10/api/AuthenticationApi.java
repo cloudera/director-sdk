@@ -72,15 +72,10 @@ public class AuthenticationApi {
         + Arrays.toString(contentTypes));
     }
 
-    String response = apiClient.invokeAPI(path, "POST", queryParams, postBody,
-      headerParams, formParams, contentTypes[0]);
+    Object response = apiClient.invokeAPI(path, "POST", queryParams, postBody,
+      headerParams, formParams, contentTypes[0], "", User.class);
+    return (User) response;}
 
-    if (response != null) {
-      return (User) ApiClient.deserialize(response, "", User.class);
-    } else {
-      return null;
-    }
-  }
 
   /**
   * Log out from the API.
@@ -108,15 +103,10 @@ public class AuthenticationApi {
         + Arrays.toString(contentTypes));
     }
 
-    String response = apiClient.invokeAPI(path, "POST", queryParams, postBody,
-      headerParams, formParams, contentTypes[0]);
+    Object response = apiClient.invokeAPI(path, "POST", queryParams, postBody,
+      headerParams, formParams, contentTypes[0], "", Boolean.class);
+    return (Boolean) response;}
 
-    if (response != null) {
-      return (Boolean) ApiClient.deserialize(response, "", Boolean.class);
-    } else {
-      return null;
-    }
-  }
 
   }
 

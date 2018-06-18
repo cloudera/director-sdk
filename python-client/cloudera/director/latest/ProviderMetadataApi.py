@@ -49,7 +49,7 @@ class ProviderMetadataApi(object):
             params[key] = val
         del params['kwargs']
 
-        resourcePath = '/api/v11/metadata/providers/{providerId}'
+        resourcePath = '/api/v12/metadata/providers/{providerId}'
         resourcePath = resourcePath.replace('{format}', 'json')
         method = 'GET'
 
@@ -96,7 +96,7 @@ class ProviderMetadataApi(object):
             params[key] = val
         del params['kwargs']
 
-        resourcePath = '/api/v11/metadata/providers'
+        resourcePath = '/api/v12/metadata/providers'
         resourcePath = resourcePath.replace('{format}', 'json')
         method = 'GET'
 

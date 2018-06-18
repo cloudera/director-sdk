@@ -71,15 +71,10 @@ public class ProviderMetadataApi {
         + Arrays.toString(contentTypes));
     }
 
-    String response = apiClient.invokeAPI(path, "GET", queryParams, postBody,
-      headerParams, formParams, contentTypes[0]);
+    Object response = apiClient.invokeAPI(path, "GET", queryParams, postBody,
+      headerParams, formParams, contentTypes[0], "", CloudProviderMetadata.class);
+    return (CloudProviderMetadata) response;}
 
-    if (response != null) {
-      return (CloudProviderMetadata) ApiClient.deserialize(response, "", CloudProviderMetadata.class);
-    } else {
-      return null;
-    }
-  }
 
   /**
   * List all provider metadata.
@@ -106,15 +101,10 @@ public class ProviderMetadataApi {
         + Arrays.toString(contentTypes));
     }
 
-    String response = apiClient.invokeAPI(path, "GET", queryParams, postBody,
-      headerParams, formParams, contentTypes[0]);
+    Object response = apiClient.invokeAPI(path, "GET", queryParams, postBody,
+      headerParams, formParams, contentTypes[0], "List", CloudProviderMetadata.class);
+    return (List<CloudProviderMetadata>) response;}
 
-    if (response != null) {
-      return (List<CloudProviderMetadata>) ApiClient.deserialize(response, "List", CloudProviderMetadata.class);
-    } else {
-      return null;
-    }
-  }
 
   }
 

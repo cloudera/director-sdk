@@ -56,7 +56,7 @@ public class EnvironmentsApi {
        throw new ApiException(400, "missing required params");
     }
     // create path and map variables
-    String path = "/api/v11/environments"
+    String path = "/api/v12/environments"
       .replaceAll("\\{format\\}", "json")
       ;
 
@@ -71,15 +71,10 @@ public class EnvironmentsApi {
         + Arrays.toString(contentTypes));
     }
 
-    String response = apiClient.invokeAPI(path, "POST", queryParams, postBody,
+    apiClient.invokeAPI(path, "POST", queryParams, postBody,
       headerParams, formParams, contentTypes[0]);
-
-    if (response != null) {
-      return ;
-    } else {
-      return ;
     }
-  }
+
 
   /**
   * Delete an environment by name.
@@ -96,7 +91,7 @@ public class EnvironmentsApi {
        throw new ApiException(400, "missing required params");
     }
     // create path and map variables
-    String path = "/api/v11/environments/{name}"
+    String path = "/api/v12/environments/{name}"
       .replaceAll("\\{format\\}", "json")
       .replaceAll("\\{" + "name" + "\\}",
                   apiClient.escapeString(name.toString()))
@@ -113,15 +108,10 @@ public class EnvironmentsApi {
         + Arrays.toString(contentTypes));
     }
 
-    String response = apiClient.invokeAPI(path, "DELETE", queryParams, postBody,
+    apiClient.invokeAPI(path, "DELETE", queryParams, postBody,
       headerParams, formParams, contentTypes[0]);
-
-    if (response != null) {
-      return ;
-    } else {
-      return ;
     }
-  }
+
 
   /**
   * Get an environment by name.
@@ -138,7 +128,7 @@ public class EnvironmentsApi {
        throw new ApiException(400, "missing required params");
     }
     // create path and map variables
-    String path = "/api/v11/environments/{name}"
+    String path = "/api/v12/environments/{name}"
       .replaceAll("\\{format\\}", "json")
       .replaceAll("\\{" + "name" + "\\}",
                   apiClient.escapeString(name.toString()))
@@ -155,15 +145,10 @@ public class EnvironmentsApi {
         + Arrays.toString(contentTypes));
     }
 
-    String response = apiClient.invokeAPI(path, "GET", queryParams, postBody,
-      headerParams, formParams, contentTypes[0]);
+    Object response = apiClient.invokeAPI(path, "GET", queryParams, postBody,
+      headerParams, formParams, contentTypes[0], "", Environment.class);
+    return (Environment) response;}
 
-    if (response != null) {
-      return (Environment) ApiClient.deserialize(response, "", Environment.class);
-    } else {
-      return null;
-    }
-  }
 
   /**
   * List all environments.
@@ -175,7 +160,7 @@ public class EnvironmentsApi {
   public List<String> list() throws ApiException {
     Object postBody = null;
     // create path and map variables
-    String path = "/api/v11/environments"
+    String path = "/api/v12/environments"
       .replaceAll("\\{format\\}", "json")
       ;
 
@@ -190,15 +175,10 @@ public class EnvironmentsApi {
         + Arrays.toString(contentTypes));
     }
 
-    String response = apiClient.invokeAPI(path, "GET", queryParams, postBody,
-      headerParams, formParams, contentTypes[0]);
+    Object response = apiClient.invokeAPI(path, "GET", queryParams, postBody,
+      headerParams, formParams, contentTypes[0], "List", String.class);
+    return (List<String>) response;}
 
-    if (response != null) {
-      return (List<String>) ApiClient.deserialize(response, "List", String.class);
-    } else {
-      return null;
-    }
-  }
 
   /**
   * Update an existing environment.
@@ -218,7 +198,7 @@ public class EnvironmentsApi {
        throw new ApiException(400, "missing required params");
     }
     // create path and map variables
-    String path = "/api/v11/environments/{name}"
+    String path = "/api/v12/environments/{name}"
       .replaceAll("\\{format\\}", "json")
       .replaceAll("\\{" + "name" + "\\}",
                   apiClient.escapeString(name.toString()))
@@ -235,15 +215,10 @@ public class EnvironmentsApi {
         + Arrays.toString(contentTypes));
     }
 
-    String response = apiClient.invokeAPI(path, "PUT", queryParams, postBody,
+    apiClient.invokeAPI(path, "PUT", queryParams, postBody,
       headerParams, formParams, contentTypes[0]);
-
-    if (response != null) {
-      return ;
-    } else {
-      return ;
     }
-  }
+
 
   /**
   * Update provider credentials for a specific environment.
@@ -263,7 +238,7 @@ public class EnvironmentsApi {
        throw new ApiException(400, "missing required params");
     }
     // create path and map variables
-    String path = "/api/v11/environments/{name}/provider/credentials"
+    String path = "/api/v12/environments/{name}/provider/credentials"
       .replaceAll("\\{format\\}", "json")
       .replaceAll("\\{" + "name" + "\\}",
                   apiClient.escapeString(name.toString()))
@@ -280,15 +255,10 @@ public class EnvironmentsApi {
         + Arrays.toString(contentTypes));
     }
 
-    String response = apiClient.invokeAPI(path, "PUT", queryParams, postBody,
+    apiClient.invokeAPI(path, "PUT", queryParams, postBody,
       headerParams, formParams, contentTypes[0]);
-
-    if (response != null) {
-      return ;
-    } else {
-      return ;
     }
-  }
+
 
   }
 

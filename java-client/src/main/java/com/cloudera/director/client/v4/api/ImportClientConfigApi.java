@@ -79,15 +79,10 @@ public class ImportClientConfigApi {
         + Arrays.toString(contentTypes));
     }
 
-    String response = apiClient.invokeAPI(path, "POST", queryParams, postBody,
-      headerParams, formParams, contentTypes[0]);
+    Object response = apiClient.invokeAPI(path, "POST", queryParams, postBody,
+      headerParams, formParams, contentTypes[0], "", ImportResult.class);
+    return (ImportResult) response;}
 
-    if (response != null) {
-      return (ImportResult) ApiClient.deserialize(response, "", ImportResult.class);
-    } else {
-      return null;
-    }
-  }
 
   public ImportResult importClientConfig(String body) throws ApiException {
      return importClientConfig(body, null, null, null);

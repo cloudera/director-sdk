@@ -60,7 +60,7 @@ public class DatabaseServersApi {
        throw new ApiException(400, "missing required params");
     }
     // create path and map variables
-    String path = "/api/v11/environments/{environment}/databaseServers"
+    String path = "/api/v12/environments/{environment}/databaseServers"
       .replaceAll("\\{format\\}", "json")
       .replaceAll("\\{" + "environment" + "\\}",
                   apiClient.escapeString(environment.toString()))
@@ -77,15 +77,10 @@ public class DatabaseServersApi {
         + Arrays.toString(contentTypes));
     }
 
-    String response = apiClient.invokeAPI(path, "POST", queryParams, postBody,
+    apiClient.invokeAPI(path, "POST", queryParams, postBody,
       headerParams, formParams, contentTypes[0]);
-
-    if (response != null) {
-      return ;
-    } else {
-      return ;
     }
-  }
+
 
   /**
   * Delete an external database server by name.
@@ -103,7 +98,7 @@ public class DatabaseServersApi {
        throw new ApiException(400, "missing required params");
     }
     // create path and map variables
-    String path = "/api/v11/environments/{environment}/databaseServers/{externalDatabaseServer}"
+    String path = "/api/v12/environments/{environment}/databaseServers/{externalDatabaseServer}"
       .replaceAll("\\{format\\}", "json")
       .replaceAll("\\{" + "environment" + "\\}",
                   apiClient.escapeString(environment.toString()))
@@ -122,15 +117,10 @@ public class DatabaseServersApi {
         + Arrays.toString(contentTypes));
     }
 
-    String response = apiClient.invokeAPI(path, "DELETE", queryParams, postBody,
+    apiClient.invokeAPI(path, "DELETE", queryParams, postBody,
       headerParams, formParams, contentTypes[0]);
-
-    if (response != null) {
-      return ;
-    } else {
-      return ;
     }
-  }
+
 
   /**
   * Get an external database server usage by name.
@@ -148,7 +138,7 @@ public class DatabaseServersApi {
        throw new ApiException(400, "missing required params");
     }
     // create path and map variables
-    String path = "/api/v11/environments/{environment}/databaseServers/{externalDatabaseServer}/usage"
+    String path = "/api/v12/environments/{environment}/databaseServers/{externalDatabaseServer}/usage"
       .replaceAll("\\{format\\}", "json")
       .replaceAll("\\{" + "environment" + "\\}",
                   apiClient.escapeString(environment.toString()))
@@ -167,15 +157,10 @@ public class DatabaseServersApi {
         + Arrays.toString(contentTypes));
     }
 
-    String response = apiClient.invokeAPI(path, "GET", queryParams, postBody,
-      headerParams, formParams, contentTypes[0]);
+    Object response = apiClient.invokeAPI(path, "GET", queryParams, postBody,
+      headerParams, formParams, contentTypes[0], "", ExternalDatabaseServerUsage.class);
+    return (ExternalDatabaseServerUsage) response;}
 
-    if (response != null) {
-      return (ExternalDatabaseServerUsage) ApiClient.deserialize(response, "", ExternalDatabaseServerUsage.class);
-    } else {
-      return null;
-    }
-  }
 
   /**
   * Get an external database server by name.
@@ -194,7 +179,7 @@ public class DatabaseServersApi {
        throw new ApiException(400, "missing required params");
     }
     // create path and map variables
-    String path = "/api/v11/environments/{environment}/databaseServers/{externalDatabaseServer}"
+    String path = "/api/v12/environments/{environment}/databaseServers/{externalDatabaseServer}"
       .replaceAll("\\{format\\}", "json")
       .replaceAll("\\{" + "environment" + "\\}",
                   apiClient.escapeString(environment.toString()))
@@ -213,15 +198,10 @@ public class DatabaseServersApi {
         + Arrays.toString(contentTypes));
     }
 
-    String response = apiClient.invokeAPI(path, "GET", queryParams, postBody,
-      headerParams, formParams, contentTypes[0]);
+    Object response = apiClient.invokeAPI(path, "GET", queryParams, postBody,
+      headerParams, formParams, contentTypes[0], "", ExternalDatabaseServer.class);
+    return (ExternalDatabaseServer) response;}
 
-    if (response != null) {
-      return (ExternalDatabaseServer) ApiClient.deserialize(response, "", ExternalDatabaseServer.class);
-    } else {
-      return null;
-    }
-  }
 
   /**
   * Get an external database server status by name.
@@ -239,7 +219,7 @@ public class DatabaseServersApi {
        throw new ApiException(400, "missing required params");
     }
     // create path and map variables
-    String path = "/api/v11/environments/{environment}/databaseServers/{externalDatabaseServer}/status"
+    String path = "/api/v12/environments/{environment}/databaseServers/{externalDatabaseServer}/status"
       .replaceAll("\\{format\\}", "json")
       .replaceAll("\\{" + "environment" + "\\}",
                   apiClient.escapeString(environment.toString()))
@@ -258,15 +238,10 @@ public class DatabaseServersApi {
         + Arrays.toString(contentTypes));
     }
 
-    String response = apiClient.invokeAPI(path, "GET", queryParams, postBody,
-      headerParams, formParams, contentTypes[0]);
+    Object response = apiClient.invokeAPI(path, "GET", queryParams, postBody,
+      headerParams, formParams, contentTypes[0], "", Status.class);
+    return (Status) response;}
 
-    if (response != null) {
-      return (Status) ApiClient.deserialize(response, "", Status.class);
-    } else {
-      return null;
-    }
-  }
 
   /**
   * Get an external database server template by name.
@@ -284,7 +259,7 @@ public class DatabaseServersApi {
        throw new ApiException(400, "missing required params");
     }
     // create path and map variables
-    String path = "/api/v11/environments/{environment}/databaseServers/{externalDatabaseServer}/template"
+    String path = "/api/v12/environments/{environment}/databaseServers/{externalDatabaseServer}/template"
       .replaceAll("\\{format\\}", "json")
       .replaceAll("\\{" + "environment" + "\\}",
                   apiClient.escapeString(environment.toString()))
@@ -303,15 +278,10 @@ public class DatabaseServersApi {
         + Arrays.toString(contentTypes));
     }
 
-    String response = apiClient.invokeAPI(path, "GET", queryParams, postBody,
-      headerParams, formParams, contentTypes[0]);
+    Object response = apiClient.invokeAPI(path, "GET", queryParams, postBody,
+      headerParams, formParams, contentTypes[0], "", ExternalDatabaseServerTemplate.class);
+    return (ExternalDatabaseServerTemplate) response;}
 
-    if (response != null) {
-      return (ExternalDatabaseServerTemplate) ApiClient.deserialize(response, "", ExternalDatabaseServerTemplate.class);
-    } else {
-      return null;
-    }
-  }
 
   /**
   * List all externalDatabaseServers.
@@ -328,7 +298,7 @@ public class DatabaseServersApi {
        throw new ApiException(400, "missing required params");
     }
     // create path and map variables
-    String path = "/api/v11/environments/{environment}/databaseServers"
+    String path = "/api/v12/environments/{environment}/databaseServers"
       .replaceAll("\\{format\\}", "json")
       .replaceAll("\\{" + "environment" + "\\}",
                   apiClient.escapeString(environment.toString()))
@@ -345,15 +315,10 @@ public class DatabaseServersApi {
         + Arrays.toString(contentTypes));
     }
 
-    String response = apiClient.invokeAPI(path, "GET", queryParams, postBody,
-      headerParams, formParams, contentTypes[0]);
+    Object response = apiClient.invokeAPI(path, "GET", queryParams, postBody,
+      headerParams, formParams, contentTypes[0], "List", String.class);
+    return (List<String>) response;}
 
-    if (response != null) {
-      return (List<String>) ApiClient.deserialize(response, "List", String.class);
-    } else {
-      return null;
-    }
-  }
 
   /**
   * Update an existing external database server (unsupported).
@@ -374,7 +339,7 @@ public class DatabaseServersApi {
        throw new ApiException(400, "missing required params");
     }
     // create path and map variables
-    String path = "/api/v11/environments/{environment}/databaseServers/{externalDatabaseServer}"
+    String path = "/api/v12/environments/{environment}/databaseServers/{externalDatabaseServer}"
       .replaceAll("\\{format\\}", "json")
       .replaceAll("\\{" + "environment" + "\\}",
                   apiClient.escapeString(environment.toString()))
@@ -393,15 +358,10 @@ public class DatabaseServersApi {
         + Arrays.toString(contentTypes));
     }
 
-    String response = apiClient.invokeAPI(path, "PUT", queryParams, postBody,
+    apiClient.invokeAPI(path, "PUT", queryParams, postBody,
       headerParams, formParams, contentTypes[0]);
-
-    if (response != null) {
-      return ;
-    } else {
-      return ;
     }
-  }
+
 
   }
 

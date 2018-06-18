@@ -23,17 +23,21 @@ import java.util.Set;
 public class ValidationResult {
   /* Validation Errors */
   private Set<ErrorInfo> errors;
+  /* Format Warnings */
+  private Set<WarningInfo> formatWarnings;
   /* Validation Warnings */
   private Set<WarningInfo> warnings;
   public ValidationResult() { }
 
-  private ValidationResult(Set<ErrorInfo> errors, Set<WarningInfo> warnings) {
+  private ValidationResult(Set<ErrorInfo> errors, Set<WarningInfo> formatWarnings, Set<WarningInfo> warnings) {
     this.errors = errors;
+    this.formatWarnings = formatWarnings;
     this.warnings = warnings;
   }
 
   private ValidationResult(ValidationResultBuilder builder) {
     this.errors = builder.errors;
+    this.formatWarnings = builder.formatWarnings;
     this.warnings = builder.warnings;
   }
 
@@ -43,10 +47,16 @@ public class ValidationResult {
 
   public static class ValidationResultBuilder {
     private Set<ErrorInfo> errors = null;
+    private Set<WarningInfo> formatWarnings = null;
     private Set<WarningInfo> warnings = null;
 
     public ValidationResultBuilder errors(Set<ErrorInfo> errors) {
       this.errors = errors;
+      return this;
+    }
+
+    public ValidationResultBuilder formatWarnings(Set<WarningInfo> formatWarnings) {
+      this.formatWarnings = formatWarnings;
       return this;
     }
 
@@ -63,6 +73,7 @@ public class ValidationResult {
   public ValidationResultBuilder toBuilder() {
     return builder()
       .errors(errors)
+      .formatWarnings(formatWarnings)
       .warnings(warnings)
       ;
   }
@@ -71,6 +82,13 @@ public class ValidationResult {
   }
   public void setErrors(Set<ErrorInfo> errors) {
     this.errors = errors;
+  }
+
+  public Set<WarningInfo> getFormatWarnings() {
+    return formatWarnings;
+  }
+  public void setFormatWarnings(Set<WarningInfo> formatWarnings) {
+    this.formatWarnings = formatWarnings;
   }
 
   public Set<WarningInfo> getWarnings() {
@@ -90,6 +108,9 @@ public class ValidationResult {
     if (errors != null ?
         !errors.equals(other.errors) :
         other.errors != null) return false;
+    if (formatWarnings != null ?
+        !formatWarnings.equals(other.formatWarnings) :
+        other.formatWarnings != null) return false;
     if (warnings != null ?
         !warnings.equals(other.warnings) :
         other.warnings != null) return false;
@@ -100,6 +121,7 @@ public class ValidationResult {
   public int hashCode() {
     int result = 0;
     result = 31 * result + (errors != null ? errors.hashCode() : 0);
+    result = 31 * result + (formatWarnings != null ? formatWarnings.hashCode() : 0);
     result = 31 * result + (warnings != null ? warnings.hashCode() : 0);
     return result;
   }
@@ -110,6 +132,7 @@ public class ValidationResult {
     String newLine = System.getProperty("line.separator");
     sb.append("class ValidationResult {" + newLine);
     sb.append("  errors: ").append(errors).append(newLine);
+    sb.append("  formatWarnings: ").append(formatWarnings).append(newLine);
     sb.append("  warnings: ").append(warnings).append(newLine);
     sb.append("}" + newLine);
     return sb.toString();

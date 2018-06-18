@@ -54,18 +54,7 @@ class ApiClient:
         return key, value
 
     def callAPI(self, resourcePath, method, queryParams, postData,
-                          headerParams=None, contentType=None):
-        string = self.callAPIAndGetRawString(resourcePath, method, queryParams, postData, headerParams, contentType)
-
-        try:
-            data = json.loads(string)
-        except ValueError:  # PUT requests don't return anything
-            data = None
-
-        return data
-
-    def callAPIAndGetRawString(self, resourcePath, method, queryParams, postData,
-                headerParams=None, contentType=None):
+                headerParams=None, contentType=None, raw=False):
 
         url = self.apiServer + resourcePath
         headers = {}
@@ -97,16 +86,21 @@ class ApiClient:
         elif method in ['POST', 'PUT', 'DELETE']:
 
             if postData:
-                headers['Content-type'] = contentType
+                headers['Content-Type'] = contentType
                 if contentType == "application/json":
                   data = self.sanitizeForSerialization(postData)
                   data = json.dumps(data)
 
-                elif contentType == "text/plain":
+                elif contentType == "text/plain" or contentType == "application/hocon":
                   data = postData
+
+                else:
+                    raise Exception('Content-Type ' + contentType + ' is not recognized')
 
         else:
             raise Exception('Method ' + method + ' is not recognized.')
+
+        headers['Accept'] = 'application/json, application/hocon, text/plain'
 
         request = MethodRequest(method=method, url=url, headers=headers,
                                 data=data)
@@ -131,7 +125,21 @@ class ApiClient:
             self.cookie = response.headers['Set-Cookie']
         string = response.read()
 
-        return string
+        if raw:
+            return string
+
+        if string:
+            responseContentType = response.headers['Content-Type']
+            if responseContentType.startswith('application/json'):
+                data = json.loads(string)
+            elif responseContentType.startswith(('application/hocon', 'text/plain')):
+                data = string
+            else:
+                raise Exception('Content-Type ' + responseContentType + ' is not accepted.')
+        else: # PUT requests don't return anything
+            data = None
+
+        return data
 
     def toPathValue(self, obj):
         """Convert a string or object to a path-friendly value
@@ -179,7 +187,7 @@ class ApiClient:
             data = json.dumps(postData.__dict__)
 
     def deserialize(self, obj, objClass):
-        """Derialize a JSON string into an object.
+        """Deserialize a JSON string into an object.
 
         Args:
             obj -- string or object to be deserialized

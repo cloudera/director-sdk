@@ -29,6 +29,55 @@ class ImportClientConfigApi(object):
 
     
 
+    def convertSimple(self, body, **kwargs):
+        """Convert Simple Configuration
+
+        Args:
+            body, str: simpleClientConfig (required)
+
+            includeOriginComments, bool: includeOriginComments (optional)
+
+            
+
+        Returns: str
+        """
+
+        allParams = ['body', 'includeOriginComments']
+
+        params = locals()
+        for (key, val) in params['kwargs'].iteritems():
+            if key not in allParams:
+                raise TypeError("Got an unexpected keyword argument '%s' to method convertSimple" % key)
+            params[key] = val
+        del params['kwargs']
+
+        resourcePath = '/api/v12/import/clientConfig/convertSimple'
+        resourcePath = resourcePath.replace('{format}', 'json')
+        method = 'POST'
+
+        queryParams = {}
+        headerParams = {}
+
+        if ('includeOriginComments' in params):
+            queryParams['includeOriginComments'] = self.apiClient.toPathValue(params['includeOriginComments'])
+        postData = body
+
+        contentTypes = ["application/hocon"]
+        if len(contentTypes) != 1:
+            raise ValueError("An API client expects a single content type. Got: %s" % contentTypes)
+
+        response = self.apiClient.callAPI(resourcePath, method, queryParams,
+                                          postData, headerParams, contentTypes[0])
+
+        if not response:
+            return None
+
+        responseObject = self.apiClient.deserialize(response, 'str')
+        return responseObject
+        
+
+        
+
     def importClientConfig(self, body, **kwargs):
         """Import Client Config
 
@@ -55,7 +104,7 @@ class ImportClientConfigApi(object):
             params[key] = val
         del params['kwargs']
 
-        resourcePath = '/api/v11/import'
+        resourcePath = '/api/v12/import'
         resourcePath = resourcePath.replace('{format}', 'json')
         method = 'POST'
 
@@ -70,7 +119,7 @@ class ImportClientConfigApi(object):
             queryParams['environmentName'] = self.apiClient.toPathValue(params['environmentName'])
         postData = body
 
-        contentTypes = ["text/plain"]
+        contentTypes = ["application/hocon"]
         if len(contentTypes) != 1:
             raise ValueError("An API client expects a single content type. Got: %s" % contentTypes)
 
@@ -112,7 +161,7 @@ class ImportClientConfigApi(object):
             params[key] = val
         del params['kwargs']
 
-        resourcePath = '/api/v11/import/clientConfig/validate'
+        resourcePath = '/api/v12/import/clientConfig/validate'
         resourcePath = resourcePath.replace('{format}', 'json')
         method = 'POST'
 
@@ -127,7 +176,7 @@ class ImportClientConfigApi(object):
             queryParams['environmentName'] = self.apiClient.toPathValue(params['environmentName'])
         postData = body
 
-        contentTypes = ["text/plain"]
+        contentTypes = ["application/hocon"]
         if len(contentTypes) != 1:
             raise ValueError("An API client expects a single content type. Got: %s" % contentTypes)
 

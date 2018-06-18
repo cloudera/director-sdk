@@ -25,6 +25,9 @@
 
 package com.cloudera.director.client.common;
 
+import static javax.ws.rs.core.MediaType.APPLICATION_JSON_TYPE;
+import static javax.ws.rs.core.MediaType.TEXT_PLAIN_TYPE;
+
 import com.fasterxml.jackson.databind.JavaType;
 
 import com.google.json.JsonSanitizer;
@@ -54,10 +57,16 @@ import javax.net.ssl.HttpsURLConnection;
 import javax.net.ssl.SSLContext;
 import javax.net.ssl.SSLSession;
 import javax.ws.rs.core.Cookie;
+import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.NewCookie;
 import javax.ws.rs.core.Response.Status.Family;
 
 public class ApiClient {
+
+  private static final MediaType APPLICATION_HOCON_TYPE = new MediaType("application", "hocon");
+  private static final MediaType[] ACCEPTED_MEDIA_TYPES =
+    {APPLICATION_JSON_TYPE, APPLICATION_HOCON_TYPE, TEXT_PLAIN_TYPE};
+
   private Map<String, Client> hostMap = new HashMap<String, Client>();
   private Map<String, String> defaultHeaderMap = new HashMap<String, String>();
   private Set<Cookie> cookies = new HashSet<Cookie>();
@@ -156,9 +165,70 @@ public class ApiClient {
     }
   }
 
+  public void invokeAPI(String path, String method, Map<String, String> queryParams, Object body,
+    Map<String, String> headerParams, Map<String, String> formParams, String contentType)
+    throws ApiException {
+
+    ClientResponse response = internalInvokeAPI(path, method, queryParams, body, headerParams,
+    formParams, contentType);
+
+    if (response.getClientResponseStatus() == ClientResponse.Status.NO_CONTENT) {
+      return;
+    } else if (response.getClientResponseStatus().getFamily() == Family.SUCCESSFUL) {
+      for (NewCookie newCookie : response.getCookies()) {
+        cookies.add(newCookie.toCookie());
+      }
+    } else {
+      throw new ApiException(
+        response.getClientResponseStatus().getStatusCode(),
+        response.getEntity(String.class));
+    }
+  }
+
+  public Object invokeAPI(String path, String method, Map<String, String> queryParams, Object body,
+    Map<String, String> headerParams, Map<String, String> formParams, String contentType,
+    String containerType, Class cls)
+    throws ApiException {
+
+    ClientResponse response = internalInvokeAPI(path, method, queryParams, body, headerParams,
+    formParams, contentType);
+
+    if (response.getClientResponseStatus() == ClientResponse.Status.NO_CONTENT) {
+      return null;
+    } else if (response.getClientResponseStatus().getFamily() == Family.SUCCESSFUL) {
+      for (NewCookie newCookie : response.getCookies()) {
+        cookies.add(newCookie.toCookie());
+      }
+
+      String entityString = (String) response.getEntity(String.class);
+
+      MediaType responseContentType = response.getType();
+      if (APPLICATION_JSON_TYPE.isCompatible(responseContentType)) {
+        return ApiClient.deserialize(entityString, containerType, cls);
+      } else if (APPLICATION_HOCON_TYPE.isCompatible(responseContentType) ||
+                 TEXT_PLAIN_TYPE.isCompatible(responseContentType)) {
+        if (!(containerType == null || containerType.isEmpty()) ||
+            cls != String.class) {
+          throw new IllegalArgumentException("Server response with mime type " + responseContentType +
+                                             " cannot be deserialized into containerType '" +
+                                             containerType + "' and class '" + cls + "'");
+        }
+        return entityString;
+      } else {
+        throw new IllegalArgumentException("Server response with mime type " +
+                                           responseContentType + " cannot be accepted");
+      }
+    } else {
+      throw new ApiException(
+        response.getClientResponseStatus().getStatusCode(),
+        response.getEntity(String.class));
+    }
+  }
+
   @SuppressWarnings("PMD.EmptyCatchBlock")
-  public String invokeAPI(String path, String method, Map<String, String> queryParams, Object body,
-    Map<String, String> headerParams, Map<String, String> formParams, String contentType) throws ApiException {
+  private ClientResponse internalInvokeAPI(String path, String method, Map<String, String> queryParams,
+    Object body, Map<String, String> headerParams, Map<String, String> formParams, String contentType)
+      throws ApiException {
 
     String host = getBasePath();
     Client client;
@@ -188,7 +258,8 @@ public class ApiClient {
     }
     String querystring = b.toString();
 
-    Builder builder = client.resource(host + path + querystring).accept("application/json");
+    Builder builder = client.resource(host + path + querystring)
+      .accept(ACCEPTED_MEDIA_TYPES);
     for (Map.Entry<String, String> entry : headerParams.entrySet()) {
       builder.header(entry.getKey(), entry.getValue());
     }
@@ -216,12 +287,10 @@ public class ApiClient {
         response = builder.post(ClientResponse.class, null);
       } else if (body instanceof FormDataMultiPart) {
         response = builder.type(contentType).post(ClientResponse.class, body);
-      } else {
-        if ("text/plain".equals(contentType)) {
-          response = builder.type(contentType).post(ClientResponse.class, body);
-        } else {
-          response = builder.type(contentType).post(ClientResponse.class, serialize(body));
-        }
+      } else if ("application/hocon".equals(contentType) || "text/plain".equals(contentType)) {
+        response = builder.type(contentType).post(ClientResponse.class, body);
+      } else { // assume application/json
+        response = builder.type(contentType).post(ClientResponse.class, serialize(body));
       }
     } else if ("PUT".equals(method)) {
       if (body == null) {
@@ -248,6 +317,8 @@ public class ApiClient {
             }
           }
           response = builder.type(contentType).put(ClientResponse.class, formParamBuilder.toString());
+        } else if ("application/hocon".equals(contentType) || "text/plain".equals(contentType)) {
+          response = builder.type(contentType).put(ClientResponse.class, body);
         } else {
           response = builder.type(contentType).put(ClientResponse.class, serialize(body));
         }
@@ -260,18 +331,8 @@ public class ApiClient {
     } else {
       throw new ApiException(500, "unknown method type " + method);
     }
-    if (response.getClientResponseStatus() == ClientResponse.Status.NO_CONTENT) {
-      return null;
-    } else if (response.getClientResponseStatus().getFamily() == Family.SUCCESSFUL) {
-      for (NewCookie newCookie : response.getCookies()) {
-        cookies.add(newCookie.toCookie());
-      }
-      return (String) response.getEntity(String.class);
-    } else {
-      throw new ApiException(
-                response.getClientResponseStatus().getStatusCode(),
-                response.getEntity(String.class));
-    }
+
+    return response;
   }
 
   private Client getClient(String host, boolean tlsEnabled, boolean hostnameVerificationEnabled)

@@ -64,7 +64,7 @@ public class ClustersApi {
        throw new ApiException(400, "missing required params");
     }
     // create path and map variables
-    String path = "/api/v11/environments/{environment}/deployments/{deployment}/clusters/{cluster}/diagnosticData"
+    String path = "/api/v12/environments/{environment}/deployments/{deployment}/clusters/{cluster}/diagnosticData"
       .replaceAll("\\{format\\}", "json")
       .replaceAll("\\{" + "environment" + "\\}",
                   apiClient.escapeString(environment.toString()))
@@ -85,15 +85,10 @@ public class ClustersApi {
         + Arrays.toString(contentTypes));
     }
 
-    String response = apiClient.invokeAPI(path, "POST", queryParams, postBody,
+    apiClient.invokeAPI(path, "POST", queryParams, postBody,
       headerParams, formParams, contentTypes[0]);
-
-    if (response != null) {
-      return ;
-    } else {
-      return ;
     }
-  }
+
 
   /**
   * Create a new cluster.
@@ -114,7 +109,7 @@ public class ClustersApi {
        throw new ApiException(400, "missing required params");
     }
     // create path and map variables
-    String path = "/api/v11/environments/{environment}/deployments/{deployment}/clusters"
+    String path = "/api/v12/environments/{environment}/deployments/{deployment}/clusters"
       .replaceAll("\\{format\\}", "json")
       .replaceAll("\\{" + "environment" + "\\}",
                   apiClient.escapeString(environment.toString()))
@@ -133,15 +128,10 @@ public class ClustersApi {
         + Arrays.toString(contentTypes));
     }
 
-    String response = apiClient.invokeAPI(path, "POST", queryParams, postBody,
+    apiClient.invokeAPI(path, "POST", queryParams, postBody,
       headerParams, formParams, contentTypes[0]);
-
-    if (response != null) {
-      return ;
-    } else {
-      return ;
     }
-  }
+
 
   /**
   * Delete a cluster by name.
@@ -160,7 +150,7 @@ public class ClustersApi {
        throw new ApiException(400, "missing required params");
     }
     // create path and map variables
-    String path = "/api/v11/environments/{environment}/deployments/{deployment}/clusters/{cluster}"
+    String path = "/api/v12/environments/{environment}/deployments/{deployment}/clusters/{cluster}"
       .replaceAll("\\{format\\}", "json")
       .replaceAll("\\{" + "environment" + "\\}",
                   apiClient.escapeString(environment.toString()))
@@ -181,15 +171,53 @@ public class ClustersApi {
         + Arrays.toString(contentTypes));
     }
 
-    String response = apiClient.invokeAPI(path, "DELETE", queryParams, postBody,
+    apiClient.invokeAPI(path, "DELETE", queryParams, postBody,
       headerParams, formParams, contentTypes[0]);
-
-    if (response != null) {
-      return ;
-    } else {
-      return ;
     }
-  }
+
+
+  /**
+  * Exports the cluster configuration for this cluster.
+  * @param  environment  environmentName
+  * @param  deployment  deploymentName
+  * @param  cluster  clusterName
+  * status code: 200 reason: "OK"
+  * status code: 401 reason: "Unauthorized"
+  * status code: 403 reason: "Forbidden"
+  * status code: 404 reason: "Entity not found"
+  */
+  public String exportClusterConfiguration(String environment, String deployment, String cluster) throws ApiException {
+    Object postBody = null;
+    // verify required params are set
+    if (environment == null || deployment == null || cluster == null ) {
+       throw new ApiException(400, "missing required params");
+    }
+    // create path and map variables
+    String path = "/api/v12/environments/{environment}/deployments/{deployment}/clusters/{cluster}/config"
+      .replaceAll("\\{format\\}", "json")
+      .replaceAll("\\{" + "environment" + "\\}",
+                  apiClient.escapeString(environment.toString()))
+      .replaceAll("\\{" + "deployment" + "\\}",
+                  apiClient.escapeString(deployment.toString()))
+      .replaceAll("\\{" + "cluster" + "\\}",
+                  apiClient.escapeString(cluster.toString()))
+      ;
+
+    // query params
+    Map<String, String> queryParams = new HashMap<String, String>();
+    Map<String, String> headerParams = new HashMap<String, String>();
+    Map<String, String> formParams = new HashMap<String, String>();
+
+    String[] contentTypes = { "application/json"};
+    if (contentTypes.length != 1) {
+      throw new IllegalArgumentException("An API client expects a single content type. Got: "
+        + Arrays.toString(contentTypes));
+    }
+
+    Object response = apiClient.invokeAPI(path, "GET", queryParams, postBody,
+      headerParams, formParams, contentTypes[0], "", String.class);
+    return (String) response;}
+
 
   /**
   * Get a cluster by name.
@@ -209,7 +237,7 @@ public class ClustersApi {
        throw new ApiException(400, "missing required params");
     }
     // create path and map variables
-    String path = "/api/v11/environments/{environment}/deployments/{deployment}/clusters/{cluster}"
+    String path = "/api/v12/environments/{environment}/deployments/{deployment}/clusters/{cluster}"
       .replaceAll("\\{format\\}", "json")
       .replaceAll("\\{" + "environment" + "\\}",
                   apiClient.escapeString(environment.toString()))
@@ -230,15 +258,10 @@ public class ClustersApi {
         + Arrays.toString(contentTypes));
     }
 
-    String response = apiClient.invokeAPI(path, "GET", queryParams, postBody,
-      headerParams, formParams, contentTypes[0]);
+    Object response = apiClient.invokeAPI(path, "GET", queryParams, postBody,
+      headerParams, formParams, contentTypes[0], "", Cluster.class);
+    return (Cluster) response;}
 
-    if (response != null) {
-      return (Cluster) ApiClient.deserialize(response, "", Cluster.class);
-    } else {
-      return null;
-    }
-  }
 
   /**
   * Get administration settings for a cluster.
@@ -257,7 +280,7 @@ public class ClustersApi {
        throw new ApiException(400, "missing required params");
     }
     // create path and map variables
-    String path = "/api/v11/environments/{environment}/deployments/{deployment}/clusters/{cluster}/settings"
+    String path = "/api/v12/environments/{environment}/deployments/{deployment}/clusters/{cluster}/settings"
       .replaceAll("\\{format\\}", "json")
       .replaceAll("\\{" + "environment" + "\\}",
                   apiClient.escapeString(environment.toString()))
@@ -278,15 +301,10 @@ public class ClustersApi {
         + Arrays.toString(contentTypes));
     }
 
-    String response = apiClient.invokeAPI(path, "GET", queryParams, postBody,
-      headerParams, formParams, contentTypes[0]);
+    Object response = apiClient.invokeAPI(path, "GET", queryParams, postBody,
+      headerParams, formParams, contentTypes[0], "", ClusterAdministrationSettings.class);
+    return (ClusterAdministrationSettings) response;}
 
-    if (response != null) {
-      return (ClusterAdministrationSettings) ApiClient.deserialize(response, "", ClusterAdministrationSettings.class);
-    } else {
-      return null;
-    }
-  }
 
   /**
   * Get history of updates for a cluster.
@@ -307,7 +325,7 @@ public class ClustersApi {
        throw new ApiException(400, "missing required params");
     }
     // create path and map variables
-    String path = "/api/v11/environments/{environment}/deployments/{deployment}/clusters/{cluster}/history"
+    String path = "/api/v12/environments/{environment}/deployments/{deployment}/clusters/{cluster}/history"
       .replaceAll("\\{format\\}", "json")
       .replaceAll("\\{" + "environment" + "\\}",
                   apiClient.escapeString(environment.toString()))
@@ -332,15 +350,10 @@ public class ClustersApi {
         + Arrays.toString(contentTypes));
     }
 
-    String response = apiClient.invokeAPI(path, "GET", queryParams, postBody,
-      headerParams, formParams, contentTypes[0]);
+    Object response = apiClient.invokeAPI(path, "GET", queryParams, postBody,
+      headerParams, formParams, contentTypes[0], "List", ClusterUpdateEventSummary.class);
+    return (List<ClusterUpdateEventSummary>) response;}
 
-    if (response != null) {
-      return (List<ClusterUpdateEventSummary>) ApiClient.deserialize(response, "List", ClusterUpdateEventSummary.class);
-    } else {
-      return null;
-    }
-  }
 
   /**
   * Get cluster metrics by name.
@@ -360,7 +373,7 @@ public class ClustersApi {
        throw new ApiException(400, "missing required params");
     }
     // create path and map variables
-    String path = "/api/v11/environments/{environment}/deployments/{deployment}/clusters/{cluster}/metrics"
+    String path = "/api/v12/environments/{environment}/deployments/{deployment}/clusters/{cluster}/metrics"
       .replaceAll("\\{format\\}", "json")
       .replaceAll("\\{" + "environment" + "\\}",
                   apiClient.escapeString(environment.toString()))
@@ -381,15 +394,10 @@ public class ClustersApi {
         + Arrays.toString(contentTypes));
     }
 
-    String response = apiClient.invokeAPI(path, "GET", queryParams, postBody,
-      headerParams, formParams, contentTypes[0]);
+    Object response = apiClient.invokeAPI(path, "GET", queryParams, postBody,
+      headerParams, formParams, contentTypes[0], "", Metrics.class);
+    return (Metrics) response;}
 
-    if (response != null) {
-      return (Metrics) ApiClient.deserialize(response, "", Metrics.class);
-    } else {
-      return null;
-    }
-  }
 
   /**
   * Get a cluster status by name.
@@ -408,7 +416,7 @@ public class ClustersApi {
        throw new ApiException(400, "missing required params");
     }
     // create path and map variables
-    String path = "/api/v11/environments/{environment}/deployments/{deployment}/clusters/{cluster}/status"
+    String path = "/api/v12/environments/{environment}/deployments/{deployment}/clusters/{cluster}/status"
       .replaceAll("\\{format\\}", "json")
       .replaceAll("\\{" + "environment" + "\\}",
                   apiClient.escapeString(environment.toString()))
@@ -429,15 +437,10 @@ public class ClustersApi {
         + Arrays.toString(contentTypes));
     }
 
-    String response = apiClient.invokeAPI(path, "GET", queryParams, postBody,
-      headerParams, formParams, contentTypes[0]);
+    Object response = apiClient.invokeAPI(path, "GET", queryParams, postBody,
+      headerParams, formParams, contentTypes[0], "", Status.class);
+    return (Status) response;}
 
-    if (response != null) {
-      return (Status) ApiClient.deserialize(response, "", Status.class);
-    } else {
-      return null;
-    }
-  }
 
   /**
   * Get a cluster template by name.
@@ -456,7 +459,7 @@ public class ClustersApi {
        throw new ApiException(400, "missing required params");
     }
     // create path and map variables
-    String path = "/api/v11/environments/{environment}/deployments/{deployment}/clusters/{cluster}/template"
+    String path = "/api/v12/environments/{environment}/deployments/{deployment}/clusters/{cluster}/template"
       .replaceAll("\\{format\\}", "json")
       .replaceAll("\\{" + "environment" + "\\}",
                   apiClient.escapeString(environment.toString()))
@@ -477,15 +480,10 @@ public class ClustersApi {
         + Arrays.toString(contentTypes));
     }
 
-    String response = apiClient.invokeAPI(path, "GET", queryParams, postBody,
-      headerParams, formParams, contentTypes[0]);
+    Object response = apiClient.invokeAPI(path, "GET", queryParams, postBody,
+      headerParams, formParams, contentTypes[0], "", ClusterTemplate.class);
+    return (ClusterTemplate) response;}
 
-    if (response != null) {
-      return (ClusterTemplate) ApiClient.deserialize(response, "", ClusterTemplate.class);
-    } else {
-      return null;
-    }
-  }
 
   /**
   * List all clusters.
@@ -503,7 +501,7 @@ public class ClustersApi {
        throw new ApiException(400, "missing required params");
     }
     // create path and map variables
-    String path = "/api/v11/environments/{environment}/deployments/{deployment}/clusters"
+    String path = "/api/v12/environments/{environment}/deployments/{deployment}/clusters"
       .replaceAll("\\{format\\}", "json")
       .replaceAll("\\{" + "environment" + "\\}",
                   apiClient.escapeString(environment.toString()))
@@ -522,15 +520,10 @@ public class ClustersApi {
         + Arrays.toString(contentTypes));
     }
 
-    String response = apiClient.invokeAPI(path, "GET", queryParams, postBody,
-      headerParams, formParams, contentTypes[0]);
+    Object response = apiClient.invokeAPI(path, "GET", queryParams, postBody,
+      headerParams, formParams, contentTypes[0], "List", String.class);
+    return (List<String>) response;}
 
-    if (response != null) {
-      return (List<String>) ApiClient.deserialize(response, "List", String.class);
-    } else {
-      return null;
-    }
-  }
 
   /**
   * Update an existing cluster.
@@ -553,7 +546,7 @@ public class ClustersApi {
        throw new ApiException(400, "missing required params");
     }
     // create path and map variables
-    String path = "/api/v11/environments/{environment}/deployments/{deployment}/clusters/{cluster}"
+    String path = "/api/v12/environments/{environment}/deployments/{deployment}/clusters/{cluster}"
       .replaceAll("\\{format\\}", "json")
       .replaceAll("\\{" + "environment" + "\\}",
                   apiClient.escapeString(environment.toString()))
@@ -574,15 +567,10 @@ public class ClustersApi {
         + Arrays.toString(contentTypes));
     }
 
-    String response = apiClient.invokeAPI(path, "PUT", queryParams, postBody,
+    apiClient.invokeAPI(path, "PUT", queryParams, postBody,
       headerParams, formParams, contentTypes[0]);
-
-    if (response != null) {
-      return ;
-    } else {
-      return ;
     }
-  }
+
 
   /**
   * Update administration settings for a cluster.
@@ -603,7 +591,7 @@ public class ClustersApi {
        throw new ApiException(400, "missing required params");
     }
     // create path and map variables
-    String path = "/api/v11/environments/{environment}/deployments/{deployment}/clusters/{cluster}/settings"
+    String path = "/api/v12/environments/{environment}/deployments/{deployment}/clusters/{cluster}/settings"
       .replaceAll("\\{format\\}", "json")
       .replaceAll("\\{" + "environment" + "\\}",
                   apiClient.escapeString(environment.toString()))
@@ -624,15 +612,10 @@ public class ClustersApi {
         + Arrays.toString(contentTypes));
     }
 
-    String response = apiClient.invokeAPI(path, "PUT", queryParams, postBody,
+    apiClient.invokeAPI(path, "PUT", queryParams, postBody,
       headerParams, formParams, contentTypes[0]);
-
-    if (response != null) {
-      return ;
-    } else {
-      return ;
     }
-  }
+
 
   }
 

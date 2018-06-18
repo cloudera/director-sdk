@@ -74,15 +74,10 @@ public class InstanceTemplatesApi {
         + Arrays.toString(contentTypes));
     }
 
-    String response = apiClient.invokeAPI(path, "POST", queryParams, postBody,
+    apiClient.invokeAPI(path, "POST", queryParams, postBody,
       headerParams, formParams, contentTypes[0]);
-
-    if (response != null) {
-      return ;
-    } else {
-      return ;
     }
-  }
+
 
   /**
   * Delete an instance template by name.
@@ -119,15 +114,10 @@ public class InstanceTemplatesApi {
         + Arrays.toString(contentTypes));
     }
 
-    String response = apiClient.invokeAPI(path, "DELETE", queryParams, postBody,
+    apiClient.invokeAPI(path, "DELETE", queryParams, postBody,
       headerParams, formParams, contentTypes[0]);
-
-    if (response != null) {
-      return ;
-    } else {
-      return ;
     }
-  }
+
 
   /**
   * Get an instance template by name.
@@ -164,15 +154,10 @@ public class InstanceTemplatesApi {
         + Arrays.toString(contentTypes));
     }
 
-    String response = apiClient.invokeAPI(path, "GET", queryParams, postBody,
-      headerParams, formParams, contentTypes[0]);
+    Object response = apiClient.invokeAPI(path, "GET", queryParams, postBody,
+      headerParams, formParams, contentTypes[0], "", InstanceTemplate.class);
+    return (InstanceTemplate) response;}
 
-    if (response != null) {
-      return (InstanceTemplate) ApiClient.deserialize(response, "", InstanceTemplate.class);
-    } else {
-      return null;
-    }
-  }
 
   /**
   * List all instance templates.
@@ -206,15 +191,10 @@ public class InstanceTemplatesApi {
         + Arrays.toString(contentTypes));
     }
 
-    String response = apiClient.invokeAPI(path, "GET", queryParams, postBody,
-      headerParams, formParams, contentTypes[0]);
+    Object response = apiClient.invokeAPI(path, "GET", queryParams, postBody,
+      headerParams, formParams, contentTypes[0], "List", String.class);
+    return (List<String>) response;}
 
-    if (response != null) {
-      return (List<String>) ApiClient.deserialize(response, "List", String.class);
-    } else {
-      return null;
-    }
-  }
 
   /**
   * Update an existing instance template.
@@ -255,15 +235,10 @@ public class InstanceTemplatesApi {
         + Arrays.toString(contentTypes));
     }
 
-    String response = apiClient.invokeAPI(path, "PUT", queryParams, postBody,
+    apiClient.invokeAPI(path, "PUT", queryParams, postBody,
       headerParams, formParams, contentTypes[0]);
-
-    if (response != null) {
-      return ;
-    } else {
-      return ;
     }
-  }
+
 
   }
 

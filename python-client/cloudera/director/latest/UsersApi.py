@@ -49,7 +49,7 @@ class UsersApi(object):
             params[key] = val
         del params['kwargs']
 
-        resourcePath = '/api/v11/users'
+        resourcePath = '/api/v12/users'
         resourcePath = resourcePath.replace('{format}', 'json')
         method = 'POST'
 
@@ -87,7 +87,7 @@ class UsersApi(object):
             params[key] = val
         del params['kwargs']
 
-        resourcePath = '/api/v11/users/current'
+        resourcePath = '/api/v12/users/current'
         resourcePath = resourcePath.replace('{format}', 'json')
         method = 'GET'
 
@@ -132,7 +132,7 @@ class UsersApi(object):
             params[key] = val
         del params['kwargs']
 
-        resourcePath = '/api/v11/users/{username}'
+        resourcePath = '/api/v12/users/{username}'
         resourcePath = resourcePath.replace('{format}', 'json')
         method = 'DELETE'
 
@@ -176,7 +176,7 @@ class UsersApi(object):
             params[key] = val
         del params['kwargs']
 
-        resourcePath = '/api/v11/users/{username}'
+        resourcePath = '/api/v12/users/{username}'
         resourcePath = resourcePath.replace('{format}', 'json')
         method = 'GET'
 
@@ -223,7 +223,7 @@ class UsersApi(object):
             params[key] = val
         del params['kwargs']
 
-        resourcePath = '/api/v11/users/managementStatus'
+        resourcePath = '/api/v12/users/managementStatus'
         resourcePath = resourcePath.replace('{format}', 'json')
         method = 'GET'
 
@@ -266,7 +266,7 @@ class UsersApi(object):
             params[key] = val
         del params['kwargs']
 
-        resourcePath = '/api/v11/users'
+        resourcePath = '/api/v12/users'
         resourcePath = resourcePath.replace('{format}', 'json')
         method = 'GET'
 
@@ -313,7 +313,7 @@ class UsersApi(object):
             params[key] = val
         del params['kwargs']
 
-        resourcePath = '/api/v11/users/{username}'
+        resourcePath = '/api/v12/users/{username}'
         resourcePath = resourcePath.replace('{format}', 'json')
         method = 'PUT'
 
@@ -359,7 +359,7 @@ class UsersApi(object):
             params[key] = val
         del params['kwargs']
 
-        resourcePath = '/api/v11/users/{username}/password'
+        resourcePath = '/api/v12/users/{username}/password'
         resourcePath = resourcePath.replace('{format}', 'json')
         method = 'PUT'
 

@@ -122,17 +122,25 @@ Note: This file is auto generated. Do not edit manually.
             <property name="severity" value="info" />
         </module>
         <module name="RedundantImport"/>
+        <!--
+            No longer checking this, as unused imports naturally fall out of
+            the code generation process.
         <module name="UnusedImports">
             <property name="severity" value="warning" />
         </module>
+        -->
 
 
         <!-- Checks for Size Violations.                    -->
         <!-- See http://checkstyle.sf.net/config_sizes.html -->
+        <!--
+            No longer checking this, as it's difficult to add arbitrary line
+            breaks to generated code strings to meet a length standard.
         <module name="LineLength">
             <property name="max" value="120" />
             <property name="severity" value="warning" />
         </module>
+        -->
         <!-- <module name="MethodLength"/> -->
         <!-- <module name="ParameterNumber"/> -->
 

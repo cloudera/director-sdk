@@ -36,12 +36,11 @@ class VersionsApi(object):
 
         Returns: Version
         """
-        response = self.__getResponse('/api/versions')
+        version_json = self.apiClient.callAPI('/api/versions', 'GET', None, None)
 
-        if not response:
+        if not version_json:
             return None
 
-        version_json = json.loads(response)
         version = Version(productVersion=str(version_json['productVersion']),
                           apiVersions=map(str, version_json['apiVersions']),
                           currentServerTime=str(version_json['currentServerTime']))
@@ -56,13 +55,5 @@ class VersionsApi(object):
         Returns: str
         """
 
-        response = self.__getResponse('/api/versions/latest')
-
-        if not response:
-            return None
-
-        return response
-
-    def __getResponse(self, resourcePath):
-        return self.apiClient.callAPIAndGetRawString(resourcePath, "GET", None, None)
+        return self.apiClient.callAPI('/api/versions/latest', 'GET', None, None, raw=True)
 

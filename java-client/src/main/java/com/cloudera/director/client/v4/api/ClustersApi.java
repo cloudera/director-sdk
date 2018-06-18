@@ -80,15 +80,10 @@ public class ClustersApi {
         + Arrays.toString(contentTypes));
     }
 
-    String response = apiClient.invokeAPI(path, "POST", queryParams, postBody,
+    apiClient.invokeAPI(path, "POST", queryParams, postBody,
       headerParams, formParams, contentTypes[0]);
-
-    if (response != null) {
-      return ;
-    } else {
-      return ;
     }
-  }
+
 
   /**
   * Delete a cluster by name.
@@ -128,15 +123,10 @@ public class ClustersApi {
         + Arrays.toString(contentTypes));
     }
 
-    String response = apiClient.invokeAPI(path, "DELETE", queryParams, postBody,
+    apiClient.invokeAPI(path, "DELETE", queryParams, postBody,
       headerParams, formParams, contentTypes[0]);
-
-    if (response != null) {
-      return ;
-    } else {
-      return ;
     }
-  }
+
 
   /**
   * Get a cluster by name.
@@ -177,15 +167,10 @@ public class ClustersApi {
         + Arrays.toString(contentTypes));
     }
 
-    String response = apiClient.invokeAPI(path, "GET", queryParams, postBody,
-      headerParams, formParams, contentTypes[0]);
+    Object response = apiClient.invokeAPI(path, "GET", queryParams, postBody,
+      headerParams, formParams, contentTypes[0], "", Cluster.class);
+    return (Cluster) response;}
 
-    if (response != null) {
-      return (Cluster) ApiClient.deserialize(response, "", Cluster.class);
-    } else {
-      return null;
-    }
-  }
 
   /**
   * Get cluster metrics by name.
@@ -226,15 +211,10 @@ public class ClustersApi {
         + Arrays.toString(contentTypes));
     }
 
-    String response = apiClient.invokeAPI(path, "GET", queryParams, postBody,
-      headerParams, formParams, contentTypes[0]);
+    Object response = apiClient.invokeAPI(path, "GET", queryParams, postBody,
+      headerParams, formParams, contentTypes[0], "", Metrics.class);
+    return (Metrics) response;}
 
-    if (response != null) {
-      return (Metrics) ApiClient.deserialize(response, "", Metrics.class);
-    } else {
-      return null;
-    }
-  }
 
   /**
   * Get a cluster status by name.
@@ -274,15 +254,10 @@ public class ClustersApi {
         + Arrays.toString(contentTypes));
     }
 
-    String response = apiClient.invokeAPI(path, "GET", queryParams, postBody,
-      headerParams, formParams, contentTypes[0]);
+    Object response = apiClient.invokeAPI(path, "GET", queryParams, postBody,
+      headerParams, formParams, contentTypes[0], "", Status.class);
+    return (Status) response;}
 
-    if (response != null) {
-      return (Status) ApiClient.deserialize(response, "", Status.class);
-    } else {
-      return null;
-    }
-  }
 
   /**
   * Get a cluster template by name.
@@ -322,15 +297,10 @@ public class ClustersApi {
         + Arrays.toString(contentTypes));
     }
 
-    String response = apiClient.invokeAPI(path, "GET", queryParams, postBody,
-      headerParams, formParams, contentTypes[0]);
+    Object response = apiClient.invokeAPI(path, "GET", queryParams, postBody,
+      headerParams, formParams, contentTypes[0], "", ClusterTemplate.class);
+    return (ClusterTemplate) response;}
 
-    if (response != null) {
-      return (ClusterTemplate) ApiClient.deserialize(response, "", ClusterTemplate.class);
-    } else {
-      return null;
-    }
-  }
 
   /**
   * List all clusters.
@@ -367,15 +337,10 @@ public class ClustersApi {
         + Arrays.toString(contentTypes));
     }
 
-    String response = apiClient.invokeAPI(path, "GET", queryParams, postBody,
-      headerParams, formParams, contentTypes[0]);
+    Object response = apiClient.invokeAPI(path, "GET", queryParams, postBody,
+      headerParams, formParams, contentTypes[0], "List", String.class);
+    return (List<String>) response;}
 
-    if (response != null) {
-      return (List<String>) ApiClient.deserialize(response, "List", String.class);
-    } else {
-      return null;
-    }
-  }
 
   /**
   * Update an existing cluster.
@@ -419,15 +384,10 @@ public class ClustersApi {
         + Arrays.toString(contentTypes));
     }
 
-    String response = apiClient.invokeAPI(path, "PUT", queryParams, postBody,
+    apiClient.invokeAPI(path, "PUT", queryParams, postBody,
       headerParams, formParams, contentTypes[0]);
-
-    if (response != null) {
-      return ;
-    } else {
-      return ;
     }
-  }
+
 
   }
 

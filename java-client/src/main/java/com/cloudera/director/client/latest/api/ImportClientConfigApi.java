@@ -41,6 +41,49 @@ public class ImportClientConfigApi {
   }
 
   /**
+  * Convert Simple Configuration.
+  * @param  body  simpleClientConfig
+  * @param  includeOriginComments  includeOriginComments
+  * status code: 200 reason: "OK"
+  * status code: 201 reason: "Created"
+  * status code: 400 reason: "Simple configuration parsing or conversion failed"
+  * status code: 401 reason: "Unauthorized"
+  * status code: 403 reason: "Forbidden"
+  * status code: 404 reason: "Not Found"
+  */
+  public String convertSimple(String body, Boolean includeOriginComments) throws ApiException {
+    Object postBody = body;
+    // verify required params are set
+    if (body == null ) {
+       throw new ApiException(400, "missing required params");
+    }
+    // create path and map variables
+    String path = "/api/v12/import/clientConfig/convertSimple"
+      .replaceAll("\\{format\\}", "json")
+      ;
+
+    // query params
+    Map<String, String> queryParams = new HashMap<String, String>();
+    Map<String, String> headerParams = new HashMap<String, String>();
+    Map<String, String> formParams = new HashMap<String, String>();
+
+    if (!"null".equals(String.valueOf(includeOriginComments)))
+      queryParams.put("includeOriginComments", String.valueOf(includeOriginComments));
+    String[] contentTypes = { "application/hocon"};
+    if (contentTypes.length != 1) {
+      throw new IllegalArgumentException("An API client expects a single content type. Got: "
+        + Arrays.toString(contentTypes));
+    }
+
+    Object response = apiClient.invokeAPI(path, "POST", queryParams, postBody,
+      headerParams, formParams, contentTypes[0], "", String.class);
+    return (String) response;}
+
+
+  public String convertSimple(String body) throws ApiException {
+     return convertSimple(body, null);
+    }
+  /**
   * Import Client Config.
   * @param  body  clientConfig
   * @param  clusterName  clusterName
@@ -59,7 +102,7 @@ public class ImportClientConfigApi {
        throw new ApiException(400, "missing required params");
     }
     // create path and map variables
-    String path = "/api/v11/import"
+    String path = "/api/v12/import"
       .replaceAll("\\{format\\}", "json")
       ;
 
@@ -74,21 +117,16 @@ public class ImportClientConfigApi {
       queryParams.put("deploymentName", String.valueOf(deploymentName));
     if (!"null".equals(String.valueOf(environmentName)))
       queryParams.put("environmentName", String.valueOf(environmentName));
-    String[] contentTypes = { "text/plain"};
+    String[] contentTypes = { "application/hocon"};
     if (contentTypes.length != 1) {
       throw new IllegalArgumentException("An API client expects a single content type. Got: "
         + Arrays.toString(contentTypes));
     }
 
-    String response = apiClient.invokeAPI(path, "POST", queryParams, postBody,
-      headerParams, formParams, contentTypes[0]);
+    Object response = apiClient.invokeAPI(path, "POST", queryParams, postBody,
+      headerParams, formParams, contentTypes[0], "", ImportResult.class);
+    return (ImportResult) response;}
 
-    if (response != null) {
-      return (ImportResult) ApiClient.deserialize(response, "", ImportResult.class);
-    } else {
-      return null;
-    }
-  }
 
   public ImportResult importClientConfig(String body) throws ApiException {
      return importClientConfig(body, null, null, null);
@@ -112,7 +150,7 @@ public class ImportClientConfigApi {
        throw new ApiException(400, "missing required params");
     }
     // create path and map variables
-    String path = "/api/v11/import/clientConfig/validate"
+    String path = "/api/v12/import/clientConfig/validate"
       .replaceAll("\\{format\\}", "json")
       ;
 
@@ -127,21 +165,16 @@ public class ImportClientConfigApi {
       queryParams.put("deploymentName", String.valueOf(deploymentName));
     if (!"null".equals(String.valueOf(environmentName)))
       queryParams.put("environmentName", String.valueOf(environmentName));
-    String[] contentTypes = { "text/plain"};
+    String[] contentTypes = { "application/hocon"};
     if (contentTypes.length != 1) {
       throw new IllegalArgumentException("An API client expects a single content type. Got: "
         + Arrays.toString(contentTypes));
     }
 
-    String response = apiClient.invokeAPI(path, "POST", queryParams, postBody,
-      headerParams, formParams, contentTypes[0]);
+    Object response = apiClient.invokeAPI(path, "POST", queryParams, postBody,
+      headerParams, formParams, contentTypes[0], "", ValidationResult.class);
+    return (ValidationResult) response;}
 
-    if (response != null) {
-      return (ValidationResult) ApiClient.deserialize(response, "", ValidationResult.class);
-    } else {
-      return null;
-    }
-  }
 
   public ValidationResult validate(String body) throws ApiException {
      return validate(body, null, null, null);

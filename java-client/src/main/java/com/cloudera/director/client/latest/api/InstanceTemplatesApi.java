@@ -57,7 +57,7 @@ public class InstanceTemplatesApi {
        throw new ApiException(400, "missing required params");
     }
     // create path and map variables
-    String path = "/api/v11/environments/{environment}/templates/instances"
+    String path = "/api/v12/environments/{environment}/templates/instances"
       .replaceAll("\\{format\\}", "json")
       .replaceAll("\\{" + "environment" + "\\}",
                   apiClient.escapeString(environment.toString()))
@@ -74,15 +74,10 @@ public class InstanceTemplatesApi {
         + Arrays.toString(contentTypes));
     }
 
-    String response = apiClient.invokeAPI(path, "POST", queryParams, postBody,
+    apiClient.invokeAPI(path, "POST", queryParams, postBody,
       headerParams, formParams, contentTypes[0]);
-
-    if (response != null) {
-      return ;
-    } else {
-      return ;
     }
-  }
+
 
   /**
   * Delete an instance template by name.
@@ -100,7 +95,7 @@ public class InstanceTemplatesApi {
        throw new ApiException(400, "missing required params");
     }
     // create path and map variables
-    String path = "/api/v11/environments/{environment}/templates/instances/{template}"
+    String path = "/api/v12/environments/{environment}/templates/instances/{template}"
       .replaceAll("\\{format\\}", "json")
       .replaceAll("\\{" + "environment" + "\\}",
                   apiClient.escapeString(environment.toString()))
@@ -119,15 +114,10 @@ public class InstanceTemplatesApi {
         + Arrays.toString(contentTypes));
     }
 
-    String response = apiClient.invokeAPI(path, "DELETE", queryParams, postBody,
+    apiClient.invokeAPI(path, "DELETE", queryParams, postBody,
       headerParams, formParams, contentTypes[0]);
-
-    if (response != null) {
-      return ;
-    } else {
-      return ;
     }
-  }
+
 
   /**
   * Get an instance template by name.
@@ -145,7 +135,7 @@ public class InstanceTemplatesApi {
        throw new ApiException(400, "missing required params");
     }
     // create path and map variables
-    String path = "/api/v11/environments/{environment}/templates/instances/{template}"
+    String path = "/api/v12/environments/{environment}/templates/instances/{template}"
       .replaceAll("\\{format\\}", "json")
       .replaceAll("\\{" + "environment" + "\\}",
                   apiClient.escapeString(environment.toString()))
@@ -164,15 +154,10 @@ public class InstanceTemplatesApi {
         + Arrays.toString(contentTypes));
     }
 
-    String response = apiClient.invokeAPI(path, "GET", queryParams, postBody,
-      headerParams, formParams, contentTypes[0]);
+    Object response = apiClient.invokeAPI(path, "GET", queryParams, postBody,
+      headerParams, formParams, contentTypes[0], "", InstanceTemplate.class);
+    return (InstanceTemplate) response;}
 
-    if (response != null) {
-      return (InstanceTemplate) ApiClient.deserialize(response, "", InstanceTemplate.class);
-    } else {
-      return null;
-    }
-  }
 
   /**
   * List all instance templates.
@@ -189,7 +174,7 @@ public class InstanceTemplatesApi {
        throw new ApiException(400, "missing required params");
     }
     // create path and map variables
-    String path = "/api/v11/environments/{environment}/templates/instances"
+    String path = "/api/v12/environments/{environment}/templates/instances"
       .replaceAll("\\{format\\}", "json")
       .replaceAll("\\{" + "environment" + "\\}",
                   apiClient.escapeString(environment.toString()))
@@ -206,15 +191,10 @@ public class InstanceTemplatesApi {
         + Arrays.toString(contentTypes));
     }
 
-    String response = apiClient.invokeAPI(path, "GET", queryParams, postBody,
-      headerParams, formParams, contentTypes[0]);
+    Object response = apiClient.invokeAPI(path, "GET", queryParams, postBody,
+      headerParams, formParams, contentTypes[0], "List", String.class);
+    return (List<String>) response;}
 
-    if (response != null) {
-      return (List<String>) ApiClient.deserialize(response, "List", String.class);
-    } else {
-      return null;
-    }
-  }
 
   /**
   * Update an existing instance template.
@@ -236,7 +216,7 @@ public class InstanceTemplatesApi {
        throw new ApiException(400, "missing required params");
     }
     // create path and map variables
-    String path = "/api/v11/environments/{environment}/templates/instances/{template}"
+    String path = "/api/v12/environments/{environment}/templates/instances/{template}"
       .replaceAll("\\{format\\}", "json")
       .replaceAll("\\{" + "environment" + "\\}",
                   apiClient.escapeString(environment.toString()))
@@ -255,15 +235,10 @@ public class InstanceTemplatesApi {
         + Arrays.toString(contentTypes));
     }
 
-    String response = apiClient.invokeAPI(path, "PUT", queryParams, postBody,
+    apiClient.invokeAPI(path, "PUT", queryParams, postBody,
       headerParams, formParams, contentTypes[0]);
-
-    if (response != null) {
-      return ;
-    } else {
-      return ;
     }
-  }
+
 
   }
 

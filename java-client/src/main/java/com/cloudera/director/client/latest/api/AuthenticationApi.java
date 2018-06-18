@@ -57,7 +57,7 @@ public class AuthenticationApi {
        throw new ApiException(400, "missing required params");
     }
     // create path and map variables
-    String path = "/api/v11/login"
+    String path = "/api/v12/login"
       .replaceAll("\\{format\\}", "json")
       ;
 
@@ -72,15 +72,10 @@ public class AuthenticationApi {
         + Arrays.toString(contentTypes));
     }
 
-    String response = apiClient.invokeAPI(path, "POST", queryParams, postBody,
-      headerParams, formParams, contentTypes[0]);
+    Object response = apiClient.invokeAPI(path, "POST", queryParams, postBody,
+      headerParams, formParams, contentTypes[0], "", User.class);
+    return (User) response;}
 
-    if (response != null) {
-      return (User) ApiClient.deserialize(response, "", User.class);
-    } else {
-      return null;
-    }
-  }
 
   /**
   * Log out from the API.
@@ -93,7 +88,7 @@ public class AuthenticationApi {
   public Boolean logout() throws ApiException {
     Object postBody = null;
     // create path and map variables
-    String path = "/api/v11/logout"
+    String path = "/api/v12/logout"
       .replaceAll("\\{format\\}", "json")
       ;
 
@@ -108,15 +103,10 @@ public class AuthenticationApi {
         + Arrays.toString(contentTypes));
     }
 
-    String response = apiClient.invokeAPI(path, "POST", queryParams, postBody,
-      headerParams, formParams, contentTypes[0]);
+    Object response = apiClient.invokeAPI(path, "POST", queryParams, postBody,
+      headerParams, formParams, contentTypes[0], "", Boolean.class);
+    return (Boolean) response;}
 
-    if (response != null) {
-      return (Boolean) ApiClient.deserialize(response, "", Boolean.class);
-    } else {
-      return null;
-    }
-  }
 
   }
 

@@ -77,15 +77,10 @@ public class DeploymentsApi {
         + Arrays.toString(contentTypes));
     }
 
-    String response = apiClient.invokeAPI(path, "POST", queryParams, postBody,
+    apiClient.invokeAPI(path, "POST", queryParams, postBody,
       headerParams, formParams, contentTypes[0]);
-
-    if (response != null) {
-      return ;
-    } else {
-      return ;
     }
-  }
+
 
   /**
   * Delete a deployment by name.
@@ -122,15 +117,10 @@ public class DeploymentsApi {
         + Arrays.toString(contentTypes));
     }
 
-    String response = apiClient.invokeAPI(path, "DELETE", queryParams, postBody,
+    apiClient.invokeAPI(path, "DELETE", queryParams, postBody,
       headerParams, formParams, contentTypes[0]);
-
-    if (response != null) {
-      return ;
-    } else {
-      return ;
     }
-  }
+
 
   /**
   * Get a deployment by name.
@@ -168,15 +158,10 @@ public class DeploymentsApi {
         + Arrays.toString(contentTypes));
     }
 
-    String response = apiClient.invokeAPI(path, "GET", queryParams, postBody,
-      headerParams, formParams, contentTypes[0]);
+    Object response = apiClient.invokeAPI(path, "GET", queryParams, postBody,
+      headerParams, formParams, contentTypes[0], "", Deployment.class);
+    return (Deployment) response;}
 
-    if (response != null) {
-      return (Deployment) ApiClient.deserialize(response, "", Deployment.class);
-    } else {
-      return null;
-    }
-  }
 
   /**
   * Get a deployment status by name.
@@ -213,15 +198,10 @@ public class DeploymentsApi {
         + Arrays.toString(contentTypes));
     }
 
-    String response = apiClient.invokeAPI(path, "GET", queryParams, postBody,
-      headerParams, formParams, contentTypes[0]);
+    Object response = apiClient.invokeAPI(path, "GET", queryParams, postBody,
+      headerParams, formParams, contentTypes[0], "", Status.class);
+    return (Status) response;}
 
-    if (response != null) {
-      return (Status) ApiClient.deserialize(response, "", Status.class);
-    } else {
-      return null;
-    }
-  }
 
   /**
   * Get a deployment template by name.
@@ -258,15 +238,10 @@ public class DeploymentsApi {
         + Arrays.toString(contentTypes));
     }
 
-    String response = apiClient.invokeAPI(path, "GET", queryParams, postBody,
-      headerParams, formParams, contentTypes[0]);
+    Object response = apiClient.invokeAPI(path, "GET", queryParams, postBody,
+      headerParams, formParams, contentTypes[0], "", DeploymentTemplate.class);
+    return (DeploymentTemplate) response;}
 
-    if (response != null) {
-      return (DeploymentTemplate) ApiClient.deserialize(response, "", DeploymentTemplate.class);
-    } else {
-      return null;
-    }
-  }
 
   /**
   * List all deployments.
@@ -300,15 +275,10 @@ public class DeploymentsApi {
         + Arrays.toString(contentTypes));
     }
 
-    String response = apiClient.invokeAPI(path, "GET", queryParams, postBody,
-      headerParams, formParams, contentTypes[0]);
+    Object response = apiClient.invokeAPI(path, "GET", queryParams, postBody,
+      headerParams, formParams, contentTypes[0], "List", String.class);
+    return (List<String>) response;}
 
-    if (response != null) {
-      return (List<String>) ApiClient.deserialize(response, "List", String.class);
-    } else {
-      return null;
-    }
-  }
 
   /**
   * Update an existing deployment template.
@@ -348,15 +318,10 @@ public class DeploymentsApi {
         + Arrays.toString(contentTypes));
     }
 
-    String response = apiClient.invokeAPI(path, "PUT", queryParams, postBody,
+    apiClient.invokeAPI(path, "PUT", queryParams, postBody,
       headerParams, formParams, contentTypes[0]);
-
-    if (response != null) {
-      return ;
-    } else {
-      return ;
     }
-  }
+
 
   /**
   * Update billing ID for an existing deployment.
@@ -396,15 +361,10 @@ public class DeploymentsApi {
         + Arrays.toString(contentTypes));
     }
 
-    String response = apiClient.invokeAPI(path, "PUT", queryParams, postBody,
+    apiClient.invokeAPI(path, "PUT", queryParams, postBody,
       headerParams, formParams, contentTypes[0]);
-
-    if (response != null) {
-      return ;
-    } else {
-      return ;
     }
-  }
+
 
   }
 

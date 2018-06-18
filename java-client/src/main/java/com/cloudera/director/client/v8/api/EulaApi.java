@@ -64,15 +64,10 @@ public class EulaApi {
         + Arrays.toString(contentTypes));
     }
 
-    String response = apiClient.invokeAPI(path, "GET", queryParams, postBody,
-      headerParams, formParams, contentTypes[0]);
+    Object response = apiClient.invokeAPI(path, "GET", queryParams, postBody,
+      headerParams, formParams, contentTypes[0], "", Eula.class);
+    return (Eula) response;}
 
-    if (response != null) {
-      return (Eula) ApiClient.deserialize(response, "", Eula.class);
-    } else {
-      return null;
-    }
-  }
 
   /**
   * Update the EULA.
@@ -107,15 +102,10 @@ public class EulaApi {
         + Arrays.toString(contentTypes));
     }
 
-    String response = apiClient.invokeAPI(path, "PUT", queryParams, postBody,
+    apiClient.invokeAPI(path, "PUT", queryParams, postBody,
       headerParams, formParams, contentTypes[0]);
-
-    if (response != null) {
-      return ;
-    } else {
-      return ;
     }
-  }
+
 
   }
 
