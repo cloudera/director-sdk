@@ -14,102 +14,162 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-// Note: This file is auto generated. Do not edit manually.
 
 package com.cloudera.director.client.latest.model;
 
+import java.util.Objects;
+import com.cloudera.director.client.latest.model.ConfigurationProperty;
+import com.cloudera.director.client.latest.model.DisplayProperty;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ResourceProviderMetadata {
-  /* A list of configuration properties for the resource provider */
-  private List<ConfigurationProperty> configurationProperties;
-  /* A description for the resource provider */
-  private String description;
-  /* The ID for the resource provider metadata */
-  private String id;
-  /* The name of the resource provider */
-  private String name;
-  /* A list of resource display properties for the resource provider */
-  private List<DisplayProperty> resourceDisplayProperties;
-  /* A list of template configuration properties for the resource provider */
-  private List<ConfigurationProperty> templateProperties;
-  /* The type of resource provider */
-  private String type;
-  public interface Type {
-    String COMPUTE = "COMPUTE";
-    String DATABASE = "DATABASE";
-    String UNKNOWN = "UNKNOWN";
-  }
-  public ResourceProviderMetadata() { }
+/**
+ * Metadata about a cloud resource provider
+ */
+@ApiModel(description = "Metadata about a cloud resource provider")
 
-  private ResourceProviderMetadata(List<ConfigurationProperty> configurationProperties, String description, String id, String name, List<DisplayProperty> resourceDisplayProperties, List<ConfigurationProperty> templateProperties, String type) {
-    this.configurationProperties = configurationProperties;
-    this.description = description;
-    this.id = id;
-    this.name = name;
-    this.resourceDisplayProperties = resourceDisplayProperties;
-    this.templateProperties = templateProperties;
-    this.type = type;
+public class ResourceProviderMetadata {
+  @SerializedName("configurationProperties")
+  private List<ConfigurationProperty> configurationProperties = null;
+  @SerializedName("description")
+  private String description = null;
+  @SerializedName("id")
+  private String id = null;
+  @SerializedName("name")
+  private String name = null;
+  @SerializedName("resourceDisplayProperties")
+  private List<DisplayProperty> resourceDisplayProperties = null;
+  @SerializedName("templateProperties")
+  private List<ConfigurationProperty> templateProperties = null;
+  /**
+   * Resource provider metadata type
+   */
+  @JsonAdapter(TypeEnum.Adapter.class)
+  public enum TypeEnum {
+    COMPUTE("COMPUTE"),
+    
+    DATABASE("DATABASE"),
+    
+    UNKNOWN("UNKNOWN");
+
+    private String value;
+
+    TypeEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static TypeEnum fromValue(String text) {
+      for (TypeEnum b : TypeEnum.values()) {
+        if (String.valueOf(b.value).equals(text)) {
+          return b;
+        }
+      }
+      return null;
+    }
+
+    public static class Adapter extends TypeAdapter<TypeEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final TypeEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public TypeEnum read(final JsonReader jsonReader) throws IOException {
+        String value = jsonReader.nextString();
+        return TypeEnum.fromValue(String.valueOf(value));
+      }
+    }
+  }
+
+  @SerializedName("type")
+  private TypeEnum type = null;
+
+  public ResourceProviderMetadata() {
+    // Do nothing
   }
 
   private ResourceProviderMetadata(ResourceProviderMetadataBuilder builder) {
-    this.configurationProperties = builder.configurationProperties;
-    this.description = builder.description;
-    this.id = builder.id;
-    this.name = builder.name;
-    this.resourceDisplayProperties = builder.resourceDisplayProperties;
-    this.templateProperties = builder.templateProperties;
-    this.type = builder.type;
-  }
+      this.configurationProperties = builder.configurationProperties;
+      this.description = builder.description;
+      this.id = builder.id;
+      this.name = builder.name;
+      this.resourceDisplayProperties = builder.resourceDisplayProperties;
+      this.templateProperties = builder.templateProperties;
+      this.type = builder.type;
+    }
 
   public static ResourceProviderMetadataBuilder builder() {
     return new ResourceProviderMetadataBuilder();
   }
 
   public static class ResourceProviderMetadataBuilder {
-    private List<ConfigurationProperty> configurationProperties = new ArrayList<ConfigurationProperty>();
-    private String description = null;
-    private String id = null;
-    private String name = null;
-    private List<DisplayProperty> resourceDisplayProperties = new ArrayList<DisplayProperty>();
-    private List<ConfigurationProperty> templateProperties = new ArrayList<ConfigurationProperty>();
-    private String type = null;
+      private List<ConfigurationProperty> configurationProperties = new ArrayList<ConfigurationProperty>();
+      private String description = null;
+      private String id = null;
+      private String name = null;
+      private List<DisplayProperty> resourceDisplayProperties = new ArrayList<DisplayProperty>();
+      private List<ConfigurationProperty> templateProperties = new ArrayList<ConfigurationProperty>();
+      private TypeEnum type = null;
+  
 
     public ResourceProviderMetadataBuilder configurationProperties(List<ConfigurationProperty> configurationProperties) {
       this.configurationProperties = configurationProperties;
       return this;
     }
 
+
     public ResourceProviderMetadataBuilder description(String description) {
       this.description = description;
       return this;
     }
+
 
     public ResourceProviderMetadataBuilder id(String id) {
       this.id = id;
       return this;
     }
 
+
     public ResourceProviderMetadataBuilder name(String name) {
       this.name = name;
       return this;
     }
+
 
     public ResourceProviderMetadataBuilder resourceDisplayProperties(List<DisplayProperty> resourceDisplayProperties) {
       this.resourceDisplayProperties = resourceDisplayProperties;
       return this;
     }
 
+
     public ResourceProviderMetadataBuilder templateProperties(List<ConfigurationProperty> templateProperties) {
       this.templateProperties = templateProperties;
       return this;
     }
 
-    public ResourceProviderMetadataBuilder type(String type) {
+
+    public ResourceProviderMetadataBuilder type(TypeEnum type) {
       this.type = type;
       return this;
     }
+
 
     public ResourceProviderMetadata build() {
       return new ResourceProviderMetadata(this);
@@ -119,121 +179,216 @@ public class ResourceProviderMetadata {
   public ResourceProviderMetadataBuilder toBuilder() {
     return builder()
       .configurationProperties(configurationProperties)
-      .description(description)
-      .id(id)
-      .name(name)
-      .resourceDisplayProperties(resourceDisplayProperties)
-      .templateProperties(templateProperties)
-      .type(type)
+            .description(description)
+            .id(id)
+            .name(name)
+            .resourceDisplayProperties(resourceDisplayProperties)
+            .templateProperties(templateProperties)
+            .type(type)
       ;
   }
+
+  public ResourceProviderMetadata configurationProperties(List<ConfigurationProperty> configurationProperties) {
+    this.configurationProperties = configurationProperties;
+    return this;
+  }
+
+  public ResourceProviderMetadata addConfigurationPropertiesItem(ConfigurationProperty configurationPropertiesItem) {
+    if (this.configurationProperties == null) {
+      this.configurationProperties = new ArrayList<ConfigurationProperty>();
+    }
+    this.configurationProperties.add(configurationPropertiesItem);
+    return this;
+  }
+
+   /**
+   * Resource provider configuration properties
+   * @return configurationProperties
+  **/
+  @ApiModelProperty(value = "Resource provider configuration properties")
   public List<ConfigurationProperty> getConfigurationProperties() {
     return configurationProperties;
   }
+
   public void setConfigurationProperties(List<ConfigurationProperty> configurationProperties) {
     this.configurationProperties = configurationProperties;
   }
 
+  public ResourceProviderMetadata description(String description) {
+    this.description = description;
+    return this;
+  }
+
+   /**
+   * Resource provider description
+   * @return description
+  **/
+  @ApiModelProperty(required = true, value = "Resource provider description")
   public String getDescription() {
     return description;
   }
+
   public void setDescription(String description) {
     this.description = description;
   }
 
+  public ResourceProviderMetadata id(String id) {
+    this.id = id;
+    return this;
+  }
+
+   /**
+   * Resource provider metadata ID
+   * @return id
+  **/
+  @ApiModelProperty(required = true, value = "Resource provider metadata ID")
   public String getId() {
     return id;
   }
+
   public void setId(String id) {
     this.id = id;
   }
 
+  public ResourceProviderMetadata name(String name) {
+    this.name = name;
+    return this;
+  }
+
+   /**
+   * Resource provider name
+   * @return name
+  **/
+  @ApiModelProperty(required = true, value = "Resource provider name")
   public String getName() {
     return name;
   }
+
   public void setName(String name) {
     this.name = name;
   }
 
+  public ResourceProviderMetadata resourceDisplayProperties(List<DisplayProperty> resourceDisplayProperties) {
+    this.resourceDisplayProperties = resourceDisplayProperties;
+    return this;
+  }
+
+  public ResourceProviderMetadata addResourceDisplayPropertiesItem(DisplayProperty resourceDisplayPropertiesItem) {
+    if (this.resourceDisplayProperties == null) {
+      this.resourceDisplayProperties = new ArrayList<DisplayProperty>();
+    }
+    this.resourceDisplayProperties.add(resourceDisplayPropertiesItem);
+    return this;
+  }
+
+   /**
+   * Resource provider display properties
+   * @return resourceDisplayProperties
+  **/
+  @ApiModelProperty(value = "Resource provider display properties")
   public List<DisplayProperty> getResourceDisplayProperties() {
     return resourceDisplayProperties;
   }
+
   public void setResourceDisplayProperties(List<DisplayProperty> resourceDisplayProperties) {
     this.resourceDisplayProperties = resourceDisplayProperties;
   }
 
+  public ResourceProviderMetadata templateProperties(List<ConfigurationProperty> templateProperties) {
+    this.templateProperties = templateProperties;
+    return this;
+  }
+
+  public ResourceProviderMetadata addTemplatePropertiesItem(ConfigurationProperty templatePropertiesItem) {
+    if (this.templateProperties == null) {
+      this.templateProperties = new ArrayList<ConfigurationProperty>();
+    }
+    this.templateProperties.add(templatePropertiesItem);
+    return this;
+  }
+
+   /**
+   * Template configuration properties
+   * @return templateProperties
+  **/
+  @ApiModelProperty(value = "Template configuration properties")
   public List<ConfigurationProperty> getTemplateProperties() {
     return templateProperties;
   }
+
   public void setTemplateProperties(List<ConfigurationProperty> templateProperties) {
     this.templateProperties = templateProperties;
   }
 
-  public String getType() {
+  public ResourceProviderMetadata type(TypeEnum type) {
+    this.type = type;
+    return this;
+  }
+
+   /**
+   * Resource provider metadata type
+   * @return type
+  **/
+  @ApiModelProperty(required = true, value = "Resource provider metadata type")
+  public TypeEnum getType() {
     return type;
   }
-  public void setType(String type) {
+
+  public void setType(TypeEnum type) {
     this.type = type;
   }
 
+
   @Override
-  public boolean equals(Object o) {
-    if (this == o) return true;
-    if (o == null || getClass() != o.getClass()) return false;
-
-    ResourceProviderMetadata other = (ResourceProviderMetadata) o; // NOPMD
-
-    if (configurationProperties != null ?
-        !configurationProperties.equals(other.configurationProperties) :
-        other.configurationProperties != null) return false;
-    if (description != null ?
-        !description.equals(other.description) :
-        other.description != null) return false;
-    if (id != null ?
-        !id.equals(other.id) :
-        other.id != null) return false;
-    if (name != null ?
-        !name.equals(other.name) :
-        other.name != null) return false;
-    if (resourceDisplayProperties != null ?
-        !resourceDisplayProperties.equals(other.resourceDisplayProperties) :
-        other.resourceDisplayProperties != null) return false;
-    if (templateProperties != null ?
-        !templateProperties.equals(other.templateProperties) :
-        other.templateProperties != null) return false;
-    if (type != null ?
-        !type.equals(other.type) :
-        other.type != null) return false;
-    return true;
+  public boolean equals(java.lang.Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
+    ResourceProviderMetadata resourceProviderMetadata = (ResourceProviderMetadata) o;
+    return Objects.equals(this.configurationProperties, resourceProviderMetadata.configurationProperties) &&
+        Objects.equals(this.description, resourceProviderMetadata.description) &&
+        Objects.equals(this.id, resourceProviderMetadata.id) &&
+        Objects.equals(this.name, resourceProviderMetadata.name) &&
+        Objects.equals(this.resourceDisplayProperties, resourceProviderMetadata.resourceDisplayProperties) &&
+        Objects.equals(this.templateProperties, resourceProviderMetadata.templateProperties) &&
+        Objects.equals(this.type, resourceProviderMetadata.type);
   }
 
   @Override
   public int hashCode() {
-    int result = 0;
-    result = 31 * result + (configurationProperties != null ? configurationProperties.hashCode() : 0);
-    result = 31 * result + (description != null ? description.hashCode() : 0);
-    result = 31 * result + (id != null ? id.hashCode() : 0);
-    result = 31 * result + (name != null ? name.hashCode() : 0);
-    result = 31 * result + (resourceDisplayProperties != null ? resourceDisplayProperties.hashCode() : 0);
-    result = 31 * result + (templateProperties != null ? templateProperties.hashCode() : 0);
-    result = 31 * result + (type != null ? type.hashCode() : 0);
-    return result;
+    return Objects.hash(configurationProperties, description, id, name, resourceDisplayProperties, templateProperties, type);
   }
 
+
   @Override
-  public String toString()  {
+  public String toString() {
     StringBuilder sb = new StringBuilder();
-    String newLine = System.getProperty("line.separator");
-    sb.append("class ResourceProviderMetadata {" + newLine);
-    sb.append("  configurationProperties: ").append(configurationProperties).append(newLine);
-    sb.append("  description: ").append(description).append(newLine);
-    sb.append("  id: ").append(id).append(newLine);
-    sb.append("  name: ").append(name).append(newLine);
-    sb.append("  resourceDisplayProperties: ").append(resourceDisplayProperties).append(newLine);
-    sb.append("  templateProperties: ").append(templateProperties).append(newLine);
-    sb.append("  type: ").append(type).append(newLine);
-    sb.append("}" + newLine);
+    sb.append("class ResourceProviderMetadata {\n");
+    
+    sb.append("    configurationProperties: ").append(toIndentedString(configurationProperties)).append("\n");
+    sb.append("    description: ").append(toIndentedString(description)).append("\n");
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    resourceDisplayProperties: ").append(toIndentedString(resourceDisplayProperties)).append("\n");
+    sb.append("    templateProperties: ").append(toIndentedString(templateProperties)).append("\n");
+    sb.append("    type: ").append(toIndentedString(type)).append("\n");
+    sb.append("}");
     return sb.toString();
   }
+
+  /**
+   * Convert the given object to string with each line indented by 4 spaces
+   * (except the first line).
+   */
+  private String toIndentedString(java.lang.Object o) {
+    if (o == null) {
+      return "null";
+    }
+    return o.toString().replace("\n", "\n    ");
+  }
+
 }
 

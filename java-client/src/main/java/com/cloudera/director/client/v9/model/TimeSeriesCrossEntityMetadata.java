@@ -14,75 +14,88 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-// Note: This file is auto generated. Do not edit manually.
 
 package com.cloudera.director.client.v9.model;
 
+import java.util.Objects;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
+
+/**
+ * TimeSeriesCrossEntityMetadata
+ */
 
 public class TimeSeriesCrossEntityMetadata {
-  /* Display name for maximum entity */
-  private String maxEntityDisplayName;
-  /* Name for maximum entity */
-  private String maxEntityName;
-  /* Display name for minimum entity */
-  private String minEntityDisplayName;
-  /* Name for minimum entity */
-  private String minEntityName;
-  /* Number of entities */
-  private Double numEntities;
-  public TimeSeriesCrossEntityMetadata() { }
+  @SerializedName("maxEntityDisplayName")
+  private String maxEntityDisplayName = null;
+  @SerializedName("maxEntityName")
+  private String maxEntityName = null;
+  @SerializedName("minEntityDisplayName")
+  private String minEntityDisplayName = null;
+  @SerializedName("minEntityName")
+  private String minEntityName = null;
+  @SerializedName("numEntities")
+  private Double numEntities = null;
 
-  private TimeSeriesCrossEntityMetadata(String maxEntityDisplayName, String maxEntityName, String minEntityDisplayName, String minEntityName, Double numEntities) {
-    this.maxEntityDisplayName = maxEntityDisplayName;
-    this.maxEntityName = maxEntityName;
-    this.minEntityDisplayName = minEntityDisplayName;
-    this.minEntityName = minEntityName;
-    this.numEntities = numEntities;
+  public TimeSeriesCrossEntityMetadata() {
+    // Do nothing
   }
 
   private TimeSeriesCrossEntityMetadata(TimeSeriesCrossEntityMetadataBuilder builder) {
-    this.maxEntityDisplayName = builder.maxEntityDisplayName;
-    this.maxEntityName = builder.maxEntityName;
-    this.minEntityDisplayName = builder.minEntityDisplayName;
-    this.minEntityName = builder.minEntityName;
-    this.numEntities = builder.numEntities;
-  }
+      this.maxEntityDisplayName = builder.maxEntityDisplayName;
+      this.maxEntityName = builder.maxEntityName;
+      this.minEntityDisplayName = builder.minEntityDisplayName;
+      this.minEntityName = builder.minEntityName;
+      this.numEntities = builder.numEntities;
+    }
 
   public static TimeSeriesCrossEntityMetadataBuilder builder() {
     return new TimeSeriesCrossEntityMetadataBuilder();
   }
 
   public static class TimeSeriesCrossEntityMetadataBuilder {
-    private String maxEntityDisplayName = null;
-    private String maxEntityName = null;
-    private String minEntityDisplayName = null;
-    private String minEntityName = null;
-    private Double numEntities = null;
+      private String maxEntityDisplayName = null;
+      private String maxEntityName = null;
+      private String minEntityDisplayName = null;
+      private String minEntityName = null;
+      private Double numEntities = null;
+  
 
     public TimeSeriesCrossEntityMetadataBuilder maxEntityDisplayName(String maxEntityDisplayName) {
       this.maxEntityDisplayName = maxEntityDisplayName;
       return this;
     }
 
+
     public TimeSeriesCrossEntityMetadataBuilder maxEntityName(String maxEntityName) {
       this.maxEntityName = maxEntityName;
       return this;
     }
+
 
     public TimeSeriesCrossEntityMetadataBuilder minEntityDisplayName(String minEntityDisplayName) {
       this.minEntityDisplayName = minEntityDisplayName;
       return this;
     }
 
+
     public TimeSeriesCrossEntityMetadataBuilder minEntityName(String minEntityName) {
       this.minEntityName = minEntityName;
       return this;
     }
 
+
     public TimeSeriesCrossEntityMetadataBuilder numEntities(Double numEntities) {
       this.numEntities = numEntities;
       return this;
     }
+
 
     public TimeSeriesCrossEntityMetadata build() {
       return new TimeSeriesCrossEntityMetadata(this);
@@ -92,95 +105,150 @@ public class TimeSeriesCrossEntityMetadata {
   public TimeSeriesCrossEntityMetadataBuilder toBuilder() {
     return builder()
       .maxEntityDisplayName(maxEntityDisplayName)
-      .maxEntityName(maxEntityName)
-      .minEntityDisplayName(minEntityDisplayName)
-      .minEntityName(minEntityName)
-      .numEntities(numEntities)
+            .maxEntityName(maxEntityName)
+            .minEntityDisplayName(minEntityDisplayName)
+            .minEntityName(minEntityName)
+            .numEntities(numEntities)
       ;
   }
+
+  public TimeSeriesCrossEntityMetadata maxEntityDisplayName(String maxEntityDisplayName) {
+    this.maxEntityDisplayName = maxEntityDisplayName;
+    return this;
+  }
+
+   /**
+   * Display name for maximum entity
+   * @return maxEntityDisplayName
+  **/
+  @ApiModelProperty(required = true, value = "Display name for maximum entity")
   public String getMaxEntityDisplayName() {
     return maxEntityDisplayName;
   }
+
   public void setMaxEntityDisplayName(String maxEntityDisplayName) {
     this.maxEntityDisplayName = maxEntityDisplayName;
   }
 
+  public TimeSeriesCrossEntityMetadata maxEntityName(String maxEntityName) {
+    this.maxEntityName = maxEntityName;
+    return this;
+  }
+
+   /**
+   * Name for maximum entity
+   * @return maxEntityName
+  **/
+  @ApiModelProperty(value = "Name for maximum entity")
   public String getMaxEntityName() {
     return maxEntityName;
   }
+
   public void setMaxEntityName(String maxEntityName) {
     this.maxEntityName = maxEntityName;
   }
 
+  public TimeSeriesCrossEntityMetadata minEntityDisplayName(String minEntityDisplayName) {
+    this.minEntityDisplayName = minEntityDisplayName;
+    return this;
+  }
+
+   /**
+   * Display name for minimum entity
+   * @return minEntityDisplayName
+  **/
+  @ApiModelProperty(required = true, value = "Display name for minimum entity")
   public String getMinEntityDisplayName() {
     return minEntityDisplayName;
   }
+
   public void setMinEntityDisplayName(String minEntityDisplayName) {
     this.minEntityDisplayName = minEntityDisplayName;
   }
 
+  public TimeSeriesCrossEntityMetadata minEntityName(String minEntityName) {
+    this.minEntityName = minEntityName;
+    return this;
+  }
+
+   /**
+   * Name for minimum entity
+   * @return minEntityName
+  **/
+  @ApiModelProperty(value = "Name for minimum entity")
   public String getMinEntityName() {
     return minEntityName;
   }
+
   public void setMinEntityName(String minEntityName) {
     this.minEntityName = minEntityName;
   }
 
+  public TimeSeriesCrossEntityMetadata numEntities(Double numEntities) {
+    this.numEntities = numEntities;
+    return this;
+  }
+
+   /**
+   * Number of entities
+   * @return numEntities
+  **/
+  @ApiModelProperty(required = true, value = "Number of entities")
   public Double getNumEntities() {
     return numEntities;
   }
+
   public void setNumEntities(Double numEntities) {
     this.numEntities = numEntities;
   }
 
+
   @Override
-  public boolean equals(Object o) {
-    if (this == o) return true;
-    if (o == null || getClass() != o.getClass()) return false;
-
-    TimeSeriesCrossEntityMetadata other = (TimeSeriesCrossEntityMetadata) o; // NOPMD
-
-    if (maxEntityDisplayName != null ?
-        !maxEntityDisplayName.equals(other.maxEntityDisplayName) :
-        other.maxEntityDisplayName != null) return false;
-    if (maxEntityName != null ?
-        !maxEntityName.equals(other.maxEntityName) :
-        other.maxEntityName != null) return false;
-    if (minEntityDisplayName != null ?
-        !minEntityDisplayName.equals(other.minEntityDisplayName) :
-        other.minEntityDisplayName != null) return false;
-    if (minEntityName != null ?
-        !minEntityName.equals(other.minEntityName) :
-        other.minEntityName != null) return false;
-    if (numEntities != null ?
-        !numEntities.equals(other.numEntities) :
-        other.numEntities != null) return false;
-    return true;
+  public boolean equals(java.lang.Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
+    TimeSeriesCrossEntityMetadata timeSeriesCrossEntityMetadata = (TimeSeriesCrossEntityMetadata) o;
+    return Objects.equals(this.maxEntityDisplayName, timeSeriesCrossEntityMetadata.maxEntityDisplayName) &&
+        Objects.equals(this.maxEntityName, timeSeriesCrossEntityMetadata.maxEntityName) &&
+        Objects.equals(this.minEntityDisplayName, timeSeriesCrossEntityMetadata.minEntityDisplayName) &&
+        Objects.equals(this.minEntityName, timeSeriesCrossEntityMetadata.minEntityName) &&
+        Objects.equals(this.numEntities, timeSeriesCrossEntityMetadata.numEntities);
   }
 
   @Override
   public int hashCode() {
-    int result = 0;
-    result = 31 * result + (maxEntityDisplayName != null ? maxEntityDisplayName.hashCode() : 0);
-    result = 31 * result + (maxEntityName != null ? maxEntityName.hashCode() : 0);
-    result = 31 * result + (minEntityDisplayName != null ? minEntityDisplayName.hashCode() : 0);
-    result = 31 * result + (minEntityName != null ? minEntityName.hashCode() : 0);
-    result = 31 * result + (numEntities != null ? numEntities.hashCode() : 0);
-    return result;
+    return Objects.hash(maxEntityDisplayName, maxEntityName, minEntityDisplayName, minEntityName, numEntities);
   }
 
+
   @Override
-  public String toString()  {
+  public String toString() {
     StringBuilder sb = new StringBuilder();
-    String newLine = System.getProperty("line.separator");
-    sb.append("class TimeSeriesCrossEntityMetadata {" + newLine);
-    sb.append("  maxEntityDisplayName: ").append(maxEntityDisplayName).append(newLine);
-    sb.append("  maxEntityName: ").append(maxEntityName).append(newLine);
-    sb.append("  minEntityDisplayName: ").append(minEntityDisplayName).append(newLine);
-    sb.append("  minEntityName: ").append(minEntityName).append(newLine);
-    sb.append("  numEntities: ").append(numEntities).append(newLine);
-    sb.append("}" + newLine);
+    sb.append("class TimeSeriesCrossEntityMetadata {\n");
+    
+    sb.append("    maxEntityDisplayName: ").append(toIndentedString(maxEntityDisplayName)).append("\n");
+    sb.append("    maxEntityName: ").append(toIndentedString(maxEntityName)).append("\n");
+    sb.append("    minEntityDisplayName: ").append(toIndentedString(minEntityDisplayName)).append("\n");
+    sb.append("    minEntityName: ").append(toIndentedString(minEntityName)).append("\n");
+    sb.append("    numEntities: ").append(toIndentedString(numEntities)).append("\n");
+    sb.append("}");
     return sb.toString();
   }
+
+  /**
+   * Convert the given object to string with each line indented by 4 spaces
+   * (except the first line).
+   */
+  private String toIndentedString(java.lang.Object o) {
+    if (o == null) {
+      return "null";
+    }
+    return o.toString().replace("\n", "\n    ");
+  }
+
 }
 

@@ -97,7 +97,7 @@ public class CreateClustersSample extends CommonParameters {
       api.create(environment);
 
     } catch (ApiException e) {
-      if (e.getCode() == 302 /* found */) {
+      if (e.getCode() == 409 /* conflict */) {
         System.out.println("Warning: an environment with the same name already exists");
       } else {
         throw e;
@@ -135,7 +135,7 @@ public class CreateClustersSample extends CommonParameters {
       api.create(environmentName, template);
 
     } catch (ApiException e) {
-      if (e.getCode() == 302 /* found */) {
+      if (e.getCode() == 409 /* conflict */) {
         System.out.println("Warning: a deployment with the same name already exists");
       } else {
         throw e;
@@ -201,7 +201,7 @@ public class CreateClustersSample extends CommonParameters {
       api.create(environmentName, deploymentName, template);
 
     } catch (ApiException e) {
-      if (e.getCode() == 302 /* found */) {
+      if (e.getCode() == 409 /* conflict */) {
         System.out.println("Warning: a cluster with the same name already exists");
       } else {
         throw e;
@@ -285,9 +285,9 @@ public class CreateClustersSample extends CommonParameters {
     String clusterName = createCluster(client, environmentName, deploymentName, config);
 
     System.out.println("Waiting for deployment to be ready. Check the web interface for details.");
-    String stage = ClientUtil.waitForDeployment(client, environmentName, deploymentName);
+    Status.StageEnum stage = ClientUtil.waitForDeployment(client, environmentName, deploymentName);
 
-    if (!stage.equals(Status.Stage.READY)) {
+    if (!stage.equals(Status.StageEnum.READY)) {
       System.err.println("Deployment went into an unexpected stage");
       return ExitCodes.UNEXPECTED_STAGE;
     }
@@ -295,7 +295,7 @@ public class CreateClustersSample extends CommonParameters {
     System.out.println("Waiting for the cluster to be ready. Check the web interface for details.");
     stage = ClientUtil.waitForCluster(client, environmentName, deploymentName, clusterName);
 
-    if (!stage.equals(Status.Stage.READY)) {
+    if (!stage.equals(Status.StageEnum.READY)) {
       System.err.println("Cluster went into an unexpected stage");
       return ExitCodes.UNEXPECTED_STAGE;
     }

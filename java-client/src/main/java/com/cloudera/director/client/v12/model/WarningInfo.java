@@ -14,73 +14,182 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-// Note: This file is auto generated. Do not edit manually.
 
 package com.cloudera.director.client.v12.model;
 
+import java.util.Objects;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
-public class WarningInfo {
-  /* Properties */
-  private Map<String, String> properties;
-  /* Warning code */
-  private String warningCode;
-  /* Warning type */
-  private String warningType;
-  public interface WarningCode {
-    String UNKNOWN_SERVICE_TYPE = "UNKNOWN_SERVICE_TYPE";
-    String UNKNOWN_ROLE_TYPE_FOR_SERVICE_TYPE = "UNKNOWN_ROLE_TYPE_FOR_SERVICE_TYPE";
-    String ROLE_ASSIGNMENT_DIFFERENCE = "ROLE_ASSIGNMENT_DIFFERENCE";
-    String ROLE_CONFIGURATION_DIFFERENCE = "ROLE_CONFIGURATION_DIFFERENCE";
-    String ROLE_CONFIGURATION_VALUE_DIFFERENCE = "ROLE_CONFIGURATION_VALUE_DIFFERENCE";
-    String INSTANCE_CONFIGURATION_DIFFERENCE = "INSTANCE_CONFIGURATION_DIFFERENCE";
-    String INSTANCE_CONFIGURATION_VALUE_DIFFERENCE = "INSTANCE_CONFIGURATION_VALUE_DIFFERENCE";
-    String FORMAT_WARNING = "FORMAT_WARNING";
-    String UNDEFINED = "UNDEFINED";
-  }
-  public interface WarningType {
-    String CLIENT = "CLIENT";
-    String SERVICE = "SERVICE";
-    String UNKNOWN = "UNKNOWN";
-  }
-  public WarningInfo() { }
+/**
+ * Warning information
+ */
+@ApiModel(description = "Warning information")
 
-  private WarningInfo(Map<String, String> properties, String warningCode, String warningType) {
-    this.properties = properties;
-    this.warningCode = warningCode;
-    this.warningType = warningType;
+public class WarningInfo {
+  @SerializedName("properties")
+  private Map<String, String> properties = new HashMap<String, String>();
+  /**
+   * Warning code
+   */
+  @JsonAdapter(WarningCodeEnum.Adapter.class)
+  public enum WarningCodeEnum {
+    UNKNOWN_SERVICE_TYPE("UNKNOWN_SERVICE_TYPE"),
+    
+    UNKNOWN_ROLE_TYPE_FOR_SERVICE_TYPE("UNKNOWN_ROLE_TYPE_FOR_SERVICE_TYPE"),
+    
+    ROLE_ASSIGNMENT_DIFFERENCE("ROLE_ASSIGNMENT_DIFFERENCE"),
+    
+    ROLE_CONFIGURATION_DIFFERENCE("ROLE_CONFIGURATION_DIFFERENCE"),
+    
+    ROLE_CONFIGURATION_VALUE_DIFFERENCE("ROLE_CONFIGURATION_VALUE_DIFFERENCE"),
+    
+    INSTANCE_CONFIGURATION_DIFFERENCE("INSTANCE_CONFIGURATION_DIFFERENCE"),
+    
+    INSTANCE_CONFIGURATION_VALUE_DIFFERENCE("INSTANCE_CONFIGURATION_VALUE_DIFFERENCE"),
+    
+    FORMAT_WARNING("FORMAT_WARNING"),
+    
+    UNDEFINED("UNDEFINED");
+
+    private String value;
+
+    WarningCodeEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static WarningCodeEnum fromValue(String text) {
+      for (WarningCodeEnum b : WarningCodeEnum.values()) {
+        if (String.valueOf(b.value).equals(text)) {
+          return b;
+        }
+      }
+      return null;
+    }
+
+    public static class Adapter extends TypeAdapter<WarningCodeEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final WarningCodeEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public WarningCodeEnum read(final JsonReader jsonReader) throws IOException {
+        String value = jsonReader.nextString();
+        return WarningCodeEnum.fromValue(String.valueOf(value));
+      }
+    }
+  }
+
+  @SerializedName("warningCode")
+  private WarningCodeEnum warningCode = null;
+  /**
+   * Warning type
+   */
+  @JsonAdapter(WarningTypeEnum.Adapter.class)
+  public enum WarningTypeEnum {
+    CLIENT("CLIENT"),
+    
+    SERVICE("SERVICE"),
+    
+    UNKNOWN("UNKNOWN");
+
+    private String value;
+
+    WarningTypeEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static WarningTypeEnum fromValue(String text) {
+      for (WarningTypeEnum b : WarningTypeEnum.values()) {
+        if (String.valueOf(b.value).equals(text)) {
+          return b;
+        }
+      }
+      return null;
+    }
+
+    public static class Adapter extends TypeAdapter<WarningTypeEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final WarningTypeEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public WarningTypeEnum read(final JsonReader jsonReader) throws IOException {
+        String value = jsonReader.nextString();
+        return WarningTypeEnum.fromValue(String.valueOf(value));
+      }
+    }
+  }
+
+  @SerializedName("warningType")
+  private WarningTypeEnum warningType = null;
+
+  public WarningInfo() {
+    // Do nothing
   }
 
   private WarningInfo(WarningInfoBuilder builder) {
-    this.properties = builder.properties;
-    this.warningCode = builder.warningCode;
-    this.warningType = builder.warningType;
-  }
+      this.properties = builder.properties;
+      this.warningCode = builder.warningCode;
+      this.warningType = builder.warningType;
+    }
 
   public static WarningInfoBuilder builder() {
     return new WarningInfoBuilder();
   }
 
   public static class WarningInfoBuilder {
-    private Map<String, String> properties = new HashMap<String, String>();
-    private String warningCode = null;
-    private String warningType = null;
+      private Map<String, String> properties = new HashMap<String, String>();
+      private WarningCodeEnum warningCode = null;
+      private WarningTypeEnum warningType = null;
+  
 
     public WarningInfoBuilder properties(Map<String, String> properties) {
       this.properties = properties;
       return this;
     }
 
-    public WarningInfoBuilder warningCode(String warningCode) {
+
+    public WarningInfoBuilder warningCode(WarningCodeEnum warningCode) {
       this.warningCode = warningCode;
       return this;
     }
 
-    public WarningInfoBuilder warningType(String warningType) {
+
+    public WarningInfoBuilder warningType(WarningTypeEnum warningType) {
       this.warningType = warningType;
       return this;
     }
+
 
     public WarningInfo build() {
       return new WarningInfo(this);
@@ -90,69 +199,113 @@ public class WarningInfo {
   public WarningInfoBuilder toBuilder() {
     return builder()
       .properties(properties)
-      .warningCode(warningCode)
-      .warningType(warningType)
+            .warningCode(warningCode)
+            .warningType(warningType)
       ;
   }
+
+  public WarningInfo properties(Map<String, String> properties) {
+    this.properties = properties;
+    return this;
+  }
+
+  public WarningInfo putPropertiesItem(String key, String propertiesItem) {
+    this.properties.put(key, propertiesItem);
+    return this;
+  }
+
+   /**
+   * Properties associated with the error
+   * @return properties
+  **/
+  @ApiModelProperty(required = true, value = "Properties associated with the error")
   public Map<String, String> getProperties() {
     return properties;
   }
+
   public void setProperties(Map<String, String> properties) {
     this.properties = properties;
   }
 
-  public String getWarningCode() {
+  public WarningInfo warningCode(WarningCodeEnum warningCode) {
+    this.warningCode = warningCode;
+    return this;
+  }
+
+   /**
+   * Warning code
+   * @return warningCode
+  **/
+  @ApiModelProperty(required = true, value = "Warning code")
+  public WarningCodeEnum getWarningCode() {
     return warningCode;
   }
-  public void setWarningCode(String warningCode) {
+
+  public void setWarningCode(WarningCodeEnum warningCode) {
     this.warningCode = warningCode;
   }
 
-  public String getWarningType() {
+  public WarningInfo warningType(WarningTypeEnum warningType) {
+    this.warningType = warningType;
+    return this;
+  }
+
+   /**
+   * Warning type
+   * @return warningType
+  **/
+  @ApiModelProperty(required = true, value = "Warning type")
+  public WarningTypeEnum getWarningType() {
     return warningType;
   }
-  public void setWarningType(String warningType) {
+
+  public void setWarningType(WarningTypeEnum warningType) {
     this.warningType = warningType;
   }
 
+
   @Override
-  public boolean equals(Object o) {
-    if (this == o) return true;
-    if (o == null || getClass() != o.getClass()) return false;
-
-    WarningInfo other = (WarningInfo) o; // NOPMD
-
-    if (properties != null ?
-        !properties.equals(other.properties) :
-        other.properties != null) return false;
-    if (warningCode != null ?
-        !warningCode.equals(other.warningCode) :
-        other.warningCode != null) return false;
-    if (warningType != null ?
-        !warningType.equals(other.warningType) :
-        other.warningType != null) return false;
-    return true;
+  public boolean equals(java.lang.Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
+    WarningInfo warningInfo = (WarningInfo) o;
+    return Objects.equals(this.properties, warningInfo.properties) &&
+        Objects.equals(this.warningCode, warningInfo.warningCode) &&
+        Objects.equals(this.warningType, warningInfo.warningType);
   }
 
   @Override
   public int hashCode() {
-    int result = 0;
-    result = 31 * result + (properties != null ? properties.hashCode() : 0);
-    result = 31 * result + (warningCode != null ? warningCode.hashCode() : 0);
-    result = 31 * result + (warningType != null ? warningType.hashCode() : 0);
-    return result;
+    return Objects.hash(properties, warningCode, warningType);
   }
 
+
   @Override
-  public String toString()  {
+  public String toString() {
     StringBuilder sb = new StringBuilder();
-    String newLine = System.getProperty("line.separator");
-    sb.append("class WarningInfo {" + newLine);
-    sb.append("  properties: ").append(properties).append(newLine);
-    sb.append("  warningCode: ").append(warningCode).append(newLine);
-    sb.append("  warningType: ").append(warningType).append(newLine);
-    sb.append("}" + newLine);
+    sb.append("class WarningInfo {\n");
+    
+    sb.append("    properties: ").append(toIndentedString(properties)).append("\n");
+    sb.append("    warningCode: ").append(toIndentedString(warningCode)).append("\n");
+    sb.append("    warningType: ").append(toIndentedString(warningType)).append("\n");
+    sb.append("}");
     return sb.toString();
   }
+
+  /**
+   * Convert the given object to string with each line indented by 4 spaces
+   * (except the first line).
+   */
+  private String toIndentedString(java.lang.Object o) {
+    if (o == null) {
+      return "null";
+    }
+    return o.toString().replace("\n", "\n    ");
+  }
+
 }
 

@@ -14,66 +14,81 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-// Note: This file is auto generated. Do not edit manually.
 
 package com.cloudera.director.client.latest.model;
 
-import java.util.Set;
+import java.util.Objects;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
+/**
+ * A Cloudera Altus Director user
+ */
+@ApiModel(description = "A Cloudera Altus Director user")
 
 public class User {
-  /* Enabled */
-  private Boolean enabled;
-  /* Password [redacted on read] */
-  private String password;
-  /* Roles */
-  private Set<String> roles;
-  /* User name */
-  private String username;
-  public User() { }
+  @SerializedName("enabled")
+  private Boolean enabled = null;
+  @SerializedName("password")
+  private String password = null;
+  @SerializedName("roles")
+  private List<String> roles = null;
+  @SerializedName("username")
+  private String username = null;
 
-  private User(Boolean enabled, String password, Set<String> roles, String username) {
-    this.enabled = enabled;
-    this.password = password;
-    this.roles = roles;
-    this.username = username;
+  public User() {
+    // Do nothing
   }
 
   private User(UserBuilder builder) {
-    this.enabled = builder.enabled;
-    this.password = builder.password;
-    this.roles = builder.roles;
-    this.username = builder.username;
-  }
+      this.enabled = builder.enabled;
+      this.password = builder.password;
+      this.roles = builder.roles;
+      this.username = builder.username;
+    }
 
   public static UserBuilder builder() {
     return new UserBuilder();
   }
 
   public static class UserBuilder {
-    private Boolean enabled = null;
-    private String password = null;
-    private Set<String> roles = null;
-    private String username = null;
+      private Boolean enabled = null;
+      private String password = null;
+      private List<String> roles = new ArrayList<String>();
+      private String username = null;
+  
 
     public UserBuilder enabled(Boolean enabled) {
       this.enabled = enabled;
       return this;
     }
 
+
     public UserBuilder password(String password) {
       this.password = password;
       return this;
     }
 
-    public UserBuilder roles(Set<String> roles) {
+
+    public UserBuilder roles(List<String> roles) {
       this.roles = roles;
       return this;
     }
+
 
     public UserBuilder username(String username) {
       this.username = username;
       return this;
     }
+
 
     public User build() {
       return new User(this);
@@ -83,78 +98,137 @@ public class User {
   public UserBuilder toBuilder() {
     return builder()
       .enabled(enabled)
-      .password(password)
-      .roles(roles)
-      .username(username)
+            .password(password)
+            .roles(roles)
+            .username(username)
       ;
   }
-  public Boolean getEnabled() {
+
+  public User enabled(Boolean enabled) {
+    this.enabled = enabled;
+    return this;
+  }
+
+   /**
+   * Whether the user is enabled
+   * @return enabled
+  **/
+  @ApiModelProperty(example = "false", required = true, value = "Whether the user is enabled")
+  public Boolean isEnabled() {
     return enabled;
   }
+
   public void setEnabled(Boolean enabled) {
     this.enabled = enabled;
   }
 
+  public User password(String password) {
+    this.password = password;
+    return this;
+  }
+
+   /**
+   * Password [redacted on read]
+   * @return password
+  **/
+  @ApiModelProperty(required = true, value = "Password [redacted on read]")
   public String getPassword() {
     return password;
   }
+
   public void setPassword(String password) {
     this.password = password;
   }
 
-  public Set<String> getRoles() {
+  public User roles(List<String> roles) {
+    this.roles = roles;
+    return this;
+  }
+
+  public User addRolesItem(String rolesItem) {
+    if (this.roles == null) {
+      this.roles = new ArrayList<String>();
+    }
+    this.roles.add(rolesItem);
+    return this;
+  }
+
+   /**
+   * Roles assigned to the user
+   * @return roles
+  **/
+  @ApiModelProperty(value = "Roles assigned to the user")
+  public List<String> getRoles() {
     return roles;
   }
-  public void setRoles(Set<String> roles) {
+
+  public void setRoles(List<String> roles) {
     this.roles = roles;
   }
 
+  public User username(String username) {
+    this.username = username;
+    return this;
+  }
+
+   /**
+   * User name
+   * @return username
+  **/
+  @ApiModelProperty(required = true, value = "User name")
   public String getUsername() {
     return username;
   }
+
   public void setUsername(String username) {
     this.username = username;
   }
 
+
   @Override
-  public boolean equals(Object o) {
-    if (this == o) return true;
-    if (o == null || getClass() != o.getClass()) return false;
-
-    User other = (User) o; // NOPMD
-
-    if (enabled != null ?
-        !enabled.equals(other.enabled) :
-        other.enabled != null) return false;
-    if (roles != null ?
-        !roles.equals(other.roles) :
-        other.roles != null) return false;
-    if (username != null ?
-        !username.equals(other.username) :
-        other.username != null) return false;
-    return true;
+  public boolean equals(java.lang.Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
+    User user = (User) o;
+    return Objects.equals(this.enabled, user.enabled) &&
+        Objects.equals(this.password, user.password) &&
+        Objects.equals(this.roles, user.roles) &&
+        Objects.equals(this.username, user.username);
   }
 
   @Override
   public int hashCode() {
-    int result = 0;
-    result = 31 * result + (enabled != null ? enabled.hashCode() : 0);
-    result = 31 * result + (roles != null ? roles.hashCode() : 0);
-    result = 31 * result + (username != null ? username.hashCode() : 0);
-    return result;
+    return Objects.hash(enabled, password, roles, username);
   }
 
+
   @Override
-  public String toString()  {
+  public String toString() {
     StringBuilder sb = new StringBuilder();
-    String newLine = System.getProperty("line.separator");
-    sb.append("class User {" + newLine);
-    sb.append("  enabled: ").append(enabled).append(newLine);
-    sb.append("  password: ").append("REDACTED").append(newLine);
-    sb.append("  roles: ").append(roles).append(newLine);
-    sb.append("  username: ").append(username).append(newLine);
-    sb.append("}" + newLine);
+    sb.append("class User {\n");
+    
+    sb.append("    enabled: ").append(toIndentedString(enabled)).append("\n");
+    sb.append("    password: ").append(toIndentedString(password)).append("\n");
+    sb.append("    roles: ").append(toIndentedString(roles)).append("\n");
+    sb.append("    username: ").append(toIndentedString(username)).append("\n");
+    sb.append("}");
     return sb.toString();
   }
+
+  /**
+   * Convert the given object to string with each line indented by 4 spaces
+   * (except the first line).
+   */
+  private String toIndentedString(java.lang.Object o) {
+    if (o == null) {
+      return "null";
+    }
+    return o.toString().replace("\n", "\n    ");
+  }
+
 }
 

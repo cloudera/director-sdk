@@ -14,102 +14,161 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-// Note: This file is auto generated. Do not edit manually.
 
 package com.cloudera.director.client.v8.model;
 
+import java.util.Objects;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
-public class ExternalDatabaseServer {
-  /* Hostname for existing external database server */
-  private String hostname;
-  /* External database server name */
-  private String name;
-  /* Database password for administrative access [redacted on read] */
-  private String password;
-  /* Port for an existing external database server */
-  private Integer port;
-  /* External database display properties */
-  private Map<String, String> properties;
-  /* External database server type */
-  private String type;
-  /* Database username for administrative access */
-  private String username;
-  public interface Type {
-    String POSTGRESQL = "POSTGRESQL";
-    String MYSQL = "MYSQL";
-    String ORACLE = "ORACLE";
-  }
-  public ExternalDatabaseServer() { }
+/**
+ * A database server external to Cloudera Altus Director and Cloudera Manager
+ */
+@ApiModel(description = "A database server external to Cloudera Altus Director and Cloudera Manager")
 
-  private ExternalDatabaseServer(String hostname, String name, String password, Integer port, Map<String, String> properties, String type, String username) {
-    this.hostname = hostname;
-    this.name = name;
-    this.password = password;
-    this.port = port;
-    this.properties = properties;
-    this.type = type;
-    this.username = username;
+public class ExternalDatabaseServer {
+  @SerializedName("hostname")
+  private String hostname = null;
+  @SerializedName("name")
+  private String name = null;
+  @SerializedName("password")
+  private String password = null;
+  @SerializedName("port")
+  private Integer port = null;
+  @SerializedName("properties")
+  private Map<String, String> properties = null;
+  /**
+   * External database server type
+   */
+  @JsonAdapter(TypeEnum.Adapter.class)
+  public enum TypeEnum {
+    POSTGRESQL("POSTGRESQL"),
+    
+    MYSQL("MYSQL"),
+    
+    ORACLE("ORACLE");
+
+    private String value;
+
+    TypeEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static TypeEnum fromValue(String text) {
+      for (TypeEnum b : TypeEnum.values()) {
+        if (String.valueOf(b.value).equals(text)) {
+          return b;
+        }
+      }
+      return null;
+    }
+
+    public static class Adapter extends TypeAdapter<TypeEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final TypeEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public TypeEnum read(final JsonReader jsonReader) throws IOException {
+        String value = jsonReader.nextString();
+        return TypeEnum.fromValue(String.valueOf(value));
+      }
+    }
+  }
+
+  @SerializedName("type")
+  private TypeEnum type = null;
+  @SerializedName("username")
+  private String username = null;
+
+  public ExternalDatabaseServer() {
+    // Do nothing
   }
 
   private ExternalDatabaseServer(ExternalDatabaseServerBuilder builder) {
-    this.hostname = builder.hostname;
-    this.name = builder.name;
-    this.password = builder.password;
-    this.port = builder.port;
-    this.properties = builder.properties;
-    this.type = builder.type;
-    this.username = builder.username;
-  }
+      this.hostname = builder.hostname;
+      this.name = builder.name;
+      this.password = builder.password;
+      this.port = builder.port;
+      this.properties = builder.properties;
+      this.type = builder.type;
+      this.username = builder.username;
+    }
 
   public static ExternalDatabaseServerBuilder builder() {
     return new ExternalDatabaseServerBuilder();
   }
 
   public static class ExternalDatabaseServerBuilder {
-    private String hostname = null;
-    private String name = null;
-    private String password = null;
-    private Integer port = null;
-    private Map<String, String> properties = new HashMap<String, String>();
-    private String type = null;
-    private String username = null;
+      private String hostname = null;
+      private String name = null;
+      private String password = null;
+      private Integer port = null;
+      private Map<String, String> properties = new HashMap<String, String>();
+      private TypeEnum type = null;
+      private String username = null;
+  
 
     public ExternalDatabaseServerBuilder hostname(String hostname) {
       this.hostname = hostname;
       return this;
     }
 
+
     public ExternalDatabaseServerBuilder name(String name) {
       this.name = name;
       return this;
     }
+
 
     public ExternalDatabaseServerBuilder password(String password) {
       this.password = password;
       return this;
     }
 
+
     public ExternalDatabaseServerBuilder port(Integer port) {
       this.port = port;
       return this;
     }
+
 
     public ExternalDatabaseServerBuilder properties(Map<String, String> properties) {
       this.properties = properties;
       return this;
     }
 
-    public ExternalDatabaseServerBuilder type(String type) {
+
+    public ExternalDatabaseServerBuilder type(TypeEnum type) {
       this.type = type;
       return this;
     }
+
 
     public ExternalDatabaseServerBuilder username(String username) {
       this.username = username;
       return this;
     }
+
 
     public ExternalDatabaseServer build() {
       return new ExternalDatabaseServer(this);
@@ -119,117 +178,200 @@ public class ExternalDatabaseServer {
   public ExternalDatabaseServerBuilder toBuilder() {
     return builder()
       .hostname(hostname)
-      .name(name)
-      .password(password)
-      .port(port)
-      .properties(properties)
-      .type(type)
-      .username(username)
+            .name(name)
+            .password(password)
+            .port(port)
+            .properties(properties)
+            .type(type)
+            .username(username)
       ;
   }
+
+  public ExternalDatabaseServer hostname(String hostname) {
+    this.hostname = hostname;
+    return this;
+  }
+
+   /**
+   * External database server hostname
+   * @return hostname
+  **/
+  @ApiModelProperty(required = true, value = "External database server hostname")
   public String getHostname() {
     return hostname;
   }
+
   public void setHostname(String hostname) {
     this.hostname = hostname;
   }
 
+  public ExternalDatabaseServer name(String name) {
+    this.name = name;
+    return this;
+  }
+
+   /**
+   * External database server name
+   * @return name
+  **/
+  @ApiModelProperty(required = true, value = "External database server name")
   public String getName() {
     return name;
   }
+
   public void setName(String name) {
     this.name = name;
   }
 
+  public ExternalDatabaseServer password(String password) {
+    this.password = password;
+    return this;
+  }
+
+   /**
+   * Password for administrative access to external database server [redacted on read]
+   * @return password
+  **/
+  @ApiModelProperty(required = true, value = "Password for administrative access to external database server [redacted on read]")
   public String getPassword() {
     return password;
   }
+
   public void setPassword(String password) {
     this.password = password;
   }
 
+  public ExternalDatabaseServer port(Integer port) {
+    this.port = port;
+    return this;
+  }
+
+   /**
+   * External database server port
+   * @return port
+  **/
+  @ApiModelProperty(required = true, value = "External database server port")
   public Integer getPort() {
     return port;
   }
+
   public void setPort(Integer port) {
     this.port = port;
   }
 
+  public ExternalDatabaseServer properties(Map<String, String> properties) {
+    this.properties = properties;
+    return this;
+  }
+
+  public ExternalDatabaseServer putPropertiesItem(String key, String propertiesItem) {
+    if (this.properties == null) {
+      this.properties = new HashMap<String, String>();
+    }
+    this.properties.put(key, propertiesItem);
+    return this;
+  }
+
+   /**
+   * External database server display properties
+   * @return properties
+  **/
+  @ApiModelProperty(value = "External database server display properties")
   public Map<String, String> getProperties() {
     return properties;
   }
+
   public void setProperties(Map<String, String> properties) {
     this.properties = properties;
   }
 
-  public String getType() {
+  public ExternalDatabaseServer type(TypeEnum type) {
+    this.type = type;
+    return this;
+  }
+
+   /**
+   * External database server type
+   * @return type
+  **/
+  @ApiModelProperty(required = true, value = "External database server type")
+  public TypeEnum getType() {
     return type;
   }
-  public void setType(String type) {
+
+  public void setType(TypeEnum type) {
     this.type = type;
   }
 
+  public ExternalDatabaseServer username(String username) {
+    this.username = username;
+    return this;
+  }
+
+   /**
+   * User name for administrative access to external database server
+   * @return username
+  **/
+  @ApiModelProperty(required = true, value = "User name for administrative access to external database server")
   public String getUsername() {
     return username;
   }
+
   public void setUsername(String username) {
     this.username = username;
   }
 
+
   @Override
-  public boolean equals(Object o) {
-    if (this == o) return true;
-    if (o == null || getClass() != o.getClass()) return false;
-
-    ExternalDatabaseServer other = (ExternalDatabaseServer) o; // NOPMD
-
-    if (hostname != null ?
-        !hostname.equals(other.hostname) :
-        other.hostname != null) return false;
-    if (name != null ?
-        !name.equals(other.name) :
-        other.name != null) return false;
-    if (port != null ?
-        !port.equals(other.port) :
-        other.port != null) return false;
-    if (properties != null ?
-        !properties.equals(other.properties) :
-        other.properties != null) return false;
-    if (type != null ?
-        !type.equals(other.type) :
-        other.type != null) return false;
-    if (username != null ?
-        !username.equals(other.username) :
-        other.username != null) return false;
-    return true;
+  public boolean equals(java.lang.Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
+    ExternalDatabaseServer externalDatabaseServer = (ExternalDatabaseServer) o;
+    return Objects.equals(this.hostname, externalDatabaseServer.hostname) &&
+        Objects.equals(this.name, externalDatabaseServer.name) &&
+        Objects.equals(this.password, externalDatabaseServer.password) &&
+        Objects.equals(this.port, externalDatabaseServer.port) &&
+        Objects.equals(this.properties, externalDatabaseServer.properties) &&
+        Objects.equals(this.type, externalDatabaseServer.type) &&
+        Objects.equals(this.username, externalDatabaseServer.username);
   }
 
   @Override
   public int hashCode() {
-    int result = 0;
-    result = 31 * result + (hostname != null ? hostname.hashCode() : 0);
-    result = 31 * result + (name != null ? name.hashCode() : 0);
-    result = 31 * result + (port != null ? port.hashCode() : 0);
-    result = 31 * result + (properties != null ? properties.hashCode() : 0);
-    result = 31 * result + (type != null ? type.hashCode() : 0);
-    result = 31 * result + (username != null ? username.hashCode() : 0);
-    return result;
+    return Objects.hash(hostname, name, password, port, properties, type, username);
   }
 
+
   @Override
-  public String toString()  {
+  public String toString() {
     StringBuilder sb = new StringBuilder();
-    String newLine = System.getProperty("line.separator");
-    sb.append("class ExternalDatabaseServer {" + newLine);
-    sb.append("  hostname: ").append(hostname).append(newLine);
-    sb.append("  name: ").append(name).append(newLine);
-    sb.append("  password: ").append("REDACTED").append(newLine);
-    sb.append("  port: ").append(port).append(newLine);
-    sb.append("  properties: ").append(properties).append(newLine);
-    sb.append("  type: ").append(type).append(newLine);
-    sb.append("  username: ").append(username).append(newLine);
-    sb.append("}" + newLine);
+    sb.append("class ExternalDatabaseServer {\n");
+    
+    sb.append("    hostname: ").append(toIndentedString(hostname)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    password: ").append(toIndentedString(password)).append("\n");
+    sb.append("    port: ").append(toIndentedString(port)).append("\n");
+    sb.append("    properties: ").append(toIndentedString(properties)).append("\n");
+    sb.append("    type: ").append(toIndentedString(type)).append("\n");
+    sb.append("    username: ").append(toIndentedString(username)).append("\n");
+    sb.append("}");
     return sb.toString();
   }
+
+  /**
+   * Convert the given object to string with each line indented by 4 spaces
+   * (except the first line).
+   */
+  private String toIndentedString(java.lang.Object o) {
+    if (o == null) {
+      return "null";
+    }
+    return o.toString().replace("\n", "\n    ");
+  }
+
 }
 

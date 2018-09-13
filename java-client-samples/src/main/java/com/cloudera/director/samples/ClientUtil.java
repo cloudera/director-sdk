@@ -18,8 +18,8 @@ public class ClientUtil {
 
   public static ApiClient newAuthenticatedApiClient(CommonParameters common)
       throws ApiException {
-    ApiClient client = new ApiClient(common.getServerUrl(), common.isTlsEnabled(),
-                                     common.isHostnameVerificationEnabled());
+    ApiClient client = new ApiClient(common.getServerUrl());
+    client.setVerifyingSsl(common.isHostnameVerificationEnabled());
 
     Login login = Login.builder()
         .username(common.getAdminUsername())
@@ -42,11 +42,11 @@ public class ClientUtil {
    * @throws InterruptedException
    * @throws ApiException
    */
-  public static String waitForCluster(ApiClient client, String environmentName, String deploymentName,
-                              String clusterName) throws InterruptedException, ApiException {
+  public static Status.StageEnum waitForCluster(ApiClient client, String environmentName, String deploymentName,
+                                                String clusterName) throws InterruptedException, ApiException {
 
     ClustersApi api = new ClustersApi(client);
-    String stage = null;
+    Status.StageEnum stage = null;
     do {
       waitAndReportProgress();
       stage = api.getStatus(environmentName, deploymentName, clusterName).getStage();
@@ -68,11 +68,11 @@ public class ClientUtil {
    * @throws InterruptedException
    * @throws ApiException
    */
-  public static String waitForDeployment(ApiClient client, String environmentName,
-                                 String deploymentName) throws InterruptedException, ApiException {
+  public static Status.StageEnum waitForDeployment(ApiClient client, String environmentName,
+                                                   String deploymentName) throws InterruptedException, ApiException {
 
     DeploymentsApi api = new DeploymentsApi(client);
-    String stage = null;
+    Status.StageEnum stage = null;
     do {
       waitAndReportProgress();
       stage = api.getStatus(environmentName, deploymentName).getStage();
@@ -91,11 +91,11 @@ public class ClientUtil {
    * @param stage the stage to check
    * @return whether the stage is final
    */
-  private static boolean isFinalStage(String stage) {
-    return Status.Stage.READY.equals(stage) ||
-           Status.Stage.BOOTSTRAP_FAILED.equals(stage) ||
-           Status.Stage.UPDATE_FAILED.equals(stage) ||
-           Status.Stage.TERMINATE_FAILED.equals(stage);
+  private static boolean isFinalStage(Status.StageEnum stage) {
+    return Status.StageEnum.READY.equals(stage) ||
+           Status.StageEnum.BOOTSTRAP_FAILED.equals(stage) ||
+           Status.StageEnum.UPDATE_FAILED.equals(stage) ||
+           Status.StageEnum.TERMINATE_FAILED.equals(stage);
   }
 
   private static void waitAndReportProgress() throws InterruptedException {

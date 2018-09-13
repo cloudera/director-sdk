@@ -14,57 +14,72 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-// Note: This file is auto generated. Do not edit manually.
 
 package com.cloudera.director.client.latest.model;
 
+import java.util.Objects;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
-public class ExternalAccount {
-  /* External account configurations [redacted on read] */
-  private Map<String, String> configs;
-  /* External account name */
-  private String name;
-  /* External account type */
-  private String type;
-  public ExternalAccount() { }
+/**
+ * Information for an account or service outside Cloudera Manager or any cluster
+ */
+@ApiModel(description = "Information for an account or service outside Cloudera Manager or any cluster")
 
-  private ExternalAccount(Map<String, String> configs, String name, String type) {
-    this.configs = configs;
-    this.name = name;
-    this.type = type;
+public class ExternalAccount {
+  @SerializedName("configs")
+  private Map<String, String> configs = null;
+  @SerializedName("name")
+  private String name = null;
+  @SerializedName("type")
+  private String type = null;
+
+  public ExternalAccount() {
+    // Do nothing
   }
 
   private ExternalAccount(ExternalAccountBuilder builder) {
-    this.configs = builder.configs;
-    this.name = builder.name;
-    this.type = builder.type;
-  }
+      this.configs = builder.configs;
+      this.name = builder.name;
+      this.type = builder.type;
+    }
 
   public static ExternalAccountBuilder builder() {
     return new ExternalAccountBuilder();
   }
 
   public static class ExternalAccountBuilder {
-    private Map<String, String> configs = new HashMap<String, String>();
-    private String name = null;
-    private String type = null;
+      private Map<String, String> configs = new HashMap<String, String>();
+      private String name = null;
+      private String type = null;
+  
 
     public ExternalAccountBuilder configs(Map<String, String> configs) {
       this.configs = configs;
       return this;
     }
 
+
     public ExternalAccountBuilder name(String name) {
       this.name = name;
       return this;
     }
 
+
     public ExternalAccountBuilder type(String type) {
       this.type = type;
       return this;
     }
+
 
     public ExternalAccount build() {
       return new ExternalAccount(this);
@@ -74,65 +89,116 @@ public class ExternalAccount {
   public ExternalAccountBuilder toBuilder() {
     return builder()
       .configs(configs)
-      .name(name)
-      .type(type)
+            .name(name)
+            .type(type)
       ;
   }
+
+  public ExternalAccount configs(Map<String, String> configs) {
+    this.configs = configs;
+    return this;
+  }
+
+  public ExternalAccount putConfigsItem(String key, String configsItem) {
+    if (this.configs == null) {
+      this.configs = new HashMap<String, String>();
+    }
+    this.configs.put(key, configsItem);
+    return this;
+  }
+
+   /**
+   * External account configurations [redacted on read]
+   * @return configs
+  **/
+  @ApiModelProperty(value = "External account configurations [redacted on read]")
   public Map<String, String> getConfigs() {
     return configs;
   }
+
   public void setConfigs(Map<String, String> configs) {
     this.configs = configs;
   }
 
+  public ExternalAccount name(String name) {
+    this.name = name;
+    return this;
+  }
+
+   /**
+   * External account name
+   * @return name
+  **/
+  @ApiModelProperty(required = true, value = "External account name")
   public String getName() {
     return name;
   }
+
   public void setName(String name) {
     this.name = name;
   }
 
+  public ExternalAccount type(String type) {
+    this.type = type;
+    return this;
+  }
+
+   /**
+   * External account type
+   * @return type
+  **/
+  @ApiModelProperty(required = true, value = "External account type")
   public String getType() {
     return type;
   }
+
   public void setType(String type) {
     this.type = type;
   }
 
+
   @Override
-  public boolean equals(Object o) {
-    if (this == o) return true;
-    if (o == null || getClass() != o.getClass()) return false;
-
-    ExternalAccount other = (ExternalAccount) o; // NOPMD
-
-    if (name != null ?
-        !name.equals(other.name) :
-        other.name != null) return false;
-    if (type != null ?
-        !type.equals(other.type) :
-        other.type != null) return false;
-    return true;
+  public boolean equals(java.lang.Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
+    ExternalAccount externalAccount = (ExternalAccount) o;
+    return Objects.equals(this.configs, externalAccount.configs) &&
+        Objects.equals(this.name, externalAccount.name) &&
+        Objects.equals(this.type, externalAccount.type);
   }
 
   @Override
   public int hashCode() {
-    int result = 0;
-    result = 31 * result + (name != null ? name.hashCode() : 0);
-    result = 31 * result + (type != null ? type.hashCode() : 0);
-    return result;
+    return Objects.hash(configs, name, type);
   }
 
+
   @Override
-  public String toString()  {
+  public String toString() {
     StringBuilder sb = new StringBuilder();
-    String newLine = System.getProperty("line.separator");
-    sb.append("class ExternalAccount {" + newLine);
-    sb.append("  configs: ").append("REDACTED").append(newLine);
-    sb.append("  name: ").append(name).append(newLine);
-    sb.append("  type: ").append(type).append(newLine);
-    sb.append("}" + newLine);
+    sb.append("class ExternalAccount {\n");
+    
+    sb.append("    configs: ").append(toIndentedString(configs)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    type: ").append(toIndentedString(type)).append("\n");
+    sb.append("}");
     return sb.toString();
   }
+
+  /**
+   * Convert the given object to string with each line indented by 4 spaces
+   * (except the first line).
+   */
+  private String toIndentedString(java.lang.Object o) {
+    if (o == null) {
+      return "null";
+    }
+    return o.toString().replace("\n", "\n    ");
+  }
+
 }
 

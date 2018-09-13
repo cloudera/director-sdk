@@ -14,45 +14,59 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-// Note: This file is auto generated. Do not edit manually.
 
 package com.cloudera.director.client.v10.model;
 
+import java.util.Objects;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
+
+/**
+ * Login credentials
+ */
+@ApiModel(description = "Login credentials")
 
 public class Login {
-  /* Login password [redacted on read] */
-  private String password;
-  /* Login username */
-  private String username;
-  public Login() { }
+  @SerializedName("password")
+  private String password = null;
+  @SerializedName("username")
+  private String username = null;
 
-  private Login(String password, String username) {
-    this.password = password;
-    this.username = username;
+  public Login() {
+    // Do nothing
   }
 
   private Login(LoginBuilder builder) {
-    this.password = builder.password;
-    this.username = builder.username;
-  }
+      this.password = builder.password;
+      this.username = builder.username;
+    }
 
   public static LoginBuilder builder() {
     return new LoginBuilder();
   }
 
   public static class LoginBuilder {
-    private String password = null;
-    private String username = null;
+      private String password = null;
+      private String username = null;
+  
 
     public LoginBuilder password(String password) {
       this.password = password;
       return this;
     }
 
+
     public LoginBuilder username(String username) {
       this.username = username;
       return this;
     }
+
 
     public Login build() {
       return new Login(this);
@@ -62,52 +76,87 @@ public class Login {
   public LoginBuilder toBuilder() {
     return builder()
       .password(password)
-      .username(username)
+            .username(username)
       ;
   }
+
+  public Login password(String password) {
+    this.password = password;
+    return this;
+  }
+
+   /**
+   * Login password [redacted on read]
+   * @return password
+  **/
+  @ApiModelProperty(required = true, value = "Login password [redacted on read]")
   public String getPassword() {
     return password;
   }
+
   public void setPassword(String password) {
     this.password = password;
   }
 
+  public Login username(String username) {
+    this.username = username;
+    return this;
+  }
+
+   /**
+   * Login username
+   * @return username
+  **/
+  @ApiModelProperty(required = true, value = "Login username")
   public String getUsername() {
     return username;
   }
+
   public void setUsername(String username) {
     this.username = username;
   }
 
+
   @Override
-  public boolean equals(Object o) {
-    if (this == o) return true;
-    if (o == null || getClass() != o.getClass()) return false;
-
-    Login other = (Login) o; // NOPMD
-
-    if (username != null ?
-        !username.equals(other.username) :
-        other.username != null) return false;
-    return true;
+  public boolean equals(java.lang.Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
+    Login login = (Login) o;
+    return Objects.equals(this.password, login.password) &&
+        Objects.equals(this.username, login.username);
   }
 
   @Override
   public int hashCode() {
-    int result = 0;
-    result = 31 * result + (username != null ? username.hashCode() : 0);
-    return result;
+    return Objects.hash(password, username);
   }
 
+
   @Override
-  public String toString()  {
+  public String toString() {
     StringBuilder sb = new StringBuilder();
-    String newLine = System.getProperty("line.separator");
-    sb.append("class Login {" + newLine);
-    sb.append("  password: ").append("REDACTED").append(newLine);
-    sb.append("  username: ").append(username).append(newLine);
-    sb.append("}" + newLine);
+    sb.append("class Login {\n");
+    
+    sb.append("    password: ").append(toIndentedString(password)).append("\n");
+    sb.append("    username: ").append(toIndentedString(username)).append("\n");
+    sb.append("}");
     return sb.toString();
   }
+
+  /**
+   * Convert the given object to string with each line indented by 4 spaces
+   * (except the first line).
+   */
+  private String toIndentedString(java.lang.Object o) {
+    if (o == null) {
+      return "null";
+    }
+    return o.toString().replace("\n", "\n    ");
+  }
+
 }
 

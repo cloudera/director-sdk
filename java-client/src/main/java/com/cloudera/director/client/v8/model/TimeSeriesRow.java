@@ -14,65 +14,78 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-// Note: This file is auto generated. Do not edit manually.
 
 package com.cloudera.director.client.v8.model;
 
+import java.util.Objects;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
+
+/**
+ * TimeSeriesRow
+ */
 
 public class TimeSeriesRow {
-  /* Entity name */
-  private String entityName;
-  /* Metric name */
-  private String metricName;
-  /* Timestamp */
-  private Long timestamp;
-  /* Value */
-  private Double value;
-  public TimeSeriesRow() { }
+  @SerializedName("entityName")
+  private String entityName = null;
+  @SerializedName("metricName")
+  private String metricName = null;
+  @SerializedName("timestamp")
+  private Long timestamp = null;
+  @SerializedName("value")
+  private Double value = null;
 
-  private TimeSeriesRow(String entityName, String metricName, Long timestamp, Double value) {
-    this.entityName = entityName;
-    this.metricName = metricName;
-    this.timestamp = timestamp;
-    this.value = value;
+  public TimeSeriesRow() {
+    // Do nothing
   }
 
   private TimeSeriesRow(TimeSeriesRowBuilder builder) {
-    this.entityName = builder.entityName;
-    this.metricName = builder.metricName;
-    this.timestamp = builder.timestamp;
-    this.value = builder.value;
-  }
+      this.entityName = builder.entityName;
+      this.metricName = builder.metricName;
+      this.timestamp = builder.timestamp;
+      this.value = builder.value;
+    }
 
   public static TimeSeriesRowBuilder builder() {
     return new TimeSeriesRowBuilder();
   }
 
   public static class TimeSeriesRowBuilder {
-    private String entityName = null;
-    private String metricName = null;
-    private Long timestamp = null;
-    private Double value = null;
+      private String entityName = null;
+      private String metricName = null;
+      private Long timestamp = null;
+      private Double value = null;
+  
 
     public TimeSeriesRowBuilder entityName(String entityName) {
       this.entityName = entityName;
       return this;
     }
 
+
     public TimeSeriesRowBuilder metricName(String metricName) {
       this.metricName = metricName;
       return this;
     }
+
 
     public TimeSeriesRowBuilder timestamp(Long timestamp) {
       this.timestamp = timestamp;
       return this;
     }
 
+
     public TimeSeriesRowBuilder value(Double value) {
       this.value = value;
       return this;
     }
+
 
     public TimeSeriesRow build() {
       return new TimeSeriesRow(this);
@@ -82,82 +95,129 @@ public class TimeSeriesRow {
   public TimeSeriesRowBuilder toBuilder() {
     return builder()
       .entityName(entityName)
-      .metricName(metricName)
-      .timestamp(timestamp)
-      .value(value)
+            .metricName(metricName)
+            .timestamp(timestamp)
+            .value(value)
       ;
   }
+
+  public TimeSeriesRow entityName(String entityName) {
+    this.entityName = entityName;
+    return this;
+  }
+
+   /**
+   * Entity name
+   * @return entityName
+  **/
+  @ApiModelProperty(required = true, value = "Entity name")
   public String getEntityName() {
     return entityName;
   }
+
   public void setEntityName(String entityName) {
     this.entityName = entityName;
   }
 
+  public TimeSeriesRow metricName(String metricName) {
+    this.metricName = metricName;
+    return this;
+  }
+
+   /**
+   * Metric name
+   * @return metricName
+  **/
+  @ApiModelProperty(required = true, value = "Metric name")
   public String getMetricName() {
     return metricName;
   }
+
   public void setMetricName(String metricName) {
     this.metricName = metricName;
   }
 
+  public TimeSeriesRow timestamp(Long timestamp) {
+    this.timestamp = timestamp;
+    return this;
+  }
+
+   /**
+   * Timestamp
+   * @return timestamp
+  **/
+  @ApiModelProperty(required = true, value = "Timestamp")
   public Long getTimestamp() {
     return timestamp;
   }
+
   public void setTimestamp(Long timestamp) {
     this.timestamp = timestamp;
   }
 
+  public TimeSeriesRow value(Double value) {
+    this.value = value;
+    return this;
+  }
+
+   /**
+   * Value
+   * @return value
+  **/
+  @ApiModelProperty(required = true, value = "Value")
   public Double getValue() {
     return value;
   }
+
   public void setValue(Double value) {
     this.value = value;
   }
 
+
   @Override
-  public boolean equals(Object o) {
-    if (this == o) return true;
-    if (o == null || getClass() != o.getClass()) return false;
-
-    TimeSeriesRow other = (TimeSeriesRow) o; // NOPMD
-
-    if (entityName != null ?
-        !entityName.equals(other.entityName) :
-        other.entityName != null) return false;
-    if (metricName != null ?
-        !metricName.equals(other.metricName) :
-        other.metricName != null) return false;
-    if (timestamp != null ?
-        !timestamp.equals(other.timestamp) :
-        other.timestamp != null) return false;
-    if (value != null ?
-        !value.equals(other.value) :
-        other.value != null) return false;
-    return true;
+  public boolean equals(java.lang.Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
+    TimeSeriesRow timeSeriesRow = (TimeSeriesRow) o;
+    return Objects.equals(this.entityName, timeSeriesRow.entityName) &&
+        Objects.equals(this.metricName, timeSeriesRow.metricName) &&
+        Objects.equals(this.timestamp, timeSeriesRow.timestamp) &&
+        Objects.equals(this.value, timeSeriesRow.value);
   }
 
   @Override
   public int hashCode() {
-    int result = 0;
-    result = 31 * result + (entityName != null ? entityName.hashCode() : 0);
-    result = 31 * result + (metricName != null ? metricName.hashCode() : 0);
-    result = 31 * result + (timestamp != null ? timestamp.hashCode() : 0);
-    result = 31 * result + (value != null ? value.hashCode() : 0);
-    return result;
+    return Objects.hash(entityName, metricName, timestamp, value);
   }
 
+
   @Override
-  public String toString()  {
+  public String toString() {
     StringBuilder sb = new StringBuilder();
-    String newLine = System.getProperty("line.separator");
-    sb.append("class TimeSeriesRow {" + newLine);
-    sb.append("  entityName: ").append(entityName).append(newLine);
-    sb.append("  metricName: ").append(metricName).append(newLine);
-    sb.append("  timestamp: ").append(timestamp).append(newLine);
-    sb.append("  value: ").append(value).append(newLine);
-    sb.append("}" + newLine);
+    sb.append("class TimeSeriesRow {\n");
+    
+    sb.append("    entityName: ").append(toIndentedString(entityName)).append("\n");
+    sb.append("    metricName: ").append(toIndentedString(metricName)).append("\n");
+    sb.append("    timestamp: ").append(toIndentedString(timestamp)).append("\n");
+    sb.append("    value: ").append(toIndentedString(value)).append("\n");
+    sb.append("}");
     return sb.toString();
   }
+
+  /**
+   * Convert the given object to string with each line indented by 4 spaces
+   * (except the first line).
+   */
+  private String toIndentedString(java.lang.Object o) {
+    if (o == null) {
+      return "null";
+    }
+    return o.toString().replace("\n", "\n    ");
+  }
+
 }
 

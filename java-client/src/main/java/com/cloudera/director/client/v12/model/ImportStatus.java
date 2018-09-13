@@ -14,45 +14,59 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-// Note: This file is auto generated. Do not edit manually.
 
 package com.cloudera.director.client.v12.model;
 
+import java.util.Objects;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
+
+/**
+ * The current status of an import operation for an entity
+ */
+@ApiModel(description = "The current status of an import operation for an entity")
 
 public class ImportStatus {
-  /* Name of the imported entity */
-  private String name;
-  /* Skipped or not during import */
-  private Boolean skipped;
-  public ImportStatus() { }
+  @SerializedName("name")
+  private String name = null;
+  @SerializedName("skipped")
+  private Boolean skipped = null;
 
-  private ImportStatus(String name, Boolean skipped) {
-    this.name = name;
-    this.skipped = skipped;
+  public ImportStatus() {
+    // Do nothing
   }
 
   private ImportStatus(ImportStatusBuilder builder) {
-    this.name = builder.name;
-    this.skipped = builder.skipped;
-  }
+      this.name = builder.name;
+      this.skipped = builder.skipped;
+    }
 
   public static ImportStatusBuilder builder() {
     return new ImportStatusBuilder();
   }
 
   public static class ImportStatusBuilder {
-    private String name = null;
-    private Boolean skipped = null;
+      private String name = null;
+      private Boolean skipped = null;
+  
 
     public ImportStatusBuilder name(String name) {
       this.name = name;
       return this;
     }
 
+
     public ImportStatusBuilder skipped(Boolean skipped) {
       this.skipped = skipped;
       return this;
     }
+
 
     public ImportStatus build() {
       return new ImportStatus(this);
@@ -62,56 +76,87 @@ public class ImportStatus {
   public ImportStatusBuilder toBuilder() {
     return builder()
       .name(name)
-      .skipped(skipped)
+            .skipped(skipped)
       ;
   }
+
+  public ImportStatus name(String name) {
+    this.name = name;
+    return this;
+  }
+
+   /**
+   * Name of the imported entity
+   * @return name
+  **/
+  @ApiModelProperty(required = true, value = "Name of the imported entity")
   public String getName() {
     return name;
   }
+
   public void setName(String name) {
     this.name = name;
   }
 
-  public Boolean getSkipped() {
+  public ImportStatus skipped(Boolean skipped) {
+    this.skipped = skipped;
+    return this;
+  }
+
+   /**
+   * Skipped or not during import
+   * @return skipped
+  **/
+  @ApiModelProperty(example = "false", value = "Skipped or not during import")
+  public Boolean isSkipped() {
     return skipped;
   }
+
   public void setSkipped(Boolean skipped) {
     this.skipped = skipped;
   }
 
+
   @Override
-  public boolean equals(Object o) {
-    if (this == o) return true;
-    if (o == null || getClass() != o.getClass()) return false;
-
-    ImportStatus other = (ImportStatus) o; // NOPMD
-
-    if (name != null ?
-        !name.equals(other.name) :
-        other.name != null) return false;
-    if (skipped != null ?
-        !skipped.equals(other.skipped) :
-        other.skipped != null) return false;
-    return true;
+  public boolean equals(java.lang.Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
+    ImportStatus importStatus = (ImportStatus) o;
+    return Objects.equals(this.name, importStatus.name) &&
+        Objects.equals(this.skipped, importStatus.skipped);
   }
 
   @Override
   public int hashCode() {
-    int result = 0;
-    result = 31 * result + (name != null ? name.hashCode() : 0);
-    result = 31 * result + (skipped != null ? skipped.hashCode() : 0);
-    return result;
+    return Objects.hash(name, skipped);
   }
 
+
   @Override
-  public String toString()  {
+  public String toString() {
     StringBuilder sb = new StringBuilder();
-    String newLine = System.getProperty("line.separator");
-    sb.append("class ImportStatus {" + newLine);
-    sb.append("  name: ").append(name).append(newLine);
-    sb.append("  skipped: ").append(skipped).append(newLine);
-    sb.append("}" + newLine);
+    sb.append("class ImportStatus {\n");
+    
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    skipped: ").append(toIndentedString(skipped)).append("\n");
+    sb.append("}");
     return sb.toString();
   }
+
+  /**
+   * Convert the given object to string with each line indented by 4 spaces
+   * (except the first line).
+   */
+  private String toIndentedString(java.lang.Object o) {
+    if (o == null) {
+      return "null";
+    }
+    return o.toString().replace("\n", "\n    ");
+  }
+
 }
 

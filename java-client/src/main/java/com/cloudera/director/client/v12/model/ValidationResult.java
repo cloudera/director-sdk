@@ -14,56 +14,72 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-// Note: This file is auto generated. Do not edit manually.
 
 package com.cloudera.director.client.v12.model;
 
-import java.util.Set;
+import java.util.Objects;
+import com.cloudera.director.client.v12.model.ErrorInfo;
+import com.cloudera.director.client.v12.model.WarningInfo;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
+/**
+ * ValidationResult
+ */
 
 public class ValidationResult {
-  /* Validation Errors */
-  private Set<ErrorInfo> errors;
-  /* Format Warnings */
-  private Set<WarningInfo> formatWarnings;
-  /* Validation Warnings */
-  private Set<WarningInfo> warnings;
-  public ValidationResult() { }
+  @SerializedName("errors")
+  private List<ErrorInfo> errors = null;
+  @SerializedName("formatWarnings")
+  private List<WarningInfo> formatWarnings = null;
+  @SerializedName("warnings")
+  private List<WarningInfo> warnings = null;
 
-  private ValidationResult(Set<ErrorInfo> errors, Set<WarningInfo> formatWarnings, Set<WarningInfo> warnings) {
-    this.errors = errors;
-    this.formatWarnings = formatWarnings;
-    this.warnings = warnings;
+  public ValidationResult() {
+    // Do nothing
   }
 
   private ValidationResult(ValidationResultBuilder builder) {
-    this.errors = builder.errors;
-    this.formatWarnings = builder.formatWarnings;
-    this.warnings = builder.warnings;
-  }
+      this.errors = builder.errors;
+      this.formatWarnings = builder.formatWarnings;
+      this.warnings = builder.warnings;
+    }
 
   public static ValidationResultBuilder builder() {
     return new ValidationResultBuilder();
   }
 
   public static class ValidationResultBuilder {
-    private Set<ErrorInfo> errors = null;
-    private Set<WarningInfo> formatWarnings = null;
-    private Set<WarningInfo> warnings = null;
+      private List<ErrorInfo> errors = new ArrayList<ErrorInfo>();
+      private List<WarningInfo> formatWarnings = new ArrayList<WarningInfo>();
+      private List<WarningInfo> warnings = new ArrayList<WarningInfo>();
+  
 
-    public ValidationResultBuilder errors(Set<ErrorInfo> errors) {
+    public ValidationResultBuilder errors(List<ErrorInfo> errors) {
       this.errors = errors;
       return this;
     }
 
-    public ValidationResultBuilder formatWarnings(Set<WarningInfo> formatWarnings) {
+
+    public ValidationResultBuilder formatWarnings(List<WarningInfo> formatWarnings) {
       this.formatWarnings = formatWarnings;
       return this;
     }
 
-    public ValidationResultBuilder warnings(Set<WarningInfo> warnings) {
+
+    public ValidationResultBuilder warnings(List<WarningInfo> warnings) {
       this.warnings = warnings;
       return this;
     }
+
 
     public ValidationResult build() {
       return new ValidationResult(this);
@@ -73,69 +89,132 @@ public class ValidationResult {
   public ValidationResultBuilder toBuilder() {
     return builder()
       .errors(errors)
-      .formatWarnings(formatWarnings)
-      .warnings(warnings)
+            .formatWarnings(formatWarnings)
+            .warnings(warnings)
       ;
   }
-  public Set<ErrorInfo> getErrors() {
+
+  public ValidationResult errors(List<ErrorInfo> errors) {
+    this.errors = errors;
+    return this;
+  }
+
+  public ValidationResult addErrorsItem(ErrorInfo errorsItem) {
+    if (this.errors == null) {
+      this.errors = new ArrayList<ErrorInfo>();
+    }
+    this.errors.add(errorsItem);
+    return this;
+  }
+
+   /**
+   * Validation Errors
+   * @return errors
+  **/
+  @ApiModelProperty(value = "Validation Errors")
+  public List<ErrorInfo> getErrors() {
     return errors;
   }
-  public void setErrors(Set<ErrorInfo> errors) {
+
+  public void setErrors(List<ErrorInfo> errors) {
     this.errors = errors;
   }
 
-  public Set<WarningInfo> getFormatWarnings() {
+  public ValidationResult formatWarnings(List<WarningInfo> formatWarnings) {
+    this.formatWarnings = formatWarnings;
+    return this;
+  }
+
+  public ValidationResult addFormatWarningsItem(WarningInfo formatWarningsItem) {
+    if (this.formatWarnings == null) {
+      this.formatWarnings = new ArrayList<WarningInfo>();
+    }
+    this.formatWarnings.add(formatWarningsItem);
+    return this;
+  }
+
+   /**
+   * Format Warnings
+   * @return formatWarnings
+  **/
+  @ApiModelProperty(value = "Format Warnings")
+  public List<WarningInfo> getFormatWarnings() {
     return formatWarnings;
   }
-  public void setFormatWarnings(Set<WarningInfo> formatWarnings) {
+
+  public void setFormatWarnings(List<WarningInfo> formatWarnings) {
     this.formatWarnings = formatWarnings;
   }
 
-  public Set<WarningInfo> getWarnings() {
+  public ValidationResult warnings(List<WarningInfo> warnings) {
+    this.warnings = warnings;
+    return this;
+  }
+
+  public ValidationResult addWarningsItem(WarningInfo warningsItem) {
+    if (this.warnings == null) {
+      this.warnings = new ArrayList<WarningInfo>();
+    }
+    this.warnings.add(warningsItem);
+    return this;
+  }
+
+   /**
+   * Validation Warnings
+   * @return warnings
+  **/
+  @ApiModelProperty(value = "Validation Warnings")
+  public List<WarningInfo> getWarnings() {
     return warnings;
   }
-  public void setWarnings(Set<WarningInfo> warnings) {
+
+  public void setWarnings(List<WarningInfo> warnings) {
     this.warnings = warnings;
   }
 
+
   @Override
-  public boolean equals(Object o) {
-    if (this == o) return true;
-    if (o == null || getClass() != o.getClass()) return false;
-
-    ValidationResult other = (ValidationResult) o; // NOPMD
-
-    if (errors != null ?
-        !errors.equals(other.errors) :
-        other.errors != null) return false;
-    if (formatWarnings != null ?
-        !formatWarnings.equals(other.formatWarnings) :
-        other.formatWarnings != null) return false;
-    if (warnings != null ?
-        !warnings.equals(other.warnings) :
-        other.warnings != null) return false;
-    return true;
+  public boolean equals(java.lang.Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
+    ValidationResult validationResult = (ValidationResult) o;
+    return Objects.equals(this.errors, validationResult.errors) &&
+        Objects.equals(this.formatWarnings, validationResult.formatWarnings) &&
+        Objects.equals(this.warnings, validationResult.warnings);
   }
 
   @Override
   public int hashCode() {
-    int result = 0;
-    result = 31 * result + (errors != null ? errors.hashCode() : 0);
-    result = 31 * result + (formatWarnings != null ? formatWarnings.hashCode() : 0);
-    result = 31 * result + (warnings != null ? warnings.hashCode() : 0);
-    return result;
+    return Objects.hash(errors, formatWarnings, warnings);
   }
 
+
   @Override
-  public String toString()  {
+  public String toString() {
     StringBuilder sb = new StringBuilder();
-    String newLine = System.getProperty("line.separator");
-    sb.append("class ValidationResult {" + newLine);
-    sb.append("  errors: ").append(errors).append(newLine);
-    sb.append("  formatWarnings: ").append(formatWarnings).append(newLine);
-    sb.append("  warnings: ").append(warnings).append(newLine);
-    sb.append("}" + newLine);
+    sb.append("class ValidationResult {\n");
+    
+    sb.append("    errors: ").append(toIndentedString(errors)).append("\n");
+    sb.append("    formatWarnings: ").append(toIndentedString(formatWarnings)).append("\n");
+    sb.append("    warnings: ").append(toIndentedString(warnings)).append("\n");
+    sb.append("}");
     return sb.toString();
   }
+
+  /**
+   * Convert the given object to string with each line indented by 4 spaces
+   * (except the first line).
+   */
+  private String toIndentedString(java.lang.Object o) {
+    if (o == null) {
+      return "null";
+    }
+    return o.toString().replace("\n", "\n    ");
+  }
+
 }
 

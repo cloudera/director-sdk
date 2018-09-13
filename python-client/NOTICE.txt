@@ -1,7 +1,0 @@
-Cloudera Director Python API Client
-Copyright 2015 Cloudera, Inc.
-
-This software contains code derived from swagger-codegen, which was developed
-and copyrighted by Wordnik, Inc. and released under the Apache 2.0 license.
-It can be obtained from:
-    https://github.com/swagger-api/swagger-codegen

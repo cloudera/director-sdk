@@ -14,45 +14,60 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-// Note: This file is auto generated. Do not edit manually.
 
 package com.cloudera.director.client.v8.model;
 
+import java.util.Objects;
+import com.cloudera.director.client.v8.model.InstanceTemplate;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
+
+/**
+ * An abstract representation of an instance that nominally corresponds to an actual instance in a cloud provider
+ */
+@ApiModel(description = "An abstract representation of an instance that nominally corresponds to an actual instance in a cloud provider")
 
 public class VirtualInstance {
-  /* Virtual instance id */
-  private String id;
-  /* Instance template */
-  private InstanceTemplate template;
-  public VirtualInstance() { }
+  @SerializedName("id")
+  private String id = null;
+  @SerializedName("template")
+  private InstanceTemplate template = null;
 
-  private VirtualInstance(String id, InstanceTemplate template) {
-    this.id = id;
-    this.template = template;
+  public VirtualInstance() {
+    // Do nothing
   }
 
   private VirtualInstance(VirtualInstanceBuilder builder) {
-    this.id = builder.id;
-    this.template = builder.template;
-  }
+      this.id = builder.id;
+      this.template = builder.template;
+    }
 
   public static VirtualInstanceBuilder builder() {
     return new VirtualInstanceBuilder();
   }
 
   public static class VirtualInstanceBuilder {
-    private String id = null;
-    private InstanceTemplate template = null;
+      private String id = null;
+      private InstanceTemplate template = null;
+  
 
     public VirtualInstanceBuilder id(String id) {
       this.id = id;
       return this;
     }
 
+
     public VirtualInstanceBuilder template(InstanceTemplate template) {
       this.template = template;
       return this;
     }
+
 
     public VirtualInstance build() {
       return new VirtualInstance(this);
@@ -62,56 +77,87 @@ public class VirtualInstance {
   public VirtualInstanceBuilder toBuilder() {
     return builder()
       .id(id)
-      .template(template)
+            .template(template)
       ;
   }
+
+  public VirtualInstance id(String id) {
+    this.id = id;
+    return this;
+  }
+
+   /**
+   * Virtual instance id
+   * @return id
+  **/
+  @ApiModelProperty(required = true, value = "Virtual instance id")
   public String getId() {
     return id;
   }
+
   public void setId(String id) {
     this.id = id;
   }
 
+  public VirtualInstance template(InstanceTemplate template) {
+    this.template = template;
+    return this;
+  }
+
+   /**
+   * Instance template
+   * @return template
+  **/
+  @ApiModelProperty(required = true, value = "Instance template")
   public InstanceTemplate getTemplate() {
     return template;
   }
+
   public void setTemplate(InstanceTemplate template) {
     this.template = template;
   }
 
+
   @Override
-  public boolean equals(Object o) {
-    if (this == o) return true;
-    if (o == null || getClass() != o.getClass()) return false;
-
-    VirtualInstance other = (VirtualInstance) o; // NOPMD
-
-    if (id != null ?
-        !id.equals(other.id) :
-        other.id != null) return false;
-    if (template != null ?
-        !template.equals(other.template) :
-        other.template != null) return false;
-    return true;
+  public boolean equals(java.lang.Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
+    VirtualInstance virtualInstance = (VirtualInstance) o;
+    return Objects.equals(this.id, virtualInstance.id) &&
+        Objects.equals(this.template, virtualInstance.template);
   }
 
   @Override
   public int hashCode() {
-    int result = 0;
-    result = 31 * result + (id != null ? id.hashCode() : 0);
-    result = 31 * result + (template != null ? template.hashCode() : 0);
-    return result;
+    return Objects.hash(id, template);
   }
 
+
   @Override
-  public String toString()  {
+  public String toString() {
     StringBuilder sb = new StringBuilder();
-    String newLine = System.getProperty("line.separator");
-    sb.append("class VirtualInstance {" + newLine);
-    sb.append("  id: ").append(id).append(newLine);
-    sb.append("  template: ").append(template).append(newLine);
-    sb.append("}" + newLine);
+    sb.append("class VirtualInstance {\n");
+    
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    template: ").append(toIndentedString(template)).append("\n");
+    sb.append("}");
     return sb.toString();
   }
+
+  /**
+   * Convert the given object to string with each line indented by 4 spaces
+   * (except the first line).
+   */
+  private String toIndentedString(java.lang.Object o) {
+    if (o == null) {
+      return "null";
+    }
+    return o.toString().replace("\n", "\n    ");
+  }
+
 }
 

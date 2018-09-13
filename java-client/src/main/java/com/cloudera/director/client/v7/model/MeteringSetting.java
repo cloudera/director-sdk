@@ -14,50 +14,118 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-// Note: This file is auto generated. Do not edit manually.
 
 package com.cloudera.director.client.v7.model;
 
+import java.util.Objects;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
+
+/**
+ * Settings for usage-based billing
+ */
+@ApiModel(description = "Settings for usage-based billing")
 
 public class MeteringSetting {
-  /* BillingId for Cloudera Manager [redacted on read] */
-  private String billingId;
-  public MeteringSetting() { }
+  @SerializedName("billingId")
+  private String billingId = null;
 
-  public MeteringSetting(String billingId) {
-    this.billingId = billingId;
+  public MeteringSetting() {
+    // Do nothing
   }
-public String getBillingId() {
+
+  private MeteringSetting(MeteringSettingBuilder builder) {
+      this.billingId = builder.billingId;
+    }
+
+  public static MeteringSettingBuilder builder() {
+    return new MeteringSettingBuilder();
+  }
+
+  public static class MeteringSettingBuilder {
+      private String billingId = null;
+  
+
+    public MeteringSettingBuilder billingId(String billingId) {
+      this.billingId = billingId;
+      return this;
+    }
+
+
+    public MeteringSetting build() {
+      return new MeteringSetting(this);
+    }
+  }
+
+  public MeteringSettingBuilder toBuilder() {
+    return builder()
+      .billingId(billingId)
+      ;
+  }
+
+  public MeteringSetting billingId(String billingId) {
+    this.billingId = billingId;
+    return this;
+  }
+
+   /**
+   * Billing ID for usage-based billing [redacted on read]
+   * @return billingId
+  **/
+  @ApiModelProperty(value = "Billing ID for usage-based billing [redacted on read]")
+  public String getBillingId() {
     return billingId;
   }
+
   public void setBillingId(String billingId) {
     this.billingId = billingId;
   }
 
+
   @Override
-  public boolean equals(Object o) {
-    if (this == o) return true;
-    if (o == null || getClass() != o.getClass()) return false;
-
-    MeteringSetting other = (MeteringSetting) o; // NOPMD
-
-    return true;
+  public boolean equals(java.lang.Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
+    MeteringSetting meteringSetting = (MeteringSetting) o;
+    return Objects.equals(this.billingId, meteringSetting.billingId);
   }
 
   @Override
   public int hashCode() {
-    int result = 0;
-    return result;
+    return Objects.hash(billingId);
   }
 
+
   @Override
-  public String toString()  {
+  public String toString() {
     StringBuilder sb = new StringBuilder();
-    String newLine = System.getProperty("line.separator");
-    sb.append("class MeteringSetting {" + newLine);
-    sb.append("  billingId: ").append("REDACTED").append(newLine);
-    sb.append("}" + newLine);
+    sb.append("class MeteringSetting {\n");
+    
+    sb.append("    billingId: ").append(toIndentedString(billingId)).append("\n");
+    sb.append("}");
     return sb.toString();
   }
+
+  /**
+   * Convert the given object to string with each line indented by 4 spaces
+   * (except the first line).
+   */
+  private String toIndentedString(java.lang.Object o) {
+    if (o == null) {
+      return "null";
+    }
+    return o.toString().replace("\n", "\n    ");
+  }
+
 }
 

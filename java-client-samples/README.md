@@ -1,6 +1,6 @@
 
-Cloudera Director Java Client Samples
--------------------------------------
+Cloudera Altus Director Java Client Samples
+-------------------------------------------
 
 This folder contains a a set of sample classes for common use cases.
 

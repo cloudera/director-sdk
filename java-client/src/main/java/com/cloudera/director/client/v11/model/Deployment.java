@@ -14,201 +14,262 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-// Note: This file is auto generated. Do not edit manually.
 
 package com.cloudera.director.client.v11.model;
 
+import java.util.Objects;
+import com.cloudera.director.client.v11.model.Instance;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
-public class Deployment {
-  /* Cloudera Manager Version */
-  private String cmVersion;
-  /* Whether to enable Cloudera Enterprise Trial */
-  private Boolean enableEnterpriseTrial;
-  /* Hostname for existing Cloudera Manager installation */
-  private String hostname;
-  /* Cloudera Director and Cloudera Manager's Java installation strategy */
-  private String javaInstallationStrategy;
-  /* Password for Kerberos administrative principal used by Cloudera Manager [redacted on read] */
-  private String krbAdminPassword;
-  /* Username for Kerberos administrative principal used by Cloudera Manager */
-  private String krbAdminUsername;
-  private Instance managerInstance;
-  /* Deployment name */
-  private String name;
-  /* Password for API access [redacted on read] */
-  private String password;
-  /* API port for an existing Cloudera Manager installation */
-  private Integer port;
-  /* Custom Cloudera Manager repository URL */
-  private String repository;
-  /* Custom Cloudera Manager public GPG key */
-  private String repositoryKeyUrl;
-  /* TLS configuration properties */
-  private Map<String, String> tlsConfigurationProperties;
-  /* Whether TLS is enabled */
-  private Boolean tlsEnabled;
-  /* Trusted certificate for the Cloudera Manager server */
-  private String trustedCertificate;
-  /* Whether to install unlimited strength JCE policy files */
-  private Boolean unlimitedJce;
-  /* Username for API access */
-  private String username;
-  public interface JavaInstallationStrategy {
-    String AUTO = "AUTO";
-    String NONE = "NONE";
-    String DIRECTOR_MANAGED = "DIRECTOR_MANAGED";
-  }
-  public Deployment() { }
+/**
+ * A deployment (Cloudera Manager installation) running in a cloud provider
+ */
+@ApiModel(description = "A deployment (Cloudera Manager installation) running in a cloud provider")
 
-  private Deployment(String cmVersion, Boolean enableEnterpriseTrial, String hostname, String javaInstallationStrategy, String krbAdminPassword, String krbAdminUsername, Instance managerInstance, String name, String password, Integer port, String repository, String repositoryKeyUrl, Map<String, String> tlsConfigurationProperties, Boolean tlsEnabled, String trustedCertificate, Boolean unlimitedJce, String username) {
-    this.cmVersion = cmVersion;
-    this.enableEnterpriseTrial = enableEnterpriseTrial;
-    this.hostname = hostname;
-    this.javaInstallationStrategy = javaInstallationStrategy;
-    this.krbAdminPassword = krbAdminPassword;
-    this.krbAdminUsername = krbAdminUsername;
-    this.managerInstance = managerInstance;
-    this.name = name;
-    this.password = password;
-    this.port = port;
-    this.repository = repository;
-    this.repositoryKeyUrl = repositoryKeyUrl;
-    this.tlsConfigurationProperties = tlsConfigurationProperties;
-    this.tlsEnabled = tlsEnabled;
-    this.trustedCertificate = trustedCertificate;
-    this.unlimitedJce = unlimitedJce;
-    this.username = username;
+public class Deployment {
+  @SerializedName("cmVersion")
+  private String cmVersion = null;
+  @SerializedName("enableEnterpriseTrial")
+  private Boolean enableEnterpriseTrial = null;
+  @SerializedName("hostname")
+  private String hostname = null;
+  /**
+   * Cloudera Altus Director and Cloudera Manager&#39;s Java installation strategy
+   */
+  @JsonAdapter(JavaInstallationStrategyEnum.Adapter.class)
+  public enum JavaInstallationStrategyEnum {
+    AUTO("AUTO"),
+    
+    NONE("NONE"),
+    
+    DIRECTOR_MANAGED("DIRECTOR_MANAGED");
+
+    private String value;
+
+    JavaInstallationStrategyEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static JavaInstallationStrategyEnum fromValue(String text) {
+      for (JavaInstallationStrategyEnum b : JavaInstallationStrategyEnum.values()) {
+        if (String.valueOf(b.value).equals(text)) {
+          return b;
+        }
+      }
+      return null;
+    }
+
+    public static class Adapter extends TypeAdapter<JavaInstallationStrategyEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final JavaInstallationStrategyEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public JavaInstallationStrategyEnum read(final JsonReader jsonReader) throws IOException {
+        String value = jsonReader.nextString();
+        return JavaInstallationStrategyEnum.fromValue(String.valueOf(value));
+      }
+    }
+  }
+
+  @SerializedName("javaInstallationStrategy")
+  private JavaInstallationStrategyEnum javaInstallationStrategy = null;
+  @SerializedName("krbAdminPassword")
+  private String krbAdminPassword = null;
+  @SerializedName("krbAdminUsername")
+  private String krbAdminUsername = null;
+  @SerializedName("managerInstance")
+  private Instance managerInstance = null;
+  @SerializedName("name")
+  private String name = null;
+  @SerializedName("password")
+  private String password = null;
+  @SerializedName("port")
+  private Integer port = null;
+  @SerializedName("repository")
+  private String repository = null;
+  @SerializedName("repositoryKeyUrl")
+  private String repositoryKeyUrl = null;
+  @SerializedName("tlsConfigurationProperties")
+  private Map<String, String> tlsConfigurationProperties = null;
+  @SerializedName("tlsEnabled")
+  private Boolean tlsEnabled = null;
+  @SerializedName("trustedCertificate")
+  private String trustedCertificate = null;
+  @SerializedName("unlimitedJce")
+  private Boolean unlimitedJce = null;
+  @SerializedName("username")
+  private String username = null;
+
+  public Deployment() {
+    // Do nothing
   }
 
   private Deployment(DeploymentBuilder builder) {
-    this.cmVersion = builder.cmVersion;
-    this.enableEnterpriseTrial = builder.enableEnterpriseTrial;
-    this.hostname = builder.hostname;
-    this.javaInstallationStrategy = builder.javaInstallationStrategy;
-    this.krbAdminPassword = builder.krbAdminPassword;
-    this.krbAdminUsername = builder.krbAdminUsername;
-    this.managerInstance = builder.managerInstance;
-    this.name = builder.name;
-    this.password = builder.password;
-    this.port = builder.port;
-    this.repository = builder.repository;
-    this.repositoryKeyUrl = builder.repositoryKeyUrl;
-    this.tlsConfigurationProperties = builder.tlsConfigurationProperties;
-    this.tlsEnabled = builder.tlsEnabled;
-    this.trustedCertificate = builder.trustedCertificate;
-    this.unlimitedJce = builder.unlimitedJce;
-    this.username = builder.username;
-  }
+      this.cmVersion = builder.cmVersion;
+      this.enableEnterpriseTrial = builder.enableEnterpriseTrial;
+      this.hostname = builder.hostname;
+      this.javaInstallationStrategy = builder.javaInstallationStrategy;
+      this.krbAdminPassword = builder.krbAdminPassword;
+      this.krbAdminUsername = builder.krbAdminUsername;
+      this.managerInstance = builder.managerInstance;
+      this.name = builder.name;
+      this.password = builder.password;
+      this.port = builder.port;
+      this.repository = builder.repository;
+      this.repositoryKeyUrl = builder.repositoryKeyUrl;
+      this.tlsConfigurationProperties = builder.tlsConfigurationProperties;
+      this.tlsEnabled = builder.tlsEnabled;
+      this.trustedCertificate = builder.trustedCertificate;
+      this.unlimitedJce = builder.unlimitedJce;
+      this.username = builder.username;
+    }
 
   public static DeploymentBuilder builder() {
     return new DeploymentBuilder();
   }
 
   public static class DeploymentBuilder {
-    private String cmVersion = null;
-    private Boolean enableEnterpriseTrial = null;
-    private String hostname = null;
-    private String javaInstallationStrategy = null;
-    private String krbAdminPassword = null;
-    private String krbAdminUsername = null;
-    private Instance managerInstance = null;
-    private String name = null;
-    private String password = null;
-    private Integer port = null;
-    private String repository = null;
-    private String repositoryKeyUrl = null;
-    private Map<String, String> tlsConfigurationProperties = new HashMap<String, String>();
-    private Boolean tlsEnabled = null;
-    private String trustedCertificate = null;
-    private Boolean unlimitedJce = null;
-    private String username = null;
+      private String cmVersion = null;
+      private Boolean enableEnterpriseTrial = null;
+      private String hostname = null;
+      private JavaInstallationStrategyEnum javaInstallationStrategy = null;
+      private String krbAdminPassword = null;
+      private String krbAdminUsername = null;
+      private Instance managerInstance = null;
+      private String name = null;
+      private String password = null;
+      private Integer port = null;
+      private String repository = null;
+      private String repositoryKeyUrl = null;
+      private Map<String, String> tlsConfigurationProperties = new HashMap<String, String>();
+      private Boolean tlsEnabled = null;
+      private String trustedCertificate = null;
+      private Boolean unlimitedJce = null;
+      private String username = null;
+  
 
     public DeploymentBuilder cmVersion(String cmVersion) {
       this.cmVersion = cmVersion;
       return this;
     }
 
+
     public DeploymentBuilder enableEnterpriseTrial(Boolean enableEnterpriseTrial) {
       this.enableEnterpriseTrial = enableEnterpriseTrial;
       return this;
     }
+
 
     public DeploymentBuilder hostname(String hostname) {
       this.hostname = hostname;
       return this;
     }
 
-    public DeploymentBuilder javaInstallationStrategy(String javaInstallationStrategy) {
+
+    public DeploymentBuilder javaInstallationStrategy(JavaInstallationStrategyEnum javaInstallationStrategy) {
       this.javaInstallationStrategy = javaInstallationStrategy;
       return this;
     }
+
 
     public DeploymentBuilder krbAdminPassword(String krbAdminPassword) {
       this.krbAdminPassword = krbAdminPassword;
       return this;
     }
 
+
     public DeploymentBuilder krbAdminUsername(String krbAdminUsername) {
       this.krbAdminUsername = krbAdminUsername;
       return this;
     }
+
 
     public DeploymentBuilder managerInstance(Instance managerInstance) {
       this.managerInstance = managerInstance;
       return this;
     }
 
+
     public DeploymentBuilder name(String name) {
       this.name = name;
       return this;
     }
+
 
     public DeploymentBuilder password(String password) {
       this.password = password;
       return this;
     }
 
+
     public DeploymentBuilder port(Integer port) {
       this.port = port;
       return this;
     }
+
 
     public DeploymentBuilder repository(String repository) {
       this.repository = repository;
       return this;
     }
 
+
     public DeploymentBuilder repositoryKeyUrl(String repositoryKeyUrl) {
       this.repositoryKeyUrl = repositoryKeyUrl;
       return this;
     }
+
 
     public DeploymentBuilder tlsConfigurationProperties(Map<String, String> tlsConfigurationProperties) {
       this.tlsConfigurationProperties = tlsConfigurationProperties;
       return this;
     }
 
+
     public DeploymentBuilder tlsEnabled(Boolean tlsEnabled) {
       this.tlsEnabled = tlsEnabled;
       return this;
     }
+
 
     public DeploymentBuilder trustedCertificate(String trustedCertificate) {
       this.trustedCertificate = trustedCertificate;
       return this;
     }
 
+
     public DeploymentBuilder unlimitedJce(Boolean unlimitedJce) {
       this.unlimitedJce = unlimitedJce;
       return this;
     }
 
+
     public DeploymentBuilder username(String username) {
       this.username = username;
       return this;
     }
+
 
     public Deployment build() {
       return new Deployment(this);
@@ -218,243 +279,410 @@ public class Deployment {
   public DeploymentBuilder toBuilder() {
     return builder()
       .cmVersion(cmVersion)
-      .enableEnterpriseTrial(enableEnterpriseTrial)
-      .hostname(hostname)
-      .javaInstallationStrategy(javaInstallationStrategy)
-      .krbAdminPassword(krbAdminPassword)
-      .krbAdminUsername(krbAdminUsername)
-      .managerInstance(managerInstance)
-      .name(name)
-      .password(password)
-      .port(port)
-      .repository(repository)
-      .repositoryKeyUrl(repositoryKeyUrl)
-      .tlsConfigurationProperties(tlsConfigurationProperties)
-      .tlsEnabled(tlsEnabled)
-      .trustedCertificate(trustedCertificate)
-      .unlimitedJce(unlimitedJce)
-      .username(username)
+            .enableEnterpriseTrial(enableEnterpriseTrial)
+            .hostname(hostname)
+            .javaInstallationStrategy(javaInstallationStrategy)
+            .krbAdminPassword(krbAdminPassword)
+            .krbAdminUsername(krbAdminUsername)
+            .managerInstance(managerInstance)
+            .name(name)
+            .password(password)
+            .port(port)
+            .repository(repository)
+            .repositoryKeyUrl(repositoryKeyUrl)
+            .tlsConfigurationProperties(tlsConfigurationProperties)
+            .tlsEnabled(tlsEnabled)
+            .trustedCertificate(trustedCertificate)
+            .unlimitedJce(unlimitedJce)
+            .username(username)
       ;
   }
+
+  public Deployment cmVersion(String cmVersion) {
+    this.cmVersion = cmVersion;
+    return this;
+  }
+
+   /**
+   * Cloudera Manager Version
+   * @return cmVersion
+  **/
+  @ApiModelProperty(value = "Cloudera Manager Version")
   public String getCmVersion() {
     return cmVersion;
   }
+
   public void setCmVersion(String cmVersion) {
     this.cmVersion = cmVersion;
   }
 
-  public Boolean getEnableEnterpriseTrial() {
+  public Deployment enableEnterpriseTrial(Boolean enableEnterpriseTrial) {
+    this.enableEnterpriseTrial = enableEnterpriseTrial;
+    return this;
+  }
+
+   /**
+   * Whether to enable Cloudera Enterprise Trial
+   * @return enableEnterpriseTrial
+  **/
+  @ApiModelProperty(example = "false", value = "Whether to enable Cloudera Enterprise Trial")
+  public Boolean isEnableEnterpriseTrial() {
     return enableEnterpriseTrial;
   }
+
   public void setEnableEnterpriseTrial(Boolean enableEnterpriseTrial) {
     this.enableEnterpriseTrial = enableEnterpriseTrial;
   }
 
+  public Deployment hostname(String hostname) {
+    this.hostname = hostname;
+    return this;
+  }
+
+   /**
+   * Hostname for existing Cloudera Manager installation
+   * @return hostname
+  **/
+  @ApiModelProperty(value = "Hostname for existing Cloudera Manager installation")
   public String getHostname() {
     return hostname;
   }
+
   public void setHostname(String hostname) {
     this.hostname = hostname;
   }
 
-  public String getJavaInstallationStrategy() {
+  public Deployment javaInstallationStrategy(JavaInstallationStrategyEnum javaInstallationStrategy) {
+    this.javaInstallationStrategy = javaInstallationStrategy;
+    return this;
+  }
+
+   /**
+   * Cloudera Altus Director and Cloudera Manager&#39;s Java installation strategy
+   * @return javaInstallationStrategy
+  **/
+  @ApiModelProperty(value = "Cloudera Altus Director and Cloudera Manager's Java installation strategy")
+  public JavaInstallationStrategyEnum getJavaInstallationStrategy() {
     return javaInstallationStrategy;
   }
-  public void setJavaInstallationStrategy(String javaInstallationStrategy) {
+
+  public void setJavaInstallationStrategy(JavaInstallationStrategyEnum javaInstallationStrategy) {
     this.javaInstallationStrategy = javaInstallationStrategy;
   }
 
+  public Deployment krbAdminPassword(String krbAdminPassword) {
+    this.krbAdminPassword = krbAdminPassword;
+    return this;
+  }
+
+   /**
+   * Password for Kerberos administrative principal used by Cloudera Manager [redacted on read]
+   * @return krbAdminPassword
+  **/
+  @ApiModelProperty(value = "Password for Kerberos administrative principal used by Cloudera Manager [redacted on read]")
   public String getKrbAdminPassword() {
     return krbAdminPassword;
   }
+
   public void setKrbAdminPassword(String krbAdminPassword) {
     this.krbAdminPassword = krbAdminPassword;
   }
 
+  public Deployment krbAdminUsername(String krbAdminUsername) {
+    this.krbAdminUsername = krbAdminUsername;
+    return this;
+  }
+
+   /**
+   * Username for Kerberos administrative principal used by Cloudera Manager
+   * @return krbAdminUsername
+  **/
+  @ApiModelProperty(value = "Username for Kerberos administrative principal used by Cloudera Manager")
   public String getKrbAdminUsername() {
     return krbAdminUsername;
   }
+
   public void setKrbAdminUsername(String krbAdminUsername) {
     this.krbAdminUsername = krbAdminUsername;
   }
 
+  public Deployment managerInstance(Instance managerInstance) {
+    this.managerInstance = managerInstance;
+    return this;
+  }
+
+   /**
+   * Instance where Cloudera Manager is installed
+   * @return managerInstance
+  **/
+  @ApiModelProperty(value = "Instance where Cloudera Manager is installed")
   public Instance getManagerInstance() {
     return managerInstance;
   }
+
   public void setManagerInstance(Instance managerInstance) {
     this.managerInstance = managerInstance;
   }
 
+  public Deployment name(String name) {
+    this.name = name;
+    return this;
+  }
+
+   /**
+   * Deployment name
+   * @return name
+  **/
+  @ApiModelProperty(required = true, value = "Deployment name")
   public String getName() {
     return name;
   }
+
   public void setName(String name) {
     this.name = name;
   }
 
+  public Deployment password(String password) {
+    this.password = password;
+    return this;
+  }
+
+   /**
+   * Password for API access [redacted on read]
+   * @return password
+  **/
+  @ApiModelProperty(value = "Password for API access [redacted on read]")
   public String getPassword() {
     return password;
   }
+
   public void setPassword(String password) {
     this.password = password;
   }
 
+  public Deployment port(Integer port) {
+    this.port = port;
+    return this;
+  }
+
+   /**
+   * API port for an existing Cloudera Manager installation
+   * @return port
+  **/
+  @ApiModelProperty(value = "API port for an existing Cloudera Manager installation")
   public Integer getPort() {
     return port;
   }
+
   public void setPort(Integer port) {
     this.port = port;
   }
 
+  public Deployment repository(String repository) {
+    this.repository = repository;
+    return this;
+  }
+
+   /**
+   * Custom Cloudera Manager repository URL
+   * @return repository
+  **/
+  @ApiModelProperty(value = "Custom Cloudera Manager repository URL")
   public String getRepository() {
     return repository;
   }
+
   public void setRepository(String repository) {
     this.repository = repository;
   }
 
+  public Deployment repositoryKeyUrl(String repositoryKeyUrl) {
+    this.repositoryKeyUrl = repositoryKeyUrl;
+    return this;
+  }
+
+   /**
+   * Custom Cloudera Manager public GPG key
+   * @return repositoryKeyUrl
+  **/
+  @ApiModelProperty(value = "Custom Cloudera Manager public GPG key")
   public String getRepositoryKeyUrl() {
     return repositoryKeyUrl;
   }
+
   public void setRepositoryKeyUrl(String repositoryKeyUrl) {
     this.repositoryKeyUrl = repositoryKeyUrl;
   }
 
+  public Deployment tlsConfigurationProperties(Map<String, String> tlsConfigurationProperties) {
+    this.tlsConfigurationProperties = tlsConfigurationProperties;
+    return this;
+  }
+
+  public Deployment putTlsConfigurationPropertiesItem(String key, String tlsConfigurationPropertiesItem) {
+    if (this.tlsConfigurationProperties == null) {
+      this.tlsConfigurationProperties = new HashMap<String, String>();
+    }
+    this.tlsConfigurationProperties.put(key, tlsConfigurationPropertiesItem);
+    return this;
+  }
+
+   /**
+   * TLS configuration properties
+   * @return tlsConfigurationProperties
+  **/
+  @ApiModelProperty(value = "TLS configuration properties")
   public Map<String, String> getTlsConfigurationProperties() {
     return tlsConfigurationProperties;
   }
+
   public void setTlsConfigurationProperties(Map<String, String> tlsConfigurationProperties) {
     this.tlsConfigurationProperties = tlsConfigurationProperties;
   }
 
-  public Boolean getTlsEnabled() {
+  public Deployment tlsEnabled(Boolean tlsEnabled) {
+    this.tlsEnabled = tlsEnabled;
+    return this;
+  }
+
+   /**
+   * Whether TLS is enabled
+   * @return tlsEnabled
+  **/
+  @ApiModelProperty(example = "false", value = "Whether TLS is enabled")
+  public Boolean isTlsEnabled() {
     return tlsEnabled;
   }
+
   public void setTlsEnabled(Boolean tlsEnabled) {
     this.tlsEnabled = tlsEnabled;
   }
 
+  public Deployment trustedCertificate(String trustedCertificate) {
+    this.trustedCertificate = trustedCertificate;
+    return this;
+  }
+
+   /**
+   * Trusted certificate for the Cloudera Manager server
+   * @return trustedCertificate
+  **/
+  @ApiModelProperty(value = "Trusted certificate for the Cloudera Manager server")
   public String getTrustedCertificate() {
     return trustedCertificate;
   }
+
   public void setTrustedCertificate(String trustedCertificate) {
     this.trustedCertificate = trustedCertificate;
   }
 
-  public Boolean getUnlimitedJce() {
+  public Deployment unlimitedJce(Boolean unlimitedJce) {
+    this.unlimitedJce = unlimitedJce;
+    return this;
+  }
+
+   /**
+   * Whether to install unlimited strength JCE policy files
+   * @return unlimitedJce
+  **/
+  @ApiModelProperty(example = "false", value = "Whether to install unlimited strength JCE policy files")
+  public Boolean isUnlimitedJce() {
     return unlimitedJce;
   }
+
   public void setUnlimitedJce(Boolean unlimitedJce) {
     this.unlimitedJce = unlimitedJce;
   }
 
+  public Deployment username(String username) {
+    this.username = username;
+    return this;
+  }
+
+   /**
+   * Username for API access
+   * @return username
+  **/
+  @ApiModelProperty(value = "Username for API access")
   public String getUsername() {
     return username;
   }
+
   public void setUsername(String username) {
     this.username = username;
   }
 
+
   @Override
-  public boolean equals(Object o) {
-    if (this == o) return true;
-    if (o == null || getClass() != o.getClass()) return false;
-
-    Deployment other = (Deployment) o; // NOPMD
-
-    if (cmVersion != null ?
-        !cmVersion.equals(other.cmVersion) :
-        other.cmVersion != null) return false;
-    if (enableEnterpriseTrial != null ?
-        !enableEnterpriseTrial.equals(other.enableEnterpriseTrial) :
-        other.enableEnterpriseTrial != null) return false;
-    if (hostname != null ?
-        !hostname.equals(other.hostname) :
-        other.hostname != null) return false;
-    if (javaInstallationStrategy != null ?
-        !javaInstallationStrategy.equals(other.javaInstallationStrategy) :
-        other.javaInstallationStrategy != null) return false;
-    if (krbAdminUsername != null ?
-        !krbAdminUsername.equals(other.krbAdminUsername) :
-        other.krbAdminUsername != null) return false;
-    if (managerInstance != null ?
-        !managerInstance.equals(other.managerInstance) :
-        other.managerInstance != null) return false;
-    if (name != null ?
-        !name.equals(other.name) :
-        other.name != null) return false;
-    if (port != null ?
-        !port.equals(other.port) :
-        other.port != null) return false;
-    if (repository != null ?
-        !repository.equals(other.repository) :
-        other.repository != null) return false;
-    if (repositoryKeyUrl != null ?
-        !repositoryKeyUrl.equals(other.repositoryKeyUrl) :
-        other.repositoryKeyUrl != null) return false;
-    if (tlsConfigurationProperties != null ?
-        !tlsConfigurationProperties.equals(other.tlsConfigurationProperties) :
-        other.tlsConfigurationProperties != null) return false;
-    if (tlsEnabled != null ?
-        !tlsEnabled.equals(other.tlsEnabled) :
-        other.tlsEnabled != null) return false;
-    if (trustedCertificate != null ?
-        !trustedCertificate.equals(other.trustedCertificate) :
-        other.trustedCertificate != null) return false;
-    if (unlimitedJce != null ?
-        !unlimitedJce.equals(other.unlimitedJce) :
-        other.unlimitedJce != null) return false;
-    if (username != null ?
-        !username.equals(other.username) :
-        other.username != null) return false;
-    return true;
+  public boolean equals(java.lang.Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
+    Deployment deployment = (Deployment) o;
+    return Objects.equals(this.cmVersion, deployment.cmVersion) &&
+        Objects.equals(this.enableEnterpriseTrial, deployment.enableEnterpriseTrial) &&
+        Objects.equals(this.hostname, deployment.hostname) &&
+        Objects.equals(this.javaInstallationStrategy, deployment.javaInstallationStrategy) &&
+        Objects.equals(this.krbAdminPassword, deployment.krbAdminPassword) &&
+        Objects.equals(this.krbAdminUsername, deployment.krbAdminUsername) &&
+        Objects.equals(this.managerInstance, deployment.managerInstance) &&
+        Objects.equals(this.name, deployment.name) &&
+        Objects.equals(this.password, deployment.password) &&
+        Objects.equals(this.port, deployment.port) &&
+        Objects.equals(this.repository, deployment.repository) &&
+        Objects.equals(this.repositoryKeyUrl, deployment.repositoryKeyUrl) &&
+        Objects.equals(this.tlsConfigurationProperties, deployment.tlsConfigurationProperties) &&
+        Objects.equals(this.tlsEnabled, deployment.tlsEnabled) &&
+        Objects.equals(this.trustedCertificate, deployment.trustedCertificate) &&
+        Objects.equals(this.unlimitedJce, deployment.unlimitedJce) &&
+        Objects.equals(this.username, deployment.username);
   }
 
   @Override
   public int hashCode() {
-    int result = 0;
-    result = 31 * result + (cmVersion != null ? cmVersion.hashCode() : 0);
-    result = 31 * result + (enableEnterpriseTrial != null ? enableEnterpriseTrial.hashCode() : 0);
-    result = 31 * result + (hostname != null ? hostname.hashCode() : 0);
-    result = 31 * result + (javaInstallationStrategy != null ? javaInstallationStrategy.hashCode() : 0);
-    result = 31 * result + (krbAdminUsername != null ? krbAdminUsername.hashCode() : 0);
-    result = 31 * result + (managerInstance != null ? managerInstance.hashCode() : 0);
-    result = 31 * result + (name != null ? name.hashCode() : 0);
-    result = 31 * result + (port != null ? port.hashCode() : 0);
-    result = 31 * result + (repository != null ? repository.hashCode() : 0);
-    result = 31 * result + (repositoryKeyUrl != null ? repositoryKeyUrl.hashCode() : 0);
-    result = 31 * result + (tlsConfigurationProperties != null ? tlsConfigurationProperties.hashCode() : 0);
-    result = 31 * result + (tlsEnabled != null ? tlsEnabled.hashCode() : 0);
-    result = 31 * result + (trustedCertificate != null ? trustedCertificate.hashCode() : 0);
-    result = 31 * result + (unlimitedJce != null ? unlimitedJce.hashCode() : 0);
-    result = 31 * result + (username != null ? username.hashCode() : 0);
-    return result;
+    return Objects.hash(cmVersion, enableEnterpriseTrial, hostname, javaInstallationStrategy, krbAdminPassword, krbAdminUsername, managerInstance, name, password, port, repository, repositoryKeyUrl, tlsConfigurationProperties, tlsEnabled, trustedCertificate, unlimitedJce, username);
   }
 
+
   @Override
-  public String toString()  {
+  public String toString() {
     StringBuilder sb = new StringBuilder();
-    String newLine = System.getProperty("line.separator");
-    sb.append("class Deployment {" + newLine);
-    sb.append("  cmVersion: ").append(cmVersion).append(newLine);
-    sb.append("  enableEnterpriseTrial: ").append(enableEnterpriseTrial).append(newLine);
-    sb.append("  hostname: ").append(hostname).append(newLine);
-    sb.append("  javaInstallationStrategy: ").append(javaInstallationStrategy).append(newLine);
-    sb.append("  krbAdminPassword: ").append("REDACTED").append(newLine);
-    sb.append("  krbAdminUsername: ").append(krbAdminUsername).append(newLine);
-    sb.append("  managerInstance: ").append(managerInstance).append(newLine);
-    sb.append("  name: ").append(name).append(newLine);
-    sb.append("  password: ").append("REDACTED").append(newLine);
-    sb.append("  port: ").append(port).append(newLine);
-    sb.append("  repository: ").append(repository).append(newLine);
-    sb.append("  repositoryKeyUrl: ").append(repositoryKeyUrl).append(newLine);
-    sb.append("  tlsConfigurationProperties: ").append(tlsConfigurationProperties).append(newLine);
-    sb.append("  tlsEnabled: ").append(tlsEnabled).append(newLine);
-    sb.append("  trustedCertificate: ").append(trustedCertificate).append(newLine);
-    sb.append("  unlimitedJce: ").append(unlimitedJce).append(newLine);
-    sb.append("  username: ").append(username).append(newLine);
-    sb.append("}" + newLine);
+    sb.append("class Deployment {\n");
+    
+    sb.append("    cmVersion: ").append(toIndentedString(cmVersion)).append("\n");
+    sb.append("    enableEnterpriseTrial: ").append(toIndentedString(enableEnterpriseTrial)).append("\n");
+    sb.append("    hostname: ").append(toIndentedString(hostname)).append("\n");
+    sb.append("    javaInstallationStrategy: ").append(toIndentedString(javaInstallationStrategy)).append("\n");
+    sb.append("    krbAdminPassword: ").append(toIndentedString(krbAdminPassword)).append("\n");
+    sb.append("    krbAdminUsername: ").append(toIndentedString(krbAdminUsername)).append("\n");
+    sb.append("    managerInstance: ").append(toIndentedString(managerInstance)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    password: ").append(toIndentedString(password)).append("\n");
+    sb.append("    port: ").append(toIndentedString(port)).append("\n");
+    sb.append("    repository: ").append(toIndentedString(repository)).append("\n");
+    sb.append("    repositoryKeyUrl: ").append(toIndentedString(repositoryKeyUrl)).append("\n");
+    sb.append("    tlsConfigurationProperties: ").append(toIndentedString(tlsConfigurationProperties)).append("\n");
+    sb.append("    tlsEnabled: ").append(toIndentedString(tlsEnabled)).append("\n");
+    sb.append("    trustedCertificate: ").append(toIndentedString(trustedCertificate)).append("\n");
+    sb.append("    unlimitedJce: ").append(toIndentedString(unlimitedJce)).append("\n");
+    sb.append("    username: ").append(toIndentedString(username)).append("\n");
+    sb.append("}");
     return sb.toString();
   }
+
+  /**
+   * Convert the given object to string with each line indented by 4 spaces
+   * (except the first line).
+   */
+  private String toIndentedString(java.lang.Object o) {
+    if (o == null) {
+      return "null";
+    }
+    return o.toString().replace("\n", "\n    ");
+  }
+
 }
 

@@ -14,128 +14,148 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-// Note: This file is auto generated. Do not edit manually.
 
 package com.cloudera.director.client.v11.model;
 
+import java.util.Objects;
+import com.cloudera.director.client.v11.model.Capabilities;
+import com.cloudera.director.client.v11.model.Health;
+import com.cloudera.director.client.v11.model.InstanceState;
+import com.cloudera.director.client.v11.model.ValidationExceptionCondition;
+import com.cloudera.director.client.v11.model.VirtualInstance;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
-import java.util.Set;
+
+/**
+ * An instance in a cloud provider
+ */
+@ApiModel(description = "An instance in a cloud provider")
 
 public class Instance {
-  /* Optional instance capabilities */
-  private Capabilities capabilities;
-  /* Optional Cloudera Manager HostId */
-  private String cmHostId;
-  /* Optional Cloudera Manager Host URL */
-  private String cmHostUrl;
-  /* Instance health */
-  private Health health;
-  /* Optional Host Key Fingerprints */
-  private Set<String> hostKeyFingerprints;
-  /* IP address of instance */
-  private String ipAddress;
-  /* Instance properties */
-  private Map<String, String> properties;
-  /* Instance state */
-  private InstanceState state;
-  /* Validation conditions */
-  private Set<ValidationExceptionCondition> validationConditions;
-  /* Virtual instance */
-  private VirtualInstance virtualInstance;
-  public Instance() { }
+  @SerializedName("capabilities")
+  private Capabilities capabilities = null;
+  @SerializedName("cmHostId")
+  private String cmHostId = null;
+  @SerializedName("cmHostUrl")
+  private String cmHostUrl = null;
+  @SerializedName("health")
+  private Health health = null;
+  @SerializedName("hostKeyFingerprints")
+  private List<String> hostKeyFingerprints = null;
+  @SerializedName("ipAddress")
+  private String ipAddress = null;
+  @SerializedName("properties")
+  private Map<String, String> properties = null;
+  @SerializedName("state")
+  private InstanceState state = null;
+  @SerializedName("validationConditions")
+  private List<ValidationExceptionCondition> validationConditions = null;
+  @SerializedName("virtualInstance")
+  private VirtualInstance virtualInstance = null;
 
-  private Instance(Capabilities capabilities, String cmHostId, String cmHostUrl, Health health, Set<String> hostKeyFingerprints, String ipAddress, Map<String, String> properties, InstanceState state, Set<ValidationExceptionCondition> validationConditions, VirtualInstance virtualInstance) {
-    this.capabilities = capabilities;
-    this.cmHostId = cmHostId;
-    this.cmHostUrl = cmHostUrl;
-    this.health = health;
-    this.hostKeyFingerprints = hostKeyFingerprints;
-    this.ipAddress = ipAddress;
-    this.properties = properties;
-    this.state = state;
-    this.validationConditions = validationConditions;
-    this.virtualInstance = virtualInstance;
+  public Instance() {
+    // Do nothing
   }
 
   private Instance(InstanceBuilder builder) {
-    this.capabilities = builder.capabilities;
-    this.cmHostId = builder.cmHostId;
-    this.cmHostUrl = builder.cmHostUrl;
-    this.health = builder.health;
-    this.hostKeyFingerprints = builder.hostKeyFingerprints;
-    this.ipAddress = builder.ipAddress;
-    this.properties = builder.properties;
-    this.state = builder.state;
-    this.validationConditions = builder.validationConditions;
-    this.virtualInstance = builder.virtualInstance;
-  }
+      this.capabilities = builder.capabilities;
+      this.cmHostId = builder.cmHostId;
+      this.cmHostUrl = builder.cmHostUrl;
+      this.health = builder.health;
+      this.hostKeyFingerprints = builder.hostKeyFingerprints;
+      this.ipAddress = builder.ipAddress;
+      this.properties = builder.properties;
+      this.state = builder.state;
+      this.validationConditions = builder.validationConditions;
+      this.virtualInstance = builder.virtualInstance;
+    }
 
   public static InstanceBuilder builder() {
     return new InstanceBuilder();
   }
 
   public static class InstanceBuilder {
-    private Capabilities capabilities = null;
-    private String cmHostId = null;
-    private String cmHostUrl = null;
-    private Health health = null;
-    private Set<String> hostKeyFingerprints = null;
-    private String ipAddress = null;
-    private Map<String, String> properties = new HashMap<String, String>();
-    private InstanceState state = null;
-    private Set<ValidationExceptionCondition> validationConditions = null;
-    private VirtualInstance virtualInstance = null;
+      private Capabilities capabilities = null;
+      private String cmHostId = null;
+      private String cmHostUrl = null;
+      private Health health = null;
+      private List<String> hostKeyFingerprints = new ArrayList<String>();
+      private String ipAddress = null;
+      private Map<String, String> properties = new HashMap<String, String>();
+      private InstanceState state = null;
+      private List<ValidationExceptionCondition> validationConditions = new ArrayList<ValidationExceptionCondition>();
+      private VirtualInstance virtualInstance = null;
+  
 
     public InstanceBuilder capabilities(Capabilities capabilities) {
       this.capabilities = capabilities;
       return this;
     }
 
+
     public InstanceBuilder cmHostId(String cmHostId) {
       this.cmHostId = cmHostId;
       return this;
     }
+
 
     public InstanceBuilder cmHostUrl(String cmHostUrl) {
       this.cmHostUrl = cmHostUrl;
       return this;
     }
 
+
     public InstanceBuilder health(Health health) {
       this.health = health;
       return this;
     }
 
-    public InstanceBuilder hostKeyFingerprints(Set<String> hostKeyFingerprints) {
+
+    public InstanceBuilder hostKeyFingerprints(List<String> hostKeyFingerprints) {
       this.hostKeyFingerprints = hostKeyFingerprints;
       return this;
     }
+
 
     public InstanceBuilder ipAddress(String ipAddress) {
       this.ipAddress = ipAddress;
       return this;
     }
 
+
     public InstanceBuilder properties(Map<String, String> properties) {
       this.properties = properties;
       return this;
     }
+
 
     public InstanceBuilder state(InstanceState state) {
       this.state = state;
       return this;
     }
 
-    public InstanceBuilder validationConditions(Set<ValidationExceptionCondition> validationConditions) {
+
+    public InstanceBuilder validationConditions(List<ValidationExceptionCondition> validationConditions) {
       this.validationConditions = validationConditions;
       return this;
     }
+
 
     public InstanceBuilder virtualInstance(VirtualInstance virtualInstance) {
       this.virtualInstance = virtualInstance;
       return this;
     }
+
 
     public Instance build() {
       return new Instance(this);
@@ -145,160 +165,279 @@ public class Instance {
   public InstanceBuilder toBuilder() {
     return builder()
       .capabilities(capabilities)
-      .cmHostId(cmHostId)
-      .cmHostUrl(cmHostUrl)
-      .health(health)
-      .hostKeyFingerprints(hostKeyFingerprints)
-      .ipAddress(ipAddress)
-      .properties(properties)
-      .state(state)
-      .validationConditions(validationConditions)
-      .virtualInstance(virtualInstance)
+            .cmHostId(cmHostId)
+            .cmHostUrl(cmHostUrl)
+            .health(health)
+            .hostKeyFingerprints(hostKeyFingerprints)
+            .ipAddress(ipAddress)
+            .properties(properties)
+            .state(state)
+            .validationConditions(validationConditions)
+            .virtualInstance(virtualInstance)
       ;
   }
+
+  public Instance capabilities(Capabilities capabilities) {
+    this.capabilities = capabilities;
+    return this;
+  }
+
+   /**
+   * Optional instance capabilities
+   * @return capabilities
+  **/
+  @ApiModelProperty(value = "Optional instance capabilities")
   public Capabilities getCapabilities() {
     return capabilities;
   }
+
   public void setCapabilities(Capabilities capabilities) {
     this.capabilities = capabilities;
   }
 
+  public Instance cmHostId(String cmHostId) {
+    this.cmHostId = cmHostId;
+    return this;
+  }
+
+   /**
+   * Optional Cloudera Manager HostId
+   * @return cmHostId
+  **/
+  @ApiModelProperty(value = "Optional Cloudera Manager HostId")
   public String getCmHostId() {
     return cmHostId;
   }
+
   public void setCmHostId(String cmHostId) {
     this.cmHostId = cmHostId;
   }
 
+  public Instance cmHostUrl(String cmHostUrl) {
+    this.cmHostUrl = cmHostUrl;
+    return this;
+  }
+
+   /**
+   * Optional Cloudera Manager Host URL
+   * @return cmHostUrl
+  **/
+  @ApiModelProperty(value = "Optional Cloudera Manager Host URL")
   public String getCmHostUrl() {
     return cmHostUrl;
   }
+
   public void setCmHostUrl(String cmHostUrl) {
     this.cmHostUrl = cmHostUrl;
   }
 
+  public Instance health(Health health) {
+    this.health = health;
+    return this;
+  }
+
+   /**
+   * Instance health
+   * @return health
+  **/
+  @ApiModelProperty(value = "Instance health")
   public Health getHealth() {
     return health;
   }
+
   public void setHealth(Health health) {
     this.health = health;
   }
 
-  public Set<String> getHostKeyFingerprints() {
+  public Instance hostKeyFingerprints(List<String> hostKeyFingerprints) {
+    this.hostKeyFingerprints = hostKeyFingerprints;
+    return this;
+  }
+
+  public Instance addHostKeyFingerprintsItem(String hostKeyFingerprintsItem) {
+    if (this.hostKeyFingerprints == null) {
+      this.hostKeyFingerprints = new ArrayList<String>();
+    }
+    this.hostKeyFingerprints.add(hostKeyFingerprintsItem);
+    return this;
+  }
+
+   /**
+   * Optional Host Key Fingerprints
+   * @return hostKeyFingerprints
+  **/
+  @ApiModelProperty(value = "Optional Host Key Fingerprints")
+  public List<String> getHostKeyFingerprints() {
     return hostKeyFingerprints;
   }
-  public void setHostKeyFingerprints(Set<String> hostKeyFingerprints) {
+
+  public void setHostKeyFingerprints(List<String> hostKeyFingerprints) {
     this.hostKeyFingerprints = hostKeyFingerprints;
   }
 
+  public Instance ipAddress(String ipAddress) {
+    this.ipAddress = ipAddress;
+    return this;
+  }
+
+   /**
+   * IP address of instance
+   * @return ipAddress
+  **/
+  @ApiModelProperty(required = true, value = "IP address of instance")
   public String getIpAddress() {
     return ipAddress;
   }
+
   public void setIpAddress(String ipAddress) {
     this.ipAddress = ipAddress;
   }
 
+  public Instance properties(Map<String, String> properties) {
+    this.properties = properties;
+    return this;
+  }
+
+  public Instance putPropertiesItem(String key, String propertiesItem) {
+    if (this.properties == null) {
+      this.properties = new HashMap<String, String>();
+    }
+    this.properties.put(key, propertiesItem);
+    return this;
+  }
+
+   /**
+   * Instance properties
+   * @return properties
+  **/
+  @ApiModelProperty(value = "Instance properties")
   public Map<String, String> getProperties() {
     return properties;
   }
+
   public void setProperties(Map<String, String> properties) {
     this.properties = properties;
   }
 
+  public Instance state(InstanceState state) {
+    this.state = state;
+    return this;
+  }
+
+   /**
+   * Instance state
+   * @return state
+  **/
+  @ApiModelProperty(value = "Instance state")
   public InstanceState getState() {
     return state;
   }
+
   public void setState(InstanceState state) {
     this.state = state;
   }
 
-  public Set<ValidationExceptionCondition> getValidationConditions() {
+  public Instance validationConditions(List<ValidationExceptionCondition> validationConditions) {
+    this.validationConditions = validationConditions;
+    return this;
+  }
+
+  public Instance addValidationConditionsItem(ValidationExceptionCondition validationConditionsItem) {
+    if (this.validationConditions == null) {
+      this.validationConditions = new ArrayList<ValidationExceptionCondition>();
+    }
+    this.validationConditions.add(validationConditionsItem);
+    return this;
+  }
+
+   /**
+   * Validation conditions
+   * @return validationConditions
+  **/
+  @ApiModelProperty(value = "Validation conditions")
+  public List<ValidationExceptionCondition> getValidationConditions() {
     return validationConditions;
   }
-  public void setValidationConditions(Set<ValidationExceptionCondition> validationConditions) {
+
+  public void setValidationConditions(List<ValidationExceptionCondition> validationConditions) {
     this.validationConditions = validationConditions;
   }
 
+  public Instance virtualInstance(VirtualInstance virtualInstance) {
+    this.virtualInstance = virtualInstance;
+    return this;
+  }
+
+   /**
+   * Virtual instance mapping to this instance
+   * @return virtualInstance
+  **/
+  @ApiModelProperty(required = true, value = "Virtual instance mapping to this instance")
   public VirtualInstance getVirtualInstance() {
     return virtualInstance;
   }
+
   public void setVirtualInstance(VirtualInstance virtualInstance) {
     this.virtualInstance = virtualInstance;
   }
 
+
   @Override
-  public boolean equals(Object o) {
-    if (this == o) return true;
-    if (o == null || getClass() != o.getClass()) return false;
-
-    Instance other = (Instance) o; // NOPMD
-
-    if (capabilities != null ?
-        !capabilities.equals(other.capabilities) :
-        other.capabilities != null) return false;
-    if (cmHostId != null ?
-        !cmHostId.equals(other.cmHostId) :
-        other.cmHostId != null) return false;
-    if (cmHostUrl != null ?
-        !cmHostUrl.equals(other.cmHostUrl) :
-        other.cmHostUrl != null) return false;
-    if (health != null ?
-        !health.equals(other.health) :
-        other.health != null) return false;
-    if (hostKeyFingerprints != null ?
-        !hostKeyFingerprints.equals(other.hostKeyFingerprints) :
-        other.hostKeyFingerprints != null) return false;
-    if (ipAddress != null ?
-        !ipAddress.equals(other.ipAddress) :
-        other.ipAddress != null) return false;
-    if (properties != null ?
-        !properties.equals(other.properties) :
-        other.properties != null) return false;
-    if (state != null ?
-        !state.equals(other.state) :
-        other.state != null) return false;
-    if (validationConditions != null ?
-        !validationConditions.equals(other.validationConditions) :
-        other.validationConditions != null) return false;
-    if (virtualInstance != null ?
-        !virtualInstance.equals(other.virtualInstance) :
-        other.virtualInstance != null) return false;
-    return true;
+  public boolean equals(java.lang.Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
+    Instance instance = (Instance) o;
+    return Objects.equals(this.capabilities, instance.capabilities) &&
+        Objects.equals(this.cmHostId, instance.cmHostId) &&
+        Objects.equals(this.cmHostUrl, instance.cmHostUrl) &&
+        Objects.equals(this.health, instance.health) &&
+        Objects.equals(this.hostKeyFingerprints, instance.hostKeyFingerprints) &&
+        Objects.equals(this.ipAddress, instance.ipAddress) &&
+        Objects.equals(this.properties, instance.properties) &&
+        Objects.equals(this.state, instance.state) &&
+        Objects.equals(this.validationConditions, instance.validationConditions) &&
+        Objects.equals(this.virtualInstance, instance.virtualInstance);
   }
 
   @Override
   public int hashCode() {
-    int result = 0;
-    result = 31 * result + (capabilities != null ? capabilities.hashCode() : 0);
-    result = 31 * result + (cmHostId != null ? cmHostId.hashCode() : 0);
-    result = 31 * result + (cmHostUrl != null ? cmHostUrl.hashCode() : 0);
-    result = 31 * result + (health != null ? health.hashCode() : 0);
-    result = 31 * result + (hostKeyFingerprints != null ? hostKeyFingerprints.hashCode() : 0);
-    result = 31 * result + (ipAddress != null ? ipAddress.hashCode() : 0);
-    result = 31 * result + (properties != null ? properties.hashCode() : 0);
-    result = 31 * result + (state != null ? state.hashCode() : 0);
-    result = 31 * result + (validationConditions != null ? validationConditions.hashCode() : 0);
-    result = 31 * result + (virtualInstance != null ? virtualInstance.hashCode() : 0);
-    return result;
+    return Objects.hash(capabilities, cmHostId, cmHostUrl, health, hostKeyFingerprints, ipAddress, properties, state, validationConditions, virtualInstance);
   }
 
+
   @Override
-  public String toString()  {
+  public String toString() {
     StringBuilder sb = new StringBuilder();
-    String newLine = System.getProperty("line.separator");
-    sb.append("class Instance {" + newLine);
-    sb.append("  capabilities: ").append(capabilities).append(newLine);
-    sb.append("  cmHostId: ").append(cmHostId).append(newLine);
-    sb.append("  cmHostUrl: ").append(cmHostUrl).append(newLine);
-    sb.append("  health: ").append(health).append(newLine);
-    sb.append("  hostKeyFingerprints: ").append(hostKeyFingerprints).append(newLine);
-    sb.append("  ipAddress: ").append(ipAddress).append(newLine);
-    sb.append("  properties: ").append(properties).append(newLine);
-    sb.append("  state: ").append(state).append(newLine);
-    sb.append("  validationConditions: ").append(validationConditions).append(newLine);
-    sb.append("  virtualInstance: ").append(virtualInstance).append(newLine);
-    sb.append("}" + newLine);
+    sb.append("class Instance {\n");
+    
+    sb.append("    capabilities: ").append(toIndentedString(capabilities)).append("\n");
+    sb.append("    cmHostId: ").append(toIndentedString(cmHostId)).append("\n");
+    sb.append("    cmHostUrl: ").append(toIndentedString(cmHostUrl)).append("\n");
+    sb.append("    health: ").append(toIndentedString(health)).append("\n");
+    sb.append("    hostKeyFingerprints: ").append(toIndentedString(hostKeyFingerprints)).append("\n");
+    sb.append("    ipAddress: ").append(toIndentedString(ipAddress)).append("\n");
+    sb.append("    properties: ").append(toIndentedString(properties)).append("\n");
+    sb.append("    state: ").append(toIndentedString(state)).append("\n");
+    sb.append("    validationConditions: ").append(toIndentedString(validationConditions)).append("\n");
+    sb.append("    virtualInstance: ").append(toIndentedString(virtualInstance)).append("\n");
+    sb.append("}");
     return sb.toString();
   }
+
+  /**
+   * Convert the given object to string with each line indented by 4 spaces
+   * (except the first line).
+   */
+  private String toIndentedString(java.lang.Object o) {
+    if (o == null) {
+      return "null";
+    }
+    return o.toString().replace("\n", "\n    ");
+  }
+
 }
 

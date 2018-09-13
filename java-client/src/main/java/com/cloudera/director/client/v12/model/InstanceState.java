@@ -14,63 +14,130 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-// Note: This file is auto generated. Do not edit manually.
 
 package com.cloudera.director.client.v12.model;
 
+import java.util.Objects;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
+
+/**
+ * Instance state as reported by a cloud provider
+ */
+@ApiModel(description = "Instance state as reported by a cloud provider")
 
 public class InstanceState {
-  private Long lastChecked;
-  private Long lastReported;
-  private String status;
-  public interface Status {
-    String PENDING = "PENDING";
-    String RUNNING = "RUNNING";
-    String STOPPING = "STOPPING";
-    String STOPPED = "STOPPED";
-    String DELETING = "DELETING";
-    String DELETED = "DELETED";
-    String FAILED = "FAILED";
-    String UNKNOWN = "UNKNOWN";
-    String MISSING = "MISSING";
-  }
-  public InstanceState() { }
+  @SerializedName("lastChecked")
+  private Long lastChecked = null;
+  @SerializedName("lastReported")
+  private Long lastReported = null;
+  /**
+   * Instance status
+   */
+  @JsonAdapter(StatusEnum.Adapter.class)
+  public enum StatusEnum {
+    PENDING("PENDING"),
+    
+    RUNNING("RUNNING"),
+    
+    STOPPING("STOPPING"),
+    
+    STOPPED("STOPPED"),
+    
+    DELETING("DELETING"),
+    
+    DELETED("DELETED"),
+    
+    FAILED("FAILED"),
+    
+    UNKNOWN("UNKNOWN"),
+    
+    MISSING("MISSING");
 
-  private InstanceState(Long lastChecked, Long lastReported, String status) {
-    this.lastChecked = lastChecked;
-    this.lastReported = lastReported;
-    this.status = status;
+    private String value;
+
+    StatusEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static StatusEnum fromValue(String text) {
+      for (StatusEnum b : StatusEnum.values()) {
+        if (String.valueOf(b.value).equals(text)) {
+          return b;
+        }
+      }
+      return null;
+    }
+
+    public static class Adapter extends TypeAdapter<StatusEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final StatusEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public StatusEnum read(final JsonReader jsonReader) throws IOException {
+        String value = jsonReader.nextString();
+        return StatusEnum.fromValue(String.valueOf(value));
+      }
+    }
+  }
+
+  @SerializedName("status")
+  private StatusEnum status = null;
+
+  public InstanceState() {
+    // Do nothing
   }
 
   private InstanceState(InstanceStateBuilder builder) {
-    this.lastChecked = builder.lastChecked;
-    this.lastReported = builder.lastReported;
-    this.status = builder.status;
-  }
+      this.lastChecked = builder.lastChecked;
+      this.lastReported = builder.lastReported;
+      this.status = builder.status;
+    }
 
   public static InstanceStateBuilder builder() {
     return new InstanceStateBuilder();
   }
 
   public static class InstanceStateBuilder {
-    private Long lastChecked = null;
-    private Long lastReported = null;
-    private String status = null;
+      private Long lastChecked = null;
+      private Long lastReported = null;
+      private StatusEnum status = null;
+  
 
     public InstanceStateBuilder lastChecked(Long lastChecked) {
       this.lastChecked = lastChecked;
       return this;
     }
 
+
     public InstanceStateBuilder lastReported(Long lastReported) {
       this.lastReported = lastReported;
       return this;
     }
 
-    public InstanceStateBuilder status(String status) {
+
+    public InstanceStateBuilder status(StatusEnum status) {
       this.status = status;
       return this;
     }
+
 
     public InstanceState build() {
       return new InstanceState(this);
@@ -80,69 +147,108 @@ public class InstanceState {
   public InstanceStateBuilder toBuilder() {
     return builder()
       .lastChecked(lastChecked)
-      .lastReported(lastReported)
-      .status(status)
+            .lastReported(lastReported)
+            .status(status)
       ;
   }
+
+  public InstanceState lastChecked(Long lastChecked) {
+    this.lastChecked = lastChecked;
+    return this;
+  }
+
+   /**
+   * Last time that instance state was checked
+   * @return lastChecked
+  **/
+  @ApiModelProperty(required = true, value = "Last time that instance state was checked")
   public Long getLastChecked() {
     return lastChecked;
   }
+
   public void setLastChecked(Long lastChecked) {
     this.lastChecked = lastChecked;
   }
 
+  public InstanceState lastReported(Long lastReported) {
+    this.lastReported = lastReported;
+    return this;
+  }
+
+   /**
+   * Last time that instance state was reported
+   * @return lastReported
+  **/
+  @ApiModelProperty(required = true, value = "Last time that instance state was reported")
   public Long getLastReported() {
     return lastReported;
   }
+
   public void setLastReported(Long lastReported) {
     this.lastReported = lastReported;
   }
 
-  public String getStatus() {
+  public InstanceState status(StatusEnum status) {
+    this.status = status;
+    return this;
+  }
+
+   /**
+   * Instance status
+   * @return status
+  **/
+  @ApiModelProperty(required = true, value = "Instance status")
+  public StatusEnum getStatus() {
     return status;
   }
-  public void setStatus(String status) {
+
+  public void setStatus(StatusEnum status) {
     this.status = status;
   }
 
+
   @Override
-  public boolean equals(Object o) {
-    if (this == o) return true;
-    if (o == null || getClass() != o.getClass()) return false;
-
-    InstanceState other = (InstanceState) o; // NOPMD
-
-    if (lastChecked != null ?
-        !lastChecked.equals(other.lastChecked) :
-        other.lastChecked != null) return false;
-    if (lastReported != null ?
-        !lastReported.equals(other.lastReported) :
-        other.lastReported != null) return false;
-    if (status != null ?
-        !status.equals(other.status) :
-        other.status != null) return false;
-    return true;
+  public boolean equals(java.lang.Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
+    InstanceState instanceState = (InstanceState) o;
+    return Objects.equals(this.lastChecked, instanceState.lastChecked) &&
+        Objects.equals(this.lastReported, instanceState.lastReported) &&
+        Objects.equals(this.status, instanceState.status);
   }
 
   @Override
   public int hashCode() {
-    int result = 0;
-    result = 31 * result + (lastChecked != null ? lastChecked.hashCode() : 0);
-    result = 31 * result + (lastReported != null ? lastReported.hashCode() : 0);
-    result = 31 * result + (status != null ? status.hashCode() : 0);
-    return result;
+    return Objects.hash(lastChecked, lastReported, status);
   }
 
+
   @Override
-  public String toString()  {
+  public String toString() {
     StringBuilder sb = new StringBuilder();
-    String newLine = System.getProperty("line.separator");
-    sb.append("class InstanceState {" + newLine);
-    sb.append("  lastChecked: ").append(lastChecked).append(newLine);
-    sb.append("  lastReported: ").append(lastReported).append(newLine);
-    sb.append("  status: ").append(status).append(newLine);
-    sb.append("}" + newLine);
+    sb.append("class InstanceState {\n");
+    
+    sb.append("    lastChecked: ").append(toIndentedString(lastChecked)).append("\n");
+    sb.append("    lastReported: ").append(toIndentedString(lastReported)).append("\n");
+    sb.append("    status: ").append(toIndentedString(status)).append("\n");
+    sb.append("}");
     return sb.toString();
   }
+
+  /**
+   * Convert the given object to string with each line indented by 4 spaces
+   * (except the first line).
+   */
+  private String toIndentedString(java.lang.Object o) {
+    if (o == null) {
+      return "null";
+    }
+    return o.toString().replace("\n", "\n    ");
+  }
+
 }
 

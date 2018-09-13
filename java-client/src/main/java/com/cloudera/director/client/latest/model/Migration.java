@@ -14,45 +14,60 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-// Note: This file is auto generated. Do not edit manually.
 
 package com.cloudera.director.client.latest.model;
 
+import java.util.Objects;
+import com.cloudera.director.client.latest.model.MigratingGroup;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
+
+/**
+ * Information about a role migration
+ */
+@ApiModel(description = "Information about a role migration")
 
 public class Migration {
-  /* Description of virtual instances from which to migrate roles */
-  private MigratingGroup fromGroup;
-  /* Description of virtual instances to which to migrate roles */
-  private MigratingGroup toGroup;
-  public Migration() { }
+  @SerializedName("fromGroup")
+  private MigratingGroup fromGroup = null;
+  @SerializedName("toGroup")
+  private MigratingGroup toGroup = null;
 
-  private Migration(MigratingGroup fromGroup, MigratingGroup toGroup) {
-    this.fromGroup = fromGroup;
-    this.toGroup = toGroup;
+  public Migration() {
+    // Do nothing
   }
 
   private Migration(MigrationBuilder builder) {
-    this.fromGroup = builder.fromGroup;
-    this.toGroup = builder.toGroup;
-  }
+      this.fromGroup = builder.fromGroup;
+      this.toGroup = builder.toGroup;
+    }
 
   public static MigrationBuilder builder() {
     return new MigrationBuilder();
   }
 
   public static class MigrationBuilder {
-    private MigratingGroup fromGroup = null;
-    private MigratingGroup toGroup = null;
+      private MigratingGroup fromGroup = null;
+      private MigratingGroup toGroup = null;
+  
 
     public MigrationBuilder fromGroup(MigratingGroup fromGroup) {
       this.fromGroup = fromGroup;
       return this;
     }
 
+
     public MigrationBuilder toGroup(MigratingGroup toGroup) {
       this.toGroup = toGroup;
       return this;
     }
+
 
     public Migration build() {
       return new Migration(this);
@@ -62,56 +77,87 @@ public class Migration {
   public MigrationBuilder toBuilder() {
     return builder()
       .fromGroup(fromGroup)
-      .toGroup(toGroup)
+            .toGroup(toGroup)
       ;
   }
+
+  public Migration fromGroup(MigratingGroup fromGroup) {
+    this.fromGroup = fromGroup;
+    return this;
+  }
+
+   /**
+   * Description of virtual instances from which to migrate roles
+   * @return fromGroup
+  **/
+  @ApiModelProperty(required = true, value = "Description of virtual instances from which to migrate roles")
   public MigratingGroup getFromGroup() {
     return fromGroup;
   }
+
   public void setFromGroup(MigratingGroup fromGroup) {
     this.fromGroup = fromGroup;
   }
 
+  public Migration toGroup(MigratingGroup toGroup) {
+    this.toGroup = toGroup;
+    return this;
+  }
+
+   /**
+   * Description of virtual instances to which to migrate roles
+   * @return toGroup
+  **/
+  @ApiModelProperty(required = true, value = "Description of virtual instances to which to migrate roles")
   public MigratingGroup getToGroup() {
     return toGroup;
   }
+
   public void setToGroup(MigratingGroup toGroup) {
     this.toGroup = toGroup;
   }
 
+
   @Override
-  public boolean equals(Object o) {
-    if (this == o) return true;
-    if (o == null || getClass() != o.getClass()) return false;
-
-    Migration other = (Migration) o; // NOPMD
-
-    if (fromGroup != null ?
-        !fromGroup.equals(other.fromGroup) :
-        other.fromGroup != null) return false;
-    if (toGroup != null ?
-        !toGroup.equals(other.toGroup) :
-        other.toGroup != null) return false;
-    return true;
+  public boolean equals(java.lang.Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
+    Migration migration = (Migration) o;
+    return Objects.equals(this.fromGroup, migration.fromGroup) &&
+        Objects.equals(this.toGroup, migration.toGroup);
   }
 
   @Override
   public int hashCode() {
-    int result = 0;
-    result = 31 * result + (fromGroup != null ? fromGroup.hashCode() : 0);
-    result = 31 * result + (toGroup != null ? toGroup.hashCode() : 0);
-    return result;
+    return Objects.hash(fromGroup, toGroup);
   }
 
+
   @Override
-  public String toString()  {
+  public String toString() {
     StringBuilder sb = new StringBuilder();
-    String newLine = System.getProperty("line.separator");
-    sb.append("class Migration {" + newLine);
-    sb.append("  fromGroup: ").append(fromGroup).append(newLine);
-    sb.append("  toGroup: ").append(toGroup).append(newLine);
-    sb.append("}" + newLine);
+    sb.append("class Migration {\n");
+    
+    sb.append("    fromGroup: ").append(toIndentedString(fromGroup)).append("\n");
+    sb.append("    toGroup: ").append(toIndentedString(toGroup)).append("\n");
+    sb.append("}");
     return sb.toString();
   }
+
+  /**
+   * Convert the given object to string with each line indented by 4 spaces
+   * (except the first line).
+   */
+  private String toIndentedString(java.lang.Object o) {
+    if (o == null) {
+      return "null";
+    }
+    return o.toString().replace("\n", "\n    ");
+  }
+
 }
 

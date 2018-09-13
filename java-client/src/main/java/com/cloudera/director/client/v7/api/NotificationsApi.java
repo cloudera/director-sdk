@@ -14,60 +14,161 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-// Note: This file is auto generated. Do not edit manually.
 
 package com.cloudera.director.client.v7.api;
 
+import com.cloudera.director.client.common.ApiCallback;
 import com.cloudera.director.client.common.ApiClient;
 import com.cloudera.director.client.common.ApiException;
+import com.cloudera.director.client.common.ApiResponse;
+import com.cloudera.director.client.common.Configuration;
+import com.cloudera.director.client.common.Pair;
+import com.cloudera.director.client.common.ProgressRequestBody;
+import com.cloudera.director.client.common.ProgressResponseBody;
+
+import com.google.gson.reflect.TypeToken;
+
+import java.io.IOException;
+
 
 import com.cloudera.director.client.v7.model.Notification;
-import java.util.Arrays;
+
+import java.lang.reflect.Type;
+import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List; // NOPMD
+import java.util.List;
 import java.util.Map;
 
-@SuppressWarnings("parametername")
 public class NotificationsApi {
-  ApiClient apiClient;
+    private ApiClient apiClient;
 
-  public ApiClient getClient() {
-    return apiClient;
-  }
-
-  public NotificationsApi(ApiClient apiClient) {
-    this.apiClient = apiClient;
-  }
-
-  /**
-  * Get system notification messages.
-  * status code: 200 reason: "OK"
-  * status code: 401 reason: "Unauthorized"
-  * status code: 403 reason: "Forbidden"
-  * status code: 404 reason: "Not Found"
-  */
-  public List<Notification> get() throws ApiException {
-    Object postBody = null;
-    // create path and map variables
-    String path = "/api/v7/notifications"
-      .replaceAll("\\{format\\}", "json")
-      ;
-
-    // query params
-    Map<String, String> queryParams = new HashMap<String, String>();
-    Map<String, String> headerParams = new HashMap<String, String>();
-    Map<String, String> formParams = new HashMap<String, String>();
-
-    String[] contentTypes = { "application/json"};
-    if (contentTypes.length != 1) {
-      throw new IllegalArgumentException("An API client expects a single content type. Got: "
-        + Arrays.toString(contentTypes));
+    public NotificationsApi() {
+        this(Configuration.getDefaultApiClient());
     }
 
-    Object response = apiClient.invokeAPI(path, "GET", queryParams, postBody,
-      headerParams, formParams, contentTypes[0], "List", Notification.class);
-    return (List<Notification>) response;}
+    public NotificationsApi(ApiClient apiClient) {
+        this.apiClient = apiClient;
+    }
 
+    public ApiClient getApiClient() {
+        return apiClient;
+    }
 
-  }
+    public void setApiClient(ApiClient apiClient) {
+        this.apiClient = apiClient;
+    }
 
+    /**
+     * Build call for get
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call getCall(final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/api/v7/notifications";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "basic" };
+        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call getValidateBeforeCall(final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+
+        com.squareup.okhttp.Call call = getCall(progressListener, progressRequestListener);
+        return call;
+
+    }
+
+    /**
+     * Get system notification messages
+     * 
+     * @return List&lt;Notification&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public List<Notification> get() throws ApiException {
+        ApiResponse<List<Notification>> resp = getWithHttpInfo();
+        return resp.getData();
+    }
+
+    /**
+     * Get system notification messages
+     * 
+     * @return ApiResponse&lt;List&lt;Notification&gt;&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<List<Notification>> getWithHttpInfo() throws ApiException {
+        com.squareup.okhttp.Call call = getValidateBeforeCall(null, null);
+        Type localVarReturnType = new TypeToken<List<Notification>>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Get system notification messages (asynchronously)
+     * 
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call getAsync(final ApiCallback<List<Notification>> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = getValidateBeforeCall(progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<List<Notification>>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+}

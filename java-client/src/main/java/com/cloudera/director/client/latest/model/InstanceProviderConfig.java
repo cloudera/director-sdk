@@ -14,51 +14,62 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-// Note: This file is auto generated. Do not edit manually.
 
 package com.cloudera.director.client.latest.model;
 
+import java.util.Objects;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
-public class InstanceProviderConfig {
-  /* Provider specific configurations [redacted on read] */
-  private Map<String, String> config;
-  /* Provider type */
-  private String type;
-  public interface Type {
-    String AWS = "aws";
-    String BYON = "byon";
-  }
-  public InstanceProviderConfig() { }
+/**
+ * Cloud instance provider configuration
+ */
+@ApiModel(description = "Cloud instance provider configuration")
 
-  private InstanceProviderConfig(Map<String, String> config, String type) {
-    this.config = config;
-    this.type = type;
+public class InstanceProviderConfig {
+  @SerializedName("config")
+  private Map<String, String> config = new HashMap<String, String>();
+  @SerializedName("type")
+  private String type = null;
+
+  public InstanceProviderConfig() {
+    // Do nothing
   }
 
   private InstanceProviderConfig(InstanceProviderConfigBuilder builder) {
-    this.config = builder.config;
-    this.type = builder.type;
-  }
+      this.config = builder.config;
+      this.type = builder.type;
+    }
 
   public static InstanceProviderConfigBuilder builder() {
     return new InstanceProviderConfigBuilder();
   }
 
   public static class InstanceProviderConfigBuilder {
-    private Map<String, String> config = new HashMap<String, String>();
-    private String type = null;
+      private Map<String, String> config = new HashMap<String, String>();
+      private String type = null;
+  
 
     public InstanceProviderConfigBuilder config(Map<String, String> config) {
       this.config = config;
       return this;
     }
 
+
     public InstanceProviderConfigBuilder type(String type) {
       this.type = type;
       return this;
     }
+
 
     public InstanceProviderConfig build() {
       return new InstanceProviderConfig(this);
@@ -68,52 +79,92 @@ public class InstanceProviderConfig {
   public InstanceProviderConfigBuilder toBuilder() {
     return builder()
       .config(config)
-      .type(type)
+            .type(type)
       ;
   }
+
+  public InstanceProviderConfig config(Map<String, String> config) {
+    this.config = config;
+    return this;
+  }
+
+  public InstanceProviderConfig putConfigItem(String key, String configItem) {
+    this.config.put(key, configItem);
+    return this;
+  }
+
+   /**
+   * Provider specific configurations [redacted on read]
+   * @return config
+  **/
+  @ApiModelProperty(required = true, value = "Provider specific configurations [redacted on read]")
   public Map<String, String> getConfig() {
     return config;
   }
+
   public void setConfig(Map<String, String> config) {
     this.config = config;
   }
 
+  public InstanceProviderConfig type(String type) {
+    this.type = type;
+    return this;
+  }
+
+   /**
+   * Provider type
+   * @return type
+  **/
+  @ApiModelProperty(required = true, value = "Provider type")
   public String getType() {
     return type;
   }
+
   public void setType(String type) {
     this.type = type;
   }
 
+
   @Override
-  public boolean equals(Object o) {
-    if (this == o) return true;
-    if (o == null || getClass() != o.getClass()) return false;
-
-    InstanceProviderConfig other = (InstanceProviderConfig) o; // NOPMD
-
-    if (type != null ?
-        !type.equals(other.type) :
-        other.type != null) return false;
-    return true;
+  public boolean equals(java.lang.Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
+    InstanceProviderConfig instanceProviderConfig = (InstanceProviderConfig) o;
+    return Objects.equals(this.config, instanceProviderConfig.config) &&
+        Objects.equals(this.type, instanceProviderConfig.type);
   }
 
   @Override
   public int hashCode() {
-    int result = 0;
-    result = 31 * result + (type != null ? type.hashCode() : 0);
-    return result;
+    return Objects.hash(config, type);
   }
 
+
   @Override
-  public String toString()  {
+  public String toString() {
     StringBuilder sb = new StringBuilder();
-    String newLine = System.getProperty("line.separator");
-    sb.append("class InstanceProviderConfig {" + newLine);
-    sb.append("  config: ").append("REDACTED").append(newLine);
-    sb.append("  type: ").append(type).append(newLine);
-    sb.append("}" + newLine);
+    sb.append("class InstanceProviderConfig {\n");
+    
+    sb.append("    config: ").append(toIndentedString(config)).append("\n");
+    sb.append("    type: ").append(toIndentedString(type)).append("\n");
+    sb.append("}");
     return sb.toString();
   }
+
+  /**
+   * Convert the given object to string with each line indented by 4 spaces
+   * (except the first line).
+   */
+  private String toIndentedString(java.lang.Object o) {
+    if (o == null) {
+      return "null";
+    }
+    return o.toString().replace("\n", "\n    ");
+  }
+
 }
 

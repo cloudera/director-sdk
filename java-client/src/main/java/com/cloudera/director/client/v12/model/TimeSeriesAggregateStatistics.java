@@ -14,125 +14,139 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-// Note: This file is auto generated. Do not edit manually.
 
 package com.cloudera.director.client.v12.model;
 
+import java.util.Objects;
+import com.cloudera.director.client.v12.model.TimeSeriesCrossEntityMetadata;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
+
+/**
+ * TimeSeriesAggregateStatistics
+ */
 
 public class TimeSeriesAggregateStatistics {
-  /* Count */
-  private Long count;
-  /* Cross-entity metadata */
-  private TimeSeriesCrossEntityMetadata crossEntityMetadata;
-  /* Maximum value */
-  private Double max;
-  /* Timestamp for maximum value */
-  private Long maxTime;
-  /* Mean */
-  private Double mean;
-  /* Minimum value */
-  private Double min;
-  /* Timestamp for minimum value */
-  private Long minTime;
-  /* Sample time */
-  private Long sampleTime;
-  /* Sample value */
-  private Double sampleValue;
-  /* Standard deviation */
-  private Double stdDev;
-  public TimeSeriesAggregateStatistics() { }
+  @SerializedName("count")
+  private Long count = null;
+  @SerializedName("crossEntityMetadata")
+  private TimeSeriesCrossEntityMetadata crossEntityMetadata = null;
+  @SerializedName("max")
+  private Double max = null;
+  @SerializedName("maxTime")
+  private Long maxTime = null;
+  @SerializedName("mean")
+  private Double mean = null;
+  @SerializedName("min")
+  private Double min = null;
+  @SerializedName("minTime")
+  private Long minTime = null;
+  @SerializedName("sampleTime")
+  private Long sampleTime = null;
+  @SerializedName("sampleValue")
+  private Double sampleValue = null;
+  @SerializedName("stdDev")
+  private Double stdDev = null;
 
-  private TimeSeriesAggregateStatistics(Long count, TimeSeriesCrossEntityMetadata crossEntityMetadata, Double max, Long maxTime, Double mean, Double min, Long minTime, Long sampleTime, Double sampleValue, Double stdDev) {
-    this.count = count;
-    this.crossEntityMetadata = crossEntityMetadata;
-    this.max = max;
-    this.maxTime = maxTime;
-    this.mean = mean;
-    this.min = min;
-    this.minTime = minTime;
-    this.sampleTime = sampleTime;
-    this.sampleValue = sampleValue;
-    this.stdDev = stdDev;
+  public TimeSeriesAggregateStatistics() {
+    // Do nothing
   }
 
   private TimeSeriesAggregateStatistics(TimeSeriesAggregateStatisticsBuilder builder) {
-    this.count = builder.count;
-    this.crossEntityMetadata = builder.crossEntityMetadata;
-    this.max = builder.max;
-    this.maxTime = builder.maxTime;
-    this.mean = builder.mean;
-    this.min = builder.min;
-    this.minTime = builder.minTime;
-    this.sampleTime = builder.sampleTime;
-    this.sampleValue = builder.sampleValue;
-    this.stdDev = builder.stdDev;
-  }
+      this.count = builder.count;
+      this.crossEntityMetadata = builder.crossEntityMetadata;
+      this.max = builder.max;
+      this.maxTime = builder.maxTime;
+      this.mean = builder.mean;
+      this.min = builder.min;
+      this.minTime = builder.minTime;
+      this.sampleTime = builder.sampleTime;
+      this.sampleValue = builder.sampleValue;
+      this.stdDev = builder.stdDev;
+    }
 
   public static TimeSeriesAggregateStatisticsBuilder builder() {
     return new TimeSeriesAggregateStatisticsBuilder();
   }
 
   public static class TimeSeriesAggregateStatisticsBuilder {
-    private Long count = null;
-    private TimeSeriesCrossEntityMetadata crossEntityMetadata = null;
-    private Double max = null;
-    private Long maxTime = null;
-    private Double mean = null;
-    private Double min = null;
-    private Long minTime = null;
-    private Long sampleTime = null;
-    private Double sampleValue = null;
-    private Double stdDev = null;
+      private Long count = null;
+      private TimeSeriesCrossEntityMetadata crossEntityMetadata = null;
+      private Double max = null;
+      private Long maxTime = null;
+      private Double mean = null;
+      private Double min = null;
+      private Long minTime = null;
+      private Long sampleTime = null;
+      private Double sampleValue = null;
+      private Double stdDev = null;
+  
 
     public TimeSeriesAggregateStatisticsBuilder count(Long count) {
       this.count = count;
       return this;
     }
 
+
     public TimeSeriesAggregateStatisticsBuilder crossEntityMetadata(TimeSeriesCrossEntityMetadata crossEntityMetadata) {
       this.crossEntityMetadata = crossEntityMetadata;
       return this;
     }
+
 
     public TimeSeriesAggregateStatisticsBuilder max(Double max) {
       this.max = max;
       return this;
     }
 
+
     public TimeSeriesAggregateStatisticsBuilder maxTime(Long maxTime) {
       this.maxTime = maxTime;
       return this;
     }
+
 
     public TimeSeriesAggregateStatisticsBuilder mean(Double mean) {
       this.mean = mean;
       return this;
     }
 
+
     public TimeSeriesAggregateStatisticsBuilder min(Double min) {
       this.min = min;
       return this;
     }
+
 
     public TimeSeriesAggregateStatisticsBuilder minTime(Long minTime) {
       this.minTime = minTime;
       return this;
     }
 
+
     public TimeSeriesAggregateStatisticsBuilder sampleTime(Long sampleTime) {
       this.sampleTime = sampleTime;
       return this;
     }
+
 
     public TimeSeriesAggregateStatisticsBuilder sampleValue(Double sampleValue) {
       this.sampleValue = sampleValue;
       return this;
     }
 
+
     public TimeSeriesAggregateStatisticsBuilder stdDev(Double stdDev) {
       this.stdDev = stdDev;
       return this;
     }
+
 
     public TimeSeriesAggregateStatistics build() {
       return new TimeSeriesAggregateStatistics(this);
@@ -142,160 +156,255 @@ public class TimeSeriesAggregateStatistics {
   public TimeSeriesAggregateStatisticsBuilder toBuilder() {
     return builder()
       .count(count)
-      .crossEntityMetadata(crossEntityMetadata)
-      .max(max)
-      .maxTime(maxTime)
-      .mean(mean)
-      .min(min)
-      .minTime(minTime)
-      .sampleTime(sampleTime)
-      .sampleValue(sampleValue)
-      .stdDev(stdDev)
+            .crossEntityMetadata(crossEntityMetadata)
+            .max(max)
+            .maxTime(maxTime)
+            .mean(mean)
+            .min(min)
+            .minTime(minTime)
+            .sampleTime(sampleTime)
+            .sampleValue(sampleValue)
+            .stdDev(stdDev)
       ;
   }
+
+  public TimeSeriesAggregateStatistics count(Long count) {
+    this.count = count;
+    return this;
+  }
+
+   /**
+   * Count
+   * @return count
+  **/
+  @ApiModelProperty(required = true, value = "Count")
   public Long getCount() {
     return count;
   }
+
   public void setCount(Long count) {
     this.count = count;
   }
 
+  public TimeSeriesAggregateStatistics crossEntityMetadata(TimeSeriesCrossEntityMetadata crossEntityMetadata) {
+    this.crossEntityMetadata = crossEntityMetadata;
+    return this;
+  }
+
+   /**
+   * Cross-entity metadata
+   * @return crossEntityMetadata
+  **/
+  @ApiModelProperty(value = "Cross-entity metadata")
   public TimeSeriesCrossEntityMetadata getCrossEntityMetadata() {
     return crossEntityMetadata;
   }
+
   public void setCrossEntityMetadata(TimeSeriesCrossEntityMetadata crossEntityMetadata) {
     this.crossEntityMetadata = crossEntityMetadata;
   }
 
+  public TimeSeriesAggregateStatistics max(Double max) {
+    this.max = max;
+    return this;
+  }
+
+   /**
+   * Maximum value
+   * @return max
+  **/
+  @ApiModelProperty(required = true, value = "Maximum value")
   public Double getMax() {
     return max;
   }
+
   public void setMax(Double max) {
     this.max = max;
   }
 
+  public TimeSeriesAggregateStatistics maxTime(Long maxTime) {
+    this.maxTime = maxTime;
+    return this;
+  }
+
+   /**
+   * Timestamp for maximum value
+   * @return maxTime
+  **/
+  @ApiModelProperty(required = true, value = "Timestamp for maximum value")
   public Long getMaxTime() {
     return maxTime;
   }
+
   public void setMaxTime(Long maxTime) {
     this.maxTime = maxTime;
   }
 
+  public TimeSeriesAggregateStatistics mean(Double mean) {
+    this.mean = mean;
+    return this;
+  }
+
+   /**
+   * Mean
+   * @return mean
+  **/
+  @ApiModelProperty(required = true, value = "Mean")
   public Double getMean() {
     return mean;
   }
+
   public void setMean(Double mean) {
     this.mean = mean;
   }
 
+  public TimeSeriesAggregateStatistics min(Double min) {
+    this.min = min;
+    return this;
+  }
+
+   /**
+   * Minimum value
+   * @return min
+  **/
+  @ApiModelProperty(required = true, value = "Minimum value")
   public Double getMin() {
     return min;
   }
+
   public void setMin(Double min) {
     this.min = min;
   }
 
+  public TimeSeriesAggregateStatistics minTime(Long minTime) {
+    this.minTime = minTime;
+    return this;
+  }
+
+   /**
+   * Timestamp for minimum value
+   * @return minTime
+  **/
+  @ApiModelProperty(required = true, value = "Timestamp for minimum value")
   public Long getMinTime() {
     return minTime;
   }
+
   public void setMinTime(Long minTime) {
     this.minTime = minTime;
   }
 
+  public TimeSeriesAggregateStatistics sampleTime(Long sampleTime) {
+    this.sampleTime = sampleTime;
+    return this;
+  }
+
+   /**
+   * Sample time
+   * @return sampleTime
+  **/
+  @ApiModelProperty(required = true, value = "Sample time")
   public Long getSampleTime() {
     return sampleTime;
   }
+
   public void setSampleTime(Long sampleTime) {
     this.sampleTime = sampleTime;
   }
 
+  public TimeSeriesAggregateStatistics sampleValue(Double sampleValue) {
+    this.sampleValue = sampleValue;
+    return this;
+  }
+
+   /**
+   * Sample value
+   * @return sampleValue
+  **/
+  @ApiModelProperty(required = true, value = "Sample value")
   public Double getSampleValue() {
     return sampleValue;
   }
+
   public void setSampleValue(Double sampleValue) {
     this.sampleValue = sampleValue;
   }
 
+  public TimeSeriesAggregateStatistics stdDev(Double stdDev) {
+    this.stdDev = stdDev;
+    return this;
+  }
+
+   /**
+   * Standard deviation
+   * @return stdDev
+  **/
+  @ApiModelProperty(required = true, value = "Standard deviation")
   public Double getStdDev() {
     return stdDev;
   }
+
   public void setStdDev(Double stdDev) {
     this.stdDev = stdDev;
   }
 
+
   @Override
-  public boolean equals(Object o) {
-    if (this == o) return true;
-    if (o == null || getClass() != o.getClass()) return false;
-
-    TimeSeriesAggregateStatistics other = (TimeSeriesAggregateStatistics) o; // NOPMD
-
-    if (count != null ?
-        !count.equals(other.count) :
-        other.count != null) return false;
-    if (crossEntityMetadata != null ?
-        !crossEntityMetadata.equals(other.crossEntityMetadata) :
-        other.crossEntityMetadata != null) return false;
-    if (max != null ?
-        !max.equals(other.max) :
-        other.max != null) return false;
-    if (maxTime != null ?
-        !maxTime.equals(other.maxTime) :
-        other.maxTime != null) return false;
-    if (mean != null ?
-        !mean.equals(other.mean) :
-        other.mean != null) return false;
-    if (min != null ?
-        !min.equals(other.min) :
-        other.min != null) return false;
-    if (minTime != null ?
-        !minTime.equals(other.minTime) :
-        other.minTime != null) return false;
-    if (sampleTime != null ?
-        !sampleTime.equals(other.sampleTime) :
-        other.sampleTime != null) return false;
-    if (sampleValue != null ?
-        !sampleValue.equals(other.sampleValue) :
-        other.sampleValue != null) return false;
-    if (stdDev != null ?
-        !stdDev.equals(other.stdDev) :
-        other.stdDev != null) return false;
-    return true;
+  public boolean equals(java.lang.Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
+    TimeSeriesAggregateStatistics timeSeriesAggregateStatistics = (TimeSeriesAggregateStatistics) o;
+    return Objects.equals(this.count, timeSeriesAggregateStatistics.count) &&
+        Objects.equals(this.crossEntityMetadata, timeSeriesAggregateStatistics.crossEntityMetadata) &&
+        Objects.equals(this.max, timeSeriesAggregateStatistics.max) &&
+        Objects.equals(this.maxTime, timeSeriesAggregateStatistics.maxTime) &&
+        Objects.equals(this.mean, timeSeriesAggregateStatistics.mean) &&
+        Objects.equals(this.min, timeSeriesAggregateStatistics.min) &&
+        Objects.equals(this.minTime, timeSeriesAggregateStatistics.minTime) &&
+        Objects.equals(this.sampleTime, timeSeriesAggregateStatistics.sampleTime) &&
+        Objects.equals(this.sampleValue, timeSeriesAggregateStatistics.sampleValue) &&
+        Objects.equals(this.stdDev, timeSeriesAggregateStatistics.stdDev);
   }
 
   @Override
   public int hashCode() {
-    int result = 0;
-    result = 31 * result + (count != null ? count.hashCode() : 0);
-    result = 31 * result + (crossEntityMetadata != null ? crossEntityMetadata.hashCode() : 0);
-    result = 31 * result + (max != null ? max.hashCode() : 0);
-    result = 31 * result + (maxTime != null ? maxTime.hashCode() : 0);
-    result = 31 * result + (mean != null ? mean.hashCode() : 0);
-    result = 31 * result + (min != null ? min.hashCode() : 0);
-    result = 31 * result + (minTime != null ? minTime.hashCode() : 0);
-    result = 31 * result + (sampleTime != null ? sampleTime.hashCode() : 0);
-    result = 31 * result + (sampleValue != null ? sampleValue.hashCode() : 0);
-    result = 31 * result + (stdDev != null ? stdDev.hashCode() : 0);
-    return result;
+    return Objects.hash(count, crossEntityMetadata, max, maxTime, mean, min, minTime, sampleTime, sampleValue, stdDev);
   }
 
+
   @Override
-  public String toString()  {
+  public String toString() {
     StringBuilder sb = new StringBuilder();
-    String newLine = System.getProperty("line.separator");
-    sb.append("class TimeSeriesAggregateStatistics {" + newLine);
-    sb.append("  count: ").append(count).append(newLine);
-    sb.append("  crossEntityMetadata: ").append(crossEntityMetadata).append(newLine);
-    sb.append("  max: ").append(max).append(newLine);
-    sb.append("  maxTime: ").append(maxTime).append(newLine);
-    sb.append("  mean: ").append(mean).append(newLine);
-    sb.append("  min: ").append(min).append(newLine);
-    sb.append("  minTime: ").append(minTime).append(newLine);
-    sb.append("  sampleTime: ").append(sampleTime).append(newLine);
-    sb.append("  sampleValue: ").append(sampleValue).append(newLine);
-    sb.append("  stdDev: ").append(stdDev).append(newLine);
-    sb.append("}" + newLine);
+    sb.append("class TimeSeriesAggregateStatistics {\n");
+    
+    sb.append("    count: ").append(toIndentedString(count)).append("\n");
+    sb.append("    crossEntityMetadata: ").append(toIndentedString(crossEntityMetadata)).append("\n");
+    sb.append("    max: ").append(toIndentedString(max)).append("\n");
+    sb.append("    maxTime: ").append(toIndentedString(maxTime)).append("\n");
+    sb.append("    mean: ").append(toIndentedString(mean)).append("\n");
+    sb.append("    min: ").append(toIndentedString(min)).append("\n");
+    sb.append("    minTime: ").append(toIndentedString(minTime)).append("\n");
+    sb.append("    sampleTime: ").append(toIndentedString(sampleTime)).append("\n");
+    sb.append("    sampleValue: ").append(toIndentedString(sampleValue)).append("\n");
+    sb.append("    stdDev: ").append(toIndentedString(stdDev)).append("\n");
+    sb.append("}");
     return sb.toString();
   }
+
+  /**
+   * Convert the given object to string with each line indented by 4 spaces
+   * (except the first line).
+   */
+  private String toIndentedString(java.lang.Object o) {
+    if (o == null) {
+      return "null";
+    }
+    return o.toString().replace("\n", "\n    ");
+  }
+
 }
 

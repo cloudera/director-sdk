@@ -14,47 +14,62 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-// Note: This file is auto generated. Do not edit manually.
 
 package com.cloudera.director.client.v9.model;
 
+import java.util.Objects;
+import com.cloudera.director.client.v9.model.TimeSeriesResponse;
+import com.cloudera.director.client.v9.model.TimeSeriesRow;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TimeSeriesResponseList {
-  /* Responses */
-  private List<TimeSeriesResponse> responses;
-  /* Rows */
-  private List<TimeSeriesRow> rows;
-  public TimeSeriesResponseList() { }
+/**
+ * TimeSeriesResponseList
+ */
 
-  private TimeSeriesResponseList(List<TimeSeriesResponse> responses, List<TimeSeriesRow> rows) {
-    this.responses = responses;
-    this.rows = rows;
+public class TimeSeriesResponseList {
+  @SerializedName("responses")
+  private List<TimeSeriesResponse> responses = null;
+  @SerializedName("rows")
+  private List<TimeSeriesRow> rows = null;
+
+  public TimeSeriesResponseList() {
+    // Do nothing
   }
 
   private TimeSeriesResponseList(TimeSeriesResponseListBuilder builder) {
-    this.responses = builder.responses;
-    this.rows = builder.rows;
-  }
+      this.responses = builder.responses;
+      this.rows = builder.rows;
+    }
 
   public static TimeSeriesResponseListBuilder builder() {
     return new TimeSeriesResponseListBuilder();
   }
 
   public static class TimeSeriesResponseListBuilder {
-    private List<TimeSeriesResponse> responses = new ArrayList<TimeSeriesResponse>();
-    private List<TimeSeriesRow> rows = new ArrayList<TimeSeriesRow>();
+      private List<TimeSeriesResponse> responses = new ArrayList<TimeSeriesResponse>();
+      private List<TimeSeriesRow> rows = new ArrayList<TimeSeriesRow>();
+  
 
     public TimeSeriesResponseListBuilder responses(List<TimeSeriesResponse> responses) {
       this.responses = responses;
       return this;
     }
 
+
     public TimeSeriesResponseListBuilder rows(List<TimeSeriesRow> rows) {
       this.rows = rows;
       return this;
     }
+
 
     public TimeSeriesResponseList build() {
       return new TimeSeriesResponseList(this);
@@ -64,56 +79,103 @@ public class TimeSeriesResponseList {
   public TimeSeriesResponseListBuilder toBuilder() {
     return builder()
       .responses(responses)
-      .rows(rows)
+            .rows(rows)
       ;
   }
+
+  public TimeSeriesResponseList responses(List<TimeSeriesResponse> responses) {
+    this.responses = responses;
+    return this;
+  }
+
+  public TimeSeriesResponseList addResponsesItem(TimeSeriesResponse responsesItem) {
+    if (this.responses == null) {
+      this.responses = new ArrayList<TimeSeriesResponse>();
+    }
+    this.responses.add(responsesItem);
+    return this;
+  }
+
+   /**
+   * Responses
+   * @return responses
+  **/
+  @ApiModelProperty(value = "Responses")
   public List<TimeSeriesResponse> getResponses() {
     return responses;
   }
+
   public void setResponses(List<TimeSeriesResponse> responses) {
     this.responses = responses;
   }
 
+  public TimeSeriesResponseList rows(List<TimeSeriesRow> rows) {
+    this.rows = rows;
+    return this;
+  }
+
+  public TimeSeriesResponseList addRowsItem(TimeSeriesRow rowsItem) {
+    if (this.rows == null) {
+      this.rows = new ArrayList<TimeSeriesRow>();
+    }
+    this.rows.add(rowsItem);
+    return this;
+  }
+
+   /**
+   * Rows
+   * @return rows
+  **/
+  @ApiModelProperty(value = "Rows")
   public List<TimeSeriesRow> getRows() {
     return rows;
   }
+
   public void setRows(List<TimeSeriesRow> rows) {
     this.rows = rows;
   }
 
+
   @Override
-  public boolean equals(Object o) {
-    if (this == o) return true;
-    if (o == null || getClass() != o.getClass()) return false;
-
-    TimeSeriesResponseList other = (TimeSeriesResponseList) o; // NOPMD
-
-    if (responses != null ?
-        !responses.equals(other.responses) :
-        other.responses != null) return false;
-    if (rows != null ?
-        !rows.equals(other.rows) :
-        other.rows != null) return false;
-    return true;
+  public boolean equals(java.lang.Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
+    TimeSeriesResponseList timeSeriesResponseList = (TimeSeriesResponseList) o;
+    return Objects.equals(this.responses, timeSeriesResponseList.responses) &&
+        Objects.equals(this.rows, timeSeriesResponseList.rows);
   }
 
   @Override
   public int hashCode() {
-    int result = 0;
-    result = 31 * result + (responses != null ? responses.hashCode() : 0);
-    result = 31 * result + (rows != null ? rows.hashCode() : 0);
-    return result;
+    return Objects.hash(responses, rows);
   }
 
+
   @Override
-  public String toString()  {
+  public String toString() {
     StringBuilder sb = new StringBuilder();
-    String newLine = System.getProperty("line.separator");
-    sb.append("class TimeSeriesResponseList {" + newLine);
-    sb.append("  responses: ").append(responses).append(newLine);
-    sb.append("  rows: ").append(rows).append(newLine);
-    sb.append("}" + newLine);
+    sb.append("class TimeSeriesResponseList {\n");
+    
+    sb.append("    responses: ").append(toIndentedString(responses)).append("\n");
+    sb.append("    rows: ").append(toIndentedString(rows)).append("\n");
+    sb.append("}");
     return sb.toString();
   }
+
+  /**
+   * Convert the given object to string with each line indented by 4 spaces
+   * (except the first line).
+   */
+  private String toIndentedString(java.lang.Object o) {
+    if (o == null) {
+      return "null";
+    }
+    return o.toString().replace("\n", "\n    ");
+  }
+
 }
 

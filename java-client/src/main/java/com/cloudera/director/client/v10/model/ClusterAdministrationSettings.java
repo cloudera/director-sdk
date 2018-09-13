@@ -14,45 +14,59 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-// Note: This file is auto generated. Do not edit manually.
 
 package com.cloudera.director.client.v10.model;
 
+import java.util.Objects;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
+
+/**
+ * Settings for Cloudera Altus Director cluster administration
+ */
+@ApiModel(description = "Settings for Cloudera Altus Director cluster administration")
 
 public class ClusterAdministrationSettings {
-  /* Delay after a modification before auto-repair will execute */
-  private Long autoRepairCooldownPeriodInSeconds;
-  /* Whether auto-repair is enabled */
-  private Boolean autoRepairEnabled;
-  public ClusterAdministrationSettings() { }
+  @SerializedName("autoRepairCooldownPeriodInSeconds")
+  private Long autoRepairCooldownPeriodInSeconds = null;
+  @SerializedName("autoRepairEnabled")
+  private Boolean autoRepairEnabled = null;
 
-  private ClusterAdministrationSettings(Long autoRepairCooldownPeriodInSeconds, Boolean autoRepairEnabled) {
-    this.autoRepairCooldownPeriodInSeconds = autoRepairCooldownPeriodInSeconds;
-    this.autoRepairEnabled = autoRepairEnabled;
+  public ClusterAdministrationSettings() {
+    // Do nothing
   }
 
   private ClusterAdministrationSettings(ClusterAdministrationSettingsBuilder builder) {
-    this.autoRepairCooldownPeriodInSeconds = builder.autoRepairCooldownPeriodInSeconds;
-    this.autoRepairEnabled = builder.autoRepairEnabled;
-  }
+      this.autoRepairCooldownPeriodInSeconds = builder.autoRepairCooldownPeriodInSeconds;
+      this.autoRepairEnabled = builder.autoRepairEnabled;
+    }
 
   public static ClusterAdministrationSettingsBuilder builder() {
     return new ClusterAdministrationSettingsBuilder();
   }
 
   public static class ClusterAdministrationSettingsBuilder {
-    private Long autoRepairCooldownPeriodInSeconds = null;
-    private Boolean autoRepairEnabled = null;
+      private Long autoRepairCooldownPeriodInSeconds = null;
+      private Boolean autoRepairEnabled = null;
+  
 
     public ClusterAdministrationSettingsBuilder autoRepairCooldownPeriodInSeconds(Long autoRepairCooldownPeriodInSeconds) {
       this.autoRepairCooldownPeriodInSeconds = autoRepairCooldownPeriodInSeconds;
       return this;
     }
 
+
     public ClusterAdministrationSettingsBuilder autoRepairEnabled(Boolean autoRepairEnabled) {
       this.autoRepairEnabled = autoRepairEnabled;
       return this;
     }
+
 
     public ClusterAdministrationSettings build() {
       return new ClusterAdministrationSettings(this);
@@ -62,56 +76,87 @@ public class ClusterAdministrationSettings {
   public ClusterAdministrationSettingsBuilder toBuilder() {
     return builder()
       .autoRepairCooldownPeriodInSeconds(autoRepairCooldownPeriodInSeconds)
-      .autoRepairEnabled(autoRepairEnabled)
+            .autoRepairEnabled(autoRepairEnabled)
       ;
   }
+
+  public ClusterAdministrationSettings autoRepairCooldownPeriodInSeconds(Long autoRepairCooldownPeriodInSeconds) {
+    this.autoRepairCooldownPeriodInSeconds = autoRepairCooldownPeriodInSeconds;
+    return this;
+  }
+
+   /**
+   * Delay after a modification before auto-repair will execute
+   * @return autoRepairCooldownPeriodInSeconds
+  **/
+  @ApiModelProperty(required = true, value = "Delay after a modification before auto-repair will execute")
   public Long getAutoRepairCooldownPeriodInSeconds() {
     return autoRepairCooldownPeriodInSeconds;
   }
+
   public void setAutoRepairCooldownPeriodInSeconds(Long autoRepairCooldownPeriodInSeconds) {
     this.autoRepairCooldownPeriodInSeconds = autoRepairCooldownPeriodInSeconds;
   }
 
-  public Boolean getAutoRepairEnabled() {
+  public ClusterAdministrationSettings autoRepairEnabled(Boolean autoRepairEnabled) {
+    this.autoRepairEnabled = autoRepairEnabled;
+    return this;
+  }
+
+   /**
+   * Whether auto-repair is enabled
+   * @return autoRepairEnabled
+  **/
+  @ApiModelProperty(example = "false", required = true, value = "Whether auto-repair is enabled")
+  public Boolean isAutoRepairEnabled() {
     return autoRepairEnabled;
   }
+
   public void setAutoRepairEnabled(Boolean autoRepairEnabled) {
     this.autoRepairEnabled = autoRepairEnabled;
   }
 
+
   @Override
-  public boolean equals(Object o) {
-    if (this == o) return true;
-    if (o == null || getClass() != o.getClass()) return false;
-
-    ClusterAdministrationSettings other = (ClusterAdministrationSettings) o; // NOPMD
-
-    if (autoRepairCooldownPeriodInSeconds != null ?
-        !autoRepairCooldownPeriodInSeconds.equals(other.autoRepairCooldownPeriodInSeconds) :
-        other.autoRepairCooldownPeriodInSeconds != null) return false;
-    if (autoRepairEnabled != null ?
-        !autoRepairEnabled.equals(other.autoRepairEnabled) :
-        other.autoRepairEnabled != null) return false;
-    return true;
+  public boolean equals(java.lang.Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
+    ClusterAdministrationSettings clusterAdministrationSettings = (ClusterAdministrationSettings) o;
+    return Objects.equals(this.autoRepairCooldownPeriodInSeconds, clusterAdministrationSettings.autoRepairCooldownPeriodInSeconds) &&
+        Objects.equals(this.autoRepairEnabled, clusterAdministrationSettings.autoRepairEnabled);
   }
 
   @Override
   public int hashCode() {
-    int result = 0;
-    result = 31 * result + (autoRepairCooldownPeriodInSeconds != null ? autoRepairCooldownPeriodInSeconds.hashCode() : 0);
-    result = 31 * result + (autoRepairEnabled != null ? autoRepairEnabled.hashCode() : 0);
-    return result;
+    return Objects.hash(autoRepairCooldownPeriodInSeconds, autoRepairEnabled);
   }
 
+
   @Override
-  public String toString()  {
+  public String toString() {
     StringBuilder sb = new StringBuilder();
-    String newLine = System.getProperty("line.separator");
-    sb.append("class ClusterAdministrationSettings {" + newLine);
-    sb.append("  autoRepairCooldownPeriodInSeconds: ").append(autoRepairCooldownPeriodInSeconds).append(newLine);
-    sb.append("  autoRepairEnabled: ").append(autoRepairEnabled).append(newLine);
-    sb.append("}" + newLine);
+    sb.append("class ClusterAdministrationSettings {\n");
+    
+    sb.append("    autoRepairCooldownPeriodInSeconds: ").append(toIndentedString(autoRepairCooldownPeriodInSeconds)).append("\n");
+    sb.append("    autoRepairEnabled: ").append(toIndentedString(autoRepairEnabled)).append("\n");
+    sb.append("}");
     return sb.toString();
   }
+
+  /**
+   * Convert the given object to string with each line indented by 4 spaces
+   * (except the first line).
+   */
+  private String toIndentedString(java.lang.Object o) {
+    if (o == null) {
+      return "null";
+    }
+    return o.toString().replace("\n", "\n    ");
+  }
+
 }
 

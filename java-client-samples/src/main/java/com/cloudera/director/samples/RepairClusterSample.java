@@ -99,9 +99,9 @@ public class RepairClusterSample extends CommonParameters {
     }
 
     System.out.println("Waiting for the cluster to be ready. Check the web interface for details.");
-    String stage = ClientUtil.waitForCluster(client, environmentName, deploymentName, clusterName);
+    Status.StageEnum stage = ClientUtil.waitForCluster(client, environmentName, deploymentName, clusterName);
 
-    if (!stage.equals(Status.Stage.READY)) {
+    if (!stage.equals(Status.StageEnum.READY)) {
       System.err.println("Cluster went into an unexpected stage");
       return ExitCodes.UNEXPECTED_STAGE;
     }

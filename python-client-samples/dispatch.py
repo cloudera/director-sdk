@@ -14,74 +14,83 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# Simple script that shows how to use the API to import a client config file
+"""
+Simple script that shows how to use the API to import a client config file
+"""
 
 import argparse
-import sys
-from cloudera.director.common.client import ApiClient
-from cloudera.director.latest import (AuthenticationApi, ImportClientConfigApi)
-from cloudera.director.latest.models import Login
 from os.path import isfile
-from urllib2 import HTTPError
+import sys
+from cloudera.director.common.client import ApiClient, Configuration
+from cloudera.director.common.rest import ApiException
+from cloudera.director.latest import ImportClientConfigApi
 
 
 def get_authenticated_client(args):
-  """
-  Create a new API client and authenticate against a server as admin
+    """
+    Create a new API client and authenticate against a server as admin
 
-  @param args: dict of parsed command line arguments that
-               include server host and admin credentials
-  @rtype:      ApiClient
-  @return:     authenticated API client
-  """
+    @param args: dict of parsed command line arguments that
+                 include server host and admin credentials
+    @rtype:      ApiClient
+    @return:     authenticated API client
+    """
 
-  # Start by creating a client pointing to the right server
-  tls_enabled = args.server.startswith('https')
-  client = ApiClient(args.server, tls_enabled=tls_enabled, cafile=args.cafile,
-                     hostname_verification_enabled=True)
+    configuration = Configuration()
+    configuration.host = args.server
+    configuration.username = args.admin_username
+    configuration.password = args.admin_password
 
-  # Authenticate. This will start a session and store the cookie
-  auth = AuthenticationApi(client)
-  auth.login(Login(username=args.admin_username, password=args.admin_password))
+    if args.server.startswith('https'):
+        configuration.verify_ssl = True
+        if args.cafile:
+            configuration.ssl_ca_cert = args.cafile
 
-  return client
+    client = ApiClient(configuration=configuration)
+    return client
 
 def main():
-  parser = argparse.ArgumentParser(prog='dispatch.py')
+    """
+    Main function
 
-  parser.add_argument('--admin-username', default="admin",
-                      help='Name of an user with administrative access (defaults to %(default)s)')
-  parser.add_argument('--admin-password', default="admin",
-                      help='Password for the administrative user (defaults to %(default)s)')
-  parser.add_argument('--server', default="http://localhost:7189",
-                      help="Cloudera Director server URL (defaults to %(default)s)")
-  parser.add_argument('--cafile', default=None,
-                      help='Path to file containing trusted certificate(s) (defaults to %(default)s)')
+    @return: 0 if successful
+    """
+    parser = argparse.ArgumentParser(prog='dispatch.py')
 
-  parser.add_argument('config_file', help="Cluster configuration file (.conf)")
+    parser.add_argument('--admin-username', default="admin",
+                        help='Name of an user with administrative access (defaults to %(default)s)')
+    parser.add_argument('--admin-password', default="admin",
+                        help='Password for the administrative user (defaults to %(default)s)')
+    parser.add_argument('--server', default="http://localhost:7189",
+                        help="Cloudera Altus Director server URL (defaults to %(default)s)")
+    parser.add_argument('--cafile', default=None,
+                        help='Path to file containing trusted certificate(s) ' +
+                        '(defaults to %(default)s)')
 
-  args = parser.parse_args()
+    parser.add_argument('config_file', help="Cluster configuration file (.conf)")
 
-  if not isfile(args.config_file):
-    print 'Error: "%s" not found or not a file' % args.config_file
-    return -1
+    args = parser.parse_args()
 
-  config = open(args.config_file, 'r').read()
-  client = get_authenticated_client(args)
+    if not isfile(args.config_file):
+        print 'Error: "%s" not found or not a file' % args.config_file
+        return -1
 
-  api = ImportClientConfigApi(client)
-  result = api.importClientConfig(config)
+    config = open(args.config_file, 'r').read()
+    client = get_authenticated_client(args)
 
-  print "Environment: %s (skipped: %s)" % (result.environment.name, result.environment.skipped)
-  print "Deployment: %s (skipped: %s)" % (result.deployment.name, result.deployment.skipped)
-  print "Cluster: %s (skipped: %s)" % (result.cluster.name, result.cluster.skipped)
+    api = ImportClientConfigApi(client)
+    result = api.import_client_config(config)
 
-  return 0
+    print "Environment: %s (skipped: %s)" % (result.environment.name, result.environment.skipped)
+    print "Deployment: %s (skipped: %s)" % (result.deployment.name, result.deployment.skipped)
+    print "Cluster: %s (skipped: %s)" % (result.cluster.name, result.cluster.skipped)
+
+    return 0
 
 if __name__ == '__main__':
-  try:
-    sys.exit(main())
+    try:
+        sys.exit(main())
 
-  except HTTPError as e:
-    print e.read()
-    raise e
+    except ApiException as exc:
+        print str(exc)
+        raise exc

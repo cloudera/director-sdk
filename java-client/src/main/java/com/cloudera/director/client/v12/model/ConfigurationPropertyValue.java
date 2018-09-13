@@ -14,43 +14,59 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-// Note: This file is auto generated. Do not edit manually.
 
 package com.cloudera.director.client.v12.model;
 
+import java.util.Objects;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
+
+/**
+ * A valid value and label for a configuration property
+ */
+@ApiModel(description = "A valid value and label for a configuration property")
 
 public class ConfigurationPropertyValue {
-  private String label;
-  private String value;
-  public ConfigurationPropertyValue() { }
+  @SerializedName("label")
+  private String label = null;
+  @SerializedName("value")
+  private String value = null;
 
-  private ConfigurationPropertyValue(String label, String value) {
-    this.label = label;
-    this.value = value;
+  public ConfigurationPropertyValue() {
+    // Do nothing
   }
 
   private ConfigurationPropertyValue(ConfigurationPropertyValueBuilder builder) {
-    this.label = builder.label;
-    this.value = builder.value;
-  }
+      this.label = builder.label;
+      this.value = builder.value;
+    }
 
   public static ConfigurationPropertyValueBuilder builder() {
     return new ConfigurationPropertyValueBuilder();
   }
 
   public static class ConfigurationPropertyValueBuilder {
-    private String label = null;
-    private String value = null;
+      private String label = null;
+      private String value = null;
+  
 
     public ConfigurationPropertyValueBuilder label(String label) {
       this.label = label;
       return this;
     }
 
+
     public ConfigurationPropertyValueBuilder value(String value) {
       this.value = value;
       return this;
     }
+
 
     public ConfigurationPropertyValue build() {
       return new ConfigurationPropertyValue(this);
@@ -60,56 +76,87 @@ public class ConfigurationPropertyValue {
   public ConfigurationPropertyValueBuilder toBuilder() {
     return builder()
       .label(label)
-      .value(value)
+            .value(value)
       ;
   }
+
+  public ConfigurationPropertyValue label(String label) {
+    this.label = label;
+    return this;
+  }
+
+   /**
+   * Label associated with value
+   * @return label
+  **/
+  @ApiModelProperty(required = true, value = "Label associated with value")
   public String getLabel() {
     return label;
   }
+
   public void setLabel(String label) {
     this.label = label;
   }
 
+  public ConfigurationPropertyValue value(String value) {
+    this.value = value;
+    return this;
+  }
+
+   /**
+   * Valid value
+   * @return value
+  **/
+  @ApiModelProperty(required = true, value = "Valid value")
   public String getValue() {
     return value;
   }
+
   public void setValue(String value) {
     this.value = value;
   }
 
+
   @Override
-  public boolean equals(Object o) {
-    if (this == o) return true;
-    if (o == null || getClass() != o.getClass()) return false;
-
-    ConfigurationPropertyValue other = (ConfigurationPropertyValue) o; // NOPMD
-
-    if (label != null ?
-        !label.equals(other.label) :
-        other.label != null) return false;
-    if (value != null ?
-        !value.equals(other.value) :
-        other.value != null) return false;
-    return true;
+  public boolean equals(java.lang.Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
+    ConfigurationPropertyValue configurationPropertyValue = (ConfigurationPropertyValue) o;
+    return Objects.equals(this.label, configurationPropertyValue.label) &&
+        Objects.equals(this.value, configurationPropertyValue.value);
   }
 
   @Override
   public int hashCode() {
-    int result = 0;
-    result = 31 * result + (label != null ? label.hashCode() : 0);
-    result = 31 * result + (value != null ? value.hashCode() : 0);
-    return result;
+    return Objects.hash(label, value);
   }
 
+
   @Override
-  public String toString()  {
+  public String toString() {
     StringBuilder sb = new StringBuilder();
-    String newLine = System.getProperty("line.separator");
-    sb.append("class ConfigurationPropertyValue {" + newLine);
-    sb.append("  label: ").append(label).append(newLine);
-    sb.append("  value: ").append(value).append(newLine);
-    sb.append("}" + newLine);
+    sb.append("class ConfigurationPropertyValue {\n");
+    
+    sb.append("    label: ").append(toIndentedString(label)).append("\n");
+    sb.append("    value: ").append(toIndentedString(value)).append("\n");
+    sb.append("}");
     return sb.toString();
   }
+
+  /**
+   * Convert the given object to string with each line indented by 4 spaces
+   * (except the first line).
+   */
+  private String toIndentedString(java.lang.Object o) {
+    if (o == null) {
+      return "null";
+    }
+    return o.toString().replace("\n", "\n    ");
+  }
+
 }
 

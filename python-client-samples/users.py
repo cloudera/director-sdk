@@ -14,17 +14,21 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# Simple script that shows how to use the Cloudera Director API to manage user accounts
+"""
+Simple script that shows how to use the Cloudera Altus Director API to manage user accounts.
+"""
 
 import argparse
 import sys
-from cloudera.director.common.client import ApiClient
-from cloudera.director.latest import AuthenticationApi, UsersApi
-from cloudera.director.latest.models import Login, User
-from urllib2 import HTTPError
-
+from cloudera.director.common.client import ApiClient, Configuration
+from cloudera.director.common.rest import ApiException
+from cloudera.director.latest import UsersApi
+from cloudera.director.latest.models import User
 
 class ExitCodes(object):
+    """
+    Exit codes for this script.
+    """
     OK = 0
     DUPLICATE_USER = 10
 
@@ -38,15 +42,17 @@ def get_authenticated_client(args):
     @return:     authenticated API client
     """
 
-    # Start by creating a client pointing to the right server
-    tls_enabled = args.server.startswith('https')
-    client = ApiClient(args.server, tls_enabled=tls_enabled, cafile=args.cafile,
-                       hostname_verification_enabled=True)
+    configuration = Configuration()
+    configuration.host = args.server
+    configuration.username = args.admin_username
+    configuration.password = args.admin_password
 
-    # Authenticate. This will start a session and store the cookie
-    auth = AuthenticationApi(client)
-    auth.login(Login(username=args.admin_username, password=args.admin_password))
+    if args.server.startswith('https'):
+        configuration.verify_ssl = True
+        if args.cafile:
+            configuration.ssl_ca_cert = args.cafile
 
+    client = ApiClient(configuration=configuration)
     return client
 
 def add_user(args):
@@ -60,15 +66,15 @@ def add_user(args):
     try:
         users_api = UsersApi(get_authenticated_client(args))
         users_api.create(User(username=args.username, password=args.password,
-                          enabled=True, roles=["ROLE_ADMIN"]))
+                              enabled=True, roles=["ROLE_ADMIN"]))
         return ExitCodes.OK
 
-    except HTTPError, e:
-        if  e.code == 302:  # found
+    except ApiException as exc:
+        if exc.status == 409:  # conflict
             sys.stderr.write("Cannot create duplicate user '%s'.\n" % (args.username,))
             return ExitCodes.DUPLICATE_USER
         else:
-            raise e
+            raise exc
 
 def list_users(args):
     """
@@ -98,6 +104,11 @@ def delete_user(args):
     return ExitCodes.OK
 
 def main():
+    """
+    Main function
+
+    @return: exit code from subcommand
+    """
 
     parser = argparse.ArgumentParser(prog="users.py")
     parser.add_argument('--admin-username', default="admin",
@@ -105,9 +116,10 @@ def main():
     parser.add_argument('--admin-password', default="admin",
                         help='Password for the administrative user (defaults to %(default)s)')
     parser.add_argument('--server', default="http://localhost:7189",
-                        help="Cloudera Director server URL (defaults to %(default)s)")
+                        help="Cloudera Altus Director server URL (defaults to %(default)s)")
     parser.add_argument('--cafile', default=None,
-                        help='Path to file containing trusted certificate(s) (defaults to %(default)s)')
+                        help='Path to file containing trusted certificate(s) ' +
+                        '(defaults to %(default)s)')
 
     subparsers = parser.add_subparsers(title="commands")
 

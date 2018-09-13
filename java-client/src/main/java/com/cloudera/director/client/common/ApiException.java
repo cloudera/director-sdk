@@ -14,35 +14,82 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-// Note: This file is auto generated. Do not edit manually.
 
 package com.cloudera.director.client.common;
 
+import java.util.Map;
+import java.util.List;
+
+
 public class ApiException extends Exception {
-  int code = 0;
-  String message = null;
+    private int code = 0;
+    private Map<String, List<String>> responseHeaders = null;
+    private String responseBody = null;
 
-  public ApiException() { }
+    public ApiException() {}
 
-  public ApiException(int code, String message) {
-    this.code = code;
-    this.message = message;
-  }
+    public ApiException(Throwable throwable) {
+        super(throwable);
+    }
 
-  public int getCode() {
-    return code;
-  }
+    public ApiException(String message) {
+        super(message);
+    }
 
-  public void setCode(int code) {
-    this.code = code;
-  }
+    public ApiException(String message, Throwable throwable, int code, Map<String, List<String>> responseHeaders, String responseBody) {
+        super(message, throwable);
+        this.code = code;
+        this.responseHeaders = responseHeaders;
+        this.responseBody = responseBody;
+    }
 
-  public String getMessage() {
-    return message;
-  }
+    public ApiException(String message, int code, Map<String, List<String>> responseHeaders, String responseBody) {
+        this(message, (Throwable) null, code, responseHeaders, responseBody);
+    }
 
-  public void setMessage(String message) {
-    this.message = message;
-  }
+    public ApiException(String message, Throwable throwable, int code, Map<String, List<String>> responseHeaders) {
+        this(message, throwable, code, responseHeaders, null);
+    }
+
+    public ApiException(int code, Map<String, List<String>> responseHeaders, String responseBody) {
+        this((String) null, (Throwable) null, code, responseHeaders, responseBody);
+    }
+
+    public ApiException(int code, String message) {
+        super(message);
+        this.code = code;
+    }
+
+    public ApiException(int code, String message, Map<String, List<String>> responseHeaders, String responseBody) {
+        this(code, message);
+        this.responseHeaders = responseHeaders;
+        this.responseBody = responseBody;
+    }
+
+    /**
+     * Get the HTTP status code.
+     *
+     * @return HTTP status code
+     */
+    public int getCode() {
+        return code;
+    }
+
+    /**
+     * Get the HTTP response headers.
+     *
+     * @return A map of list of string
+     */
+    public Map<String, List<String>> getResponseHeaders() {
+        return responseHeaders;
+    }
+
+    /**
+     * Get the HTTP response body.
+     *
+     * @return Response body in the form of string
+     */
+    public String getResponseBody() {
+        return responseBody;
+    }
 }
-

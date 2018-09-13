@@ -1,4 +1,0 @@
-com.cloudera.director.shaded.com.sun.jersey.core.impl.provider.xml.SAXParserContextProvider
-com.cloudera.director.shaded.com.sun.jersey.core.impl.provider.xml.XMLStreamReaderContextProvider
-com.cloudera.director.shaded.com.sun.jersey.core.impl.provider.xml.DocumentBuilderFactoryProvider
-com.cloudera.director.shaded.com.sun.jersey.core.impl.provider.xml.TransformerFactoryProvider

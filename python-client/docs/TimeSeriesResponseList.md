@@ -1,0 +1,11 @@
+# TimeSeriesResponseList
+
+## Properties
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**responses** | [**list[TimeSeriesResponse]**](TimeSeriesResponse.md) | Responses | [optional] 
+**rows** | [**list[TimeSeriesRow]**](TimeSeriesRow.md) | Rows | [optional] 
+
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+

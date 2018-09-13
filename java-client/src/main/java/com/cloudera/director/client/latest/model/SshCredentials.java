@@ -14,95 +14,98 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-// Note: This file is auto generated. Do not edit manually.
 
 package com.cloudera.director.client.latest.model;
 
+import java.util.Objects;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
+
+/**
+ * SshCredentials
+ */
 
 public class SshCredentials {
-  /*  */
-  private String bastionHost;
-  /* SSH server host key fingerprint */
-  private String hostKeyFingerprint;
-  /* Optional private key passphrase [redacted on read] */
-  private String passphrase;
-  /* Optional SSH password [redacted on read] */
-  private String password;
-  /* SSH server port */
-  private Integer port;
-  /* Optional SSH PKCS8 private key [redacted on read] */
-  private String privateKey;
-  /* SSH user */
-  private String username;
-  public SshCredentials() { }
+  @SerializedName("hostKeyFingerprint")
+  private String hostKeyFingerprint = null;
+  @SerializedName("passphrase")
+  private String passphrase = null;
+  @SerializedName("password")
+  private String password = null;
+  @SerializedName("port")
+  private Integer port = null;
+  @SerializedName("privateKey")
+  private String privateKey = null;
+  @SerializedName("username")
+  private String username = null;
 
-  private SshCredentials(String bastionHost, String hostKeyFingerprint, String passphrase, String password, Integer port, String privateKey, String username) {
-    this.bastionHost = bastionHost;
-    this.hostKeyFingerprint = hostKeyFingerprint;
-    this.passphrase = passphrase;
-    this.password = password;
-    this.port = port;
-    this.privateKey = privateKey;
-    this.username = username;
+  public SshCredentials() {
+    // Do nothing
   }
 
   private SshCredentials(SshCredentialsBuilder builder) {
-    this.bastionHost = builder.bastionHost;
-    this.hostKeyFingerprint = builder.hostKeyFingerprint;
-    this.passphrase = builder.passphrase;
-    this.password = builder.password;
-    this.port = builder.port;
-    this.privateKey = builder.privateKey;
-    this.username = builder.username;
-  }
+      this.hostKeyFingerprint = builder.hostKeyFingerprint;
+      this.passphrase = builder.passphrase;
+      this.password = builder.password;
+      this.port = builder.port;
+      this.privateKey = builder.privateKey;
+      this.username = builder.username;
+    }
 
   public static SshCredentialsBuilder builder() {
     return new SshCredentialsBuilder();
   }
 
   public static class SshCredentialsBuilder {
-    private String bastionHost = null;
-    private String hostKeyFingerprint = null;
-    private String passphrase = null;
-    private String password = null;
-    private Integer port = null;
-    private String privateKey = null;
-    private String username = null;
-
-    public SshCredentialsBuilder bastionHost(String bastionHost) {
-      this.bastionHost = bastionHost;
-      return this;
-    }
+      private String hostKeyFingerprint = null;
+      private String passphrase = null;
+      private String password = null;
+      private Integer port = null;
+      private String privateKey = null;
+      private String username = null;
+  
 
     public SshCredentialsBuilder hostKeyFingerprint(String hostKeyFingerprint) {
       this.hostKeyFingerprint = hostKeyFingerprint;
       return this;
     }
 
+
     public SshCredentialsBuilder passphrase(String passphrase) {
       this.passphrase = passphrase;
       return this;
     }
+
 
     public SshCredentialsBuilder password(String password) {
       this.password = password;
       return this;
     }
 
+
     public SshCredentialsBuilder port(Integer port) {
       this.port = port;
       return this;
     }
+
 
     public SshCredentialsBuilder privateKey(String privateKey) {
       this.privateKey = privateKey;
       return this;
     }
 
+
     public SshCredentialsBuilder username(String username) {
       this.username = username;
       return this;
     }
+
 
     public SshCredentials build() {
       return new SshCredentials(this);
@@ -111,110 +114,172 @@ public class SshCredentials {
 
   public SshCredentialsBuilder toBuilder() {
     return builder()
-      .bastionHost(bastionHost)
       .hostKeyFingerprint(hostKeyFingerprint)
-      .passphrase(passphrase)
-      .password(password)
-      .port(port)
-      .privateKey(privateKey)
-      .username(username)
+            .passphrase(passphrase)
+            .password(password)
+            .port(port)
+            .privateKey(privateKey)
+            .username(username)
       ;
   }
-  public String getBastionHost() {
-    return bastionHost;
-  }
-  public void setBastionHost(String bastionHost) {
-    this.bastionHost = bastionHost;
+
+  public SshCredentials hostKeyFingerprint(String hostKeyFingerprint) {
+    this.hostKeyFingerprint = hostKeyFingerprint;
+    return this;
   }
 
+   /**
+   * SSH server host key fingerprint
+   * @return hostKeyFingerprint
+  **/
+  @ApiModelProperty(value = "SSH server host key fingerprint")
   public String getHostKeyFingerprint() {
     return hostKeyFingerprint;
   }
+
   public void setHostKeyFingerprint(String hostKeyFingerprint) {
     this.hostKeyFingerprint = hostKeyFingerprint;
   }
 
+  public SshCredentials passphrase(String passphrase) {
+    this.passphrase = passphrase;
+    return this;
+  }
+
+   /**
+   * Optional private key passphrase [redacted on read]
+   * @return passphrase
+  **/
+  @ApiModelProperty(value = "Optional private key passphrase [redacted on read]")
   public String getPassphrase() {
     return passphrase;
   }
+
   public void setPassphrase(String passphrase) {
     this.passphrase = passphrase;
   }
 
+  public SshCredentials password(String password) {
+    this.password = password;
+    return this;
+  }
+
+   /**
+   * Optional SSH password [redacted on read]
+   * @return password
+  **/
+  @ApiModelProperty(value = "Optional SSH password [redacted on read]")
   public String getPassword() {
     return password;
   }
+
   public void setPassword(String password) {
     this.password = password;
   }
 
+  public SshCredentials port(Integer port) {
+    this.port = port;
+    return this;
+  }
+
+   /**
+   * SSH server port
+   * @return port
+  **/
+  @ApiModelProperty(required = true, value = "SSH server port")
   public Integer getPort() {
     return port;
   }
+
   public void setPort(Integer port) {
     this.port = port;
   }
 
+  public SshCredentials privateKey(String privateKey) {
+    this.privateKey = privateKey;
+    return this;
+  }
+
+   /**
+   * Optional SSH PKCS8 private key [redacted on read]
+   * @return privateKey
+  **/
+  @ApiModelProperty(value = "Optional SSH PKCS8 private key [redacted on read]")
   public String getPrivateKey() {
     return privateKey;
   }
+
   public void setPrivateKey(String privateKey) {
     this.privateKey = privateKey;
   }
 
+  public SshCredentials username(String username) {
+    this.username = username;
+    return this;
+  }
+
+   /**
+   * SSH user
+   * @return username
+  **/
+  @ApiModelProperty(required = true, value = "SSH user")
   public String getUsername() {
     return username;
   }
+
   public void setUsername(String username) {
     this.username = username;
   }
 
+
   @Override
-  public boolean equals(Object o) {
-    if (this == o) return true;
-    if (o == null || getClass() != o.getClass()) return false;
-
-    SshCredentials other = (SshCredentials) o; // NOPMD
-
-    if (bastionHost != null ?
-        !bastionHost.equals(other.bastionHost) :
-        other.bastionHost != null) return false;
-    if (hostKeyFingerprint != null ?
-        !hostKeyFingerprint.equals(other.hostKeyFingerprint) :
-        other.hostKeyFingerprint != null) return false;
-    if (port != null ?
-        !port.equals(other.port) :
-        other.port != null) return false;
-    if (username != null ?
-        !username.equals(other.username) :
-        other.username != null) return false;
-    return true;
+  public boolean equals(java.lang.Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
+    SshCredentials sshCredentials = (SshCredentials) o;
+    return Objects.equals(this.hostKeyFingerprint, sshCredentials.hostKeyFingerprint) &&
+        Objects.equals(this.passphrase, sshCredentials.passphrase) &&
+        Objects.equals(this.password, sshCredentials.password) &&
+        Objects.equals(this.port, sshCredentials.port) &&
+        Objects.equals(this.privateKey, sshCredentials.privateKey) &&
+        Objects.equals(this.username, sshCredentials.username);
   }
 
   @Override
   public int hashCode() {
-    int result = 0;
-    result = 31 * result + (bastionHost != null ? bastionHost.hashCode() : 0);
-    result = 31 * result + (hostKeyFingerprint != null ? hostKeyFingerprint.hashCode() : 0);
-    result = 31 * result + (port != null ? port.hashCode() : 0);
-    result = 31 * result + (username != null ? username.hashCode() : 0);
-    return result;
+    return Objects.hash(hostKeyFingerprint, passphrase, password, port, privateKey, username);
   }
 
+
   @Override
-  public String toString()  {
+  public String toString() {
     StringBuilder sb = new StringBuilder();
-    String newLine = System.getProperty("line.separator");
-    sb.append("class SshCredentials {" + newLine);
-    sb.append("  bastionHost: ").append(bastionHost).append(newLine);
-    sb.append("  hostKeyFingerprint: ").append(hostKeyFingerprint).append(newLine);
-    sb.append("  passphrase: ").append("REDACTED").append(newLine);
-    sb.append("  password: ").append("REDACTED").append(newLine);
-    sb.append("  port: ").append(port).append(newLine);
-    sb.append("  privateKey: ").append("REDACTED").append(newLine);
-    sb.append("  username: ").append(username).append(newLine);
-    sb.append("}" + newLine);
+    sb.append("class SshCredentials {\n");
+    
+    sb.append("    hostKeyFingerprint: ").append(toIndentedString(hostKeyFingerprint)).append("\n");
+    sb.append("    passphrase: ").append(toIndentedString(passphrase)).append("\n");
+    sb.append("    password: ").append(toIndentedString(password)).append("\n");
+    sb.append("    port: ").append(toIndentedString(port)).append("\n");
+    sb.append("    privateKey: ").append(toIndentedString(privateKey)).append("\n");
+    sb.append("    username: ").append(toIndentedString(username)).append("\n");
+    sb.append("}");
     return sb.toString();
   }
+
+  /**
+   * Convert the given object to string with each line indented by 4 spaces
+   * (except the first line).
+   */
+  private String toIndentedString(java.lang.Object o) {
+    if (o == null) {
+      return "null";
+    }
+    return o.toString().replace("\n", "\n    ");
+  }
+
 }
 

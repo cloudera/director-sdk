@@ -14,59 +14,116 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-// Note: This file is auto generated. Do not edit manually.
 
 package com.cloudera.director.client.v10.model;
 
+import java.util.Objects;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
+
+/**
+ * A notification to be presented to a Cloudera Altus Director user
+ */
+@ApiModel(description = "A notification to be presented to a Cloudera Altus Director user")
 
 public class Notification {
-  /* description */
-  private String description;
-  /* message */
-  private String message;
-  /* type */
-  private String type;
-  public interface Type {
-    String WARNING = "WARNING";
-    String CRITICAL = "CRITICAL";
-  }
-  public Notification() { }
+  @SerializedName("description")
+  private String description = null;
+  @SerializedName("message")
+  private String message = null;
+  /**
+   * Notification type
+   */
+  @JsonAdapter(TypeEnum.Adapter.class)
+  public enum TypeEnum {
+    WARNING("WARNING"),
+    
+    CRITICAL("CRITICAL");
 
-  private Notification(String description, String message, String type) {
-    this.description = description;
-    this.message = message;
-    this.type = type;
+    private String value;
+
+    TypeEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static TypeEnum fromValue(String text) {
+      for (TypeEnum b : TypeEnum.values()) {
+        if (String.valueOf(b.value).equals(text)) {
+          return b;
+        }
+      }
+      return null;
+    }
+
+    public static class Adapter extends TypeAdapter<TypeEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final TypeEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public TypeEnum read(final JsonReader jsonReader) throws IOException {
+        String value = jsonReader.nextString();
+        return TypeEnum.fromValue(String.valueOf(value));
+      }
+    }
+  }
+
+  @SerializedName("type")
+  private TypeEnum type = null;
+
+  public Notification() {
+    // Do nothing
   }
 
   private Notification(NotificationBuilder builder) {
-    this.description = builder.description;
-    this.message = builder.message;
-    this.type = builder.type;
-  }
+      this.description = builder.description;
+      this.message = builder.message;
+      this.type = builder.type;
+    }
 
   public static NotificationBuilder builder() {
     return new NotificationBuilder();
   }
 
   public static class NotificationBuilder {
-    private String description = null;
-    private String message = null;
-    private String type = null;
+      private String description = null;
+      private String message = null;
+      private TypeEnum type = null;
+  
 
     public NotificationBuilder description(String description) {
       this.description = description;
       return this;
     }
 
+
     public NotificationBuilder message(String message) {
       this.message = message;
       return this;
     }
 
-    public NotificationBuilder type(String type) {
+
+    public NotificationBuilder type(TypeEnum type) {
       this.type = type;
       return this;
     }
+
 
     public Notification build() {
       return new Notification(this);
@@ -76,69 +133,108 @@ public class Notification {
   public NotificationBuilder toBuilder() {
     return builder()
       .description(description)
-      .message(message)
-      .type(type)
+            .message(message)
+            .type(type)
       ;
   }
+
+  public Notification description(String description) {
+    this.description = description;
+    return this;
+  }
+
+   /**
+   * Notification description
+   * @return description
+  **/
+  @ApiModelProperty(value = "Notification description")
   public String getDescription() {
     return description;
   }
+
   public void setDescription(String description) {
     this.description = description;
   }
 
+  public Notification message(String message) {
+    this.message = message;
+    return this;
+  }
+
+   /**
+   * Notification message
+   * @return message
+  **/
+  @ApiModelProperty(required = true, value = "Notification message")
   public String getMessage() {
     return message;
   }
+
   public void setMessage(String message) {
     this.message = message;
   }
 
-  public String getType() {
+  public Notification type(TypeEnum type) {
+    this.type = type;
+    return this;
+  }
+
+   /**
+   * Notification type
+   * @return type
+  **/
+  @ApiModelProperty(required = true, value = "Notification type")
+  public TypeEnum getType() {
     return type;
   }
-  public void setType(String type) {
+
+  public void setType(TypeEnum type) {
     this.type = type;
   }
 
+
   @Override
-  public boolean equals(Object o) {
-    if (this == o) return true;
-    if (o == null || getClass() != o.getClass()) return false;
-
-    Notification other = (Notification) o; // NOPMD
-
-    if (description != null ?
-        !description.equals(other.description) :
-        other.description != null) return false;
-    if (message != null ?
-        !message.equals(other.message) :
-        other.message != null) return false;
-    if (type != null ?
-        !type.equals(other.type) :
-        other.type != null) return false;
-    return true;
+  public boolean equals(java.lang.Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
+    Notification notification = (Notification) o;
+    return Objects.equals(this.description, notification.description) &&
+        Objects.equals(this.message, notification.message) &&
+        Objects.equals(this.type, notification.type);
   }
 
   @Override
   public int hashCode() {
-    int result = 0;
-    result = 31 * result + (description != null ? description.hashCode() : 0);
-    result = 31 * result + (message != null ? message.hashCode() : 0);
-    result = 31 * result + (type != null ? type.hashCode() : 0);
-    return result;
+    return Objects.hash(description, message, type);
   }
 
+
   @Override
-  public String toString()  {
+  public String toString() {
     StringBuilder sb = new StringBuilder();
-    String newLine = System.getProperty("line.separator");
-    sb.append("class Notification {" + newLine);
-    sb.append("  description: ").append(description).append(newLine);
-    sb.append("  message: ").append(message).append(newLine);
-    sb.append("  type: ").append(type).append(newLine);
-    sb.append("}" + newLine);
+    sb.append("class Notification {\n");
+    
+    sb.append("    description: ").append(toIndentedString(description)).append("\n");
+    sb.append("    message: ").append(toIndentedString(message)).append("\n");
+    sb.append("    type: ").append(toIndentedString(type)).append("\n");
+    sb.append("}");
     return sb.toString();
   }
+
+  /**
+   * Convert the given object to string with each line indented by 4 spaces
+   * (except the first line).
+   */
+  private String toIndentedString(java.lang.Object o) {
+    if (o == null) {
+      return "null";
+    }
+    return o.toString().replace("\n", "\n    ");
+  }
+
 }
 

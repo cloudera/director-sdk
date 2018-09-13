@@ -14,12 +14,22 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-// Note: This file is auto generated. Do not edit manually.
 
 package com.cloudera.director.client.v10.api;
 
+import com.cloudera.director.client.common.ApiCallback;
 import com.cloudera.director.client.common.ApiClient;
 import com.cloudera.director.client.common.ApiException;
+import com.cloudera.director.client.common.ApiResponse;
+import com.cloudera.director.client.common.Configuration;
+import com.cloudera.director.client.common.Pair;
+import com.cloudera.director.client.common.ProgressRequestBody;
+import com.cloudera.director.client.common.ProgressResponseBody;
+
+import com.google.gson.reflect.TypeToken;
+
+import java.io.IOException;
+
 
 import com.cloudera.director.client.v10.model.Cluster;
 import com.cloudera.director.client.v10.model.ClusterAdministrationSettings;
@@ -27,552 +37,1745 @@ import com.cloudera.director.client.v10.model.ClusterTemplate;
 import com.cloudera.director.client.v10.model.ClusterUpdateEventSummary;
 import com.cloudera.director.client.v10.model.Metrics;
 import com.cloudera.director.client.v10.model.Status;
-import java.util.Arrays;
+
+import java.lang.reflect.Type;
+import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List; // NOPMD
+import java.util.List;
 import java.util.Map;
 
-@SuppressWarnings("parametername")
 public class ClustersApi {
-  ApiClient apiClient;
+    private ApiClient apiClient;
 
-  public ApiClient getClient() {
-    return apiClient;
-  }
-
-  public ClustersApi(ApiClient apiClient) {
-    this.apiClient = apiClient;
-  }
-
-  /**
-  * Collects diagnostic data.
-  * @param  environment  environmentName
-  * @param  deployment  deploymentName
-  * @param  cluster  clusterName
-  * status code: 201 reason: "Created"
-  * status code: 202 reason: "Accepted"
-  * status code: 401 reason: "Unauthorized"
-  * status code: 403 reason: "Forbidden"
-  * status code: 404 reason: "Entity not found"
-  * status code: 409 reason: "Cluster is in transition"
-  * status code: 412 reason: "Deployment is not available"
-  */
-  public void collectDiagnosticData(String environment, String deployment, String cluster) throws ApiException {
-    Object postBody = null;
-    // verify required params are set
-    if (environment == null || deployment == null || cluster == null ) {
-       throw new ApiException(400, "missing required params");
-    }
-    // create path and map variables
-    String path = "/api/v10/environments/{environment}/deployments/{deployment}/clusters/{cluster}/diagnosticData"
-      .replaceAll("\\{format\\}", "json")
-      .replaceAll("\\{" + "environment" + "\\}",
-                  apiClient.escapeString(environment.toString()))
-      .replaceAll("\\{" + "deployment" + "\\}",
-                  apiClient.escapeString(deployment.toString()))
-      .replaceAll("\\{" + "cluster" + "\\}",
-                  apiClient.escapeString(cluster.toString()))
-      ;
-
-    // query params
-    Map<String, String> queryParams = new HashMap<String, String>();
-    Map<String, String> headerParams = new HashMap<String, String>();
-    Map<String, String> formParams = new HashMap<String, String>();
-
-    String[] contentTypes = { "application/json"};
-    if (contentTypes.length != 1) {
-      throw new IllegalArgumentException("An API client expects a single content type. Got: "
-        + Arrays.toString(contentTypes));
+    public ClustersApi() {
+        this(Configuration.getDefaultApiClient());
     }
 
-    apiClient.invokeAPI(path, "POST", queryParams, postBody,
-      headerParams, formParams, contentTypes[0]);
+    public ClustersApi(ApiClient apiClient) {
+        this.apiClient = apiClient;
     }
 
-
-  /**
-  * Create a new cluster.
-  * @param  environment  environmentName
-  * @param  deployment  deploymentName
-  * @param  body  clusterTemplate
-  * status code: 201 reason: "Cluster template accepted"
-  * status code: 302 reason: "Cluster already exists"
-  * status code: 400 reason: "Invalid cluster template"
-  * status code: 401 reason: "Unauthorized"
-  * status code: 403 reason: "Forbidden"
-  * status code: 404 reason: "Not Found"
-  */
-  public void create(String environment, String deployment, ClusterTemplate body) throws ApiException {
-    Object postBody = body;
-    // verify required params are set
-    if (environment == null || deployment == null || body == null ) {
-       throw new ApiException(400, "missing required params");
-    }
-    // create path and map variables
-    String path = "/api/v10/environments/{environment}/deployments/{deployment}/clusters"
-      .replaceAll("\\{format\\}", "json")
-      .replaceAll("\\{" + "environment" + "\\}",
-                  apiClient.escapeString(environment.toString()))
-      .replaceAll("\\{" + "deployment" + "\\}",
-                  apiClient.escapeString(deployment.toString()))
-      ;
-
-    // query params
-    Map<String, String> queryParams = new HashMap<String, String>();
-    Map<String, String> headerParams = new HashMap<String, String>();
-    Map<String, String> formParams = new HashMap<String, String>();
-
-    String[] contentTypes = { "application/json"};
-    if (contentTypes.length != 1) {
-      throw new IllegalArgumentException("An API client expects a single content type. Got: "
-        + Arrays.toString(contentTypes));
+    public ApiClient getApiClient() {
+        return apiClient;
     }
 
-    apiClient.invokeAPI(path, "POST", queryParams, postBody,
-      headerParams, formParams, contentTypes[0]);
+    public void setApiClient(ApiClient apiClient) {
+        this.apiClient = apiClient;
     }
 
+    /**
+     * Build call for collectDiagnosticData
+     * @param environment environment (required)
+     * @param deployment deployment (required)
+     * @param cluster cluster (required)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call collectDiagnosticDataCall(String environment, String deployment, String cluster, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
 
-  /**
-  * Delete a cluster by name.
-  * @param  environment  environmentName
-  * @param  deployment  deploymentName
-  * @param  cluster  clusterName
-  * status code: 204 reason: "Delete request accepted"
-  * status code: 401 reason: "Unauthorized"
-  * status code: 403 reason: "Forbidden"
-  * status code: 404 reason: "Entity not found"
-  */
-  public void delete(String environment, String deployment, String cluster) throws ApiException {
-    Object postBody = null;
-    // verify required params are set
-    if (environment == null || deployment == null || cluster == null ) {
-       throw new ApiException(400, "missing required params");
-    }
-    // create path and map variables
-    String path = "/api/v10/environments/{environment}/deployments/{deployment}/clusters/{cluster}"
-      .replaceAll("\\{format\\}", "json")
-      .replaceAll("\\{" + "environment" + "\\}",
-                  apiClient.escapeString(environment.toString()))
-      .replaceAll("\\{" + "deployment" + "\\}",
-                  apiClient.escapeString(deployment.toString()))
-      .replaceAll("\\{" + "cluster" + "\\}",
-                  apiClient.escapeString(cluster.toString()))
-      ;
+        // create path and map variables
+        String localVarPath = "/api/v10/environments/{environment}/deployments/{deployment}/clusters/{cluster}/diagnosticData"
+            .replaceAll("\\{" + "environment" + "\\}", apiClient.escapeString(environment.toString()))
+            .replaceAll("\\{" + "deployment" + "\\}", apiClient.escapeString(deployment.toString()))
+            .replaceAll("\\{" + "cluster" + "\\}", apiClient.escapeString(cluster.toString()));
 
-    // query params
-    Map<String, String> queryParams = new HashMap<String, String>();
-    Map<String, String> headerParams = new HashMap<String, String>();
-    Map<String, String> formParams = new HashMap<String, String>();
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
 
-    String[] contentTypes = { "application/json"};
-    if (contentTypes.length != 1) {
-      throw new IllegalArgumentException("An API client expects a single content type. Got: "
-        + Arrays.toString(contentTypes));
-    }
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
 
-    apiClient.invokeAPI(path, "DELETE", queryParams, postBody,
-      headerParams, formParams, contentTypes[0]);
-    }
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
 
-  /**
-  * Get a cluster by name.
-  * @param  environment  environmentName
-  * @param  deployment  deploymentName
-  * @param  cluster  clusterName
-  * status code: 200 reason: "OK"
-  * status code: 204 reason: "Cluster is in transition or failed stage"
-  * status code: 401 reason: "Unauthorized"
-  * status code: 403 reason: "Forbidden"
-  * status code: 404 reason: "Entity not found"
-  */
-  public Cluster get(String environment, String deployment, String cluster) throws ApiException {
-    Object postBody = null;
-    // verify required params are set
-    if (environment == null || deployment == null || cluster == null ) {
-       throw new ApiException(400, "missing required params");
-    }
-    // create path and map variables
-    String path = "/api/v10/environments/{environment}/deployments/{deployment}/clusters/{cluster}"
-      .replaceAll("\\{format\\}", "json")
-      .replaceAll("\\{" + "environment" + "\\}",
-                  apiClient.escapeString(environment.toString()))
-      .replaceAll("\\{" + "deployment" + "\\}",
-                  apiClient.escapeString(deployment.toString()))
-      .replaceAll("\\{" + "cluster" + "\\}",
-                  apiClient.escapeString(cluster.toString()))
-      ;
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
 
-    // query params
-    Map<String, String> queryParams = new HashMap<String, String>();
-    Map<String, String> headerParams = new HashMap<String, String>();
-    Map<String, String> formParams = new HashMap<String, String>();
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
 
-    String[] contentTypes = { "application/json"};
-    if (contentTypes.length != 1) {
-      throw new IllegalArgumentException("An API client expects a single content type. Got: "
-        + Arrays.toString(contentTypes));
+        String[] localVarAuthNames = new String[] { "basic" };
+        return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
 
-    Object response = apiClient.invokeAPI(path, "GET", queryParams, postBody,
-      headerParams, formParams, contentTypes[0], "", Cluster.class);
-    return (Cluster) response;}
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call collectDiagnosticDataValidateBeforeCall(String environment, String deployment, String cluster, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'environment' is set
+        if (environment == null) {
+            throw new ApiException("Missing the required parameter 'environment' when calling collectDiagnosticData(Async)");
+        }
+        
+        // verify the required parameter 'deployment' is set
+        if (deployment == null) {
+            throw new ApiException("Missing the required parameter 'deployment' when calling collectDiagnosticData(Async)");
+        }
+        
+        // verify the required parameter 'cluster' is set
+        if (cluster == null) {
+            throw new ApiException("Missing the required parameter 'cluster' when calling collectDiagnosticData(Async)");
+        }
+        
 
+        com.squareup.okhttp.Call call = collectDiagnosticDataCall(environment, deployment, cluster, progressListener, progressRequestListener);
+        return call;
 
-  /**
-  * Get administration settings for a cluster.
-  * @param  environment  environmentName
-  * @param  deployment  deploymentName
-  * @param  cluster  clusterName
-  * status code: 200 reason: "OK"
-  * status code: 401 reason: "Unauthorized"
-  * status code: 403 reason: "Forbidden"
-  * status code: 404 reason: "Entity not found"
-  */
-  public ClusterAdministrationSettings getAdministrationSettings(String environment, String deployment, String cluster) throws ApiException {
-    Object postBody = null;
-    // verify required params are set
-    if (environment == null || deployment == null || cluster == null ) {
-       throw new ApiException(400, "missing required params");
-    }
-    // create path and map variables
-    String path = "/api/v10/environments/{environment}/deployments/{deployment}/clusters/{cluster}/settings"
-      .replaceAll("\\{format\\}", "json")
-      .replaceAll("\\{" + "environment" + "\\}",
-                  apiClient.escapeString(environment.toString()))
-      .replaceAll("\\{" + "deployment" + "\\}",
-                  apiClient.escapeString(deployment.toString()))
-      .replaceAll("\\{" + "cluster" + "\\}",
-                  apiClient.escapeString(cluster.toString()))
-      ;
-
-    // query params
-    Map<String, String> queryParams = new HashMap<String, String>();
-    Map<String, String> headerParams = new HashMap<String, String>();
-    Map<String, String> formParams = new HashMap<String, String>();
-
-    String[] contentTypes = { "application/json"};
-    if (contentTypes.length != 1) {
-      throw new IllegalArgumentException("An API client expects a single content type. Got: "
-        + Arrays.toString(contentTypes));
     }
 
-    Object response = apiClient.invokeAPI(path, "GET", queryParams, postBody,
-      headerParams, formParams, contentTypes[0], "", ClusterAdministrationSettings.class);
-    return (ClusterAdministrationSettings) response;}
-
-
-  /**
-  * Get history of updates for a cluster.
-  * @param  environment  environmentName
-  * @param  deployment  deploymentName
-  * @param  cluster  clusterName
-  * @param  numEvents  numEvents
-  * @param  page  page
-  * status code: 200 reason: "OK"
-  * status code: 401 reason: "Unauthorized"
-  * status code: 403 reason: "Forbidden"
-  * status code: 404 reason: "Entity not found"
-  */
-  public List<ClusterUpdateEventSummary> getHistory(String environment, String deployment, String cluster, Integer numEvents, Integer page) throws ApiException {
-    Object postBody = null;
-    // verify required params are set
-    if (environment == null || deployment == null || cluster == null || numEvents == null || page == null ) {
-       throw new ApiException(400, "missing required params");
-    }
-    // create path and map variables
-    String path = "/api/v10/environments/{environment}/deployments/{deployment}/clusters/{cluster}/history"
-      .replaceAll("\\{format\\}", "json")
-      .replaceAll("\\{" + "environment" + "\\}",
-                  apiClient.escapeString(environment.toString()))
-      .replaceAll("\\{" + "deployment" + "\\}",
-                  apiClient.escapeString(deployment.toString()))
-      .replaceAll("\\{" + "cluster" + "\\}",
-                  apiClient.escapeString(cluster.toString()))
-      ;
-
-    // query params
-    Map<String, String> queryParams = new HashMap<String, String>();
-    Map<String, String> headerParams = new HashMap<String, String>();
-    Map<String, String> formParams = new HashMap<String, String>();
-
-    if (!"null".equals(String.valueOf(numEvents)))
-      queryParams.put("numEvents", String.valueOf(numEvents));
-    if (!"null".equals(String.valueOf(page)))
-      queryParams.put("page", String.valueOf(page));
-    String[] contentTypes = { "application/json"};
-    if (contentTypes.length != 1) {
-      throw new IllegalArgumentException("An API client expects a single content type. Got: "
-        + Arrays.toString(contentTypes));
+    /**
+     * Collects diagnostic data
+     * 
+     * @param environment environment (required)
+     * @param deployment deployment (required)
+     * @param cluster cluster (required)
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public void collectDiagnosticData(String environment, String deployment, String cluster) throws ApiException {
+        collectDiagnosticDataWithHttpInfo(environment, deployment, cluster);
     }
 
-    Object response = apiClient.invokeAPI(path, "GET", queryParams, postBody,
-      headerParams, formParams, contentTypes[0], "List", ClusterUpdateEventSummary.class);
-    return (List<ClusterUpdateEventSummary>) response;}
-
-
-  /**
-  * Get cluster metrics by name.
-  * @param  environment  environmentName
-  * @param  deployment  deploymentName
-  * @param  cluster  clusterName
-  * status code: 200 reason: "OK"
-  * status code: 204 reason: "Cluster is in transition or a failed stage"
-  * status code: 401 reason: "Unauthorized"
-  * status code: 403 reason: "Forbidden"
-  * status code: 404 reason: "Entity not found"
-  */
-  public Metrics getMetrics(String environment, String deployment, String cluster) throws ApiException {
-    Object postBody = null;
-    // verify required params are set
-    if (environment == null || deployment == null || cluster == null ) {
-       throw new ApiException(400, "missing required params");
-    }
-    // create path and map variables
-    String path = "/api/v10/environments/{environment}/deployments/{deployment}/clusters/{cluster}/metrics"
-      .replaceAll("\\{format\\}", "json")
-      .replaceAll("\\{" + "environment" + "\\}",
-                  apiClient.escapeString(environment.toString()))
-      .replaceAll("\\{" + "deployment" + "\\}",
-                  apiClient.escapeString(deployment.toString()))
-      .replaceAll("\\{" + "cluster" + "\\}",
-                  apiClient.escapeString(cluster.toString()))
-      ;
-
-    // query params
-    Map<String, String> queryParams = new HashMap<String, String>();
-    Map<String, String> headerParams = new HashMap<String, String>();
-    Map<String, String> formParams = new HashMap<String, String>();
-
-    String[] contentTypes = { "application/json"};
-    if (contentTypes.length != 1) {
-      throw new IllegalArgumentException("An API client expects a single content type. Got: "
-        + Arrays.toString(contentTypes));
+    /**
+     * Collects diagnostic data
+     * 
+     * @param environment environment (required)
+     * @param deployment deployment (required)
+     * @param cluster cluster (required)
+     * @return ApiResponse&lt;Void&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<Void> collectDiagnosticDataWithHttpInfo(String environment, String deployment, String cluster) throws ApiException {
+        com.squareup.okhttp.Call call = collectDiagnosticDataValidateBeforeCall(environment, deployment, cluster, null, null);
+        return apiClient.execute(call);
     }
 
-    Object response = apiClient.invokeAPI(path, "GET", queryParams, postBody,
-      headerParams, formParams, contentTypes[0], "", Metrics.class);
-    return (Metrics) response;}
+    /**
+     * Collects diagnostic data (asynchronously)
+     * 
+     * @param environment environment (required)
+     * @param deployment deployment (required)
+     * @param cluster cluster (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call collectDiagnosticDataAsync(String environment, String deployment, String cluster, final ApiCallback<Void> callback) throws ApiException {
 
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
 
-  /**
-  * Get a cluster status by name.
-  * @param  environment  environmentName
-  * @param  deployment  deploymentName
-  * @param  cluster  clusterName
-  * status code: 200 reason: "OK"
-  * status code: 401 reason: "Unauthorized"
-  * status code: 403 reason: "Forbidden"
-  * status code: 404 reason: "Entity not found"
-  */
-  public Status getStatus(String environment, String deployment, String cluster) throws ApiException {
-    Object postBody = null;
-    // verify required params are set
-    if (environment == null || deployment == null || cluster == null ) {
-       throw new ApiException(400, "missing required params");
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = collectDiagnosticDataValidateBeforeCall(environment, deployment, cluster, progressListener, progressRequestListener);
+        apiClient.executeAsync(call, callback);
+        return call;
     }
-    // create path and map variables
-    String path = "/api/v10/environments/{environment}/deployments/{deployment}/clusters/{cluster}/status"
-      .replaceAll("\\{format\\}", "json")
-      .replaceAll("\\{" + "environment" + "\\}",
-                  apiClient.escapeString(environment.toString()))
-      .replaceAll("\\{" + "deployment" + "\\}",
-                  apiClient.escapeString(deployment.toString()))
-      .replaceAll("\\{" + "cluster" + "\\}",
-                  apiClient.escapeString(cluster.toString()))
-      ;
+    /**
+     * Build call for create
+     * @param environment environment (required)
+     * @param deployment deployment (required)
+     * @param clusterTemplate clusterTemplate (required)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call createCall(String environment, String deployment, ClusterTemplate clusterTemplate, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = clusterTemplate;
 
-    // query params
-    Map<String, String> queryParams = new HashMap<String, String>();
-    Map<String, String> headerParams = new HashMap<String, String>();
-    Map<String, String> formParams = new HashMap<String, String>();
+        // create path and map variables
+        String localVarPath = "/api/v10/environments/{environment}/deployments/{deployment}/clusters"
+            .replaceAll("\\{" + "environment" + "\\}", apiClient.escapeString(environment.toString()))
+            .replaceAll("\\{" + "deployment" + "\\}", apiClient.escapeString(deployment.toString()));
 
-    String[] contentTypes = { "application/json"};
-    if (contentTypes.length != 1) {
-      throw new IllegalArgumentException("An API client expects a single content type. Got: "
-        + Arrays.toString(contentTypes));
-    }
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
 
-    Object response = apiClient.invokeAPI(path, "GET", queryParams, postBody,
-      headerParams, formParams, contentTypes[0], "", Status.class);
-    return (Status) response;}
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
 
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-  /**
-  * Get a cluster template by name.
-  * @param  environment  environmentName
-  * @param  deployment  deploymentName
-  * @param  cluster  clusterName
-  * status code: 200 reason: "OK"
-  * status code: 401 reason: "Unauthorized"
-  * status code: 403 reason: "Forbidden"
-  * status code: 404 reason: "Entity not found"
-  */
-  public ClusterTemplate getTemplateRedacted(String environment, String deployment, String cluster) throws ApiException {
-    Object postBody = null;
-    // verify required params are set
-    if (environment == null || deployment == null || cluster == null ) {
-       throw new ApiException(400, "missing required params");
-    }
-    // create path and map variables
-    String path = "/api/v10/environments/{environment}/deployments/{deployment}/clusters/{cluster}/template"
-      .replaceAll("\\{format\\}", "json")
-      .replaceAll("\\{" + "environment" + "\\}",
-                  apiClient.escapeString(environment.toString()))
-      .replaceAll("\\{" + "deployment" + "\\}",
-                  apiClient.escapeString(deployment.toString()))
-      .replaceAll("\\{" + "cluster" + "\\}",
-                  apiClient.escapeString(cluster.toString()))
-      ;
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
 
-    // query params
-    Map<String, String> queryParams = new HashMap<String, String>();
-    Map<String, String> headerParams = new HashMap<String, String>();
-    Map<String, String> formParams = new HashMap<String, String>();
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
 
-    String[] contentTypes = { "application/json"};
-    if (contentTypes.length != 1) {
-      throw new IllegalArgumentException("An API client expects a single content type. Got: "
-        + Arrays.toString(contentTypes));
-    }
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
 
-    Object response = apiClient.invokeAPI(path, "GET", queryParams, postBody,
-      headerParams, formParams, contentTypes[0], "", ClusterTemplate.class);
-    return (ClusterTemplate) response;}
-
-
-  /**
-  * List all clusters.
-  * @param  environment  environmentName
-  * @param  deployment  deploymentName
-  * status code: 200 reason: "OK"
-  * status code: 401 reason: "Unauthorized"
-  * status code: 403 reason: "Forbidden"
-  * status code: 404 reason: "Entity not found"
-  */
-  public List<String> list(String environment, String deployment) throws ApiException {
-    Object postBody = null;
-    // verify required params are set
-    if (environment == null || deployment == null ) {
-       throw new ApiException(400, "missing required params");
-    }
-    // create path and map variables
-    String path = "/api/v10/environments/{environment}/deployments/{deployment}/clusters"
-      .replaceAll("\\{format\\}", "json")
-      .replaceAll("\\{" + "environment" + "\\}",
-                  apiClient.escapeString(environment.toString()))
-      .replaceAll("\\{" + "deployment" + "\\}",
-                  apiClient.escapeString(deployment.toString()))
-      ;
-
-    // query params
-    Map<String, String> queryParams = new HashMap<String, String>();
-    Map<String, String> headerParams = new HashMap<String, String>();
-    Map<String, String> formParams = new HashMap<String, String>();
-
-    String[] contentTypes = { "application/json"};
-    if (contentTypes.length != 1) {
-      throw new IllegalArgumentException("An API client expects a single content type. Got: "
-        + Arrays.toString(contentTypes));
+        String[] localVarAuthNames = new String[] { "basic" };
+        return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
 
-    Object response = apiClient.invokeAPI(path, "GET", queryParams, postBody,
-      headerParams, formParams, contentTypes[0], "List", String.class);
-    return (List<String>) response;}
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call createValidateBeforeCall(String environment, String deployment, ClusterTemplate clusterTemplate, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'environment' is set
+        if (environment == null) {
+            throw new ApiException("Missing the required parameter 'environment' when calling create(Async)");
+        }
+        
+        // verify the required parameter 'deployment' is set
+        if (deployment == null) {
+            throw new ApiException("Missing the required parameter 'deployment' when calling create(Async)");
+        }
+        
+        // verify the required parameter 'clusterTemplate' is set
+        if (clusterTemplate == null) {
+            throw new ApiException("Missing the required parameter 'clusterTemplate' when calling create(Async)");
+        }
+        
 
+        com.squareup.okhttp.Call call = createCall(environment, deployment, clusterTemplate, progressListener, progressRequestListener);
+        return call;
 
-  /**
-  * Update an existing cluster.
-  * @param  environment  environmentName
-  * @param  deployment  deploymentName
-  * @param  cluster  clusterName
-  * @param  body  desired
-  * status code: 201 reason: "Created"
-  * status code: 202 reason: "Cluster update accepted"
-  * status code: 400 reason: "Cluster update not supported"
-  * status code: 401 reason: "Unauthorized"
-  * status code: 403 reason: "Forbidden"
-  * status code: 404 reason: "Not found"
-  * status code: 409 reason: "Cluster is in a non-updatable state"
-  */
-  public void update(String environment, String deployment, String cluster, ClusterTemplate body) throws ApiException {
-    Object postBody = body;
-    // verify required params are set
-    if (environment == null || deployment == null || cluster == null || body == null ) {
-       throw new ApiException(400, "missing required params");
-    }
-    // create path and map variables
-    String path = "/api/v10/environments/{environment}/deployments/{deployment}/clusters/{cluster}"
-      .replaceAll("\\{format\\}", "json")
-      .replaceAll("\\{" + "environment" + "\\}",
-                  apiClient.escapeString(environment.toString()))
-      .replaceAll("\\{" + "deployment" + "\\}",
-                  apiClient.escapeString(deployment.toString()))
-      .replaceAll("\\{" + "cluster" + "\\}",
-                  apiClient.escapeString(cluster.toString()))
-      ;
-
-    // query params
-    Map<String, String> queryParams = new HashMap<String, String>();
-    Map<String, String> headerParams = new HashMap<String, String>();
-    Map<String, String> formParams = new HashMap<String, String>();
-
-    String[] contentTypes = { "application/json"};
-    if (contentTypes.length != 1) {
-      throw new IllegalArgumentException("An API client expects a single content type. Got: "
-        + Arrays.toString(contentTypes));
     }
 
-    apiClient.invokeAPI(path, "PUT", queryParams, postBody,
-      headerParams, formParams, contentTypes[0]);
+    /**
+     * Create a new cluster
+     * 
+     * @param environment environment (required)
+     * @param deployment deployment (required)
+     * @param clusterTemplate clusterTemplate (required)
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public void create(String environment, String deployment, ClusterTemplate clusterTemplate) throws ApiException {
+        createWithHttpInfo(environment, deployment, clusterTemplate);
     }
 
-
-  /**
-  * Update administration settings for a cluster.
-  * @param  environment  environmentName
-  * @param  deployment  deploymentName
-  * @param  cluster  clusterName
-  * @param  body  administrationSettings
-  * status code: 201 reason: "Created"
-  * status code: 202 reason: "Cluster update accepted"
-  * status code: 401 reason: "Unauthorized"
-  * status code: 403 reason: "Forbidden"
-  * status code: 404 reason: "Not found"
-  */
-  public void updateAdministrationSettings(String environment, String deployment, String cluster, ClusterAdministrationSettings body) throws ApiException {
-    Object postBody = body;
-    // verify required params are set
-    if (environment == null || deployment == null || cluster == null || body == null ) {
-       throw new ApiException(400, "missing required params");
-    }
-    // create path and map variables
-    String path = "/api/v10/environments/{environment}/deployments/{deployment}/clusters/{cluster}/settings"
-      .replaceAll("\\{format\\}", "json")
-      .replaceAll("\\{" + "environment" + "\\}",
-                  apiClient.escapeString(environment.toString()))
-      .replaceAll("\\{" + "deployment" + "\\}",
-                  apiClient.escapeString(deployment.toString()))
-      .replaceAll("\\{" + "cluster" + "\\}",
-                  apiClient.escapeString(cluster.toString()))
-      ;
-
-    // query params
-    Map<String, String> queryParams = new HashMap<String, String>();
-    Map<String, String> headerParams = new HashMap<String, String>();
-    Map<String, String> formParams = new HashMap<String, String>();
-
-    String[] contentTypes = { "application/json"};
-    if (contentTypes.length != 1) {
-      throw new IllegalArgumentException("An API client expects a single content type. Got: "
-        + Arrays.toString(contentTypes));
+    /**
+     * Create a new cluster
+     * 
+     * @param environment environment (required)
+     * @param deployment deployment (required)
+     * @param clusterTemplate clusterTemplate (required)
+     * @return ApiResponse&lt;Void&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<Void> createWithHttpInfo(String environment, String deployment, ClusterTemplate clusterTemplate) throws ApiException {
+        com.squareup.okhttp.Call call = createValidateBeforeCall(environment, deployment, clusterTemplate, null, null);
+        return apiClient.execute(call);
     }
 
-    apiClient.invokeAPI(path, "PUT", queryParams, postBody,
-      headerParams, formParams, contentTypes[0]);
+    /**
+     * Create a new cluster (asynchronously)
+     * 
+     * @param environment environment (required)
+     * @param deployment deployment (required)
+     * @param clusterTemplate clusterTemplate (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call createAsync(String environment, String deployment, ClusterTemplate clusterTemplate, final ApiCallback<Void> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = createValidateBeforeCall(environment, deployment, clusterTemplate, progressListener, progressRequestListener);
+        apiClient.executeAsync(call, callback);
+        return call;
+    }
+    /**
+     * Build call for delete
+     * @param environment environment (required)
+     * @param deployment deployment (required)
+     * @param cluster cluster (required)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call deleteCall(String environment, String deployment, String cluster, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/api/v10/environments/{environment}/deployments/{deployment}/clusters/{cluster}"
+            .replaceAll("\\{" + "environment" + "\\}", apiClient.escapeString(environment.toString()))
+            .replaceAll("\\{" + "deployment" + "\\}", apiClient.escapeString(deployment.toString()))
+            .replaceAll("\\{" + "cluster" + "\\}", apiClient.escapeString(cluster.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "basic" };
+        return apiClient.buildCall(localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
 
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call deleteValidateBeforeCall(String environment, String deployment, String cluster, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'environment' is set
+        if (environment == null) {
+            throw new ApiException("Missing the required parameter 'environment' when calling delete(Async)");
+        }
+        
+        // verify the required parameter 'deployment' is set
+        if (deployment == null) {
+            throw new ApiException("Missing the required parameter 'deployment' when calling delete(Async)");
+        }
+        
+        // verify the required parameter 'cluster' is set
+        if (cluster == null) {
+            throw new ApiException("Missing the required parameter 'cluster' when calling delete(Async)");
+        }
+        
 
-  }
+        com.squareup.okhttp.Call call = deleteCall(environment, deployment, cluster, progressListener, progressRequestListener);
+        return call;
 
+    }
+
+    /**
+     * Delete a cluster by name
+     * 
+     * @param environment environment (required)
+     * @param deployment deployment (required)
+     * @param cluster cluster (required)
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public void delete(String environment, String deployment, String cluster) throws ApiException {
+        deleteWithHttpInfo(environment, deployment, cluster);
+    }
+
+    /**
+     * Delete a cluster by name
+     * 
+     * @param environment environment (required)
+     * @param deployment deployment (required)
+     * @param cluster cluster (required)
+     * @return ApiResponse&lt;Void&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<Void> deleteWithHttpInfo(String environment, String deployment, String cluster) throws ApiException {
+        com.squareup.okhttp.Call call = deleteValidateBeforeCall(environment, deployment, cluster, null, null);
+        return apiClient.execute(call);
+    }
+
+    /**
+     * Delete a cluster by name (asynchronously)
+     * 
+     * @param environment environment (required)
+     * @param deployment deployment (required)
+     * @param cluster cluster (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call deleteAsync(String environment, String deployment, String cluster, final ApiCallback<Void> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = deleteValidateBeforeCall(environment, deployment, cluster, progressListener, progressRequestListener);
+        apiClient.executeAsync(call, callback);
+        return call;
+    }
+    /**
+     * Build call for get
+     * @param environment environment (required)
+     * @param deployment deployment (required)
+     * @param cluster cluster (required)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call getCall(String environment, String deployment, String cluster, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/api/v10/environments/{environment}/deployments/{deployment}/clusters/{cluster}"
+            .replaceAll("\\{" + "environment" + "\\}", apiClient.escapeString(environment.toString()))
+            .replaceAll("\\{" + "deployment" + "\\}", apiClient.escapeString(deployment.toString()))
+            .replaceAll("\\{" + "cluster" + "\\}", apiClient.escapeString(cluster.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "basic" };
+        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call getValidateBeforeCall(String environment, String deployment, String cluster, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'environment' is set
+        if (environment == null) {
+            throw new ApiException("Missing the required parameter 'environment' when calling get(Async)");
+        }
+        
+        // verify the required parameter 'deployment' is set
+        if (deployment == null) {
+            throw new ApiException("Missing the required parameter 'deployment' when calling get(Async)");
+        }
+        
+        // verify the required parameter 'cluster' is set
+        if (cluster == null) {
+            throw new ApiException("Missing the required parameter 'cluster' when calling get(Async)");
+        }
+        
+
+        com.squareup.okhttp.Call call = getCall(environment, deployment, cluster, progressListener, progressRequestListener);
+        return call;
+
+    }
+
+    /**
+     * Get a cluster by name
+     * 
+     * @param environment environment (required)
+     * @param deployment deployment (required)
+     * @param cluster cluster (required)
+     * @return Cluster
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public Cluster get(String environment, String deployment, String cluster) throws ApiException {
+        ApiResponse<Cluster> resp = getWithHttpInfo(environment, deployment, cluster);
+        return resp.getData();
+    }
+
+    /**
+     * Get a cluster by name
+     * 
+     * @param environment environment (required)
+     * @param deployment deployment (required)
+     * @param cluster cluster (required)
+     * @return ApiResponse&lt;Cluster&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<Cluster> getWithHttpInfo(String environment, String deployment, String cluster) throws ApiException {
+        com.squareup.okhttp.Call call = getValidateBeforeCall(environment, deployment, cluster, null, null);
+        Type localVarReturnType = new TypeToken<Cluster>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Get a cluster by name (asynchronously)
+     * 
+     * @param environment environment (required)
+     * @param deployment deployment (required)
+     * @param cluster cluster (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call getAsync(String environment, String deployment, String cluster, final ApiCallback<Cluster> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = getValidateBeforeCall(environment, deployment, cluster, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<Cluster>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for getAdministrationSettings
+     * @param environment environment (required)
+     * @param deployment deployment (required)
+     * @param cluster cluster (required)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call getAdministrationSettingsCall(String environment, String deployment, String cluster, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/api/v10/environments/{environment}/deployments/{deployment}/clusters/{cluster}/settings"
+            .replaceAll("\\{" + "environment" + "\\}", apiClient.escapeString(environment.toString()))
+            .replaceAll("\\{" + "deployment" + "\\}", apiClient.escapeString(deployment.toString()))
+            .replaceAll("\\{" + "cluster" + "\\}", apiClient.escapeString(cluster.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "basic" };
+        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call getAdministrationSettingsValidateBeforeCall(String environment, String deployment, String cluster, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'environment' is set
+        if (environment == null) {
+            throw new ApiException("Missing the required parameter 'environment' when calling getAdministrationSettings(Async)");
+        }
+        
+        // verify the required parameter 'deployment' is set
+        if (deployment == null) {
+            throw new ApiException("Missing the required parameter 'deployment' when calling getAdministrationSettings(Async)");
+        }
+        
+        // verify the required parameter 'cluster' is set
+        if (cluster == null) {
+            throw new ApiException("Missing the required parameter 'cluster' when calling getAdministrationSettings(Async)");
+        }
+        
+
+        com.squareup.okhttp.Call call = getAdministrationSettingsCall(environment, deployment, cluster, progressListener, progressRequestListener);
+        return call;
+
+    }
+
+    /**
+     * Get administration settings for a cluster
+     * 
+     * @param environment environment (required)
+     * @param deployment deployment (required)
+     * @param cluster cluster (required)
+     * @return ClusterAdministrationSettings
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ClusterAdministrationSettings getAdministrationSettings(String environment, String deployment, String cluster) throws ApiException {
+        ApiResponse<ClusterAdministrationSettings> resp = getAdministrationSettingsWithHttpInfo(environment, deployment, cluster);
+        return resp.getData();
+    }
+
+    /**
+     * Get administration settings for a cluster
+     * 
+     * @param environment environment (required)
+     * @param deployment deployment (required)
+     * @param cluster cluster (required)
+     * @return ApiResponse&lt;ClusterAdministrationSettings&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<ClusterAdministrationSettings> getAdministrationSettingsWithHttpInfo(String environment, String deployment, String cluster) throws ApiException {
+        com.squareup.okhttp.Call call = getAdministrationSettingsValidateBeforeCall(environment, deployment, cluster, null, null);
+        Type localVarReturnType = new TypeToken<ClusterAdministrationSettings>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Get administration settings for a cluster (asynchronously)
+     * 
+     * @param environment environment (required)
+     * @param deployment deployment (required)
+     * @param cluster cluster (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call getAdministrationSettingsAsync(String environment, String deployment, String cluster, final ApiCallback<ClusterAdministrationSettings> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = getAdministrationSettingsValidateBeforeCall(environment, deployment, cluster, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<ClusterAdministrationSettings>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for getHistory
+     * @param environment environment (required)
+     * @param deployment deployment (required)
+     * @param cluster cluster (required)
+     * @param numEvents numEvents (optional, default to 10)
+     * @param page page (optional, default to 0)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call getHistoryCall(String environment, String deployment, String cluster, Integer numEvents, Integer page, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/api/v10/environments/{environment}/deployments/{deployment}/clusters/{cluster}/history"
+            .replaceAll("\\{" + "environment" + "\\}", apiClient.escapeString(environment.toString()))
+            .replaceAll("\\{" + "deployment" + "\\}", apiClient.escapeString(deployment.toString()))
+            .replaceAll("\\{" + "cluster" + "\\}", apiClient.escapeString(cluster.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (numEvents != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("numEvents", numEvents));
+        if (page != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("page", page));
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "basic" };
+        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call getHistoryValidateBeforeCall(String environment, String deployment, String cluster, Integer numEvents, Integer page, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'environment' is set
+        if (environment == null) {
+            throw new ApiException("Missing the required parameter 'environment' when calling getHistory(Async)");
+        }
+        
+        // verify the required parameter 'deployment' is set
+        if (deployment == null) {
+            throw new ApiException("Missing the required parameter 'deployment' when calling getHistory(Async)");
+        }
+        
+        // verify the required parameter 'cluster' is set
+        if (cluster == null) {
+            throw new ApiException("Missing the required parameter 'cluster' when calling getHistory(Async)");
+        }
+        
+
+        com.squareup.okhttp.Call call = getHistoryCall(environment, deployment, cluster, numEvents, page, progressListener, progressRequestListener);
+        return call;
+
+    }
+
+    /**
+     * Get history of updates for a cluster
+     * 
+     * @param environment environment (required)
+     * @param deployment deployment (required)
+     * @param cluster cluster (required)
+     * @param numEvents numEvents (optional, default to 10)
+     * @param page page (optional, default to 0)
+     * @return List&lt;ClusterUpdateEventSummary&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public List<ClusterUpdateEventSummary> getHistory(String environment, String deployment, String cluster, Integer numEvents, Integer page) throws ApiException {
+        ApiResponse<List<ClusterUpdateEventSummary>> resp = getHistoryWithHttpInfo(environment, deployment, cluster, numEvents, page);
+        return resp.getData();
+    }
+
+    /**
+     * Get history of updates for a cluster
+     * 
+     * @param environment environment (required)
+     * @param deployment deployment (required)
+     * @param cluster cluster (required)
+     * @param numEvents numEvents (optional, default to 10)
+     * @param page page (optional, default to 0)
+     * @return ApiResponse&lt;List&lt;ClusterUpdateEventSummary&gt;&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<List<ClusterUpdateEventSummary>> getHistoryWithHttpInfo(String environment, String deployment, String cluster, Integer numEvents, Integer page) throws ApiException {
+        com.squareup.okhttp.Call call = getHistoryValidateBeforeCall(environment, deployment, cluster, numEvents, page, null, null);
+        Type localVarReturnType = new TypeToken<List<ClusterUpdateEventSummary>>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Get history of updates for a cluster (asynchronously)
+     * 
+     * @param environment environment (required)
+     * @param deployment deployment (required)
+     * @param cluster cluster (required)
+     * @param numEvents numEvents (optional, default to 10)
+     * @param page page (optional, default to 0)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call getHistoryAsync(String environment, String deployment, String cluster, Integer numEvents, Integer page, final ApiCallback<List<ClusterUpdateEventSummary>> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = getHistoryValidateBeforeCall(environment, deployment, cluster, numEvents, page, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<List<ClusterUpdateEventSummary>>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for getMetrics
+     * @param environment environment (required)
+     * @param deployment deployment (required)
+     * @param cluster cluster (required)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call getMetricsCall(String environment, String deployment, String cluster, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/api/v10/environments/{environment}/deployments/{deployment}/clusters/{cluster}/metrics"
+            .replaceAll("\\{" + "environment" + "\\}", apiClient.escapeString(environment.toString()))
+            .replaceAll("\\{" + "deployment" + "\\}", apiClient.escapeString(deployment.toString()))
+            .replaceAll("\\{" + "cluster" + "\\}", apiClient.escapeString(cluster.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "basic" };
+        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call getMetricsValidateBeforeCall(String environment, String deployment, String cluster, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'environment' is set
+        if (environment == null) {
+            throw new ApiException("Missing the required parameter 'environment' when calling getMetrics(Async)");
+        }
+        
+        // verify the required parameter 'deployment' is set
+        if (deployment == null) {
+            throw new ApiException("Missing the required parameter 'deployment' when calling getMetrics(Async)");
+        }
+        
+        // verify the required parameter 'cluster' is set
+        if (cluster == null) {
+            throw new ApiException("Missing the required parameter 'cluster' when calling getMetrics(Async)");
+        }
+        
+
+        com.squareup.okhttp.Call call = getMetricsCall(environment, deployment, cluster, progressListener, progressRequestListener);
+        return call;
+
+    }
+
+    /**
+     * Get cluster metrics by name
+     * 
+     * @param environment environment (required)
+     * @param deployment deployment (required)
+     * @param cluster cluster (required)
+     * @return Metrics
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public Metrics getMetrics(String environment, String deployment, String cluster) throws ApiException {
+        ApiResponse<Metrics> resp = getMetricsWithHttpInfo(environment, deployment, cluster);
+        return resp.getData();
+    }
+
+    /**
+     * Get cluster metrics by name
+     * 
+     * @param environment environment (required)
+     * @param deployment deployment (required)
+     * @param cluster cluster (required)
+     * @return ApiResponse&lt;Metrics&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<Metrics> getMetricsWithHttpInfo(String environment, String deployment, String cluster) throws ApiException {
+        com.squareup.okhttp.Call call = getMetricsValidateBeforeCall(environment, deployment, cluster, null, null);
+        Type localVarReturnType = new TypeToken<Metrics>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Get cluster metrics by name (asynchronously)
+     * 
+     * @param environment environment (required)
+     * @param deployment deployment (required)
+     * @param cluster cluster (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call getMetricsAsync(String environment, String deployment, String cluster, final ApiCallback<Metrics> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = getMetricsValidateBeforeCall(environment, deployment, cluster, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<Metrics>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for getStatus
+     * @param environment environment (required)
+     * @param deployment deployment (required)
+     * @param cluster cluster (required)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call getStatusCall(String environment, String deployment, String cluster, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/api/v10/environments/{environment}/deployments/{deployment}/clusters/{cluster}/status"
+            .replaceAll("\\{" + "environment" + "\\}", apiClient.escapeString(environment.toString()))
+            .replaceAll("\\{" + "deployment" + "\\}", apiClient.escapeString(deployment.toString()))
+            .replaceAll("\\{" + "cluster" + "\\}", apiClient.escapeString(cluster.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "basic" };
+        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call getStatusValidateBeforeCall(String environment, String deployment, String cluster, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'environment' is set
+        if (environment == null) {
+            throw new ApiException("Missing the required parameter 'environment' when calling getStatus(Async)");
+        }
+        
+        // verify the required parameter 'deployment' is set
+        if (deployment == null) {
+            throw new ApiException("Missing the required parameter 'deployment' when calling getStatus(Async)");
+        }
+        
+        // verify the required parameter 'cluster' is set
+        if (cluster == null) {
+            throw new ApiException("Missing the required parameter 'cluster' when calling getStatus(Async)");
+        }
+        
+
+        com.squareup.okhttp.Call call = getStatusCall(environment, deployment, cluster, progressListener, progressRequestListener);
+        return call;
+
+    }
+
+    /**
+     * Get a cluster status by name
+     * 
+     * @param environment environment (required)
+     * @param deployment deployment (required)
+     * @param cluster cluster (required)
+     * @return Status
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public Status getStatus(String environment, String deployment, String cluster) throws ApiException {
+        ApiResponse<Status> resp = getStatusWithHttpInfo(environment, deployment, cluster);
+        return resp.getData();
+    }
+
+    /**
+     * Get a cluster status by name
+     * 
+     * @param environment environment (required)
+     * @param deployment deployment (required)
+     * @param cluster cluster (required)
+     * @return ApiResponse&lt;Status&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<Status> getStatusWithHttpInfo(String environment, String deployment, String cluster) throws ApiException {
+        com.squareup.okhttp.Call call = getStatusValidateBeforeCall(environment, deployment, cluster, null, null);
+        Type localVarReturnType = new TypeToken<Status>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Get a cluster status by name (asynchronously)
+     * 
+     * @param environment environment (required)
+     * @param deployment deployment (required)
+     * @param cluster cluster (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call getStatusAsync(String environment, String deployment, String cluster, final ApiCallback<Status> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = getStatusValidateBeforeCall(environment, deployment, cluster, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<Status>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for getTemplateRedacted
+     * @param environment environment (required)
+     * @param deployment deployment (required)
+     * @param cluster cluster (required)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call getTemplateRedactedCall(String environment, String deployment, String cluster, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/api/v10/environments/{environment}/deployments/{deployment}/clusters/{cluster}/template"
+            .replaceAll("\\{" + "environment" + "\\}", apiClient.escapeString(environment.toString()))
+            .replaceAll("\\{" + "deployment" + "\\}", apiClient.escapeString(deployment.toString()))
+            .replaceAll("\\{" + "cluster" + "\\}", apiClient.escapeString(cluster.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "basic" };
+        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call getTemplateRedactedValidateBeforeCall(String environment, String deployment, String cluster, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'environment' is set
+        if (environment == null) {
+            throw new ApiException("Missing the required parameter 'environment' when calling getTemplateRedacted(Async)");
+        }
+        
+        // verify the required parameter 'deployment' is set
+        if (deployment == null) {
+            throw new ApiException("Missing the required parameter 'deployment' when calling getTemplateRedacted(Async)");
+        }
+        
+        // verify the required parameter 'cluster' is set
+        if (cluster == null) {
+            throw new ApiException("Missing the required parameter 'cluster' when calling getTemplateRedacted(Async)");
+        }
+        
+
+        com.squareup.okhttp.Call call = getTemplateRedactedCall(environment, deployment, cluster, progressListener, progressRequestListener);
+        return call;
+
+    }
+
+    /**
+     * Get a cluster template by name
+     * 
+     * @param environment environment (required)
+     * @param deployment deployment (required)
+     * @param cluster cluster (required)
+     * @return ClusterTemplate
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ClusterTemplate getTemplateRedacted(String environment, String deployment, String cluster) throws ApiException {
+        ApiResponse<ClusterTemplate> resp = getTemplateRedactedWithHttpInfo(environment, deployment, cluster);
+        return resp.getData();
+    }
+
+    /**
+     * Get a cluster template by name
+     * 
+     * @param environment environment (required)
+     * @param deployment deployment (required)
+     * @param cluster cluster (required)
+     * @return ApiResponse&lt;ClusterTemplate&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<ClusterTemplate> getTemplateRedactedWithHttpInfo(String environment, String deployment, String cluster) throws ApiException {
+        com.squareup.okhttp.Call call = getTemplateRedactedValidateBeforeCall(environment, deployment, cluster, null, null);
+        Type localVarReturnType = new TypeToken<ClusterTemplate>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Get a cluster template by name (asynchronously)
+     * 
+     * @param environment environment (required)
+     * @param deployment deployment (required)
+     * @param cluster cluster (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call getTemplateRedactedAsync(String environment, String deployment, String cluster, final ApiCallback<ClusterTemplate> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = getTemplateRedactedValidateBeforeCall(environment, deployment, cluster, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<ClusterTemplate>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for list
+     * @param environment environment (required)
+     * @param deployment deployment (required)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call listCall(String environment, String deployment, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/api/v10/environments/{environment}/deployments/{deployment}/clusters"
+            .replaceAll("\\{" + "environment" + "\\}", apiClient.escapeString(environment.toString()))
+            .replaceAll("\\{" + "deployment" + "\\}", apiClient.escapeString(deployment.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "basic" };
+        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call listValidateBeforeCall(String environment, String deployment, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'environment' is set
+        if (environment == null) {
+            throw new ApiException("Missing the required parameter 'environment' when calling list(Async)");
+        }
+        
+        // verify the required parameter 'deployment' is set
+        if (deployment == null) {
+            throw new ApiException("Missing the required parameter 'deployment' when calling list(Async)");
+        }
+        
+
+        com.squareup.okhttp.Call call = listCall(environment, deployment, progressListener, progressRequestListener);
+        return call;
+
+    }
+
+    /**
+     * List all clusters
+     * 
+     * @param environment environment (required)
+     * @param deployment deployment (required)
+     * @return List&lt;String&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public List<String> list(String environment, String deployment) throws ApiException {
+        ApiResponse<List<String>> resp = listWithHttpInfo(environment, deployment);
+        return resp.getData();
+    }
+
+    /**
+     * List all clusters
+     * 
+     * @param environment environment (required)
+     * @param deployment deployment (required)
+     * @return ApiResponse&lt;List&lt;String&gt;&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<List<String>> listWithHttpInfo(String environment, String deployment) throws ApiException {
+        com.squareup.okhttp.Call call = listValidateBeforeCall(environment, deployment, null, null);
+        Type localVarReturnType = new TypeToken<List<String>>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * List all clusters (asynchronously)
+     * 
+     * @param environment environment (required)
+     * @param deployment deployment (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call listAsync(String environment, String deployment, final ApiCallback<List<String>> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = listValidateBeforeCall(environment, deployment, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<List<String>>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for update
+     * @param environment environment (required)
+     * @param deployment deployment (required)
+     * @param cluster cluster (required)
+     * @param desired desired (required)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call updateCall(String environment, String deployment, String cluster, ClusterTemplate desired, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = desired;
+
+        // create path and map variables
+        String localVarPath = "/api/v10/environments/{environment}/deployments/{deployment}/clusters/{cluster}"
+            .replaceAll("\\{" + "environment" + "\\}", apiClient.escapeString(environment.toString()))
+            .replaceAll("\\{" + "deployment" + "\\}", apiClient.escapeString(deployment.toString()))
+            .replaceAll("\\{" + "cluster" + "\\}", apiClient.escapeString(cluster.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "basic" };
+        return apiClient.buildCall(localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call updateValidateBeforeCall(String environment, String deployment, String cluster, ClusterTemplate desired, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'environment' is set
+        if (environment == null) {
+            throw new ApiException("Missing the required parameter 'environment' when calling update(Async)");
+        }
+        
+        // verify the required parameter 'deployment' is set
+        if (deployment == null) {
+            throw new ApiException("Missing the required parameter 'deployment' when calling update(Async)");
+        }
+        
+        // verify the required parameter 'cluster' is set
+        if (cluster == null) {
+            throw new ApiException("Missing the required parameter 'cluster' when calling update(Async)");
+        }
+        
+        // verify the required parameter 'desired' is set
+        if (desired == null) {
+            throw new ApiException("Missing the required parameter 'desired' when calling update(Async)");
+        }
+        
+
+        com.squareup.okhttp.Call call = updateCall(environment, deployment, cluster, desired, progressListener, progressRequestListener);
+        return call;
+
+    }
+
+    /**
+     * Update an existing cluster
+     * 
+     * @param environment environment (required)
+     * @param deployment deployment (required)
+     * @param cluster cluster (required)
+     * @param desired desired (required)
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public void update(String environment, String deployment, String cluster, ClusterTemplate desired) throws ApiException {
+        updateWithHttpInfo(environment, deployment, cluster, desired);
+    }
+
+    /**
+     * Update an existing cluster
+     * 
+     * @param environment environment (required)
+     * @param deployment deployment (required)
+     * @param cluster cluster (required)
+     * @param desired desired (required)
+     * @return ApiResponse&lt;Void&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<Void> updateWithHttpInfo(String environment, String deployment, String cluster, ClusterTemplate desired) throws ApiException {
+        com.squareup.okhttp.Call call = updateValidateBeforeCall(environment, deployment, cluster, desired, null, null);
+        return apiClient.execute(call);
+    }
+
+    /**
+     * Update an existing cluster (asynchronously)
+     * 
+     * @param environment environment (required)
+     * @param deployment deployment (required)
+     * @param cluster cluster (required)
+     * @param desired desired (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call updateAsync(String environment, String deployment, String cluster, ClusterTemplate desired, final ApiCallback<Void> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = updateValidateBeforeCall(environment, deployment, cluster, desired, progressListener, progressRequestListener);
+        apiClient.executeAsync(call, callback);
+        return call;
+    }
+    /**
+     * Build call for updateAdministrationSettings
+     * @param environment environment (required)
+     * @param deployment deployment (required)
+     * @param cluster cluster (required)
+     * @param administrationSettings administrationSettings (required)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call updateAdministrationSettingsCall(String environment, String deployment, String cluster, ClusterAdministrationSettings administrationSettings, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = administrationSettings;
+
+        // create path and map variables
+        String localVarPath = "/api/v10/environments/{environment}/deployments/{deployment}/clusters/{cluster}/settings"
+            .replaceAll("\\{" + "environment" + "\\}", apiClient.escapeString(environment.toString()))
+            .replaceAll("\\{" + "deployment" + "\\}", apiClient.escapeString(deployment.toString()))
+            .replaceAll("\\{" + "cluster" + "\\}", apiClient.escapeString(cluster.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "basic" };
+        return apiClient.buildCall(localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call updateAdministrationSettingsValidateBeforeCall(String environment, String deployment, String cluster, ClusterAdministrationSettings administrationSettings, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'environment' is set
+        if (environment == null) {
+            throw new ApiException("Missing the required parameter 'environment' when calling updateAdministrationSettings(Async)");
+        }
+        
+        // verify the required parameter 'deployment' is set
+        if (deployment == null) {
+            throw new ApiException("Missing the required parameter 'deployment' when calling updateAdministrationSettings(Async)");
+        }
+        
+        // verify the required parameter 'cluster' is set
+        if (cluster == null) {
+            throw new ApiException("Missing the required parameter 'cluster' when calling updateAdministrationSettings(Async)");
+        }
+        
+        // verify the required parameter 'administrationSettings' is set
+        if (administrationSettings == null) {
+            throw new ApiException("Missing the required parameter 'administrationSettings' when calling updateAdministrationSettings(Async)");
+        }
+        
+
+        com.squareup.okhttp.Call call = updateAdministrationSettingsCall(environment, deployment, cluster, administrationSettings, progressListener, progressRequestListener);
+        return call;
+
+    }
+
+    /**
+     * Update administration settings for a cluster
+     * 
+     * @param environment environment (required)
+     * @param deployment deployment (required)
+     * @param cluster cluster (required)
+     * @param administrationSettings administrationSettings (required)
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public void updateAdministrationSettings(String environment, String deployment, String cluster, ClusterAdministrationSettings administrationSettings) throws ApiException {
+        updateAdministrationSettingsWithHttpInfo(environment, deployment, cluster, administrationSettings);
+    }
+
+    /**
+     * Update administration settings for a cluster
+     * 
+     * @param environment environment (required)
+     * @param deployment deployment (required)
+     * @param cluster cluster (required)
+     * @param administrationSettings administrationSettings (required)
+     * @return ApiResponse&lt;Void&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<Void> updateAdministrationSettingsWithHttpInfo(String environment, String deployment, String cluster, ClusterAdministrationSettings administrationSettings) throws ApiException {
+        com.squareup.okhttp.Call call = updateAdministrationSettingsValidateBeforeCall(environment, deployment, cluster, administrationSettings, null, null);
+        return apiClient.execute(call);
+    }
+
+    /**
+     * Update administration settings for a cluster (asynchronously)
+     * 
+     * @param environment environment (required)
+     * @param deployment deployment (required)
+     * @param cluster cluster (required)
+     * @param administrationSettings administrationSettings (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call updateAdministrationSettingsAsync(String environment, String deployment, String cluster, ClusterAdministrationSettings administrationSettings, final ApiCallback<Void> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = updateAdministrationSettingsValidateBeforeCall(environment, deployment, cluster, administrationSettings, progressListener, progressRequestListener);
+        apiClient.executeAsync(call, callback);
+        return call;
+    }
+}

@@ -14,53 +14,118 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-// Note: This file is auto generated. Do not edit manually.
 
 package com.cloudera.director.client.v8.model;
 
+import java.util.Objects;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
+
+/**
+ * The health of an entity
+ */
+@ApiModel(description = "The health of an entity")
 
 public class Health {
-  private Long lastReported;
-  private String status;
-  public interface Status {
-    String DISABLED = "DISABLED";
-    String NOT_AVAILABLE = "NOT_AVAILABLE";
-    String STARTING = "STARTING";
-    String STOPPING = "STOPPING";
-    String STOPPED = "STOPPED";
-    String GOOD = "GOOD";
-    String CONCERNING = "CONCERNING";
-    String BAD = "BAD";
-  }
-  public Health() { }
+  @SerializedName("lastReported")
+  private Long lastReported = null;
+  /**
+   * Health status value
+   */
+  @JsonAdapter(StatusEnum.Adapter.class)
+  public enum StatusEnum {
+    DISABLED("DISABLED"),
+    
+    NOT_AVAILABLE("NOT_AVAILABLE"),
+    
+    STARTING("STARTING"),
+    
+    STOPPING("STOPPING"),
+    
+    STOPPED("STOPPED"),
+    
+    GOOD("GOOD"),
+    
+    CONCERNING("CONCERNING"),
+    
+    BAD("BAD");
 
-  private Health(Long lastReported, String status) {
-    this.lastReported = lastReported;
-    this.status = status;
+    private String value;
+
+    StatusEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static StatusEnum fromValue(String text) {
+      for (StatusEnum b : StatusEnum.values()) {
+        if (String.valueOf(b.value).equals(text)) {
+          return b;
+        }
+      }
+      return null;
+    }
+
+    public static class Adapter extends TypeAdapter<StatusEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final StatusEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public StatusEnum read(final JsonReader jsonReader) throws IOException {
+        String value = jsonReader.nextString();
+        return StatusEnum.fromValue(String.valueOf(value));
+      }
+    }
+  }
+
+  @SerializedName("status")
+  private StatusEnum status = null;
+
+  public Health() {
+    // Do nothing
   }
 
   private Health(HealthBuilder builder) {
-    this.lastReported = builder.lastReported;
-    this.status = builder.status;
-  }
+      this.lastReported = builder.lastReported;
+      this.status = builder.status;
+    }
 
   public static HealthBuilder builder() {
     return new HealthBuilder();
   }
 
   public static class HealthBuilder {
-    private Long lastReported = null;
-    private String status = null;
+      private Long lastReported = null;
+      private StatusEnum status = null;
+  
 
     public HealthBuilder lastReported(Long lastReported) {
       this.lastReported = lastReported;
       return this;
     }
 
-    public HealthBuilder status(String status) {
+
+    public HealthBuilder status(StatusEnum status) {
       this.status = status;
       return this;
     }
+
 
     public Health build() {
       return new Health(this);
@@ -70,56 +135,87 @@ public class Health {
   public HealthBuilder toBuilder() {
     return builder()
       .lastReported(lastReported)
-      .status(status)
+            .status(status)
       ;
   }
+
+  public Health lastReported(Long lastReported) {
+    this.lastReported = lastReported;
+    return this;
+  }
+
+   /**
+   * Time when health status was reported
+   * @return lastReported
+  **/
+  @ApiModelProperty(required = true, value = "Time when health status was reported")
   public Long getLastReported() {
     return lastReported;
   }
+
   public void setLastReported(Long lastReported) {
     this.lastReported = lastReported;
   }
 
-  public String getStatus() {
+  public Health status(StatusEnum status) {
+    this.status = status;
+    return this;
+  }
+
+   /**
+   * Health status value
+   * @return status
+  **/
+  @ApiModelProperty(required = true, value = "Health status value")
+  public StatusEnum getStatus() {
     return status;
   }
-  public void setStatus(String status) {
+
+  public void setStatus(StatusEnum status) {
     this.status = status;
   }
 
+
   @Override
-  public boolean equals(Object o) {
-    if (this == o) return true;
-    if (o == null || getClass() != o.getClass()) return false;
-
-    Health other = (Health) o; // NOPMD
-
-    if (lastReported != null ?
-        !lastReported.equals(other.lastReported) :
-        other.lastReported != null) return false;
-    if (status != null ?
-        !status.equals(other.status) :
-        other.status != null) return false;
-    return true;
+  public boolean equals(java.lang.Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
+    Health health = (Health) o;
+    return Objects.equals(this.lastReported, health.lastReported) &&
+        Objects.equals(this.status, health.status);
   }
 
   @Override
   public int hashCode() {
-    int result = 0;
-    result = 31 * result + (lastReported != null ? lastReported.hashCode() : 0);
-    result = 31 * result + (status != null ? status.hashCode() : 0);
-    return result;
+    return Objects.hash(lastReported, status);
   }
 
+
   @Override
-  public String toString()  {
+  public String toString() {
     StringBuilder sb = new StringBuilder();
-    String newLine = System.getProperty("line.separator");
-    sb.append("class Health {" + newLine);
-    sb.append("  lastReported: ").append(lastReported).append(newLine);
-    sb.append("  status: ").append(status).append(newLine);
-    sb.append("}" + newLine);
+    sb.append("class Health {\n");
+    
+    sb.append("    lastReported: ").append(toIndentedString(lastReported)).append("\n");
+    sb.append("    status: ").append(toIndentedString(status)).append("\n");
+    sb.append("}");
     return sb.toString();
   }
+
+  /**
+   * Convert the given object to string with each line indented by 4 spaces
+   * (except the first line).
+   */
+  private String toIndentedString(java.lang.Object o) {
+    if (o == null) {
+      return "null";
+    }
+    return o.toString().replace("\n", "\n    ");
+  }
+
 }
 

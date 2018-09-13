@@ -14,23 +14,23 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# Simple script that shows how to use the Cloudera Director API to start a cluster
+"""
+Simple script that shows how to use the Cloudera Altus Director API to start a
+cluster on AWS.
+"""
 
 import ConfigParser
 import argparse
+from os.path import isfile
 import sys
 import time
 import uuid
-from cloudera.director.common.client import ApiClient
-from cloudera.director.latest import (AuthenticationApi, EnvironmentsApi,
-    DeploymentsApi, ClustersApi)
-from cloudera.director.latest.models import (Login, SshCredentials,
-    InstanceProviderConfig, Environment, InstanceTemplate,
-    VirtualInstance, DeploymentTemplate, ClusterTemplate,
-    VirtualInstanceGroup)
-from os.path import isfile
-from urllib2 import HTTPError
-
+from cloudera.director.common.client import ApiClient, Configuration
+from cloudera.director.common.rest import ApiException
+from cloudera.director.latest import (EnvironmentsApi, DeploymentsApi, ClustersApi)
+from cloudera.director.latest.models import (SshCredentials, InstanceProviderConfig, Environment,
+                                             InstanceTemplate, VirtualInstance, DeploymentTemplate,
+                                             ClusterTemplate, VirtualInstanceGroup)
 
 def get_authenticated_client(args):
     """
@@ -42,15 +42,17 @@ def get_authenticated_client(args):
     @return:     authenticated API client
     """
 
-    # Start by creating a client pointing to the right server
-    tls_enabled = args.server.startswith('https')
-    client = ApiClient(args.server, tls_enabled=tls_enabled, cafile=args.cafile,
-                       hostname_verification_enabled=True)
+    configuration = Configuration()
+    configuration.host = args.server
+    configuration.username = args.admin_username
+    configuration.password = args.admin_password
 
-    # Authenticate. This will start a session and store the cookie
-    auth = AuthenticationApi(client)
-    auth.login(Login(username=args.admin_username, password=args.admin_password))
+    if args.server.startswith('https'):
+        configuration.verify_ssl = True
+        if args.cafile:
+            configuration.ssl_ca_cert = args.cafile
 
+    client = ApiClient(configuration=configuration)
     return client
 
 
@@ -64,39 +66,37 @@ def create_environment(client, config):
 
     # Start by defining your credentials for this environment
 
-    credentials = SshCredentials()
-    credentials.username = config.get("ssh", "username")
-    credentials.privateKey = file(config.get("ssh", "privateKey")).read()
-    credentials.port = 22
+    credentials = SshCredentials(username=config.get("ssh", "username"),
+                                 port=22,
+                                 private_key=file(config.get("ssh", "privateKey")).read())
 
-    # Retrieve your cloud provider credentials
+    # Retrieve your AWS credentials
 
-    provider = InstanceProviderConfig()
-    provider.type = config.get("provider", "type")
-    provider.config = {
+    provider_config = {
         'accessKeyId': config.get("provider", "accessKeyId"),
         'secretAccessKey': config.get("provider", "secretAccessKey"),
         'region': config.get("provider", "region")
     }
+    provider = InstanceProviderConfig(type=config.get("provider", "type"),
+                                      config=provider_config)
 
     # Create a new environment object using the credentials and provider
 
-    env = Environment()
-    env.name = "%s Environment" % config.get("cluster", "name")
-    env.credentials = credentials
-    env.provider = provider
+    env = Environment(name="%s Environment" % config.get("cluster", "name"),
+                      credentials=credentials,
+                      provider=provider)
 
-    # Post this information to Cloudera Director (to be validated and stored)
+    # Post this information to Cloudera Altus Director (to be validated and stored)
 
     api = EnvironmentsApi(client)
     try:
         api.create(env)
 
-    except HTTPError as e:
-        if e.code == 302:
+    except ApiException as exc:
+        if exc.status == 409:
             print 'Warning: an environment with the same name already exists'
         else:
-            raise e
+            raise exc
 
     print "Environments: %s" % api.list()
     return env.name
@@ -112,10 +112,9 @@ def create_deployment(client, environment_name, config):
     """
     template = DeploymentTemplate(
         name="%s Deployment" % config.get('cluster', 'name'),
-        managerVirtualInstance= \
-            create_virtual_instance_with_random_id(config, 'manager'),
+        manager_virtual_instance=create_virtual_instance(config, 'manager'),
         port=7180,
-        enableEnterpriseTrial=True,
+        enable_enterprise_trial=True,
         configs={
             'CLOUDERA_MANAGER': {
                 'enable_api_debug': 'true'
@@ -127,11 +126,11 @@ def create_deployment(client, environment_name, config):
     try:
         api.create(environment_name, template)
 
-    except HTTPError as e:
-        if e.code == 302:
+    except ApiException as exc:
+        if exc.status == 409:
             print 'Warning: a deployment with the same name already exists'
         else:
-            raise e
+            raise exc
 
     print "Deployments: %s" % api.list(environment_name)
     return template.name
@@ -146,42 +145,47 @@ def create_cluster(client, environment_name, deployment_name, config):
     @param deployment_name: the name of the parent deployment
     @param config: parsed configuration file
     """
-    cluster_size = config.getint("cluster", "size")
+    num_workers = config.getint("cluster", "num_workers")
     template = ClusterTemplate(
         name=config.get('cluster', 'name'),
-        productVersions={
+        product_versions={
             'CDH': config.get('cluster', 'cdh_version')
         },
         services=['HDFS', 'YARN'],
-        virtualInstanceGroups={
+        services_configs={
+        },
+        virtual_instance_groups={
             'masters': VirtualInstanceGroup(
                 name='masters',
-                minCount=1,
-                serviceTypeToRoleTypes={
+                min_count=1,
+                service_type_to_role_types={
                     'HDFS': ['NAMENODE', 'SECONDARYNAMENODE'],
                     'YARN': ['RESOURCEMANAGER', 'JOBHISTORY']
                 },
-                virtualInstances=[create_virtual_instance_with_random_id(config, 'master'), ]
+                role_types_configs={
+                },
+                virtual_instances=[create_virtual_instance(config, 'master')]
             ),
             'workers': VirtualInstanceGroup(
                 name='workers',
-                minCount=cluster_size,
-                serviceTypeToRoleTypes={
-                    'HDFS': ['DATANODE', ],
+                min_count=num_workers,
+                service_type_to_role_types={
+                    'HDFS': ['DATANODE'],
                     'YARN': ['NODEMANAGER']
                 },
-                roleTypesConfigs={
-                    'HDFS': {
-                        'DATANODE': {
-                            'dfs_datanode_handler_count': '10'
-                        },
-                        'NODEMANAGER': {
-                            'nodemanager_webserver_port': '8047'
-                        }
-                    }
+                # optional role configurations, if desired or needed
+                role_types_configs={
+                    #'HDFS': {
+                    #    'DATANODE': {
+                    #        'dfs_datanode_handler_count': '10'
+                    #    },
+                    #    'NODEMANAGER': {
+                    #        'nodemanager_webserver_port': '8047'
+                    #    }
+                    #}
                 },
-                virtualInstances=[create_virtual_instance_with_random_id(config, 'worker')
-                                  for _ in range(0, cluster_size)]
+                virtual_instances=[create_virtual_instance(config, 'worker')
+                                   for _ in range(0, num_workers)]
             )
         }
     )
@@ -190,11 +194,11 @@ def create_cluster(client, environment_name, deployment_name, config):
     try:
         api.create(environment_name, deployment_name, template)
 
-    except HTTPError as e:
-        if e.code == 302:
+    except ApiException as exc:
+        if exc.status == 409:
             print 'Warning: a cluster with the same name already exists'
         else:
-            raise e
+            raise exc
 
     print "Clusters: %s" % api.list(environment_name, deployment_name)
     return template.name
@@ -208,21 +212,20 @@ def create_instance_template(config, name):
     @param name: the name of the new template
     @rtype: InstanceTemplate
     """
-    template = InstanceTemplate()
-
-    template.name = name
-    template.image = config.get('instance', 'image')
-    template.type = config.get('instance', 'type')
-    template.config = {
+    template_config = {
         'subnetId': config.get('instance', 'subnetId'),
         'securityGroupsIds': config.get('instance', 'securityGroupId'),
         'instanceNamePrefix': config.get('instance', 'namePrefix')
     }
+    template = InstanceTemplate(name=name,
+                                image=config.get('instance', 'image'),
+                                type=config.get('instance', 'type'),
+                                config=template_config)
 
     return template
 
 
-def create_virtual_instance_with_random_id(config, instance_template_name):
+def create_virtual_instance(config, instance_template_name):
     """
     Create a new virtual instance object with a random ID
 
@@ -249,7 +252,7 @@ def wait_for_deployment(client, environment_name, deployment_name):
         sys.stdout.flush()
 
         time.sleep(0.5)
-        stage = api.getStatus(environment_name, deployment_name).stage
+        stage = api.get_status(environment_name, deployment_name).stage
 
     print "\nDeployment '%s' current stage is '%s'" % (deployment_name, stage)
 
@@ -267,12 +270,17 @@ def wait_for_cluster(client, environment_name, deployment_name, cluster_name):
         sys.stdout.flush()
 
         time.sleep(0.5)
-        stage = api.getStatus(environment_name, deployment_name, cluster_name).stage
+        stage = api.get_status(environment_name, deployment_name, cluster_name).stage
 
     print "\nCluster '%s' current stage is '%s'" % (cluster_name, stage)
 
 
 def main():
+    """
+    Main function
+
+    @return: 0 when successful
+    """
     parser = argparse.ArgumentParser(prog='cluster.py')
 
     parser.add_argument('--admin-username', default="admin",
@@ -280,20 +288,21 @@ def main():
     parser.add_argument('--admin-password', default="admin",
                         help='Password for the administrative user (defaults to %(default)s)')
     parser.add_argument('--server', default="http://localhost:7189",
-                        help="Cloudera Director server URL (defaults to %(default)s)")
+                        help="Cloudera Altus Director server URL (defaults to %(default)s)")
     parser.add_argument('--cafile', default=None,
-                        help='Path to file containing trusted certificate(s) (defaults to %(default)s)')
+                        help='Path to file containing trusted certificate(s) ' +
+                        '(defaults to %(default)s)')
 
-    parser.add_argument('config_file', help="Cluster configuration file (.ini)")
+    parser.add_argument('ini_file', help="Cluster configuration file (.ini)")
 
     args = parser.parse_args()
 
-    if not isfile(args.config_file):
-        print 'Error: "%s" not found or not a file' % args.config_file
+    if not isfile(args.ini_file):
+        print 'Error: "%s" not found or not a file' % args.ini_file
         return -1
 
     config = ConfigParser.SafeConfigParser()
-    config.read(args.config_file)
+    config.read(args.ini_file)
 
     client = get_authenticated_client(args)
 
@@ -319,6 +328,6 @@ if __name__ == '__main__':
     try:
         sys.exit(main())
 
-    except HTTPError as e:
-        print e.read()
-        raise e
+    except ApiException as exc:
+        print str(exc)
+        raise exc

@@ -14,86 +14,101 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-// Note: This file is auto generated. Do not edit manually.
 
 package com.cloudera.director.client.v10.model;
 
-import java.util.Set;
+import java.util.Objects;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
+/**
+ * Description of an update event for a cluster
+ */
+@ApiModel(description = "Description of an update event for a cluster")
 
 public class ClusterUpdateEventSummary {
-  /* The number of instances added */
-  private Integer instancesAdded;
-  /* The number of instances removed */
-  private Integer instancesRemoved;
-  /* The number of instances replaced */
-  private Integer instancesReplaced;
-  /* The time when this event occurred */
-  private Long occurredAt;
-  /* Services that were added */
-  private Set<String> servicesAdded;
-  /* Services that were removed */
-  private Set<String> servicesRemoved;
-  public ClusterUpdateEventSummary() { }
+  @SerializedName("instancesAdded")
+  private Integer instancesAdded = null;
+  @SerializedName("instancesRemoved")
+  private Integer instancesRemoved = null;
+  @SerializedName("instancesReplaced")
+  private Integer instancesReplaced = null;
+  @SerializedName("occurredAt")
+  private Long occurredAt = null;
+  @SerializedName("servicesAdded")
+  private List<String> servicesAdded = new ArrayList<String>();
+  @SerializedName("servicesRemoved")
+  private List<String> servicesRemoved = new ArrayList<String>();
 
-  private ClusterUpdateEventSummary(Integer instancesAdded, Integer instancesRemoved, Integer instancesReplaced, Long occurredAt, Set<String> servicesAdded, Set<String> servicesRemoved) {
-    this.instancesAdded = instancesAdded;
-    this.instancesRemoved = instancesRemoved;
-    this.instancesReplaced = instancesReplaced;
-    this.occurredAt = occurredAt;
-    this.servicesAdded = servicesAdded;
-    this.servicesRemoved = servicesRemoved;
+  public ClusterUpdateEventSummary() {
+    // Do nothing
   }
 
   private ClusterUpdateEventSummary(ClusterUpdateEventSummaryBuilder builder) {
-    this.instancesAdded = builder.instancesAdded;
-    this.instancesRemoved = builder.instancesRemoved;
-    this.instancesReplaced = builder.instancesReplaced;
-    this.occurredAt = builder.occurredAt;
-    this.servicesAdded = builder.servicesAdded;
-    this.servicesRemoved = builder.servicesRemoved;
-  }
+      this.instancesAdded = builder.instancesAdded;
+      this.instancesRemoved = builder.instancesRemoved;
+      this.instancesReplaced = builder.instancesReplaced;
+      this.occurredAt = builder.occurredAt;
+      this.servicesAdded = builder.servicesAdded;
+      this.servicesRemoved = builder.servicesRemoved;
+    }
 
   public static ClusterUpdateEventSummaryBuilder builder() {
     return new ClusterUpdateEventSummaryBuilder();
   }
 
   public static class ClusterUpdateEventSummaryBuilder {
-    private Integer instancesAdded = null;
-    private Integer instancesRemoved = null;
-    private Integer instancesReplaced = null;
-    private Long occurredAt = null;
-    private Set<String> servicesAdded = null;
-    private Set<String> servicesRemoved = null;
+      private Integer instancesAdded = null;
+      private Integer instancesRemoved = null;
+      private Integer instancesReplaced = null;
+      private Long occurredAt = null;
+      private List<String> servicesAdded = new ArrayList<String>();
+      private List<String> servicesRemoved = new ArrayList<String>();
+  
 
     public ClusterUpdateEventSummaryBuilder instancesAdded(Integer instancesAdded) {
       this.instancesAdded = instancesAdded;
       return this;
     }
 
+
     public ClusterUpdateEventSummaryBuilder instancesRemoved(Integer instancesRemoved) {
       this.instancesRemoved = instancesRemoved;
       return this;
     }
+
 
     public ClusterUpdateEventSummaryBuilder instancesReplaced(Integer instancesReplaced) {
       this.instancesReplaced = instancesReplaced;
       return this;
     }
 
+
     public ClusterUpdateEventSummaryBuilder occurredAt(Long occurredAt) {
       this.occurredAt = occurredAt;
       return this;
     }
 
-    public ClusterUpdateEventSummaryBuilder servicesAdded(Set<String> servicesAdded) {
+
+    public ClusterUpdateEventSummaryBuilder servicesAdded(List<String> servicesAdded) {
       this.servicesAdded = servicesAdded;
       return this;
     }
 
-    public ClusterUpdateEventSummaryBuilder servicesRemoved(Set<String> servicesRemoved) {
+
+    public ClusterUpdateEventSummaryBuilder servicesRemoved(List<String> servicesRemoved) {
       this.servicesRemoved = servicesRemoved;
       return this;
     }
+
 
     public ClusterUpdateEventSummary build() {
       return new ClusterUpdateEventSummary(this);
@@ -103,108 +118,181 @@ public class ClusterUpdateEventSummary {
   public ClusterUpdateEventSummaryBuilder toBuilder() {
     return builder()
       .instancesAdded(instancesAdded)
-      .instancesRemoved(instancesRemoved)
-      .instancesReplaced(instancesReplaced)
-      .occurredAt(occurredAt)
-      .servicesAdded(servicesAdded)
-      .servicesRemoved(servicesRemoved)
+            .instancesRemoved(instancesRemoved)
+            .instancesReplaced(instancesReplaced)
+            .occurredAt(occurredAt)
+            .servicesAdded(servicesAdded)
+            .servicesRemoved(servicesRemoved)
       ;
   }
+
+  public ClusterUpdateEventSummary instancesAdded(Integer instancesAdded) {
+    this.instancesAdded = instancesAdded;
+    return this;
+  }
+
+   /**
+   * The number of instances added
+   * @return instancesAdded
+  **/
+  @ApiModelProperty(required = true, value = "The number of instances added")
   public Integer getInstancesAdded() {
     return instancesAdded;
   }
+
   public void setInstancesAdded(Integer instancesAdded) {
     this.instancesAdded = instancesAdded;
   }
 
+  public ClusterUpdateEventSummary instancesRemoved(Integer instancesRemoved) {
+    this.instancesRemoved = instancesRemoved;
+    return this;
+  }
+
+   /**
+   * The number of instances removed
+   * @return instancesRemoved
+  **/
+  @ApiModelProperty(required = true, value = "The number of instances removed")
   public Integer getInstancesRemoved() {
     return instancesRemoved;
   }
+
   public void setInstancesRemoved(Integer instancesRemoved) {
     this.instancesRemoved = instancesRemoved;
   }
 
+  public ClusterUpdateEventSummary instancesReplaced(Integer instancesReplaced) {
+    this.instancesReplaced = instancesReplaced;
+    return this;
+  }
+
+   /**
+   * The number of instances replaced
+   * @return instancesReplaced
+  **/
+  @ApiModelProperty(required = true, value = "The number of instances replaced")
   public Integer getInstancesReplaced() {
     return instancesReplaced;
   }
+
   public void setInstancesReplaced(Integer instancesReplaced) {
     this.instancesReplaced = instancesReplaced;
   }
 
+  public ClusterUpdateEventSummary occurredAt(Long occurredAt) {
+    this.occurredAt = occurredAt;
+    return this;
+  }
+
+   /**
+   * The time when this event occurred
+   * @return occurredAt
+  **/
+  @ApiModelProperty(required = true, value = "The time when this event occurred")
   public Long getOccurredAt() {
     return occurredAt;
   }
+
   public void setOccurredAt(Long occurredAt) {
     this.occurredAt = occurredAt;
   }
 
-  public Set<String> getServicesAdded() {
+  public ClusterUpdateEventSummary servicesAdded(List<String> servicesAdded) {
+    this.servicesAdded = servicesAdded;
+    return this;
+  }
+
+  public ClusterUpdateEventSummary addServicesAddedItem(String servicesAddedItem) {
+    this.servicesAdded.add(servicesAddedItem);
+    return this;
+  }
+
+   /**
+   * Services that were added
+   * @return servicesAdded
+  **/
+  @ApiModelProperty(required = true, value = "Services that were added")
+  public List<String> getServicesAdded() {
     return servicesAdded;
   }
-  public void setServicesAdded(Set<String> servicesAdded) {
+
+  public void setServicesAdded(List<String> servicesAdded) {
     this.servicesAdded = servicesAdded;
   }
 
-  public Set<String> getServicesRemoved() {
+  public ClusterUpdateEventSummary servicesRemoved(List<String> servicesRemoved) {
+    this.servicesRemoved = servicesRemoved;
+    return this;
+  }
+
+  public ClusterUpdateEventSummary addServicesRemovedItem(String servicesRemovedItem) {
+    this.servicesRemoved.add(servicesRemovedItem);
+    return this;
+  }
+
+   /**
+   * Services that were removed
+   * @return servicesRemoved
+  **/
+  @ApiModelProperty(required = true, value = "Services that were removed")
+  public List<String> getServicesRemoved() {
     return servicesRemoved;
   }
-  public void setServicesRemoved(Set<String> servicesRemoved) {
+
+  public void setServicesRemoved(List<String> servicesRemoved) {
     this.servicesRemoved = servicesRemoved;
   }
 
+
   @Override
-  public boolean equals(Object o) {
-    if (this == o) return true;
-    if (o == null || getClass() != o.getClass()) return false;
-
-    ClusterUpdateEventSummary other = (ClusterUpdateEventSummary) o; // NOPMD
-
-    if (instancesAdded != null ?
-        !instancesAdded.equals(other.instancesAdded) :
-        other.instancesAdded != null) return false;
-    if (instancesRemoved != null ?
-        !instancesRemoved.equals(other.instancesRemoved) :
-        other.instancesRemoved != null) return false;
-    if (instancesReplaced != null ?
-        !instancesReplaced.equals(other.instancesReplaced) :
-        other.instancesReplaced != null) return false;
-    if (occurredAt != null ?
-        !occurredAt.equals(other.occurredAt) :
-        other.occurredAt != null) return false;
-    if (servicesAdded != null ?
-        !servicesAdded.equals(other.servicesAdded) :
-        other.servicesAdded != null) return false;
-    if (servicesRemoved != null ?
-        !servicesRemoved.equals(other.servicesRemoved) :
-        other.servicesRemoved != null) return false;
-    return true;
+  public boolean equals(java.lang.Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
+    ClusterUpdateEventSummary clusterUpdateEventSummary = (ClusterUpdateEventSummary) o;
+    return Objects.equals(this.instancesAdded, clusterUpdateEventSummary.instancesAdded) &&
+        Objects.equals(this.instancesRemoved, clusterUpdateEventSummary.instancesRemoved) &&
+        Objects.equals(this.instancesReplaced, clusterUpdateEventSummary.instancesReplaced) &&
+        Objects.equals(this.occurredAt, clusterUpdateEventSummary.occurredAt) &&
+        Objects.equals(this.servicesAdded, clusterUpdateEventSummary.servicesAdded) &&
+        Objects.equals(this.servicesRemoved, clusterUpdateEventSummary.servicesRemoved);
   }
 
   @Override
   public int hashCode() {
-    int result = 0;
-    result = 31 * result + (instancesAdded != null ? instancesAdded.hashCode() : 0);
-    result = 31 * result + (instancesRemoved != null ? instancesRemoved.hashCode() : 0);
-    result = 31 * result + (instancesReplaced != null ? instancesReplaced.hashCode() : 0);
-    result = 31 * result + (occurredAt != null ? occurredAt.hashCode() : 0);
-    result = 31 * result + (servicesAdded != null ? servicesAdded.hashCode() : 0);
-    result = 31 * result + (servicesRemoved != null ? servicesRemoved.hashCode() : 0);
-    return result;
+    return Objects.hash(instancesAdded, instancesRemoved, instancesReplaced, occurredAt, servicesAdded, servicesRemoved);
   }
 
+
   @Override
-  public String toString()  {
+  public String toString() {
     StringBuilder sb = new StringBuilder();
-    String newLine = System.getProperty("line.separator");
-    sb.append("class ClusterUpdateEventSummary {" + newLine);
-    sb.append("  instancesAdded: ").append(instancesAdded).append(newLine);
-    sb.append("  instancesRemoved: ").append(instancesRemoved).append(newLine);
-    sb.append("  instancesReplaced: ").append(instancesReplaced).append(newLine);
-    sb.append("  occurredAt: ").append(occurredAt).append(newLine);
-    sb.append("  servicesAdded: ").append(servicesAdded).append(newLine);
-    sb.append("  servicesRemoved: ").append(servicesRemoved).append(newLine);
-    sb.append("}" + newLine);
+    sb.append("class ClusterUpdateEventSummary {\n");
+    
+    sb.append("    instancesAdded: ").append(toIndentedString(instancesAdded)).append("\n");
+    sb.append("    instancesRemoved: ").append(toIndentedString(instancesRemoved)).append("\n");
+    sb.append("    instancesReplaced: ").append(toIndentedString(instancesReplaced)).append("\n");
+    sb.append("    occurredAt: ").append(toIndentedString(occurredAt)).append("\n");
+    sb.append("    servicesAdded: ").append(toIndentedString(servicesAdded)).append("\n");
+    sb.append("    servicesRemoved: ").append(toIndentedString(servicesRemoved)).append("\n");
+    sb.append("}");
     return sb.toString();
   }
+
+  /**
+   * Convert the given object to string with each line indented by 4 spaces
+   * (except the first line).
+   */
+  private String toIndentedString(java.lang.Object o) {
+    if (o == null) {
+      return "null";
+    }
+    return o.toString().replace("\n", "\n    ");
+  }
+
 }
 

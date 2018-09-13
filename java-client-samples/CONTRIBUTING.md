@@ -1,6 +1,6 @@
-Thanks for your interest in contributing to Cloudera Director Java client samples!
+Thanks for your interest in contributing to Cloudera Altus Director Java client samples!
 
-The Cloudera Director Java client samples project is an Apache-licensed, open source project associated with [Cloudera Director](https://www.cloudera.com/products/product-components/cloudera-director.html). This document contains guidelines for how to contribute to the project.
+The Cloudera Altus Director Java client samples project is an Apache-licensed, open source project associated with [Cloudera Altus Director](https://www.cloudera.com/products/product-components/cloudera-director.html). This document contains guidelines for how to contribute to the project.
 
 # How do I contribute code?
 
@@ -20,7 +20,7 @@ Now start coding! For best results, first fork this repository, and then create 
 
 As you are working, keep the following things in mind:
 
-First, please include tests with your changes where appropriate. If code changes do not include tests, it is much less likely that they will be accepted. If you are unsure how to write tests, please ask on the issue comment stream for guidance. You should also try using your updates on a recent release of Cloudera Director, to be sure that they integrate successfully and work as intended in a live scenario.
+First, please include tests with your changes where appropriate. If code changes do not include tests, it is much less likely that they will be accepted. If you are unsure how to write tests, please ask on the issue comment stream for guidance. You should also try using your updates on a recent release of Cloudera Altus Director, to be sure that they integrate successfully and work as intended in a live scenario.
 
 Second, please keep your changes narrowly targeted to the problem described by the issue. It’s better for everyone if we maintain discipline about the scope of each change set. In general, if you find a bug while working on a specific feature, file a separate issue for the bug, check if you can assign it to yourself, and fix it independently of the feature. This helps the community differentiate between bug fixes and features, and allows us to build stable maintenance releases.
 

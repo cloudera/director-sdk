@@ -19,6 +19,7 @@ package com.cloudera.director.samples;
 import com.beust.jcommander.JCommander;
 import com.beust.jcommander.Parameter;
 import com.beust.jcommander.Parameters;
+import com.beust.jcommander.internal.Lists;
 import com.cloudera.director.client.common.ApiClient;
 import com.cloudera.director.client.common.ApiException;
 import com.cloudera.director.client.latest.api.AuthenticationApi;
@@ -27,9 +28,8 @@ import com.cloudera.director.client.latest.model.Login;
 import com.cloudera.director.client.latest.model.User;
 
 import java.util.HashMap;
-import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 /**
  * Example code on how to use the API to manage user accounts.
@@ -37,8 +37,8 @@ import java.util.Set;
 public class UsersSample {
 
   private static ApiClient newAuthenticatedApiClient(CommonParameters common) throws ApiException {
-    ApiClient client = new ApiClient(common.getServerUrl(), common.isTlsEnabled(),
-                                     common.isHostnameVerificationEnabled());
+    ApiClient client = new ApiClient(common.getServerUrl());
+    client.setVerifyingSsl(common.isHostnameVerificationEnabled());
 
     Login login = Login.builder()
         .username(common.getAdminUsername())
@@ -56,7 +56,6 @@ public class UsersSample {
   @Parameters(commandDescription = "List all the user accounts")
   public static class ListCommand implements Command {
 
-    @Override
     public void run(CommonParameters common) throws ApiException {
       ApiClient client = newAuthenticatedApiClient(common);
       UsersApi usersApi = new UsersApi(client);
@@ -81,12 +80,11 @@ public class UsersSample {
         description = "A password for the new user", required = true, password = true)
     private String password;
 
-    @Override
     public void run(CommonParameters common) throws Exception {
       ApiClient client = newAuthenticatedApiClient(common);
       UsersApi usersApi = new UsersApi(client);
 
-      Set<String> roles = new HashSet<String>();
+      List<String> roles = Lists.newArrayList();
       roles.add("ROLE_ADMIN");
       roles.add("ROLE_READONLY");
 
@@ -102,7 +100,7 @@ public class UsersSample {
         System.out.printf("Created a new user with name '%s'.%n", username);
 
       } catch (ApiException e) {
-        if (e.getCode() == 302 /* found */) {
+        if (e.getCode() == 409 /* conflict */) {
           System.err.printf("Cannot create duplicate user '%s'.%n", username);
         }
         throw e;
@@ -119,7 +117,6 @@ public class UsersSample {
     @Parameter(names = "--username", description = "Name of the user to be deleted", required = true)
     private String username;
 
-    @Override
     public void run(CommonParameters common) throws Exception {
       ApiClient client = newAuthenticatedApiClient(common);
 

@@ -8,7 +8,7 @@ import com.beust.jcommander.Parameter;
 
 /**
  * A common list of parameters for all commands that need to talk
- * with a Cloudera Director Server over the public API.
+ * with a Cloudera Altus Director Server over the public API.
  */
 public class CommonParameters {
 
@@ -20,7 +20,7 @@ public class CommonParameters {
       description = "Password for the administrative user", password = true)
   private String adminPassword = "admin";
 
-  @Parameter(names = "--server", description = "Cloudera Director server URL")
+  @Parameter(names = "--server", description = "Cloudera Altus Director server URL")
   private String serverUrl = "http://localhost:7189";
 
   @Parameter(names = "--disable-hostname-verification",
