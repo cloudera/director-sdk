@@ -1,19 +1,16 @@
-Cloudera Director API clients
-=============================
+# Cloudera Altus Director API clients
 
-Cloudera Director is the reliable, self-service experience for Cloudera’s enterprise data hub in the cloud - allowing enterprises to unlock all the benefits of Hadoop in the cloud, without compromising on the critical aspects of an enterprise-grade, Hadoop platform.
+[Cloudera Altus Director](https://www.cloudera.com/products/product-components/cloudera-director.html) is the reliable, self-service experience for Cloudera’s enterprise data hub in the cloud - allowing enterprises to unlock all the benefits of Hadoop in the cloud, without compromising on the critical aspects of an enterprise-grade, Hadoop platform.
 
+## About
 
-About
------
+This repository contains the source code of the Cloudera Altus Director [Java](java-client/) and [Python](python-client/) API clients that can be used to interact with the Cloudera Altus Director server API to bootstrap, grow, shrink and terminate CDH clusters managed by Cloudera Manager on a cloud infrastructure. It is not required to use either client library to interact with the server API; they are offered for convenience.
 
-This repository contains the source code of the Cloudera Director Java and Python API clients that can be used to interact with the Director Server API. They can be used to bootstrap, grow, shrink and terminate CDH clusters managed by Cloudera Manager on a cloud infrastructure.
+API clients are generated from the server API itself. Therefore, pull requests are not accepted for them.
 
+## License
 
-Important notice
-----------------
-
-Copyright &copy; 2015 Cloudera, Inc. Licensed under the [Apache License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0).
+Copyright &copy; 2015-2018 Cloudera, Inc. Licensed under the [Apache License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0).
 
 Cloudera, the Cloudera logo, and any other product or service names or slogans contained in this document are trademarks of Cloudera and its suppliers or licensors, and may not be copied, imitated or used, in whole or in part, without the prior written permission of Cloudera or the applicable trademark holder.
 
