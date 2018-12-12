@@ -8,6 +8,10 @@ This repository contains the source code of the Cloudera Altus Director [Java](j
 
 API clients are generated from the server API itself. Therefore, pull requests are not accepted for them.
 
+## API Documentation
+
+[Documentation home](documentation/)
+
 ## License
 
 Copyright &copy; 2015-2018 Cloudera, Inc. Licensed under the [Apache License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0).

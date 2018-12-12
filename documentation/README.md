@@ -50,7 +50,4 @@ The table below lists the documentation by version, along with the version of Al
 
 ## Changelogs
 
-Changelogs for some server API versions are available in the [changelogs](changelogs/) directory.
-
-* [v10 &rarr; v11](changelogs/api_v11_changelog.md)
-* [v9 &rarr; v10](changelogs/api_v10_changelog.md)
+[Changelogs home](changelogs/)
