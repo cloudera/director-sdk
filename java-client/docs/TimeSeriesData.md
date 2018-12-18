@@ -4,10 +4,10 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**aggregateStatistics** | [**TimeSeriesAggregateStatistics**](TimeSeriesAggregateStatistics.md) | Aggregate statistics |  [optional]
-**timestamp** | **Long** | Timestamp | 
-**type** | **String** | Type | 
+**timestamp** | [**DateTime**](DateTime.md) | Timestamp | 
 **value** | **Double** | Value | 
+**type** | **String** | Type | 
+**aggregateStatistics** | [**TimeSeriesAggregateStatistics**](TimeSeriesAggregateStatistics.md) | Aggregate statistics |  [optional]
 
 
 

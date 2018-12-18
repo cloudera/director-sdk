@@ -69,7 +69,7 @@ public class ServerConfigApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/api/d6.0/serverConfigs";
+        String localVarPath = "/api/d6.1/serverConfigs";
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -182,7 +182,7 @@ public class ServerConfigApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/api/d6.0/serverConfigs/metadata";
+        String localVarPath = "/api/d6.1/serverConfigs/metadata";
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -286,7 +286,7 @@ public class ServerConfigApi {
     }
     /**
      * Build call for updateConfigs
-     * @param serverConfigs serverConfigs (required)
+     * @param serverConfigs  (required)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
@@ -296,7 +296,7 @@ public class ServerConfigApi {
         Object localVarPostBody = serverConfigs;
 
         // create path and map variables
-        String localVarPath = "/api/d6.0/serverConfigs";
+        String localVarPath = "/api/d6.1/serverConfigs";
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -312,7 +312,7 @@ public class ServerConfigApi {
         if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
 
         final String[] localVarContentTypes = {
-            "application/json"
+            
         };
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
@@ -350,7 +350,7 @@ public class ServerConfigApi {
     /**
      * Get server configuration
      * 
-     * @param serverConfigs serverConfigs (required)
+     * @param serverConfigs  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
     public void updateConfigs(Object serverConfigs) throws ApiException {
@@ -360,7 +360,7 @@ public class ServerConfigApi {
     /**
      * Get server configuration
      * 
-     * @param serverConfigs serverConfigs (required)
+     * @param serverConfigs  (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
@@ -372,7 +372,7 @@ public class ServerConfigApi {
     /**
      * Get server configuration (asynchronously)
      * 
-     * @param serverConfigs serverConfigs (required)
+     * @param serverConfigs  (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object

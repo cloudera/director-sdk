@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **entityName** | **String** | Entity name | 
 **metricName** | **String** | Metric name | 
-**timestamp** | **Long** | Timestamp | 
+**timestamp** | [**DateTime**](DateTime.md) | Timestamp | 
 **value** | **Double** | Value | 
 
 

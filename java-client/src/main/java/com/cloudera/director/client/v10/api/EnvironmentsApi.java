@@ -60,7 +60,7 @@ public class EnvironmentsApi {
 
     /**
      * Build call for create
-     * @param environment environment (required)
+     * @param environment  (required)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
@@ -86,7 +86,7 @@ public class EnvironmentsApi {
         if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
 
         final String[] localVarContentTypes = {
-            "application/json"
+            
         };
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
@@ -124,7 +124,7 @@ public class EnvironmentsApi {
     /**
      * Create a new environment
      * 
-     * @param environment environment (required)
+     * @param environment  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
     public void create(Environment environment) throws ApiException {
@@ -134,7 +134,7 @@ public class EnvironmentsApi {
     /**
      * Create a new environment
      * 
-     * @param environment environment (required)
+     * @param environment  (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
@@ -146,7 +146,7 @@ public class EnvironmentsApi {
     /**
      * Create a new environment (asynchronously)
      * 
-     * @param environment environment (required)
+     * @param environment  (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -178,7 +178,7 @@ public class EnvironmentsApi {
     }
     /**
      * Build call for delete
-     * @param name name (required)
+     * @param name  (required)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
@@ -243,7 +243,7 @@ public class EnvironmentsApi {
     /**
      * Delete an environment by name
      * 
-     * @param name name (required)
+     * @param name  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
     public void delete(String name) throws ApiException {
@@ -253,7 +253,7 @@ public class EnvironmentsApi {
     /**
      * Delete an environment by name
      * 
-     * @param name name (required)
+     * @param name  (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
@@ -265,7 +265,7 @@ public class EnvironmentsApi {
     /**
      * Delete an environment by name (asynchronously)
      * 
-     * @param name name (required)
+     * @param name  (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -297,7 +297,7 @@ public class EnvironmentsApi {
     }
     /**
      * Build call for getRedacted
-     * @param name name (required)
+     * @param name  (required)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
@@ -362,7 +362,7 @@ public class EnvironmentsApi {
     /**
      * Get an environment by name
      * 
-     * @param name name (required)
+     * @param name  (required)
      * @return Environment
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
@@ -374,7 +374,7 @@ public class EnvironmentsApi {
     /**
      * Get an environment by name
      * 
-     * @param name name (required)
+     * @param name  (required)
      * @return ApiResponse&lt;Environment&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
@@ -387,7 +387,7 @@ public class EnvironmentsApi {
     /**
      * Get an environment by name (asynchronously)
      * 
-     * @param name name (required)
+     * @param name  (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -533,8 +533,8 @@ public class EnvironmentsApi {
     }
     /**
      * Build call for update
-     * @param name name (required)
-     * @param environment environment (required)
+     * @param name  (required)
+     * @param environment  (required)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
@@ -561,7 +561,7 @@ public class EnvironmentsApi {
         if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
 
         final String[] localVarContentTypes = {
-            "application/json"
+            
         };
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
@@ -604,8 +604,8 @@ public class EnvironmentsApi {
     /**
      * Update an existing environment
      * 
-     * @param name name (required)
-     * @param environment environment (required)
+     * @param name  (required)
+     * @param environment  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
     public void update(String name, Environment environment) throws ApiException {
@@ -615,8 +615,8 @@ public class EnvironmentsApi {
     /**
      * Update an existing environment
      * 
-     * @param name name (required)
-     * @param environment environment (required)
+     * @param name  (required)
+     * @param environment  (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
@@ -628,8 +628,8 @@ public class EnvironmentsApi {
     /**
      * Update an existing environment (asynchronously)
      * 
-     * @param name name (required)
-     * @param environment environment (required)
+     * @param name  (required)
+     * @param environment  (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -661,8 +661,8 @@ public class EnvironmentsApi {
     }
     /**
      * Build call for updateProviderCredentials
-     * @param name name (required)
-     * @param credentials credentials (required)
+     * @param name  (required)
+     * @param credentials  (required)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
@@ -689,7 +689,7 @@ public class EnvironmentsApi {
         if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
 
         final String[] localVarContentTypes = {
-            "application/json"
+            
         };
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
@@ -732,8 +732,8 @@ public class EnvironmentsApi {
     /**
      * Update provider credentials for a specific environment
      * 
-     * @param name name (required)
-     * @param credentials credentials (required)
+     * @param name  (required)
+     * @param credentials  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
     public void updateProviderCredentials(String name, Object credentials) throws ApiException {
@@ -743,8 +743,8 @@ public class EnvironmentsApi {
     /**
      * Update provider credentials for a specific environment
      * 
-     * @param name name (required)
-     * @param credentials credentials (required)
+     * @param name  (required)
+     * @param credentials  (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
@@ -756,8 +756,8 @@ public class EnvironmentsApi {
     /**
      * Update provider credentials for a specific environment (asynchronously)
      * 
-     * @param name name (required)
-     * @param credentials credentials (required)
+     * @param name  (required)
+     * @param credentials  (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object

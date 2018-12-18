@@ -39,49 +39,26 @@ class ExternalDatabaseServerUsage(object):
                             and the value is json key in definition.
     """
     swagger_types = {
-        'clusters': 'dict(str, list[str])',
-        'deployments': 'list[str]'
+        'deployments': 'list[str]',
+        'clusters': 'dict(str, list[str])'
     }
 
     attribute_map = {
-        'clusters': 'clusters',
-        'deployments': 'deployments'
+        'deployments': 'deployments',
+        'clusters': 'clusters'
     }
 
-    def __init__(self, clusters=None, deployments=None):  # noqa: E501
+    def __init__(self, deployments=None, clusters=None):  # noqa: E501
         """ExternalDatabaseServerUsage - a model defined in Swagger"""  # noqa: E501
 
-        self._clusters = None
         self._deployments = None
+        self._clusters = None
         self.discriminator = None
 
-        if clusters is not None:
-            self.clusters = clusters
         if deployments is not None:
             self.deployments = deployments
-
-    @property
-    def clusters(self):
-        """Gets the clusters of this ExternalDatabaseServerUsage.  # noqa: E501
-
-        Clusters that use the specified database server, by deployment  # noqa: E501
-
-        :return: The clusters of this ExternalDatabaseServerUsage.  # noqa: E501
-        :rtype: dict(str, list[str])
-        """
-        return self._clusters
-
-    @clusters.setter
-    def clusters(self, clusters):
-        """Sets the clusters of this ExternalDatabaseServerUsage.
-
-        Clusters that use the specified database server, by deployment  # noqa: E501
-
-        :param clusters: The clusters of this ExternalDatabaseServerUsage.  # noqa: E501
-        :type: dict(str, list[str])
-        """
-
-        self._clusters = clusters
+        if clusters is not None:
+            self.clusters = clusters
 
     @property
     def deployments(self):
@@ -105,6 +82,29 @@ class ExternalDatabaseServerUsage(object):
         """
 
         self._deployments = deployments
+
+    @property
+    def clusters(self):
+        """Gets the clusters of this ExternalDatabaseServerUsage.  # noqa: E501
+
+        Clusters that use the specified database server, by deployment  # noqa: E501
+
+        :return: The clusters of this ExternalDatabaseServerUsage.  # noqa: E501
+        :rtype: dict(str, list[str])
+        """
+        return self._clusters
+
+    @clusters.setter
+    def clusters(self, clusters):
+        """Sets the clusters of this ExternalDatabaseServerUsage.
+
+        Clusters that use the specified database server, by deployment  # noqa: E501
+
+        :param clusters: The clusters of this ExternalDatabaseServerUsage.  # noqa: E501
+        :type: dict(str, list[str])
+        """
+
+        self._clusters = clusters
 
     def to_dict(self):
         """Returns the model properties as a dict"""

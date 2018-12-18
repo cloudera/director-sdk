@@ -39,27 +39,27 @@ import java.util.Map;
 @ApiModel(description = "An instance in a cloud provider")
 
 public class Instance {
-  @SerializedName("capabilities")
-  private Capabilities capabilities = null;
-  @SerializedName("health")
-  private Health health = null;
   @SerializedName("ipAddress")
   private String ipAddress = null;
   @SerializedName("properties")
   private Map<String, String> properties = null;
   @SerializedName("virtualInstance")
   private VirtualInstance virtualInstance = null;
+  @SerializedName("capabilities")
+  private Capabilities capabilities = null;
+  @SerializedName("health")
+  private Health health = null;
 
   public Instance() {
     // Do nothing
   }
 
   private Instance(InstanceBuilder builder) {
-      this.capabilities = builder.capabilities;
-      this.health = builder.health;
       this.ipAddress = builder.ipAddress;
       this.properties = builder.properties;
       this.virtualInstance = builder.virtualInstance;
+      this.capabilities = builder.capabilities;
+      this.health = builder.health;
     }
 
   public static InstanceBuilder builder() {
@@ -67,24 +67,12 @@ public class Instance {
   }
 
   public static class InstanceBuilder {
-      private Capabilities capabilities = null;
-      private Health health = null;
       private String ipAddress = null;
       private Map<String, String> properties = new HashMap<String, String>();
       private VirtualInstance virtualInstance = null;
+      private Capabilities capabilities = null;
+      private Health health = null;
   
-
-    public InstanceBuilder capabilities(Capabilities capabilities) {
-      this.capabilities = capabilities;
-      return this;
-    }
-
-
-    public InstanceBuilder health(Health health) {
-      this.health = health;
-      return this;
-    }
-
 
     public InstanceBuilder ipAddress(String ipAddress) {
       this.ipAddress = ipAddress;
@@ -104,6 +92,18 @@ public class Instance {
     }
 
 
+    public InstanceBuilder capabilities(Capabilities capabilities) {
+      this.capabilities = capabilities;
+      return this;
+    }
+
+
+    public InstanceBuilder health(Health health) {
+      this.health = health;
+      return this;
+    }
+
+
     public Instance build() {
       return new Instance(this);
     }
@@ -111,48 +111,12 @@ public class Instance {
 
   public InstanceBuilder toBuilder() {
     return builder()
-      .capabilities(capabilities)
-            .health(health)
-            .ipAddress(ipAddress)
+      .ipAddress(ipAddress)
             .properties(properties)
             .virtualInstance(virtualInstance)
+            .capabilities(capabilities)
+            .health(health)
       ;
-  }
-
-  public Instance capabilities(Capabilities capabilities) {
-    this.capabilities = capabilities;
-    return this;
-  }
-
-   /**
-   * Optional instance capabilities
-   * @return capabilities
-  **/
-  @ApiModelProperty(value = "Optional instance capabilities")
-  public Capabilities getCapabilities() {
-    return capabilities;
-  }
-
-  public void setCapabilities(Capabilities capabilities) {
-    this.capabilities = capabilities;
-  }
-
-  public Instance health(Health health) {
-    this.health = health;
-    return this;
-  }
-
-   /**
-   * Instance health
-   * @return health
-  **/
-  @ApiModelProperty(value = "Instance health")
-  public Health getHealth() {
-    return health;
-  }
-
-  public void setHealth(Health health) {
-    this.health = health;
   }
 
   public Instance ipAddress(String ipAddress) {
@@ -217,6 +181,42 @@ public class Instance {
     this.virtualInstance = virtualInstance;
   }
 
+  public Instance capabilities(Capabilities capabilities) {
+    this.capabilities = capabilities;
+    return this;
+  }
+
+   /**
+   * Optional instance capabilities
+   * @return capabilities
+  **/
+  @ApiModelProperty(value = "Optional instance capabilities")
+  public Capabilities getCapabilities() {
+    return capabilities;
+  }
+
+  public void setCapabilities(Capabilities capabilities) {
+    this.capabilities = capabilities;
+  }
+
+  public Instance health(Health health) {
+    this.health = health;
+    return this;
+  }
+
+   /**
+   * Instance health
+   * @return health
+  **/
+  @ApiModelProperty(value = "Instance health")
+  public Health getHealth() {
+    return health;
+  }
+
+  public void setHealth(Health health) {
+    this.health = health;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -227,16 +227,16 @@ public class Instance {
       return false;
     }
     Instance instance = (Instance) o;
-    return Objects.equals(this.capabilities, instance.capabilities) &&
-        Objects.equals(this.health, instance.health) &&
-        Objects.equals(this.ipAddress, instance.ipAddress) &&
+    return Objects.equals(this.ipAddress, instance.ipAddress) &&
         Objects.equals(this.properties, instance.properties) &&
-        Objects.equals(this.virtualInstance, instance.virtualInstance);
+        Objects.equals(this.virtualInstance, instance.virtualInstance) &&
+        Objects.equals(this.capabilities, instance.capabilities) &&
+        Objects.equals(this.health, instance.health);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(capabilities, health, ipAddress, properties, virtualInstance);
+    return Objects.hash(ipAddress, properties, virtualInstance, capabilities, health);
   }
 
 
@@ -245,11 +245,11 @@ public class Instance {
     StringBuilder sb = new StringBuilder();
     sb.append("class Instance {\n");
     
-    sb.append("    capabilities: ").append(toIndentedString(capabilities)).append("\n");
-    sb.append("    health: ").append(toIndentedString(health)).append("\n");
     sb.append("    ipAddress: ").append(toIndentedString(ipAddress)).append("\n");
     sb.append("    properties: ").append(toIndentedString(properties)).append("\n");
     sb.append("    virtualInstance: ").append(toIndentedString(virtualInstance)).append("\n");
+    sb.append("    capabilities: ").append(toIndentedString(capabilities)).append("\n");
+    sb.append("    health: ").append(toIndentedString(health)).append("\n");
     sb.append("}");
     return sb.toString();
   }

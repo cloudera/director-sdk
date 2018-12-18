@@ -33,14 +33,12 @@ import java.io.IOException;
 @ApiModel(description = "Display property associated with provider metadata")
 
 public class DisplayProperty {
-  @SerializedName("backingConfigKey")
-  private String backingConfigKey = null;
-  @SerializedName("description")
-  private String description = null;
   @SerializedName("displayKey")
   private String displayKey = null;
   @SerializedName("name")
   private String name = null;
+  @SerializedName("description")
+  private String description = null;
   @SerializedName("sensitive")
   private Boolean sensitive = null;
   /**
@@ -163,19 +161,21 @@ public class DisplayProperty {
 
   @SerializedName("widget")
   private WidgetEnum widget = null;
+  @SerializedName("backingConfigKey")
+  private String backingConfigKey = null;
 
   public DisplayProperty() {
     // Do nothing
   }
 
   private DisplayProperty(DisplayPropertyBuilder builder) {
-      this.backingConfigKey = builder.backingConfigKey;
-      this.description = builder.description;
       this.displayKey = builder.displayKey;
       this.name = builder.name;
+      this.description = builder.description;
       this.sensitive = builder.sensitive;
       this.type = builder.type;
       this.widget = builder.widget;
+      this.backingConfigKey = builder.backingConfigKey;
     }
 
   public static DisplayPropertyBuilder builder() {
@@ -183,26 +183,14 @@ public class DisplayProperty {
   }
 
   public static class DisplayPropertyBuilder {
-      private String backingConfigKey = null;
-      private String description = null;
       private String displayKey = null;
       private String name = null;
+      private String description = null;
       private Boolean sensitive = null;
       private TypeEnum type = null;
       private WidgetEnum widget = null;
+      private String backingConfigKey = null;
   
-
-    public DisplayPropertyBuilder backingConfigKey(String backingConfigKey) {
-      this.backingConfigKey = backingConfigKey;
-      return this;
-    }
-
-
-    public DisplayPropertyBuilder description(String description) {
-      this.description = description;
-      return this;
-    }
-
 
     public DisplayPropertyBuilder displayKey(String displayKey) {
       this.displayKey = displayKey;
@@ -212,6 +200,12 @@ public class DisplayProperty {
 
     public DisplayPropertyBuilder name(String name) {
       this.name = name;
+      return this;
+    }
+
+
+    public DisplayPropertyBuilder description(String description) {
+      this.description = description;
       return this;
     }
 
@@ -234,6 +228,12 @@ public class DisplayProperty {
     }
 
 
+    public DisplayPropertyBuilder backingConfigKey(String backingConfigKey) {
+      this.backingConfigKey = backingConfigKey;
+      return this;
+    }
+
+
     public DisplayProperty build() {
       return new DisplayProperty(this);
     }
@@ -241,50 +241,14 @@ public class DisplayProperty {
 
   public DisplayPropertyBuilder toBuilder() {
     return builder()
-      .backingConfigKey(backingConfigKey)
-            .description(description)
-            .displayKey(displayKey)
+      .displayKey(displayKey)
             .name(name)
+            .description(description)
             .sensitive(sensitive)
             .type(type)
             .widget(widget)
+            .backingConfigKey(backingConfigKey)
       ;
-  }
-
-  public DisplayProperty backingConfigKey(String backingConfigKey) {
-    this.backingConfigKey = backingConfigKey;
-    return this;
-  }
-
-   /**
-   * Backing configuration property key
-   * @return backingConfigKey
-  **/
-  @ApiModelProperty(value = "Backing configuration property key")
-  public String getBackingConfigKey() {
-    return backingConfigKey;
-  }
-
-  public void setBackingConfigKey(String backingConfigKey) {
-    this.backingConfigKey = backingConfigKey;
-  }
-
-  public DisplayProperty description(String description) {
-    this.description = description;
-    return this;
-  }
-
-   /**
-   * Display property description
-   * @return description
-  **/
-  @ApiModelProperty(value = "Display property description")
-  public String getDescription() {
-    return description;
-  }
-
-  public void setDescription(String description) {
-    this.description = description;
   }
 
   public DisplayProperty displayKey(String displayKey) {
@@ -323,6 +287,24 @@ public class DisplayProperty {
     this.name = name;
   }
 
+  public DisplayProperty description(String description) {
+    this.description = description;
+    return this;
+  }
+
+   /**
+   * Display property description
+   * @return description
+  **/
+  @ApiModelProperty(value = "Display property description")
+  public String getDescription() {
+    return description;
+  }
+
+  public void setDescription(String description) {
+    this.description = description;
+  }
+
   public DisplayProperty sensitive(Boolean sensitive) {
     this.sensitive = sensitive;
     return this;
@@ -332,7 +314,7 @@ public class DisplayProperty {
    * Whether this property is sensitive
    * @return sensitive
   **/
-  @ApiModelProperty(example = "false", value = "Whether this property is sensitive")
+  @ApiModelProperty(value = "Whether this property is sensitive")
   public Boolean isSensitive() {
     return sensitive;
   }
@@ -377,6 +359,24 @@ public class DisplayProperty {
     this.widget = widget;
   }
 
+  public DisplayProperty backingConfigKey(String backingConfigKey) {
+    this.backingConfigKey = backingConfigKey;
+    return this;
+  }
+
+   /**
+   * Backing configuration property key
+   * @return backingConfigKey
+  **/
+  @ApiModelProperty(value = "Backing configuration property key")
+  public String getBackingConfigKey() {
+    return backingConfigKey;
+  }
+
+  public void setBackingConfigKey(String backingConfigKey) {
+    this.backingConfigKey = backingConfigKey;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -387,18 +387,18 @@ public class DisplayProperty {
       return false;
     }
     DisplayProperty displayProperty = (DisplayProperty) o;
-    return Objects.equals(this.backingConfigKey, displayProperty.backingConfigKey) &&
-        Objects.equals(this.description, displayProperty.description) &&
-        Objects.equals(this.displayKey, displayProperty.displayKey) &&
+    return Objects.equals(this.displayKey, displayProperty.displayKey) &&
         Objects.equals(this.name, displayProperty.name) &&
+        Objects.equals(this.description, displayProperty.description) &&
         Objects.equals(this.sensitive, displayProperty.sensitive) &&
         Objects.equals(this.type, displayProperty.type) &&
-        Objects.equals(this.widget, displayProperty.widget);
+        Objects.equals(this.widget, displayProperty.widget) &&
+        Objects.equals(this.backingConfigKey, displayProperty.backingConfigKey);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(backingConfigKey, description, displayKey, name, sensitive, type, widget);
+    return Objects.hash(displayKey, name, description, sensitive, type, widget, backingConfigKey);
   }
 
 
@@ -407,13 +407,13 @@ public class DisplayProperty {
     StringBuilder sb = new StringBuilder();
     sb.append("class DisplayProperty {\n");
     
-    sb.append("    backingConfigKey: ").append(toIndentedString(backingConfigKey)).append("\n");
-    sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    displayKey: ").append(toIndentedString(displayKey)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    sensitive: ").append(toIndentedString(sensitive)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    widget: ").append(toIndentedString(widget)).append("\n");
+    sb.append("    backingConfigKey: ").append(toIndentedString(backingConfigKey)).append("\n");
     sb.append("}");
     return sb.toString();
   }

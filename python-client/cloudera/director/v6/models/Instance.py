@@ -39,85 +39,39 @@ class Instance(object):
                             and the value is json key in definition.
     """
     swagger_types = {
-        'capabilities': 'Capabilities',
-        'health': 'Health',
         'ip_address': 'str',
         'properties': 'dict(str, str)',
-        'virtual_instance': 'VirtualInstance'
+        'virtual_instance': 'VirtualInstance',
+        'capabilities': 'Capabilities',
+        'health': 'Health'
     }
 
     attribute_map = {
-        'capabilities': 'capabilities',
-        'health': 'health',
         'ip_address': 'ipAddress',
         'properties': 'properties',
-        'virtual_instance': 'virtualInstance'
+        'virtual_instance': 'virtualInstance',
+        'capabilities': 'capabilities',
+        'health': 'health'
     }
 
-    def __init__(self, capabilities=None, health=None, ip_address=None, properties=None, virtual_instance=None):  # noqa: E501
+    def __init__(self, ip_address=None, properties=None, virtual_instance=None, capabilities=None, health=None):  # noqa: E501
         """Instance - a model defined in Swagger"""  # noqa: E501
 
-        self._capabilities = None
-        self._health = None
         self._ip_address = None
         self._properties = None
         self._virtual_instance = None
+        self._capabilities = None
+        self._health = None
         self.discriminator = None
 
-        if capabilities is not None:
-            self.capabilities = capabilities
-        if health is not None:
-            self.health = health
         self.ip_address = ip_address
         if properties is not None:
             self.properties = properties
         self.virtual_instance = virtual_instance
-
-    @property
-    def capabilities(self):
-        """Gets the capabilities of this Instance.  # noqa: E501
-
-        Optional instance capabilities  # noqa: E501
-
-        :return: The capabilities of this Instance.  # noqa: E501
-        :rtype: Capabilities
-        """
-        return self._capabilities
-
-    @capabilities.setter
-    def capabilities(self, capabilities):
-        """Sets the capabilities of this Instance.
-
-        Optional instance capabilities  # noqa: E501
-
-        :param capabilities: The capabilities of this Instance.  # noqa: E501
-        :type: Capabilities
-        """
-
-        self._capabilities = capabilities
-
-    @property
-    def health(self):
-        """Gets the health of this Instance.  # noqa: E501
-
-        Instance health  # noqa: E501
-
-        :return: The health of this Instance.  # noqa: E501
-        :rtype: Health
-        """
-        return self._health
-
-    @health.setter
-    def health(self, health):
-        """Sets the health of this Instance.
-
-        Instance health  # noqa: E501
-
-        :param health: The health of this Instance.  # noqa: E501
-        :type: Health
-        """
-
-        self._health = health
+        if capabilities is not None:
+            self.capabilities = capabilities
+        if health is not None:
+            self.health = health
 
     @property
     def ip_address(self):
@@ -191,6 +145,52 @@ class Instance(object):
             raise ValueError("Invalid value for `virtual_instance`, must not be `None`")  # noqa: E501
 
         self._virtual_instance = virtual_instance
+
+    @property
+    def capabilities(self):
+        """Gets the capabilities of this Instance.  # noqa: E501
+
+        Optional instance capabilities  # noqa: E501
+
+        :return: The capabilities of this Instance.  # noqa: E501
+        :rtype: Capabilities
+        """
+        return self._capabilities
+
+    @capabilities.setter
+    def capabilities(self, capabilities):
+        """Sets the capabilities of this Instance.
+
+        Optional instance capabilities  # noqa: E501
+
+        :param capabilities: The capabilities of this Instance.  # noqa: E501
+        :type: Capabilities
+        """
+
+        self._capabilities = capabilities
+
+    @property
+    def health(self):
+        """Gets the health of this Instance.  # noqa: E501
+
+        Instance health  # noqa: E501
+
+        :return: The health of this Instance.  # noqa: E501
+        :rtype: Health
+        """
+        return self._health
+
+    @health.setter
+    def health(self, health):
+        """Sets the health of this Instance.
+
+        Instance health  # noqa: E501
+
+        :param health: The health of this Instance.  # noqa: E501
+        :type: Health
+        """
+
+        self._health = health
 
     def to_dict(self):
         """Returns the model properties as a dict"""

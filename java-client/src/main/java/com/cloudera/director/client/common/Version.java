@@ -34,21 +34,21 @@ import java.util.List;
  */
 
 public class Version {
+  @SerializedName("productVersion")
+  private String productVersion = null;
   @SerializedName("apiVersions")
   private List<String> apiVersions = null;
   @SerializedName("currentServerTime")
   private String currentServerTime = null;
-  @SerializedName("productVersion")
-  private String productVersion = null;
 
   public Version() {
     // Do nothing
   }
 
   private Version(VersionBuilder builder) {
+      this.productVersion = builder.productVersion;
       this.apiVersions = builder.apiVersions;
       this.currentServerTime = builder.currentServerTime;
-      this.productVersion = builder.productVersion;
     }
 
   public static VersionBuilder builder() {
@@ -56,10 +56,16 @@ public class Version {
   }
 
   public static class VersionBuilder {
+      private String productVersion = null;
       private List<String> apiVersions = new ArrayList<String>();
       private String currentServerTime = null;
-      private String productVersion = null;
   
+
+    public VersionBuilder productVersion(String productVersion) {
+      this.productVersion = productVersion;
+      return this;
+    }
+
 
     public VersionBuilder apiVersions(List<String> apiVersions) {
       this.apiVersions = apiVersions;
@@ -73,12 +79,6 @@ public class Version {
     }
 
 
-    public VersionBuilder productVersion(String productVersion) {
-      this.productVersion = productVersion;
-      return this;
-    }
-
-
     public Version build() {
       return new Version(this);
     }
@@ -86,10 +86,19 @@ public class Version {
 
   public VersionBuilder toBuilder() {
     return builder()
-      .apiVersions(apiVersions)
+      .productVersion(productVersion)
+            .apiVersions(apiVersions)
             .currentServerTime(currentServerTime)
-            .productVersion(productVersion)
       ;
+  }
+
+   /**
+   * Current version of Director
+   * @return productVersion
+  **/
+  @ApiModelProperty(value = "Current version of Director")
+  public String getProductVersion() {
+    return productVersion;
   }
 
   public Version apiVersions(List<String> apiVersions) {
@@ -118,11 +127,6 @@ public class Version {
     this.apiVersions = apiVersions;
   }
 
-  public Version currentServerTime(String currentServerTime) {
-    this.currentServerTime = currentServerTime;
-    return this;
-  }
-
    /**
    * The current server time
    * @return currentServerTime
@@ -130,28 +134,6 @@ public class Version {
   @ApiModelProperty(value = "The current server time")
   public String getCurrentServerTime() {
     return currentServerTime;
-  }
-
-  public void setCurrentServerTime(String currentServerTime) {
-    this.currentServerTime = currentServerTime;
-  }
-
-  public Version productVersion(String productVersion) {
-    this.productVersion = productVersion;
-    return this;
-  }
-
-   /**
-   * Current version of Director
-   * @return productVersion
-  **/
-  @ApiModelProperty(value = "Current version of Director")
-  public String getProductVersion() {
-    return productVersion;
-  }
-
-  public void setProductVersion(String productVersion) {
-    this.productVersion = productVersion;
   }
 
 
@@ -164,14 +146,14 @@ public class Version {
       return false;
     }
     Version version = (Version) o;
-    return Objects.equals(this.apiVersions, version.apiVersions) &&
-        Objects.equals(this.currentServerTime, version.currentServerTime) &&
-        Objects.equals(this.productVersion, version.productVersion);
+    return Objects.equals(this.productVersion, version.productVersion) &&
+        Objects.equals(this.apiVersions, version.apiVersions) &&
+        Objects.equals(this.currentServerTime, version.currentServerTime);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(apiVersions, currentServerTime, productVersion);
+    return Objects.hash(productVersion, apiVersions, currentServerTime);
   }
 
 
@@ -180,9 +162,9 @@ public class Version {
     StringBuilder sb = new StringBuilder();
     sb.append("class Version {\n");
     
+    sb.append("    productVersion: ").append(toIndentedString(productVersion)).append("\n");
     sb.append("    apiVersions: ").append(toIndentedString(apiVersions)).append("\n");
     sb.append("    currentServerTime: ").append(toIndentedString(currentServerTime)).append("\n");
-    sb.append("    productVersion: ").append(toIndentedString(productVersion)).append("\n");
     sb.append("}");
     return sb.toString();
   }

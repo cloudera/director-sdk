@@ -36,24 +36,24 @@ import java.util.List;
 @ApiModel(description = "Results for an import operation")
 
 public class ImportResult {
+  @SerializedName("environment")
+  private ImportStatus environment = null;
+  @SerializedName("deployment")
+  private ImportStatus deployment = null;
   @SerializedName("cluster")
   private ImportStatus cluster = null;
   @SerializedName("databaseSevers")
   private List<ImportStatus> databaseSevers = null;
-  @SerializedName("deployment")
-  private ImportStatus deployment = null;
-  @SerializedName("environment")
-  private ImportStatus environment = null;
 
   public ImportResult() {
     // Do nothing
   }
 
   private ImportResult(ImportResultBuilder builder) {
+      this.environment = builder.environment;
+      this.deployment = builder.deployment;
       this.cluster = builder.cluster;
       this.databaseSevers = builder.databaseSevers;
-      this.deployment = builder.deployment;
-      this.environment = builder.environment;
     }
 
   public static ImportResultBuilder builder() {
@@ -61,11 +61,23 @@ public class ImportResult {
   }
 
   public static class ImportResultBuilder {
+      private ImportStatus environment = null;
+      private ImportStatus deployment = null;
       private ImportStatus cluster = null;
       private List<ImportStatus> databaseSevers = new ArrayList<ImportStatus>();
-      private ImportStatus deployment = null;
-      private ImportStatus environment = null;
   
+
+    public ImportResultBuilder environment(ImportStatus environment) {
+      this.environment = environment;
+      return this;
+    }
+
+
+    public ImportResultBuilder deployment(ImportStatus deployment) {
+      this.deployment = deployment;
+      return this;
+    }
+
 
     public ImportResultBuilder cluster(ImportStatus cluster) {
       this.cluster = cluster;
@@ -79,18 +91,6 @@ public class ImportResult {
     }
 
 
-    public ImportResultBuilder deployment(ImportStatus deployment) {
-      this.deployment = deployment;
-      return this;
-    }
-
-
-    public ImportResultBuilder environment(ImportStatus environment) {
-      this.environment = environment;
-      return this;
-    }
-
-
     public ImportResult build() {
       return new ImportResult(this);
     }
@@ -98,11 +98,47 @@ public class ImportResult {
 
   public ImportResultBuilder toBuilder() {
     return builder()
-      .cluster(cluster)
-            .databaseSevers(databaseSevers)
+      .environment(environment)
             .deployment(deployment)
-            .environment(environment)
+            .cluster(cluster)
+            .databaseSevers(databaseSevers)
       ;
+  }
+
+  public ImportResult environment(ImportStatus environment) {
+    this.environment = environment;
+    return this;
+  }
+
+   /**
+   * Environment import status
+   * @return environment
+  **/
+  @ApiModelProperty(required = true, value = "Environment import status")
+  public ImportStatus getEnvironment() {
+    return environment;
+  }
+
+  public void setEnvironment(ImportStatus environment) {
+    this.environment = environment;
+  }
+
+  public ImportResult deployment(ImportStatus deployment) {
+    this.deployment = deployment;
+    return this;
+  }
+
+   /**
+   * Deployment import status
+   * @return deployment
+  **/
+  @ApiModelProperty(required = true, value = "Deployment import status")
+  public ImportStatus getDeployment() {
+    return deployment;
+  }
+
+  public void setDeployment(ImportStatus deployment) {
+    this.deployment = deployment;
   }
 
   public ImportResult cluster(ImportStatus cluster) {
@@ -149,42 +185,6 @@ public class ImportResult {
     this.databaseSevers = databaseSevers;
   }
 
-  public ImportResult deployment(ImportStatus deployment) {
-    this.deployment = deployment;
-    return this;
-  }
-
-   /**
-   * Deployment import status
-   * @return deployment
-  **/
-  @ApiModelProperty(required = true, value = "Deployment import status")
-  public ImportStatus getDeployment() {
-    return deployment;
-  }
-
-  public void setDeployment(ImportStatus deployment) {
-    this.deployment = deployment;
-  }
-
-  public ImportResult environment(ImportStatus environment) {
-    this.environment = environment;
-    return this;
-  }
-
-   /**
-   * Environment import status
-   * @return environment
-  **/
-  @ApiModelProperty(required = true, value = "Environment import status")
-  public ImportStatus getEnvironment() {
-    return environment;
-  }
-
-  public void setEnvironment(ImportStatus environment) {
-    this.environment = environment;
-  }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -195,15 +195,15 @@ public class ImportResult {
       return false;
     }
     ImportResult importResult = (ImportResult) o;
-    return Objects.equals(this.cluster, importResult.cluster) &&
-        Objects.equals(this.databaseSevers, importResult.databaseSevers) &&
+    return Objects.equals(this.environment, importResult.environment) &&
         Objects.equals(this.deployment, importResult.deployment) &&
-        Objects.equals(this.environment, importResult.environment);
+        Objects.equals(this.cluster, importResult.cluster) &&
+        Objects.equals(this.databaseSevers, importResult.databaseSevers);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(cluster, databaseSevers, deployment, environment);
+    return Objects.hash(environment, deployment, cluster, databaseSevers);
   }
 
 
@@ -212,10 +212,10 @@ public class ImportResult {
     StringBuilder sb = new StringBuilder();
     sb.append("class ImportResult {\n");
     
+    sb.append("    environment: ").append(toIndentedString(environment)).append("\n");
+    sb.append("    deployment: ").append(toIndentedString(deployment)).append("\n");
     sb.append("    cluster: ").append(toIndentedString(cluster)).append("\n");
     sb.append("    databaseSevers: ").append(toIndentedString(databaseSevers)).append("\n");
-    sb.append("    deployment: ").append(toIndentedString(deployment)).append("\n");
-    sb.append("    environment: ").append(toIndentedString(environment)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -44,6 +44,7 @@ class ServerConfigApi(object):
     def get(self, **kwargs):  # noqa: E501
         """Get server configuration  # noqa: E501
 
+          # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
         >>> thread = api.get(async=True)
@@ -64,6 +65,7 @@ class ServerConfigApi(object):
     def get_with_http_info(self, **kwargs):  # noqa: E501
         """Get server configuration  # noqa: E501
 
+          # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
         >>> thread = api.get_with_http_info(async=True)
@@ -130,6 +132,7 @@ class ServerConfigApi(object):
     def metadata(self, **kwargs):  # noqa: E501
         """Retrieves the metadata for server configuration  # noqa: E501
 
+          # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
         >>> thread = api.metadata(async=True)
@@ -150,6 +153,7 @@ class ServerConfigApi(object):
     def metadata_with_http_info(self, **kwargs):  # noqa: E501
         """Retrieves the metadata for server configuration  # noqa: E501
 
+          # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
         >>> thread = api.metadata_with_http_info(async=True)
@@ -216,13 +220,14 @@ class ServerConfigApi(object):
     def update_configs(self, server_configs, **kwargs):  # noqa: E501
         """Get server configuration  # noqa: E501
 
+          # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
         >>> thread = api.update_configs(server_configs, async=True)
         >>> result = thread.get()
 
         :param async bool
-        :param object server_configs: serverConfigs (required)
+        :param object server_configs: (required)
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
@@ -237,13 +242,14 @@ class ServerConfigApi(object):
     def update_configs_with_http_info(self, server_configs, **kwargs):  # noqa: E501
         """Get server configuration  # noqa: E501
 
+          # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
         >>> thread = api.update_configs_with_http_info(server_configs, async=True)
         >>> result = thread.get()
 
         :param async bool
-        :param object server_configs: serverConfigs (required)
+        :param object server_configs: (required)
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
@@ -285,10 +291,6 @@ class ServerConfigApi(object):
             body_params = params['server_configs']
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
-
-        # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
             ['application/json'])  # noqa: E501
 
         # Authentication setting

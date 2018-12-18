@@ -4,13 +4,13 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**hostname** | **String** | External database server hostname | 
 **name** | **String** | External database server name | 
-**password** | **String** | Password for administrative access to external database server [redacted on read] | 
-**port** | **Integer** | External database server port | 
-**properties** | **Map&lt;String, String&gt;** | External database server display properties |  [optional]
 **type** | [**TypeEnum**](#TypeEnum) | External database server type | 
+**hostname** | **String** | External database server hostname | 
+**port** | **Integer** | External database server port | 
 **username** | **String** | User name for administrative access to external database server | 
+**password** | **String** | Password for administrative access to external database server [redacted on read] | 
+**properties** | **Map&lt;String, String&gt;** | External database server display properties |  [optional]
 
 
 <a name="TypeEnum"></a>

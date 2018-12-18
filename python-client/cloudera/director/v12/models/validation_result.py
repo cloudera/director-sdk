@@ -40,30 +40,30 @@ class ValidationResult(object):
     """
     swagger_types = {
         'errors': 'list[ErrorInfo]',
-        'format_warnings': 'list[WarningInfo]',
-        'warnings': 'list[WarningInfo]'
+        'warnings': 'list[WarningInfo]',
+        'format_warnings': 'list[WarningInfo]'
     }
 
     attribute_map = {
         'errors': 'errors',
-        'format_warnings': 'formatWarnings',
-        'warnings': 'warnings'
+        'warnings': 'warnings',
+        'format_warnings': 'formatWarnings'
     }
 
-    def __init__(self, errors=None, format_warnings=None, warnings=None):  # noqa: E501
+    def __init__(self, errors=None, warnings=None, format_warnings=None):  # noqa: E501
         """ValidationResult - a model defined in Swagger"""  # noqa: E501
 
         self._errors = None
-        self._format_warnings = None
         self._warnings = None
+        self._format_warnings = None
         self.discriminator = None
 
         if errors is not None:
             self.errors = errors
-        if format_warnings is not None:
-            self.format_warnings = format_warnings
         if warnings is not None:
             self.warnings = warnings
+        if format_warnings is not None:
+            self.format_warnings = format_warnings
 
     @property
     def errors(self):
@@ -89,29 +89,6 @@ class ValidationResult(object):
         self._errors = errors
 
     @property
-    def format_warnings(self):
-        """Gets the format_warnings of this ValidationResult.  # noqa: E501
-
-        Format Warnings  # noqa: E501
-
-        :return: The format_warnings of this ValidationResult.  # noqa: E501
-        :rtype: list[WarningInfo]
-        """
-        return self._format_warnings
-
-    @format_warnings.setter
-    def format_warnings(self, format_warnings):
-        """Sets the format_warnings of this ValidationResult.
-
-        Format Warnings  # noqa: E501
-
-        :param format_warnings: The format_warnings of this ValidationResult.  # noqa: E501
-        :type: list[WarningInfo]
-        """
-
-        self._format_warnings = format_warnings
-
-    @property
     def warnings(self):
         """Gets the warnings of this ValidationResult.  # noqa: E501
 
@@ -133,6 +110,29 @@ class ValidationResult(object):
         """
 
         self._warnings = warnings
+
+    @property
+    def format_warnings(self):
+        """Gets the format_warnings of this ValidationResult.  # noqa: E501
+
+        Format Warnings  # noqa: E501
+
+        :return: The format_warnings of this ValidationResult.  # noqa: E501
+        :rtype: list[WarningInfo]
+        """
+        return self._format_warnings
+
+    @format_warnings.setter
+    def format_warnings(self, format_warnings):
+        """Sets the format_warnings of this ValidationResult.
+
+        Format Warnings  # noqa: E501
+
+        :param format_warnings: The format_warnings of this ValidationResult.  # noqa: E501
+        :type: list[WarningInfo]
+        """
+
+        self._format_warnings = format_warnings
 
     def to_dict(self):
         """Returns the model properties as a dict"""

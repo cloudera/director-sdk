@@ -1,10 +1,10 @@
 # NotificationsApi
 
-All URIs are relative to *https://localhost:7189*
+All URIs are relative to *https://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**get**](NotificationsApi.md#get) | **GET** /api/d6.0/notifications | Get system notification messages
+[**get**](NotificationsApi.md#get) | **GET** /api/d6.1/notifications | Get system notification messages
 
 
 <a name="get"></a>
@@ -12,6 +12,8 @@ Method | HTTP request | Description
 > List&lt;Notification&gt; get()
 
 Get system notification messages
+
+
 
 ### Example
 ```java

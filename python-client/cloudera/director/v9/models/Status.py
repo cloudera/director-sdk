@@ -39,76 +39,82 @@ class Status(object):
                             and the value is json key in definition.
     """
     swagger_types = {
-        'completed_steps': 'int',
+        'stage': 'str',
         'description': 'str',
         'description_details': 'list[str]',
-        'diagnostic_data_summaries': 'list[DiagnosticDataSummary]',
         'error_info': 'ErrorInfo',
-        'health': 'Health',
         'remaining_steps': 'int',
-        'stage': 'str'
+        'completed_steps': 'int',
+        'health': 'Health',
+        'diagnostic_data_summaries': 'list[DiagnosticDataSummary]'
     }
 
     attribute_map = {
-        'completed_steps': 'completedSteps',
+        'stage': 'stage',
         'description': 'description',
         'description_details': 'descriptionDetails',
-        'diagnostic_data_summaries': 'diagnosticDataSummaries',
         'error_info': 'errorInfo',
-        'health': 'health',
         'remaining_steps': 'remainingSteps',
-        'stage': 'stage'
+        'completed_steps': 'completedSteps',
+        'health': 'health',
+        'diagnostic_data_summaries': 'diagnosticDataSummaries'
     }
 
-    def __init__(self, completed_steps=None, description=None, description_details=None, diagnostic_data_summaries=None, error_info=None, health=None, remaining_steps=None, stage=None):  # noqa: E501
+    def __init__(self, stage=None, description=None, description_details=None, error_info=None, remaining_steps=None, completed_steps=None, health=None, diagnostic_data_summaries=None):  # noqa: E501
         """Status - a model defined in Swagger"""  # noqa: E501
 
-        self._completed_steps = None
+        self._stage = None
         self._description = None
         self._description_details = None
-        self._diagnostic_data_summaries = None
         self._error_info = None
-        self._health = None
         self._remaining_steps = None
-        self._stage = None
+        self._completed_steps = None
+        self._health = None
+        self._diagnostic_data_summaries = None
         self.discriminator = None
 
-        self.completed_steps = completed_steps
+        self.stage = stage
         self.description = description
         if description_details is not None:
             self.description_details = description_details
-        if diagnostic_data_summaries is not None:
-            self.diagnostic_data_summaries = diagnostic_data_summaries
         if error_info is not None:
             self.error_info = error_info
-        self.health = health
         self.remaining_steps = remaining_steps
-        self.stage = stage
+        self.completed_steps = completed_steps
+        self.health = health
+        if diagnostic_data_summaries is not None:
+            self.diagnostic_data_summaries = diagnostic_data_summaries
 
     @property
-    def completed_steps(self):
-        """Gets the completed_steps of this Status.  # noqa: E501
+    def stage(self):
+        """Gets the stage of this Status.  # noqa: E501
 
-        Number of steps completed for the process  # noqa: E501
+        Current stage of the process  # noqa: E501
 
-        :return: The completed_steps of this Status.  # noqa: E501
-        :rtype: int
+        :return: The stage of this Status.  # noqa: E501
+        :rtype: str
         """
-        return self._completed_steps
+        return self._stage
 
-    @completed_steps.setter
-    def completed_steps(self, completed_steps):
-        """Sets the completed_steps of this Status.
+    @stage.setter
+    def stage(self, stage):
+        """Sets the stage of this Status.
 
-        Number of steps completed for the process  # noqa: E501
+        Current stage of the process  # noqa: E501
 
-        :param completed_steps: The completed_steps of this Status.  # noqa: E501
-        :type: int
+        :param stage: The stage of this Status.  # noqa: E501
+        :type: str
         """
-        if completed_steps is None:
-            raise ValueError("Invalid value for `completed_steps`, must not be `None`")  # noqa: E501
+        if stage is None:
+            raise ValueError("Invalid value for `stage`, must not be `None`")  # noqa: E501
+        allowed_values = ["BOOTSTRAPPING", "BOOTSTRAP_FAILED", "READY", "UPDATING", "UPDATE_FAILED", "TERMINATING", "TERMINATE_FAILED", "TERMINATED", "UNKNOWN"]  # noqa: E501
+        if stage not in allowed_values:
+            raise ValueError(
+                "Invalid value for `stage` ({0}), must be one of {1}"  # noqa: E501
+                .format(stage, allowed_values)
+            )
 
-        self._completed_steps = completed_steps
+        self._stage = stage
 
     @property
     def description(self):
@@ -159,29 +165,6 @@ class Status(object):
         self._description_details = description_details
 
     @property
-    def diagnostic_data_summaries(self):
-        """Gets the diagnostic_data_summaries of this Status.  # noqa: E501
-
-        Diagnostic data summaries  # noqa: E501
-
-        :return: The diagnostic_data_summaries of this Status.  # noqa: E501
-        :rtype: list[DiagnosticDataSummary]
-        """
-        return self._diagnostic_data_summaries
-
-    @diagnostic_data_summaries.setter
-    def diagnostic_data_summaries(self, diagnostic_data_summaries):
-        """Sets the diagnostic_data_summaries of this Status.
-
-        Diagnostic data summaries  # noqa: E501
-
-        :param diagnostic_data_summaries: The diagnostic_data_summaries of this Status.  # noqa: E501
-        :type: list[DiagnosticDataSummary]
-        """
-
-        self._diagnostic_data_summaries = diagnostic_data_summaries
-
-    @property
     def error_info(self):
         """Gets the error_info of this Status.  # noqa: E501
 
@@ -203,31 +186,6 @@ class Status(object):
         """
 
         self._error_info = error_info
-
-    @property
-    def health(self):
-        """Gets the health of this Status.  # noqa: E501
-
-        Health reported for the entity being processed  # noqa: E501
-
-        :return: The health of this Status.  # noqa: E501
-        :rtype: Health
-        """
-        return self._health
-
-    @health.setter
-    def health(self, health):
-        """Sets the health of this Status.
-
-        Health reported for the entity being processed  # noqa: E501
-
-        :param health: The health of this Status.  # noqa: E501
-        :type: Health
-        """
-        if health is None:
-            raise ValueError("Invalid value for `health`, must not be `None`")  # noqa: E501
-
-        self._health = health
 
     @property
     def remaining_steps(self):
@@ -255,35 +213,77 @@ class Status(object):
         self._remaining_steps = remaining_steps
 
     @property
-    def stage(self):
-        """Gets the stage of this Status.  # noqa: E501
+    def completed_steps(self):
+        """Gets the completed_steps of this Status.  # noqa: E501
 
-        Current stage of the process  # noqa: E501
+        Number of steps completed for the process  # noqa: E501
 
-        :return: The stage of this Status.  # noqa: E501
-        :rtype: str
+        :return: The completed_steps of this Status.  # noqa: E501
+        :rtype: int
         """
-        return self._stage
+        return self._completed_steps
 
-    @stage.setter
-    def stage(self, stage):
-        """Sets the stage of this Status.
+    @completed_steps.setter
+    def completed_steps(self, completed_steps):
+        """Sets the completed_steps of this Status.
 
-        Current stage of the process  # noqa: E501
+        Number of steps completed for the process  # noqa: E501
 
-        :param stage: The stage of this Status.  # noqa: E501
-        :type: str
+        :param completed_steps: The completed_steps of this Status.  # noqa: E501
+        :type: int
         """
-        if stage is None:
-            raise ValueError("Invalid value for `stage`, must not be `None`")  # noqa: E501
-        allowed_values = ["BOOTSTRAPPING", "BOOTSTRAP_FAILED", "READY", "UPDATING", "UPDATE_FAILED", "TERMINATING", "TERMINATE_FAILED", "TERMINATED", "UNKNOWN"]  # noqa: E501
-        if stage not in allowed_values:
-            raise ValueError(
-                "Invalid value for `stage` ({0}), must be one of {1}"  # noqa: E501
-                .format(stage, allowed_values)
-            )
+        if completed_steps is None:
+            raise ValueError("Invalid value for `completed_steps`, must not be `None`")  # noqa: E501
 
-        self._stage = stage
+        self._completed_steps = completed_steps
+
+    @property
+    def health(self):
+        """Gets the health of this Status.  # noqa: E501
+
+        Health reported for the entity being processed  # noqa: E501
+
+        :return: The health of this Status.  # noqa: E501
+        :rtype: Health
+        """
+        return self._health
+
+    @health.setter
+    def health(self, health):
+        """Sets the health of this Status.
+
+        Health reported for the entity being processed  # noqa: E501
+
+        :param health: The health of this Status.  # noqa: E501
+        :type: Health
+        """
+        if health is None:
+            raise ValueError("Invalid value for `health`, must not be `None`")  # noqa: E501
+
+        self._health = health
+
+    @property
+    def diagnostic_data_summaries(self):
+        """Gets the diagnostic_data_summaries of this Status.  # noqa: E501
+
+        Diagnostic data summaries  # noqa: E501
+
+        :return: The diagnostic_data_summaries of this Status.  # noqa: E501
+        :rtype: list[DiagnosticDataSummary]
+        """
+        return self._diagnostic_data_summaries
+
+    @diagnostic_data_summaries.setter
+    def diagnostic_data_summaries(self, diagnostic_data_summaries):
+        """Sets the diagnostic_data_summaries of this Status.
+
+        Diagnostic data summaries  # noqa: E501
+
+        :param diagnostic_data_summaries: The diagnostic_data_summaries of this Status.  # noqa: E501
+        :type: list[DiagnosticDataSummary]
+        """
+
+        self._diagnostic_data_summaries = diagnostic_data_summaries
 
     def to_dict(self):
         """Returns the model properties as a dict"""

@@ -60,8 +60,8 @@ public class InstanceTemplatesApi {
 
     /**
      * Build call for create
-     * @param environment environment (required)
-     * @param instanceTemplate instanceTemplate (required)
+     * @param environment  (required)
+     * @param instanceTemplate  (required)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
@@ -71,7 +71,7 @@ public class InstanceTemplatesApi {
         Object localVarPostBody = instanceTemplate;
 
         // create path and map variables
-        String localVarPath = "/api/d6.0/environments/{environment}/templates/instances"
+        String localVarPath = "/api/d6.1/environments/{environment}/templates/instances"
             .replaceAll("\\{" + "environment" + "\\}", apiClient.escapeString(environment.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
@@ -88,7 +88,7 @@ public class InstanceTemplatesApi {
         if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
 
         final String[] localVarContentTypes = {
-            "application/json"
+            
         };
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
@@ -131,8 +131,8 @@ public class InstanceTemplatesApi {
     /**
      * Create a new instance template
      * 
-     * @param environment environment (required)
-     * @param instanceTemplate instanceTemplate (required)
+     * @param environment  (required)
+     * @param instanceTemplate  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
     public void create(String environment, InstanceTemplate instanceTemplate) throws ApiException {
@@ -142,8 +142,8 @@ public class InstanceTemplatesApi {
     /**
      * Create a new instance template
      * 
-     * @param environment environment (required)
-     * @param instanceTemplate instanceTemplate (required)
+     * @param environment  (required)
+     * @param instanceTemplate  (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
@@ -155,8 +155,8 @@ public class InstanceTemplatesApi {
     /**
      * Create a new instance template (asynchronously)
      * 
-     * @param environment environment (required)
-     * @param instanceTemplate instanceTemplate (required)
+     * @param environment  (required)
+     * @param instanceTemplate  (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -188,8 +188,8 @@ public class InstanceTemplatesApi {
     }
     /**
      * Build call for delete
-     * @param environment environment (required)
-     * @param template template (required)
+     * @param environment  (required)
+     * @param template  (required)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
@@ -199,7 +199,7 @@ public class InstanceTemplatesApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/api/d6.0/environments/{environment}/templates/instances/{template}"
+        String localVarPath = "/api/d6.1/environments/{environment}/templates/instances/{template}"
             .replaceAll("\\{" + "environment" + "\\}", apiClient.escapeString(environment.toString()))
             .replaceAll("\\{" + "template" + "\\}", apiClient.escapeString(template.toString()));
 
@@ -260,8 +260,8 @@ public class InstanceTemplatesApi {
     /**
      * Delete an instance template by name
      * 
-     * @param environment environment (required)
-     * @param template template (required)
+     * @param environment  (required)
+     * @param template  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
     public void delete(String environment, String template) throws ApiException {
@@ -271,8 +271,8 @@ public class InstanceTemplatesApi {
     /**
      * Delete an instance template by name
      * 
-     * @param environment environment (required)
-     * @param template template (required)
+     * @param environment  (required)
+     * @param template  (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
@@ -284,8 +284,8 @@ public class InstanceTemplatesApi {
     /**
      * Delete an instance template by name (asynchronously)
      * 
-     * @param environment environment (required)
-     * @param template template (required)
+     * @param environment  (required)
+     * @param template  (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -317,8 +317,8 @@ public class InstanceTemplatesApi {
     }
     /**
      * Build call for get
-     * @param environment environment (required)
-     * @param template template (required)
+     * @param environment  (required)
+     * @param template  (required)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
@@ -328,7 +328,7 @@ public class InstanceTemplatesApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/api/d6.0/environments/{environment}/templates/instances/{template}"
+        String localVarPath = "/api/d6.1/environments/{environment}/templates/instances/{template}"
             .replaceAll("\\{" + "environment" + "\\}", apiClient.escapeString(environment.toString()))
             .replaceAll("\\{" + "template" + "\\}", apiClient.escapeString(template.toString()));
 
@@ -389,8 +389,8 @@ public class InstanceTemplatesApi {
     /**
      * Get an instance template by name
      * 
-     * @param environment environment (required)
-     * @param template template (required)
+     * @param environment  (required)
+     * @param template  (required)
      * @return InstanceTemplate
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
@@ -402,8 +402,8 @@ public class InstanceTemplatesApi {
     /**
      * Get an instance template by name
      * 
-     * @param environment environment (required)
-     * @param template template (required)
+     * @param environment  (required)
+     * @param template  (required)
      * @return ApiResponse&lt;InstanceTemplate&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
@@ -416,8 +416,8 @@ public class InstanceTemplatesApi {
     /**
      * Get an instance template by name (asynchronously)
      * 
-     * @param environment environment (required)
-     * @param template template (required)
+     * @param environment  (required)
+     * @param template  (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -450,7 +450,7 @@ public class InstanceTemplatesApi {
     }
     /**
      * Build call for list
-     * @param environment environment (required)
+     * @param environment  (required)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
@@ -460,7 +460,7 @@ public class InstanceTemplatesApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/api/d6.0/environments/{environment}/templates/instances"
+        String localVarPath = "/api/d6.1/environments/{environment}/templates/instances"
             .replaceAll("\\{" + "environment" + "\\}", apiClient.escapeString(environment.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
@@ -515,7 +515,7 @@ public class InstanceTemplatesApi {
     /**
      * List all instance templates
      * 
-     * @param environment environment (required)
+     * @param environment  (required)
      * @return List&lt;String&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
@@ -527,7 +527,7 @@ public class InstanceTemplatesApi {
     /**
      * List all instance templates
      * 
-     * @param environment environment (required)
+     * @param environment  (required)
      * @return ApiResponse&lt;List&lt;String&gt;&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
@@ -540,7 +540,7 @@ public class InstanceTemplatesApi {
     /**
      * List all instance templates (asynchronously)
      * 
-     * @param environment environment (required)
+     * @param environment  (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -573,9 +573,9 @@ public class InstanceTemplatesApi {
     }
     /**
      * Build call for update
-     * @param environment environment (required)
-     * @param template template (required)
-     * @param instanceTemplate instanceTemplate (required)
+     * @param environment  (required)
+     * @param template  (required)
+     * @param instanceTemplate  (required)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
@@ -585,7 +585,7 @@ public class InstanceTemplatesApi {
         Object localVarPostBody = instanceTemplate;
 
         // create path and map variables
-        String localVarPath = "/api/d6.0/environments/{environment}/templates/instances/{template}"
+        String localVarPath = "/api/d6.1/environments/{environment}/templates/instances/{template}"
             .replaceAll("\\{" + "environment" + "\\}", apiClient.escapeString(environment.toString()))
             .replaceAll("\\{" + "template" + "\\}", apiClient.escapeString(template.toString()));
 
@@ -603,7 +603,7 @@ public class InstanceTemplatesApi {
         if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
 
         final String[] localVarContentTypes = {
-            "application/json"
+            
         };
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
@@ -651,9 +651,9 @@ public class InstanceTemplatesApi {
     /**
      * Update an existing instance template
      * 
-     * @param environment environment (required)
-     * @param template template (required)
-     * @param instanceTemplate instanceTemplate (required)
+     * @param environment  (required)
+     * @param template  (required)
+     * @param instanceTemplate  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
     public void update(String environment, String template, InstanceTemplate instanceTemplate) throws ApiException {
@@ -663,9 +663,9 @@ public class InstanceTemplatesApi {
     /**
      * Update an existing instance template
      * 
-     * @param environment environment (required)
-     * @param template template (required)
-     * @param instanceTemplate instanceTemplate (required)
+     * @param environment  (required)
+     * @param template  (required)
+     * @param instanceTemplate  (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
@@ -677,9 +677,9 @@ public class InstanceTemplatesApi {
     /**
      * Update an existing instance template (asynchronously)
      * 
-     * @param environment environment (required)
-     * @param template template (required)
-     * @param instanceTemplate instanceTemplate (required)
+     * @param environment  (required)
+     * @param template  (required)
+     * @param instanceTemplate  (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object

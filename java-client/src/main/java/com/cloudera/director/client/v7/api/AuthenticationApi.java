@@ -61,7 +61,7 @@ public class AuthenticationApi {
 
     /**
      * Build call for login
-     * @param login login (required)
+     * @param login  (required)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
@@ -87,7 +87,7 @@ public class AuthenticationApi {
         if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
 
         final String[] localVarContentTypes = {
-            "application/json"
+            
         };
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
@@ -104,7 +104,7 @@ public class AuthenticationApi {
             });
         }
 
-        String[] localVarAuthNames = new String[] { "basic" };
+        String[] localVarAuthNames = new String[] {  };
         return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
 
@@ -125,7 +125,7 @@ public class AuthenticationApi {
     /**
      * Log in to the API
      * 
-     * @param login login (required)
+     * @param login  (required)
      * @return User
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
@@ -137,7 +137,7 @@ public class AuthenticationApi {
     /**
      * Log in to the API
      * 
-     * @param login login (required)
+     * @param login  (required)
      * @return ApiResponse&lt;User&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
@@ -150,7 +150,7 @@ public class AuthenticationApi {
     /**
      * Log in to the API (asynchronously)
      * 
-     * @param login login (required)
+     * @param login  (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -208,7 +208,7 @@ public class AuthenticationApi {
         if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
 
         final String[] localVarContentTypes = {
-            "application/json"
+            
         };
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
@@ -225,7 +225,7 @@ public class AuthenticationApi {
             });
         }
 
-        String[] localVarAuthNames = new String[] { "basic" };
+        String[] localVarAuthNames = new String[] {  };
         return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
 

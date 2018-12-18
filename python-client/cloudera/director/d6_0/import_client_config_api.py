@@ -44,14 +44,15 @@ class ImportClientConfigApi(object):
     def convert_simple(self, simple_client_config, **kwargs):  # noqa: E501
         """Convert Simple Configuration  # noqa: E501
 
+          # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
         >>> thread = api.convert_simple(simple_client_config, async=True)
         >>> result = thread.get()
 
         :param async bool
-        :param str simple_client_config: simpleClientConfig (required)
-        :param bool include_origin_comments: includeOriginComments
+        :param str simple_client_config: (required)
+        :param bool include_origin_comments:
         :return: str
                  If the method is called asynchronously,
                  returns the request thread.
@@ -66,14 +67,15 @@ class ImportClientConfigApi(object):
     def convert_simple_with_http_info(self, simple_client_config, **kwargs):  # noqa: E501
         """Convert Simple Configuration  # noqa: E501
 
+          # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
         >>> thread = api.convert_simple_with_http_info(simple_client_config, async=True)
         >>> result = thread.get()
 
         :param async bool
-        :param str simple_client_config: simpleClientConfig (required)
-        :param bool include_origin_comments: includeOriginComments
+        :param str simple_client_config: (required)
+        :param bool include_origin_comments:
         :return: str
                  If the method is called asynchronously,
                  returns the request thread.
@@ -146,16 +148,17 @@ class ImportClientConfigApi(object):
     def import_client_config(self, client_config, **kwargs):  # noqa: E501
         """Import Client Config  # noqa: E501
 
+          # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
         >>> thread = api.import_client_config(client_config, async=True)
         >>> result = thread.get()
 
         :param async bool
-        :param str client_config: clientConfig (required)
-        :param str cluster_name: clusterName
-        :param str deployment_name: deploymentName
-        :param str environment_name: environmentName
+        :param str client_config: (required)
+        :param str cluster_name:
+        :param str deployment_name:
+        :param str environment_name:
         :return: ImportResult
                  If the method is called asynchronously,
                  returns the request thread.
@@ -170,16 +173,17 @@ class ImportClientConfigApi(object):
     def import_client_config_with_http_info(self, client_config, **kwargs):  # noqa: E501
         """Import Client Config  # noqa: E501
 
+          # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
         >>> thread = api.import_client_config_with_http_info(client_config, async=True)
         >>> result = thread.get()
 
         :param async bool
-        :param str client_config: clientConfig (required)
-        :param str cluster_name: clusterName
-        :param str deployment_name: deploymentName
-        :param str environment_name: environmentName
+        :param str client_config: (required)
+        :param str cluster_name:
+        :param str deployment_name:
+        :param str environment_name:
         :return: ImportResult
                  If the method is called asynchronously,
                  returns the request thread.
@@ -256,16 +260,17 @@ class ImportClientConfigApi(object):
     def validate(self, client_config, **kwargs):  # noqa: E501
         """Validate Client Config  # noqa: E501
 
+          # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
         >>> thread = api.validate(client_config, async=True)
         >>> result = thread.get()
 
         :param async bool
-        :param str client_config: clientConfig (required)
-        :param str cluster_name: clusterName
-        :param str deployment_name: deploymentName
-        :param str environment_name: environmentName
+        :param str client_config: (required)
+        :param str cluster_name:
+        :param str deployment_name:
+        :param str environment_name:
         :return: ValidationResults
                  If the method is called asynchronously,
                  returns the request thread.
@@ -280,16 +285,17 @@ class ImportClientConfigApi(object):
     def validate_with_http_info(self, client_config, **kwargs):  # noqa: E501
         """Validate Client Config  # noqa: E501
 
+          # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
         >>> thread = api.validate_with_http_info(client_config, async=True)
         >>> result = thread.get()
 
         :param async bool
-        :param str client_config: clientConfig (required)
-        :param str cluster_name: clusterName
-        :param str deployment_name: deploymentName
-        :param str environment_name: environmentName
+        :param str client_config: (required)
+        :param str cluster_name:
+        :param str deployment_name:
+        :param str environment_name:
         :return: ValidationResults
                  If the method is called asynchronously,
                  returns the request thread.

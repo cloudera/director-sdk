@@ -39,96 +39,50 @@ class DisplayProperty(object):
                             and the value is json key in definition.
     """
     swagger_types = {
-        'backing_config_key': 'str',
-        'description': 'str',
         'display_key': 'str',
         'name': 'str',
+        'description': 'str',
         'sensitive': 'bool',
         'type': 'str',
-        'widget': 'str'
+        'widget': 'str',
+        'backing_config_key': 'str'
     }
 
     attribute_map = {
-        'backing_config_key': 'backingConfigKey',
-        'description': 'description',
         'display_key': 'displayKey',
         'name': 'name',
+        'description': 'description',
         'sensitive': 'sensitive',
         'type': 'type',
-        'widget': 'widget'
+        'widget': 'widget',
+        'backing_config_key': 'backingConfigKey'
     }
 
-    def __init__(self, backing_config_key=None, description=None, display_key=None, name=None, sensitive=None, type=None, widget=None):  # noqa: E501
+    def __init__(self, display_key=None, name=None, description=None, sensitive=None, type=None, widget=None, backing_config_key=None):  # noqa: E501
         """DisplayProperty - a model defined in Swagger"""  # noqa: E501
 
-        self._backing_config_key = None
-        self._description = None
         self._display_key = None
         self._name = None
+        self._description = None
         self._sensitive = None
         self._type = None
         self._widget = None
+        self._backing_config_key = None
         self.discriminator = None
 
-        if backing_config_key is not None:
-            self.backing_config_key = backing_config_key
-        if description is not None:
-            self.description = description
         self.display_key = display_key
         if name is not None:
             self.name = name
+        if description is not None:
+            self.description = description
         if sensitive is not None:
             self.sensitive = sensitive
         if type is not None:
             self.type = type
         if widget is not None:
             self.widget = widget
-
-    @property
-    def backing_config_key(self):
-        """Gets the backing_config_key of this DisplayProperty.  # noqa: E501
-
-        Backing configuration property key  # noqa: E501
-
-        :return: The backing_config_key of this DisplayProperty.  # noqa: E501
-        :rtype: str
-        """
-        return self._backing_config_key
-
-    @backing_config_key.setter
-    def backing_config_key(self, backing_config_key):
-        """Sets the backing_config_key of this DisplayProperty.
-
-        Backing configuration property key  # noqa: E501
-
-        :param backing_config_key: The backing_config_key of this DisplayProperty.  # noqa: E501
-        :type: str
-        """
-
-        self._backing_config_key = backing_config_key
-
-    @property
-    def description(self):
-        """Gets the description of this DisplayProperty.  # noqa: E501
-
-        Display property description  # noqa: E501
-
-        :return: The description of this DisplayProperty.  # noqa: E501
-        :rtype: str
-        """
-        return self._description
-
-    @description.setter
-    def description(self, description):
-        """Sets the description of this DisplayProperty.
-
-        Display property description  # noqa: E501
-
-        :param description: The description of this DisplayProperty.  # noqa: E501
-        :type: str
-        """
-
-        self._description = description
+        if backing_config_key is not None:
+            self.backing_config_key = backing_config_key
 
     @property
     def display_key(self):
@@ -177,6 +131,29 @@ class DisplayProperty(object):
         """
 
         self._name = name
+
+    @property
+    def description(self):
+        """Gets the description of this DisplayProperty.  # noqa: E501
+
+        Display property description  # noqa: E501
+
+        :return: The description of this DisplayProperty.  # noqa: E501
+        :rtype: str
+        """
+        return self._description
+
+    @description.setter
+    def description(self, description):
+        """Sets the description of this DisplayProperty.
+
+        Display property description  # noqa: E501
+
+        :param description: The description of this DisplayProperty.  # noqa: E501
+        :type: str
+        """
+
+        self._description = description
 
     @property
     def sensitive(self):
@@ -258,6 +235,29 @@ class DisplayProperty(object):
             )
 
         self._widget = widget
+
+    @property
+    def backing_config_key(self):
+        """Gets the backing_config_key of this DisplayProperty.  # noqa: E501
+
+        Backing configuration property key  # noqa: E501
+
+        :return: The backing_config_key of this DisplayProperty.  # noqa: E501
+        :rtype: str
+        """
+        return self._backing_config_key
+
+    @backing_config_key.setter
+    def backing_config_key(self, backing_config_key):
+        """Sets the backing_config_key of this DisplayProperty.
+
+        Backing configuration property key  # noqa: E501
+
+        :param backing_config_key: The backing_config_key of this DisplayProperty.  # noqa: E501
+        :type: str
+        """
+
+        self._backing_config_key = backing_config_key
 
     def to_dict(self):
         """Returns the model properties as a dict"""

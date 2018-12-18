@@ -60,10 +60,10 @@ public class ImportClientConfigApi {
 
     /**
      * Build call for importClientConfig
-     * @param clientConfig clientConfig (required)
-     * @param clusterName clusterName (optional)
-     * @param deploymentName deploymentName (optional)
-     * @param environmentName environmentName (optional)
+     * @param clientConfig  (required)
+     * @param clusterName  (optional)
+     * @param deploymentName  (optional)
+     * @param environmentName  (optional)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
@@ -89,7 +89,7 @@ public class ImportClientConfigApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "*/*"
+            
         };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
@@ -133,10 +133,10 @@ public class ImportClientConfigApi {
     /**
      * Import Client Config
      * 
-     * @param clientConfig clientConfig (required)
-     * @param clusterName clusterName (optional)
-     * @param deploymentName deploymentName (optional)
-     * @param environmentName environmentName (optional)
+     * @param clientConfig  (required)
+     * @param clusterName  (optional)
+     * @param deploymentName  (optional)
+     * @param environmentName  (optional)
      * @return ImportResult
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
@@ -148,10 +148,10 @@ public class ImportClientConfigApi {
     /**
      * Import Client Config
      * 
-     * @param clientConfig clientConfig (required)
-     * @param clusterName clusterName (optional)
-     * @param deploymentName deploymentName (optional)
-     * @param environmentName environmentName (optional)
+     * @param clientConfig  (required)
+     * @param clusterName  (optional)
+     * @param deploymentName  (optional)
+     * @param environmentName  (optional)
      * @return ApiResponse&lt;ImportResult&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
@@ -164,10 +164,10 @@ public class ImportClientConfigApi {
     /**
      * Import Client Config (asynchronously)
      * 
-     * @param clientConfig clientConfig (required)
-     * @param clusterName clusterName (optional)
-     * @param deploymentName deploymentName (optional)
-     * @param environmentName environmentName (optional)
+     * @param clientConfig  (required)
+     * @param clusterName  (optional)
+     * @param deploymentName  (optional)
+     * @param environmentName  (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object

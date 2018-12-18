@@ -33,12 +33,12 @@ import java.io.IOException;
 @ApiModel(description = "A template for an database residing on an external database server")
 
 public class ExternalDatabaseTemplate {
-  @SerializedName("databaseNamePrefix")
-  private String databaseNamePrefix = null;
-  @SerializedName("databaseServerName")
-  private String databaseServerName = null;
   @SerializedName("name")
   private String name = null;
+  @SerializedName("databaseServerName")
+  private String databaseServerName = null;
+  @SerializedName("databaseNamePrefix")
+  private String databaseNamePrefix = null;
   @SerializedName("usernamePrefix")
   private String usernamePrefix = null;
 
@@ -47,9 +47,9 @@ public class ExternalDatabaseTemplate {
   }
 
   private ExternalDatabaseTemplate(ExternalDatabaseTemplateBuilder builder) {
-      this.databaseNamePrefix = builder.databaseNamePrefix;
-      this.databaseServerName = builder.databaseServerName;
       this.name = builder.name;
+      this.databaseServerName = builder.databaseServerName;
+      this.databaseNamePrefix = builder.databaseNamePrefix;
       this.usernamePrefix = builder.usernamePrefix;
     }
 
@@ -58,14 +58,14 @@ public class ExternalDatabaseTemplate {
   }
 
   public static class ExternalDatabaseTemplateBuilder {
-      private String databaseNamePrefix = null;
-      private String databaseServerName = null;
       private String name = null;
+      private String databaseServerName = null;
+      private String databaseNamePrefix = null;
       private String usernamePrefix = null;
   
 
-    public ExternalDatabaseTemplateBuilder databaseNamePrefix(String databaseNamePrefix) {
-      this.databaseNamePrefix = databaseNamePrefix;
+    public ExternalDatabaseTemplateBuilder name(String name) {
+      this.name = name;
       return this;
     }
 
@@ -76,8 +76,8 @@ public class ExternalDatabaseTemplate {
     }
 
 
-    public ExternalDatabaseTemplateBuilder name(String name) {
-      this.name = name;
+    public ExternalDatabaseTemplateBuilder databaseNamePrefix(String databaseNamePrefix) {
+      this.databaseNamePrefix = databaseNamePrefix;
       return this;
     }
 
@@ -95,29 +95,29 @@ public class ExternalDatabaseTemplate {
 
   public ExternalDatabaseTemplateBuilder toBuilder() {
     return builder()
-      .databaseNamePrefix(databaseNamePrefix)
+      .name(name)
             .databaseServerName(databaseServerName)
-            .name(name)
+            .databaseNamePrefix(databaseNamePrefix)
             .usernamePrefix(usernamePrefix)
       ;
   }
 
-  public ExternalDatabaseTemplate databaseNamePrefix(String databaseNamePrefix) {
-    this.databaseNamePrefix = databaseNamePrefix;
+  public ExternalDatabaseTemplate name(String name) {
+    this.name = name;
     return this;
   }
 
    /**
-   * Prefix to use when generating external database name
-   * @return databaseNamePrefix
+   * External database template name
+   * @return name
   **/
-  @ApiModelProperty(required = true, value = "Prefix to use when generating external database name")
-  public String getDatabaseNamePrefix() {
-    return databaseNamePrefix;
+  @ApiModelProperty(required = true, value = "External database template name")
+  public String getName() {
+    return name;
   }
 
-  public void setDatabaseNamePrefix(String databaseNamePrefix) {
-    this.databaseNamePrefix = databaseNamePrefix;
+  public void setName(String name) {
+    this.name = name;
   }
 
   public ExternalDatabaseTemplate databaseServerName(String databaseServerName) {
@@ -138,22 +138,22 @@ public class ExternalDatabaseTemplate {
     this.databaseServerName = databaseServerName;
   }
 
-  public ExternalDatabaseTemplate name(String name) {
-    this.name = name;
+  public ExternalDatabaseTemplate databaseNamePrefix(String databaseNamePrefix) {
+    this.databaseNamePrefix = databaseNamePrefix;
     return this;
   }
 
    /**
-   * External database template name
-   * @return name
+   * Prefix to use when generating external database name
+   * @return databaseNamePrefix
   **/
-  @ApiModelProperty(required = true, value = "External database template name")
-  public String getName() {
-    return name;
+  @ApiModelProperty(required = true, value = "Prefix to use when generating external database name")
+  public String getDatabaseNamePrefix() {
+    return databaseNamePrefix;
   }
 
-  public void setName(String name) {
-    this.name = name;
+  public void setDatabaseNamePrefix(String databaseNamePrefix) {
+    this.databaseNamePrefix = databaseNamePrefix;
   }
 
   public ExternalDatabaseTemplate usernamePrefix(String usernamePrefix) {
@@ -184,15 +184,15 @@ public class ExternalDatabaseTemplate {
       return false;
     }
     ExternalDatabaseTemplate externalDatabaseTemplate = (ExternalDatabaseTemplate) o;
-    return Objects.equals(this.databaseNamePrefix, externalDatabaseTemplate.databaseNamePrefix) &&
+    return Objects.equals(this.name, externalDatabaseTemplate.name) &&
         Objects.equals(this.databaseServerName, externalDatabaseTemplate.databaseServerName) &&
-        Objects.equals(this.name, externalDatabaseTemplate.name) &&
+        Objects.equals(this.databaseNamePrefix, externalDatabaseTemplate.databaseNamePrefix) &&
         Objects.equals(this.usernamePrefix, externalDatabaseTemplate.usernamePrefix);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(databaseNamePrefix, databaseServerName, name, usernamePrefix);
+    return Objects.hash(name, databaseServerName, databaseNamePrefix, usernamePrefix);
   }
 
 
@@ -201,9 +201,9 @@ public class ExternalDatabaseTemplate {
     StringBuilder sb = new StringBuilder();
     sb.append("class ExternalDatabaseTemplate {\n");
     
-    sb.append("    databaseNamePrefix: ").append(toIndentedString(databaseNamePrefix)).append("\n");
-    sb.append("    databaseServerName: ").append(toIndentedString(databaseServerName)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    databaseServerName: ").append(toIndentedString(databaseServerName)).append("\n");
+    sb.append("    databaseNamePrefix: ").append(toIndentedString(databaseNamePrefix)).append("\n");
     sb.append("    usernamePrefix: ").append(toIndentedString(usernamePrefix)).append("\n");
     sb.append("}");
     return sb.toString();

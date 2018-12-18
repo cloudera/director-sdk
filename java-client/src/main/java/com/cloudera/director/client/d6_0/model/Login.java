@@ -33,18 +33,18 @@ import java.io.IOException;
 @ApiModel(description = "Login credentials")
 
 public class Login {
-  @SerializedName("password")
-  private String password = null;
   @SerializedName("username")
   private String username = null;
+  @SerializedName("password")
+  private String password = null;
 
   public Login() {
     // Do nothing
   }
 
   private Login(LoginBuilder builder) {
-      this.password = builder.password;
       this.username = builder.username;
+      this.password = builder.password;
     }
 
   public static LoginBuilder builder() {
@@ -52,18 +52,18 @@ public class Login {
   }
 
   public static class LoginBuilder {
-      private String password = null;
       private String username = null;
+      private String password = null;
   
 
-    public LoginBuilder password(String password) {
-      this.password = password;
+    public LoginBuilder username(String username) {
+      this.username = username;
       return this;
     }
 
 
-    public LoginBuilder username(String username) {
-      this.username = username;
+    public LoginBuilder password(String password) {
+      this.password = password;
       return this;
     }
 
@@ -75,27 +75,9 @@ public class Login {
 
   public LoginBuilder toBuilder() {
     return builder()
-      .password(password)
-            .username(username)
+      .username(username)
+            .password(password)
       ;
-  }
-
-  public Login password(String password) {
-    this.password = password;
-    return this;
-  }
-
-   /**
-   * Login password [redacted on read]
-   * @return password
-  **/
-  @ApiModelProperty(required = true, value = "Login password [redacted on read]")
-  public String getPassword() {
-    return password;
-  }
-
-  public void setPassword(String password) {
-    this.password = password;
   }
 
   public Login username(String username) {
@@ -116,6 +98,24 @@ public class Login {
     this.username = username;
   }
 
+  public Login password(String password) {
+    this.password = password;
+    return this;
+  }
+
+   /**
+   * Login password [redacted on read]
+   * @return password
+  **/
+  @ApiModelProperty(required = true, value = "Login password [redacted on read]")
+  public String getPassword() {
+    return password;
+  }
+
+  public void setPassword(String password) {
+    this.password = password;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -126,13 +126,13 @@ public class Login {
       return false;
     }
     Login login = (Login) o;
-    return Objects.equals(this.password, login.password) &&
-        Objects.equals(this.username, login.username);
+    return Objects.equals(this.username, login.username) &&
+        Objects.equals(this.password, login.password);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(password, username);
+    return Objects.hash(username, password);
   }
 
 
@@ -141,8 +141,8 @@ public class Login {
     StringBuilder sb = new StringBuilder();
     sb.append("class Login {\n");
     
-    sb.append("    password: ").append(toIndentedString(password)).append("\n");
     sb.append("    username: ").append(toIndentedString(username)).append("\n");
+    sb.append("    password: ").append(toIndentedString(password)).append("\n");
     sb.append("}");
     return sb.toString();
   }

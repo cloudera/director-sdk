@@ -69,7 +69,7 @@ public class NotificationsApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/api/d6.0/notifications";
+        String localVarPath = "/api/d6.1/notifications";
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();

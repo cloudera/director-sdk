@@ -1,17 +1,19 @@
 # cloudera.director.AuthenticationApi
 
-All URIs are relative to *https://localhost:7189*
+All URIs are relative to *https://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**login**](AuthenticationApi.md#login) | **POST** /api/d6.0/login | Log in to the API
-[**logout**](AuthenticationApi.md#logout) | **POST** /api/d6.0/logout | Log out from the API
+[**login**](AuthenticationApi.md#login) | **POST** /api/d6.1/login | Log in to the API
+[**logout**](AuthenticationApi.md#logout) | **POST** /api/d6.1/logout | Log out from the API
 
 
 # **login**
 > User login(login)
 
 Log in to the API
+
+
 
 ### Example
 ```python
@@ -21,14 +23,9 @@ import cloudera.director
 from cloudera.director.rest import ApiException
 from pprint import pprint
 
-# Configure HTTP basic authorization: basic
-configuration = cloudera.director.Configuration()
-configuration.username = 'YOUR_USERNAME'
-configuration.password = 'YOUR_PASSWORD'
-
 # create an instance of the API class
-api_instance = cloudera.director.AuthenticationApi(cloudera.director.ApiClient(configuration))
-login = cloudera.director.Login() # Login | login
+api_instance = cloudera.director.AuthenticationApi()
+login = cloudera.director.Login() # Login | 
 
 try:
     # Log in to the API
@@ -42,7 +39,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **login** | [**Login**](Login.md)| login | 
+ **login** | [**Login**](Login.md)|  | 
 
 ### Return type
 
@@ -50,11 +47,11 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[basic](../README.md#basic)
+No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -64,6 +61,8 @@ Name | Type | Description  | Notes
 
 Log out from the API
 
+
+
 ### Example
 ```python
 from __future__ import print_function
@@ -72,13 +71,8 @@ import cloudera.director
 from cloudera.director.rest import ApiException
 from pprint import pprint
 
-# Configure HTTP basic authorization: basic
-configuration = cloudera.director.Configuration()
-configuration.username = 'YOUR_USERNAME'
-configuration.password = 'YOUR_PASSWORD'
-
 # create an instance of the API class
-api_instance = cloudera.director.AuthenticationApi(cloudera.director.ApiClient(configuration))
+api_instance = cloudera.director.AuthenticationApi()
 
 try:
     # Log out from the API
@@ -97,11 +91,11 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[basic](../README.md#basic)
+No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

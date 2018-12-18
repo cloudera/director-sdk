@@ -44,16 +44,17 @@ class ImportClientConfigApi(object):
     def import_client_config(self, client_config, **kwargs):  # noqa: E501
         """Import Client Config  # noqa: E501
 
+          # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
         >>> thread = api.import_client_config(client_config, async=True)
         >>> result = thread.get()
 
         :param async bool
-        :param str client_config: clientConfig (required)
-        :param str cluster_name: clusterName
-        :param str deployment_name: deploymentName
-        :param str environment_name: environmentName
+        :param str client_config: (required)
+        :param str cluster_name:
+        :param str deployment_name:
+        :param str environment_name:
         :return: ImportResult
                  If the method is called asynchronously,
                  returns the request thread.
@@ -68,16 +69,17 @@ class ImportClientConfigApi(object):
     def import_client_config_with_http_info(self, client_config, **kwargs):  # noqa: E501
         """Import Client Config  # noqa: E501
 
+          # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
         >>> thread = api.import_client_config_with_http_info(client_config, async=True)
         >>> result = thread.get()
 
         :param async bool
-        :param str client_config: clientConfig (required)
-        :param str cluster_name: clusterName
-        :param str deployment_name: deploymentName
-        :param str environment_name: environmentName
+        :param str client_config: (required)
+        :param str cluster_name:
+        :param str deployment_name:
+        :param str environment_name:
         :return: ImportResult
                  If the method is called asynchronously,
                  returns the request thread.
@@ -123,10 +125,6 @@ class ImportClientConfigApi(object):
         body_params = None
         if 'client_config' in params:
             body_params = params['client_config']
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['*/*'])  # noqa: E501
-
         # HTTP header `Content-Type`
         header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
             ['text/plain'])  # noqa: E501
@@ -154,16 +152,17 @@ class ImportClientConfigApi(object):
     def validate(self, client_config, **kwargs):  # noqa: E501
         """Validate Client Config  # noqa: E501
 
+          # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
         >>> thread = api.validate(client_config, async=True)
         >>> result = thread.get()
 
         :param async bool
-        :param str client_config: clientConfig (required)
-        :param str cluster_name: clusterName
-        :param str deployment_name: deploymentName
-        :param str environment_name: environmentName
+        :param str client_config: (required)
+        :param str cluster_name:
+        :param str deployment_name:
+        :param str environment_name:
         :return: ValidationResult
                  If the method is called asynchronously,
                  returns the request thread.
@@ -178,16 +177,17 @@ class ImportClientConfigApi(object):
     def validate_with_http_info(self, client_config, **kwargs):  # noqa: E501
         """Validate Client Config  # noqa: E501
 
+          # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
         >>> thread = api.validate_with_http_info(client_config, async=True)
         >>> result = thread.get()
 
         :param async bool
-        :param str client_config: clientConfig (required)
-        :param str cluster_name: clusterName
-        :param str deployment_name: deploymentName
-        :param str environment_name: environmentName
+        :param str client_config: (required)
+        :param str cluster_name:
+        :param str deployment_name:
+        :param str environment_name:
         :return: ValidationResult
                  If the method is called asynchronously,
                  returns the request thread.

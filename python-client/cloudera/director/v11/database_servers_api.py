@@ -44,14 +44,15 @@ class DatabaseServersApi(object):
     def create(self, environment, external_database_server_template, **kwargs):  # noqa: E501
         """Create a new external database server  # noqa: E501
 
+          # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
         >>> thread = api.create(environment, external_database_server_template, async=True)
         >>> result = thread.get()
 
         :param async bool
-        :param str environment: environment (required)
-        :param ExternalDatabaseServerTemplate external_database_server_template: externalDatabaseServerTemplate (required)
+        :param str environment: (required)
+        :param ExternalDatabaseServerTemplate external_database_server_template: (required)
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
@@ -66,14 +67,15 @@ class DatabaseServersApi(object):
     def create_with_http_info(self, environment, external_database_server_template, **kwargs):  # noqa: E501
         """Create a new external database server  # noqa: E501
 
+          # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
         >>> thread = api.create_with_http_info(environment, external_database_server_template, async=True)
         >>> result = thread.get()
 
         :param async bool
-        :param str environment: environment (required)
-        :param ExternalDatabaseServerTemplate external_database_server_template: externalDatabaseServerTemplate (required)
+        :param str environment: (required)
+        :param ExternalDatabaseServerTemplate external_database_server_template: (required)
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
@@ -123,10 +125,6 @@ class DatabaseServersApi(object):
         header_params['Accept'] = self.api_client.select_header_accept(
             ['application/json'])  # noqa: E501
 
-        # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json'])  # noqa: E501
-
         # Authentication setting
         auth_settings = ['basic']  # noqa: E501
 
@@ -150,14 +148,15 @@ class DatabaseServersApi(object):
     def delete(self, environment, external_database_server, **kwargs):  # noqa: E501
         """Delete an external database server by name  # noqa: E501
 
+          # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
         >>> thread = api.delete(environment, external_database_server, async=True)
         >>> result = thread.get()
 
         :param async bool
-        :param str environment: environment (required)
-        :param str external_database_server: externalDatabaseServer (required)
+        :param str environment: (required)
+        :param str external_database_server: (required)
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
@@ -172,14 +171,15 @@ class DatabaseServersApi(object):
     def delete_with_http_info(self, environment, external_database_server, **kwargs):  # noqa: E501
         """Delete an external database server by name  # noqa: E501
 
+          # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
         >>> thread = api.delete_with_http_info(environment, external_database_server, async=True)
         >>> result = thread.get()
 
         :param async bool
-        :param str environment: environment (required)
-        :param str external_database_server: externalDatabaseServer (required)
+        :param str environment: (required)
+        :param str external_database_server: (required)
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
@@ -252,14 +252,15 @@ class DatabaseServersApi(object):
     def get_database_server_usage(self, environment, external_database_server, **kwargs):  # noqa: E501
         """Get an external database server usage by name  # noqa: E501
 
+          # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
         >>> thread = api.get_database_server_usage(environment, external_database_server, async=True)
         >>> result = thread.get()
 
         :param async bool
-        :param str environment: environment (required)
-        :param str external_database_server: externalDatabaseServer (required)
+        :param str environment: (required)
+        :param str external_database_server: (required)
         :return: ExternalDatabaseServerUsage
                  If the method is called asynchronously,
                  returns the request thread.
@@ -274,14 +275,15 @@ class DatabaseServersApi(object):
     def get_database_server_usage_with_http_info(self, environment, external_database_server, **kwargs):  # noqa: E501
         """Get an external database server usage by name  # noqa: E501
 
+          # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
         >>> thread = api.get_database_server_usage_with_http_info(environment, external_database_server, async=True)
         >>> result = thread.get()
 
         :param async bool
-        :param str environment: environment (required)
-        :param str external_database_server: externalDatabaseServer (required)
+        :param str environment: (required)
+        :param str external_database_server: (required)
         :return: ExternalDatabaseServerUsage
                  If the method is called asynchronously,
                  returns the request thread.
@@ -354,14 +356,15 @@ class DatabaseServersApi(object):
     def get_redacted(self, environment, external_database_server, **kwargs):  # noqa: E501
         """Get an external database server by name  # noqa: E501
 
+          # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
         >>> thread = api.get_redacted(environment, external_database_server, async=True)
         >>> result = thread.get()
 
         :param async bool
-        :param str environment: environment (required)
-        :param str external_database_server: externalDatabaseServer (required)
+        :param str environment: (required)
+        :param str external_database_server: (required)
         :return: ExternalDatabaseServer
                  If the method is called asynchronously,
                  returns the request thread.
@@ -376,14 +379,15 @@ class DatabaseServersApi(object):
     def get_redacted_with_http_info(self, environment, external_database_server, **kwargs):  # noqa: E501
         """Get an external database server by name  # noqa: E501
 
+          # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
         >>> thread = api.get_redacted_with_http_info(environment, external_database_server, async=True)
         >>> result = thread.get()
 
         :param async bool
-        :param str environment: environment (required)
-        :param str external_database_server: externalDatabaseServer (required)
+        :param str environment: (required)
+        :param str external_database_server: (required)
         :return: ExternalDatabaseServer
                  If the method is called asynchronously,
                  returns the request thread.
@@ -456,14 +460,15 @@ class DatabaseServersApi(object):
     def get_status(self, environment, external_database_server, **kwargs):  # noqa: E501
         """Get an external database server status by name  # noqa: E501
 
+          # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
         >>> thread = api.get_status(environment, external_database_server, async=True)
         >>> result = thread.get()
 
         :param async bool
-        :param str environment: environment (required)
-        :param str external_database_server: externalDatabaseServer (required)
+        :param str environment: (required)
+        :param str external_database_server: (required)
         :return: Status
                  If the method is called asynchronously,
                  returns the request thread.
@@ -478,14 +483,15 @@ class DatabaseServersApi(object):
     def get_status_with_http_info(self, environment, external_database_server, **kwargs):  # noqa: E501
         """Get an external database server status by name  # noqa: E501
 
+          # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
         >>> thread = api.get_status_with_http_info(environment, external_database_server, async=True)
         >>> result = thread.get()
 
         :param async bool
-        :param str environment: environment (required)
-        :param str external_database_server: externalDatabaseServer (required)
+        :param str environment: (required)
+        :param str external_database_server: (required)
         :return: Status
                  If the method is called asynchronously,
                  returns the request thread.
@@ -558,14 +564,15 @@ class DatabaseServersApi(object):
     def get_template_redacted(self, environment, external_database_server, **kwargs):  # noqa: E501
         """Get an external database server template by name  # noqa: E501
 
+          # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
         >>> thread = api.get_template_redacted(environment, external_database_server, async=True)
         >>> result = thread.get()
 
         :param async bool
-        :param str environment: environment (required)
-        :param str external_database_server: externalDatabaseServer (required)
+        :param str environment: (required)
+        :param str external_database_server: (required)
         :return: ExternalDatabaseServerTemplate
                  If the method is called asynchronously,
                  returns the request thread.
@@ -580,14 +587,15 @@ class DatabaseServersApi(object):
     def get_template_redacted_with_http_info(self, environment, external_database_server, **kwargs):  # noqa: E501
         """Get an external database server template by name  # noqa: E501
 
+          # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
         >>> thread = api.get_template_redacted_with_http_info(environment, external_database_server, async=True)
         >>> result = thread.get()
 
         :param async bool
-        :param str environment: environment (required)
-        :param str external_database_server: externalDatabaseServer (required)
+        :param str environment: (required)
+        :param str external_database_server: (required)
         :return: ExternalDatabaseServerTemplate
                  If the method is called asynchronously,
                  returns the request thread.
@@ -660,13 +668,14 @@ class DatabaseServersApi(object):
     def list(self, environment, **kwargs):  # noqa: E501
         """List all externalDatabaseServers  # noqa: E501
 
+          # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
         >>> thread = api.list(environment, async=True)
         >>> result = thread.get()
 
         :param async bool
-        :param str environment: environment (required)
+        :param str environment: (required)
         :return: list[str]
                  If the method is called asynchronously,
                  returns the request thread.
@@ -681,13 +690,14 @@ class DatabaseServersApi(object):
     def list_with_http_info(self, environment, **kwargs):  # noqa: E501
         """List all externalDatabaseServers  # noqa: E501
 
+          # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
         >>> thread = api.list_with_http_info(environment, async=True)
         >>> result = thread.get()
 
         :param async bool
-        :param str environment: environment (required)
+        :param str environment: (required)
         :return: list[str]
                  If the method is called asynchronously,
                  returns the request thread.
@@ -754,15 +764,16 @@ class DatabaseServersApi(object):
     def update(self, environment, external_database_server, updated_template, **kwargs):  # noqa: E501
         """Update an existing external database server (unsupported)  # noqa: E501
 
+          # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
         >>> thread = api.update(environment, external_database_server, updated_template, async=True)
         >>> result = thread.get()
 
         :param async bool
-        :param str environment: environment (required)
-        :param str external_database_server: externalDatabaseServer (required)
-        :param ExternalDatabaseServerTemplate updated_template: updatedTemplate (required)
+        :param str environment: (required)
+        :param str external_database_server: (required)
+        :param ExternalDatabaseServerTemplate updated_template: (required)
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
@@ -777,15 +788,16 @@ class DatabaseServersApi(object):
     def update_with_http_info(self, environment, external_database_server, updated_template, **kwargs):  # noqa: E501
         """Update an existing external database server (unsupported)  # noqa: E501
 
+          # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
         >>> thread = api.update_with_http_info(environment, external_database_server, updated_template, async=True)
         >>> result = thread.get()
 
         :param async bool
-        :param str environment: environment (required)
-        :param str external_database_server: externalDatabaseServer (required)
-        :param ExternalDatabaseServerTemplate updated_template: updatedTemplate (required)
+        :param str environment: (required)
+        :param str external_database_server: (required)
+        :param ExternalDatabaseServerTemplate updated_template: (required)
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
@@ -839,10 +851,6 @@ class DatabaseServersApi(object):
             body_params = params['updated_template']
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
-
-        # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
             ['application/json'])  # noqa: E501
 
         # Authentication setting

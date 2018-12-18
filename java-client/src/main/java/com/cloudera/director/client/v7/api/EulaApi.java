@@ -102,7 +102,7 @@ public class EulaApi {
             });
         }
 
-        String[] localVarAuthNames = new String[] { "basic" };
+        String[] localVarAuthNames = new String[] {  };
         return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
 
@@ -173,7 +173,7 @@ public class EulaApi {
     }
     /**
      * Build call for update
-     * @param eula eula (required)
+     * @param eula  (required)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
@@ -199,7 +199,7 @@ public class EulaApi {
         if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
 
         final String[] localVarContentTypes = {
-            "application/json"
+            
         };
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
@@ -216,7 +216,7 @@ public class EulaApi {
             });
         }
 
-        String[] localVarAuthNames = new String[] { "basic" };
+        String[] localVarAuthNames = new String[] {  };
         return apiClient.buildCall(localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
 
@@ -237,7 +237,7 @@ public class EulaApi {
     /**
      * Update the EULA
      * 
-     * @param eula eula (required)
+     * @param eula  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
     public void update(Eula eula) throws ApiException {
@@ -247,7 +247,7 @@ public class EulaApi {
     /**
      * Update the EULA
      * 
-     * @param eula eula (required)
+     * @param eula  (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
@@ -259,7 +259,7 @@ public class EulaApi {
     /**
      * Update the EULA (asynchronously)
      * 
-     * @param eula eula (required)
+     * @param eula  (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object

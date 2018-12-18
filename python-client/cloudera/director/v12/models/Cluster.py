@@ -39,170 +39,55 @@ class Cluster(object):
                             and the value is json key in definition.
     """
     swagger_types = {
-        'created_external_databases': 'list[ExternalDatabase]',
-        'feature_availability': 'dict(str, str)',
-        'health': 'Health',
-        'instances': 'list[Instance]',
-        'instances_url': 'str',
         'name': 'str',
+        'instances': 'list[Instance]',
         'services': 'list[Service]',
-        'url': 'str'
+        'url': 'str',
+        'instances_url': 'str',
+        'health': 'Health',
+        'feature_availability': 'dict(str, str)',
+        'created_external_databases': 'list[ExternalDatabase]'
     }
 
     attribute_map = {
-        'created_external_databases': 'createdExternalDatabases',
-        'feature_availability': 'featureAvailability',
-        'health': 'health',
-        'instances': 'instances',
-        'instances_url': 'instancesUrl',
         'name': 'name',
+        'instances': 'instances',
         'services': 'services',
-        'url': 'url'
+        'url': 'url',
+        'instances_url': 'instancesUrl',
+        'health': 'health',
+        'feature_availability': 'featureAvailability',
+        'created_external_databases': 'createdExternalDatabases'
     }
 
-    def __init__(self, created_external_databases=None, feature_availability=None, health=None, instances=None, instances_url=None, name=None, services=None, url=None):  # noqa: E501
+    def __init__(self, name=None, instances=None, services=None, url=None, instances_url=None, health=None, feature_availability=None, created_external_databases=None):  # noqa: E501
         """Cluster - a model defined in Swagger"""  # noqa: E501
 
-        self._created_external_databases = None
-        self._feature_availability = None
-        self._health = None
-        self._instances = None
-        self._instances_url = None
         self._name = None
+        self._instances = None
         self._services = None
         self._url = None
+        self._instances_url = None
+        self._health = None
+        self._feature_availability = None
+        self._created_external_databases = None
         self.discriminator = None
 
-        if created_external_databases is not None:
-            self.created_external_databases = created_external_databases
-        if feature_availability is not None:
-            self.feature_availability = feature_availability
-        if health is not None:
-            self.health = health
+        self.name = name
         if instances is not None:
             self.instances = instances
-        if instances_url is not None:
-            self.instances_url = instances_url
-        self.name = name
         if services is not None:
             self.services = services
         if url is not None:
             self.url = url
-
-    @property
-    def created_external_databases(self):
-        """Gets the created_external_databases of this Cluster.  # noqa: E501
-
-        External databases created for this cluster  # noqa: E501
-
-        :return: The created_external_databases of this Cluster.  # noqa: E501
-        :rtype: list[ExternalDatabase]
-        """
-        return self._created_external_databases
-
-    @created_external_databases.setter
-    def created_external_databases(self, created_external_databases):
-        """Sets the created_external_databases of this Cluster.
-
-        External databases created for this cluster  # noqa: E501
-
-        :param created_external_databases: The created_external_databases of this Cluster.  # noqa: E501
-        :type: list[ExternalDatabase]
-        """
-
-        self._created_external_databases = created_external_databases
-
-    @property
-    def feature_availability(self):
-        """Gets the feature_availability of this Cluster.  # noqa: E501
-
-        Availability information for features  # noqa: E501
-
-        :return: The feature_availability of this Cluster.  # noqa: E501
-        :rtype: dict(str, str)
-        """
-        return self._feature_availability
-
-    @feature_availability.setter
-    def feature_availability(self, feature_availability):
-        """Sets the feature_availability of this Cluster.
-
-        Availability information for features  # noqa: E501
-
-        :param feature_availability: The feature_availability of this Cluster.  # noqa: E501
-        :type: dict(str, str)
-        """
-
-        self._feature_availability = feature_availability
-
-    @property
-    def health(self):
-        """Gets the health of this Cluster.  # noqa: E501
-
-        Overall cluster health  # noqa: E501
-
-        :return: The health of this Cluster.  # noqa: E501
-        :rtype: Health
-        """
-        return self._health
-
-    @health.setter
-    def health(self, health):
-        """Sets the health of this Cluster.
-
-        Overall cluster health  # noqa: E501
-
-        :param health: The health of this Cluster.  # noqa: E501
-        :type: Health
-        """
-
-        self._health = health
-
-    @property
-    def instances(self):
-        """Gets the instances of this Cluster.  # noqa: E501
-
-        Instances making this cluster  # noqa: E501
-
-        :return: The instances of this Cluster.  # noqa: E501
-        :rtype: list[Instance]
-        """
-        return self._instances
-
-    @instances.setter
-    def instances(self, instances):
-        """Sets the instances of this Cluster.
-
-        Instances making this cluster  # noqa: E501
-
-        :param instances: The instances of this Cluster.  # noqa: E501
-        :type: list[Instance]
-        """
-
-        self._instances = instances
-
-    @property
-    def instances_url(self):
-        """Gets the instances_url of this Cluster.  # noqa: E501
-
-        Optional URL for cluster instances in Cloudera Manager  # noqa: E501
-
-        :return: The instances_url of this Cluster.  # noqa: E501
-        :rtype: str
-        """
-        return self._instances_url
-
-    @instances_url.setter
-    def instances_url(self, instances_url):
-        """Sets the instances_url of this Cluster.
-
-        Optional URL for cluster instances in Cloudera Manager  # noqa: E501
-
-        :param instances_url: The instances_url of this Cluster.  # noqa: E501
-        :type: str
-        """
-
-        self._instances_url = instances_url
+        if instances_url is not None:
+            self.instances_url = instances_url
+        if health is not None:
+            self.health = health
+        if feature_availability is not None:
+            self.feature_availability = feature_availability
+        if created_external_databases is not None:
+            self.created_external_databases = created_external_databases
 
     @property
     def name(self):
@@ -228,6 +113,29 @@ class Cluster(object):
             raise ValueError("Invalid value for `name`, must not be `None`")  # noqa: E501
 
         self._name = name
+
+    @property
+    def instances(self):
+        """Gets the instances of this Cluster.  # noqa: E501
+
+        Instances making this cluster  # noqa: E501
+
+        :return: The instances of this Cluster.  # noqa: E501
+        :rtype: list[Instance]
+        """
+        return self._instances
+
+    @instances.setter
+    def instances(self, instances):
+        """Sets the instances of this Cluster.
+
+        Instances making this cluster  # noqa: E501
+
+        :param instances: The instances of this Cluster.  # noqa: E501
+        :type: list[Instance]
+        """
+
+        self._instances = instances
 
     @property
     def services(self):
@@ -274,6 +182,105 @@ class Cluster(object):
         """
 
         self._url = url
+
+    @property
+    def instances_url(self):
+        """Gets the instances_url of this Cluster.  # noqa: E501
+
+        Optional URL for cluster instances in Cloudera Manager  # noqa: E501
+
+        :return: The instances_url of this Cluster.  # noqa: E501
+        :rtype: str
+        """
+        return self._instances_url
+
+    @instances_url.setter
+    def instances_url(self, instances_url):
+        """Sets the instances_url of this Cluster.
+
+        Optional URL for cluster instances in Cloudera Manager  # noqa: E501
+
+        :param instances_url: The instances_url of this Cluster.  # noqa: E501
+        :type: str
+        """
+
+        self._instances_url = instances_url
+
+    @property
+    def health(self):
+        """Gets the health of this Cluster.  # noqa: E501
+
+        Overall cluster health  # noqa: E501
+
+        :return: The health of this Cluster.  # noqa: E501
+        :rtype: Health
+        """
+        return self._health
+
+    @health.setter
+    def health(self, health):
+        """Sets the health of this Cluster.
+
+        Overall cluster health  # noqa: E501
+
+        :param health: The health of this Cluster.  # noqa: E501
+        :type: Health
+        """
+
+        self._health = health
+
+    @property
+    def feature_availability(self):
+        """Gets the feature_availability of this Cluster.  # noqa: E501
+
+        Availability information for features  # noqa: E501
+
+        :return: The feature_availability of this Cluster.  # noqa: E501
+        :rtype: dict(str, str)
+        """
+        return self._feature_availability
+
+    @feature_availability.setter
+    def feature_availability(self, feature_availability):
+        """Sets the feature_availability of this Cluster.
+
+        Availability information for features  # noqa: E501
+
+        :param feature_availability: The feature_availability of this Cluster.  # noqa: E501
+        :type: dict(str, str)
+        """
+        allowed_values = ["UNKNOWN", "UNAVAILABLE", "AVAILABLE"]  # noqa: E501
+        if not set(feature_availability.keys()).issubset(set(allowed_values)):
+            raise ValueError(
+                "Invalid keys in `feature_availability` [{0}], must be a subset of [{1}]"  # noqa: E501
+                .format(", ".join(map(str, set(feature_availability.keys()) - set(allowed_values))),  # noqa: E501
+                        ", ".join(map(str, allowed_values)))
+            )
+
+        self._feature_availability = feature_availability
+
+    @property
+    def created_external_databases(self):
+        """Gets the created_external_databases of this Cluster.  # noqa: E501
+
+        External databases created for this cluster  # noqa: E501
+
+        :return: The created_external_databases of this Cluster.  # noqa: E501
+        :rtype: list[ExternalDatabase]
+        """
+        return self._created_external_databases
+
+    @created_external_databases.setter
+    def created_external_databases(self, created_external_databases):
+        """Sets the created_external_databases of this Cluster.
+
+        External databases created for this cluster  # noqa: E501
+
+        :param created_external_databases: The created_external_databases of this Cluster.  # noqa: E501
+        :type: list[ExternalDatabase]
+        """
+
+        self._created_external_databases = created_external_databases
 
     def to_dict(self):
         """Returns the model properties as a dict"""

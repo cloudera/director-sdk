@@ -39,61 +39,36 @@ class ErrorInfo(object):
                             and the value is json key in definition.
     """
     swagger_types = {
-        'causes': 'list[ErrorInfo]',
         'error_code': 'str',
         'error_type': 'str',
         'properties': 'dict(str, str)',
-        'retryable': 'bool'
+        'retryable': 'bool',
+        'causes': 'list[ErrorInfo]'
     }
 
     attribute_map = {
-        'causes': 'causes',
         'error_code': 'errorCode',
         'error_type': 'errorType',
         'properties': 'properties',
-        'retryable': 'retryable'
+        'retryable': 'retryable',
+        'causes': 'causes'
     }
 
-    def __init__(self, causes=None, error_code=None, error_type=None, properties=None, retryable=None):  # noqa: E501
+    def __init__(self, error_code=None, error_type=None, properties=None, retryable=None, causes=None):  # noqa: E501
         """ErrorInfo - a model defined in Swagger"""  # noqa: E501
 
-        self._causes = None
         self._error_code = None
         self._error_type = None
         self._properties = None
         self._retryable = None
+        self._causes = None
         self.discriminator = None
 
-        self.causes = causes
         self.error_code = error_code
         self.error_type = error_type
         self.properties = properties
         self.retryable = retryable
-
-    @property
-    def causes(self):
-        """Gets the causes of this ErrorInfo.  # noqa: E501
-
-        Causes of the error, if any  # noqa: E501
-
-        :return: The causes of this ErrorInfo.  # noqa: E501
-        :rtype: list[ErrorInfo]
-        """
-        return self._causes
-
-    @causes.setter
-    def causes(self, causes):
-        """Sets the causes of this ErrorInfo.
-
-        Causes of the error, if any  # noqa: E501
-
-        :param causes: The causes of this ErrorInfo.  # noqa: E501
-        :type: list[ErrorInfo]
-        """
-        if causes is None:
-            raise ValueError("Invalid value for `causes`, must not be `None`")  # noqa: E501
-
-        self._causes = causes
+        self.causes = causes
 
     @property
     def error_code(self):
@@ -206,6 +181,31 @@ class ErrorInfo(object):
             raise ValueError("Invalid value for `retryable`, must not be `None`")  # noqa: E501
 
         self._retryable = retryable
+
+    @property
+    def causes(self):
+        """Gets the causes of this ErrorInfo.  # noqa: E501
+
+        Causes of the error, if any  # noqa: E501
+
+        :return: The causes of this ErrorInfo.  # noqa: E501
+        :rtype: list[ErrorInfo]
+        """
+        return self._causes
+
+    @causes.setter
+    def causes(self, causes):
+        """Sets the causes of this ErrorInfo.
+
+        Causes of the error, if any  # noqa: E501
+
+        :param causes: The causes of this ErrorInfo.  # noqa: E501
+        :type: list[ErrorInfo]
+        """
+        if causes is None:
+            raise ValueError("Invalid value for `causes`, must not be `None`")  # noqa: E501
+
+        self._causes = causes
 
     def to_dict(self):
         """Returns the model properties as a dict"""

@@ -35,18 +35,6 @@ import java.util.List;
 @ApiModel(description = "Information about Cloudera Manager diagnostic data")
 
 public class DiagnosticDataSummary {
-  @SerializedName("clouderaManagerLogsDownloaded")
-  private Boolean clouderaManagerLogsDownloaded = null;
-  @SerializedName("collectionTime")
-  private Long collectionTime = null;
-  @SerializedName("details")
-  private List<String> details = null;
-  @SerializedName("diagnosticDataCollected")
-  private Boolean diagnosticDataCollected = null;
-  @SerializedName("diagnosticDataDownloaded")
-  private Boolean diagnosticDataDownloaded = null;
-  @SerializedName("localFilePath")
-  private String localFilePath = null;
   /**
    * Status of the collection effort
    */
@@ -98,19 +86,31 @@ public class DiagnosticDataSummary {
 
   @SerializedName("status")
   private StatusEnum status = null;
+  @SerializedName("collectionTime")
+  private Long collectionTime = null;
+  @SerializedName("localFilePath")
+  private String localFilePath = null;
+  @SerializedName("details")
+  private List<String> details = null;
+  @SerializedName("diagnosticDataCollected")
+  private Boolean diagnosticDataCollected = null;
+  @SerializedName("diagnosticDataDownloaded")
+  private Boolean diagnosticDataDownloaded = null;
+  @SerializedName("clouderaManagerLogsDownloaded")
+  private Boolean clouderaManagerLogsDownloaded = null;
 
   public DiagnosticDataSummary() {
     // Do nothing
   }
 
   private DiagnosticDataSummary(DiagnosticDataSummaryBuilder builder) {
-      this.clouderaManagerLogsDownloaded = builder.clouderaManagerLogsDownloaded;
+      this.status = builder.status;
       this.collectionTime = builder.collectionTime;
+      this.localFilePath = builder.localFilePath;
       this.details = builder.details;
       this.diagnosticDataCollected = builder.diagnosticDataCollected;
       this.diagnosticDataDownloaded = builder.diagnosticDataDownloaded;
-      this.localFilePath = builder.localFilePath;
-      this.status = builder.status;
+      this.clouderaManagerLogsDownloaded = builder.clouderaManagerLogsDownloaded;
     }
 
   public static DiagnosticDataSummaryBuilder builder() {
@@ -118,23 +118,29 @@ public class DiagnosticDataSummary {
   }
 
   public static class DiagnosticDataSummaryBuilder {
-      private Boolean clouderaManagerLogsDownloaded = null;
+      private StatusEnum status = null;
       private Long collectionTime = null;
+      private String localFilePath = null;
       private List<String> details = new ArrayList<String>();
       private Boolean diagnosticDataCollected = null;
       private Boolean diagnosticDataDownloaded = null;
-      private String localFilePath = null;
-      private StatusEnum status = null;
+      private Boolean clouderaManagerLogsDownloaded = null;
   
 
-    public DiagnosticDataSummaryBuilder clouderaManagerLogsDownloaded(Boolean clouderaManagerLogsDownloaded) {
-      this.clouderaManagerLogsDownloaded = clouderaManagerLogsDownloaded;
+    public DiagnosticDataSummaryBuilder status(StatusEnum status) {
+      this.status = status;
       return this;
     }
 
 
     public DiagnosticDataSummaryBuilder collectionTime(Long collectionTime) {
       this.collectionTime = collectionTime;
+      return this;
+    }
+
+
+    public DiagnosticDataSummaryBuilder localFilePath(String localFilePath) {
+      this.localFilePath = localFilePath;
       return this;
     }
 
@@ -157,14 +163,8 @@ public class DiagnosticDataSummary {
     }
 
 
-    public DiagnosticDataSummaryBuilder localFilePath(String localFilePath) {
-      this.localFilePath = localFilePath;
-      return this;
-    }
-
-
-    public DiagnosticDataSummaryBuilder status(StatusEnum status) {
-      this.status = status;
+    public DiagnosticDataSummaryBuilder clouderaManagerLogsDownloaded(Boolean clouderaManagerLogsDownloaded) {
+      this.clouderaManagerLogsDownloaded = clouderaManagerLogsDownloaded;
       return this;
     }
 
@@ -176,32 +176,32 @@ public class DiagnosticDataSummary {
 
   public DiagnosticDataSummaryBuilder toBuilder() {
     return builder()
-      .clouderaManagerLogsDownloaded(clouderaManagerLogsDownloaded)
+      .status(status)
             .collectionTime(collectionTime)
+            .localFilePath(localFilePath)
             .details(details)
             .diagnosticDataCollected(diagnosticDataCollected)
             .diagnosticDataDownloaded(diagnosticDataDownloaded)
-            .localFilePath(localFilePath)
-            .status(status)
+            .clouderaManagerLogsDownloaded(clouderaManagerLogsDownloaded)
       ;
   }
 
-  public DiagnosticDataSummary clouderaManagerLogsDownloaded(Boolean clouderaManagerLogsDownloaded) {
-    this.clouderaManagerLogsDownloaded = clouderaManagerLogsDownloaded;
+  public DiagnosticDataSummary status(StatusEnum status) {
+    this.status = status;
     return this;
   }
 
    /**
-   * Whether Cloudera Manager logs were also downloaded from Cloudera Manager
-   * @return clouderaManagerLogsDownloaded
+   * Status of the collection effort
+   * @return status
   **/
-  @ApiModelProperty(example = "false", value = "Whether Cloudera Manager logs were also downloaded from Cloudera Manager")
-  public Boolean isClouderaManagerLogsDownloaded() {
-    return clouderaManagerLogsDownloaded;
+  @ApiModelProperty(required = true, value = "Status of the collection effort")
+  public StatusEnum getStatus() {
+    return status;
   }
 
-  public void setClouderaManagerLogsDownloaded(Boolean clouderaManagerLogsDownloaded) {
-    this.clouderaManagerLogsDownloaded = clouderaManagerLogsDownloaded;
+  public void setStatus(StatusEnum status) {
+    this.status = status;
   }
 
   public DiagnosticDataSummary collectionTime(Long collectionTime) {
@@ -220,6 +220,24 @@ public class DiagnosticDataSummary {
 
   public void setCollectionTime(Long collectionTime) {
     this.collectionTime = collectionTime;
+  }
+
+  public DiagnosticDataSummary localFilePath(String localFilePath) {
+    this.localFilePath = localFilePath;
+    return this;
+  }
+
+   /**
+   * Local path to the diagnostic data file
+   * @return localFilePath
+  **/
+  @ApiModelProperty(value = "Local path to the diagnostic data file")
+  public String getLocalFilePath() {
+    return localFilePath;
+  }
+
+  public void setLocalFilePath(String localFilePath) {
+    this.localFilePath = localFilePath;
   }
 
   public DiagnosticDataSummary details(List<String> details) {
@@ -257,7 +275,7 @@ public class DiagnosticDataSummary {
    * Whether diagnostic data was collected successfully by Cloudera Manager
    * @return diagnosticDataCollected
   **/
-  @ApiModelProperty(example = "false", value = "Whether diagnostic data was collected successfully by Cloudera Manager")
+  @ApiModelProperty(value = "Whether diagnostic data was collected successfully by Cloudera Manager")
   public Boolean isDiagnosticDataCollected() {
     return diagnosticDataCollected;
   }
@@ -275,7 +293,7 @@ public class DiagnosticDataSummary {
    * Whether diagnostic data was downloaded successfully from Cloudera Manager
    * @return diagnosticDataDownloaded
   **/
-  @ApiModelProperty(example = "false", value = "Whether diagnostic data was downloaded successfully from Cloudera Manager")
+  @ApiModelProperty(value = "Whether diagnostic data was downloaded successfully from Cloudera Manager")
   public Boolean isDiagnosticDataDownloaded() {
     return diagnosticDataDownloaded;
   }
@@ -284,40 +302,22 @@ public class DiagnosticDataSummary {
     this.diagnosticDataDownloaded = diagnosticDataDownloaded;
   }
 
-  public DiagnosticDataSummary localFilePath(String localFilePath) {
-    this.localFilePath = localFilePath;
+  public DiagnosticDataSummary clouderaManagerLogsDownloaded(Boolean clouderaManagerLogsDownloaded) {
+    this.clouderaManagerLogsDownloaded = clouderaManagerLogsDownloaded;
     return this;
   }
 
    /**
-   * Local path to the diagnostic data file
-   * @return localFilePath
+   * Whether Cloudera Manager logs were also downloaded from Cloudera Manager
+   * @return clouderaManagerLogsDownloaded
   **/
-  @ApiModelProperty(value = "Local path to the diagnostic data file")
-  public String getLocalFilePath() {
-    return localFilePath;
+  @ApiModelProperty(value = "Whether Cloudera Manager logs were also downloaded from Cloudera Manager")
+  public Boolean isClouderaManagerLogsDownloaded() {
+    return clouderaManagerLogsDownloaded;
   }
 
-  public void setLocalFilePath(String localFilePath) {
-    this.localFilePath = localFilePath;
-  }
-
-  public DiagnosticDataSummary status(StatusEnum status) {
-    this.status = status;
-    return this;
-  }
-
-   /**
-   * Status of the collection effort
-   * @return status
-  **/
-  @ApiModelProperty(required = true, value = "Status of the collection effort")
-  public StatusEnum getStatus() {
-    return status;
-  }
-
-  public void setStatus(StatusEnum status) {
-    this.status = status;
+  public void setClouderaManagerLogsDownloaded(Boolean clouderaManagerLogsDownloaded) {
+    this.clouderaManagerLogsDownloaded = clouderaManagerLogsDownloaded;
   }
 
 
@@ -330,18 +330,18 @@ public class DiagnosticDataSummary {
       return false;
     }
     DiagnosticDataSummary diagnosticDataSummary = (DiagnosticDataSummary) o;
-    return Objects.equals(this.clouderaManagerLogsDownloaded, diagnosticDataSummary.clouderaManagerLogsDownloaded) &&
+    return Objects.equals(this.status, diagnosticDataSummary.status) &&
         Objects.equals(this.collectionTime, diagnosticDataSummary.collectionTime) &&
+        Objects.equals(this.localFilePath, diagnosticDataSummary.localFilePath) &&
         Objects.equals(this.details, diagnosticDataSummary.details) &&
         Objects.equals(this.diagnosticDataCollected, diagnosticDataSummary.diagnosticDataCollected) &&
         Objects.equals(this.diagnosticDataDownloaded, diagnosticDataSummary.diagnosticDataDownloaded) &&
-        Objects.equals(this.localFilePath, diagnosticDataSummary.localFilePath) &&
-        Objects.equals(this.status, diagnosticDataSummary.status);
+        Objects.equals(this.clouderaManagerLogsDownloaded, diagnosticDataSummary.clouderaManagerLogsDownloaded);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(clouderaManagerLogsDownloaded, collectionTime, details, diagnosticDataCollected, diagnosticDataDownloaded, localFilePath, status);
+    return Objects.hash(status, collectionTime, localFilePath, details, diagnosticDataCollected, diagnosticDataDownloaded, clouderaManagerLogsDownloaded);
   }
 
 
@@ -350,13 +350,13 @@ public class DiagnosticDataSummary {
     StringBuilder sb = new StringBuilder();
     sb.append("class DiagnosticDataSummary {\n");
     
-    sb.append("    clouderaManagerLogsDownloaded: ").append(toIndentedString(clouderaManagerLogsDownloaded)).append("\n");
+    sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    collectionTime: ").append(toIndentedString(collectionTime)).append("\n");
+    sb.append("    localFilePath: ").append(toIndentedString(localFilePath)).append("\n");
     sb.append("    details: ").append(toIndentedString(details)).append("\n");
     sb.append("    diagnosticDataCollected: ").append(toIndentedString(diagnosticDataCollected)).append("\n");
     sb.append("    diagnosticDataDownloaded: ").append(toIndentedString(diagnosticDataDownloaded)).append("\n");
-    sb.append("    localFilePath: ").append(toIndentedString(localFilePath)).append("\n");
-    sb.append("    status: ").append(toIndentedString(status)).append("\n");
+    sb.append("    clouderaManagerLogsDownloaded: ").append(toIndentedString(clouderaManagerLogsDownloaded)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -36,8 +36,6 @@ import java.util.Map;
 @ApiModel(description = "Warning information")
 
 public class WarningInfo {
-  @SerializedName("properties")
-  private Map<String, String> properties = new HashMap<String, String>();
   /**
    * Warning code
    */
@@ -152,15 +150,17 @@ public class WarningInfo {
 
   @SerializedName("warningType")
   private WarningTypeEnum warningType = null;
+  @SerializedName("properties")
+  private Map<String, String> properties = new HashMap<String, String>();
 
   public WarningInfo() {
     // Do nothing
   }
 
   private WarningInfo(WarningInfoBuilder builder) {
-      this.properties = builder.properties;
       this.warningCode = builder.warningCode;
       this.warningType = builder.warningType;
+      this.properties = builder.properties;
     }
 
   public static WarningInfoBuilder builder() {
@@ -168,16 +168,10 @@ public class WarningInfo {
   }
 
   public static class WarningInfoBuilder {
-      private Map<String, String> properties = new HashMap<String, String>();
       private WarningCodeEnum warningCode = null;
       private WarningTypeEnum warningType = null;
+      private Map<String, String> properties = new HashMap<String, String>();
   
-
-    public WarningInfoBuilder properties(Map<String, String> properties) {
-      this.properties = properties;
-      return this;
-    }
-
 
     public WarningInfoBuilder warningCode(WarningCodeEnum warningCode) {
       this.warningCode = warningCode;
@@ -191,6 +185,12 @@ public class WarningInfo {
     }
 
 
+    public WarningInfoBuilder properties(Map<String, String> properties) {
+      this.properties = properties;
+      return this;
+    }
+
+
     public WarningInfo build() {
       return new WarningInfo(this);
     }
@@ -198,33 +198,10 @@ public class WarningInfo {
 
   public WarningInfoBuilder toBuilder() {
     return builder()
-      .properties(properties)
-            .warningCode(warningCode)
+      .warningCode(warningCode)
             .warningType(warningType)
+            .properties(properties)
       ;
-  }
-
-  public WarningInfo properties(Map<String, String> properties) {
-    this.properties = properties;
-    return this;
-  }
-
-  public WarningInfo putPropertiesItem(String key, String propertiesItem) {
-    this.properties.put(key, propertiesItem);
-    return this;
-  }
-
-   /**
-   * Properties associated with the error
-   * @return properties
-  **/
-  @ApiModelProperty(required = true, value = "Properties associated with the error")
-  public Map<String, String> getProperties() {
-    return properties;
-  }
-
-  public void setProperties(Map<String, String> properties) {
-    this.properties = properties;
   }
 
   public WarningInfo warningCode(WarningCodeEnum warningCode) {
@@ -263,6 +240,29 @@ public class WarningInfo {
     this.warningType = warningType;
   }
 
+  public WarningInfo properties(Map<String, String> properties) {
+    this.properties = properties;
+    return this;
+  }
+
+  public WarningInfo putPropertiesItem(String key, String propertiesItem) {
+    this.properties.put(key, propertiesItem);
+    return this;
+  }
+
+   /**
+   * Properties associated with the error
+   * @return properties
+  **/
+  @ApiModelProperty(required = true, value = "Properties associated with the error")
+  public Map<String, String> getProperties() {
+    return properties;
+  }
+
+  public void setProperties(Map<String, String> properties) {
+    this.properties = properties;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -273,14 +273,14 @@ public class WarningInfo {
       return false;
     }
     WarningInfo warningInfo = (WarningInfo) o;
-    return Objects.equals(this.properties, warningInfo.properties) &&
-        Objects.equals(this.warningCode, warningInfo.warningCode) &&
-        Objects.equals(this.warningType, warningInfo.warningType);
+    return Objects.equals(this.warningCode, warningInfo.warningCode) &&
+        Objects.equals(this.warningType, warningInfo.warningType) &&
+        Objects.equals(this.properties, warningInfo.properties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(properties, warningCode, warningType);
+    return Objects.hash(warningCode, warningType, properties);
   }
 
 
@@ -289,9 +289,9 @@ public class WarningInfo {
     StringBuilder sb = new StringBuilder();
     sb.append("class WarningInfo {\n");
     
-    sb.append("    properties: ").append(toIndentedString(properties)).append("\n");
     sb.append("    warningCode: ").append(toIndentedString(warningCode)).append("\n");
     sb.append("    warningType: ").append(toIndentedString(warningType)).append("\n");
+    sb.append("    properties: ").append(toIndentedString(properties)).append("\n");
     sb.append("}");
     return sb.toString();
   }

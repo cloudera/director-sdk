@@ -41,36 +41,85 @@ import java.util.Map;
 @ApiModel(description = "A cluster running in a cloud provider")
 
 public class Cluster {
-  @SerializedName("createdExternalDatabases")
-  private List<ExternalDatabase> createdExternalDatabases = null;
-  @SerializedName("featureAvailability")
-  private Map<String, String> featureAvailability = null;
-  @SerializedName("health")
-  private Health health = null;
-  @SerializedName("instances")
-  private List<Instance> instances = null;
-  @SerializedName("instancesUrl")
-  private String instancesUrl = null;
   @SerializedName("name")
   private String name = null;
+  @SerializedName("instances")
+  private List<Instance> instances = null;
   @SerializedName("services")
   private List<Service> services = null;
   @SerializedName("url")
   private String url = null;
+  @SerializedName("instancesUrl")
+  private String instancesUrl = null;
+  @SerializedName("health")
+  private Health health = null;
+  /**
+   * Gets or Sets inner
+   */
+  @JsonAdapter(InnerEnum.Adapter.class)
+  public enum InnerEnum {
+    UNKNOWN("UNKNOWN"),
+    
+    UNAVAILABLE("UNAVAILABLE"),
+    
+    AVAILABLE("AVAILABLE");
+
+    private String value;
+
+    InnerEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static InnerEnum fromValue(String text) {
+      for (InnerEnum b : InnerEnum.values()) {
+        if (String.valueOf(b.value).equals(text)) {
+          return b;
+        }
+      }
+      return null;
+    }
+
+    public static class Adapter extends TypeAdapter<InnerEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final InnerEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public InnerEnum read(final JsonReader jsonReader) throws IOException {
+        String value = jsonReader.nextString();
+        return InnerEnum.fromValue(String.valueOf(value));
+      }
+    }
+  }
+
+  @SerializedName("featureAvailability")
+  private Map<String, InnerEnum> featureAvailability = null;
+  @SerializedName("createdExternalDatabases")
+  private List<ExternalDatabase> createdExternalDatabases = null;
 
   public Cluster() {
     // Do nothing
   }
 
   private Cluster(ClusterBuilder builder) {
-      this.createdExternalDatabases = builder.createdExternalDatabases;
-      this.featureAvailability = builder.featureAvailability;
-      this.health = builder.health;
-      this.instances = builder.instances;
-      this.instancesUrl = builder.instancesUrl;
       this.name = builder.name;
+      this.instances = builder.instances;
       this.services = builder.services;
       this.url = builder.url;
+      this.instancesUrl = builder.instancesUrl;
+      this.health = builder.health;
+      this.featureAvailability = builder.featureAvailability;
+      this.createdExternalDatabases = builder.createdExternalDatabases;
     }
 
   public static ClusterBuilder builder() {
@@ -78,48 +127,24 @@ public class Cluster {
   }
 
   public static class ClusterBuilder {
-      private List<ExternalDatabase> createdExternalDatabases = new ArrayList<ExternalDatabase>();
-      private Map<String, String> featureAvailability = new HashMap<String, String>();
-      private Health health = null;
-      private List<Instance> instances = new ArrayList<Instance>();
-      private String instancesUrl = null;
       private String name = null;
+      private List<Instance> instances = new ArrayList<Instance>();
       private List<Service> services = new ArrayList<Service>();
       private String url = null;
+      private String instancesUrl = null;
+      private Health health = null;
+      private Map<String, InnerEnum> featureAvailability = new HashMap<String, InnerEnum>();
+      private List<ExternalDatabase> createdExternalDatabases = new ArrayList<ExternalDatabase>();
   
 
-    public ClusterBuilder createdExternalDatabases(List<ExternalDatabase> createdExternalDatabases) {
-      this.createdExternalDatabases = createdExternalDatabases;
-      return this;
-    }
-
-
-    public ClusterBuilder featureAvailability(Map<String, String> featureAvailability) {
-      this.featureAvailability = featureAvailability;
-      return this;
-    }
-
-
-    public ClusterBuilder health(Health health) {
-      this.health = health;
+    public ClusterBuilder name(String name) {
+      this.name = name;
       return this;
     }
 
 
     public ClusterBuilder instances(List<Instance> instances) {
       this.instances = instances;
-      return this;
-    }
-
-
-    public ClusterBuilder instancesUrl(String instancesUrl) {
-      this.instancesUrl = instancesUrl;
-      return this;
-    }
-
-
-    public ClusterBuilder name(String name) {
-      this.name = name;
       return this;
     }
 
@@ -136,6 +161,30 @@ public class Cluster {
     }
 
 
+    public ClusterBuilder instancesUrl(String instancesUrl) {
+      this.instancesUrl = instancesUrl;
+      return this;
+    }
+
+
+    public ClusterBuilder health(Health health) {
+      this.health = health;
+      return this;
+    }
+
+
+    public ClusterBuilder featureAvailability(Map<String, InnerEnum> featureAvailability) {
+      this.featureAvailability = featureAvailability;
+      return this;
+    }
+
+
+    public ClusterBuilder createdExternalDatabases(List<ExternalDatabase> createdExternalDatabases) {
+      this.createdExternalDatabases = createdExternalDatabases;
+      return this;
+    }
+
+
     public Cluster build() {
       return new Cluster(this);
     }
@@ -143,85 +192,33 @@ public class Cluster {
 
   public ClusterBuilder toBuilder() {
     return builder()
-      .createdExternalDatabases(createdExternalDatabases)
-            .featureAvailability(featureAvailability)
-            .health(health)
+      .name(name)
             .instances(instances)
-            .instancesUrl(instancesUrl)
-            .name(name)
             .services(services)
             .url(url)
+            .instancesUrl(instancesUrl)
+            .health(health)
+            .featureAvailability(featureAvailability)
+            .createdExternalDatabases(createdExternalDatabases)
       ;
   }
 
-  public Cluster createdExternalDatabases(List<ExternalDatabase> createdExternalDatabases) {
-    this.createdExternalDatabases = createdExternalDatabases;
-    return this;
-  }
-
-  public Cluster addCreatedExternalDatabasesItem(ExternalDatabase createdExternalDatabasesItem) {
-    if (this.createdExternalDatabases == null) {
-      this.createdExternalDatabases = new ArrayList<ExternalDatabase>();
-    }
-    this.createdExternalDatabases.add(createdExternalDatabasesItem);
+  public Cluster name(String name) {
+    this.name = name;
     return this;
   }
 
    /**
-   * External databases created for this cluster
-   * @return createdExternalDatabases
+   * Cluster name
+   * @return name
   **/
-  @ApiModelProperty(value = "External databases created for this cluster")
-  public List<ExternalDatabase> getCreatedExternalDatabases() {
-    return createdExternalDatabases;
+  @ApiModelProperty(required = true, value = "Cluster name")
+  public String getName() {
+    return name;
   }
 
-  public void setCreatedExternalDatabases(List<ExternalDatabase> createdExternalDatabases) {
-    this.createdExternalDatabases = createdExternalDatabases;
-  }
-
-  public Cluster featureAvailability(Map<String, String> featureAvailability) {
-    this.featureAvailability = featureAvailability;
-    return this;
-  }
-
-  public Cluster putFeatureAvailabilityItem(String key, String featureAvailabilityItem) {
-    if (this.featureAvailability == null) {
-      this.featureAvailability = new HashMap<String, String>();
-    }
-    this.featureAvailability.put(key, featureAvailabilityItem);
-    return this;
-  }
-
-   /**
-   * Availability information for features
-   * @return featureAvailability
-  **/
-  @ApiModelProperty(value = "Availability information for features")
-  public Map<String, String> getFeatureAvailability() {
-    return featureAvailability;
-  }
-
-  public void setFeatureAvailability(Map<String, String> featureAvailability) {
-    this.featureAvailability = featureAvailability;
-  }
-
-  public Cluster health(Health health) {
-    this.health = health;
-    return this;
-  }
-
-   /**
-   * Overall cluster health
-   * @return health
-  **/
-  @ApiModelProperty(value = "Overall cluster health")
-  public Health getHealth() {
-    return health;
-  }
-
-  public void setHealth(Health health) {
-    this.health = health;
+  public void setName(String name) {
+    this.name = name;
   }
 
   public Cluster instances(List<Instance> instances) {
@@ -248,42 +245,6 @@ public class Cluster {
 
   public void setInstances(List<Instance> instances) {
     this.instances = instances;
-  }
-
-  public Cluster instancesUrl(String instancesUrl) {
-    this.instancesUrl = instancesUrl;
-    return this;
-  }
-
-   /**
-   * Optional URL for cluster instances in Cloudera Manager
-   * @return instancesUrl
-  **/
-  @ApiModelProperty(value = "Optional URL for cluster instances in Cloudera Manager")
-  public String getInstancesUrl() {
-    return instancesUrl;
-  }
-
-  public void setInstancesUrl(String instancesUrl) {
-    this.instancesUrl = instancesUrl;
-  }
-
-  public Cluster name(String name) {
-    this.name = name;
-    return this;
-  }
-
-   /**
-   * Cluster name
-   * @return name
-  **/
-  @ApiModelProperty(required = true, value = "Cluster name")
-  public String getName() {
-    return name;
-  }
-
-  public void setName(String name) {
-    this.name = name;
   }
 
   public Cluster services(List<Service> services) {
@@ -330,6 +291,94 @@ public class Cluster {
     this.url = url;
   }
 
+  public Cluster instancesUrl(String instancesUrl) {
+    this.instancesUrl = instancesUrl;
+    return this;
+  }
+
+   /**
+   * Optional URL for cluster instances in Cloudera Manager
+   * @return instancesUrl
+  **/
+  @ApiModelProperty(value = "Optional URL for cluster instances in Cloudera Manager")
+  public String getInstancesUrl() {
+    return instancesUrl;
+  }
+
+  public void setInstancesUrl(String instancesUrl) {
+    this.instancesUrl = instancesUrl;
+  }
+
+  public Cluster health(Health health) {
+    this.health = health;
+    return this;
+  }
+
+   /**
+   * Overall cluster health
+   * @return health
+  **/
+  @ApiModelProperty(value = "Overall cluster health")
+  public Health getHealth() {
+    return health;
+  }
+
+  public void setHealth(Health health) {
+    this.health = health;
+  }
+
+  public Cluster featureAvailability(Map<String, InnerEnum> featureAvailability) {
+    this.featureAvailability = featureAvailability;
+    return this;
+  }
+
+  public Cluster putFeatureAvailabilityItem(String key, InnerEnum featureAvailabilityItem) {
+    if (this.featureAvailability == null) {
+      this.featureAvailability = new HashMap<String, InnerEnum>();
+    }
+    this.featureAvailability.put(key, featureAvailabilityItem);
+    return this;
+  }
+
+   /**
+   * Availability information for features
+   * @return featureAvailability
+  **/
+  @ApiModelProperty(value = "Availability information for features")
+  public Map<String, InnerEnum> getFeatureAvailability() {
+    return featureAvailability;
+  }
+
+  public void setFeatureAvailability(Map<String, InnerEnum> featureAvailability) {
+    this.featureAvailability = featureAvailability;
+  }
+
+  public Cluster createdExternalDatabases(List<ExternalDatabase> createdExternalDatabases) {
+    this.createdExternalDatabases = createdExternalDatabases;
+    return this;
+  }
+
+  public Cluster addCreatedExternalDatabasesItem(ExternalDatabase createdExternalDatabasesItem) {
+    if (this.createdExternalDatabases == null) {
+      this.createdExternalDatabases = new ArrayList<ExternalDatabase>();
+    }
+    this.createdExternalDatabases.add(createdExternalDatabasesItem);
+    return this;
+  }
+
+   /**
+   * External databases created for this cluster
+   * @return createdExternalDatabases
+  **/
+  @ApiModelProperty(value = "External databases created for this cluster")
+  public List<ExternalDatabase> getCreatedExternalDatabases() {
+    return createdExternalDatabases;
+  }
+
+  public void setCreatedExternalDatabases(List<ExternalDatabase> createdExternalDatabases) {
+    this.createdExternalDatabases = createdExternalDatabases;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -340,19 +389,19 @@ public class Cluster {
       return false;
     }
     Cluster cluster = (Cluster) o;
-    return Objects.equals(this.createdExternalDatabases, cluster.createdExternalDatabases) &&
-        Objects.equals(this.featureAvailability, cluster.featureAvailability) &&
-        Objects.equals(this.health, cluster.health) &&
+    return Objects.equals(this.name, cluster.name) &&
         Objects.equals(this.instances, cluster.instances) &&
-        Objects.equals(this.instancesUrl, cluster.instancesUrl) &&
-        Objects.equals(this.name, cluster.name) &&
         Objects.equals(this.services, cluster.services) &&
-        Objects.equals(this.url, cluster.url);
+        Objects.equals(this.url, cluster.url) &&
+        Objects.equals(this.instancesUrl, cluster.instancesUrl) &&
+        Objects.equals(this.health, cluster.health) &&
+        Objects.equals(this.featureAvailability, cluster.featureAvailability) &&
+        Objects.equals(this.createdExternalDatabases, cluster.createdExternalDatabases);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(createdExternalDatabases, featureAvailability, health, instances, instancesUrl, name, services, url);
+    return Objects.hash(name, instances, services, url, instancesUrl, health, featureAvailability, createdExternalDatabases);
   }
 
 
@@ -361,14 +410,14 @@ public class Cluster {
     StringBuilder sb = new StringBuilder();
     sb.append("class Cluster {\n");
     
-    sb.append("    createdExternalDatabases: ").append(toIndentedString(createdExternalDatabases)).append("\n");
-    sb.append("    featureAvailability: ").append(toIndentedString(featureAvailability)).append("\n");
-    sb.append("    health: ").append(toIndentedString(health)).append("\n");
-    sb.append("    instances: ").append(toIndentedString(instances)).append("\n");
-    sb.append("    instancesUrl: ").append(toIndentedString(instancesUrl)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    instances: ").append(toIndentedString(instances)).append("\n");
     sb.append("    services: ").append(toIndentedString(services)).append("\n");
     sb.append("    url: ").append(toIndentedString(url)).append("\n");
+    sb.append("    instancesUrl: ").append(toIndentedString(instancesUrl)).append("\n");
+    sb.append("    health: ").append(toIndentedString(health)).append("\n");
+    sb.append("    featureAvailability: ").append(toIndentedString(featureAvailability)).append("\n");
+    sb.append("    createdExternalDatabases: ").append(toIndentedString(createdExternalDatabases)).append("\n");
     sb.append("}");
     return sb.toString();
   }

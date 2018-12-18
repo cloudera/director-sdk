@@ -36,24 +36,18 @@ import java.util.List;
 @ApiModel(description = "A configuration property associated with provider metadata")
 
 public class ConfigurationProperty {
-  @SerializedName("basic")
-  private Boolean basic = null;
   @SerializedName("configKey")
   private String configKey = null;
-  @SerializedName("defaultValue")
-  private String defaultValue = null;
-  @SerializedName("description")
-  private String description = null;
-  @SerializedName("listSeparator")
-  private String listSeparator = null;
   @SerializedName("name")
   private String name = null;
-  @SerializedName("placeholder")
-  private String placeholder = null;
-  @SerializedName("required")
-  private Boolean required = null;
+  @SerializedName("description")
+  private String description = null;
   @SerializedName("sensitive")
   private Boolean sensitive = null;
+  @SerializedName("required")
+  private Boolean required = null;
+  @SerializedName("basic")
+  private Boolean basic = null;
   /**
    * Configuration property type
    */
@@ -107,8 +101,6 @@ public class ConfigurationProperty {
 
   @SerializedName("type")
   private TypeEnum type = null;
-  @SerializedName("validValues")
-  private List<ConfigurationPropertyValue> validValues = null;
   /**
    * Widget used to display this property
    */
@@ -176,24 +168,32 @@ public class ConfigurationProperty {
 
   @SerializedName("widget")
   private WidgetEnum widget = null;
+  @SerializedName("defaultValue")
+  private String defaultValue = null;
+  @SerializedName("listSeparator")
+  private String listSeparator = null;
+  @SerializedName("placeholder")
+  private String placeholder = null;
+  @SerializedName("validValues")
+  private List<ConfigurationPropertyValue> validValues = null;
 
   public ConfigurationProperty() {
     // Do nothing
   }
 
   private ConfigurationProperty(ConfigurationPropertyBuilder builder) {
-      this.basic = builder.basic;
       this.configKey = builder.configKey;
-      this.defaultValue = builder.defaultValue;
-      this.description = builder.description;
-      this.listSeparator = builder.listSeparator;
       this.name = builder.name;
-      this.placeholder = builder.placeholder;
-      this.required = builder.required;
+      this.description = builder.description;
       this.sensitive = builder.sensitive;
+      this.required = builder.required;
+      this.basic = builder.basic;
       this.type = builder.type;
-      this.validValues = builder.validValues;
       this.widget = builder.widget;
+      this.defaultValue = builder.defaultValue;
+      this.listSeparator = builder.listSeparator;
+      this.placeholder = builder.placeholder;
+      this.validValues = builder.validValues;
     }
 
   public static ConfigurationPropertyBuilder builder() {
@@ -201,46 +201,22 @@ public class ConfigurationProperty {
   }
 
   public static class ConfigurationPropertyBuilder {
-      private Boolean basic = null;
       private String configKey = null;
-      private String defaultValue = null;
-      private String description = null;
-      private String listSeparator = null;
       private String name = null;
-      private String placeholder = null;
-      private Boolean required = null;
+      private String description = null;
       private Boolean sensitive = null;
+      private Boolean required = null;
+      private Boolean basic = null;
       private TypeEnum type = null;
-      private List<ConfigurationPropertyValue> validValues = new ArrayList<ConfigurationPropertyValue>();
       private WidgetEnum widget = null;
+      private String defaultValue = null;
+      private String listSeparator = null;
+      private String placeholder = null;
+      private List<ConfigurationPropertyValue> validValues = new ArrayList<ConfigurationPropertyValue>();
   
-
-    public ConfigurationPropertyBuilder basic(Boolean basic) {
-      this.basic = basic;
-      return this;
-    }
-
 
     public ConfigurationPropertyBuilder configKey(String configKey) {
       this.configKey = configKey;
-      return this;
-    }
-
-
-    public ConfigurationPropertyBuilder defaultValue(String defaultValue) {
-      this.defaultValue = defaultValue;
-      return this;
-    }
-
-
-    public ConfigurationPropertyBuilder description(String description) {
-      this.description = description;
-      return this;
-    }
-
-
-    public ConfigurationPropertyBuilder listSeparator(String listSeparator) {
-      this.listSeparator = listSeparator;
       return this;
     }
 
@@ -251,14 +227,8 @@ public class ConfigurationProperty {
     }
 
 
-    public ConfigurationPropertyBuilder placeholder(String placeholder) {
-      this.placeholder = placeholder;
-      return this;
-    }
-
-
-    public ConfigurationPropertyBuilder required(Boolean required) {
-      this.required = required;
+    public ConfigurationPropertyBuilder description(String description) {
+      this.description = description;
       return this;
     }
 
@@ -269,20 +239,50 @@ public class ConfigurationProperty {
     }
 
 
+    public ConfigurationPropertyBuilder required(Boolean required) {
+      this.required = required;
+      return this;
+    }
+
+
+    public ConfigurationPropertyBuilder basic(Boolean basic) {
+      this.basic = basic;
+      return this;
+    }
+
+
     public ConfigurationPropertyBuilder type(TypeEnum type) {
       this.type = type;
       return this;
     }
 
 
-    public ConfigurationPropertyBuilder validValues(List<ConfigurationPropertyValue> validValues) {
-      this.validValues = validValues;
+    public ConfigurationPropertyBuilder widget(WidgetEnum widget) {
+      this.widget = widget;
       return this;
     }
 
 
-    public ConfigurationPropertyBuilder widget(WidgetEnum widget) {
-      this.widget = widget;
+    public ConfigurationPropertyBuilder defaultValue(String defaultValue) {
+      this.defaultValue = defaultValue;
+      return this;
+    }
+
+
+    public ConfigurationPropertyBuilder listSeparator(String listSeparator) {
+      this.listSeparator = listSeparator;
+      return this;
+    }
+
+
+    public ConfigurationPropertyBuilder placeholder(String placeholder) {
+      this.placeholder = placeholder;
+      return this;
+    }
+
+
+    public ConfigurationPropertyBuilder validValues(List<ConfigurationPropertyValue> validValues) {
+      this.validValues = validValues;
       return this;
     }
 
@@ -294,37 +294,19 @@ public class ConfigurationProperty {
 
   public ConfigurationPropertyBuilder toBuilder() {
     return builder()
-      .basic(basic)
-            .configKey(configKey)
-            .defaultValue(defaultValue)
-            .description(description)
-            .listSeparator(listSeparator)
+      .configKey(configKey)
             .name(name)
-            .placeholder(placeholder)
-            .required(required)
+            .description(description)
             .sensitive(sensitive)
+            .required(required)
+            .basic(basic)
             .type(type)
-            .validValues(validValues)
             .widget(widget)
+            .defaultValue(defaultValue)
+            .listSeparator(listSeparator)
+            .placeholder(placeholder)
+            .validValues(validValues)
       ;
-  }
-
-  public ConfigurationProperty basic(Boolean basic) {
-    this.basic = basic;
-    return this;
-  }
-
-   /**
-   * Whether this property is basic
-   * @return basic
-  **/
-  @ApiModelProperty(example = "false", value = "Whether this property is basic")
-  public Boolean isBasic() {
-    return basic;
-  }
-
-  public void setBasic(Boolean basic) {
-    this.basic = basic;
   }
 
   public ConfigurationProperty configKey(String configKey) {
@@ -345,22 +327,22 @@ public class ConfigurationProperty {
     this.configKey = configKey;
   }
 
-  public ConfigurationProperty defaultValue(String defaultValue) {
-    this.defaultValue = defaultValue;
+  public ConfigurationProperty name(String name) {
+    this.name = name;
     return this;
   }
 
    /**
-   * Default value for this property
-   * @return defaultValue
+   * Configuration property name
+   * @return name
   **/
-  @ApiModelProperty(value = "Default value for this property")
-  public String getDefaultValue() {
-    return defaultValue;
+  @ApiModelProperty(value = "Configuration property name")
+  public String getName() {
+    return name;
   }
 
-  public void setDefaultValue(String defaultValue) {
-    this.defaultValue = defaultValue;
+  public void setName(String name) {
+    this.name = name;
   }
 
   public ConfigurationProperty description(String description) {
@@ -381,58 +363,22 @@ public class ConfigurationProperty {
     this.description = description;
   }
 
-  public ConfigurationProperty listSeparator(String listSeparator) {
-    this.listSeparator = listSeparator;
+  public ConfigurationProperty sensitive(Boolean sensitive) {
+    this.sensitive = sensitive;
     return this;
   }
 
    /**
-   * Character to use to separate lists
-   * @return listSeparator
+   * Whether this property is sensitive
+   * @return sensitive
   **/
-  @ApiModelProperty(value = "Character to use to separate lists")
-  public String getListSeparator() {
-    return listSeparator;
+  @ApiModelProperty(value = "Whether this property is sensitive")
+  public Boolean isSensitive() {
+    return sensitive;
   }
 
-  public void setListSeparator(String listSeparator) {
-    this.listSeparator = listSeparator;
-  }
-
-  public ConfigurationProperty name(String name) {
-    this.name = name;
-    return this;
-  }
-
-   /**
-   * Configuration property name
-   * @return name
-  **/
-  @ApiModelProperty(value = "Configuration property name")
-  public String getName() {
-    return name;
-  }
-
-  public void setName(String name) {
-    this.name = name;
-  }
-
-  public ConfigurationProperty placeholder(String placeholder) {
-    this.placeholder = placeholder;
-    return this;
-  }
-
-   /**
-   * Placeholder value to use if the value is unset
-   * @return placeholder
-  **/
-  @ApiModelProperty(value = "Placeholder value to use if the value is unset")
-  public String getPlaceholder() {
-    return placeholder;
-  }
-
-  public void setPlaceholder(String placeholder) {
-    this.placeholder = placeholder;
+  public void setSensitive(Boolean sensitive) {
+    this.sensitive = sensitive;
   }
 
   public ConfigurationProperty required(Boolean required) {
@@ -444,7 +390,7 @@ public class ConfigurationProperty {
    * Whether this property is required
    * @return required
   **/
-  @ApiModelProperty(example = "false", value = "Whether this property is required")
+  @ApiModelProperty(value = "Whether this property is required")
   public Boolean isRequired() {
     return required;
   }
@@ -453,22 +399,22 @@ public class ConfigurationProperty {
     this.required = required;
   }
 
-  public ConfigurationProperty sensitive(Boolean sensitive) {
-    this.sensitive = sensitive;
+  public ConfigurationProperty basic(Boolean basic) {
+    this.basic = basic;
     return this;
   }
 
    /**
-   * Whether this property is sensitive
-   * @return sensitive
+   * Whether this property is basic
+   * @return basic
   **/
-  @ApiModelProperty(example = "false", value = "Whether this property is sensitive")
-  public Boolean isSensitive() {
-    return sensitive;
+  @ApiModelProperty(value = "Whether this property is basic")
+  public Boolean isBasic() {
+    return basic;
   }
 
-  public void setSensitive(Boolean sensitive) {
-    this.sensitive = sensitive;
+  public void setBasic(Boolean basic) {
+    this.basic = basic;
   }
 
   public ConfigurationProperty type(TypeEnum type) {
@@ -487,6 +433,78 @@ public class ConfigurationProperty {
 
   public void setType(TypeEnum type) {
     this.type = type;
+  }
+
+  public ConfigurationProperty widget(WidgetEnum widget) {
+    this.widget = widget;
+    return this;
+  }
+
+   /**
+   * Widget used to display this property
+   * @return widget
+  **/
+  @ApiModelProperty(value = "Widget used to display this property")
+  public WidgetEnum getWidget() {
+    return widget;
+  }
+
+  public void setWidget(WidgetEnum widget) {
+    this.widget = widget;
+  }
+
+  public ConfigurationProperty defaultValue(String defaultValue) {
+    this.defaultValue = defaultValue;
+    return this;
+  }
+
+   /**
+   * Default value for this property
+   * @return defaultValue
+  **/
+  @ApiModelProperty(value = "Default value for this property")
+  public String getDefaultValue() {
+    return defaultValue;
+  }
+
+  public void setDefaultValue(String defaultValue) {
+    this.defaultValue = defaultValue;
+  }
+
+  public ConfigurationProperty listSeparator(String listSeparator) {
+    this.listSeparator = listSeparator;
+    return this;
+  }
+
+   /**
+   * Character to use to separate lists
+   * @return listSeparator
+  **/
+  @ApiModelProperty(value = "Character to use to separate lists")
+  public String getListSeparator() {
+    return listSeparator;
+  }
+
+  public void setListSeparator(String listSeparator) {
+    this.listSeparator = listSeparator;
+  }
+
+  public ConfigurationProperty placeholder(String placeholder) {
+    this.placeholder = placeholder;
+    return this;
+  }
+
+   /**
+   * Placeholder value to use if the value is unset
+   * @return placeholder
+  **/
+  @ApiModelProperty(value = "Placeholder value to use if the value is unset")
+  public String getPlaceholder() {
+    return placeholder;
+  }
+
+  public void setPlaceholder(String placeholder) {
+    this.placeholder = placeholder;
   }
 
   public ConfigurationProperty validValues(List<ConfigurationPropertyValue> validValues) {
@@ -515,24 +533,6 @@ public class ConfigurationProperty {
     this.validValues = validValues;
   }
 
-  public ConfigurationProperty widget(WidgetEnum widget) {
-    this.widget = widget;
-    return this;
-  }
-
-   /**
-   * Widget used to display this property
-   * @return widget
-  **/
-  @ApiModelProperty(value = "Widget used to display this property")
-  public WidgetEnum getWidget() {
-    return widget;
-  }
-
-  public void setWidget(WidgetEnum widget) {
-    this.widget = widget;
-  }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -543,23 +543,23 @@ public class ConfigurationProperty {
       return false;
     }
     ConfigurationProperty configurationProperty = (ConfigurationProperty) o;
-    return Objects.equals(this.basic, configurationProperty.basic) &&
-        Objects.equals(this.configKey, configurationProperty.configKey) &&
-        Objects.equals(this.defaultValue, configurationProperty.defaultValue) &&
-        Objects.equals(this.description, configurationProperty.description) &&
-        Objects.equals(this.listSeparator, configurationProperty.listSeparator) &&
+    return Objects.equals(this.configKey, configurationProperty.configKey) &&
         Objects.equals(this.name, configurationProperty.name) &&
-        Objects.equals(this.placeholder, configurationProperty.placeholder) &&
-        Objects.equals(this.required, configurationProperty.required) &&
+        Objects.equals(this.description, configurationProperty.description) &&
         Objects.equals(this.sensitive, configurationProperty.sensitive) &&
+        Objects.equals(this.required, configurationProperty.required) &&
+        Objects.equals(this.basic, configurationProperty.basic) &&
         Objects.equals(this.type, configurationProperty.type) &&
-        Objects.equals(this.validValues, configurationProperty.validValues) &&
-        Objects.equals(this.widget, configurationProperty.widget);
+        Objects.equals(this.widget, configurationProperty.widget) &&
+        Objects.equals(this.defaultValue, configurationProperty.defaultValue) &&
+        Objects.equals(this.listSeparator, configurationProperty.listSeparator) &&
+        Objects.equals(this.placeholder, configurationProperty.placeholder) &&
+        Objects.equals(this.validValues, configurationProperty.validValues);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(basic, configKey, defaultValue, description, listSeparator, name, placeholder, required, sensitive, type, validValues, widget);
+    return Objects.hash(configKey, name, description, sensitive, required, basic, type, widget, defaultValue, listSeparator, placeholder, validValues);
   }
 
 
@@ -568,18 +568,18 @@ public class ConfigurationProperty {
     StringBuilder sb = new StringBuilder();
     sb.append("class ConfigurationProperty {\n");
     
-    sb.append("    basic: ").append(toIndentedString(basic)).append("\n");
     sb.append("    configKey: ").append(toIndentedString(configKey)).append("\n");
-    sb.append("    defaultValue: ").append(toIndentedString(defaultValue)).append("\n");
-    sb.append("    description: ").append(toIndentedString(description)).append("\n");
-    sb.append("    listSeparator: ").append(toIndentedString(listSeparator)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
-    sb.append("    placeholder: ").append(toIndentedString(placeholder)).append("\n");
-    sb.append("    required: ").append(toIndentedString(required)).append("\n");
+    sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    sensitive: ").append(toIndentedString(sensitive)).append("\n");
+    sb.append("    required: ").append(toIndentedString(required)).append("\n");
+    sb.append("    basic: ").append(toIndentedString(basic)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
-    sb.append("    validValues: ").append(toIndentedString(validValues)).append("\n");
     sb.append("    widget: ").append(toIndentedString(widget)).append("\n");
+    sb.append("    defaultValue: ").append(toIndentedString(defaultValue)).append("\n");
+    sb.append("    listSeparator: ").append(toIndentedString(listSeparator)).append("\n");
+    sb.append("    placeholder: ").append(toIndentedString(placeholder)).append("\n");
+    sb.append("    validValues: ").append(toIndentedString(validValues)).append("\n");
     sb.append("}");
     return sb.toString();
   }

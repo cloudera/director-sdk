@@ -1,23 +1,25 @@
 # cloudera.director.UsersApi
 
-All URIs are relative to *https://localhost:7189*
+All URIs are relative to *https://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**create**](UsersApi.md#create) | **POST** /api/d6.0/users | Create a new user
-[**current_redacted**](UsersApi.md#current_redacted) | **GET** /api/d6.0/users/current | Get the current user
-[**delete**](UsersApi.md#delete) | **DELETE** /api/d6.0/users/{username} | Delete a user by username
-[**get_redacted**](UsersApi.md#get_redacted) | **GET** /api/d6.0/users/{username} | Get a user by username
-[**get_user_management_status**](UsersApi.md#get_user_management_status) | **GET** /api/d6.0/users/managementStatus | Gets user management status
-[**list**](UsersApi.md#list) | **GET** /api/d6.0/users | List all users
-[**update**](UsersApi.md#update) | **PUT** /api/d6.0/users/{username} | Update an existing user
-[**update_password**](UsersApi.md#update_password) | **PUT** /api/d6.0/users/{username}/password | Update the password of an existing user
+[**create**](UsersApi.md#create) | **POST** /api/d6.1/users | Create a new user
+[**current_redacted**](UsersApi.md#current_redacted) | **GET** /api/d6.1/users/current | Get the current user
+[**delete**](UsersApi.md#delete) | **DELETE** /api/d6.1/users/{username} | Delete a user by username
+[**get_redacted**](UsersApi.md#get_redacted) | **GET** /api/d6.1/users/{username} | Get a user by username
+[**get_user_management_status**](UsersApi.md#get_user_management_status) | **GET** /api/d6.1/users/managementStatus | Gets user management status
+[**list**](UsersApi.md#list) | **GET** /api/d6.1/users | List all users
+[**update**](UsersApi.md#update) | **PUT** /api/d6.1/users/{username} | Update an existing user
+[**update_password**](UsersApi.md#update_password) | **PUT** /api/d6.1/users/{username}/password | Update the password of an existing user
 
 
 # **create**
 > create(user)
 
 Create a new user
+
+
 
 ### Example
 ```python
@@ -34,7 +36,7 @@ configuration.password = 'YOUR_PASSWORD'
 
 # create an instance of the API class
 api_instance = cloudera.director.UsersApi(cloudera.director.ApiClient(configuration))
-user = cloudera.director.User() # User | user
+user = cloudera.director.User() # User | 
 
 try:
     # Create a new user
@@ -47,7 +49,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **user** | [**User**](User.md)| user | 
+ **user** | [**User**](User.md)|  | 
 
 ### Return type
 
@@ -59,7 +61,7 @@ void (empty response body)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -68,6 +70,8 @@ void (empty response body)
 > User current_redacted()
 
 Get the current user
+
+
 
 ### Example
 ```python
@@ -116,6 +120,8 @@ This endpoint does not need any parameter.
 
 Delete a user by username
 
+
+
 ### Example
 ```python
 from __future__ import print_function
@@ -131,7 +137,7 @@ configuration.password = 'YOUR_PASSWORD'
 
 # create an instance of the API class
 api_instance = cloudera.director.UsersApi(cloudera.director.ApiClient(configuration))
-username = 'username_example' # str | username
+username = 'username_example' # str | 
 
 try:
     # Delete a user by username
@@ -144,7 +150,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **username** | **str**| username | 
+ **username** | **str**|  | 
 
 ### Return type
 
@@ -166,6 +172,8 @@ void (empty response body)
 
 Get a user by username
 
+
+
 ### Example
 ```python
 from __future__ import print_function
@@ -181,7 +189,7 @@ configuration.password = 'YOUR_PASSWORD'
 
 # create an instance of the API class
 api_instance = cloudera.director.UsersApi(cloudera.director.ApiClient(configuration))
-username = 'username_example' # str | username
+username = 'username_example' # str | 
 
 try:
     # Get a user by username
@@ -195,7 +203,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **username** | **str**| username | 
+ **username** | **str**|  | 
 
 ### Return type
 
@@ -216,6 +224,8 @@ Name | Type | Description  | Notes
 > UserManagementStatus get_user_management_status()
 
 Gets user management status
+
+
 
 ### Example
 ```python
@@ -264,6 +274,8 @@ This endpoint does not need any parameter.
 
 List all users
 
+
+
 ### Example
 ```python
 from __future__ import print_function
@@ -311,6 +323,8 @@ This endpoint does not need any parameter.
 
 Update an existing user
 
+
+
 ### Example
 ```python
 from __future__ import print_function
@@ -326,8 +340,8 @@ configuration.password = 'YOUR_PASSWORD'
 
 # create an instance of the API class
 api_instance = cloudera.director.UsersApi(cloudera.director.ApiClient(configuration))
-username = 'username_example' # str | username
-user = cloudera.director.User() # User | user
+username = 'username_example' # str | 
+user = cloudera.director.User() # User | 
 
 try:
     # Update an existing user
@@ -340,8 +354,8 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **username** | **str**| username | 
- **user** | [**User**](User.md)| user | 
+ **username** | **str**|  | 
+ **user** | [**User**](User.md)|  | 
 
 ### Return type
 
@@ -353,7 +367,7 @@ void (empty response body)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -362,6 +376,8 @@ void (empty response body)
 > update_password(username, passwords)
 
 Update the password of an existing user
+
+
 
 ### Example
 ```python
@@ -378,8 +394,8 @@ configuration.password = 'YOUR_PASSWORD'
 
 # create an instance of the API class
 api_instance = cloudera.director.UsersApi(cloudera.director.ApiClient(configuration))
-username = 'username_example' # str | username
-passwords = cloudera.director.PasswordChange() # PasswordChange | passwords
+username = 'username_example' # str | 
+passwords = cloudera.director.PasswordChange() # PasswordChange | 
 
 try:
     # Update the password of an existing user
@@ -392,8 +408,8 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **username** | **str**| username | 
- **passwords** | [**PasswordChange**](PasswordChange.md)| passwords | 
+ **username** | **str**|  | 
+ **passwords** | [**PasswordChange**](PasswordChange.md)|  | 
 
 ### Return type
 
@@ -405,7 +421,7 @@ void (empty response body)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

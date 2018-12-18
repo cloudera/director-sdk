@@ -1,18 +1,20 @@
 # cloudera.director.ServerConfigApi
 
-All URIs are relative to *https://localhost:7189*
+All URIs are relative to *https://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**get**](ServerConfigApi.md#get) | **GET** /api/d6.0/serverConfigs | Get server configuration
-[**metadata**](ServerConfigApi.md#metadata) | **GET** /api/d6.0/serverConfigs/metadata | Retrieves the metadata for server configuration
-[**update_configs**](ServerConfigApi.md#update_configs) | **POST** /api/d6.0/serverConfigs | Get server configuration
+[**get**](ServerConfigApi.md#get) | **GET** /api/d6.1/serverConfigs | Get server configuration
+[**metadata**](ServerConfigApi.md#metadata) | **GET** /api/d6.1/serverConfigs/metadata | Retrieves the metadata for server configuration
+[**update_configs**](ServerConfigApi.md#update_configs) | **POST** /api/d6.1/serverConfigs | Get server configuration
 
 
 # **get**
 > dict(str, str) get()
 
 Get server configuration
+
+
 
 ### Example
 ```python
@@ -61,6 +63,8 @@ This endpoint does not need any parameter.
 
 Retrieves the metadata for server configuration
 
+
+
 ### Example
 ```python
 from __future__ import print_function
@@ -108,6 +112,8 @@ This endpoint does not need any parameter.
 
 Get server configuration
 
+
+
 ### Example
 ```python
 from __future__ import print_function
@@ -123,7 +129,7 @@ configuration.password = 'YOUR_PASSWORD'
 
 # create an instance of the API class
 api_instance = cloudera.director.ServerConfigApi(cloudera.director.ApiClient(configuration))
-server_configs = NULL # object | serverConfigs
+server_configs = NULL # object | 
 
 try:
     # Get server configuration
@@ -136,7 +142,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **server_configs** | **object**| serverConfigs | 
+ **server_configs** | **object**|  | 
 
 ### Return type
 
@@ -148,7 +154,7 @@ void (empty response body)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

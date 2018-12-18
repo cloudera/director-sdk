@@ -1,24 +1,26 @@
 # cloudera.director.DeploymentsApi
 
-All URIs are relative to *https://localhost:7189*
+All URIs are relative to *https://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**collect_diagnostic_data**](DeploymentsApi.md#collect_diagnostic_data) | **POST** /api/d6.0/environments/{environment}/deployments/{deployment}/diagnosticData | Collects diagnostic data
-[**create**](DeploymentsApi.md#create) | **POST** /api/d6.0/environments/{environment}/deployments | Create a new deployment
-[**delete**](DeploymentsApi.md#delete) | **DELETE** /api/d6.0/environments/{environment}/deployments/{deployment} | Delete a deployment by name
-[**get_redacted**](DeploymentsApi.md#get_redacted) | **GET** /api/d6.0/environments/{environment}/deployments/{deployment} | Get a deployment by name
-[**get_status**](DeploymentsApi.md#get_status) | **GET** /api/d6.0/environments/{environment}/deployments/{deployment}/status | Get a deployment status by name
-[**get_template_redacted**](DeploymentsApi.md#get_template_redacted) | **GET** /api/d6.0/environments/{environment}/deployments/{deployment}/template | Get a deployment template by name
-[**list**](DeploymentsApi.md#list) | **GET** /api/d6.0/environments/{environment}/deployments | List all deployments
-[**update**](DeploymentsApi.md#update) | **PUT** /api/d6.0/environments/{environment}/deployments/{deployment} | Update an existing deployment template
-[**update_metering_setting**](DeploymentsApi.md#update_metering_setting) | **PUT** /api/d6.0/environments/{environment}/deployments/{deployment}/metering | Update billing ID for an existing deployment
+[**collect_diagnostic_data**](DeploymentsApi.md#collect_diagnostic_data) | **POST** /api/d6.1/environments/{environment}/deployments/{deployment}/diagnosticData | Collects diagnostic data
+[**create**](DeploymentsApi.md#create) | **POST** /api/d6.1/environments/{environment}/deployments | Create a new deployment
+[**delete**](DeploymentsApi.md#delete) | **DELETE** /api/d6.1/environments/{environment}/deployments/{deployment} | Delete a deployment by name
+[**get_redacted**](DeploymentsApi.md#get_redacted) | **GET** /api/d6.1/environments/{environment}/deployments/{deployment} | Get a deployment by name
+[**get_status**](DeploymentsApi.md#get_status) | **GET** /api/d6.1/environments/{environment}/deployments/{deployment}/status | Get a deployment status by name
+[**get_template_redacted**](DeploymentsApi.md#get_template_redacted) | **GET** /api/d6.1/environments/{environment}/deployments/{deployment}/template | Get a deployment template by name
+[**list**](DeploymentsApi.md#list) | **GET** /api/d6.1/environments/{environment}/deployments | List all deployments
+[**update**](DeploymentsApi.md#update) | **PUT** /api/d6.1/environments/{environment}/deployments/{deployment} | Update an existing deployment template
+[**update_metering_setting**](DeploymentsApi.md#update_metering_setting) | **PUT** /api/d6.1/environments/{environment}/deployments/{deployment}/metering | Update billing ID for an existing deployment
 
 
 # **collect_diagnostic_data**
 > collect_diagnostic_data(environment, deployment)
 
 Collects diagnostic data
+
+
 
 ### Example
 ```python
@@ -35,8 +37,8 @@ configuration.password = 'YOUR_PASSWORD'
 
 # create an instance of the API class
 api_instance = cloudera.director.DeploymentsApi(cloudera.director.ApiClient(configuration))
-environment = 'environment_example' # str | environment
-deployment = 'deployment_example' # str | deployment
+environment = 'environment_example' # str | 
+deployment = 'deployment_example' # str | 
 
 try:
     # Collects diagnostic data
@@ -49,8 +51,8 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **environment** | **str**| environment | 
- **deployment** | **str**| deployment | 
+ **environment** | **str**|  | 
+ **deployment** | **str**|  | 
 
 ### Return type
 
@@ -62,7 +64,7 @@ void (empty response body)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -71,6 +73,8 @@ void (empty response body)
 > create(environment, deployment_template)
 
 Create a new deployment
+
+
 
 ### Example
 ```python
@@ -87,8 +91,8 @@ configuration.password = 'YOUR_PASSWORD'
 
 # create an instance of the API class
 api_instance = cloudera.director.DeploymentsApi(cloudera.director.ApiClient(configuration))
-environment = 'environment_example' # str | environment
-deployment_template = cloudera.director.DeploymentTemplate() # DeploymentTemplate | deploymentTemplate
+environment = 'environment_example' # str | 
+deployment_template = cloudera.director.DeploymentTemplate() # DeploymentTemplate | 
 
 try:
     # Create a new deployment
@@ -101,8 +105,8 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **environment** | **str**| environment | 
- **deployment_template** | [**DeploymentTemplate**](DeploymentTemplate.md)| deploymentTemplate | 
+ **environment** | **str**|  | 
+ **deployment_template** | [**DeploymentTemplate**](DeploymentTemplate.md)|  | 
 
 ### Return type
 
@@ -114,7 +118,7 @@ void (empty response body)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -123,6 +127,8 @@ void (empty response body)
 > delete(environment, deployment)
 
 Delete a deployment by name
+
+
 
 ### Example
 ```python
@@ -139,8 +145,8 @@ configuration.password = 'YOUR_PASSWORD'
 
 # create an instance of the API class
 api_instance = cloudera.director.DeploymentsApi(cloudera.director.ApiClient(configuration))
-environment = 'environment_example' # str | environment
-deployment = 'deployment_example' # str | deployment
+environment = 'environment_example' # str | 
+deployment = 'deployment_example' # str | 
 
 try:
     # Delete a deployment by name
@@ -153,8 +159,8 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **environment** | **str**| environment | 
- **deployment** | **str**| deployment | 
+ **environment** | **str**|  | 
+ **deployment** | **str**|  | 
 
 ### Return type
 
@@ -176,6 +182,8 @@ void (empty response body)
 
 Get a deployment by name
 
+
+
 ### Example
 ```python
 from __future__ import print_function
@@ -191,8 +199,8 @@ configuration.password = 'YOUR_PASSWORD'
 
 # create an instance of the API class
 api_instance = cloudera.director.DeploymentsApi(cloudera.director.ApiClient(configuration))
-environment = 'environment_example' # str | environment
-deployment = 'deployment_example' # str | deployment
+environment = 'environment_example' # str | 
+deployment = 'deployment_example' # str | 
 
 try:
     # Get a deployment by name
@@ -206,8 +214,8 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **environment** | **str**| environment | 
- **deployment** | **str**| deployment | 
+ **environment** | **str**|  | 
+ **deployment** | **str**|  | 
 
 ### Return type
 
@@ -229,6 +237,8 @@ Name | Type | Description  | Notes
 
 Get a deployment status by name
 
+
+
 ### Example
 ```python
 from __future__ import print_function
@@ -244,8 +254,8 @@ configuration.password = 'YOUR_PASSWORD'
 
 # create an instance of the API class
 api_instance = cloudera.director.DeploymentsApi(cloudera.director.ApiClient(configuration))
-environment = 'environment_example' # str | environment
-deployment = 'deployment_example' # str | deployment
+environment = 'environment_example' # str | 
+deployment = 'deployment_example' # str | 
 
 try:
     # Get a deployment status by name
@@ -259,8 +269,8 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **environment** | **str**| environment | 
- **deployment** | **str**| deployment | 
+ **environment** | **str**|  | 
+ **deployment** | **str**|  | 
 
 ### Return type
 
@@ -282,6 +292,8 @@ Name | Type | Description  | Notes
 
 Get a deployment template by name
 
+
+
 ### Example
 ```python
 from __future__ import print_function
@@ -297,8 +309,8 @@ configuration.password = 'YOUR_PASSWORD'
 
 # create an instance of the API class
 api_instance = cloudera.director.DeploymentsApi(cloudera.director.ApiClient(configuration))
-environment = 'environment_example' # str | environment
-deployment = 'deployment_example' # str | deployment
+environment = 'environment_example' # str | 
+deployment = 'deployment_example' # str | 
 
 try:
     # Get a deployment template by name
@@ -312,8 +324,8 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **environment** | **str**| environment | 
- **deployment** | **str**| deployment | 
+ **environment** | **str**|  | 
+ **deployment** | **str**|  | 
 
 ### Return type
 
@@ -335,6 +347,8 @@ Name | Type | Description  | Notes
 
 List all deployments
 
+
+
 ### Example
 ```python
 from __future__ import print_function
@@ -350,7 +364,7 @@ configuration.password = 'YOUR_PASSWORD'
 
 # create an instance of the API class
 api_instance = cloudera.director.DeploymentsApi(cloudera.director.ApiClient(configuration))
-environment = 'environment_example' # str | environment
+environment = 'environment_example' # str | 
 
 try:
     # List all deployments
@@ -364,7 +378,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **environment** | **str**| environment | 
+ **environment** | **str**|  | 
 
 ### Return type
 
@@ -386,6 +400,8 @@ Name | Type | Description  | Notes
 
 Update an existing deployment template
 
+
+
 ### Example
 ```python
 from __future__ import print_function
@@ -401,9 +417,9 @@ configuration.password = 'YOUR_PASSWORD'
 
 # create an instance of the API class
 api_instance = cloudera.director.DeploymentsApi(cloudera.director.ApiClient(configuration))
-environment = 'environment_example' # str | environment
-deployment = 'deployment_example' # str | deployment
-updated_template = cloudera.director.DeploymentTemplate() # DeploymentTemplate | updatedTemplate
+environment = 'environment_example' # str | 
+deployment = 'deployment_example' # str | 
+updated_template = cloudera.director.DeploymentTemplate() # DeploymentTemplate | 
 
 try:
     # Update an existing deployment template
@@ -416,9 +432,9 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **environment** | **str**| environment | 
- **deployment** | **str**| deployment | 
- **updated_template** | [**DeploymentTemplate**](DeploymentTemplate.md)| updatedTemplate | 
+ **environment** | **str**|  | 
+ **deployment** | **str**|  | 
+ **updated_template** | [**DeploymentTemplate**](DeploymentTemplate.md)|  | 
 
 ### Return type
 
@@ -430,7 +446,7 @@ void (empty response body)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -439,6 +455,8 @@ void (empty response body)
 > update_metering_setting(environment, deployment, metering_setting)
 
 Update billing ID for an existing deployment
+
+
 
 ### Example
 ```python
@@ -455,9 +473,9 @@ configuration.password = 'YOUR_PASSWORD'
 
 # create an instance of the API class
 api_instance = cloudera.director.DeploymentsApi(cloudera.director.ApiClient(configuration))
-environment = 'environment_example' # str | environment
-deployment = 'deployment_example' # str | deployment
-metering_setting = cloudera.director.MeteringSetting() # MeteringSetting | meteringSetting
+environment = 'environment_example' # str | 
+deployment = 'deployment_example' # str | 
+metering_setting = cloudera.director.MeteringSetting() # MeteringSetting | 
 
 try:
     # Update billing ID for an existing deployment
@@ -470,9 +488,9 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **environment** | **str**| environment | 
- **deployment** | **str**| deployment | 
- **metering_setting** | [**MeteringSetting**](MeteringSetting.md)| meteringSetting | 
+ **environment** | **str**|  | 
+ **deployment** | **str**|  | 
+ **metering_setting** | [**MeteringSetting**](MeteringSetting.md)|  | 
 
 ### Return type
 
@@ -484,7 +502,7 @@ void (empty response body)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

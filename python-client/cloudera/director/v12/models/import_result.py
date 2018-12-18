@@ -39,33 +39,83 @@ class ImportResult(object):
                             and the value is json key in definition.
     """
     swagger_types = {
-        'cluster': 'ImportStatus',
-        'database_severs': 'list[ImportStatus]',
+        'environment': 'ImportStatus',
         'deployment': 'ImportStatus',
-        'environment': 'ImportStatus'
+        'cluster': 'ImportStatus',
+        'database_severs': 'list[ImportStatus]'
     }
 
     attribute_map = {
-        'cluster': 'cluster',
-        'database_severs': 'databaseSevers',
+        'environment': 'environment',
         'deployment': 'deployment',
-        'environment': 'environment'
+        'cluster': 'cluster',
+        'database_severs': 'databaseSevers'
     }
 
-    def __init__(self, cluster=None, database_severs=None, deployment=None, environment=None):  # noqa: E501
+    def __init__(self, environment=None, deployment=None, cluster=None, database_severs=None):  # noqa: E501
         """ImportResult - a model defined in Swagger"""  # noqa: E501
 
+        self._environment = None
+        self._deployment = None
         self._cluster = None
         self._database_severs = None
-        self._deployment = None
-        self._environment = None
         self.discriminator = None
 
+        self.environment = environment
+        self.deployment = deployment
         self.cluster = cluster
         if database_severs is not None:
             self.database_severs = database_severs
-        self.deployment = deployment
-        self.environment = environment
+
+    @property
+    def environment(self):
+        """Gets the environment of this ImportResult.  # noqa: E501
+
+        Environment import status  # noqa: E501
+
+        :return: The environment of this ImportResult.  # noqa: E501
+        :rtype: ImportStatus
+        """
+        return self._environment
+
+    @environment.setter
+    def environment(self, environment):
+        """Sets the environment of this ImportResult.
+
+        Environment import status  # noqa: E501
+
+        :param environment: The environment of this ImportResult.  # noqa: E501
+        :type: ImportStatus
+        """
+        if environment is None:
+            raise ValueError("Invalid value for `environment`, must not be `None`")  # noqa: E501
+
+        self._environment = environment
+
+    @property
+    def deployment(self):
+        """Gets the deployment of this ImportResult.  # noqa: E501
+
+        Deployment import status  # noqa: E501
+
+        :return: The deployment of this ImportResult.  # noqa: E501
+        :rtype: ImportStatus
+        """
+        return self._deployment
+
+    @deployment.setter
+    def deployment(self, deployment):
+        """Sets the deployment of this ImportResult.
+
+        Deployment import status  # noqa: E501
+
+        :param deployment: The deployment of this ImportResult.  # noqa: E501
+        :type: ImportStatus
+        """
+        if deployment is None:
+            raise ValueError("Invalid value for `deployment`, must not be `None`")  # noqa: E501
+
+        self._deployment = deployment
 
     @property
     def cluster(self):
@@ -114,56 +164,6 @@ class ImportResult(object):
         """
 
         self._database_severs = database_severs
-
-    @property
-    def deployment(self):
-        """Gets the deployment of this ImportResult.  # noqa: E501
-
-        Deployment import status  # noqa: E501
-
-        :return: The deployment of this ImportResult.  # noqa: E501
-        :rtype: ImportStatus
-        """
-        return self._deployment
-
-    @deployment.setter
-    def deployment(self, deployment):
-        """Sets the deployment of this ImportResult.
-
-        Deployment import status  # noqa: E501
-
-        :param deployment: The deployment of this ImportResult.  # noqa: E501
-        :type: ImportStatus
-        """
-        if deployment is None:
-            raise ValueError("Invalid value for `deployment`, must not be `None`")  # noqa: E501
-
-        self._deployment = deployment
-
-    @property
-    def environment(self):
-        """Gets the environment of this ImportResult.  # noqa: E501
-
-        Environment import status  # noqa: E501
-
-        :return: The environment of this ImportResult.  # noqa: E501
-        :rtype: ImportStatus
-        """
-        return self._environment
-
-    @environment.setter
-    def environment(self, environment):
-        """Sets the environment of this ImportResult.
-
-        Environment import status  # noqa: E501
-
-        :param environment: The environment of this ImportResult.  # noqa: E501
-        :type: ImportStatus
-        """
-        if environment is None:
-            raise ValueError("Invalid value for `environment`, must not be `None`")  # noqa: E501
-
-        self._environment = environment
 
     def to_dict(self):
         """Returns the model properties as a dict"""

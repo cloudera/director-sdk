@@ -39,52 +39,29 @@ class ExternalAccount(object):
                             and the value is json key in definition.
     """
     swagger_types = {
-        'configs': 'dict(str, str)',
         'name': 'str',
-        'type': 'str'
+        'type': 'str',
+        'configs': 'dict(str, str)'
     }
 
     attribute_map = {
-        'configs': 'configs',
         'name': 'name',
-        'type': 'type'
+        'type': 'type',
+        'configs': 'configs'
     }
 
-    def __init__(self, configs=None, name=None, type=None):  # noqa: E501
+    def __init__(self, name=None, type=None, configs=None):  # noqa: E501
         """ExternalAccount - a model defined in Swagger"""  # noqa: E501
 
-        self._configs = None
         self._name = None
         self._type = None
+        self._configs = None
         self.discriminator = None
 
-        if configs is not None:
-            self.configs = configs
         self.name = name
         self.type = type
-
-    @property
-    def configs(self):
-        """Gets the configs of this ExternalAccount.  # noqa: E501
-
-        External account configurations [redacted on read]  # noqa: E501
-
-        :return: The configs of this ExternalAccount.  # noqa: E501
-        :rtype: dict(str, str)
-        """
-        return self._configs
-
-    @configs.setter
-    def configs(self, configs):
-        """Sets the configs of this ExternalAccount.
-
-        External account configurations [redacted on read]  # noqa: E501
-
-        :param configs: The configs of this ExternalAccount.  # noqa: E501
-        :type: dict(str, str)
-        """
-
-        self._configs = configs
+        if configs is not None:
+            self.configs = configs
 
     @property
     def name(self):
@@ -135,6 +112,29 @@ class ExternalAccount(object):
             raise ValueError("Invalid value for `type`, must not be `None`")  # noqa: E501
 
         self._type = type
+
+    @property
+    def configs(self):
+        """Gets the configs of this ExternalAccount.  # noqa: E501
+
+        External account configurations [redacted on read]  # noqa: E501
+
+        :return: The configs of this ExternalAccount.  # noqa: E501
+        :rtype: dict(str, str)
+        """
+        return self._configs
+
+    @configs.setter
+    def configs(self, configs):
+        """Sets the configs of this ExternalAccount.
+
+        External account configurations [redacted on read]  # noqa: E501
+
+        :param configs: The configs of this ExternalAccount.  # noqa: E501
+        :type: dict(str, str)
+        """
+
+        self._configs = configs
 
     def to_dict(self):
         """Returns the model properties as a dict"""

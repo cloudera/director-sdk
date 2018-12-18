@@ -39,33 +39,89 @@ class ValidationExceptionCondition(object):
                             and the value is json key in definition.
     """
     swagger_types = {
-        'key': 'str',
-        'message': 'str',
+        'type': 'str',
         'scope': 'str',
-        'type': 'str'
+        'key': 'str',
+        'message': 'str'
     }
 
     attribute_map = {
-        'key': 'key',
-        'message': 'message',
+        'type': 'type',
         'scope': 'scope',
-        'type': 'type'
+        'key': 'key',
+        'message': 'message'
     }
 
-    def __init__(self, key=None, message=None, scope=None, type=None):  # noqa: E501
+    def __init__(self, type=None, scope=None, key=None, message=None):  # noqa: E501
         """ValidationExceptionCondition - a model defined in Swagger"""  # noqa: E501
 
+        self._type = None
+        self._scope = None
         self._key = None
         self._message = None
-        self._scope = None
-        self._type = None
         self.discriminator = None
 
+        self.type = type
+        self.scope = scope
         if key is not None:
             self.key = key
         self.message = message
-        self.scope = scope
-        self.type = type
+
+    @property
+    def type(self):
+        """Gets the type of this ValidationExceptionCondition.  # noqa: E501
+
+        The type of condition  # noqa: E501
+
+        :return: The type of this ValidationExceptionCondition.  # noqa: E501
+        :rtype: str
+        """
+        return self._type
+
+    @type.setter
+    def type(self, type):
+        """Sets the type of this ValidationExceptionCondition.
+
+        The type of condition  # noqa: E501
+
+        :param type: The type of this ValidationExceptionCondition.  # noqa: E501
+        :type: str
+        """
+        if type is None:
+            raise ValueError("Invalid value for `type`, must not be `None`")  # noqa: E501
+        allowed_values = ["ERROR", "WARNING"]  # noqa: E501
+        if type not in allowed_values:
+            raise ValueError(
+                "Invalid value for `type` ({0}), must be one of {1}"  # noqa: E501
+                .format(type, allowed_values)
+            )
+
+        self._type = type
+
+    @property
+    def scope(self):
+        """Gets the scope of this ValidationExceptionCondition.  # noqa: E501
+
+        The scope of the condition  # noqa: E501
+
+        :return: The scope of this ValidationExceptionCondition.  # noqa: E501
+        :rtype: str
+        """
+        return self._scope
+
+    @scope.setter
+    def scope(self, scope):
+        """Sets the scope of this ValidationExceptionCondition.
+
+        The scope of the condition  # noqa: E501
+
+        :param scope: The scope of this ValidationExceptionCondition.  # noqa: E501
+        :type: str
+        """
+        if scope is None:
+            raise ValueError("Invalid value for `scope`, must not be `None`")  # noqa: E501
+
+        self._scope = scope
 
     @property
     def key(self):
@@ -114,62 +170,6 @@ class ValidationExceptionCondition(object):
             raise ValueError("Invalid value for `message`, must not be `None`")  # noqa: E501
 
         self._message = message
-
-    @property
-    def scope(self):
-        """Gets the scope of this ValidationExceptionCondition.  # noqa: E501
-
-        The scope of the condition  # noqa: E501
-
-        :return: The scope of this ValidationExceptionCondition.  # noqa: E501
-        :rtype: str
-        """
-        return self._scope
-
-    @scope.setter
-    def scope(self, scope):
-        """Sets the scope of this ValidationExceptionCondition.
-
-        The scope of the condition  # noqa: E501
-
-        :param scope: The scope of this ValidationExceptionCondition.  # noqa: E501
-        :type: str
-        """
-        if scope is None:
-            raise ValueError("Invalid value for `scope`, must not be `None`")  # noqa: E501
-
-        self._scope = scope
-
-    @property
-    def type(self):
-        """Gets the type of this ValidationExceptionCondition.  # noqa: E501
-
-        The type of condition  # noqa: E501
-
-        :return: The type of this ValidationExceptionCondition.  # noqa: E501
-        :rtype: str
-        """
-        return self._type
-
-    @type.setter
-    def type(self, type):
-        """Sets the type of this ValidationExceptionCondition.
-
-        The type of condition  # noqa: E501
-
-        :param type: The type of this ValidationExceptionCondition.  # noqa: E501
-        :type: str
-        """
-        if type is None:
-            raise ValueError("Invalid value for `type`, must not be `None`")  # noqa: E501
-        allowed_values = ["ERROR", "WARNING"]  # noqa: E501
-        if type not in allowed_values:
-            raise ValueError(
-                "Invalid value for `type` ({0}), must be one of {1}"  # noqa: E501
-                .format(type, allowed_values)
-            )
-
-        self._type = type
 
     def to_dict(self):
         """Returns the model properties as a dict"""

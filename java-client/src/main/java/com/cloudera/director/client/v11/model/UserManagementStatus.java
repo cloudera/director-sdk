@@ -88,7 +88,7 @@ public class UserManagementStatus {
    * Whether local user management is enabled
    * @return localUserManagementEnabled
   **/
-  @ApiModelProperty(example = "false", required = true, value = "Whether local user management is enabled")
+  @ApiModelProperty(required = true, value = "Whether local user management is enabled")
   public Boolean isLocalUserManagementEnabled() {
     return localUserManagementEnabled;
   }

@@ -39,64 +39,137 @@ class Instance(object):
                             and the value is json key in definition.
     """
     swagger_types = {
+        'ip_address': 'str',
+        'properties': 'dict(str, str)',
+        'virtual_instance': 'VirtualInstance',
         'capabilities': 'Capabilities',
         'cm_host_id': 'str',
         'cm_host_url': 'str',
-        'health': 'Health',
         'host_key_fingerprints': 'list[str]',
-        'ip_address': 'str',
-        'properties': 'dict(str, str)',
         'state': 'InstanceState',
         'validation_conditions': 'list[ValidationExceptionCondition]',
-        'virtual_instance': 'VirtualInstance'
+        'health': 'Health'
     }
 
     attribute_map = {
+        'ip_address': 'ipAddress',
+        'properties': 'properties',
+        'virtual_instance': 'virtualInstance',
         'capabilities': 'capabilities',
         'cm_host_id': 'cmHostId',
         'cm_host_url': 'cmHostUrl',
-        'health': 'health',
         'host_key_fingerprints': 'hostKeyFingerprints',
-        'ip_address': 'ipAddress',
-        'properties': 'properties',
         'state': 'state',
         'validation_conditions': 'validationConditions',
-        'virtual_instance': 'virtualInstance'
+        'health': 'health'
     }
 
-    def __init__(self, capabilities=None, cm_host_id=None, cm_host_url=None, health=None, host_key_fingerprints=None, ip_address=None, properties=None, state=None, validation_conditions=None, virtual_instance=None):  # noqa: E501
+    def __init__(self, ip_address=None, properties=None, virtual_instance=None, capabilities=None, cm_host_id=None, cm_host_url=None, host_key_fingerprints=None, state=None, validation_conditions=None, health=None):  # noqa: E501
         """Instance - a model defined in Swagger"""  # noqa: E501
 
+        self._ip_address = None
+        self._properties = None
+        self._virtual_instance = None
         self._capabilities = None
         self._cm_host_id = None
         self._cm_host_url = None
-        self._health = None
         self._host_key_fingerprints = None
-        self._ip_address = None
-        self._properties = None
         self._state = None
         self._validation_conditions = None
-        self._virtual_instance = None
+        self._health = None
         self.discriminator = None
 
+        self.ip_address = ip_address
+        if properties is not None:
+            self.properties = properties
+        self.virtual_instance = virtual_instance
         if capabilities is not None:
             self.capabilities = capabilities
         if cm_host_id is not None:
             self.cm_host_id = cm_host_id
         if cm_host_url is not None:
             self.cm_host_url = cm_host_url
-        if health is not None:
-            self.health = health
         if host_key_fingerprints is not None:
             self.host_key_fingerprints = host_key_fingerprints
-        self.ip_address = ip_address
-        if properties is not None:
-            self.properties = properties
         if state is not None:
             self.state = state
         if validation_conditions is not None:
             self.validation_conditions = validation_conditions
-        self.virtual_instance = virtual_instance
+        if health is not None:
+            self.health = health
+
+    @property
+    def ip_address(self):
+        """Gets the ip_address of this Instance.  # noqa: E501
+
+        IP address of instance  # noqa: E501
+
+        :return: The ip_address of this Instance.  # noqa: E501
+        :rtype: str
+        """
+        return self._ip_address
+
+    @ip_address.setter
+    def ip_address(self, ip_address):
+        """Sets the ip_address of this Instance.
+
+        IP address of instance  # noqa: E501
+
+        :param ip_address: The ip_address of this Instance.  # noqa: E501
+        :type: str
+        """
+        if ip_address is None:
+            raise ValueError("Invalid value for `ip_address`, must not be `None`")  # noqa: E501
+
+        self._ip_address = ip_address
+
+    @property
+    def properties(self):
+        """Gets the properties of this Instance.  # noqa: E501
+
+        Instance properties  # noqa: E501
+
+        :return: The properties of this Instance.  # noqa: E501
+        :rtype: dict(str, str)
+        """
+        return self._properties
+
+    @properties.setter
+    def properties(self, properties):
+        """Sets the properties of this Instance.
+
+        Instance properties  # noqa: E501
+
+        :param properties: The properties of this Instance.  # noqa: E501
+        :type: dict(str, str)
+        """
+
+        self._properties = properties
+
+    @property
+    def virtual_instance(self):
+        """Gets the virtual_instance of this Instance.  # noqa: E501
+
+        Virtual instance mapping to this instance  # noqa: E501
+
+        :return: The virtual_instance of this Instance.  # noqa: E501
+        :rtype: VirtualInstance
+        """
+        return self._virtual_instance
+
+    @virtual_instance.setter
+    def virtual_instance(self, virtual_instance):
+        """Sets the virtual_instance of this Instance.
+
+        Virtual instance mapping to this instance  # noqa: E501
+
+        :param virtual_instance: The virtual_instance of this Instance.  # noqa: E501
+        :type: VirtualInstance
+        """
+        if virtual_instance is None:
+            raise ValueError("Invalid value for `virtual_instance`, must not be `None`")  # noqa: E501
+
+        self._virtual_instance = virtual_instance
 
     @property
     def capabilities(self):
@@ -168,29 +241,6 @@ class Instance(object):
         self._cm_host_url = cm_host_url
 
     @property
-    def health(self):
-        """Gets the health of this Instance.  # noqa: E501
-
-        Instance health  # noqa: E501
-
-        :return: The health of this Instance.  # noqa: E501
-        :rtype: Health
-        """
-        return self._health
-
-    @health.setter
-    def health(self, health):
-        """Sets the health of this Instance.
-
-        Instance health  # noqa: E501
-
-        :param health: The health of this Instance.  # noqa: E501
-        :type: Health
-        """
-
-        self._health = health
-
-    @property
     def host_key_fingerprints(self):
         """Gets the host_key_fingerprints of this Instance.  # noqa: E501
 
@@ -212,54 +262,6 @@ class Instance(object):
         """
 
         self._host_key_fingerprints = host_key_fingerprints
-
-    @property
-    def ip_address(self):
-        """Gets the ip_address of this Instance.  # noqa: E501
-
-        IP address of instance  # noqa: E501
-
-        :return: The ip_address of this Instance.  # noqa: E501
-        :rtype: str
-        """
-        return self._ip_address
-
-    @ip_address.setter
-    def ip_address(self, ip_address):
-        """Sets the ip_address of this Instance.
-
-        IP address of instance  # noqa: E501
-
-        :param ip_address: The ip_address of this Instance.  # noqa: E501
-        :type: str
-        """
-        if ip_address is None:
-            raise ValueError("Invalid value for `ip_address`, must not be `None`")  # noqa: E501
-
-        self._ip_address = ip_address
-
-    @property
-    def properties(self):
-        """Gets the properties of this Instance.  # noqa: E501
-
-        Instance properties  # noqa: E501
-
-        :return: The properties of this Instance.  # noqa: E501
-        :rtype: dict(str, str)
-        """
-        return self._properties
-
-    @properties.setter
-    def properties(self, properties):
-        """Sets the properties of this Instance.
-
-        Instance properties  # noqa: E501
-
-        :param properties: The properties of this Instance.  # noqa: E501
-        :type: dict(str, str)
-        """
-
-        self._properties = properties
 
     @property
     def state(self):
@@ -308,29 +310,27 @@ class Instance(object):
         self._validation_conditions = validation_conditions
 
     @property
-    def virtual_instance(self):
-        """Gets the virtual_instance of this Instance.  # noqa: E501
+    def health(self):
+        """Gets the health of this Instance.  # noqa: E501
 
-        Virtual instance mapping to this instance  # noqa: E501
+        Instance health  # noqa: E501
 
-        :return: The virtual_instance of this Instance.  # noqa: E501
-        :rtype: VirtualInstance
+        :return: The health of this Instance.  # noqa: E501
+        :rtype: Health
         """
-        return self._virtual_instance
+        return self._health
 
-    @virtual_instance.setter
-    def virtual_instance(self, virtual_instance):
-        """Sets the virtual_instance of this Instance.
+    @health.setter
+    def health(self, health):
+        """Sets the health of this Instance.
 
-        Virtual instance mapping to this instance  # noqa: E501
+        Instance health  # noqa: E501
 
-        :param virtual_instance: The virtual_instance of this Instance.  # noqa: E501
-        :type: VirtualInstance
+        :param health: The health of this Instance.  # noqa: E501
+        :type: Health
         """
-        if virtual_instance is None:
-            raise ValueError("Invalid value for `virtual_instance`, must not be `None`")  # noqa: E501
 
-        self._virtual_instance = virtual_instance
+        self._health = health
 
     def to_dict(self):
         """Returns the model properties as a dict"""

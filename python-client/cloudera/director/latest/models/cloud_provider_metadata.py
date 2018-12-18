@@ -39,114 +39,43 @@ class CloudProviderMetadata(object):
                             and the value is json key in definition.
     """
     swagger_types = {
-        'configuration_properties': 'list[ConfigurationProperty]',
-        'credentials_properties': 'list[ConfigurationProperty]',
-        'description': 'str',
         'id': 'str',
         'name': 'str',
+        'description': 'str',
+        'configuration_properties': 'list[ConfigurationProperty]',
+        'credentials_properties': 'list[ConfigurationProperty]',
         'resource_providers': 'list[ResourceProviderMetadata]'
     }
 
     attribute_map = {
-        'configuration_properties': 'configurationProperties',
-        'credentials_properties': 'credentialsProperties',
-        'description': 'description',
         'id': 'id',
         'name': 'name',
+        'description': 'description',
+        'configuration_properties': 'configurationProperties',
+        'credentials_properties': 'credentialsProperties',
         'resource_providers': 'resourceProviders'
     }
 
-    def __init__(self, configuration_properties=None, credentials_properties=None, description=None, id=None, name=None, resource_providers=None):  # noqa: E501
+    def __init__(self, id=None, name=None, description=None, configuration_properties=None, credentials_properties=None, resource_providers=None):  # noqa: E501
         """CloudProviderMetadata - a model defined in Swagger"""  # noqa: E501
 
-        self._configuration_properties = None
-        self._credentials_properties = None
-        self._description = None
         self._id = None
         self._name = None
+        self._description = None
+        self._configuration_properties = None
+        self._credentials_properties = None
         self._resource_providers = None
         self.discriminator = None
 
+        self.id = id
+        self.name = name
+        self.description = description
         if configuration_properties is not None:
             self.configuration_properties = configuration_properties
         if credentials_properties is not None:
             self.credentials_properties = credentials_properties
-        self.description = description
-        self.id = id
-        self.name = name
         if resource_providers is not None:
             self.resource_providers = resource_providers
-
-    @property
-    def configuration_properties(self):
-        """Gets the configuration_properties of this CloudProviderMetadata.  # noqa: E501
-
-        Cloud provider configuration properties  # noqa: E501
-
-        :return: The configuration_properties of this CloudProviderMetadata.  # noqa: E501
-        :rtype: list[ConfigurationProperty]
-        """
-        return self._configuration_properties
-
-    @configuration_properties.setter
-    def configuration_properties(self, configuration_properties):
-        """Sets the configuration_properties of this CloudProviderMetadata.
-
-        Cloud provider configuration properties  # noqa: E501
-
-        :param configuration_properties: The configuration_properties of this CloudProviderMetadata.  # noqa: E501
-        :type: list[ConfigurationProperty]
-        """
-
-        self._configuration_properties = configuration_properties
-
-    @property
-    def credentials_properties(self):
-        """Gets the credentials_properties of this CloudProviderMetadata.  # noqa: E501
-
-        Credential configuration properties  # noqa: E501
-
-        :return: The credentials_properties of this CloudProviderMetadata.  # noqa: E501
-        :rtype: list[ConfigurationProperty]
-        """
-        return self._credentials_properties
-
-    @credentials_properties.setter
-    def credentials_properties(self, credentials_properties):
-        """Sets the credentials_properties of this CloudProviderMetadata.
-
-        Credential configuration properties  # noqa: E501
-
-        :param credentials_properties: The credentials_properties of this CloudProviderMetadata.  # noqa: E501
-        :type: list[ConfigurationProperty]
-        """
-
-        self._credentials_properties = credentials_properties
-
-    @property
-    def description(self):
-        """Gets the description of this CloudProviderMetadata.  # noqa: E501
-
-        Cloud provider description  # noqa: E501
-
-        :return: The description of this CloudProviderMetadata.  # noqa: E501
-        :rtype: str
-        """
-        return self._description
-
-    @description.setter
-    def description(self, description):
-        """Sets the description of this CloudProviderMetadata.
-
-        Cloud provider description  # noqa: E501
-
-        :param description: The description of this CloudProviderMetadata.  # noqa: E501
-        :type: str
-        """
-        if description is None:
-            raise ValueError("Invalid value for `description`, must not be `None`")  # noqa: E501
-
-        self._description = description
 
     @property
     def id(self):
@@ -197,6 +126,77 @@ class CloudProviderMetadata(object):
             raise ValueError("Invalid value for `name`, must not be `None`")  # noqa: E501
 
         self._name = name
+
+    @property
+    def description(self):
+        """Gets the description of this CloudProviderMetadata.  # noqa: E501
+
+        Cloud provider description  # noqa: E501
+
+        :return: The description of this CloudProviderMetadata.  # noqa: E501
+        :rtype: str
+        """
+        return self._description
+
+    @description.setter
+    def description(self, description):
+        """Sets the description of this CloudProviderMetadata.
+
+        Cloud provider description  # noqa: E501
+
+        :param description: The description of this CloudProviderMetadata.  # noqa: E501
+        :type: str
+        """
+        if description is None:
+            raise ValueError("Invalid value for `description`, must not be `None`")  # noqa: E501
+
+        self._description = description
+
+    @property
+    def configuration_properties(self):
+        """Gets the configuration_properties of this CloudProviderMetadata.  # noqa: E501
+
+        Cloud provider configuration properties  # noqa: E501
+
+        :return: The configuration_properties of this CloudProviderMetadata.  # noqa: E501
+        :rtype: list[ConfigurationProperty]
+        """
+        return self._configuration_properties
+
+    @configuration_properties.setter
+    def configuration_properties(self, configuration_properties):
+        """Sets the configuration_properties of this CloudProviderMetadata.
+
+        Cloud provider configuration properties  # noqa: E501
+
+        :param configuration_properties: The configuration_properties of this CloudProviderMetadata.  # noqa: E501
+        :type: list[ConfigurationProperty]
+        """
+
+        self._configuration_properties = configuration_properties
+
+    @property
+    def credentials_properties(self):
+        """Gets the credentials_properties of this CloudProviderMetadata.  # noqa: E501
+
+        Credential configuration properties  # noqa: E501
+
+        :return: The credentials_properties of this CloudProviderMetadata.  # noqa: E501
+        :rtype: list[ConfigurationProperty]
+        """
+        return self._credentials_properties
+
+    @credentials_properties.setter
+    def credentials_properties(self, credentials_properties):
+        """Sets the credentials_properties of this CloudProviderMetadata.
+
+        Credential configuration properties  # noqa: E501
+
+        :param credentials_properties: The credentials_properties of this CloudProviderMetadata.  # noqa: E501
+        :type: list[ConfigurationProperty]
+        """
+
+        self._credentials_properties = credentials_properties
 
     @property
     def resource_providers(self):

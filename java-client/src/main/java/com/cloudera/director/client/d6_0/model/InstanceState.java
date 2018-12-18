@@ -33,10 +33,6 @@ import java.io.IOException;
 @ApiModel(description = "Instance state as reported by a cloud provider")
 
 public class InstanceState {
-  @SerializedName("lastChecked")
-  private Long lastChecked = null;
-  @SerializedName("lastReported")
-  private Long lastReported = null;
   /**
    * Instance status
    */
@@ -100,15 +96,19 @@ public class InstanceState {
 
   @SerializedName("status")
   private StatusEnum status = null;
+  @SerializedName("lastReported")
+  private Long lastReported = null;
+  @SerializedName("lastChecked")
+  private Long lastChecked = null;
 
   public InstanceState() {
     // Do nothing
   }
 
   private InstanceState(InstanceStateBuilder builder) {
-      this.lastChecked = builder.lastChecked;
-      this.lastReported = builder.lastReported;
       this.status = builder.status;
+      this.lastReported = builder.lastReported;
+      this.lastChecked = builder.lastChecked;
     }
 
   public static InstanceStateBuilder builder() {
@@ -116,13 +116,13 @@ public class InstanceState {
   }
 
   public static class InstanceStateBuilder {
-      private Long lastChecked = null;
-      private Long lastReported = null;
       private StatusEnum status = null;
+      private Long lastReported = null;
+      private Long lastChecked = null;
   
 
-    public InstanceStateBuilder lastChecked(Long lastChecked) {
-      this.lastChecked = lastChecked;
+    public InstanceStateBuilder status(StatusEnum status) {
+      this.status = status;
       return this;
     }
 
@@ -133,8 +133,8 @@ public class InstanceState {
     }
 
 
-    public InstanceStateBuilder status(StatusEnum status) {
-      this.status = status;
+    public InstanceStateBuilder lastChecked(Long lastChecked) {
+      this.lastChecked = lastChecked;
       return this;
     }
 
@@ -146,46 +146,10 @@ public class InstanceState {
 
   public InstanceStateBuilder toBuilder() {
     return builder()
-      .lastChecked(lastChecked)
+      .status(status)
             .lastReported(lastReported)
-            .status(status)
+            .lastChecked(lastChecked)
       ;
-  }
-
-  public InstanceState lastChecked(Long lastChecked) {
-    this.lastChecked = lastChecked;
-    return this;
-  }
-
-   /**
-   * Last time that instance state was checked
-   * @return lastChecked
-  **/
-  @ApiModelProperty(required = true, value = "Last time that instance state was checked")
-  public Long getLastChecked() {
-    return lastChecked;
-  }
-
-  public void setLastChecked(Long lastChecked) {
-    this.lastChecked = lastChecked;
-  }
-
-  public InstanceState lastReported(Long lastReported) {
-    this.lastReported = lastReported;
-    return this;
-  }
-
-   /**
-   * Last time that instance state was reported
-   * @return lastReported
-  **/
-  @ApiModelProperty(required = true, value = "Last time that instance state was reported")
-  public Long getLastReported() {
-    return lastReported;
-  }
-
-  public void setLastReported(Long lastReported) {
-    this.lastReported = lastReported;
   }
 
   public InstanceState status(StatusEnum status) {
@@ -206,6 +170,42 @@ public class InstanceState {
     this.status = status;
   }
 
+  public InstanceState lastReported(Long lastReported) {
+    this.lastReported = lastReported;
+    return this;
+  }
+
+   /**
+   * Last time that instance state was reported
+   * @return lastReported
+  **/
+  @ApiModelProperty(required = true, value = "Last time that instance state was reported")
+  public Long getLastReported() {
+    return lastReported;
+  }
+
+  public void setLastReported(Long lastReported) {
+    this.lastReported = lastReported;
+  }
+
+  public InstanceState lastChecked(Long lastChecked) {
+    this.lastChecked = lastChecked;
+    return this;
+  }
+
+   /**
+   * Last time that instance state was checked
+   * @return lastChecked
+  **/
+  @ApiModelProperty(required = true, value = "Last time that instance state was checked")
+  public Long getLastChecked() {
+    return lastChecked;
+  }
+
+  public void setLastChecked(Long lastChecked) {
+    this.lastChecked = lastChecked;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -216,14 +216,14 @@ public class InstanceState {
       return false;
     }
     InstanceState instanceState = (InstanceState) o;
-    return Objects.equals(this.lastChecked, instanceState.lastChecked) &&
+    return Objects.equals(this.status, instanceState.status) &&
         Objects.equals(this.lastReported, instanceState.lastReported) &&
-        Objects.equals(this.status, instanceState.status);
+        Objects.equals(this.lastChecked, instanceState.lastChecked);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(lastChecked, lastReported, status);
+    return Objects.hash(status, lastReported, lastChecked);
   }
 
 
@@ -232,9 +232,9 @@ public class InstanceState {
     StringBuilder sb = new StringBuilder();
     sb.append("class InstanceState {\n");
     
-    sb.append("    lastChecked: ").append(toIndentedString(lastChecked)).append("\n");
-    sb.append("    lastReported: ").append(toIndentedString(lastReported)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
+    sb.append("    lastReported: ").append(toIndentedString(lastReported)).append("\n");
+    sb.append("    lastChecked: ").append(toIndentedString(lastChecked)).append("\n");
     sb.append("}");
     return sb.toString();
   }

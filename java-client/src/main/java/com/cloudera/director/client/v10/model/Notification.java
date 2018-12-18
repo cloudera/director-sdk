@@ -33,10 +33,6 @@ import java.io.IOException;
 @ApiModel(description = "A notification to be presented to a Cloudera Altus Director user")
 
 public class Notification {
-  @SerializedName("description")
-  private String description = null;
-  @SerializedName("message")
-  private String message = null;
   /**
    * Notification type
    */
@@ -86,15 +82,19 @@ public class Notification {
 
   @SerializedName("type")
   private TypeEnum type = null;
+  @SerializedName("message")
+  private String message = null;
+  @SerializedName("description")
+  private String description = null;
 
   public Notification() {
     // Do nothing
   }
 
   private Notification(NotificationBuilder builder) {
-      this.description = builder.description;
-      this.message = builder.message;
       this.type = builder.type;
+      this.message = builder.message;
+      this.description = builder.description;
     }
 
   public static NotificationBuilder builder() {
@@ -102,13 +102,13 @@ public class Notification {
   }
 
   public static class NotificationBuilder {
-      private String description = null;
-      private String message = null;
       private TypeEnum type = null;
+      private String message = null;
+      private String description = null;
   
 
-    public NotificationBuilder description(String description) {
-      this.description = description;
+    public NotificationBuilder type(TypeEnum type) {
+      this.type = type;
       return this;
     }
 
@@ -119,8 +119,8 @@ public class Notification {
     }
 
 
-    public NotificationBuilder type(TypeEnum type) {
-      this.type = type;
+    public NotificationBuilder description(String description) {
+      this.description = description;
       return this;
     }
 
@@ -132,46 +132,10 @@ public class Notification {
 
   public NotificationBuilder toBuilder() {
     return builder()
-      .description(description)
+      .type(type)
             .message(message)
-            .type(type)
+            .description(description)
       ;
-  }
-
-  public Notification description(String description) {
-    this.description = description;
-    return this;
-  }
-
-   /**
-   * Notification description
-   * @return description
-  **/
-  @ApiModelProperty(value = "Notification description")
-  public String getDescription() {
-    return description;
-  }
-
-  public void setDescription(String description) {
-    this.description = description;
-  }
-
-  public Notification message(String message) {
-    this.message = message;
-    return this;
-  }
-
-   /**
-   * Notification message
-   * @return message
-  **/
-  @ApiModelProperty(required = true, value = "Notification message")
-  public String getMessage() {
-    return message;
-  }
-
-  public void setMessage(String message) {
-    this.message = message;
   }
 
   public Notification type(TypeEnum type) {
@@ -192,6 +156,42 @@ public class Notification {
     this.type = type;
   }
 
+  public Notification message(String message) {
+    this.message = message;
+    return this;
+  }
+
+   /**
+   * Notification message
+   * @return message
+  **/
+  @ApiModelProperty(required = true, value = "Notification message")
+  public String getMessage() {
+    return message;
+  }
+
+  public void setMessage(String message) {
+    this.message = message;
+  }
+
+  public Notification description(String description) {
+    this.description = description;
+    return this;
+  }
+
+   /**
+   * Notification description
+   * @return description
+  **/
+  @ApiModelProperty(value = "Notification description")
+  public String getDescription() {
+    return description;
+  }
+
+  public void setDescription(String description) {
+    this.description = description;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -202,14 +202,14 @@ public class Notification {
       return false;
     }
     Notification notification = (Notification) o;
-    return Objects.equals(this.description, notification.description) &&
+    return Objects.equals(this.type, notification.type) &&
         Objects.equals(this.message, notification.message) &&
-        Objects.equals(this.type, notification.type);
+        Objects.equals(this.description, notification.description);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(description, message, type);
+    return Objects.hash(type, message, description);
   }
 
 
@@ -218,9 +218,9 @@ public class Notification {
     StringBuilder sb = new StringBuilder();
     sb.append("class Notification {\n");
     
-    sb.append("    description: ").append(toIndentedString(description)).append("\n");
-    sb.append("    message: ").append(toIndentedString(message)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
+    sb.append("    message: ").append(toIndentedString(message)).append("\n");
+    sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("}");
     return sb.toString();
   }

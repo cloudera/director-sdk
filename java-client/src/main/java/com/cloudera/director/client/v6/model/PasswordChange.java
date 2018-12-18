@@ -33,18 +33,18 @@ import java.io.IOException;
 @ApiModel(description = "A password change request for a Cloudera Altus Director user")
 
 public class PasswordChange {
-  @SerializedName("newPassword")
-  private String newPassword = null;
   @SerializedName("oldPassword")
   private String oldPassword = null;
+  @SerializedName("newPassword")
+  private String newPassword = null;
 
   public PasswordChange() {
     // Do nothing
   }
 
   private PasswordChange(PasswordChangeBuilder builder) {
-      this.newPassword = builder.newPassword;
       this.oldPassword = builder.oldPassword;
+      this.newPassword = builder.newPassword;
     }
 
   public static PasswordChangeBuilder builder() {
@@ -52,18 +52,18 @@ public class PasswordChange {
   }
 
   public static class PasswordChangeBuilder {
-      private String newPassword = null;
       private String oldPassword = null;
+      private String newPassword = null;
   
 
-    public PasswordChangeBuilder newPassword(String newPassword) {
-      this.newPassword = newPassword;
+    public PasswordChangeBuilder oldPassword(String oldPassword) {
+      this.oldPassword = oldPassword;
       return this;
     }
 
 
-    public PasswordChangeBuilder oldPassword(String oldPassword) {
-      this.oldPassword = oldPassword;
+    public PasswordChangeBuilder newPassword(String newPassword) {
+      this.newPassword = newPassword;
       return this;
     }
 
@@ -75,27 +75,9 @@ public class PasswordChange {
 
   public PasswordChangeBuilder toBuilder() {
     return builder()
-      .newPassword(newPassword)
-            .oldPassword(oldPassword)
+      .oldPassword(oldPassword)
+            .newPassword(newPassword)
       ;
-  }
-
-  public PasswordChange newPassword(String newPassword) {
-    this.newPassword = newPassword;
-    return this;
-  }
-
-   /**
-   * New password [redacted on read]
-   * @return newPassword
-  **/
-  @ApiModelProperty(required = true, value = "New password [redacted on read]")
-  public String getNewPassword() {
-    return newPassword;
-  }
-
-  public void setNewPassword(String newPassword) {
-    this.newPassword = newPassword;
   }
 
   public PasswordChange oldPassword(String oldPassword) {
@@ -116,6 +98,24 @@ public class PasswordChange {
     this.oldPassword = oldPassword;
   }
 
+  public PasswordChange newPassword(String newPassword) {
+    this.newPassword = newPassword;
+    return this;
+  }
+
+   /**
+   * New password [redacted on read]
+   * @return newPassword
+  **/
+  @ApiModelProperty(required = true, value = "New password [redacted on read]")
+  public String getNewPassword() {
+    return newPassword;
+  }
+
+  public void setNewPassword(String newPassword) {
+    this.newPassword = newPassword;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -126,13 +126,13 @@ public class PasswordChange {
       return false;
     }
     PasswordChange passwordChange = (PasswordChange) o;
-    return Objects.equals(this.newPassword, passwordChange.newPassword) &&
-        Objects.equals(this.oldPassword, passwordChange.oldPassword);
+    return Objects.equals(this.oldPassword, passwordChange.oldPassword) &&
+        Objects.equals(this.newPassword, passwordChange.newPassword);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(newPassword, oldPassword);
+    return Objects.hash(oldPassword, newPassword);
   }
 
 
@@ -141,8 +141,8 @@ public class PasswordChange {
     StringBuilder sb = new StringBuilder();
     sb.append("class PasswordChange {\n");
     
-    sb.append("    newPassword: ").append(toIndentedString(newPassword)).append("\n");
     sb.append("    oldPassword: ").append(toIndentedString(oldPassword)).append("\n");
+    sb.append("    newPassword: ").append(toIndentedString(newPassword)).append("\n");
     sb.append("}");
     return sb.toString();
   }

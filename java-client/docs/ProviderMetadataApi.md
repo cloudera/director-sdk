@@ -1,11 +1,11 @@
 # ProviderMetadataApi
 
-All URIs are relative to *https://localhost:7189*
+All URIs are relative to *https://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**get**](ProviderMetadataApi.md#get) | **GET** /api/d6.0/metadata/providers/{providerId} | Get a provider by name
-[**list**](ProviderMetadataApi.md#list) | **GET** /api/d6.0/metadata/providers | List all provider metadata
+[**get**](ProviderMetadataApi.md#get) | **GET** /api/d6.1/metadata/providers/{providerId} | Get a provider by name
+[**list**](ProviderMetadataApi.md#list) | **GET** /api/d6.1/metadata/providers | List all provider metadata
 
 
 <a name="get"></a>
@@ -13,6 +13,8 @@ Method | HTTP request | Description
 > CloudProviderMetadata get(providerId)
 
 Get a provider by name
+
+
 
 ### Example
 ```java
@@ -31,7 +33,7 @@ basic.setUsername("YOUR USERNAME");
 basic.setPassword("YOUR PASSWORD");
 
 ProviderMetadataApi apiInstance = new ProviderMetadataApi();
-String providerId = "providerId_example"; // String | providerId
+String providerId = "providerId_example"; // String | 
 try {
     CloudProviderMetadata result = apiInstance.get(providerId);
     System.out.println(result);
@@ -45,7 +47,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **providerId** | **String**| providerId |
+ **providerId** | **String**|  |
 
 ### Return type
 
@@ -65,6 +67,8 @@ Name | Type | Description  | Notes
 > List&lt;CloudProviderMetadata&gt; list()
 
 List all provider metadata
+
+
 
 ### Example
 ```java

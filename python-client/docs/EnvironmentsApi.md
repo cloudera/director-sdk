@@ -1,21 +1,23 @@
 # cloudera.director.EnvironmentsApi
 
-All URIs are relative to *https://localhost:7189*
+All URIs are relative to *https://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**create**](EnvironmentsApi.md#create) | **POST** /api/d6.0/environments | Create a new environment
-[**delete**](EnvironmentsApi.md#delete) | **DELETE** /api/d6.0/environments/{name} | Delete an environment by name
-[**get_redacted**](EnvironmentsApi.md#get_redacted) | **GET** /api/d6.0/environments/{name} | Get an environment by name
-[**list**](EnvironmentsApi.md#list) | **GET** /api/d6.0/environments | List all environments
-[**update**](EnvironmentsApi.md#update) | **PUT** /api/d6.0/environments/{name} | Update an existing environment
-[**update_provider_credentials**](EnvironmentsApi.md#update_provider_credentials) | **PUT** /api/d6.0/environments/{name}/provider/credentials | Update provider credentials for a specific environment
+[**create**](EnvironmentsApi.md#create) | **POST** /api/d6.1/environments | Create a new environment
+[**delete**](EnvironmentsApi.md#delete) | **DELETE** /api/d6.1/environments/{name} | Delete an environment by name
+[**get_redacted**](EnvironmentsApi.md#get_redacted) | **GET** /api/d6.1/environments/{name} | Get an environment by name
+[**list**](EnvironmentsApi.md#list) | **GET** /api/d6.1/environments | List all environments
+[**update**](EnvironmentsApi.md#update) | **PUT** /api/d6.1/environments/{name} | Update an existing environment
+[**update_provider_credentials**](EnvironmentsApi.md#update_provider_credentials) | **PUT** /api/d6.1/environments/{name}/provider/credentials | Update provider credentials for a specific environment
 
 
 # **create**
 > create(environment)
 
 Create a new environment
+
+
 
 ### Example
 ```python
@@ -32,7 +34,7 @@ configuration.password = 'YOUR_PASSWORD'
 
 # create an instance of the API class
 api_instance = cloudera.director.EnvironmentsApi(cloudera.director.ApiClient(configuration))
-environment = cloudera.director.Environment() # Environment | environment
+environment = cloudera.director.Environment() # Environment | 
 
 try:
     # Create a new environment
@@ -45,7 +47,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **environment** | [**Environment**](Environment.md)| environment | 
+ **environment** | [**Environment**](Environment.md)|  | 
 
 ### Return type
 
@@ -57,7 +59,7 @@ void (empty response body)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -66,6 +68,8 @@ void (empty response body)
 > delete(name)
 
 Delete an environment by name
+
+
 
 ### Example
 ```python
@@ -82,7 +86,7 @@ configuration.password = 'YOUR_PASSWORD'
 
 # create an instance of the API class
 api_instance = cloudera.director.EnvironmentsApi(cloudera.director.ApiClient(configuration))
-name = 'name_example' # str | name
+name = 'name_example' # str | 
 
 try:
     # Delete an environment by name
@@ -95,7 +99,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **name** | **str**| name | 
+ **name** | **str**|  | 
 
 ### Return type
 
@@ -117,6 +121,8 @@ void (empty response body)
 
 Get an environment by name
 
+
+
 ### Example
 ```python
 from __future__ import print_function
@@ -132,7 +138,7 @@ configuration.password = 'YOUR_PASSWORD'
 
 # create an instance of the API class
 api_instance = cloudera.director.EnvironmentsApi(cloudera.director.ApiClient(configuration))
-name = 'name_example' # str | name
+name = 'name_example' # str | 
 
 try:
     # Get an environment by name
@@ -146,7 +152,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **name** | **str**| name | 
+ **name** | **str**|  | 
 
 ### Return type
 
@@ -167,6 +173,8 @@ Name | Type | Description  | Notes
 > list[str] list()
 
 List all environments
+
+
 
 ### Example
 ```python
@@ -215,6 +223,8 @@ This endpoint does not need any parameter.
 
 Update an existing environment
 
+
+
 ### Example
 ```python
 from __future__ import print_function
@@ -230,8 +240,8 @@ configuration.password = 'YOUR_PASSWORD'
 
 # create an instance of the API class
 api_instance = cloudera.director.EnvironmentsApi(cloudera.director.ApiClient(configuration))
-name = 'name_example' # str | name
-environment = cloudera.director.Environment() # Environment | environment
+name = 'name_example' # str | 
+environment = cloudera.director.Environment() # Environment | 
 
 try:
     # Update an existing environment
@@ -244,8 +254,8 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **name** | **str**| name | 
- **environment** | [**Environment**](Environment.md)| environment | 
+ **name** | **str**|  | 
+ **environment** | [**Environment**](Environment.md)|  | 
 
 ### Return type
 
@@ -257,7 +267,7 @@ void (empty response body)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -266,6 +276,8 @@ void (empty response body)
 > update_provider_credentials(name, credentials)
 
 Update provider credentials for a specific environment
+
+
 
 ### Example
 ```python
@@ -282,8 +294,8 @@ configuration.password = 'YOUR_PASSWORD'
 
 # create an instance of the API class
 api_instance = cloudera.director.EnvironmentsApi(cloudera.director.ApiClient(configuration))
-name = 'name_example' # str | name
-credentials = NULL # object | credentials
+name = 'name_example' # str | 
+credentials = NULL # object | 
 
 try:
     # Update provider credentials for a specific environment
@@ -296,8 +308,8 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **name** | **str**| name | 
- **credentials** | **object**| credentials | 
+ **name** | **str**|  | 
+ **credentials** | **object**|  | 
 
 ### Return type
 
@@ -309,7 +321,7 @@ void (empty response body)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

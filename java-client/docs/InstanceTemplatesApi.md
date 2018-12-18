@@ -1,14 +1,14 @@
 # InstanceTemplatesApi
 
-All URIs are relative to *https://localhost:7189*
+All URIs are relative to *https://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**create**](InstanceTemplatesApi.md#create) | **POST** /api/d6.0/environments/{environment}/templates/instances | Create a new instance template
-[**delete**](InstanceTemplatesApi.md#delete) | **DELETE** /api/d6.0/environments/{environment}/templates/instances/{template} | Delete an instance template by name
-[**get**](InstanceTemplatesApi.md#get) | **GET** /api/d6.0/environments/{environment}/templates/instances/{template} | Get an instance template by name
-[**list**](InstanceTemplatesApi.md#list) | **GET** /api/d6.0/environments/{environment}/templates/instances | List all instance templates
-[**update**](InstanceTemplatesApi.md#update) | **PUT** /api/d6.0/environments/{environment}/templates/instances/{template} | Update an existing instance template
+[**create**](InstanceTemplatesApi.md#create) | **POST** /api/d6.1/environments/{environment}/templates/instances | Create a new instance template
+[**delete**](InstanceTemplatesApi.md#delete) | **DELETE** /api/d6.1/environments/{environment}/templates/instances/{template} | Delete an instance template by name
+[**get**](InstanceTemplatesApi.md#get) | **GET** /api/d6.1/environments/{environment}/templates/instances/{template} | Get an instance template by name
+[**list**](InstanceTemplatesApi.md#list) | **GET** /api/d6.1/environments/{environment}/templates/instances | List all instance templates
+[**update**](InstanceTemplatesApi.md#update) | **PUT** /api/d6.1/environments/{environment}/templates/instances/{template} | Update an existing instance template
 
 
 <a name="create"></a>
@@ -16,6 +16,8 @@ Method | HTTP request | Description
 > create(environment, instanceTemplate)
 
 Create a new instance template
+
+
 
 ### Example
 ```java
@@ -34,8 +36,8 @@ basic.setUsername("YOUR USERNAME");
 basic.setPassword("YOUR PASSWORD");
 
 InstanceTemplatesApi apiInstance = new InstanceTemplatesApi();
-String environment = "environment_example"; // String | environment
-InstanceTemplate instanceTemplate = new InstanceTemplate(); // InstanceTemplate | instanceTemplate
+String environment = "environment_example"; // String | 
+InstanceTemplate instanceTemplate = new InstanceTemplate(); // InstanceTemplate | 
 try {
     apiInstance.create(environment, instanceTemplate);
 } catch (ApiException e) {
@@ -48,8 +50,8 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **environment** | **String**| environment |
- **instanceTemplate** | [**InstanceTemplate**](InstanceTemplate.md)| instanceTemplate |
+ **environment** | **String**|  |
+ **instanceTemplate** | [**InstanceTemplate**](InstanceTemplate.md)|  |
 
 ### Return type
 
@@ -61,7 +63,7 @@ null (empty response body)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 <a name="delete"></a>
@@ -69,6 +71,8 @@ null (empty response body)
 > delete(environment, template)
 
 Delete an instance template by name
+
+
 
 ### Example
 ```java
@@ -87,8 +91,8 @@ basic.setUsername("YOUR USERNAME");
 basic.setPassword("YOUR PASSWORD");
 
 InstanceTemplatesApi apiInstance = new InstanceTemplatesApi();
-String environment = "environment_example"; // String | environment
-String template = "template_example"; // String | template
+String environment = "environment_example"; // String | 
+String template = "template_example"; // String | 
 try {
     apiInstance.delete(environment, template);
 } catch (ApiException e) {
@@ -101,8 +105,8 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **environment** | **String**| environment |
- **template** | **String**| template |
+ **environment** | **String**|  |
+ **template** | **String**|  |
 
 ### Return type
 
@@ -123,6 +127,8 @@ null (empty response body)
 
 Get an instance template by name
 
+
+
 ### Example
 ```java
 // Import classes:
@@ -140,8 +146,8 @@ basic.setUsername("YOUR USERNAME");
 basic.setPassword("YOUR PASSWORD");
 
 InstanceTemplatesApi apiInstance = new InstanceTemplatesApi();
-String environment = "environment_example"; // String | environment
-String template = "template_example"; // String | template
+String environment = "environment_example"; // String | 
+String template = "template_example"; // String | 
 try {
     InstanceTemplate result = apiInstance.get(environment, template);
     System.out.println(result);
@@ -155,8 +161,8 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **environment** | **String**| environment |
- **template** | **String**| template |
+ **environment** | **String**|  |
+ **template** | **String**|  |
 
 ### Return type
 
@@ -177,6 +183,8 @@ Name | Type | Description  | Notes
 
 List all instance templates
 
+
+
 ### Example
 ```java
 // Import classes:
@@ -194,7 +202,7 @@ basic.setUsername("YOUR USERNAME");
 basic.setPassword("YOUR PASSWORD");
 
 InstanceTemplatesApi apiInstance = new InstanceTemplatesApi();
-String environment = "environment_example"; // String | environment
+String environment = "environment_example"; // String | 
 try {
     List<String> result = apiInstance.list(environment);
     System.out.println(result);
@@ -208,7 +216,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **environment** | **String**| environment |
+ **environment** | **String**|  |
 
 ### Return type
 
@@ -229,6 +237,8 @@ Name | Type | Description  | Notes
 
 Update an existing instance template
 
+
+
 ### Example
 ```java
 // Import classes:
@@ -246,9 +256,9 @@ basic.setUsername("YOUR USERNAME");
 basic.setPassword("YOUR PASSWORD");
 
 InstanceTemplatesApi apiInstance = new InstanceTemplatesApi();
-String environment = "environment_example"; // String | environment
-String template = "template_example"; // String | template
-InstanceTemplate instanceTemplate = new InstanceTemplate(); // InstanceTemplate | instanceTemplate
+String environment = "environment_example"; // String | 
+String template = "template_example"; // String | 
+InstanceTemplate instanceTemplate = new InstanceTemplate(); // InstanceTemplate | 
 try {
     apiInstance.update(environment, template, instanceTemplate);
 } catch (ApiException e) {
@@ -261,9 +271,9 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **environment** | **String**| environment |
- **template** | **String**| template |
- **instanceTemplate** | [**InstanceTemplate**](InstanceTemplate.md)| instanceTemplate |
+ **environment** | **String**|  |
+ **template** | **String**|  |
+ **instanceTemplate** | [**InstanceTemplate**](InstanceTemplate.md)|  |
 
 ### Return type
 
@@ -275,6 +285,6 @@ null (empty response body)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 

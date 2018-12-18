@@ -39,48 +39,25 @@ class TimeSeries(object):
                             and the value is json key in definition.
     """
     swagger_types = {
-        'data': 'list[TimeSeriesData]',
-        'metadata': 'TimeSeriesMetadata'
+        'metadata': 'TimeSeriesMetadata',
+        'data': 'list[TimeSeriesData]'
     }
 
     attribute_map = {
-        'data': 'data',
-        'metadata': 'metadata'
+        'metadata': 'metadata',
+        'data': 'data'
     }
 
-    def __init__(self, data=None, metadata=None):  # noqa: E501
+    def __init__(self, metadata=None, data=None):  # noqa: E501
         """TimeSeries - a model defined in Swagger"""  # noqa: E501
 
-        self._data = None
         self._metadata = None
+        self._data = None
         self.discriminator = None
 
+        self.metadata = metadata
         if data is not None:
             self.data = data
-        self.metadata = metadata
-
-    @property
-    def data(self):
-        """Gets the data of this TimeSeries.  # noqa: E501
-
-        Time series data  # noqa: E501
-
-        :return: The data of this TimeSeries.  # noqa: E501
-        :rtype: list[TimeSeriesData]
-        """
-        return self._data
-
-    @data.setter
-    def data(self, data):
-        """Sets the data of this TimeSeries.
-
-        Time series data  # noqa: E501
-
-        :param data: The data of this TimeSeries.  # noqa: E501
-        :type: list[TimeSeriesData]
-        """
-
-        self._data = data
 
     @property
     def metadata(self):
@@ -106,6 +83,29 @@ class TimeSeries(object):
             raise ValueError("Invalid value for `metadata`, must not be `None`")  # noqa: E501
 
         self._metadata = metadata
+
+    @property
+    def data(self):
+        """Gets the data of this TimeSeries.  # noqa: E501
+
+        Time series data  # noqa: E501
+
+        :return: The data of this TimeSeries.  # noqa: E501
+        :rtype: list[TimeSeriesData]
+        """
+        return self._data
+
+    @data.setter
+    def data(self, data):
+        """Sets the data of this TimeSeries.
+
+        Time series data  # noqa: E501
+
+        :param data: The data of this TimeSeries.  # noqa: E501
+        :type: list[TimeSeriesData]
+        """
+
+        self._data = data
 
     def to_dict(self):
         """Returns the model properties as a dict"""

@@ -62,7 +62,7 @@ public class ApiClient {
 
     public static final String CLIENT_HEADER = "X-Director-Client";
 
-    private String basePath = "https://localhost:7189";
+    private String basePath = "https://localhost";
     private boolean debugging = false;
     private Map<String, String> defaultHeaderMap = new HashMap<String, String>();
     private String tempFolderPath = null;
@@ -93,7 +93,7 @@ public class ApiClient {
         json = new JSON();
 
         // Set default User-Agent.
-        setUserAgent("Swagger-Codegen/6.0.0/java");
+        setUserAgent("Swagger-Codegen/6.1.0/java");
 
         // Setup authentications (key: authentication name, value: authentication).
         authentications = new HashMap<String, Authentication>();
@@ -117,7 +117,7 @@ public class ApiClient {
     /**
      * Constructor with a base path, username, and password.
      *
-     * @param basePath Base path of the URL (e.g https://localhost:7189
+     * @param basePath Base path of the URL (e.g https://localhost
      * @param username The username for Director
      * @param password The password for Director
      **/
@@ -140,7 +140,7 @@ public class ApiClient {
     /**
      * Set base path
      *
-     * @param basePath Base path of the URL (e.g https://localhost:7189
+     * @param basePath Base path of the URL (e.g https://localhost
      * @return An instance of OkHttpClient
      */
     public ApiClient setBasePath(String basePath) {

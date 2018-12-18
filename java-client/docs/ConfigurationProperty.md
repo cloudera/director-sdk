@@ -4,18 +4,18 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**basic** | **Boolean** | Whether this property is basic |  [optional]
 **configKey** | **String** | Configuration property key | 
-**defaultValue** | **String** | Default value for this property |  [optional]
-**description** | **String** | Configuration property description |  [optional]
-**listSeparator** | **String** | Character to use to separate lists |  [optional]
 **name** | **String** | Configuration property name |  [optional]
-**placeholder** | **String** | Placeholder value to use if the value is unset |  [optional]
-**required** | **Boolean** | Whether this property is required |  [optional]
+**description** | **String** | Configuration property description |  [optional]
 **sensitive** | **Boolean** | Whether this property is sensitive |  [optional]
+**required** | **Boolean** | Whether this property is required |  [optional]
+**basic** | **Boolean** | Whether this property is basic |  [optional]
 **type** | [**TypeEnum**](#TypeEnum) | Configuration property type |  [optional]
-**validValues** | [**List&lt;ConfigurationPropertyValue&gt;**](ConfigurationPropertyValue.md) | List of all valid values for this property |  [optional]
 **widget** | [**WidgetEnum**](#WidgetEnum) | Widget used to display this property |  [optional]
+**defaultValue** | **String** | Default value for this property |  [optional]
+**listSeparator** | **String** | Character to use to separate lists |  [optional]
+**placeholder** | **String** | Placeholder value to use if the value is unset |  [optional]
+**validValues** | [**List&lt;ConfigurationPropertyValue&gt;**](ConfigurationPropertyValue.md) | List of all valid values for this property |  [optional]
 
 
 <a name="TypeEnum"></a>

@@ -39,31 +39,54 @@ class Version(object):
                             and the value is json key in definition.
     """
     swagger_types = {
+        'product_version': 'str',
         'api_versions': 'list[str]',
-        'current_server_time': 'str',
-        'product_version': 'str'
+        'current_server_time': 'str'
     }
 
     attribute_map = {
+        'product_version': 'productVersion',
         'api_versions': 'apiVersions',
-        'current_server_time': 'currentServerTime',
-        'product_version': 'productVersion'
+        'current_server_time': 'currentServerTime'
     }
 
-    def __init__(self, api_versions=None, current_server_time=None, product_version=None):  # noqa: E501
+    def __init__(self, product_version=None, api_versions=None, current_server_time=None):  # noqa: E501
         """Version - a model defined in Swagger"""  # noqa: E501
 
+        self._product_version = None
         self._api_versions = None
         self._current_server_time = None
-        self._product_version = None
         self.discriminator = None
 
+        if product_version is not None:
+            self.product_version = product_version
         if api_versions is not None:
             self.api_versions = api_versions
         if current_server_time is not None:
             self.current_server_time = current_server_time
-        if product_version is not None:
-            self.product_version = product_version
+
+    @property
+    def product_version(self):
+        """Gets the product_version of this Version.  # noqa: E501
+
+        Current version of Director  # noqa: E501
+
+        :return: The product_version of this Version.  # noqa: E501
+        :rtype: str
+        """
+        return self._product_version
+
+    @product_version.setter
+    def product_version(self, product_version):
+        """Sets the product_version of this Version.
+
+        Current version of Director  # noqa: E501
+
+        :param product_version: The product_version of this Version.  # noqa: E501
+        :type: str
+        """
+
+        self._product_version = product_version
 
     @property
     def api_versions(self):
@@ -110,29 +133,6 @@ class Version(object):
         """
 
         self._current_server_time = current_server_time
-
-    @property
-    def product_version(self):
-        """Gets the product_version of this Version.  # noqa: E501
-
-        Current version of Director  # noqa: E501
-
-        :return: The product_version of this Version.  # noqa: E501
-        :rtype: str
-        """
-        return self._product_version
-
-    @product_version.setter
-    def product_version(self, product_version):
-        """Sets the product_version of this Version.
-
-        Current version of Director  # noqa: E501
-
-        :param product_version: The product_version of this Version.  # noqa: E501
-        :type: str
-        """
-
-        self._product_version = product_version
 
     def to_dict(self):
         """Returns the model properties as a dict"""

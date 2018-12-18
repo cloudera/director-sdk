@@ -36,18 +36,8 @@ import java.util.Map;
 @ApiModel(description = "A template for a database server external to Cloudera Altus Director and Cloudera Manager")
 
 public class ExternalDatabaseServerTemplate {
-  @SerializedName("config")
-  private Map<String, String> config = null;
-  @SerializedName("hostname")
-  private String hostname = null;
   @SerializedName("name")
   private String name = null;
-  @SerializedName("password")
-  private String password = null;
-  @SerializedName("port")
-  private Integer port = null;
-  @SerializedName("tags")
-  private Map<String, String> tags = null;
   /**
    * External database server type
    */
@@ -99,22 +89,32 @@ public class ExternalDatabaseServerTemplate {
 
   @SerializedName("type")
   private TypeEnum type = null;
+  @SerializedName("hostname")
+  private String hostname = null;
+  @SerializedName("port")
+  private Integer port = null;
   @SerializedName("username")
   private String username = null;
+  @SerializedName("password")
+  private String password = null;
+  @SerializedName("config")
+  private Map<String, String> config = null;
+  @SerializedName("tags")
+  private Map<String, String> tags = null;
 
   public ExternalDatabaseServerTemplate() {
     // Do nothing
   }
 
   private ExternalDatabaseServerTemplate(ExternalDatabaseServerTemplateBuilder builder) {
-      this.config = builder.config;
-      this.hostname = builder.hostname;
       this.name = builder.name;
-      this.password = builder.password;
-      this.port = builder.port;
-      this.tags = builder.tags;
       this.type = builder.type;
+      this.hostname = builder.hostname;
+      this.port = builder.port;
       this.username = builder.username;
+      this.password = builder.password;
+      this.config = builder.config;
+      this.tags = builder.tags;
     }
 
   public static ExternalDatabaseServerTemplateBuilder builder() {
@@ -122,48 +122,18 @@ public class ExternalDatabaseServerTemplate {
   }
 
   public static class ExternalDatabaseServerTemplateBuilder {
-      private Map<String, String> config = new HashMap<String, String>();
-      private String hostname = null;
       private String name = null;
-      private String password = null;
-      private Integer port = null;
-      private Map<String, String> tags = new HashMap<String, String>();
       private TypeEnum type = null;
+      private String hostname = null;
+      private Integer port = null;
       private String username = null;
+      private String password = null;
+      private Map<String, String> config = new HashMap<String, String>();
+      private Map<String, String> tags = new HashMap<String, String>();
   
-
-    public ExternalDatabaseServerTemplateBuilder config(Map<String, String> config) {
-      this.config = config;
-      return this;
-    }
-
-
-    public ExternalDatabaseServerTemplateBuilder hostname(String hostname) {
-      this.hostname = hostname;
-      return this;
-    }
-
 
     public ExternalDatabaseServerTemplateBuilder name(String name) {
       this.name = name;
-      return this;
-    }
-
-
-    public ExternalDatabaseServerTemplateBuilder password(String password) {
-      this.password = password;
-      return this;
-    }
-
-
-    public ExternalDatabaseServerTemplateBuilder port(Integer port) {
-      this.port = port;
-      return this;
-    }
-
-
-    public ExternalDatabaseServerTemplateBuilder tags(Map<String, String> tags) {
-      this.tags = tags;
       return this;
     }
 
@@ -174,8 +144,38 @@ public class ExternalDatabaseServerTemplate {
     }
 
 
+    public ExternalDatabaseServerTemplateBuilder hostname(String hostname) {
+      this.hostname = hostname;
+      return this;
+    }
+
+
+    public ExternalDatabaseServerTemplateBuilder port(Integer port) {
+      this.port = port;
+      return this;
+    }
+
+
     public ExternalDatabaseServerTemplateBuilder username(String username) {
       this.username = username;
+      return this;
+    }
+
+
+    public ExternalDatabaseServerTemplateBuilder password(String password) {
+      this.password = password;
+      return this;
+    }
+
+
+    public ExternalDatabaseServerTemplateBuilder config(Map<String, String> config) {
+      this.config = config;
+      return this;
+    }
+
+
+    public ExternalDatabaseServerTemplateBuilder tags(Map<String, String> tags) {
+      this.tags = tags;
       return this;
     }
 
@@ -187,15 +187,123 @@ public class ExternalDatabaseServerTemplate {
 
   public ExternalDatabaseServerTemplateBuilder toBuilder() {
     return builder()
-      .config(config)
-            .hostname(hostname)
-            .name(name)
-            .password(password)
-            .port(port)
-            .tags(tags)
+      .name(name)
             .type(type)
+            .hostname(hostname)
+            .port(port)
             .username(username)
+            .password(password)
+            .config(config)
+            .tags(tags)
       ;
+  }
+
+  public ExternalDatabaseServerTemplate name(String name) {
+    this.name = name;
+    return this;
+  }
+
+   /**
+   * External database server template name
+   * @return name
+  **/
+  @ApiModelProperty(required = true, value = "External database server template name")
+  public String getName() {
+    return name;
+  }
+
+  public void setName(String name) {
+    this.name = name;
+  }
+
+  public ExternalDatabaseServerTemplate type(TypeEnum type) {
+    this.type = type;
+    return this;
+  }
+
+   /**
+   * External database server type
+   * @return type
+  **/
+  @ApiModelProperty(required = true, value = "External database server type")
+  public TypeEnum getType() {
+    return type;
+  }
+
+  public void setType(TypeEnum type) {
+    this.type = type;
+  }
+
+  public ExternalDatabaseServerTemplate hostname(String hostname) {
+    this.hostname = hostname;
+    return this;
+  }
+
+   /**
+   * If server already exists, external database server hostname
+   * @return hostname
+  **/
+  @ApiModelProperty(value = "If server already exists, external database server hostname")
+  public String getHostname() {
+    return hostname;
+  }
+
+  public void setHostname(String hostname) {
+    this.hostname = hostname;
+  }
+
+  public ExternalDatabaseServerTemplate port(Integer port) {
+    this.port = port;
+    return this;
+  }
+
+   /**
+   * If server already exists, external database server port
+   * @return port
+  **/
+  @ApiModelProperty(value = "If server already exists, external database server port")
+  public Integer getPort() {
+    return port;
+  }
+
+  public void setPort(Integer port) {
+    this.port = port;
+  }
+
+  public ExternalDatabaseServerTemplate username(String username) {
+    this.username = username;
+    return this;
+  }
+
+   /**
+   * User name for administrative access to external database server
+   * @return username
+  **/
+  @ApiModelProperty(required = true, value = "User name for administrative access to external database server")
+  public String getUsername() {
+    return username;
+  }
+
+  public void setUsername(String username) {
+    this.username = username;
+  }
+
+  public ExternalDatabaseServerTemplate password(String password) {
+    this.password = password;
+    return this;
+  }
+
+   /**
+   * Password for administrative access to external database server [redacted on read]
+   * @return password
+  **/
+  @ApiModelProperty(required = true, value = "Password for administrative access to external database server [redacted on read]")
+  public String getPassword() {
+    return password;
+  }
+
+  public void setPassword(String password) {
+    this.password = password;
   }
 
   public ExternalDatabaseServerTemplate config(Map<String, String> config) {
@@ -224,78 +332,6 @@ public class ExternalDatabaseServerTemplate {
     this.config = config;
   }
 
-  public ExternalDatabaseServerTemplate hostname(String hostname) {
-    this.hostname = hostname;
-    return this;
-  }
-
-   /**
-   * If server already exists, external database server hostname
-   * @return hostname
-  **/
-  @ApiModelProperty(value = "If server already exists, external database server hostname")
-  public String getHostname() {
-    return hostname;
-  }
-
-  public void setHostname(String hostname) {
-    this.hostname = hostname;
-  }
-
-  public ExternalDatabaseServerTemplate name(String name) {
-    this.name = name;
-    return this;
-  }
-
-   /**
-   * External database server template name
-   * @return name
-  **/
-  @ApiModelProperty(required = true, value = "External database server template name")
-  public String getName() {
-    return name;
-  }
-
-  public void setName(String name) {
-    this.name = name;
-  }
-
-  public ExternalDatabaseServerTemplate password(String password) {
-    this.password = password;
-    return this;
-  }
-
-   /**
-   * Password for administrative access to external database server [redacted on read]
-   * @return password
-  **/
-  @ApiModelProperty(required = true, value = "Password for administrative access to external database server [redacted on read]")
-  public String getPassword() {
-    return password;
-  }
-
-  public void setPassword(String password) {
-    this.password = password;
-  }
-
-  public ExternalDatabaseServerTemplate port(Integer port) {
-    this.port = port;
-    return this;
-  }
-
-   /**
-   * If server already exists, external database server port
-   * @return port
-  **/
-  @ApiModelProperty(value = "If server already exists, external database server port")
-  public Integer getPort() {
-    return port;
-  }
-
-  public void setPort(Integer port) {
-    this.port = port;
-  }
-
   public ExternalDatabaseServerTemplate tags(Map<String, String> tags) {
     this.tags = tags;
     return this;
@@ -322,42 +358,6 @@ public class ExternalDatabaseServerTemplate {
     this.tags = tags;
   }
 
-  public ExternalDatabaseServerTemplate type(TypeEnum type) {
-    this.type = type;
-    return this;
-  }
-
-   /**
-   * External database server type
-   * @return type
-  **/
-  @ApiModelProperty(required = true, value = "External database server type")
-  public TypeEnum getType() {
-    return type;
-  }
-
-  public void setType(TypeEnum type) {
-    this.type = type;
-  }
-
-  public ExternalDatabaseServerTemplate username(String username) {
-    this.username = username;
-    return this;
-  }
-
-   /**
-   * User name for administrative access to external database server
-   * @return username
-  **/
-  @ApiModelProperty(required = true, value = "User name for administrative access to external database server")
-  public String getUsername() {
-    return username;
-  }
-
-  public void setUsername(String username) {
-    this.username = username;
-  }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -368,19 +368,19 @@ public class ExternalDatabaseServerTemplate {
       return false;
     }
     ExternalDatabaseServerTemplate externalDatabaseServerTemplate = (ExternalDatabaseServerTemplate) o;
-    return Objects.equals(this.config, externalDatabaseServerTemplate.config) &&
-        Objects.equals(this.hostname, externalDatabaseServerTemplate.hostname) &&
-        Objects.equals(this.name, externalDatabaseServerTemplate.name) &&
-        Objects.equals(this.password, externalDatabaseServerTemplate.password) &&
-        Objects.equals(this.port, externalDatabaseServerTemplate.port) &&
-        Objects.equals(this.tags, externalDatabaseServerTemplate.tags) &&
+    return Objects.equals(this.name, externalDatabaseServerTemplate.name) &&
         Objects.equals(this.type, externalDatabaseServerTemplate.type) &&
-        Objects.equals(this.username, externalDatabaseServerTemplate.username);
+        Objects.equals(this.hostname, externalDatabaseServerTemplate.hostname) &&
+        Objects.equals(this.port, externalDatabaseServerTemplate.port) &&
+        Objects.equals(this.username, externalDatabaseServerTemplate.username) &&
+        Objects.equals(this.password, externalDatabaseServerTemplate.password) &&
+        Objects.equals(this.config, externalDatabaseServerTemplate.config) &&
+        Objects.equals(this.tags, externalDatabaseServerTemplate.tags);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(config, hostname, name, password, port, tags, type, username);
+    return Objects.hash(name, type, hostname, port, username, password, config, tags);
   }
 
 
@@ -389,14 +389,14 @@ public class ExternalDatabaseServerTemplate {
     StringBuilder sb = new StringBuilder();
     sb.append("class ExternalDatabaseServerTemplate {\n");
     
-    sb.append("    config: ").append(toIndentedString(config)).append("\n");
-    sb.append("    hostname: ").append(toIndentedString(hostname)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
-    sb.append("    password: ").append(toIndentedString(password)).append("\n");
-    sb.append("    port: ").append(toIndentedString(port)).append("\n");
-    sb.append("    tags: ").append(toIndentedString(tags)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
+    sb.append("    hostname: ").append(toIndentedString(hostname)).append("\n");
+    sb.append("    port: ").append(toIndentedString(port)).append("\n");
     sb.append("    username: ").append(toIndentedString(username)).append("\n");
+    sb.append("    password: ").append(toIndentedString(password)).append("\n");
+    sb.append("    config: ").append(toIndentedString(config)).append("\n");
+    sb.append("    tags: ").append(toIndentedString(tags)).append("\n");
     sb.append("}");
     return sb.toString();
   }

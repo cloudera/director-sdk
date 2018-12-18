@@ -28,7 +28,7 @@ Add this dependency to your project's POM:
 <dependency>
     <groupId>com.cloudera.director</groupId>
     <artifactId>java-client</artifactId>
-    <version>6.0.0</version>
+    <version>6.1.0</version>
     <scope>compile</scope>
 </dependency>
 ```
@@ -38,7 +38,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "com.cloudera.director:java-client:6.0.0"
+compile "com.cloudera.director:java-client:6.1.0"
 ```
 
 ### Others
@@ -49,7 +49,7 @@ At first generate the JAR by executing:
 
 Then manually install the following JARs:
 
-* target/java-client-6.0.0.jar
+* target/java-client-6.1.0.jar
 * target/lib/*.jar
 
 ## Getting Started
@@ -69,13 +69,7 @@ import java.util.*;
 public class VersionsApiExample {
 
     public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
         
-        // Configure HTTP basic authorization: basic
-        HttpBasicAuth basic = (HttpBasicAuth) defaultClient.getAuthentication("basic");
-        basic.setUsername("YOUR USERNAME");
-        basic.setPassword("YOUR PASSWORD");
-
         VersionsApi apiInstance = new VersionsApi();
         try {
             String result = apiInstance.getLatestVersion();
@@ -91,12 +85,12 @@ public class VersionsApiExample {
 
 ## Documentation for API Endpoints
 
-All URIs are relative to *https://localhost:7189*
+All URIs are relative to *https://localhost*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*VersionsApi* | [**getLatestVersion**](docs/VersionsApi.md#getLatestVersion) | **GET** /api/versions/latest | getLatestVersion
-*VersionsApi* | [**getVersions**](docs/VersionsApi.md#getVersions) | **GET** /api/versions | getVersions
+*VersionsApi* | [**getLatestVersion**](docs/VersionsApi.md#getLatestVersion) | **GET** /api/versions/latest | 
+*VersionsApi* | [**getVersions**](docs/VersionsApi.md#getVersions) | **GET** /api/versions | 
 
 
 ## Documentation for Models
@@ -118,5 +112,5 @@ It's recommended to create an instance of `ApiClient` per thread in a multithrea
 
 ## Author
 
-sme-eng-cloud@cloudera.com
+
 

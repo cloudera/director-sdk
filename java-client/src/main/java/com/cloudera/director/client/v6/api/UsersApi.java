@@ -61,7 +61,7 @@ public class UsersApi {
 
     /**
      * Build call for create
-     * @param user user (required)
+     * @param user  (required)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
@@ -87,7 +87,7 @@ public class UsersApi {
         if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
 
         final String[] localVarContentTypes = {
-            "application/json"
+            
         };
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
@@ -125,7 +125,7 @@ public class UsersApi {
     /**
      * Create a new user
      * 
-     * @param user user (required)
+     * @param user  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
     public void create(User user) throws ApiException {
@@ -135,7 +135,7 @@ public class UsersApi {
     /**
      * Create a new user
      * 
-     * @param user user (required)
+     * @param user  (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
@@ -147,7 +147,7 @@ public class UsersApi {
     /**
      * Create a new user (asynchronously)
      * 
-     * @param user user (required)
+     * @param user  (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -292,7 +292,7 @@ public class UsersApi {
     }
     /**
      * Build call for delete
-     * @param username username (required)
+     * @param username  (required)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
@@ -357,7 +357,7 @@ public class UsersApi {
     /**
      * Delete a user by username
      * 
-     * @param username username (required)
+     * @param username  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
     public void delete(String username) throws ApiException {
@@ -367,7 +367,7 @@ public class UsersApi {
     /**
      * Delete a user by username
      * 
-     * @param username username (required)
+     * @param username  (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
@@ -379,7 +379,7 @@ public class UsersApi {
     /**
      * Delete a user by username (asynchronously)
      * 
-     * @param username username (required)
+     * @param username  (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -411,7 +411,7 @@ public class UsersApi {
     }
     /**
      * Build call for getRedacted
-     * @param username username (required)
+     * @param username  (required)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
@@ -476,7 +476,7 @@ public class UsersApi {
     /**
      * Get a user by username
      * 
-     * @param username username (required)
+     * @param username  (required)
      * @return User
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
@@ -488,7 +488,7 @@ public class UsersApi {
     /**
      * Get a user by username
      * 
-     * @param username username (required)
+     * @param username  (required)
      * @return ApiResponse&lt;User&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
@@ -501,7 +501,7 @@ public class UsersApi {
     /**
      * Get a user by username (asynchronously)
      * 
-     * @param username username (required)
+     * @param username  (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -647,8 +647,8 @@ public class UsersApi {
     }
     /**
      * Build call for update
-     * @param username username (required)
-     * @param user user (required)
+     * @param username  (required)
+     * @param user  (required)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
@@ -675,7 +675,7 @@ public class UsersApi {
         if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
 
         final String[] localVarContentTypes = {
-            "application/json"
+            
         };
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
@@ -718,8 +718,8 @@ public class UsersApi {
     /**
      * Update an existing user
      * 
-     * @param username username (required)
-     * @param user user (required)
+     * @param username  (required)
+     * @param user  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
     public void update(String username, User user) throws ApiException {
@@ -729,8 +729,8 @@ public class UsersApi {
     /**
      * Update an existing user
      * 
-     * @param username username (required)
-     * @param user user (required)
+     * @param username  (required)
+     * @param user  (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
@@ -742,8 +742,8 @@ public class UsersApi {
     /**
      * Update an existing user (asynchronously)
      * 
-     * @param username username (required)
-     * @param user user (required)
+     * @param username  (required)
+     * @param user  (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -775,8 +775,8 @@ public class UsersApi {
     }
     /**
      * Build call for updatePassword
-     * @param username username (required)
-     * @param passwords passwords (required)
+     * @param username  (required)
+     * @param passwords  (required)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
@@ -803,7 +803,7 @@ public class UsersApi {
         if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
 
         final String[] localVarContentTypes = {
-            "application/json"
+            
         };
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
@@ -846,8 +846,8 @@ public class UsersApi {
     /**
      * Update the password of an existing user
      * 
-     * @param username username (required)
-     * @param passwords passwords (required)
+     * @param username  (required)
+     * @param passwords  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
     public void updatePassword(String username, PasswordChange passwords) throws ApiException {
@@ -857,8 +857,8 @@ public class UsersApi {
     /**
      * Update the password of an existing user
      * 
-     * @param username username (required)
-     * @param passwords passwords (required)
+     * @param username  (required)
+     * @param passwords  (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
@@ -870,8 +870,8 @@ public class UsersApi {
     /**
      * Update the password of an existing user (asynchronously)
      * 
-     * @param username username (required)
-     * @param passwords passwords (required)
+     * @param username  (required)
+     * @param passwords  (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object

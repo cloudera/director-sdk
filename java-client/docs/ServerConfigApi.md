@@ -1,12 +1,12 @@
 # ServerConfigApi
 
-All URIs are relative to *https://localhost:7189*
+All URIs are relative to *https://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**get**](ServerConfigApi.md#get) | **GET** /api/d6.0/serverConfigs | Get server configuration
-[**metadata**](ServerConfigApi.md#metadata) | **GET** /api/d6.0/serverConfigs/metadata | Retrieves the metadata for server configuration
-[**updateConfigs**](ServerConfigApi.md#updateConfigs) | **POST** /api/d6.0/serverConfigs | Get server configuration
+[**get**](ServerConfigApi.md#get) | **GET** /api/d6.1/serverConfigs | Get server configuration
+[**metadata**](ServerConfigApi.md#metadata) | **GET** /api/d6.1/serverConfigs/metadata | Retrieves the metadata for server configuration
+[**updateConfigs**](ServerConfigApi.md#updateConfigs) | **POST** /api/d6.1/serverConfigs | Get server configuration
 
 
 <a name="get"></a>
@@ -14,6 +14,8 @@ Method | HTTP request | Description
 > Map&lt;String, String&gt; get()
 
 Get server configuration
+
+
 
 ### Example
 ```java
@@ -63,6 +65,8 @@ This endpoint does not need any parameter.
 
 Retrieves the metadata for server configuration
 
+
+
 ### Example
 ```java
 // Import classes:
@@ -111,6 +115,8 @@ This endpoint does not need any parameter.
 
 Get server configuration
 
+
+
 ### Example
 ```java
 // Import classes:
@@ -128,7 +134,7 @@ basic.setUsername("YOUR USERNAME");
 basic.setPassword("YOUR PASSWORD");
 
 ServerConfigApi apiInstance = new ServerConfigApi();
-Object serverConfigs = null; // Object | serverConfigs
+Object serverConfigs = null; // Object | 
 try {
     apiInstance.updateConfigs(serverConfigs);
 } catch (ApiException e) {
@@ -141,7 +147,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **serverConfigs** | **Object**| serverConfigs |
+ **serverConfigs** | **Object**|  |
 
 ### Return type
 
@@ -153,6 +159,6 @@ null (empty response body)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 

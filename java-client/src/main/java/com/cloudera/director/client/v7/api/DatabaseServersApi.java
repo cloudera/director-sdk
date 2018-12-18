@@ -63,8 +63,8 @@ public class DatabaseServersApi {
 
     /**
      * Build call for create
-     * @param environment environment (required)
-     * @param externalDatabaseServerTemplate externalDatabaseServerTemplate (required)
+     * @param environment  (required)
+     * @param externalDatabaseServerTemplate  (required)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
@@ -91,7 +91,7 @@ public class DatabaseServersApi {
         if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
 
         final String[] localVarContentTypes = {
-            "application/json"
+            
         };
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
@@ -134,8 +134,8 @@ public class DatabaseServersApi {
     /**
      * Create a new external database server
      * 
-     * @param environment environment (required)
-     * @param externalDatabaseServerTemplate externalDatabaseServerTemplate (required)
+     * @param environment  (required)
+     * @param externalDatabaseServerTemplate  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
     public void create(String environment, ExternalDatabaseServerTemplate externalDatabaseServerTemplate) throws ApiException {
@@ -145,8 +145,8 @@ public class DatabaseServersApi {
     /**
      * Create a new external database server
      * 
-     * @param environment environment (required)
-     * @param externalDatabaseServerTemplate externalDatabaseServerTemplate (required)
+     * @param environment  (required)
+     * @param externalDatabaseServerTemplate  (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
@@ -158,8 +158,8 @@ public class DatabaseServersApi {
     /**
      * Create a new external database server (asynchronously)
      * 
-     * @param environment environment (required)
-     * @param externalDatabaseServerTemplate externalDatabaseServerTemplate (required)
+     * @param environment  (required)
+     * @param externalDatabaseServerTemplate  (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -191,8 +191,8 @@ public class DatabaseServersApi {
     }
     /**
      * Build call for delete
-     * @param environment environment (required)
-     * @param externalDatabaseServer externalDatabaseServer (required)
+     * @param environment  (required)
+     * @param externalDatabaseServer  (required)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
@@ -263,8 +263,8 @@ public class DatabaseServersApi {
     /**
      * Delete an external database server by name
      * 
-     * @param environment environment (required)
-     * @param externalDatabaseServer externalDatabaseServer (required)
+     * @param environment  (required)
+     * @param externalDatabaseServer  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
     public void delete(String environment, String externalDatabaseServer) throws ApiException {
@@ -274,8 +274,8 @@ public class DatabaseServersApi {
     /**
      * Delete an external database server by name
      * 
-     * @param environment environment (required)
-     * @param externalDatabaseServer externalDatabaseServer (required)
+     * @param environment  (required)
+     * @param externalDatabaseServer  (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
@@ -287,8 +287,8 @@ public class DatabaseServersApi {
     /**
      * Delete an external database server by name (asynchronously)
      * 
-     * @param environment environment (required)
-     * @param externalDatabaseServer externalDatabaseServer (required)
+     * @param environment  (required)
+     * @param externalDatabaseServer  (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -320,8 +320,8 @@ public class DatabaseServersApi {
     }
     /**
      * Build call for getDatabaseServerUsage
-     * @param environment environment (required)
-     * @param externalDatabaseServer externalDatabaseServer (required)
+     * @param environment  (required)
+     * @param externalDatabaseServer  (required)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
@@ -392,8 +392,8 @@ public class DatabaseServersApi {
     /**
      * Get an external database server usage by name
      * 
-     * @param environment environment (required)
-     * @param externalDatabaseServer externalDatabaseServer (required)
+     * @param environment  (required)
+     * @param externalDatabaseServer  (required)
      * @return ExternalDatabaseServerUsage
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
@@ -405,8 +405,8 @@ public class DatabaseServersApi {
     /**
      * Get an external database server usage by name
      * 
-     * @param environment environment (required)
-     * @param externalDatabaseServer externalDatabaseServer (required)
+     * @param environment  (required)
+     * @param externalDatabaseServer  (required)
      * @return ApiResponse&lt;ExternalDatabaseServerUsage&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
@@ -419,8 +419,8 @@ public class DatabaseServersApi {
     /**
      * Get an external database server usage by name (asynchronously)
      * 
-     * @param environment environment (required)
-     * @param externalDatabaseServer externalDatabaseServer (required)
+     * @param environment  (required)
+     * @param externalDatabaseServer  (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -453,8 +453,8 @@ public class DatabaseServersApi {
     }
     /**
      * Build call for getRedacted
-     * @param environment environment (required)
-     * @param externalDatabaseServer externalDatabaseServer (required)
+     * @param environment  (required)
+     * @param externalDatabaseServer  (required)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
@@ -525,8 +525,8 @@ public class DatabaseServersApi {
     /**
      * Get an external database server by name
      * 
-     * @param environment environment (required)
-     * @param externalDatabaseServer externalDatabaseServer (required)
+     * @param environment  (required)
+     * @param externalDatabaseServer  (required)
      * @return ExternalDatabaseServer
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
@@ -538,8 +538,8 @@ public class DatabaseServersApi {
     /**
      * Get an external database server by name
      * 
-     * @param environment environment (required)
-     * @param externalDatabaseServer externalDatabaseServer (required)
+     * @param environment  (required)
+     * @param externalDatabaseServer  (required)
      * @return ApiResponse&lt;ExternalDatabaseServer&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
@@ -552,8 +552,8 @@ public class DatabaseServersApi {
     /**
      * Get an external database server by name (asynchronously)
      * 
-     * @param environment environment (required)
-     * @param externalDatabaseServer externalDatabaseServer (required)
+     * @param environment  (required)
+     * @param externalDatabaseServer  (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -586,8 +586,8 @@ public class DatabaseServersApi {
     }
     /**
      * Build call for getStatus
-     * @param environment environment (required)
-     * @param externalDatabaseServer externalDatabaseServer (required)
+     * @param environment  (required)
+     * @param externalDatabaseServer  (required)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
@@ -658,8 +658,8 @@ public class DatabaseServersApi {
     /**
      * Get an external database server status by name
      * 
-     * @param environment environment (required)
-     * @param externalDatabaseServer externalDatabaseServer (required)
+     * @param environment  (required)
+     * @param externalDatabaseServer  (required)
      * @return Status
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
@@ -671,8 +671,8 @@ public class DatabaseServersApi {
     /**
      * Get an external database server status by name
      * 
-     * @param environment environment (required)
-     * @param externalDatabaseServer externalDatabaseServer (required)
+     * @param environment  (required)
+     * @param externalDatabaseServer  (required)
      * @return ApiResponse&lt;Status&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
@@ -685,8 +685,8 @@ public class DatabaseServersApi {
     /**
      * Get an external database server status by name (asynchronously)
      * 
-     * @param environment environment (required)
-     * @param externalDatabaseServer externalDatabaseServer (required)
+     * @param environment  (required)
+     * @param externalDatabaseServer  (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -719,8 +719,8 @@ public class DatabaseServersApi {
     }
     /**
      * Build call for getTemplateRedacted
-     * @param environment environment (required)
-     * @param externalDatabaseServer externalDatabaseServer (required)
+     * @param environment  (required)
+     * @param externalDatabaseServer  (required)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
@@ -791,8 +791,8 @@ public class DatabaseServersApi {
     /**
      * Get an external database server template by name
      * 
-     * @param environment environment (required)
-     * @param externalDatabaseServer externalDatabaseServer (required)
+     * @param environment  (required)
+     * @param externalDatabaseServer  (required)
      * @return ExternalDatabaseServerTemplate
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
@@ -804,8 +804,8 @@ public class DatabaseServersApi {
     /**
      * Get an external database server template by name
      * 
-     * @param environment environment (required)
-     * @param externalDatabaseServer externalDatabaseServer (required)
+     * @param environment  (required)
+     * @param externalDatabaseServer  (required)
      * @return ApiResponse&lt;ExternalDatabaseServerTemplate&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
@@ -818,8 +818,8 @@ public class DatabaseServersApi {
     /**
      * Get an external database server template by name (asynchronously)
      * 
-     * @param environment environment (required)
-     * @param externalDatabaseServer externalDatabaseServer (required)
+     * @param environment  (required)
+     * @param externalDatabaseServer  (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -852,7 +852,7 @@ public class DatabaseServersApi {
     }
     /**
      * Build call for list
-     * @param environment environment (required)
+     * @param environment  (required)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
@@ -917,7 +917,7 @@ public class DatabaseServersApi {
     /**
      * List all externalDatabaseServers
      * 
-     * @param environment environment (required)
+     * @param environment  (required)
      * @return List&lt;String&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
@@ -929,7 +929,7 @@ public class DatabaseServersApi {
     /**
      * List all externalDatabaseServers
      * 
-     * @param environment environment (required)
+     * @param environment  (required)
      * @return ApiResponse&lt;List&lt;String&gt;&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
@@ -942,7 +942,7 @@ public class DatabaseServersApi {
     /**
      * List all externalDatabaseServers (asynchronously)
      * 
-     * @param environment environment (required)
+     * @param environment  (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -975,9 +975,9 @@ public class DatabaseServersApi {
     }
     /**
      * Build call for update
-     * @param environment environment (required)
-     * @param externalDatabaseServer externalDatabaseServer (required)
-     * @param updatedTemplate updatedTemplate (required)
+     * @param environment  (required)
+     * @param externalDatabaseServer  (required)
+     * @param updatedTemplate  (required)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
@@ -1005,7 +1005,7 @@ public class DatabaseServersApi {
         if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
 
         final String[] localVarContentTypes = {
-            "application/json"
+            
         };
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
@@ -1053,9 +1053,9 @@ public class DatabaseServersApi {
     /**
      * Update an existing external database server (unsupported)
      * 
-     * @param environment environment (required)
-     * @param externalDatabaseServer externalDatabaseServer (required)
-     * @param updatedTemplate updatedTemplate (required)
+     * @param environment  (required)
+     * @param externalDatabaseServer  (required)
+     * @param updatedTemplate  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
     public void update(String environment, String externalDatabaseServer, ExternalDatabaseServerTemplate updatedTemplate) throws ApiException {
@@ -1065,9 +1065,9 @@ public class DatabaseServersApi {
     /**
      * Update an existing external database server (unsupported)
      * 
-     * @param environment environment (required)
-     * @param externalDatabaseServer externalDatabaseServer (required)
-     * @param updatedTemplate updatedTemplate (required)
+     * @param environment  (required)
+     * @param externalDatabaseServer  (required)
+     * @param updatedTemplate  (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
@@ -1079,9 +1079,9 @@ public class DatabaseServersApi {
     /**
      * Update an existing external database server (unsupported) (asynchronously)
      * 
-     * @param environment environment (required)
-     * @param externalDatabaseServer externalDatabaseServer (required)
-     * @param updatedTemplate updatedTemplate (required)
+     * @param environment  (required)
+     * @param externalDatabaseServer  (required)
+     * @param updatedTemplate  (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object

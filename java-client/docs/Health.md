@@ -4,8 +4,8 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**lastReported** | **Long** | Time when health status was reported | 
 **status** | [**StatusEnum**](#StatusEnum) | Health status value | 
+**lastReported** | **Long** | Time when health status was reported | 
 
 
 <a name="StatusEnum"></a>

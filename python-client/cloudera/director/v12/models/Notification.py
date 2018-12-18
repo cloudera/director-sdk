@@ -39,77 +39,29 @@ class Notification(object):
                             and the value is json key in definition.
     """
     swagger_types = {
-        'description': 'str',
+        'type': 'str',
         'message': 'str',
-        'type': 'str'
+        'description': 'str'
     }
 
     attribute_map = {
-        'description': 'description',
+        'type': 'type',
         'message': 'message',
-        'type': 'type'
+        'description': 'description'
     }
 
-    def __init__(self, description=None, message=None, type=None):  # noqa: E501
+    def __init__(self, type=None, message=None, description=None):  # noqa: E501
         """Notification - a model defined in Swagger"""  # noqa: E501
 
-        self._description = None
-        self._message = None
         self._type = None
+        self._message = None
+        self._description = None
         self.discriminator = None
 
+        self.type = type
+        self.message = message
         if description is not None:
             self.description = description
-        self.message = message
-        self.type = type
-
-    @property
-    def description(self):
-        """Gets the description of this Notification.  # noqa: E501
-
-        Notification description  # noqa: E501
-
-        :return: The description of this Notification.  # noqa: E501
-        :rtype: str
-        """
-        return self._description
-
-    @description.setter
-    def description(self, description):
-        """Sets the description of this Notification.
-
-        Notification description  # noqa: E501
-
-        :param description: The description of this Notification.  # noqa: E501
-        :type: str
-        """
-
-        self._description = description
-
-    @property
-    def message(self):
-        """Gets the message of this Notification.  # noqa: E501
-
-        Notification message  # noqa: E501
-
-        :return: The message of this Notification.  # noqa: E501
-        :rtype: str
-        """
-        return self._message
-
-    @message.setter
-    def message(self, message):
-        """Sets the message of this Notification.
-
-        Notification message  # noqa: E501
-
-        :param message: The message of this Notification.  # noqa: E501
-        :type: str
-        """
-        if message is None:
-            raise ValueError("Invalid value for `message`, must not be `None`")  # noqa: E501
-
-        self._message = message
 
     @property
     def type(self):
@@ -141,6 +93,54 @@ class Notification(object):
             )
 
         self._type = type
+
+    @property
+    def message(self):
+        """Gets the message of this Notification.  # noqa: E501
+
+        Notification message  # noqa: E501
+
+        :return: The message of this Notification.  # noqa: E501
+        :rtype: str
+        """
+        return self._message
+
+    @message.setter
+    def message(self, message):
+        """Sets the message of this Notification.
+
+        Notification message  # noqa: E501
+
+        :param message: The message of this Notification.  # noqa: E501
+        :type: str
+        """
+        if message is None:
+            raise ValueError("Invalid value for `message`, must not be `None`")  # noqa: E501
+
+        self._message = message
+
+    @property
+    def description(self):
+        """Gets the description of this Notification.  # noqa: E501
+
+        Notification description  # noqa: E501
+
+        :return: The description of this Notification.  # noqa: E501
+        :rtype: str
+        """
+        return self._description
+
+    @description.setter
+    def description(self, description):
+        """Sets the description of this Notification.
+
+        Notification description  # noqa: E501
+
+        :param description: The description of this Notification.  # noqa: E501
+        :type: str
+        """
+
+        self._description = description
 
     def to_dict(self):
         """Returns the model properties as a dict"""

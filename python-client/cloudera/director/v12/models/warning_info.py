@@ -39,53 +39,28 @@ class WarningInfo(object):
                             and the value is json key in definition.
     """
     swagger_types = {
-        'properties': 'dict(str, str)',
         'warning_code': 'str',
-        'warning_type': 'str'
+        'warning_type': 'str',
+        'properties': 'dict(str, str)'
     }
 
     attribute_map = {
-        'properties': 'properties',
         'warning_code': 'warningCode',
-        'warning_type': 'warningType'
+        'warning_type': 'warningType',
+        'properties': 'properties'
     }
 
-    def __init__(self, properties=None, warning_code=None, warning_type=None):  # noqa: E501
+    def __init__(self, warning_code=None, warning_type=None, properties=None):  # noqa: E501
         """WarningInfo - a model defined in Swagger"""  # noqa: E501
 
-        self._properties = None
         self._warning_code = None
         self._warning_type = None
+        self._properties = None
         self.discriminator = None
 
-        self.properties = properties
         self.warning_code = warning_code
         self.warning_type = warning_type
-
-    @property
-    def properties(self):
-        """Gets the properties of this WarningInfo.  # noqa: E501
-
-        Properties associated with the error  # noqa: E501
-
-        :return: The properties of this WarningInfo.  # noqa: E501
-        :rtype: dict(str, str)
-        """
-        return self._properties
-
-    @properties.setter
-    def properties(self, properties):
-        """Sets the properties of this WarningInfo.
-
-        Properties associated with the error  # noqa: E501
-
-        :param properties: The properties of this WarningInfo.  # noqa: E501
-        :type: dict(str, str)
-        """
-        if properties is None:
-            raise ValueError("Invalid value for `properties`, must not be `None`")  # noqa: E501
-
-        self._properties = properties
+        self.properties = properties
 
     @property
     def warning_code(self):
@@ -148,6 +123,31 @@ class WarningInfo(object):
             )
 
         self._warning_type = warning_type
+
+    @property
+    def properties(self):
+        """Gets the properties of this WarningInfo.  # noqa: E501
+
+        Properties associated with the error  # noqa: E501
+
+        :return: The properties of this WarningInfo.  # noqa: E501
+        :rtype: dict(str, str)
+        """
+        return self._properties
+
+    @properties.setter
+    def properties(self, properties):
+        """Sets the properties of this WarningInfo.
+
+        Properties associated with the error  # noqa: E501
+
+        :param properties: The properties of this WarningInfo.  # noqa: E501
+        :type: dict(str, str)
+        """
+        if properties is None:
+            raise ValueError("Invalid value for `properties`, must not be `None`")  # noqa: E501
+
+        self._properties = properties
 
     def to_dict(self):
         """Returns the model properties as a dict"""

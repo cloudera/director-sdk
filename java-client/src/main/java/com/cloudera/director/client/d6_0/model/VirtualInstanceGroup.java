@@ -38,27 +38,27 @@ import java.util.Map;
 @ApiModel(description = "A group of virtual instances sharing common roles and configurations")
 
 public class VirtualInstanceGroup {
-  @SerializedName("minCount")
-  private Integer minCount = null;
   @SerializedName("name")
   private String name = null;
-  @SerializedName("roleTypesConfigs")
-  private Map<String, Map<String, Map<String, String>>> roleTypesConfigs = null;
-  @SerializedName("serviceTypeToRoleTypes")
-  private Map<String, List<String>> serviceTypeToRoleTypes = null;
   @SerializedName("virtualInstances")
   private List<VirtualInstance> virtualInstances = new ArrayList<VirtualInstance>();
+  @SerializedName("serviceTypeToRoleTypes")
+  private Map<String, List<String>> serviceTypeToRoleTypes = null;
+  @SerializedName("roleTypesConfigs")
+  private Map<String, Map<String, Map<String, String>>> roleTypesConfigs = null;
+  @SerializedName("minCount")
+  private Integer minCount = null;
 
   public VirtualInstanceGroup() {
     // Do nothing
   }
 
   private VirtualInstanceGroup(VirtualInstanceGroupBuilder builder) {
-      this.minCount = builder.minCount;
       this.name = builder.name;
-      this.roleTypesConfigs = builder.roleTypesConfigs;
-      this.serviceTypeToRoleTypes = builder.serviceTypeToRoleTypes;
       this.virtualInstances = builder.virtualInstances;
+      this.serviceTypeToRoleTypes = builder.serviceTypeToRoleTypes;
+      this.roleTypesConfigs = builder.roleTypesConfigs;
+      this.minCount = builder.minCount;
     }
 
   public static VirtualInstanceGroupBuilder builder() {
@@ -66,18 +66,12 @@ public class VirtualInstanceGroup {
   }
 
   public static class VirtualInstanceGroupBuilder {
-      private Integer minCount = null;
       private String name = null;
-      private Map<String, Map<String, Map<String, String>>> roleTypesConfigs = new HashMap<String, Map<String, Map<String, String>>>();
-      private Map<String, List<String>> serviceTypeToRoleTypes = new HashMap<String, List<String>>();
       private List<VirtualInstance> virtualInstances = new ArrayList<VirtualInstance>();
+      private Map<String, List<String>> serviceTypeToRoleTypes = new HashMap<String, List<String>>();
+      private Map<String, Map<String, Map<String, String>>> roleTypesConfigs = new HashMap<String, Map<String, Map<String, String>>>();
+      private Integer minCount = null;
   
-
-    public VirtualInstanceGroupBuilder minCount(Integer minCount) {
-      this.minCount = minCount;
-      return this;
-    }
-
 
     public VirtualInstanceGroupBuilder name(String name) {
       this.name = name;
@@ -85,8 +79,8 @@ public class VirtualInstanceGroup {
     }
 
 
-    public VirtualInstanceGroupBuilder roleTypesConfigs(Map<String, Map<String, Map<String, String>>> roleTypesConfigs) {
-      this.roleTypesConfigs = roleTypesConfigs;
+    public VirtualInstanceGroupBuilder virtualInstances(List<VirtualInstance> virtualInstances) {
+      this.virtualInstances = virtualInstances;
       return this;
     }
 
@@ -97,8 +91,14 @@ public class VirtualInstanceGroup {
     }
 
 
-    public VirtualInstanceGroupBuilder virtualInstances(List<VirtualInstance> virtualInstances) {
-      this.virtualInstances = virtualInstances;
+    public VirtualInstanceGroupBuilder roleTypesConfigs(Map<String, Map<String, Map<String, String>>> roleTypesConfigs) {
+      this.roleTypesConfigs = roleTypesConfigs;
+      return this;
+    }
+
+
+    public VirtualInstanceGroupBuilder minCount(Integer minCount) {
+      this.minCount = minCount;
       return this;
     }
 
@@ -110,30 +110,12 @@ public class VirtualInstanceGroup {
 
   public VirtualInstanceGroupBuilder toBuilder() {
     return builder()
-      .minCount(minCount)
-            .name(name)
-            .roleTypesConfigs(roleTypesConfigs)
-            .serviceTypeToRoleTypes(serviceTypeToRoleTypes)
+      .name(name)
             .virtualInstances(virtualInstances)
+            .serviceTypeToRoleTypes(serviceTypeToRoleTypes)
+            .roleTypesConfigs(roleTypesConfigs)
+            .minCount(minCount)
       ;
-  }
-
-  public VirtualInstanceGroup minCount(Integer minCount) {
-    this.minCount = minCount;
-    return this;
-  }
-
-   /**
-   * Minimum acceptable number of instances in this group
-   * @return minCount
-  **/
-  @ApiModelProperty(required = true, value = "Minimum acceptable number of instances in this group")
-  public Integer getMinCount() {
-    return minCount;
-  }
-
-  public void setMinCount(Integer minCount) {
-    this.minCount = minCount;
   }
 
   public VirtualInstanceGroup name(String name) {
@@ -154,30 +136,27 @@ public class VirtualInstanceGroup {
     this.name = name;
   }
 
-  public VirtualInstanceGroup roleTypesConfigs(Map<String, Map<String, Map<String, String>>> roleTypesConfigs) {
-    this.roleTypesConfigs = roleTypesConfigs;
+  public VirtualInstanceGroup virtualInstances(List<VirtualInstance> virtualInstances) {
+    this.virtualInstances = virtualInstances;
     return this;
   }
 
-  public VirtualInstanceGroup putRoleTypesConfigsItem(String key, Map<String, Map<String, String>> roleTypesConfigsItem) {
-    if (this.roleTypesConfigs == null) {
-      this.roleTypesConfigs = new HashMap<String, Map<String, Map<String, String>>>();
-    }
-    this.roleTypesConfigs.put(key, roleTypesConfigsItem);
+  public VirtualInstanceGroup addVirtualInstancesItem(VirtualInstance virtualInstancesItem) {
+    this.virtualInstances.add(virtualInstancesItem);
     return this;
   }
 
    /**
-   * Custom role configurations
-   * @return roleTypesConfigs
+   * List of virtual instances in this group
+   * @return virtualInstances
   **/
-  @ApiModelProperty(value = "Custom role configurations")
-  public Map<String, Map<String, Map<String, String>>> getRoleTypesConfigs() {
-    return roleTypesConfigs;
+  @ApiModelProperty(required = true, value = "List of virtual instances in this group")
+  public List<VirtualInstance> getVirtualInstances() {
+    return virtualInstances;
   }
 
-  public void setRoleTypesConfigs(Map<String, Map<String, Map<String, String>>> roleTypesConfigs) {
-    this.roleTypesConfigs = roleTypesConfigs;
+  public void setVirtualInstances(List<VirtualInstance> virtualInstances) {
+    this.virtualInstances = virtualInstances;
   }
 
   public VirtualInstanceGroup serviceTypeToRoleTypes(Map<String, List<String>> serviceTypeToRoleTypes) {
@@ -206,27 +185,48 @@ public class VirtualInstanceGroup {
     this.serviceTypeToRoleTypes = serviceTypeToRoleTypes;
   }
 
-  public VirtualInstanceGroup virtualInstances(List<VirtualInstance> virtualInstances) {
-    this.virtualInstances = virtualInstances;
+  public VirtualInstanceGroup roleTypesConfigs(Map<String, Map<String, Map<String, String>>> roleTypesConfigs) {
+    this.roleTypesConfigs = roleTypesConfigs;
     return this;
   }
 
-  public VirtualInstanceGroup addVirtualInstancesItem(VirtualInstance virtualInstancesItem) {
-    this.virtualInstances.add(virtualInstancesItem);
+  public VirtualInstanceGroup putRoleTypesConfigsItem(String key, Map<String, Map<String, String>> roleTypesConfigsItem) {
+    if (this.roleTypesConfigs == null) {
+      this.roleTypesConfigs = new HashMap<String, Map<String, Map<String, String>>>();
+    }
+    this.roleTypesConfigs.put(key, roleTypesConfigsItem);
     return this;
   }
 
    /**
-   * List of virtual instances in this group
-   * @return virtualInstances
+   * Custom role configurations
+   * @return roleTypesConfigs
   **/
-  @ApiModelProperty(required = true, value = "List of virtual instances in this group")
-  public List<VirtualInstance> getVirtualInstances() {
-    return virtualInstances;
+  @ApiModelProperty(value = "Custom role configurations")
+  public Map<String, Map<String, Map<String, String>>> getRoleTypesConfigs() {
+    return roleTypesConfigs;
   }
 
-  public void setVirtualInstances(List<VirtualInstance> virtualInstances) {
-    this.virtualInstances = virtualInstances;
+  public void setRoleTypesConfigs(Map<String, Map<String, Map<String, String>>> roleTypesConfigs) {
+    this.roleTypesConfigs = roleTypesConfigs;
+  }
+
+  public VirtualInstanceGroup minCount(Integer minCount) {
+    this.minCount = minCount;
+    return this;
+  }
+
+   /**
+   * Minimum acceptable number of instances in this group
+   * @return minCount
+  **/
+  @ApiModelProperty(required = true, value = "Minimum acceptable number of instances in this group")
+  public Integer getMinCount() {
+    return minCount;
+  }
+
+  public void setMinCount(Integer minCount) {
+    this.minCount = minCount;
   }
 
 
@@ -239,16 +239,16 @@ public class VirtualInstanceGroup {
       return false;
     }
     VirtualInstanceGroup virtualInstanceGroup = (VirtualInstanceGroup) o;
-    return Objects.equals(this.minCount, virtualInstanceGroup.minCount) &&
-        Objects.equals(this.name, virtualInstanceGroup.name) &&
-        Objects.equals(this.roleTypesConfigs, virtualInstanceGroup.roleTypesConfigs) &&
+    return Objects.equals(this.name, virtualInstanceGroup.name) &&
+        Objects.equals(this.virtualInstances, virtualInstanceGroup.virtualInstances) &&
         Objects.equals(this.serviceTypeToRoleTypes, virtualInstanceGroup.serviceTypeToRoleTypes) &&
-        Objects.equals(this.virtualInstances, virtualInstanceGroup.virtualInstances);
+        Objects.equals(this.roleTypesConfigs, virtualInstanceGroup.roleTypesConfigs) &&
+        Objects.equals(this.minCount, virtualInstanceGroup.minCount);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(minCount, name, roleTypesConfigs, serviceTypeToRoleTypes, virtualInstances);
+    return Objects.hash(name, virtualInstances, serviceTypeToRoleTypes, roleTypesConfigs, minCount);
   }
 
 
@@ -257,11 +257,11 @@ public class VirtualInstanceGroup {
     StringBuilder sb = new StringBuilder();
     sb.append("class VirtualInstanceGroup {\n");
     
-    sb.append("    minCount: ").append(toIndentedString(minCount)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
-    sb.append("    roleTypesConfigs: ").append(toIndentedString(roleTypesConfigs)).append("\n");
-    sb.append("    serviceTypeToRoleTypes: ").append(toIndentedString(serviceTypeToRoleTypes)).append("\n");
     sb.append("    virtualInstances: ").append(toIndentedString(virtualInstances)).append("\n");
+    sb.append("    serviceTypeToRoleTypes: ").append(toIndentedString(serviceTypeToRoleTypes)).append("\n");
+    sb.append("    roleTypesConfigs: ").append(toIndentedString(roleTypesConfigs)).append("\n");
+    sb.append("    minCount: ").append(toIndentedString(minCount)).append("\n");
     sb.append("}");
     return sb.toString();
   }

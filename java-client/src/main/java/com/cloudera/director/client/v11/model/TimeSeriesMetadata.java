@@ -30,51 +30,52 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import org.joda.time.DateTime;
 
 /**
  * TimeSeriesMetadata
  */
 
 public class TimeSeriesMetadata {
-  @SerializedName("alias")
-  private String alias = null;
-  @SerializedName("attributes")
-  private Map<String, String> attributes = null;
-  @SerializedName("endTime")
-  private Long endTime = null;
-  @SerializedName("entityName")
-  private String entityName = null;
-  @SerializedName("expression")
-  private String expression = null;
-  @SerializedName("metricCollectionFrequencyMs")
-  private Long metricCollectionFrequencyMs = null;
   @SerializedName("metricName")
   private String metricName = null;
-  @SerializedName("rollupUsed")
-  private String rollupUsed = null;
+  @SerializedName("entityName")
+  private String entityName = null;
   @SerializedName("startTime")
-  private Long startTime = null;
-  @SerializedName("unitDenominators")
-  private List<String> unitDenominators = null;
+  private DateTime startTime = null;
+  @SerializedName("endTime")
+  private DateTime endTime = null;
+  @SerializedName("attributes")
+  private Map<String, String> attributes = null;
   @SerializedName("unitNumerators")
   private List<String> unitNumerators = null;
+  @SerializedName("unitDenominators")
+  private List<String> unitDenominators = null;
+  @SerializedName("expression")
+  private String expression = null;
+  @SerializedName("alias")
+  private String alias = null;
+  @SerializedName("metricCollectionFrequencyMs")
+  private Long metricCollectionFrequencyMs = null;
+  @SerializedName("rollupUsed")
+  private String rollupUsed = null;
 
   public TimeSeriesMetadata() {
     // Do nothing
   }
 
   private TimeSeriesMetadata(TimeSeriesMetadataBuilder builder) {
-      this.alias = builder.alias;
-      this.attributes = builder.attributes;
-      this.endTime = builder.endTime;
-      this.entityName = builder.entityName;
-      this.expression = builder.expression;
-      this.metricCollectionFrequencyMs = builder.metricCollectionFrequencyMs;
       this.metricName = builder.metricName;
-      this.rollupUsed = builder.rollupUsed;
+      this.entityName = builder.entityName;
       this.startTime = builder.startTime;
-      this.unitDenominators = builder.unitDenominators;
+      this.endTime = builder.endTime;
+      this.attributes = builder.attributes;
       this.unitNumerators = builder.unitNumerators;
+      this.unitDenominators = builder.unitDenominators;
+      this.expression = builder.expression;
+      this.alias = builder.alias;
+      this.metricCollectionFrequencyMs = builder.metricCollectionFrequencyMs;
+      this.rollupUsed = builder.rollupUsed;
     }
 
   public static TimeSeriesMetadataBuilder builder() {
@@ -82,33 +83,21 @@ public class TimeSeriesMetadata {
   }
 
   public static class TimeSeriesMetadataBuilder {
-      private String alias = null;
-      private Map<String, String> attributes = new HashMap<String, String>();
-      private Long endTime = null;
-      private String entityName = null;
-      private String expression = null;
-      private Long metricCollectionFrequencyMs = null;
       private String metricName = null;
-      private String rollupUsed = null;
-      private Long startTime = null;
-      private List<String> unitDenominators = new ArrayList<String>();
+      private String entityName = null;
+      private DateTime startTime = null;
+      private DateTime endTime = null;
+      private Map<String, String> attributes = new HashMap<String, String>();
       private List<String> unitNumerators = new ArrayList<String>();
+      private List<String> unitDenominators = new ArrayList<String>();
+      private String expression = null;
+      private String alias = null;
+      private Long metricCollectionFrequencyMs = null;
+      private String rollupUsed = null;
   
 
-    public TimeSeriesMetadataBuilder alias(String alias) {
-      this.alias = alias;
-      return this;
-    }
-
-
-    public TimeSeriesMetadataBuilder attributes(Map<String, String> attributes) {
-      this.attributes = attributes;
-      return this;
-    }
-
-
-    public TimeSeriesMetadataBuilder endTime(Long endTime) {
-      this.endTime = endTime;
+    public TimeSeriesMetadataBuilder metricName(String metricName) {
+      this.metricName = metricName;
       return this;
     }
 
@@ -119,32 +108,26 @@ public class TimeSeriesMetadata {
     }
 
 
-    public TimeSeriesMetadataBuilder expression(String expression) {
-      this.expression = expression;
-      return this;
-    }
-
-
-    public TimeSeriesMetadataBuilder metricCollectionFrequencyMs(Long metricCollectionFrequencyMs) {
-      this.metricCollectionFrequencyMs = metricCollectionFrequencyMs;
-      return this;
-    }
-
-
-    public TimeSeriesMetadataBuilder metricName(String metricName) {
-      this.metricName = metricName;
-      return this;
-    }
-
-
-    public TimeSeriesMetadataBuilder rollupUsed(String rollupUsed) {
-      this.rollupUsed = rollupUsed;
-      return this;
-    }
-
-
-    public TimeSeriesMetadataBuilder startTime(Long startTime) {
+    public TimeSeriesMetadataBuilder startTime(DateTime startTime) {
       this.startTime = startTime;
+      return this;
+    }
+
+
+    public TimeSeriesMetadataBuilder endTime(DateTime endTime) {
+      this.endTime = endTime;
+      return this;
+    }
+
+
+    public TimeSeriesMetadataBuilder attributes(Map<String, String> attributes) {
+      this.attributes = attributes;
+      return this;
+    }
+
+
+    public TimeSeriesMetadataBuilder unitNumerators(List<String> unitNumerators) {
+      this.unitNumerators = unitNumerators;
       return this;
     }
 
@@ -155,8 +138,26 @@ public class TimeSeriesMetadata {
     }
 
 
-    public TimeSeriesMetadataBuilder unitNumerators(List<String> unitNumerators) {
-      this.unitNumerators = unitNumerators;
+    public TimeSeriesMetadataBuilder expression(String expression) {
+      this.expression = expression;
+      return this;
+    }
+
+
+    public TimeSeriesMetadataBuilder alias(String alias) {
+      this.alias = alias;
+      return this;
+    }
+
+
+    public TimeSeriesMetadataBuilder metricCollectionFrequencyMs(Long metricCollectionFrequencyMs) {
+      this.metricCollectionFrequencyMs = metricCollectionFrequencyMs;
+      return this;
+    }
+
+
+    public TimeSeriesMetadataBuilder rollupUsed(String rollupUsed) {
+      this.rollupUsed = rollupUsed;
       return this;
     }
 
@@ -168,36 +169,90 @@ public class TimeSeriesMetadata {
 
   public TimeSeriesMetadataBuilder toBuilder() {
     return builder()
-      .alias(alias)
-            .attributes(attributes)
-            .endTime(endTime)
+      .metricName(metricName)
             .entityName(entityName)
-            .expression(expression)
-            .metricCollectionFrequencyMs(metricCollectionFrequencyMs)
-            .metricName(metricName)
-            .rollupUsed(rollupUsed)
             .startTime(startTime)
-            .unitDenominators(unitDenominators)
+            .endTime(endTime)
+            .attributes(attributes)
             .unitNumerators(unitNumerators)
+            .unitDenominators(unitDenominators)
+            .expression(expression)
+            .alias(alias)
+            .metricCollectionFrequencyMs(metricCollectionFrequencyMs)
+            .rollupUsed(rollupUsed)
       ;
   }
 
-  public TimeSeriesMetadata alias(String alias) {
-    this.alias = alias;
+  public TimeSeriesMetadata metricName(String metricName) {
+    this.metricName = metricName;
     return this;
   }
 
    /**
-   * Alias
-   * @return alias
+   * Metric name
+   * @return metricName
   **/
-  @ApiModelProperty(value = "Alias")
-  public String getAlias() {
-    return alias;
+  @ApiModelProperty(required = true, value = "Metric name")
+  public String getMetricName() {
+    return metricName;
   }
 
-  public void setAlias(String alias) {
-    this.alias = alias;
+  public void setMetricName(String metricName) {
+    this.metricName = metricName;
+  }
+
+  public TimeSeriesMetadata entityName(String entityName) {
+    this.entityName = entityName;
+    return this;
+  }
+
+   /**
+   * Entity name
+   * @return entityName
+  **/
+  @ApiModelProperty(required = true, value = "Entity name")
+  public String getEntityName() {
+    return entityName;
+  }
+
+  public void setEntityName(String entityName) {
+    this.entityName = entityName;
+  }
+
+  public TimeSeriesMetadata startTime(DateTime startTime) {
+    this.startTime = startTime;
+    return this;
+  }
+
+   /**
+   * Start time
+   * @return startTime
+  **/
+  @ApiModelProperty(required = true, value = "Start time")
+  public DateTime getStartTime() {
+    return startTime;
+  }
+
+  public void setStartTime(DateTime startTime) {
+    this.startTime = startTime;
+  }
+
+  public TimeSeriesMetadata endTime(DateTime endTime) {
+    this.endTime = endTime;
+    return this;
+  }
+
+   /**
+   * End time
+   * @return endTime
+  **/
+  @ApiModelProperty(required = true, value = "End time")
+  public DateTime getEndTime() {
+    return endTime;
+  }
+
+  public void setEndTime(DateTime endTime) {
+    this.endTime = endTime;
   }
 
   public TimeSeriesMetadata attributes(Map<String, String> attributes) {
@@ -226,130 +281,30 @@ public class TimeSeriesMetadata {
     this.attributes = attributes;
   }
 
-  public TimeSeriesMetadata endTime(Long endTime) {
-    this.endTime = endTime;
+  public TimeSeriesMetadata unitNumerators(List<String> unitNumerators) {
+    this.unitNumerators = unitNumerators;
+    return this;
+  }
+
+  public TimeSeriesMetadata addUnitNumeratorsItem(String unitNumeratorsItem) {
+    if (this.unitNumerators == null) {
+      this.unitNumerators = new ArrayList<String>();
+    }
+    this.unitNumerators.add(unitNumeratorsItem);
     return this;
   }
 
    /**
-   * End time
-   * @return endTime
+   * Unit numerators
+   * @return unitNumerators
   **/
-  @ApiModelProperty(required = true, value = "End time")
-  public Long getEndTime() {
-    return endTime;
+  @ApiModelProperty(value = "Unit numerators")
+  public List<String> getUnitNumerators() {
+    return unitNumerators;
   }
 
-  public void setEndTime(Long endTime) {
-    this.endTime = endTime;
-  }
-
-  public TimeSeriesMetadata entityName(String entityName) {
-    this.entityName = entityName;
-    return this;
-  }
-
-   /**
-   * Entity name
-   * @return entityName
-  **/
-  @ApiModelProperty(required = true, value = "Entity name")
-  public String getEntityName() {
-    return entityName;
-  }
-
-  public void setEntityName(String entityName) {
-    this.entityName = entityName;
-  }
-
-  public TimeSeriesMetadata expression(String expression) {
-    this.expression = expression;
-    return this;
-  }
-
-   /**
-   * Expression
-   * @return expression
-  **/
-  @ApiModelProperty(required = true, value = "Expression")
-  public String getExpression() {
-    return expression;
-  }
-
-  public void setExpression(String expression) {
-    this.expression = expression;
-  }
-
-  public TimeSeriesMetadata metricCollectionFrequencyMs(Long metricCollectionFrequencyMs) {
-    this.metricCollectionFrequencyMs = metricCollectionFrequencyMs;
-    return this;
-  }
-
-   /**
-   * Metric collection frequency in milliseconds
-   * @return metricCollectionFrequencyMs
-  **/
-  @ApiModelProperty(value = "Metric collection frequency in milliseconds")
-  public Long getMetricCollectionFrequencyMs() {
-    return metricCollectionFrequencyMs;
-  }
-
-  public void setMetricCollectionFrequencyMs(Long metricCollectionFrequencyMs) {
-    this.metricCollectionFrequencyMs = metricCollectionFrequencyMs;
-  }
-
-  public TimeSeriesMetadata metricName(String metricName) {
-    this.metricName = metricName;
-    return this;
-  }
-
-   /**
-   * Metric name
-   * @return metricName
-  **/
-  @ApiModelProperty(required = true, value = "Metric name")
-  public String getMetricName() {
-    return metricName;
-  }
-
-  public void setMetricName(String metricName) {
-    this.metricName = metricName;
-  }
-
-  public TimeSeriesMetadata rollupUsed(String rollupUsed) {
-    this.rollupUsed = rollupUsed;
-    return this;
-  }
-
-   /**
-   * Rollup used
-   * @return rollupUsed
-  **/
-  @ApiModelProperty(required = true, value = "Rollup used")
-  public String getRollupUsed() {
-    return rollupUsed;
-  }
-
-  public void setRollupUsed(String rollupUsed) {
-    this.rollupUsed = rollupUsed;
-  }
-
-  public TimeSeriesMetadata startTime(Long startTime) {
-    this.startTime = startTime;
-    return this;
-  }
-
-   /**
-   * Start time
-   * @return startTime
-  **/
-  @ApiModelProperty(required = true, value = "Start time")
-  public Long getStartTime() {
-    return startTime;
-  }
-
-  public void setStartTime(Long startTime) {
-    this.startTime = startTime;
+  public void setUnitNumerators(List<String> unitNumerators) {
+    this.unitNumerators = unitNumerators;
   }
 
   public TimeSeriesMetadata unitDenominators(List<String> unitDenominators) {
@@ -378,30 +333,76 @@ public class TimeSeriesMetadata {
     this.unitDenominators = unitDenominators;
   }
 
-  public TimeSeriesMetadata unitNumerators(List<String> unitNumerators) {
-    this.unitNumerators = unitNumerators;
-    return this;
-  }
-
-  public TimeSeriesMetadata addUnitNumeratorsItem(String unitNumeratorsItem) {
-    if (this.unitNumerators == null) {
-      this.unitNumerators = new ArrayList<String>();
-    }
-    this.unitNumerators.add(unitNumeratorsItem);
+  public TimeSeriesMetadata expression(String expression) {
+    this.expression = expression;
     return this;
   }
 
    /**
-   * Unit numerators
-   * @return unitNumerators
+   * Expression
+   * @return expression
   **/
-  @ApiModelProperty(value = "Unit numerators")
-  public List<String> getUnitNumerators() {
-    return unitNumerators;
+  @ApiModelProperty(required = true, value = "Expression")
+  public String getExpression() {
+    return expression;
   }
 
-  public void setUnitNumerators(List<String> unitNumerators) {
-    this.unitNumerators = unitNumerators;
+  public void setExpression(String expression) {
+    this.expression = expression;
+  }
+
+  public TimeSeriesMetadata alias(String alias) {
+    this.alias = alias;
+    return this;
+  }
+
+   /**
+   * Alias
+   * @return alias
+  **/
+  @ApiModelProperty(value = "Alias")
+  public String getAlias() {
+    return alias;
+  }
+
+  public void setAlias(String alias) {
+    this.alias = alias;
+  }
+
+  public TimeSeriesMetadata metricCollectionFrequencyMs(Long metricCollectionFrequencyMs) {
+    this.metricCollectionFrequencyMs = metricCollectionFrequencyMs;
+    return this;
+  }
+
+   /**
+   * Metric collection frequency in milliseconds
+   * @return metricCollectionFrequencyMs
+  **/
+  @ApiModelProperty(value = "Metric collection frequency in milliseconds")
+  public Long getMetricCollectionFrequencyMs() {
+    return metricCollectionFrequencyMs;
+  }
+
+  public void setMetricCollectionFrequencyMs(Long metricCollectionFrequencyMs) {
+    this.metricCollectionFrequencyMs = metricCollectionFrequencyMs;
+  }
+
+  public TimeSeriesMetadata rollupUsed(String rollupUsed) {
+    this.rollupUsed = rollupUsed;
+    return this;
+  }
+
+   /**
+   * Rollup used
+   * @return rollupUsed
+  **/
+  @ApiModelProperty(required = true, value = "Rollup used")
+  public String getRollupUsed() {
+    return rollupUsed;
+  }
+
+  public void setRollupUsed(String rollupUsed) {
+    this.rollupUsed = rollupUsed;
   }
 
 
@@ -414,22 +415,22 @@ public class TimeSeriesMetadata {
       return false;
     }
     TimeSeriesMetadata timeSeriesMetadata = (TimeSeriesMetadata) o;
-    return Objects.equals(this.alias, timeSeriesMetadata.alias) &&
-        Objects.equals(this.attributes, timeSeriesMetadata.attributes) &&
-        Objects.equals(this.endTime, timeSeriesMetadata.endTime) &&
+    return Objects.equals(this.metricName, timeSeriesMetadata.metricName) &&
         Objects.equals(this.entityName, timeSeriesMetadata.entityName) &&
-        Objects.equals(this.expression, timeSeriesMetadata.expression) &&
-        Objects.equals(this.metricCollectionFrequencyMs, timeSeriesMetadata.metricCollectionFrequencyMs) &&
-        Objects.equals(this.metricName, timeSeriesMetadata.metricName) &&
-        Objects.equals(this.rollupUsed, timeSeriesMetadata.rollupUsed) &&
         Objects.equals(this.startTime, timeSeriesMetadata.startTime) &&
+        Objects.equals(this.endTime, timeSeriesMetadata.endTime) &&
+        Objects.equals(this.attributes, timeSeriesMetadata.attributes) &&
+        Objects.equals(this.unitNumerators, timeSeriesMetadata.unitNumerators) &&
         Objects.equals(this.unitDenominators, timeSeriesMetadata.unitDenominators) &&
-        Objects.equals(this.unitNumerators, timeSeriesMetadata.unitNumerators);
+        Objects.equals(this.expression, timeSeriesMetadata.expression) &&
+        Objects.equals(this.alias, timeSeriesMetadata.alias) &&
+        Objects.equals(this.metricCollectionFrequencyMs, timeSeriesMetadata.metricCollectionFrequencyMs) &&
+        Objects.equals(this.rollupUsed, timeSeriesMetadata.rollupUsed);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(alias, attributes, endTime, entityName, expression, metricCollectionFrequencyMs, metricName, rollupUsed, startTime, unitDenominators, unitNumerators);
+    return Objects.hash(metricName, entityName, startTime, endTime, attributes, unitNumerators, unitDenominators, expression, alias, metricCollectionFrequencyMs, rollupUsed);
   }
 
 
@@ -438,17 +439,17 @@ public class TimeSeriesMetadata {
     StringBuilder sb = new StringBuilder();
     sb.append("class TimeSeriesMetadata {\n");
     
-    sb.append("    alias: ").append(toIndentedString(alias)).append("\n");
-    sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
-    sb.append("    endTime: ").append(toIndentedString(endTime)).append("\n");
-    sb.append("    entityName: ").append(toIndentedString(entityName)).append("\n");
-    sb.append("    expression: ").append(toIndentedString(expression)).append("\n");
-    sb.append("    metricCollectionFrequencyMs: ").append(toIndentedString(metricCollectionFrequencyMs)).append("\n");
     sb.append("    metricName: ").append(toIndentedString(metricName)).append("\n");
-    sb.append("    rollupUsed: ").append(toIndentedString(rollupUsed)).append("\n");
+    sb.append("    entityName: ").append(toIndentedString(entityName)).append("\n");
     sb.append("    startTime: ").append(toIndentedString(startTime)).append("\n");
-    sb.append("    unitDenominators: ").append(toIndentedString(unitDenominators)).append("\n");
+    sb.append("    endTime: ").append(toIndentedString(endTime)).append("\n");
+    sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
     sb.append("    unitNumerators: ").append(toIndentedString(unitNumerators)).append("\n");
+    sb.append("    unitDenominators: ").append(toIndentedString(unitDenominators)).append("\n");
+    sb.append("    expression: ").append(toIndentedString(expression)).append("\n");
+    sb.append("    alias: ").append(toIndentedString(alias)).append("\n");
+    sb.append("    metricCollectionFrequencyMs: ").append(toIndentedString(metricCollectionFrequencyMs)).append("\n");
+    sb.append("    rollupUsed: ").append(toIndentedString(rollupUsed)).append("\n");
     sb.append("}");
     return sb.toString();
   }

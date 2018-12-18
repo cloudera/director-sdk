@@ -1,22 +1,22 @@
 # ClustersApi
 
-All URIs are relative to *https://localhost:7189*
+All URIs are relative to *https://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**collectDiagnosticData**](ClustersApi.md#collectDiagnosticData) | **POST** /api/d6.0/environments/{environment}/deployments/{deployment}/clusters/{cluster}/diagnosticData | Collects diagnostic data
-[**create**](ClustersApi.md#create) | **POST** /api/d6.0/environments/{environment}/deployments/{deployment}/clusters | Create a new cluster
-[**delete**](ClustersApi.md#delete) | **DELETE** /api/d6.0/environments/{environment}/deployments/{deployment}/clusters/{cluster} | Delete a cluster by name
-[**exportClusterConfiguration**](ClustersApi.md#exportClusterConfiguration) | **GET** /api/d6.0/environments/{environment}/deployments/{deployment}/clusters/{cluster}/config | Exports the cluster configuration for this cluster
-[**getAdministrationSettings**](ClustersApi.md#getAdministrationSettings) | **GET** /api/d6.0/environments/{environment}/deployments/{deployment}/clusters/{cluster}/settings | Get administration settings for a cluster
-[**getHistory**](ClustersApi.md#getHistory) | **GET** /api/d6.0/environments/{environment}/deployments/{deployment}/clusters/{cluster}/history | Get history of updates for a cluster
-[**getMetrics**](ClustersApi.md#getMetrics) | **GET** /api/d6.0/environments/{environment}/deployments/{deployment}/clusters/{cluster}/metrics | Get cluster metrics by name
-[**getRedacted**](ClustersApi.md#getRedacted) | **GET** /api/d6.0/environments/{environment}/deployments/{deployment}/clusters/{cluster} | Get a cluster by name
-[**getStatus**](ClustersApi.md#getStatus) | **GET** /api/d6.0/environments/{environment}/deployments/{deployment}/clusters/{cluster}/status | Get a cluster status by name
-[**getTemplateRedacted**](ClustersApi.md#getTemplateRedacted) | **GET** /api/d6.0/environments/{environment}/deployments/{deployment}/clusters/{cluster}/template | Get a cluster template by name
-[**list**](ClustersApi.md#list) | **GET** /api/d6.0/environments/{environment}/deployments/{deployment}/clusters | List all clusters
-[**update**](ClustersApi.md#update) | **PUT** /api/d6.0/environments/{environment}/deployments/{deployment}/clusters/{cluster} | Update an existing cluster
-[**updateAdministrationSettings**](ClustersApi.md#updateAdministrationSettings) | **PUT** /api/d6.0/environments/{environment}/deployments/{deployment}/clusters/{cluster}/settings | Update administration settings for a cluster
+[**collectDiagnosticData**](ClustersApi.md#collectDiagnosticData) | **POST** /api/d6.1/environments/{environment}/deployments/{deployment}/clusters/{cluster}/diagnosticData | Collects diagnostic data
+[**create**](ClustersApi.md#create) | **POST** /api/d6.1/environments/{environment}/deployments/{deployment}/clusters | Create a new cluster
+[**delete**](ClustersApi.md#delete) | **DELETE** /api/d6.1/environments/{environment}/deployments/{deployment}/clusters/{cluster} | Delete a cluster by name
+[**exportClusterConfiguration**](ClustersApi.md#exportClusterConfiguration) | **GET** /api/d6.1/environments/{environment}/deployments/{deployment}/clusters/{cluster}/config | Exports the cluster configuration for this cluster
+[**getAdministrationSettings**](ClustersApi.md#getAdministrationSettings) | **GET** /api/d6.1/environments/{environment}/deployments/{deployment}/clusters/{cluster}/settings | Get administration settings for a cluster
+[**getHistory**](ClustersApi.md#getHistory) | **GET** /api/d6.1/environments/{environment}/deployments/{deployment}/clusters/{cluster}/history | Get history of updates for a cluster
+[**getMetrics**](ClustersApi.md#getMetrics) | **GET** /api/d6.1/environments/{environment}/deployments/{deployment}/clusters/{cluster}/metrics | Get cluster metrics by name
+[**getRedacted**](ClustersApi.md#getRedacted) | **GET** /api/d6.1/environments/{environment}/deployments/{deployment}/clusters/{cluster} | Get a cluster by name
+[**getStatus**](ClustersApi.md#getStatus) | **GET** /api/d6.1/environments/{environment}/deployments/{deployment}/clusters/{cluster}/status | Get a cluster status by name
+[**getTemplateRedacted**](ClustersApi.md#getTemplateRedacted) | **GET** /api/d6.1/environments/{environment}/deployments/{deployment}/clusters/{cluster}/template | Get a cluster template by name
+[**list**](ClustersApi.md#list) | **GET** /api/d6.1/environments/{environment}/deployments/{deployment}/clusters | List all clusters
+[**update**](ClustersApi.md#update) | **PUT** /api/d6.1/environments/{environment}/deployments/{deployment}/clusters/{cluster} | Update an existing cluster
+[**updateAdministrationSettings**](ClustersApi.md#updateAdministrationSettings) | **PUT** /api/d6.1/environments/{environment}/deployments/{deployment}/clusters/{cluster}/settings | Update administration settings for a cluster
 
 
 <a name="collectDiagnosticData"></a>
@@ -24,6 +24,8 @@ Method | HTTP request | Description
 > collectDiagnosticData(environment, deployment, cluster)
 
 Collects diagnostic data
+
+
 
 ### Example
 ```java
@@ -42,9 +44,9 @@ basic.setUsername("YOUR USERNAME");
 basic.setPassword("YOUR PASSWORD");
 
 ClustersApi apiInstance = new ClustersApi();
-String environment = "environment_example"; // String | environment
-String deployment = "deployment_example"; // String | deployment
-String cluster = "cluster_example"; // String | cluster
+String environment = "environment_example"; // String | 
+String deployment = "deployment_example"; // String | 
+String cluster = "cluster_example"; // String | 
 try {
     apiInstance.collectDiagnosticData(environment, deployment, cluster);
 } catch (ApiException e) {
@@ -57,9 +59,9 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **environment** | **String**| environment |
- **deployment** | **String**| deployment |
- **cluster** | **String**| cluster |
+ **environment** | **String**|  |
+ **deployment** | **String**|  |
+ **cluster** | **String**|  |
 
 ### Return type
 
@@ -71,7 +73,7 @@ null (empty response body)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 <a name="create"></a>
@@ -79,6 +81,8 @@ null (empty response body)
 > create(environment, deployment, clusterTemplate)
 
 Create a new cluster
+
+
 
 ### Example
 ```java
@@ -97,9 +101,9 @@ basic.setUsername("YOUR USERNAME");
 basic.setPassword("YOUR PASSWORD");
 
 ClustersApi apiInstance = new ClustersApi();
-String environment = "environment_example"; // String | environment
-String deployment = "deployment_example"; // String | deployment
-ClusterTemplate clusterTemplate = new ClusterTemplate(); // ClusterTemplate | clusterTemplate
+String environment = "environment_example"; // String | 
+String deployment = "deployment_example"; // String | 
+ClusterTemplate clusterTemplate = new ClusterTemplate(); // ClusterTemplate | 
 try {
     apiInstance.create(environment, deployment, clusterTemplate);
 } catch (ApiException e) {
@@ -112,9 +116,9 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **environment** | **String**| environment |
- **deployment** | **String**| deployment |
- **clusterTemplate** | [**ClusterTemplate**](ClusterTemplate.md)| clusterTemplate |
+ **environment** | **String**|  |
+ **deployment** | **String**|  |
+ **clusterTemplate** | [**ClusterTemplate**](ClusterTemplate.md)|  |
 
 ### Return type
 
@@ -126,7 +130,7 @@ null (empty response body)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 <a name="delete"></a>
@@ -134,6 +138,8 @@ null (empty response body)
 > delete(environment, deployment, cluster)
 
 Delete a cluster by name
+
+
 
 ### Example
 ```java
@@ -152,9 +158,9 @@ basic.setUsername("YOUR USERNAME");
 basic.setPassword("YOUR PASSWORD");
 
 ClustersApi apiInstance = new ClustersApi();
-String environment = "environment_example"; // String | environment
-String deployment = "deployment_example"; // String | deployment
-String cluster = "cluster_example"; // String | cluster
+String environment = "environment_example"; // String | 
+String deployment = "deployment_example"; // String | 
+String cluster = "cluster_example"; // String | 
 try {
     apiInstance.delete(environment, deployment, cluster);
 } catch (ApiException e) {
@@ -167,9 +173,9 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **environment** | **String**| environment |
- **deployment** | **String**| deployment |
- **cluster** | **String**| cluster |
+ **environment** | **String**|  |
+ **deployment** | **String**|  |
+ **cluster** | **String**|  |
 
 ### Return type
 
@@ -190,6 +196,8 @@ null (empty response body)
 
 Exports the cluster configuration for this cluster
 
+
+
 ### Example
 ```java
 // Import classes:
@@ -207,9 +215,9 @@ basic.setUsername("YOUR USERNAME");
 basic.setPassword("YOUR PASSWORD");
 
 ClustersApi apiInstance = new ClustersApi();
-String environment = "environment_example"; // String | environment
-String deployment = "deployment_example"; // String | deployment
-String cluster = "cluster_example"; // String | cluster
+String environment = "environment_example"; // String | 
+String deployment = "deployment_example"; // String | 
+String cluster = "cluster_example"; // String | 
 try {
     String result = apiInstance.exportClusterConfiguration(environment, deployment, cluster);
     System.out.println(result);
@@ -223,9 +231,9 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **environment** | **String**| environment |
- **deployment** | **String**| deployment |
- **cluster** | **String**| cluster |
+ **environment** | **String**|  |
+ **deployment** | **String**|  |
+ **cluster** | **String**|  |
 
 ### Return type
 
@@ -246,6 +254,8 @@ Name | Type | Description  | Notes
 
 Get administration settings for a cluster
 
+
+
 ### Example
 ```java
 // Import classes:
@@ -263,9 +273,9 @@ basic.setUsername("YOUR USERNAME");
 basic.setPassword("YOUR PASSWORD");
 
 ClustersApi apiInstance = new ClustersApi();
-String environment = "environment_example"; // String | environment
-String deployment = "deployment_example"; // String | deployment
-String cluster = "cluster_example"; // String | cluster
+String environment = "environment_example"; // String | 
+String deployment = "deployment_example"; // String | 
+String cluster = "cluster_example"; // String | 
 try {
     ClusterAdministrationSettings result = apiInstance.getAdministrationSettings(environment, deployment, cluster);
     System.out.println(result);
@@ -279,9 +289,9 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **environment** | **String**| environment |
- **deployment** | **String**| deployment |
- **cluster** | **String**| cluster |
+ **environment** | **String**|  |
+ **deployment** | **String**|  |
+ **cluster** | **String**|  |
 
 ### Return type
 
@@ -302,6 +312,8 @@ Name | Type | Description  | Notes
 
 Get history of updates for a cluster
 
+
+
 ### Example
 ```java
 // Import classes:
@@ -319,11 +331,11 @@ basic.setUsername("YOUR USERNAME");
 basic.setPassword("YOUR PASSWORD");
 
 ClustersApi apiInstance = new ClustersApi();
-String environment = "environment_example"; // String | environment
-String deployment = "deployment_example"; // String | deployment
-String cluster = "cluster_example"; // String | cluster
-Integer numEvents = 10; // Integer | numEvents
-Integer page = 0; // Integer | page
+String environment = "environment_example"; // String | 
+String deployment = "deployment_example"; // String | 
+String cluster = "cluster_example"; // String | 
+Integer numEvents = 56; // Integer | 
+Integer page = 56; // Integer | 
 try {
     List<ClusterUpdateEventSummary> result = apiInstance.getHistory(environment, deployment, cluster, numEvents, page);
     System.out.println(result);
@@ -337,11 +349,11 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **environment** | **String**| environment |
- **deployment** | **String**| deployment |
- **cluster** | **String**| cluster |
- **numEvents** | **Integer**| numEvents | [optional] [default to 10]
- **page** | **Integer**| page | [optional] [default to 0]
+ **environment** | **String**|  |
+ **deployment** | **String**|  |
+ **cluster** | **String**|  |
+ **numEvents** | **Integer**|  | [optional]
+ **page** | **Integer**|  | [optional]
 
 ### Return type
 
@@ -362,6 +374,8 @@ Name | Type | Description  | Notes
 
 Get cluster metrics by name
 
+
+
 ### Example
 ```java
 // Import classes:
@@ -379,9 +393,9 @@ basic.setUsername("YOUR USERNAME");
 basic.setPassword("YOUR PASSWORD");
 
 ClustersApi apiInstance = new ClustersApi();
-String environment = "environment_example"; // String | environment
-String deployment = "deployment_example"; // String | deployment
-String cluster = "cluster_example"; // String | cluster
+String environment = "environment_example"; // String | 
+String deployment = "deployment_example"; // String | 
+String cluster = "cluster_example"; // String | 
 try {
     Metrics result = apiInstance.getMetrics(environment, deployment, cluster);
     System.out.println(result);
@@ -395,9 +409,9 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **environment** | **String**| environment |
- **deployment** | **String**| deployment |
- **cluster** | **String**| cluster |
+ **environment** | **String**|  |
+ **deployment** | **String**|  |
+ **cluster** | **String**|  |
 
 ### Return type
 
@@ -418,6 +432,8 @@ Name | Type | Description  | Notes
 
 Get a cluster by name
 
+
+
 ### Example
 ```java
 // Import classes:
@@ -435,9 +451,9 @@ basic.setUsername("YOUR USERNAME");
 basic.setPassword("YOUR PASSWORD");
 
 ClustersApi apiInstance = new ClustersApi();
-String environment = "environment_example"; // String | environment
-String deployment = "deployment_example"; // String | deployment
-String cluster = "cluster_example"; // String | cluster
+String environment = "environment_example"; // String | 
+String deployment = "deployment_example"; // String | 
+String cluster = "cluster_example"; // String | 
 try {
     Cluster result = apiInstance.getRedacted(environment, deployment, cluster);
     System.out.println(result);
@@ -451,9 +467,9 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **environment** | **String**| environment |
- **deployment** | **String**| deployment |
- **cluster** | **String**| cluster |
+ **environment** | **String**|  |
+ **deployment** | **String**|  |
+ **cluster** | **String**|  |
 
 ### Return type
 
@@ -474,6 +490,8 @@ Name | Type | Description  | Notes
 
 Get a cluster status by name
 
+
+
 ### Example
 ```java
 // Import classes:
@@ -491,9 +509,9 @@ basic.setUsername("YOUR USERNAME");
 basic.setPassword("YOUR PASSWORD");
 
 ClustersApi apiInstance = new ClustersApi();
-String environment = "environment_example"; // String | environment
-String deployment = "deployment_example"; // String | deployment
-String cluster = "cluster_example"; // String | cluster
+String environment = "environment_example"; // String | 
+String deployment = "deployment_example"; // String | 
+String cluster = "cluster_example"; // String | 
 try {
     Status result = apiInstance.getStatus(environment, deployment, cluster);
     System.out.println(result);
@@ -507,9 +525,9 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **environment** | **String**| environment |
- **deployment** | **String**| deployment |
- **cluster** | **String**| cluster |
+ **environment** | **String**|  |
+ **deployment** | **String**|  |
+ **cluster** | **String**|  |
 
 ### Return type
 
@@ -530,6 +548,8 @@ Name | Type | Description  | Notes
 
 Get a cluster template by name
 
+
+
 ### Example
 ```java
 // Import classes:
@@ -547,9 +567,9 @@ basic.setUsername("YOUR USERNAME");
 basic.setPassword("YOUR PASSWORD");
 
 ClustersApi apiInstance = new ClustersApi();
-String environment = "environment_example"; // String | environment
-String deployment = "deployment_example"; // String | deployment
-String cluster = "cluster_example"; // String | cluster
+String environment = "environment_example"; // String | 
+String deployment = "deployment_example"; // String | 
+String cluster = "cluster_example"; // String | 
 try {
     ClusterTemplate result = apiInstance.getTemplateRedacted(environment, deployment, cluster);
     System.out.println(result);
@@ -563,9 +583,9 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **environment** | **String**| environment |
- **deployment** | **String**| deployment |
- **cluster** | **String**| cluster |
+ **environment** | **String**|  |
+ **deployment** | **String**|  |
+ **cluster** | **String**|  |
 
 ### Return type
 
@@ -586,6 +606,8 @@ Name | Type | Description  | Notes
 
 List all clusters
 
+
+
 ### Example
 ```java
 // Import classes:
@@ -603,8 +625,8 @@ basic.setUsername("YOUR USERNAME");
 basic.setPassword("YOUR PASSWORD");
 
 ClustersApi apiInstance = new ClustersApi();
-String environment = "environment_example"; // String | environment
-String deployment = "deployment_example"; // String | deployment
+String environment = "environment_example"; // String | 
+String deployment = "deployment_example"; // String | 
 try {
     List<String> result = apiInstance.list(environment, deployment);
     System.out.println(result);
@@ -618,8 +640,8 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **environment** | **String**| environment |
- **deployment** | **String**| deployment |
+ **environment** | **String**|  |
+ **deployment** | **String**|  |
 
 ### Return type
 
@@ -640,6 +662,8 @@ Name | Type | Description  | Notes
 
 Update an existing cluster
 
+
+
 ### Example
 ```java
 // Import classes:
@@ -657,10 +681,10 @@ basic.setUsername("YOUR USERNAME");
 basic.setPassword("YOUR PASSWORD");
 
 ClustersApi apiInstance = new ClustersApi();
-String environment = "environment_example"; // String | environment
-String deployment = "deployment_example"; // String | deployment
-String cluster = "cluster_example"; // String | cluster
-ClusterTemplate desired = new ClusterTemplate(); // ClusterTemplate | desired
+String environment = "environment_example"; // String | 
+String deployment = "deployment_example"; // String | 
+String cluster = "cluster_example"; // String | 
+ClusterTemplate desired = new ClusterTemplate(); // ClusterTemplate | 
 try {
     apiInstance.update(environment, deployment, cluster, desired);
 } catch (ApiException e) {
@@ -673,10 +697,10 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **environment** | **String**| environment |
- **deployment** | **String**| deployment |
- **cluster** | **String**| cluster |
- **desired** | [**ClusterTemplate**](ClusterTemplate.md)| desired |
+ **environment** | **String**|  |
+ **deployment** | **String**|  |
+ **cluster** | **String**|  |
+ **desired** | [**ClusterTemplate**](ClusterTemplate.md)|  |
 
 ### Return type
 
@@ -688,7 +712,7 @@ null (empty response body)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 <a name="updateAdministrationSettings"></a>
@@ -696,6 +720,8 @@ null (empty response body)
 > updateAdministrationSettings(environment, deployment, cluster, administrationSettings)
 
 Update administration settings for a cluster
+
+
 
 ### Example
 ```java
@@ -714,10 +740,10 @@ basic.setUsername("YOUR USERNAME");
 basic.setPassword("YOUR PASSWORD");
 
 ClustersApi apiInstance = new ClustersApi();
-String environment = "environment_example"; // String | environment
-String deployment = "deployment_example"; // String | deployment
-String cluster = "cluster_example"; // String | cluster
-ClusterAdministrationSettings administrationSettings = new ClusterAdministrationSettings(); // ClusterAdministrationSettings | administrationSettings
+String environment = "environment_example"; // String | 
+String deployment = "deployment_example"; // String | 
+String cluster = "cluster_example"; // String | 
+ClusterAdministrationSettings administrationSettings = new ClusterAdministrationSettings(); // ClusterAdministrationSettings | 
 try {
     apiInstance.updateAdministrationSettings(environment, deployment, cluster, administrationSettings);
 } catch (ApiException e) {
@@ -730,10 +756,10 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **environment** | **String**| environment |
- **deployment** | **String**| deployment |
- **cluster** | **String**| cluster |
- **administrationSettings** | [**ClusterAdministrationSettings**](ClusterAdministrationSettings.md)| administrationSettings |
+ **environment** | **String**|  |
+ **deployment** | **String**|  |
+ **cluster** | **String**|  |
+ **administrationSettings** | [**ClusterAdministrationSettings**](ClusterAdministrationSettings.md)|  |
 
 ### Return type
 
@@ -745,6 +771,6 @@ null (empty response body)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 

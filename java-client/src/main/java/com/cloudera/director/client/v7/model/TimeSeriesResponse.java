@@ -37,10 +37,10 @@ import java.util.List;
 public class TimeSeriesResponse {
   @SerializedName("timeSeries")
   private List<TimeSeries> timeSeries = null;
-  @SerializedName("timeSeriesQuery")
-  private String timeSeriesQuery = null;
   @SerializedName("warnings")
   private List<String> warnings = null;
+  @SerializedName("timeSeriesQuery")
+  private String timeSeriesQuery = null;
 
   public TimeSeriesResponse() {
     // Do nothing
@@ -48,8 +48,8 @@ public class TimeSeriesResponse {
 
   private TimeSeriesResponse(TimeSeriesResponseBuilder builder) {
       this.timeSeries = builder.timeSeries;
-      this.timeSeriesQuery = builder.timeSeriesQuery;
       this.warnings = builder.warnings;
+      this.timeSeriesQuery = builder.timeSeriesQuery;
     }
 
   public static TimeSeriesResponseBuilder builder() {
@@ -58,8 +58,8 @@ public class TimeSeriesResponse {
 
   public static class TimeSeriesResponseBuilder {
       private List<TimeSeries> timeSeries = new ArrayList<TimeSeries>();
-      private String timeSeriesQuery = null;
       private List<String> warnings = new ArrayList<String>();
+      private String timeSeriesQuery = null;
   
 
     public TimeSeriesResponseBuilder timeSeries(List<TimeSeries> timeSeries) {
@@ -68,14 +68,14 @@ public class TimeSeriesResponse {
     }
 
 
-    public TimeSeriesResponseBuilder timeSeriesQuery(String timeSeriesQuery) {
-      this.timeSeriesQuery = timeSeriesQuery;
+    public TimeSeriesResponseBuilder warnings(List<String> warnings) {
+      this.warnings = warnings;
       return this;
     }
 
 
-    public TimeSeriesResponseBuilder warnings(List<String> warnings) {
-      this.warnings = warnings;
+    public TimeSeriesResponseBuilder timeSeriesQuery(String timeSeriesQuery) {
+      this.timeSeriesQuery = timeSeriesQuery;
       return this;
     }
 
@@ -88,8 +88,8 @@ public class TimeSeriesResponse {
   public TimeSeriesResponseBuilder toBuilder() {
     return builder()
       .timeSeries(timeSeries)
-            .timeSeriesQuery(timeSeriesQuery)
             .warnings(warnings)
+            .timeSeriesQuery(timeSeriesQuery)
       ;
   }
 
@@ -119,24 +119,6 @@ public class TimeSeriesResponse {
     this.timeSeries = timeSeries;
   }
 
-  public TimeSeriesResponse timeSeriesQuery(String timeSeriesQuery) {
-    this.timeSeriesQuery = timeSeriesQuery;
-    return this;
-  }
-
-   /**
-   * Time series query
-   * @return timeSeriesQuery
-  **/
-  @ApiModelProperty(required = true, value = "Time series query")
-  public String getTimeSeriesQuery() {
-    return timeSeriesQuery;
-  }
-
-  public void setTimeSeriesQuery(String timeSeriesQuery) {
-    this.timeSeriesQuery = timeSeriesQuery;
-  }
-
   public TimeSeriesResponse warnings(List<String> warnings) {
     this.warnings = warnings;
     return this;
@@ -163,6 +145,24 @@ public class TimeSeriesResponse {
     this.warnings = warnings;
   }
 
+  public TimeSeriesResponse timeSeriesQuery(String timeSeriesQuery) {
+    this.timeSeriesQuery = timeSeriesQuery;
+    return this;
+  }
+
+   /**
+   * Time series query
+   * @return timeSeriesQuery
+  **/
+  @ApiModelProperty(required = true, value = "Time series query")
+  public String getTimeSeriesQuery() {
+    return timeSeriesQuery;
+  }
+
+  public void setTimeSeriesQuery(String timeSeriesQuery) {
+    this.timeSeriesQuery = timeSeriesQuery;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -174,13 +174,13 @@ public class TimeSeriesResponse {
     }
     TimeSeriesResponse timeSeriesResponse = (TimeSeriesResponse) o;
     return Objects.equals(this.timeSeries, timeSeriesResponse.timeSeries) &&
-        Objects.equals(this.timeSeriesQuery, timeSeriesResponse.timeSeriesQuery) &&
-        Objects.equals(this.warnings, timeSeriesResponse.warnings);
+        Objects.equals(this.warnings, timeSeriesResponse.warnings) &&
+        Objects.equals(this.timeSeriesQuery, timeSeriesResponse.timeSeriesQuery);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(timeSeries, timeSeriesQuery, warnings);
+    return Objects.hash(timeSeries, warnings, timeSeriesQuery);
   }
 
 
@@ -190,8 +190,8 @@ public class TimeSeriesResponse {
     sb.append("class TimeSeriesResponse {\n");
     
     sb.append("    timeSeries: ").append(toIndentedString(timeSeries)).append("\n");
-    sb.append("    timeSeriesQuery: ").append(toIndentedString(timeSeriesQuery)).append("\n");
     sb.append("    warnings: ").append(toIndentedString(warnings)).append("\n");
+    sb.append("    timeSeriesQuery: ").append(toIndentedString(timeSeriesQuery)).append("\n");
     sb.append("}");
     return sb.toString();
   }

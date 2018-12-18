@@ -39,58 +39,58 @@ class User(object):
                             and the value is json key in definition.
     """
     swagger_types = {
-        'enabled': 'bool',
+        'username': 'str',
         'password': 'str',
-        'roles': 'list[str]',
-        'username': 'str'
+        'enabled': 'bool',
+        'roles': 'list[str]'
     }
 
     attribute_map = {
-        'enabled': 'enabled',
+        'username': 'username',
         'password': 'password',
-        'roles': 'roles',
-        'username': 'username'
+        'enabled': 'enabled',
+        'roles': 'roles'
     }
 
-    def __init__(self, enabled=None, password=None, roles=None, username=None):  # noqa: E501
+    def __init__(self, username=None, password=None, enabled=None, roles=None):  # noqa: E501
         """User - a model defined in Swagger"""  # noqa: E501
 
-        self._enabled = None
-        self._password = None
-        self._roles = None
         self._username = None
+        self._password = None
+        self._enabled = None
+        self._roles = None
         self.discriminator = None
 
-        self.enabled = enabled
+        self.username = username
         self.password = password
+        self.enabled = enabled
         if roles is not None:
             self.roles = roles
-        self.username = username
 
     @property
-    def enabled(self):
-        """Gets the enabled of this User.  # noqa: E501
+    def username(self):
+        """Gets the username of this User.  # noqa: E501
 
-        Whether the user is enabled  # noqa: E501
+        User name  # noqa: E501
 
-        :return: The enabled of this User.  # noqa: E501
-        :rtype: bool
+        :return: The username of this User.  # noqa: E501
+        :rtype: str
         """
-        return self._enabled
+        return self._username
 
-    @enabled.setter
-    def enabled(self, enabled):
-        """Sets the enabled of this User.
+    @username.setter
+    def username(self, username):
+        """Sets the username of this User.
 
-        Whether the user is enabled  # noqa: E501
+        User name  # noqa: E501
 
-        :param enabled: The enabled of this User.  # noqa: E501
-        :type: bool
+        :param username: The username of this User.  # noqa: E501
+        :type: str
         """
-        if enabled is None:
-            raise ValueError("Invalid value for `enabled`, must not be `None`")  # noqa: E501
+        if username is None:
+            raise ValueError("Invalid value for `username`, must not be `None`")  # noqa: E501
 
-        self._enabled = enabled
+        self._username = username
 
     @property
     def password(self):
@@ -118,6 +118,31 @@ class User(object):
         self._password = password
 
     @property
+    def enabled(self):
+        """Gets the enabled of this User.  # noqa: E501
+
+        Whether the user is enabled  # noqa: E501
+
+        :return: The enabled of this User.  # noqa: E501
+        :rtype: bool
+        """
+        return self._enabled
+
+    @enabled.setter
+    def enabled(self, enabled):
+        """Sets the enabled of this User.
+
+        Whether the user is enabled  # noqa: E501
+
+        :param enabled: The enabled of this User.  # noqa: E501
+        :type: bool
+        """
+        if enabled is None:
+            raise ValueError("Invalid value for `enabled`, must not be `None`")  # noqa: E501
+
+        self._enabled = enabled
+
+    @property
     def roles(self):
         """Gets the roles of this User.  # noqa: E501
 
@@ -139,31 +164,6 @@ class User(object):
         """
 
         self._roles = roles
-
-    @property
-    def username(self):
-        """Gets the username of this User.  # noqa: E501
-
-        User name  # noqa: E501
-
-        :return: The username of this User.  # noqa: E501
-        :rtype: str
-        """
-        return self._username
-
-    @username.setter
-    def username(self, username):
-        """Sets the username of this User.
-
-        User name  # noqa: E501
-
-        :param username: The username of this User.  # noqa: E501
-        :type: str
-        """
-        if username is None:
-            raise ValueError("Invalid value for `username`, must not be `None`")  # noqa: E501
-
-        self._username = username
 
     def to_dict(self):
         """Returns the model properties as a dict"""

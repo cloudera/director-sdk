@@ -39,204 +39,89 @@ class ClusterTemplate(object):
                             and the value is json key in definition.
     """
     swagger_types = {
-        'administration_settings': 'ClusterAdministrationSettings',
-        'external_database_templates': 'dict(str, ExternalDatabaseTemplate)',
-        'external_databases': 'dict(str, ExternalDatabase)',
-        'instance_post_create_scripts': 'list[str]',
-        'migrations': 'list[Migration]',
         'name': 'str',
-        'parcel_repositories': 'list[str]',
-        'post_create_scripts': 'list[str]',
-        'pre_terminate_scripts': 'list[str]',
         'product_versions': 'dict(str, str)',
-        'redeploy_client_configs_on_update': 'bool',
-        'restart_cluster_on_update': 'bool',
         'services': 'list[str]',
         'services_configs': 'dict(str, dict(str, str))',
-        'virtual_instance_groups': 'dict(str, VirtualInstanceGroup)'
+        'virtual_instance_groups': 'dict(str, VirtualInstanceGroup)',
+        'external_database_templates': 'dict(str, ExternalDatabaseTemplate)',
+        'external_databases': 'dict(str, ExternalDatabase)',
+        'parcel_repositories': 'list[str]',
+        'restart_cluster_on_update': 'bool',
+        'redeploy_client_configs_on_update': 'bool',
+        'instance_post_create_scripts': 'list[str]',
+        'post_create_scripts': 'list[str]',
+        'pre_terminate_scripts': 'list[str]',
+        'migrations': 'list[Migration]',
+        'administration_settings': 'ClusterAdministrationSettings'
     }
 
     attribute_map = {
-        'administration_settings': 'administrationSettings',
-        'external_database_templates': 'externalDatabaseTemplates',
-        'external_databases': 'externalDatabases',
-        'instance_post_create_scripts': 'instancePostCreateScripts',
-        'migrations': 'migrations',
         'name': 'name',
-        'parcel_repositories': 'parcelRepositories',
-        'post_create_scripts': 'postCreateScripts',
-        'pre_terminate_scripts': 'preTerminateScripts',
         'product_versions': 'productVersions',
-        'redeploy_client_configs_on_update': 'redeployClientConfigsOnUpdate',
-        'restart_cluster_on_update': 'restartClusterOnUpdate',
         'services': 'services',
         'services_configs': 'servicesConfigs',
-        'virtual_instance_groups': 'virtualInstanceGroups'
+        'virtual_instance_groups': 'virtualInstanceGroups',
+        'external_database_templates': 'externalDatabaseTemplates',
+        'external_databases': 'externalDatabases',
+        'parcel_repositories': 'parcelRepositories',
+        'restart_cluster_on_update': 'restartClusterOnUpdate',
+        'redeploy_client_configs_on_update': 'redeployClientConfigsOnUpdate',
+        'instance_post_create_scripts': 'instancePostCreateScripts',
+        'post_create_scripts': 'postCreateScripts',
+        'pre_terminate_scripts': 'preTerminateScripts',
+        'migrations': 'migrations',
+        'administration_settings': 'administrationSettings'
     }
 
-    def __init__(self, administration_settings=None, external_database_templates=None, external_databases=None, instance_post_create_scripts=None, migrations=None, name=None, parcel_repositories=None, post_create_scripts=None, pre_terminate_scripts=None, product_versions=None, redeploy_client_configs_on_update=None, restart_cluster_on_update=None, services=None, services_configs=None, virtual_instance_groups=None):  # noqa: E501
+    def __init__(self, name=None, product_versions=None, services=None, services_configs=None, virtual_instance_groups=None, external_database_templates=None, external_databases=None, parcel_repositories=None, restart_cluster_on_update=None, redeploy_client_configs_on_update=None, instance_post_create_scripts=None, post_create_scripts=None, pre_terminate_scripts=None, migrations=None, administration_settings=None):  # noqa: E501
         """ClusterTemplate - a model defined in Swagger"""  # noqa: E501
 
-        self._administration_settings = None
-        self._external_database_templates = None
-        self._external_databases = None
-        self._instance_post_create_scripts = None
-        self._migrations = None
         self._name = None
-        self._parcel_repositories = None
-        self._post_create_scripts = None
-        self._pre_terminate_scripts = None
         self._product_versions = None
-        self._redeploy_client_configs_on_update = None
-        self._restart_cluster_on_update = None
         self._services = None
         self._services_configs = None
         self._virtual_instance_groups = None
+        self._external_database_templates = None
+        self._external_databases = None
+        self._parcel_repositories = None
+        self._restart_cluster_on_update = None
+        self._redeploy_client_configs_on_update = None
+        self._instance_post_create_scripts = None
+        self._post_create_scripts = None
+        self._pre_terminate_scripts = None
+        self._migrations = None
+        self._administration_settings = None
         self.discriminator = None
 
-        if administration_settings is not None:
-            self.administration_settings = administration_settings
-        if external_database_templates is not None:
-            self.external_database_templates = external_database_templates
-        if external_databases is not None:
-            self.external_databases = external_databases
-        if instance_post_create_scripts is not None:
-            self.instance_post_create_scripts = instance_post_create_scripts
-        if migrations is not None:
-            self.migrations = migrations
         self.name = name
-        if parcel_repositories is not None:
-            self.parcel_repositories = parcel_repositories
-        if post_create_scripts is not None:
-            self.post_create_scripts = post_create_scripts
-        if pre_terminate_scripts is not None:
-            self.pre_terminate_scripts = pre_terminate_scripts
         if product_versions is not None:
             self.product_versions = product_versions
-        if redeploy_client_configs_on_update is not None:
-            self.redeploy_client_configs_on_update = redeploy_client_configs_on_update
-        if restart_cluster_on_update is not None:
-            self.restart_cluster_on_update = restart_cluster_on_update
         if services is not None:
             self.services = services
         if services_configs is not None:
             self.services_configs = services_configs
         self.virtual_instance_groups = virtual_instance_groups
-
-    @property
-    def administration_settings(self):
-        """Gets the administration_settings of this ClusterTemplate.  # noqa: E501
-
-        Optional cluster administration settings  # noqa: E501
-
-        :return: The administration_settings of this ClusterTemplate.  # noqa: E501
-        :rtype: ClusterAdministrationSettings
-        """
-        return self._administration_settings
-
-    @administration_settings.setter
-    def administration_settings(self, administration_settings):
-        """Sets the administration_settings of this ClusterTemplate.
-
-        Optional cluster administration settings  # noqa: E501
-
-        :param administration_settings: The administration_settings of this ClusterTemplate.  # noqa: E501
-        :type: ClusterAdministrationSettings
-        """
-
-        self._administration_settings = administration_settings
-
-    @property
-    def external_database_templates(self):
-        """Gets the external_database_templates of this ClusterTemplate.  # noqa: E501
-
-        Optional external database templates  # noqa: E501
-
-        :return: The external_database_templates of this ClusterTemplate.  # noqa: E501
-        :rtype: dict(str, ExternalDatabaseTemplate)
-        """
-        return self._external_database_templates
-
-    @external_database_templates.setter
-    def external_database_templates(self, external_database_templates):
-        """Sets the external_database_templates of this ClusterTemplate.
-
-        Optional external database templates  # noqa: E501
-
-        :param external_database_templates: The external_database_templates of this ClusterTemplate.  # noqa: E501
-        :type: dict(str, ExternalDatabaseTemplate)
-        """
-
-        self._external_database_templates = external_database_templates
-
-    @property
-    def external_databases(self):
-        """Gets the external_databases of this ClusterTemplate.  # noqa: E501
-
-        Optional external databases  # noqa: E501
-
-        :return: The external_databases of this ClusterTemplate.  # noqa: E501
-        :rtype: dict(str, ExternalDatabase)
-        """
-        return self._external_databases
-
-    @external_databases.setter
-    def external_databases(self, external_databases):
-        """Sets the external_databases of this ClusterTemplate.
-
-        Optional external databases  # noqa: E501
-
-        :param external_databases: The external_databases of this ClusterTemplate.  # noqa: E501
-        :type: dict(str, ExternalDatabase)
-        """
-
-        self._external_databases = external_databases
-
-    @property
-    def instance_post_create_scripts(self):
-        """Gets the instance_post_create_scripts of this ClusterTemplate.  # noqa: E501
-
-        A list of scripts to be run after cluster creation on all cluster instances  # noqa: E501
-
-        :return: The instance_post_create_scripts of this ClusterTemplate.  # noqa: E501
-        :rtype: list[str]
-        """
-        return self._instance_post_create_scripts
-
-    @instance_post_create_scripts.setter
-    def instance_post_create_scripts(self, instance_post_create_scripts):
-        """Sets the instance_post_create_scripts of this ClusterTemplate.
-
-        A list of scripts to be run after cluster creation on all cluster instances  # noqa: E501
-
-        :param instance_post_create_scripts: The instance_post_create_scripts of this ClusterTemplate.  # noqa: E501
-        :type: list[str]
-        """
-
-        self._instance_post_create_scripts = instance_post_create_scripts
-
-    @property
-    def migrations(self):
-        """Gets the migrations of this ClusterTemplate.  # noqa: E501
-
-        A description of current manual migrations (read only)  # noqa: E501
-
-        :return: The migrations of this ClusterTemplate.  # noqa: E501
-        :rtype: list[Migration]
-        """
-        return self._migrations
-
-    @migrations.setter
-    def migrations(self, migrations):
-        """Sets the migrations of this ClusterTemplate.
-
-        A description of current manual migrations (read only)  # noqa: E501
-
-        :param migrations: The migrations of this ClusterTemplate.  # noqa: E501
-        :type: list[Migration]
-        """
-
-        self._migrations = migrations
+        if external_database_templates is not None:
+            self.external_database_templates = external_database_templates
+        if external_databases is not None:
+            self.external_databases = external_databases
+        if parcel_repositories is not None:
+            self.parcel_repositories = parcel_repositories
+        if restart_cluster_on_update is not None:
+            self.restart_cluster_on_update = restart_cluster_on_update
+        if redeploy_client_configs_on_update is not None:
+            self.redeploy_client_configs_on_update = redeploy_client_configs_on_update
+        if instance_post_create_scripts is not None:
+            self.instance_post_create_scripts = instance_post_create_scripts
+        if post_create_scripts is not None:
+            self.post_create_scripts = post_create_scripts
+        if pre_terminate_scripts is not None:
+            self.pre_terminate_scripts = pre_terminate_scripts
+        if migrations is not None:
+            self.migrations = migrations
+        if administration_settings is not None:
+            self.administration_settings = administration_settings
 
     @property
     def name(self):
@@ -264,75 +149,6 @@ class ClusterTemplate(object):
         self._name = name
 
     @property
-    def parcel_repositories(self):
-        """Gets the parcel_repositories of this ClusterTemplate.  # noqa: E501
-
-        Optional set of cluster parcel repositories  # noqa: E501
-
-        :return: The parcel_repositories of this ClusterTemplate.  # noqa: E501
-        :rtype: list[str]
-        """
-        return self._parcel_repositories
-
-    @parcel_repositories.setter
-    def parcel_repositories(self, parcel_repositories):
-        """Sets the parcel_repositories of this ClusterTemplate.
-
-        Optional set of cluster parcel repositories  # noqa: E501
-
-        :param parcel_repositories: The parcel_repositories of this ClusterTemplate.  # noqa: E501
-        :type: list[str]
-        """
-
-        self._parcel_repositories = parcel_repositories
-
-    @property
-    def post_create_scripts(self):
-        """Gets the post_create_scripts of this ClusterTemplate.  # noqa: E501
-
-        A list of scripts to be run after cluster creation  # noqa: E501
-
-        :return: The post_create_scripts of this ClusterTemplate.  # noqa: E501
-        :rtype: list[str]
-        """
-        return self._post_create_scripts
-
-    @post_create_scripts.setter
-    def post_create_scripts(self, post_create_scripts):
-        """Sets the post_create_scripts of this ClusterTemplate.
-
-        A list of scripts to be run after cluster creation  # noqa: E501
-
-        :param post_create_scripts: The post_create_scripts of this ClusterTemplate.  # noqa: E501
-        :type: list[str]
-        """
-
-        self._post_create_scripts = post_create_scripts
-
-    @property
-    def pre_terminate_scripts(self):
-        """Gets the pre_terminate_scripts of this ClusterTemplate.  # noqa: E501
-
-        A list of scripts to be run before cluster termination  # noqa: E501
-
-        :return: The pre_terminate_scripts of this ClusterTemplate.  # noqa: E501
-        :rtype: list[str]
-        """
-        return self._pre_terminate_scripts
-
-    @pre_terminate_scripts.setter
-    def pre_terminate_scripts(self, pre_terminate_scripts):
-        """Sets the pre_terminate_scripts of this ClusterTemplate.
-
-        A list of scripts to be run before cluster termination  # noqa: E501
-
-        :param pre_terminate_scripts: The pre_terminate_scripts of this ClusterTemplate.  # noqa: E501
-        :type: list[str]
-        """
-
-        self._pre_terminate_scripts = pre_terminate_scripts
-
-    @property
     def product_versions(self):
         """Gets the product_versions of this ClusterTemplate.  # noqa: E501
 
@@ -354,52 +170,6 @@ class ClusterTemplate(object):
         """
 
         self._product_versions = product_versions
-
-    @property
-    def redeploy_client_configs_on_update(self):
-        """Gets the redeploy_client_configs_on_update of this ClusterTemplate.  # noqa: E501
-
-        Whether to redeploy client configuration on cluster update  # noqa: E501
-
-        :return: The redeploy_client_configs_on_update of this ClusterTemplate.  # noqa: E501
-        :rtype: bool
-        """
-        return self._redeploy_client_configs_on_update
-
-    @redeploy_client_configs_on_update.setter
-    def redeploy_client_configs_on_update(self, redeploy_client_configs_on_update):
-        """Sets the redeploy_client_configs_on_update of this ClusterTemplate.
-
-        Whether to redeploy client configuration on cluster update  # noqa: E501
-
-        :param redeploy_client_configs_on_update: The redeploy_client_configs_on_update of this ClusterTemplate.  # noqa: E501
-        :type: bool
-        """
-
-        self._redeploy_client_configs_on_update = redeploy_client_configs_on_update
-
-    @property
-    def restart_cluster_on_update(self):
-        """Gets the restart_cluster_on_update of this ClusterTemplate.  # noqa: E501
-
-        Whether to restart the cluster on cluster update  # noqa: E501
-
-        :return: The restart_cluster_on_update of this ClusterTemplate.  # noqa: E501
-        :rtype: bool
-        """
-        return self._restart_cluster_on_update
-
-    @restart_cluster_on_update.setter
-    def restart_cluster_on_update(self, restart_cluster_on_update):
-        """Sets the restart_cluster_on_update of this ClusterTemplate.
-
-        Whether to restart the cluster on cluster update  # noqa: E501
-
-        :param restart_cluster_on_update: The restart_cluster_on_update of this ClusterTemplate.  # noqa: E501
-        :type: bool
-        """
-
-        self._restart_cluster_on_update = restart_cluster_on_update
 
     @property
     def services(self):
@@ -471,6 +241,236 @@ class ClusterTemplate(object):
             raise ValueError("Invalid value for `virtual_instance_groups`, must not be `None`")  # noqa: E501
 
         self._virtual_instance_groups = virtual_instance_groups
+
+    @property
+    def external_database_templates(self):
+        """Gets the external_database_templates of this ClusterTemplate.  # noqa: E501
+
+        Optional external database templates  # noqa: E501
+
+        :return: The external_database_templates of this ClusterTemplate.  # noqa: E501
+        :rtype: dict(str, ExternalDatabaseTemplate)
+        """
+        return self._external_database_templates
+
+    @external_database_templates.setter
+    def external_database_templates(self, external_database_templates):
+        """Sets the external_database_templates of this ClusterTemplate.
+
+        Optional external database templates  # noqa: E501
+
+        :param external_database_templates: The external_database_templates of this ClusterTemplate.  # noqa: E501
+        :type: dict(str, ExternalDatabaseTemplate)
+        """
+
+        self._external_database_templates = external_database_templates
+
+    @property
+    def external_databases(self):
+        """Gets the external_databases of this ClusterTemplate.  # noqa: E501
+
+        Optional external databases  # noqa: E501
+
+        :return: The external_databases of this ClusterTemplate.  # noqa: E501
+        :rtype: dict(str, ExternalDatabase)
+        """
+        return self._external_databases
+
+    @external_databases.setter
+    def external_databases(self, external_databases):
+        """Sets the external_databases of this ClusterTemplate.
+
+        Optional external databases  # noqa: E501
+
+        :param external_databases: The external_databases of this ClusterTemplate.  # noqa: E501
+        :type: dict(str, ExternalDatabase)
+        """
+
+        self._external_databases = external_databases
+
+    @property
+    def parcel_repositories(self):
+        """Gets the parcel_repositories of this ClusterTemplate.  # noqa: E501
+
+        Optional set of cluster parcel repositories  # noqa: E501
+
+        :return: The parcel_repositories of this ClusterTemplate.  # noqa: E501
+        :rtype: list[str]
+        """
+        return self._parcel_repositories
+
+    @parcel_repositories.setter
+    def parcel_repositories(self, parcel_repositories):
+        """Sets the parcel_repositories of this ClusterTemplate.
+
+        Optional set of cluster parcel repositories  # noqa: E501
+
+        :param parcel_repositories: The parcel_repositories of this ClusterTemplate.  # noqa: E501
+        :type: list[str]
+        """
+
+        self._parcel_repositories = parcel_repositories
+
+    @property
+    def restart_cluster_on_update(self):
+        """Gets the restart_cluster_on_update of this ClusterTemplate.  # noqa: E501
+
+        Whether to restart the cluster on cluster update  # noqa: E501
+
+        :return: The restart_cluster_on_update of this ClusterTemplate.  # noqa: E501
+        :rtype: bool
+        """
+        return self._restart_cluster_on_update
+
+    @restart_cluster_on_update.setter
+    def restart_cluster_on_update(self, restart_cluster_on_update):
+        """Sets the restart_cluster_on_update of this ClusterTemplate.
+
+        Whether to restart the cluster on cluster update  # noqa: E501
+
+        :param restart_cluster_on_update: The restart_cluster_on_update of this ClusterTemplate.  # noqa: E501
+        :type: bool
+        """
+
+        self._restart_cluster_on_update = restart_cluster_on_update
+
+    @property
+    def redeploy_client_configs_on_update(self):
+        """Gets the redeploy_client_configs_on_update of this ClusterTemplate.  # noqa: E501
+
+        Whether to redeploy client configuration on cluster update  # noqa: E501
+
+        :return: The redeploy_client_configs_on_update of this ClusterTemplate.  # noqa: E501
+        :rtype: bool
+        """
+        return self._redeploy_client_configs_on_update
+
+    @redeploy_client_configs_on_update.setter
+    def redeploy_client_configs_on_update(self, redeploy_client_configs_on_update):
+        """Sets the redeploy_client_configs_on_update of this ClusterTemplate.
+
+        Whether to redeploy client configuration on cluster update  # noqa: E501
+
+        :param redeploy_client_configs_on_update: The redeploy_client_configs_on_update of this ClusterTemplate.  # noqa: E501
+        :type: bool
+        """
+
+        self._redeploy_client_configs_on_update = redeploy_client_configs_on_update
+
+    @property
+    def instance_post_create_scripts(self):
+        """Gets the instance_post_create_scripts of this ClusterTemplate.  # noqa: E501
+
+        A list of scripts to be run after cluster creation on all cluster instances  # noqa: E501
+
+        :return: The instance_post_create_scripts of this ClusterTemplate.  # noqa: E501
+        :rtype: list[str]
+        """
+        return self._instance_post_create_scripts
+
+    @instance_post_create_scripts.setter
+    def instance_post_create_scripts(self, instance_post_create_scripts):
+        """Sets the instance_post_create_scripts of this ClusterTemplate.
+
+        A list of scripts to be run after cluster creation on all cluster instances  # noqa: E501
+
+        :param instance_post_create_scripts: The instance_post_create_scripts of this ClusterTemplate.  # noqa: E501
+        :type: list[str]
+        """
+
+        self._instance_post_create_scripts = instance_post_create_scripts
+
+    @property
+    def post_create_scripts(self):
+        """Gets the post_create_scripts of this ClusterTemplate.  # noqa: E501
+
+        A list of scripts to be run after cluster creation  # noqa: E501
+
+        :return: The post_create_scripts of this ClusterTemplate.  # noqa: E501
+        :rtype: list[str]
+        """
+        return self._post_create_scripts
+
+    @post_create_scripts.setter
+    def post_create_scripts(self, post_create_scripts):
+        """Sets the post_create_scripts of this ClusterTemplate.
+
+        A list of scripts to be run after cluster creation  # noqa: E501
+
+        :param post_create_scripts: The post_create_scripts of this ClusterTemplate.  # noqa: E501
+        :type: list[str]
+        """
+
+        self._post_create_scripts = post_create_scripts
+
+    @property
+    def pre_terminate_scripts(self):
+        """Gets the pre_terminate_scripts of this ClusterTemplate.  # noqa: E501
+
+        A list of scripts to be run before cluster termination  # noqa: E501
+
+        :return: The pre_terminate_scripts of this ClusterTemplate.  # noqa: E501
+        :rtype: list[str]
+        """
+        return self._pre_terminate_scripts
+
+    @pre_terminate_scripts.setter
+    def pre_terminate_scripts(self, pre_terminate_scripts):
+        """Sets the pre_terminate_scripts of this ClusterTemplate.
+
+        A list of scripts to be run before cluster termination  # noqa: E501
+
+        :param pre_terminate_scripts: The pre_terminate_scripts of this ClusterTemplate.  # noqa: E501
+        :type: list[str]
+        """
+
+        self._pre_terminate_scripts = pre_terminate_scripts
+
+    @property
+    def migrations(self):
+        """Gets the migrations of this ClusterTemplate.  # noqa: E501
+
+        A description of current manual migrations (read only)  # noqa: E501
+
+        :return: The migrations of this ClusterTemplate.  # noqa: E501
+        :rtype: list[Migration]
+        """
+        return self._migrations
+
+    @migrations.setter
+    def migrations(self, migrations):
+        """Sets the migrations of this ClusterTemplate.
+
+        A description of current manual migrations (read only)  # noqa: E501
+
+        :param migrations: The migrations of this ClusterTemplate.  # noqa: E501
+        :type: list[Migration]
+        """
+
+        self._migrations = migrations
+
+    @property
+    def administration_settings(self):
+        """Gets the administration_settings of this ClusterTemplate.  # noqa: E501
+
+        Optional cluster administration settings  # noqa: E501
+
+        :return: The administration_settings of this ClusterTemplate.  # noqa: E501
+        :rtype: ClusterAdministrationSettings
+        """
+        return self._administration_settings
+
+    @administration_settings.setter
+    def administration_settings(self, administration_settings):
+        """Sets the administration_settings of this ClusterTemplate.
+
+        Optional cluster administration settings  # noqa: E501
+
+        :param administration_settings: The administration_settings of this ClusterTemplate.  # noqa: E501
+        :type: ClusterAdministrationSettings
+        """
+
+        self._administration_settings = administration_settings
 
     def to_dict(self):
         """Returns the model properties as a dict"""

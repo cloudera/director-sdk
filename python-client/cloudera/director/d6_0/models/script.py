@@ -39,25 +39,48 @@ class Script(object):
                             and the value is json key in definition.
     """
     swagger_types = {
-        'content': 'str',
-        'id': 'str'
+        'id': 'str',
+        'content': 'str'
     }
 
     attribute_map = {
-        'content': 'content',
-        'id': 'id'
+        'id': 'id',
+        'content': 'content'
     }
 
-    def __init__(self, content=None, id=None):  # noqa: E501
+    def __init__(self, id=None, content=None):  # noqa: E501
         """Script - a model defined in Swagger"""  # noqa: E501
 
-        self._content = None
         self._id = None
+        self._content = None
         self.discriminator = None
 
-        self.content = content
         if id is not None:
             self.id = id
+        self.content = content
+
+    @property
+    def id(self):
+        """Gets the id of this Script.  # noqa: E501
+
+        An optional id to identify the script  # noqa: E501
+
+        :return: The id of this Script.  # noqa: E501
+        :rtype: str
+        """
+        return self._id
+
+    @id.setter
+    def id(self, id):
+        """Sets the id of this Script.
+
+        An optional id to identify the script  # noqa: E501
+
+        :param id: The id of this Script.  # noqa: E501
+        :type: str
+        """
+
+        self._id = id
 
     @property
     def content(self):
@@ -83,29 +106,6 @@ class Script(object):
             raise ValueError("Invalid value for `content`, must not be `None`")  # noqa: E501
 
         self._content = content
-
-    @property
-    def id(self):
-        """Gets the id of this Script.  # noqa: E501
-
-        An optional id to identify the script  # noqa: E501
-
-        :return: The id of this Script.  # noqa: E501
-        :rtype: str
-        """
-        return self._id
-
-    @id.setter
-    def id(self, id):
-        """Sets the id of this Script.
-
-        An optional id to identify the script  # noqa: E501
-
-        :param id: The id of this Script.  # noqa: E501
-        :type: str
-        """
-
-        self._id = id
 
     def to_dict(self):
         """Returns the model properties as a dict"""

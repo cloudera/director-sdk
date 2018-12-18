@@ -1,17 +1,19 @@
 # cloudera.director.EulaApi
 
-All URIs are relative to *https://localhost:7189*
+All URIs are relative to *https://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**get**](EulaApi.md#get) | **GET** /api/d6.0/eula | Get the EULA
-[**update**](EulaApi.md#update) | **PUT** /api/d6.0/eula | Update the EULA
+[**get**](EulaApi.md#get) | **GET** /api/d6.1/eula | Get the EULA
+[**update**](EulaApi.md#update) | **PUT** /api/d6.1/eula | Update the EULA
 
 
 # **get**
 > Eula get()
 
 Get the EULA
+
+
 
 ### Example
 ```python
@@ -21,13 +23,8 @@ import cloudera.director
 from cloudera.director.rest import ApiException
 from pprint import pprint
 
-# Configure HTTP basic authorization: basic
-configuration = cloudera.director.Configuration()
-configuration.username = 'YOUR_USERNAME'
-configuration.password = 'YOUR_PASSWORD'
-
 # create an instance of the API class
-api_instance = cloudera.director.EulaApi(cloudera.director.ApiClient(configuration))
+api_instance = cloudera.director.EulaApi()
 
 try:
     # Get the EULA
@@ -46,7 +43,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[basic](../README.md#basic)
+No authorization required
 
 ### HTTP request headers
 
@@ -60,6 +57,8 @@ This endpoint does not need any parameter.
 
 Update the EULA
 
+
+
 ### Example
 ```python
 from __future__ import print_function
@@ -68,14 +67,9 @@ import cloudera.director
 from cloudera.director.rest import ApiException
 from pprint import pprint
 
-# Configure HTTP basic authorization: basic
-configuration = cloudera.director.Configuration()
-configuration.username = 'YOUR_USERNAME'
-configuration.password = 'YOUR_PASSWORD'
-
 # create an instance of the API class
-api_instance = cloudera.director.EulaApi(cloudera.director.ApiClient(configuration))
-eula = cloudera.director.Eula() # Eula | eula
+api_instance = cloudera.director.EulaApi()
+eula = cloudera.director.Eula() # Eula | 
 
 try:
     # Update the EULA
@@ -88,7 +82,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **eula** | [**Eula**](Eula.md)| eula | 
+ **eula** | [**Eula**](Eula.md)|  | 
 
 ### Return type
 
@@ -96,11 +90,11 @@ void (empty response body)
 
 ### Authorization
 
-[basic](../README.md#basic)
+No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

@@ -1,11 +1,11 @@
 # EulaApi
 
-All URIs are relative to *https://localhost:7189*
+All URIs are relative to *https://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**get**](EulaApi.md#get) | **GET** /api/d6.0/eula | Get the EULA
-[**update**](EulaApi.md#update) | **PUT** /api/d6.0/eula | Update the EULA
+[**get**](EulaApi.md#get) | **GET** /api/d6.1/eula | Get the EULA
+[**update**](EulaApi.md#update) | **PUT** /api/d6.1/eula | Update the EULA
 
 
 <a name="get"></a>
@@ -14,21 +14,14 @@ Method | HTTP request | Description
 
 Get the EULA
 
+
+
 ### Example
 ```java
 // Import classes:
-//import com.cloudera.director.client.common.ApiClient;
 //import com.cloudera.director.client.common.ApiException;
-//import com.cloudera.director.client.common.Configuration;
-//import com.cloudera.director.client.common.auth.*;
 //import com.cloudera.director.client.latest.api.EulaApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
-
-// Configure HTTP basic authorization: basic
-HttpBasicAuth basic = (HttpBasicAuth) defaultClient.getAuthentication("basic");
-basic.setUsername("YOUR USERNAME");
-basic.setPassword("YOUR PASSWORD");
 
 EulaApi apiInstance = new EulaApi();
 try {
@@ -49,7 +42,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[basic](../README.md#basic)
+No authorization required
 
 ### HTTP request headers
 
@@ -62,24 +55,17 @@ This endpoint does not need any parameter.
 
 Update the EULA
 
+
+
 ### Example
 ```java
 // Import classes:
-//import com.cloudera.director.client.common.ApiClient;
 //import com.cloudera.director.client.common.ApiException;
-//import com.cloudera.director.client.common.Configuration;
-//import com.cloudera.director.client.common.auth.*;
 //import com.cloudera.director.client.latest.api.EulaApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
-
-// Configure HTTP basic authorization: basic
-HttpBasicAuth basic = (HttpBasicAuth) defaultClient.getAuthentication("basic");
-basic.setUsername("YOUR USERNAME");
-basic.setPassword("YOUR PASSWORD");
 
 EulaApi apiInstance = new EulaApi();
-Eula eula = new Eula(); // Eula | eula
+Eula eula = new Eula(); // Eula | 
 try {
     apiInstance.update(eula);
 } catch (ApiException e) {
@@ -92,7 +78,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **eula** | [**Eula**](Eula.md)| eula |
+ **eula** | [**Eula**](Eula.md)|  |
 
 ### Return type
 
@@ -100,10 +86,10 @@ null (empty response body)
 
 ### Authorization
 
-[basic](../README.md#basic)
+No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 

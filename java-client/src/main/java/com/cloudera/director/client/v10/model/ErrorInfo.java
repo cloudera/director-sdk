@@ -38,8 +38,6 @@ import java.util.Map;
 @ApiModel(description = "Error information")
 
 public class ErrorInfo {
-  @SerializedName("causes")
-  private List<ErrorInfo> causes = new ArrayList<ErrorInfo>();
   /**
    * Error code
    */
@@ -330,17 +328,19 @@ public class ErrorInfo {
   private Map<String, String> properties = new HashMap<String, String>();
   @SerializedName("retryable")
   private Boolean retryable = null;
+  @SerializedName("causes")
+  private List<ErrorInfo> causes = new ArrayList<ErrorInfo>();
 
   public ErrorInfo() {
     // Do nothing
   }
 
   private ErrorInfo(ErrorInfoBuilder builder) {
-      this.causes = builder.causes;
       this.errorCode = builder.errorCode;
       this.errorType = builder.errorType;
       this.properties = builder.properties;
       this.retryable = builder.retryable;
+      this.causes = builder.causes;
     }
 
   public static ErrorInfoBuilder builder() {
@@ -348,18 +348,12 @@ public class ErrorInfo {
   }
 
   public static class ErrorInfoBuilder {
-      private List<ErrorInfo> causes = new ArrayList<ErrorInfo>();
       private ErrorCodeEnum errorCode = null;
       private ErrorTypeEnum errorType = null;
       private Map<String, String> properties = new HashMap<String, String>();
       private Boolean retryable = null;
+      private List<ErrorInfo> causes = new ArrayList<ErrorInfo>();
   
-
-    public ErrorInfoBuilder causes(List<ErrorInfo> causes) {
-      this.causes = causes;
-      return this;
-    }
-
 
     public ErrorInfoBuilder errorCode(ErrorCodeEnum errorCode) {
       this.errorCode = errorCode;
@@ -385,6 +379,12 @@ public class ErrorInfo {
     }
 
 
+    public ErrorInfoBuilder causes(List<ErrorInfo> causes) {
+      this.causes = causes;
+      return this;
+    }
+
+
     public ErrorInfo build() {
       return new ErrorInfo(this);
     }
@@ -392,35 +392,12 @@ public class ErrorInfo {
 
   public ErrorInfoBuilder toBuilder() {
     return builder()
-      .causes(causes)
-            .errorCode(errorCode)
+      .errorCode(errorCode)
             .errorType(errorType)
             .properties(properties)
             .retryable(retryable)
+            .causes(causes)
       ;
-  }
-
-  public ErrorInfo causes(List<ErrorInfo> causes) {
-    this.causes = causes;
-    return this;
-  }
-
-  public ErrorInfo addCausesItem(ErrorInfo causesItem) {
-    this.causes.add(causesItem);
-    return this;
-  }
-
-   /**
-   * Causes of the error, if any
-   * @return causes
-  **/
-  @ApiModelProperty(required = true, value = "Causes of the error, if any")
-  public List<ErrorInfo> getCauses() {
-    return causes;
-  }
-
-  public void setCauses(List<ErrorInfo> causes) {
-    this.causes = causes;
   }
 
   public ErrorInfo errorCode(ErrorCodeEnum errorCode) {
@@ -491,13 +468,36 @@ public class ErrorInfo {
    * Whether the operation that produced this error is retryable
    * @return retryable
   **/
-  @ApiModelProperty(example = "false", required = true, value = "Whether the operation that produced this error is retryable")
+  @ApiModelProperty(required = true, value = "Whether the operation that produced this error is retryable")
   public Boolean isRetryable() {
     return retryable;
   }
 
   public void setRetryable(Boolean retryable) {
     this.retryable = retryable;
+  }
+
+  public ErrorInfo causes(List<ErrorInfo> causes) {
+    this.causes = causes;
+    return this;
+  }
+
+  public ErrorInfo addCausesItem(ErrorInfo causesItem) {
+    this.causes.add(causesItem);
+    return this;
+  }
+
+   /**
+   * Causes of the error, if any
+   * @return causes
+  **/
+  @ApiModelProperty(required = true, value = "Causes of the error, if any")
+  public List<ErrorInfo> getCauses() {
+    return causes;
+  }
+
+  public void setCauses(List<ErrorInfo> causes) {
+    this.causes = causes;
   }
 
 
@@ -510,16 +510,16 @@ public class ErrorInfo {
       return false;
     }
     ErrorInfo errorInfo = (ErrorInfo) o;
-    return Objects.equals(this.causes, errorInfo.causes) &&
-        Objects.equals(this.errorCode, errorInfo.errorCode) &&
+    return Objects.equals(this.errorCode, errorInfo.errorCode) &&
         Objects.equals(this.errorType, errorInfo.errorType) &&
         Objects.equals(this.properties, errorInfo.properties) &&
-        Objects.equals(this.retryable, errorInfo.retryable);
+        Objects.equals(this.retryable, errorInfo.retryable) &&
+        Objects.equals(this.causes, errorInfo.causes);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(causes, errorCode, errorType, properties, retryable);
+    return Objects.hash(errorCode, errorType, properties, retryable, causes);
   }
 
 
@@ -528,11 +528,11 @@ public class ErrorInfo {
     StringBuilder sb = new StringBuilder();
     sb.append("class ErrorInfo {\n");
     
-    sb.append("    causes: ").append(toIndentedString(causes)).append("\n");
     sb.append("    errorCode: ").append(toIndentedString(errorCode)).append("\n");
     sb.append("    errorType: ").append(toIndentedString(errorType)).append("\n");
     sb.append("    properties: ").append(toIndentedString(properties)).append("\n");
     sb.append("    retryable: ").append(toIndentedString(retryable)).append("\n");
+    sb.append("    causes: ").append(toIndentedString(causes)).append("\n");
     sb.append("}");
     return sb.toString();
   }

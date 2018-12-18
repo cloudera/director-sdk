@@ -4,10 +4,10 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**type** | [**TypeEnum**](#TypeEnum) | The type of condition | 
+**scope** | **String** | The scope of the condition | 
 **key** | **String** | The optional key of the condition |  [optional]
 **message** | **String** | The message of the condition | 
-**scope** | **String** | The scope of the condition | 
-**type** | [**TypeEnum**](#TypeEnum) | The type of condition | 
 
 
 <a name="TypeEnum"></a>

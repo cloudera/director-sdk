@@ -44,13 +44,14 @@ class EnvironmentsApi(object):
     def create(self, environment, **kwargs):  # noqa: E501
         """Create a new environment  # noqa: E501
 
+          # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
         >>> thread = api.create(environment, async=True)
         >>> result = thread.get()
 
         :param async bool
-        :param Environment environment: environment (required)
+        :param Environment environment: (required)
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
@@ -65,13 +66,14 @@ class EnvironmentsApi(object):
     def create_with_http_info(self, environment, **kwargs):  # noqa: E501
         """Create a new environment  # noqa: E501
 
+          # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
         >>> thread = api.create_with_http_info(environment, async=True)
         >>> result = thread.get()
 
         :param async bool
-        :param Environment environment: environment (required)
+        :param Environment environment: (required)
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
@@ -115,15 +117,11 @@ class EnvironmentsApi(object):
         header_params['Accept'] = self.api_client.select_header_accept(
             ['application/json'])  # noqa: E501
 
-        # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json'])  # noqa: E501
-
         # Authentication setting
         auth_settings = ['basic']  # noqa: E501
 
         return self.api_client.call_api(
-            '/api/d6.0/environments', 'POST',
+            '/api/d6.1/environments', 'POST',
             path_params,
             query_params,
             header_params,
@@ -142,13 +140,14 @@ class EnvironmentsApi(object):
     def delete(self, name, **kwargs):  # noqa: E501
         """Delete an environment by name  # noqa: E501
 
+          # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
         >>> thread = api.delete(name, async=True)
         >>> result = thread.get()
 
         :param async bool
-        :param str name: name (required)
+        :param str name: (required)
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
@@ -163,13 +162,14 @@ class EnvironmentsApi(object):
     def delete_with_http_info(self, name, **kwargs):  # noqa: E501
         """Delete an environment by name  # noqa: E501
 
+          # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
         >>> thread = api.delete_with_http_info(name, async=True)
         >>> result = thread.get()
 
         :param async bool
-        :param str name: name (required)
+        :param str name: (required)
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
@@ -217,7 +217,7 @@ class EnvironmentsApi(object):
         auth_settings = ['basic']  # noqa: E501
 
         return self.api_client.call_api(
-            '/api/d6.0/environments/{name}', 'DELETE',
+            '/api/d6.1/environments/{name}', 'DELETE',
             path_params,
             query_params,
             header_params,
@@ -236,13 +236,14 @@ class EnvironmentsApi(object):
     def get_redacted(self, name, **kwargs):  # noqa: E501
         """Get an environment by name  # noqa: E501
 
+          # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
         >>> thread = api.get_redacted(name, async=True)
         >>> result = thread.get()
 
         :param async bool
-        :param str name: name (required)
+        :param str name: (required)
         :return: Environment
                  If the method is called asynchronously,
                  returns the request thread.
@@ -257,13 +258,14 @@ class EnvironmentsApi(object):
     def get_redacted_with_http_info(self, name, **kwargs):  # noqa: E501
         """Get an environment by name  # noqa: E501
 
+          # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
         >>> thread = api.get_redacted_with_http_info(name, async=True)
         >>> result = thread.get()
 
         :param async bool
-        :param str name: name (required)
+        :param str name: (required)
         :return: Environment
                  If the method is called asynchronously,
                  returns the request thread.
@@ -311,7 +313,7 @@ class EnvironmentsApi(object):
         auth_settings = ['basic']  # noqa: E501
 
         return self.api_client.call_api(
-            '/api/d6.0/environments/{name}', 'GET',
+            '/api/d6.1/environments/{name}', 'GET',
             path_params,
             query_params,
             header_params,
@@ -330,6 +332,7 @@ class EnvironmentsApi(object):
     def list(self, **kwargs):  # noqa: E501
         """List all environments  # noqa: E501
 
+          # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
         >>> thread = api.list(async=True)
@@ -350,6 +353,7 @@ class EnvironmentsApi(object):
     def list_with_http_info(self, **kwargs):  # noqa: E501
         """List all environments  # noqa: E501
 
+          # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
         >>> thread = api.list_with_http_info(async=True)
@@ -397,7 +401,7 @@ class EnvironmentsApi(object):
         auth_settings = ['basic']  # noqa: E501
 
         return self.api_client.call_api(
-            '/api/d6.0/environments', 'GET',
+            '/api/d6.1/environments', 'GET',
             path_params,
             query_params,
             header_params,
@@ -416,14 +420,15 @@ class EnvironmentsApi(object):
     def update(self, name, environment, **kwargs):  # noqa: E501
         """Update an existing environment  # noqa: E501
 
+          # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
         >>> thread = api.update(name, environment, async=True)
         >>> result = thread.get()
 
         :param async bool
-        :param str name: name (required)
-        :param Environment environment: environment (required)
+        :param str name: (required)
+        :param Environment environment: (required)
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
@@ -438,14 +443,15 @@ class EnvironmentsApi(object):
     def update_with_http_info(self, name, environment, **kwargs):  # noqa: E501
         """Update an existing environment  # noqa: E501
 
+          # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
         >>> thread = api.update_with_http_info(name, environment, async=True)
         >>> result = thread.get()
 
         :param async bool
-        :param str name: name (required)
-        :param Environment environment: environment (required)
+        :param str name: (required)
+        :param Environment environment: (required)
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
@@ -495,15 +501,11 @@ class EnvironmentsApi(object):
         header_params['Accept'] = self.api_client.select_header_accept(
             ['application/json'])  # noqa: E501
 
-        # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json'])  # noqa: E501
-
         # Authentication setting
         auth_settings = ['basic']  # noqa: E501
 
         return self.api_client.call_api(
-            '/api/d6.0/environments/{name}', 'PUT',
+            '/api/d6.1/environments/{name}', 'PUT',
             path_params,
             query_params,
             header_params,
@@ -522,14 +524,15 @@ class EnvironmentsApi(object):
     def update_provider_credentials(self, name, credentials, **kwargs):  # noqa: E501
         """Update provider credentials for a specific environment  # noqa: E501
 
+          # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
         >>> thread = api.update_provider_credentials(name, credentials, async=True)
         >>> result = thread.get()
 
         :param async bool
-        :param str name: name (required)
-        :param object credentials: credentials (required)
+        :param str name: (required)
+        :param object credentials: (required)
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
@@ -544,14 +547,15 @@ class EnvironmentsApi(object):
     def update_provider_credentials_with_http_info(self, name, credentials, **kwargs):  # noqa: E501
         """Update provider credentials for a specific environment  # noqa: E501
 
+          # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
         >>> thread = api.update_provider_credentials_with_http_info(name, credentials, async=True)
         >>> result = thread.get()
 
         :param async bool
-        :param str name: name (required)
-        :param object credentials: credentials (required)
+        :param str name: (required)
+        :param object credentials: (required)
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
@@ -601,15 +605,11 @@ class EnvironmentsApi(object):
         header_params['Accept'] = self.api_client.select_header_accept(
             ['application/json'])  # noqa: E501
 
-        # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json'])  # noqa: E501
-
         # Authentication setting
         auth_settings = ['basic']  # noqa: E501
 
         return self.api_client.call_api(
-            '/api/d6.0/environments/{name}/provider/credentials', 'PUT',
+            '/api/d6.1/environments/{name}/provider/credentials', 'PUT',
             path_params,
             query_params,
             header_params,

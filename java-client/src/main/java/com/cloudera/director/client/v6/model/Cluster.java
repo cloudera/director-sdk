@@ -38,30 +38,30 @@ import java.util.List;
 @ApiModel(description = "A cluster running in a cloud provider")
 
 public class Cluster {
-  @SerializedName("health")
-  private Health health = null;
-  @SerializedName("instances")
-  private List<Instance> instances = null;
-  @SerializedName("instancesUrl")
-  private String instancesUrl = null;
   @SerializedName("name")
   private String name = null;
+  @SerializedName("instances")
+  private List<Instance> instances = null;
   @SerializedName("services")
   private List<Service> services = null;
   @SerializedName("url")
   private String url = null;
+  @SerializedName("instancesUrl")
+  private String instancesUrl = null;
+  @SerializedName("health")
+  private Health health = null;
 
   public Cluster() {
     // Do nothing
   }
 
   private Cluster(ClusterBuilder builder) {
-      this.health = builder.health;
-      this.instances = builder.instances;
-      this.instancesUrl = builder.instancesUrl;
       this.name = builder.name;
+      this.instances = builder.instances;
       this.services = builder.services;
       this.url = builder.url;
+      this.instancesUrl = builder.instancesUrl;
+      this.health = builder.health;
     }
 
   public static ClusterBuilder builder() {
@@ -69,34 +69,22 @@ public class Cluster {
   }
 
   public static class ClusterBuilder {
-      private Health health = null;
-      private List<Instance> instances = new ArrayList<Instance>();
-      private String instancesUrl = null;
       private String name = null;
+      private List<Instance> instances = new ArrayList<Instance>();
       private List<Service> services = new ArrayList<Service>();
       private String url = null;
+      private String instancesUrl = null;
+      private Health health = null;
   
 
-    public ClusterBuilder health(Health health) {
-      this.health = health;
+    public ClusterBuilder name(String name) {
+      this.name = name;
       return this;
     }
 
 
     public ClusterBuilder instances(List<Instance> instances) {
       this.instances = instances;
-      return this;
-    }
-
-
-    public ClusterBuilder instancesUrl(String instancesUrl) {
-      this.instancesUrl = instancesUrl;
-      return this;
-    }
-
-
-    public ClusterBuilder name(String name) {
-      this.name = name;
       return this;
     }
 
@@ -113,6 +101,18 @@ public class Cluster {
     }
 
 
+    public ClusterBuilder instancesUrl(String instancesUrl) {
+      this.instancesUrl = instancesUrl;
+      return this;
+    }
+
+
+    public ClusterBuilder health(Health health) {
+      this.health = health;
+      return this;
+    }
+
+
     public Cluster build() {
       return new Cluster(this);
     }
@@ -120,31 +120,31 @@ public class Cluster {
 
   public ClusterBuilder toBuilder() {
     return builder()
-      .health(health)
+      .name(name)
             .instances(instances)
-            .instancesUrl(instancesUrl)
-            .name(name)
             .services(services)
             .url(url)
+            .instancesUrl(instancesUrl)
+            .health(health)
       ;
   }
 
-  public Cluster health(Health health) {
-    this.health = health;
+  public Cluster name(String name) {
+    this.name = name;
     return this;
   }
 
    /**
-   * Overall cluster health
-   * @return health
+   * Cluster name
+   * @return name
   **/
-  @ApiModelProperty(value = "Overall cluster health")
-  public Health getHealth() {
-    return health;
+  @ApiModelProperty(required = true, value = "Cluster name")
+  public String getName() {
+    return name;
   }
 
-  public void setHealth(Health health) {
-    this.health = health;
+  public void setName(String name) {
+    this.name = name;
   }
 
   public Cluster instances(List<Instance> instances) {
@@ -171,42 +171,6 @@ public class Cluster {
 
   public void setInstances(List<Instance> instances) {
     this.instances = instances;
-  }
-
-  public Cluster instancesUrl(String instancesUrl) {
-    this.instancesUrl = instancesUrl;
-    return this;
-  }
-
-   /**
-   * Optional URL for cluster instances in Cloudera Manager
-   * @return instancesUrl
-  **/
-  @ApiModelProperty(value = "Optional URL for cluster instances in Cloudera Manager")
-  public String getInstancesUrl() {
-    return instancesUrl;
-  }
-
-  public void setInstancesUrl(String instancesUrl) {
-    this.instancesUrl = instancesUrl;
-  }
-
-  public Cluster name(String name) {
-    this.name = name;
-    return this;
-  }
-
-   /**
-   * Cluster name
-   * @return name
-  **/
-  @ApiModelProperty(required = true, value = "Cluster name")
-  public String getName() {
-    return name;
-  }
-
-  public void setName(String name) {
-    this.name = name;
   }
 
   public Cluster services(List<Service> services) {
@@ -253,6 +217,42 @@ public class Cluster {
     this.url = url;
   }
 
+  public Cluster instancesUrl(String instancesUrl) {
+    this.instancesUrl = instancesUrl;
+    return this;
+  }
+
+   /**
+   * Optional URL for cluster instances in Cloudera Manager
+   * @return instancesUrl
+  **/
+  @ApiModelProperty(value = "Optional URL for cluster instances in Cloudera Manager")
+  public String getInstancesUrl() {
+    return instancesUrl;
+  }
+
+  public void setInstancesUrl(String instancesUrl) {
+    this.instancesUrl = instancesUrl;
+  }
+
+  public Cluster health(Health health) {
+    this.health = health;
+    return this;
+  }
+
+   /**
+   * Overall cluster health
+   * @return health
+  **/
+  @ApiModelProperty(value = "Overall cluster health")
+  public Health getHealth() {
+    return health;
+  }
+
+  public void setHealth(Health health) {
+    this.health = health;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -263,17 +263,17 @@ public class Cluster {
       return false;
     }
     Cluster cluster = (Cluster) o;
-    return Objects.equals(this.health, cluster.health) &&
+    return Objects.equals(this.name, cluster.name) &&
         Objects.equals(this.instances, cluster.instances) &&
-        Objects.equals(this.instancesUrl, cluster.instancesUrl) &&
-        Objects.equals(this.name, cluster.name) &&
         Objects.equals(this.services, cluster.services) &&
-        Objects.equals(this.url, cluster.url);
+        Objects.equals(this.url, cluster.url) &&
+        Objects.equals(this.instancesUrl, cluster.instancesUrl) &&
+        Objects.equals(this.health, cluster.health);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(health, instances, instancesUrl, name, services, url);
+    return Objects.hash(name, instances, services, url, instancesUrl, health);
   }
 
 
@@ -282,12 +282,12 @@ public class Cluster {
     StringBuilder sb = new StringBuilder();
     sb.append("class Cluster {\n");
     
-    sb.append("    health: ").append(toIndentedString(health)).append("\n");
-    sb.append("    instances: ").append(toIndentedString(instances)).append("\n");
-    sb.append("    instancesUrl: ").append(toIndentedString(instancesUrl)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    instances: ").append(toIndentedString(instances)).append("\n");
     sb.append("    services: ").append(toIndentedString(services)).append("\n");
     sb.append("    url: ").append(toIndentedString(url)).append("\n");
+    sb.append("    instancesUrl: ").append(toIndentedString(instancesUrl)).append("\n");
+    sb.append("    health: ").append(toIndentedString(health)).append("\n");
     sb.append("}");
     return sb.toString();
   }

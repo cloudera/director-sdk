@@ -39,63 +39,38 @@ class VirtualInstanceGroup(object):
                             and the value is json key in definition.
     """
     swagger_types = {
-        'min_count': 'int',
         'name': 'str',
-        'role_types_configs': 'dict(str, dict(str, dict(str, str)))',
+        'virtual_instances': 'list[VirtualInstance]',
         'service_type_to_role_types': 'dict(str, list[str])',
-        'virtual_instances': 'list[VirtualInstance]'
+        'role_types_configs': 'dict(str, dict(str, dict(str, str)))',
+        'min_count': 'int'
     }
 
     attribute_map = {
-        'min_count': 'minCount',
         'name': 'name',
-        'role_types_configs': 'roleTypesConfigs',
+        'virtual_instances': 'virtualInstances',
         'service_type_to_role_types': 'serviceTypeToRoleTypes',
-        'virtual_instances': 'virtualInstances'
+        'role_types_configs': 'roleTypesConfigs',
+        'min_count': 'minCount'
     }
 
-    def __init__(self, min_count=None, name=None, role_types_configs=None, service_type_to_role_types=None, virtual_instances=None):  # noqa: E501
+    def __init__(self, name=None, virtual_instances=None, service_type_to_role_types=None, role_types_configs=None, min_count=None):  # noqa: E501
         """VirtualInstanceGroup - a model defined in Swagger"""  # noqa: E501
 
-        self._min_count = None
         self._name = None
-        self._role_types_configs = None
-        self._service_type_to_role_types = None
         self._virtual_instances = None
+        self._service_type_to_role_types = None
+        self._role_types_configs = None
+        self._min_count = None
         self.discriminator = None
 
-        self.min_count = min_count
         self.name = name
-        if role_types_configs is not None:
-            self.role_types_configs = role_types_configs
+        self.virtual_instances = virtual_instances
         if service_type_to_role_types is not None:
             self.service_type_to_role_types = service_type_to_role_types
-        self.virtual_instances = virtual_instances
-
-    @property
-    def min_count(self):
-        """Gets the min_count of this VirtualInstanceGroup.  # noqa: E501
-
-        Minimum acceptable number of instances in this group  # noqa: E501
-
-        :return: The min_count of this VirtualInstanceGroup.  # noqa: E501
-        :rtype: int
-        """
-        return self._min_count
-
-    @min_count.setter
-    def min_count(self, min_count):
-        """Sets the min_count of this VirtualInstanceGroup.
-
-        Minimum acceptable number of instances in this group  # noqa: E501
-
-        :param min_count: The min_count of this VirtualInstanceGroup.  # noqa: E501
-        :type: int
-        """
-        if min_count is None:
-            raise ValueError("Invalid value for `min_count`, must not be `None`")  # noqa: E501
-
-        self._min_count = min_count
+        if role_types_configs is not None:
+            self.role_types_configs = role_types_configs
+        self.min_count = min_count
 
     @property
     def name(self):
@@ -123,27 +98,29 @@ class VirtualInstanceGroup(object):
         self._name = name
 
     @property
-    def role_types_configs(self):
-        """Gets the role_types_configs of this VirtualInstanceGroup.  # noqa: E501
+    def virtual_instances(self):
+        """Gets the virtual_instances of this VirtualInstanceGroup.  # noqa: E501
 
-        Custom role configurations  # noqa: E501
+        List of virtual instances in this group  # noqa: E501
 
-        :return: The role_types_configs of this VirtualInstanceGroup.  # noqa: E501
-        :rtype: dict(str, dict(str, dict(str, str)))
+        :return: The virtual_instances of this VirtualInstanceGroup.  # noqa: E501
+        :rtype: list[VirtualInstance]
         """
-        return self._role_types_configs
+        return self._virtual_instances
 
-    @role_types_configs.setter
-    def role_types_configs(self, role_types_configs):
-        """Sets the role_types_configs of this VirtualInstanceGroup.
+    @virtual_instances.setter
+    def virtual_instances(self, virtual_instances):
+        """Sets the virtual_instances of this VirtualInstanceGroup.
 
-        Custom role configurations  # noqa: E501
+        List of virtual instances in this group  # noqa: E501
 
-        :param role_types_configs: The role_types_configs of this VirtualInstanceGroup.  # noqa: E501
-        :type: dict(str, dict(str, dict(str, str)))
+        :param virtual_instances: The virtual_instances of this VirtualInstanceGroup.  # noqa: E501
+        :type: list[VirtualInstance]
         """
+        if virtual_instances is None:
+            raise ValueError("Invalid value for `virtual_instances`, must not be `None`")  # noqa: E501
 
-        self._role_types_configs = role_types_configs
+        self._virtual_instances = virtual_instances
 
     @property
     def service_type_to_role_types(self):
@@ -169,29 +146,52 @@ class VirtualInstanceGroup(object):
         self._service_type_to_role_types = service_type_to_role_types
 
     @property
-    def virtual_instances(self):
-        """Gets the virtual_instances of this VirtualInstanceGroup.  # noqa: E501
+    def role_types_configs(self):
+        """Gets the role_types_configs of this VirtualInstanceGroup.  # noqa: E501
 
-        List of virtual instances in this group  # noqa: E501
+        Custom role configurations  # noqa: E501
 
-        :return: The virtual_instances of this VirtualInstanceGroup.  # noqa: E501
-        :rtype: list[VirtualInstance]
+        :return: The role_types_configs of this VirtualInstanceGroup.  # noqa: E501
+        :rtype: dict(str, dict(str, dict(str, str)))
         """
-        return self._virtual_instances
+        return self._role_types_configs
 
-    @virtual_instances.setter
-    def virtual_instances(self, virtual_instances):
-        """Sets the virtual_instances of this VirtualInstanceGroup.
+    @role_types_configs.setter
+    def role_types_configs(self, role_types_configs):
+        """Sets the role_types_configs of this VirtualInstanceGroup.
 
-        List of virtual instances in this group  # noqa: E501
+        Custom role configurations  # noqa: E501
 
-        :param virtual_instances: The virtual_instances of this VirtualInstanceGroup.  # noqa: E501
-        :type: list[VirtualInstance]
+        :param role_types_configs: The role_types_configs of this VirtualInstanceGroup.  # noqa: E501
+        :type: dict(str, dict(str, dict(str, str)))
         """
-        if virtual_instances is None:
-            raise ValueError("Invalid value for `virtual_instances`, must not be `None`")  # noqa: E501
 
-        self._virtual_instances = virtual_instances
+        self._role_types_configs = role_types_configs
+
+    @property
+    def min_count(self):
+        """Gets the min_count of this VirtualInstanceGroup.  # noqa: E501
+
+        Minimum acceptable number of instances in this group  # noqa: E501
+
+        :return: The min_count of this VirtualInstanceGroup.  # noqa: E501
+        :rtype: int
+        """
+        return self._min_count
+
+    @min_count.setter
+    def min_count(self, min_count):
+        """Sets the min_count of this VirtualInstanceGroup.
+
+        Minimum acceptable number of instances in this group  # noqa: E501
+
+        :param min_count: The min_count of this VirtualInstanceGroup.  # noqa: E501
+        :type: int
+        """
+        if min_count is None:
+            raise ValueError("Invalid value for `min_count`, must not be `None`")  # noqa: E501
+
+        self._min_count = min_count
 
     def to_dict(self):
         """Returns the model properties as a dict"""

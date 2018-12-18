@@ -39,29 +39,60 @@ class Notification(object):
                             and the value is json key in definition.
     """
     swagger_types = {
+        'type': 'str',
         'description': 'str',
-        'message': 'str',
-        'type': 'str'
+        'message': 'str'
     }
 
     attribute_map = {
+        'type': 'type',
         'description': 'description',
-        'message': 'message',
-        'type': 'type'
+        'message': 'message'
     }
 
-    def __init__(self, description=None, message=None, type=None):  # noqa: E501
+    def __init__(self, type=None, description=None, message=None):  # noqa: E501
         """Notification - a model defined in Swagger"""  # noqa: E501
 
+        self._type = None
         self._description = None
         self._message = None
-        self._type = None
         self.discriminator = None
 
+        self.type = type
         if description is not None:
             self.description = description
         self.message = message
-        self.type = type
+
+    @property
+    def type(self):
+        """Gets the type of this Notification.  # noqa: E501
+
+        Notification type  # noqa: E501
+
+        :return: The type of this Notification.  # noqa: E501
+        :rtype: str
+        """
+        return self._type
+
+    @type.setter
+    def type(self, type):
+        """Sets the type of this Notification.
+
+        Notification type  # noqa: E501
+
+        :param type: The type of this Notification.  # noqa: E501
+        :type: str
+        """
+        if type is None:
+            raise ValueError("Invalid value for `type`, must not be `None`")  # noqa: E501
+        allowed_values = ["WARNING", "CRITICAL"]  # noqa: E501
+        if type not in allowed_values:
+            raise ValueError(
+                "Invalid value for `type` ({0}), must be one of {1}"  # noqa: E501
+                .format(type, allowed_values)
+            )
+
+        self._type = type
 
     @property
     def description(self):
@@ -110,37 +141,6 @@ class Notification(object):
             raise ValueError("Invalid value for `message`, must not be `None`")  # noqa: E501
 
         self._message = message
-
-    @property
-    def type(self):
-        """Gets the type of this Notification.  # noqa: E501
-
-        Notification type  # noqa: E501
-
-        :return: The type of this Notification.  # noqa: E501
-        :rtype: str
-        """
-        return self._type
-
-    @type.setter
-    def type(self, type):
-        """Sets the type of this Notification.
-
-        Notification type  # noqa: E501
-
-        :param type: The type of this Notification.  # noqa: E501
-        :type: str
-        """
-        if type is None:
-            raise ValueError("Invalid value for `type`, must not be `None`")  # noqa: E501
-        allowed_values = ["WARNING", "CRITICAL"]  # noqa: E501
-        if type not in allowed_values:
-            raise ValueError(
-                "Invalid value for `type` ({0}), must be one of {1}"  # noqa: E501
-                .format(type, allowed_values)
-            )
-
-        self._type = type
 
     def to_dict(self):
         """Returns the model properties as a dict"""

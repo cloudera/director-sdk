@@ -78,7 +78,7 @@ public class Eula {
    * If the Eula is accepted
    * @return accepted
   **/
-  @ApiModelProperty(example = "false", required = true, value = "If the Eula is accepted")
+  @ApiModelProperty(required = true, value = "If the Eula is accepted")
   public Boolean isAccepted() {
     return accepted;
   }

@@ -39,109 +39,40 @@ class Service(object):
                             and the value is json key in definition.
     """
     swagger_types = {
-        'health': 'Health',
-        'health_checks': 'list[HealthCheck]',
-        'role_instances_url': 'str',
         'service_name': 'str',
-        'url': 'str'
+        'url': 'str',
+        'role_instances_url': 'str',
+        'health': 'Health',
+        'health_checks': 'list[HealthCheck]'
     }
 
     attribute_map = {
-        'health': 'health',
-        'health_checks': 'healthChecks',
-        'role_instances_url': 'roleInstancesUrl',
         'service_name': 'serviceName',
-        'url': 'url'
+        'url': 'url',
+        'role_instances_url': 'roleInstancesUrl',
+        'health': 'health',
+        'health_checks': 'healthChecks'
     }
 
-    def __init__(self, health=None, health_checks=None, role_instances_url=None, service_name=None, url=None):  # noqa: E501
+    def __init__(self, service_name=None, url=None, role_instances_url=None, health=None, health_checks=None):  # noqa: E501
         """Service - a model defined in Swagger"""  # noqa: E501
 
-        self._health = None
-        self._health_checks = None
-        self._role_instances_url = None
         self._service_name = None
         self._url = None
+        self._role_instances_url = None
+        self._health = None
+        self._health_checks = None
         self.discriminator = None
 
+        self.service_name = service_name
+        if url is not None:
+            self.url = url
+        if role_instances_url is not None:
+            self.role_instances_url = role_instances_url
         if health is not None:
             self.health = health
         if health_checks is not None:
             self.health_checks = health_checks
-        if role_instances_url is not None:
-            self.role_instances_url = role_instances_url
-        self.service_name = service_name
-        if url is not None:
-            self.url = url
-
-    @property
-    def health(self):
-        """Gets the health of this Service.  # noqa: E501
-
-        Service health  # noqa: E501
-
-        :return: The health of this Service.  # noqa: E501
-        :rtype: Health
-        """
-        return self._health
-
-    @health.setter
-    def health(self, health):
-        """Sets the health of this Service.
-
-        Service health  # noqa: E501
-
-        :param health: The health of this Service.  # noqa: E501
-        :type: Health
-        """
-
-        self._health = health
-
-    @property
-    def health_checks(self):
-        """Gets the health_checks of this Service.  # noqa: E501
-
-        Health checks performed on service  # noqa: E501
-
-        :return: The health_checks of this Service.  # noqa: E501
-        :rtype: list[HealthCheck]
-        """
-        return self._health_checks
-
-    @health_checks.setter
-    def health_checks(self, health_checks):
-        """Sets the health_checks of this Service.
-
-        Health checks performed on service  # noqa: E501
-
-        :param health_checks: The health_checks of this Service.  # noqa: E501
-        :type: list[HealthCheck]
-        """
-
-        self._health_checks = health_checks
-
-    @property
-    def role_instances_url(self):
-        """Gets the role_instances_url of this Service.  # noqa: E501
-
-        URL for service instances  # noqa: E501
-
-        :return: The role_instances_url of this Service.  # noqa: E501
-        :rtype: str
-        """
-        return self._role_instances_url
-
-    @role_instances_url.setter
-    def role_instances_url(self, role_instances_url):
-        """Sets the role_instances_url of this Service.
-
-        URL for service instances  # noqa: E501
-
-        :param role_instances_url: The role_instances_url of this Service.  # noqa: E501
-        :type: str
-        """
-
-        self._role_instances_url = role_instances_url
 
     @property
     def service_name(self):
@@ -190,6 +121,75 @@ class Service(object):
         """
 
         self._url = url
+
+    @property
+    def role_instances_url(self):
+        """Gets the role_instances_url of this Service.  # noqa: E501
+
+        URL for service instances  # noqa: E501
+
+        :return: The role_instances_url of this Service.  # noqa: E501
+        :rtype: str
+        """
+        return self._role_instances_url
+
+    @role_instances_url.setter
+    def role_instances_url(self, role_instances_url):
+        """Sets the role_instances_url of this Service.
+
+        URL for service instances  # noqa: E501
+
+        :param role_instances_url: The role_instances_url of this Service.  # noqa: E501
+        :type: str
+        """
+
+        self._role_instances_url = role_instances_url
+
+    @property
+    def health(self):
+        """Gets the health of this Service.  # noqa: E501
+
+        Service health  # noqa: E501
+
+        :return: The health of this Service.  # noqa: E501
+        :rtype: Health
+        """
+        return self._health
+
+    @health.setter
+    def health(self, health):
+        """Sets the health of this Service.
+
+        Service health  # noqa: E501
+
+        :param health: The health of this Service.  # noqa: E501
+        :type: Health
+        """
+
+        self._health = health
+
+    @property
+    def health_checks(self):
+        """Gets the health_checks of this Service.  # noqa: E501
+
+        Health checks performed on service  # noqa: E501
+
+        :return: The health_checks of this Service.  # noqa: E501
+        :rtype: list[HealthCheck]
+        """
+        return self._health_checks
+
+    @health_checks.setter
+    def health_checks(self, health_checks):
+        """Sets the health_checks of this Service.
+
+        Health checks performed on service  # noqa: E501
+
+        :param health_checks: The health_checks of this Service.  # noqa: E501
+        :type: list[HealthCheck]
+        """
+
+        self._health_checks = health_checks
 
     def to_dict(self):
         """Returns the model properties as a dict"""

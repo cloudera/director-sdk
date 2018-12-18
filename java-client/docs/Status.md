@@ -4,14 +4,14 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**completedSteps** | **Integer** | Number of steps completed for the process | 
+**stage** | [**StageEnum**](#StageEnum) | Current stage of the process | 
 **description** | **String** | Status description | 
 **descriptionDetails** | **List&lt;String&gt;** | Detailed status description |  [optional]
-**diagnosticDataSummaries** | [**List&lt;DiagnosticDataSummary&gt;**](DiagnosticDataSummary.md) | Diagnostic data summaries |  [optional]
 **errorInfo** | [**ErrorInfo**](ErrorInfo.md) | Error information associated with the status |  [optional]
-**health** | [**Health**](Health.md) | Health reported for the entity being processed | 
 **remainingSteps** | **Integer** | Number of remaining steps planned for the process | 
-**stage** | [**StageEnum**](#StageEnum) | Current stage of the process | 
+**completedSteps** | **Integer** | Number of steps completed for the process | 
+**health** | [**Health**](Health.md) | Health reported for the entity being processed | 
+**diagnosticDataSummaries** | [**List&lt;DiagnosticDataSummary&gt;**](DiagnosticDataSummary.md) | Diagnostic data summaries |  [optional]
 
 
 <a name="StageEnum"></a>

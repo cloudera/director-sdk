@@ -39,53 +39,128 @@ class InstanceTemplate(object):
                             and the value is json key in definition.
     """
     swagger_types = {
+        'name': 'str',
+        'type': 'str',
+        'image': 'str',
         'bootstrap_script': 'str',
         'config': 'dict(str, str)',
-        'image': 'str',
-        'name': 'str',
-        'normalize_instance': 'bool',
-        'ssh_username': 'str',
         'tags': 'dict(str, str)',
-        'type': 'str'
+        'normalize_instance': 'bool',
+        'ssh_username': 'str'
     }
 
     attribute_map = {
+        'name': 'name',
+        'type': 'type',
+        'image': 'image',
         'bootstrap_script': 'bootstrapScript',
         'config': 'config',
-        'image': 'image',
-        'name': 'name',
-        'normalize_instance': 'normalizeInstance',
-        'ssh_username': 'sshUsername',
         'tags': 'tags',
-        'type': 'type'
+        'normalize_instance': 'normalizeInstance',
+        'ssh_username': 'sshUsername'
     }
 
-    def __init__(self, bootstrap_script=None, config=None, image=None, name=None, normalize_instance=None, ssh_username=None, tags=None, type=None):  # noqa: E501
+    def __init__(self, name=None, type=None, image=None, bootstrap_script=None, config=None, tags=None, normalize_instance=None, ssh_username=None):  # noqa: E501
         """InstanceTemplate - a model defined in Swagger"""  # noqa: E501
 
+        self._name = None
+        self._type = None
+        self._image = None
         self._bootstrap_script = None
         self._config = None
-        self._image = None
-        self._name = None
+        self._tags = None
         self._normalize_instance = None
         self._ssh_username = None
-        self._tags = None
-        self._type = None
         self.discriminator = None
 
+        self.name = name
+        self.type = type
+        self.image = image
         if bootstrap_script is not None:
             self.bootstrap_script = bootstrap_script
         if config is not None:
             self.config = config
-        self.image = image
-        self.name = name
+        if tags is not None:
+            self.tags = tags
         if normalize_instance is not None:
             self.normalize_instance = normalize_instance
         if ssh_username is not None:
             self.ssh_username = ssh_username
-        if tags is not None:
-            self.tags = tags
-        self.type = type
+
+    @property
+    def name(self):
+        """Gets the name of this InstanceTemplate.  # noqa: E501
+
+        Instance template name  # noqa: E501
+
+        :return: The name of this InstanceTemplate.  # noqa: E501
+        :rtype: str
+        """
+        return self._name
+
+    @name.setter
+    def name(self, name):
+        """Sets the name of this InstanceTemplate.
+
+        Instance template name  # noqa: E501
+
+        :param name: The name of this InstanceTemplate.  # noqa: E501
+        :type: str
+        """
+        if name is None:
+            raise ValueError("Invalid value for `name`, must not be `None`")  # noqa: E501
+
+        self._name = name
+
+    @property
+    def type(self):
+        """Gets the type of this InstanceTemplate.  # noqa: E501
+
+        Instance type  # noqa: E501
+
+        :return: The type of this InstanceTemplate.  # noqa: E501
+        :rtype: str
+        """
+        return self._type
+
+    @type.setter
+    def type(self, type):
+        """Sets the type of this InstanceTemplate.
+
+        Instance type  # noqa: E501
+
+        :param type: The type of this InstanceTemplate.  # noqa: E501
+        :type: str
+        """
+        if type is None:
+            raise ValueError("Invalid value for `type`, must not be `None`")  # noqa: E501
+
+        self._type = type
+
+    @property
+    def image(self):
+        """Gets the image of this InstanceTemplate.  # noqa: E501
+
+        Operating system image  # noqa: E501
+
+        :return: The image of this InstanceTemplate.  # noqa: E501
+        :rtype: str
+        """
+        return self._image
+
+    @image.setter
+    def image(self, image):
+        """Sets the image of this InstanceTemplate.
+
+        Operating system image  # noqa: E501
+
+        :param image: The image of this InstanceTemplate.  # noqa: E501
+        :type: str
+        """
+        if image is None:
+            raise ValueError("Invalid value for `image`, must not be `None`")  # noqa: E501
+
+        self._image = image
 
     @property
     def bootstrap_script(self):
@@ -134,54 +209,27 @@ class InstanceTemplate(object):
         self._config = config
 
     @property
-    def image(self):
-        """Gets the image of this InstanceTemplate.  # noqa: E501
+    def tags(self):
+        """Gets the tags of this InstanceTemplate.  # noqa: E501
 
-        Operating system image  # noqa: E501
+        Instance tags  # noqa: E501
 
-        :return: The image of this InstanceTemplate.  # noqa: E501
-        :rtype: str
+        :return: The tags of this InstanceTemplate.  # noqa: E501
+        :rtype: dict(str, str)
         """
-        return self._image
+        return self._tags
 
-    @image.setter
-    def image(self, image):
-        """Sets the image of this InstanceTemplate.
+    @tags.setter
+    def tags(self, tags):
+        """Sets the tags of this InstanceTemplate.
 
-        Operating system image  # noqa: E501
+        Instance tags  # noqa: E501
 
-        :param image: The image of this InstanceTemplate.  # noqa: E501
-        :type: str
+        :param tags: The tags of this InstanceTemplate.  # noqa: E501
+        :type: dict(str, str)
         """
-        if image is None:
-            raise ValueError("Invalid value for `image`, must not be `None`")  # noqa: E501
 
-        self._image = image
-
-    @property
-    def name(self):
-        """Gets the name of this InstanceTemplate.  # noqa: E501
-
-        Instance template name  # noqa: E501
-
-        :return: The name of this InstanceTemplate.  # noqa: E501
-        :rtype: str
-        """
-        return self._name
-
-    @name.setter
-    def name(self, name):
-        """Sets the name of this InstanceTemplate.
-
-        Instance template name  # noqa: E501
-
-        :param name: The name of this InstanceTemplate.  # noqa: E501
-        :type: str
-        """
-        if name is None:
-            raise ValueError("Invalid value for `name`, must not be `None`")  # noqa: E501
-
-        self._name = name
+        self._tags = tags
 
     @property
     def normalize_instance(self):
@@ -228,54 +276,6 @@ class InstanceTemplate(object):
         """
 
         self._ssh_username = ssh_username
-
-    @property
-    def tags(self):
-        """Gets the tags of this InstanceTemplate.  # noqa: E501
-
-        Instance tags  # noqa: E501
-
-        :return: The tags of this InstanceTemplate.  # noqa: E501
-        :rtype: dict(str, str)
-        """
-        return self._tags
-
-    @tags.setter
-    def tags(self, tags):
-        """Sets the tags of this InstanceTemplate.
-
-        Instance tags  # noqa: E501
-
-        :param tags: The tags of this InstanceTemplate.  # noqa: E501
-        :type: dict(str, str)
-        """
-
-        self._tags = tags
-
-    @property
-    def type(self):
-        """Gets the type of this InstanceTemplate.  # noqa: E501
-
-        Instance type  # noqa: E501
-
-        :return: The type of this InstanceTemplate.  # noqa: E501
-        :rtype: str
-        """
-        return self._type
-
-    @type.setter
-    def type(self, type):
-        """Sets the type of this InstanceTemplate.
-
-        Instance type  # noqa: E501
-
-        :param type: The type of this InstanceTemplate.  # noqa: E501
-        :type: str
-        """
-        if type is None:
-            raise ValueError("Invalid value for `type`, must not be `None`")  # noqa: E501
-
-        self._type = type
 
     def to_dict(self):
         """Returns the model properties as a dict"""

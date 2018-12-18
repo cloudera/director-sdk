@@ -1,28 +1,30 @@
 # cloudera.director.ClustersApi
 
-All URIs are relative to *https://localhost:7189*
+All URIs are relative to *https://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**collect_diagnostic_data**](ClustersApi.md#collect_diagnostic_data) | **POST** /api/d6.0/environments/{environment}/deployments/{deployment}/clusters/{cluster}/diagnosticData | Collects diagnostic data
-[**create**](ClustersApi.md#create) | **POST** /api/d6.0/environments/{environment}/deployments/{deployment}/clusters | Create a new cluster
-[**delete**](ClustersApi.md#delete) | **DELETE** /api/d6.0/environments/{environment}/deployments/{deployment}/clusters/{cluster} | Delete a cluster by name
-[**export_cluster_configuration**](ClustersApi.md#export_cluster_configuration) | **GET** /api/d6.0/environments/{environment}/deployments/{deployment}/clusters/{cluster}/config | Exports the cluster configuration for this cluster
-[**get_administration_settings**](ClustersApi.md#get_administration_settings) | **GET** /api/d6.0/environments/{environment}/deployments/{deployment}/clusters/{cluster}/settings | Get administration settings for a cluster
-[**get_history**](ClustersApi.md#get_history) | **GET** /api/d6.0/environments/{environment}/deployments/{deployment}/clusters/{cluster}/history | Get history of updates for a cluster
-[**get_metrics**](ClustersApi.md#get_metrics) | **GET** /api/d6.0/environments/{environment}/deployments/{deployment}/clusters/{cluster}/metrics | Get cluster metrics by name
-[**get_redacted**](ClustersApi.md#get_redacted) | **GET** /api/d6.0/environments/{environment}/deployments/{deployment}/clusters/{cluster} | Get a cluster by name
-[**get_status**](ClustersApi.md#get_status) | **GET** /api/d6.0/environments/{environment}/deployments/{deployment}/clusters/{cluster}/status | Get a cluster status by name
-[**get_template_redacted**](ClustersApi.md#get_template_redacted) | **GET** /api/d6.0/environments/{environment}/deployments/{deployment}/clusters/{cluster}/template | Get a cluster template by name
-[**list**](ClustersApi.md#list) | **GET** /api/d6.0/environments/{environment}/deployments/{deployment}/clusters | List all clusters
-[**update**](ClustersApi.md#update) | **PUT** /api/d6.0/environments/{environment}/deployments/{deployment}/clusters/{cluster} | Update an existing cluster
-[**update_administration_settings**](ClustersApi.md#update_administration_settings) | **PUT** /api/d6.0/environments/{environment}/deployments/{deployment}/clusters/{cluster}/settings | Update administration settings for a cluster
+[**collect_diagnostic_data**](ClustersApi.md#collect_diagnostic_data) | **POST** /api/d6.1/environments/{environment}/deployments/{deployment}/clusters/{cluster}/diagnosticData | Collects diagnostic data
+[**create**](ClustersApi.md#create) | **POST** /api/d6.1/environments/{environment}/deployments/{deployment}/clusters | Create a new cluster
+[**delete**](ClustersApi.md#delete) | **DELETE** /api/d6.1/environments/{environment}/deployments/{deployment}/clusters/{cluster} | Delete a cluster by name
+[**export_cluster_configuration**](ClustersApi.md#export_cluster_configuration) | **GET** /api/d6.1/environments/{environment}/deployments/{deployment}/clusters/{cluster}/config | Exports the cluster configuration for this cluster
+[**get_administration_settings**](ClustersApi.md#get_administration_settings) | **GET** /api/d6.1/environments/{environment}/deployments/{deployment}/clusters/{cluster}/settings | Get administration settings for a cluster
+[**get_history**](ClustersApi.md#get_history) | **GET** /api/d6.1/environments/{environment}/deployments/{deployment}/clusters/{cluster}/history | Get history of updates for a cluster
+[**get_metrics**](ClustersApi.md#get_metrics) | **GET** /api/d6.1/environments/{environment}/deployments/{deployment}/clusters/{cluster}/metrics | Get cluster metrics by name
+[**get_redacted**](ClustersApi.md#get_redacted) | **GET** /api/d6.1/environments/{environment}/deployments/{deployment}/clusters/{cluster} | Get a cluster by name
+[**get_status**](ClustersApi.md#get_status) | **GET** /api/d6.1/environments/{environment}/deployments/{deployment}/clusters/{cluster}/status | Get a cluster status by name
+[**get_template_redacted**](ClustersApi.md#get_template_redacted) | **GET** /api/d6.1/environments/{environment}/deployments/{deployment}/clusters/{cluster}/template | Get a cluster template by name
+[**list**](ClustersApi.md#list) | **GET** /api/d6.1/environments/{environment}/deployments/{deployment}/clusters | List all clusters
+[**update**](ClustersApi.md#update) | **PUT** /api/d6.1/environments/{environment}/deployments/{deployment}/clusters/{cluster} | Update an existing cluster
+[**update_administration_settings**](ClustersApi.md#update_administration_settings) | **PUT** /api/d6.1/environments/{environment}/deployments/{deployment}/clusters/{cluster}/settings | Update administration settings for a cluster
 
 
 # **collect_diagnostic_data**
 > collect_diagnostic_data(environment, deployment, cluster)
 
 Collects diagnostic data
+
+
 
 ### Example
 ```python
@@ -39,9 +41,9 @@ configuration.password = 'YOUR_PASSWORD'
 
 # create an instance of the API class
 api_instance = cloudera.director.ClustersApi(cloudera.director.ApiClient(configuration))
-environment = 'environment_example' # str | environment
-deployment = 'deployment_example' # str | deployment
-cluster = 'cluster_example' # str | cluster
+environment = 'environment_example' # str | 
+deployment = 'deployment_example' # str | 
+cluster = 'cluster_example' # str | 
 
 try:
     # Collects diagnostic data
@@ -54,9 +56,9 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **environment** | **str**| environment | 
- **deployment** | **str**| deployment | 
- **cluster** | **str**| cluster | 
+ **environment** | **str**|  | 
+ **deployment** | **str**|  | 
+ **cluster** | **str**|  | 
 
 ### Return type
 
@@ -68,7 +70,7 @@ void (empty response body)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -77,6 +79,8 @@ void (empty response body)
 > create(environment, deployment, cluster_template)
 
 Create a new cluster
+
+
 
 ### Example
 ```python
@@ -93,9 +97,9 @@ configuration.password = 'YOUR_PASSWORD'
 
 # create an instance of the API class
 api_instance = cloudera.director.ClustersApi(cloudera.director.ApiClient(configuration))
-environment = 'environment_example' # str | environment
-deployment = 'deployment_example' # str | deployment
-cluster_template = cloudera.director.ClusterTemplate() # ClusterTemplate | clusterTemplate
+environment = 'environment_example' # str | 
+deployment = 'deployment_example' # str | 
+cluster_template = cloudera.director.ClusterTemplate() # ClusterTemplate | 
 
 try:
     # Create a new cluster
@@ -108,9 +112,9 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **environment** | **str**| environment | 
- **deployment** | **str**| deployment | 
- **cluster_template** | [**ClusterTemplate**](ClusterTemplate.md)| clusterTemplate | 
+ **environment** | **str**|  | 
+ **deployment** | **str**|  | 
+ **cluster_template** | [**ClusterTemplate**](ClusterTemplate.md)|  | 
 
 ### Return type
 
@@ -122,7 +126,7 @@ void (empty response body)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -131,6 +135,8 @@ void (empty response body)
 > delete(environment, deployment, cluster)
 
 Delete a cluster by name
+
+
 
 ### Example
 ```python
@@ -147,9 +153,9 @@ configuration.password = 'YOUR_PASSWORD'
 
 # create an instance of the API class
 api_instance = cloudera.director.ClustersApi(cloudera.director.ApiClient(configuration))
-environment = 'environment_example' # str | environment
-deployment = 'deployment_example' # str | deployment
-cluster = 'cluster_example' # str | cluster
+environment = 'environment_example' # str | 
+deployment = 'deployment_example' # str | 
+cluster = 'cluster_example' # str | 
 
 try:
     # Delete a cluster by name
@@ -162,9 +168,9 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **environment** | **str**| environment | 
- **deployment** | **str**| deployment | 
- **cluster** | **str**| cluster | 
+ **environment** | **str**|  | 
+ **deployment** | **str**|  | 
+ **cluster** | **str**|  | 
 
 ### Return type
 
@@ -186,6 +192,8 @@ void (empty response body)
 
 Exports the cluster configuration for this cluster
 
+
+
 ### Example
 ```python
 from __future__ import print_function
@@ -201,9 +209,9 @@ configuration.password = 'YOUR_PASSWORD'
 
 # create an instance of the API class
 api_instance = cloudera.director.ClustersApi(cloudera.director.ApiClient(configuration))
-environment = 'environment_example' # str | environment
-deployment = 'deployment_example' # str | deployment
-cluster = 'cluster_example' # str | cluster
+environment = 'environment_example' # str | 
+deployment = 'deployment_example' # str | 
+cluster = 'cluster_example' # str | 
 
 try:
     # Exports the cluster configuration for this cluster
@@ -217,9 +225,9 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **environment** | **str**| environment | 
- **deployment** | **str**| deployment | 
- **cluster** | **str**| cluster | 
+ **environment** | **str**|  | 
+ **deployment** | **str**|  | 
+ **cluster** | **str**|  | 
 
 ### Return type
 
@@ -241,6 +249,8 @@ Name | Type | Description  | Notes
 
 Get administration settings for a cluster
 
+
+
 ### Example
 ```python
 from __future__ import print_function
@@ -256,9 +266,9 @@ configuration.password = 'YOUR_PASSWORD'
 
 # create an instance of the API class
 api_instance = cloudera.director.ClustersApi(cloudera.director.ApiClient(configuration))
-environment = 'environment_example' # str | environment
-deployment = 'deployment_example' # str | deployment
-cluster = 'cluster_example' # str | cluster
+environment = 'environment_example' # str | 
+deployment = 'deployment_example' # str | 
+cluster = 'cluster_example' # str | 
 
 try:
     # Get administration settings for a cluster
@@ -272,9 +282,9 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **environment** | **str**| environment | 
- **deployment** | **str**| deployment | 
- **cluster** | **str**| cluster | 
+ **environment** | **str**|  | 
+ **deployment** | **str**|  | 
+ **cluster** | **str**|  | 
 
 ### Return type
 
@@ -296,6 +306,8 @@ Name | Type | Description  | Notes
 
 Get history of updates for a cluster
 
+
+
 ### Example
 ```python
 from __future__ import print_function
@@ -311,11 +323,11 @@ configuration.password = 'YOUR_PASSWORD'
 
 # create an instance of the API class
 api_instance = cloudera.director.ClustersApi(cloudera.director.ApiClient(configuration))
-environment = 'environment_example' # str | environment
-deployment = 'deployment_example' # str | deployment
-cluster = 'cluster_example' # str | cluster
-num_events = 10 # int | numEvents (optional) (default to 10)
-page = 0 # int | page (optional) (default to 0)
+environment = 'environment_example' # str | 
+deployment = 'deployment_example' # str | 
+cluster = 'cluster_example' # str | 
+num_events = 56 # int |  (optional)
+page = 56 # int |  (optional)
 
 try:
     # Get history of updates for a cluster
@@ -329,11 +341,11 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **environment** | **str**| environment | 
- **deployment** | **str**| deployment | 
- **cluster** | **str**| cluster | 
- **num_events** | **int**| numEvents | [optional] [default to 10]
- **page** | **int**| page | [optional] [default to 0]
+ **environment** | **str**|  | 
+ **deployment** | **str**|  | 
+ **cluster** | **str**|  | 
+ **num_events** | **int**|  | [optional] 
+ **page** | **int**|  | [optional] 
 
 ### Return type
 
@@ -355,6 +367,8 @@ Name | Type | Description  | Notes
 
 Get cluster metrics by name
 
+
+
 ### Example
 ```python
 from __future__ import print_function
@@ -370,9 +384,9 @@ configuration.password = 'YOUR_PASSWORD'
 
 # create an instance of the API class
 api_instance = cloudera.director.ClustersApi(cloudera.director.ApiClient(configuration))
-environment = 'environment_example' # str | environment
-deployment = 'deployment_example' # str | deployment
-cluster = 'cluster_example' # str | cluster
+environment = 'environment_example' # str | 
+deployment = 'deployment_example' # str | 
+cluster = 'cluster_example' # str | 
 
 try:
     # Get cluster metrics by name
@@ -386,9 +400,9 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **environment** | **str**| environment | 
- **deployment** | **str**| deployment | 
- **cluster** | **str**| cluster | 
+ **environment** | **str**|  | 
+ **deployment** | **str**|  | 
+ **cluster** | **str**|  | 
 
 ### Return type
 
@@ -410,6 +424,8 @@ Name | Type | Description  | Notes
 
 Get a cluster by name
 
+
+
 ### Example
 ```python
 from __future__ import print_function
@@ -425,9 +441,9 @@ configuration.password = 'YOUR_PASSWORD'
 
 # create an instance of the API class
 api_instance = cloudera.director.ClustersApi(cloudera.director.ApiClient(configuration))
-environment = 'environment_example' # str | environment
-deployment = 'deployment_example' # str | deployment
-cluster = 'cluster_example' # str | cluster
+environment = 'environment_example' # str | 
+deployment = 'deployment_example' # str | 
+cluster = 'cluster_example' # str | 
 
 try:
     # Get a cluster by name
@@ -441,9 +457,9 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **environment** | **str**| environment | 
- **deployment** | **str**| deployment | 
- **cluster** | **str**| cluster | 
+ **environment** | **str**|  | 
+ **deployment** | **str**|  | 
+ **cluster** | **str**|  | 
 
 ### Return type
 
@@ -465,6 +481,8 @@ Name | Type | Description  | Notes
 
 Get a cluster status by name
 
+
+
 ### Example
 ```python
 from __future__ import print_function
@@ -480,9 +498,9 @@ configuration.password = 'YOUR_PASSWORD'
 
 # create an instance of the API class
 api_instance = cloudera.director.ClustersApi(cloudera.director.ApiClient(configuration))
-environment = 'environment_example' # str | environment
-deployment = 'deployment_example' # str | deployment
-cluster = 'cluster_example' # str | cluster
+environment = 'environment_example' # str | 
+deployment = 'deployment_example' # str | 
+cluster = 'cluster_example' # str | 
 
 try:
     # Get a cluster status by name
@@ -496,9 +514,9 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **environment** | **str**| environment | 
- **deployment** | **str**| deployment | 
- **cluster** | **str**| cluster | 
+ **environment** | **str**|  | 
+ **deployment** | **str**|  | 
+ **cluster** | **str**|  | 
 
 ### Return type
 
@@ -520,6 +538,8 @@ Name | Type | Description  | Notes
 
 Get a cluster template by name
 
+
+
 ### Example
 ```python
 from __future__ import print_function
@@ -535,9 +555,9 @@ configuration.password = 'YOUR_PASSWORD'
 
 # create an instance of the API class
 api_instance = cloudera.director.ClustersApi(cloudera.director.ApiClient(configuration))
-environment = 'environment_example' # str | environment
-deployment = 'deployment_example' # str | deployment
-cluster = 'cluster_example' # str | cluster
+environment = 'environment_example' # str | 
+deployment = 'deployment_example' # str | 
+cluster = 'cluster_example' # str | 
 
 try:
     # Get a cluster template by name
@@ -551,9 +571,9 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **environment** | **str**| environment | 
- **deployment** | **str**| deployment | 
- **cluster** | **str**| cluster | 
+ **environment** | **str**|  | 
+ **deployment** | **str**|  | 
+ **cluster** | **str**|  | 
 
 ### Return type
 
@@ -575,6 +595,8 @@ Name | Type | Description  | Notes
 
 List all clusters
 
+
+
 ### Example
 ```python
 from __future__ import print_function
@@ -590,8 +612,8 @@ configuration.password = 'YOUR_PASSWORD'
 
 # create an instance of the API class
 api_instance = cloudera.director.ClustersApi(cloudera.director.ApiClient(configuration))
-environment = 'environment_example' # str | environment
-deployment = 'deployment_example' # str | deployment
+environment = 'environment_example' # str | 
+deployment = 'deployment_example' # str | 
 
 try:
     # List all clusters
@@ -605,8 +627,8 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **environment** | **str**| environment | 
- **deployment** | **str**| deployment | 
+ **environment** | **str**|  | 
+ **deployment** | **str**|  | 
 
 ### Return type
 
@@ -628,6 +650,8 @@ Name | Type | Description  | Notes
 
 Update an existing cluster
 
+
+
 ### Example
 ```python
 from __future__ import print_function
@@ -643,10 +667,10 @@ configuration.password = 'YOUR_PASSWORD'
 
 # create an instance of the API class
 api_instance = cloudera.director.ClustersApi(cloudera.director.ApiClient(configuration))
-environment = 'environment_example' # str | environment
-deployment = 'deployment_example' # str | deployment
-cluster = 'cluster_example' # str | cluster
-desired = cloudera.director.ClusterTemplate() # ClusterTemplate | desired
+environment = 'environment_example' # str | 
+deployment = 'deployment_example' # str | 
+cluster = 'cluster_example' # str | 
+desired = cloudera.director.ClusterTemplate() # ClusterTemplate | 
 
 try:
     # Update an existing cluster
@@ -659,10 +683,10 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **environment** | **str**| environment | 
- **deployment** | **str**| deployment | 
- **cluster** | **str**| cluster | 
- **desired** | [**ClusterTemplate**](ClusterTemplate.md)| desired | 
+ **environment** | **str**|  | 
+ **deployment** | **str**|  | 
+ **cluster** | **str**|  | 
+ **desired** | [**ClusterTemplate**](ClusterTemplate.md)|  | 
 
 ### Return type
 
@@ -674,7 +698,7 @@ void (empty response body)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -683,6 +707,8 @@ void (empty response body)
 > update_administration_settings(environment, deployment, cluster, administration_settings)
 
 Update administration settings for a cluster
+
+
 
 ### Example
 ```python
@@ -699,10 +725,10 @@ configuration.password = 'YOUR_PASSWORD'
 
 # create an instance of the API class
 api_instance = cloudera.director.ClustersApi(cloudera.director.ApiClient(configuration))
-environment = 'environment_example' # str | environment
-deployment = 'deployment_example' # str | deployment
-cluster = 'cluster_example' # str | cluster
-administration_settings = cloudera.director.ClusterAdministrationSettings() # ClusterAdministrationSettings | administrationSettings
+environment = 'environment_example' # str | 
+deployment = 'deployment_example' # str | 
+cluster = 'cluster_example' # str | 
+administration_settings = cloudera.director.ClusterAdministrationSettings() # ClusterAdministrationSettings | 
 
 try:
     # Update administration settings for a cluster
@@ -715,10 +741,10 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **environment** | **str**| environment | 
- **deployment** | **str**| deployment | 
- **cluster** | **str**| cluster | 
- **administration_settings** | [**ClusterAdministrationSettings**](ClusterAdministrationSettings.md)| administrationSettings | 
+ **environment** | **str**|  | 
+ **deployment** | **str**|  | 
+ **cluster** | **str**|  | 
+ **administration_settings** | [**ClusterAdministrationSettings**](ClusterAdministrationSettings.md)|  | 
 
 ### Return type
 
@@ -730,7 +756,7 @@ void (empty response body)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

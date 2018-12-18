@@ -40,31 +40,31 @@ class HealthCheck(object):
     """
     swagger_types = {
         'check_name': 'str',
-        'explanation': 'str',
         'health_status': 'str',
+        'explanation': 'str',
         'suppressed': 'bool'
     }
 
     attribute_map = {
         'check_name': 'checkName',
-        'explanation': 'explanation',
         'health_status': 'healthStatus',
+        'explanation': 'explanation',
         'suppressed': 'suppressed'
     }
 
-    def __init__(self, check_name=None, explanation=None, health_status=None, suppressed=None):  # noqa: E501
+    def __init__(self, check_name=None, health_status=None, explanation=None, suppressed=None):  # noqa: E501
         """HealthCheck - a model defined in Swagger"""  # noqa: E501
 
         self._check_name = None
-        self._explanation = None
         self._health_status = None
+        self._explanation = None
         self._suppressed = None
         self.discriminator = None
 
         self.check_name = check_name
+        self.health_status = health_status
         if explanation is not None:
             self.explanation = explanation
-        self.health_status = health_status
         if suppressed is not None:
             self.suppressed = suppressed
 
@@ -92,29 +92,6 @@ class HealthCheck(object):
             raise ValueError("Invalid value for `check_name`, must not be `None`")  # noqa: E501
 
         self._check_name = check_name
-
-    @property
-    def explanation(self):
-        """Gets the explanation of this HealthCheck.  # noqa: E501
-
-        Explanation for health status  # noqa: E501
-
-        :return: The explanation of this HealthCheck.  # noqa: E501
-        :rtype: str
-        """
-        return self._explanation
-
-    @explanation.setter
-    def explanation(self, explanation):
-        """Sets the explanation of this HealthCheck.
-
-        Explanation for health status  # noqa: E501
-
-        :param explanation: The explanation of this HealthCheck.  # noqa: E501
-        :type: str
-        """
-
-        self._explanation = explanation
 
     @property
     def health_status(self):
@@ -146,6 +123,29 @@ class HealthCheck(object):
             )
 
         self._health_status = health_status
+
+    @property
+    def explanation(self):
+        """Gets the explanation of this HealthCheck.  # noqa: E501
+
+        Explanation for health status  # noqa: E501
+
+        :return: The explanation of this HealthCheck.  # noqa: E501
+        :rtype: str
+        """
+        return self._explanation
+
+    @explanation.setter
+    def explanation(self, explanation):
+        """Sets the explanation of this HealthCheck.
+
+        Explanation for health status  # noqa: E501
+
+        :param explanation: The explanation of this HealthCheck.  # noqa: E501
+        :type: str
+        """
+
+        self._explanation = explanation
 
     @property
     def suppressed(self):

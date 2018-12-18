@@ -44,14 +44,15 @@ class DeploymentsApi(object):
     def collect_diagnostic_data(self, environment, deployment, **kwargs):  # noqa: E501
         """Collects diagnostic data  # noqa: E501
 
+          # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
         >>> thread = api.collect_diagnostic_data(environment, deployment, async=True)
         >>> result = thread.get()
 
         :param async bool
-        :param str environment: environment (required)
-        :param str deployment: deployment (required)
+        :param str environment: (required)
+        :param str deployment: (required)
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
@@ -66,14 +67,15 @@ class DeploymentsApi(object):
     def collect_diagnostic_data_with_http_info(self, environment, deployment, **kwargs):  # noqa: E501
         """Collects diagnostic data  # noqa: E501
 
+          # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
         >>> thread = api.collect_diagnostic_data_with_http_info(environment, deployment, async=True)
         >>> result = thread.get()
 
         :param async bool
-        :param str environment: environment (required)
-        :param str deployment: deployment (required)
+        :param str environment: (required)
+        :param str deployment: (required)
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
@@ -123,10 +125,6 @@ class DeploymentsApi(object):
         header_params['Accept'] = self.api_client.select_header_accept(
             ['application/json'])  # noqa: E501
 
-        # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json'])  # noqa: E501
-
         # Authentication setting
         auth_settings = ['basic']  # noqa: E501
 
@@ -150,14 +148,15 @@ class DeploymentsApi(object):
     def create(self, environment, deployment_template, **kwargs):  # noqa: E501
         """Create a new deployment  # noqa: E501
 
+          # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
         >>> thread = api.create(environment, deployment_template, async=True)
         >>> result = thread.get()
 
         :param async bool
-        :param str environment: environment (required)
-        :param DeploymentTemplate deployment_template: deploymentTemplate (required)
+        :param str environment: (required)
+        :param DeploymentTemplate deployment_template: (required)
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
@@ -172,14 +171,15 @@ class DeploymentsApi(object):
     def create_with_http_info(self, environment, deployment_template, **kwargs):  # noqa: E501
         """Create a new deployment  # noqa: E501
 
+          # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
         >>> thread = api.create_with_http_info(environment, deployment_template, async=True)
         >>> result = thread.get()
 
         :param async bool
-        :param str environment: environment (required)
-        :param DeploymentTemplate deployment_template: deploymentTemplate (required)
+        :param str environment: (required)
+        :param DeploymentTemplate deployment_template: (required)
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
@@ -229,10 +229,6 @@ class DeploymentsApi(object):
         header_params['Accept'] = self.api_client.select_header_accept(
             ['application/json'])  # noqa: E501
 
-        # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json'])  # noqa: E501
-
         # Authentication setting
         auth_settings = ['basic']  # noqa: E501
 
@@ -256,14 +252,15 @@ class DeploymentsApi(object):
     def delete(self, environment, deployment, **kwargs):  # noqa: E501
         """Delete a deployment by name  # noqa: E501
 
+          # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
         >>> thread = api.delete(environment, deployment, async=True)
         >>> result = thread.get()
 
         :param async bool
-        :param str environment: environment (required)
-        :param str deployment: deployment (required)
+        :param str environment: (required)
+        :param str deployment: (required)
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
@@ -278,14 +275,15 @@ class DeploymentsApi(object):
     def delete_with_http_info(self, environment, deployment, **kwargs):  # noqa: E501
         """Delete a deployment by name  # noqa: E501
 
+          # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
         >>> thread = api.delete_with_http_info(environment, deployment, async=True)
         >>> result = thread.get()
 
         :param async bool
-        :param str environment: environment (required)
-        :param str deployment: deployment (required)
+        :param str environment: (required)
+        :param str deployment: (required)
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
@@ -358,14 +356,15 @@ class DeploymentsApi(object):
     def get_redacted(self, environment, deployment, **kwargs):  # noqa: E501
         """Get a deployment by name  # noqa: E501
 
+          # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
         >>> thread = api.get_redacted(environment, deployment, async=True)
         >>> result = thread.get()
 
         :param async bool
-        :param str environment: environment (required)
-        :param str deployment: deployment (required)
+        :param str environment: (required)
+        :param str deployment: (required)
         :return: Deployment
                  If the method is called asynchronously,
                  returns the request thread.
@@ -380,14 +379,15 @@ class DeploymentsApi(object):
     def get_redacted_with_http_info(self, environment, deployment, **kwargs):  # noqa: E501
         """Get a deployment by name  # noqa: E501
 
+          # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
         >>> thread = api.get_redacted_with_http_info(environment, deployment, async=True)
         >>> result = thread.get()
 
         :param async bool
-        :param str environment: environment (required)
-        :param str deployment: deployment (required)
+        :param str environment: (required)
+        :param str deployment: (required)
         :return: Deployment
                  If the method is called asynchronously,
                  returns the request thread.
@@ -460,14 +460,15 @@ class DeploymentsApi(object):
     def get_status(self, environment, deployment, **kwargs):  # noqa: E501
         """Get a deployment status by name  # noqa: E501
 
+          # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
         >>> thread = api.get_status(environment, deployment, async=True)
         >>> result = thread.get()
 
         :param async bool
-        :param str environment: environment (required)
-        :param str deployment: deployment (required)
+        :param str environment: (required)
+        :param str deployment: (required)
         :return: Status
                  If the method is called asynchronously,
                  returns the request thread.
@@ -482,14 +483,15 @@ class DeploymentsApi(object):
     def get_status_with_http_info(self, environment, deployment, **kwargs):  # noqa: E501
         """Get a deployment status by name  # noqa: E501
 
+          # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
         >>> thread = api.get_status_with_http_info(environment, deployment, async=True)
         >>> result = thread.get()
 
         :param async bool
-        :param str environment: environment (required)
-        :param str deployment: deployment (required)
+        :param str environment: (required)
+        :param str deployment: (required)
         :return: Status
                  If the method is called asynchronously,
                  returns the request thread.
@@ -562,14 +564,15 @@ class DeploymentsApi(object):
     def get_template_redacted(self, environment, deployment, **kwargs):  # noqa: E501
         """Get a deployment template by name  # noqa: E501
 
+          # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
         >>> thread = api.get_template_redacted(environment, deployment, async=True)
         >>> result = thread.get()
 
         :param async bool
-        :param str environment: environment (required)
-        :param str deployment: deployment (required)
+        :param str environment: (required)
+        :param str deployment: (required)
         :return: DeploymentTemplate
                  If the method is called asynchronously,
                  returns the request thread.
@@ -584,14 +587,15 @@ class DeploymentsApi(object):
     def get_template_redacted_with_http_info(self, environment, deployment, **kwargs):  # noqa: E501
         """Get a deployment template by name  # noqa: E501
 
+          # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
         >>> thread = api.get_template_redacted_with_http_info(environment, deployment, async=True)
         >>> result = thread.get()
 
         :param async bool
-        :param str environment: environment (required)
-        :param str deployment: deployment (required)
+        :param str environment: (required)
+        :param str deployment: (required)
         :return: DeploymentTemplate
                  If the method is called asynchronously,
                  returns the request thread.
@@ -664,13 +668,14 @@ class DeploymentsApi(object):
     def list(self, environment, **kwargs):  # noqa: E501
         """List all deployments  # noqa: E501
 
+          # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
         >>> thread = api.list(environment, async=True)
         >>> result = thread.get()
 
         :param async bool
-        :param str environment: environment (required)
+        :param str environment: (required)
         :return: list[str]
                  If the method is called asynchronously,
                  returns the request thread.
@@ -685,13 +690,14 @@ class DeploymentsApi(object):
     def list_with_http_info(self, environment, **kwargs):  # noqa: E501
         """List all deployments  # noqa: E501
 
+          # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
         >>> thread = api.list_with_http_info(environment, async=True)
         >>> result = thread.get()
 
         :param async bool
-        :param str environment: environment (required)
+        :param str environment: (required)
         :return: list[str]
                  If the method is called asynchronously,
                  returns the request thread.
@@ -758,15 +764,16 @@ class DeploymentsApi(object):
     def update(self, environment, deployment, updated_template, **kwargs):  # noqa: E501
         """Update an existing deployment template  # noqa: E501
 
+          # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
         >>> thread = api.update(environment, deployment, updated_template, async=True)
         >>> result = thread.get()
 
         :param async bool
-        :param str environment: environment (required)
-        :param str deployment: deployment (required)
-        :param DeploymentTemplate updated_template: updatedTemplate (required)
+        :param str environment: (required)
+        :param str deployment: (required)
+        :param DeploymentTemplate updated_template: (required)
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
@@ -781,15 +788,16 @@ class DeploymentsApi(object):
     def update_with_http_info(self, environment, deployment, updated_template, **kwargs):  # noqa: E501
         """Update an existing deployment template  # noqa: E501
 
+          # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
         >>> thread = api.update_with_http_info(environment, deployment, updated_template, async=True)
         >>> result = thread.get()
 
         :param async bool
-        :param str environment: environment (required)
-        :param str deployment: deployment (required)
-        :param DeploymentTemplate updated_template: updatedTemplate (required)
+        :param str environment: (required)
+        :param str deployment: (required)
+        :param DeploymentTemplate updated_template: (required)
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
@@ -845,10 +853,6 @@ class DeploymentsApi(object):
         header_params['Accept'] = self.api_client.select_header_accept(
             ['application/json'])  # noqa: E501
 
-        # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json'])  # noqa: E501
-
         # Authentication setting
         auth_settings = ['basic']  # noqa: E501
 
@@ -872,15 +876,16 @@ class DeploymentsApi(object):
     def update_metering_setting(self, environment, deployment, metering_setting, **kwargs):  # noqa: E501
         """Update billing ID for an existing deployment  # noqa: E501
 
+          # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
         >>> thread = api.update_metering_setting(environment, deployment, metering_setting, async=True)
         >>> result = thread.get()
 
         :param async bool
-        :param str environment: environment (required)
-        :param str deployment: deployment (required)
-        :param MeteringSetting metering_setting: meteringSetting (required)
+        :param str environment: (required)
+        :param str deployment: (required)
+        :param MeteringSetting metering_setting: (required)
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
@@ -895,15 +900,16 @@ class DeploymentsApi(object):
     def update_metering_setting_with_http_info(self, environment, deployment, metering_setting, **kwargs):  # noqa: E501
         """Update billing ID for an existing deployment  # noqa: E501
 
+          # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
         >>> thread = api.update_metering_setting_with_http_info(environment, deployment, metering_setting, async=True)
         >>> result = thread.get()
 
         :param async bool
-        :param str environment: environment (required)
-        :param str deployment: deployment (required)
-        :param MeteringSetting metering_setting: meteringSetting (required)
+        :param str environment: (required)
+        :param str deployment: (required)
+        :param MeteringSetting metering_setting: (required)
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
@@ -957,10 +963,6 @@ class DeploymentsApi(object):
             body_params = params['metering_setting']
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
-
-        # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
             ['application/json'])  # noqa: E501
 
         # Authentication setting

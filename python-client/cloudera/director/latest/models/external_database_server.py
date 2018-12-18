@@ -39,70 +39,45 @@ class ExternalDatabaseServer(object):
                             and the value is json key in definition.
     """
     swagger_types = {
-        'hostname': 'str',
         'name': 'str',
-        'password': 'str',
-        'port': 'int',
-        'properties': 'dict(str, str)',
         'type': 'str',
-        'username': 'str'
+        'hostname': 'str',
+        'port': 'int',
+        'username': 'str',
+        'password': 'str',
+        'properties': 'dict(str, str)'
     }
 
     attribute_map = {
-        'hostname': 'hostname',
         'name': 'name',
-        'password': 'password',
-        'port': 'port',
-        'properties': 'properties',
         'type': 'type',
-        'username': 'username'
+        'hostname': 'hostname',
+        'port': 'port',
+        'username': 'username',
+        'password': 'password',
+        'properties': 'properties'
     }
 
-    def __init__(self, hostname=None, name=None, password=None, port=None, properties=None, type=None, username=None):  # noqa: E501
+    def __init__(self, name=None, type=None, hostname=None, port=None, username=None, password=None, properties=None):  # noqa: E501
         """ExternalDatabaseServer - a model defined in Swagger"""  # noqa: E501
 
-        self._hostname = None
         self._name = None
-        self._password = None
-        self._port = None
-        self._properties = None
         self._type = None
+        self._hostname = None
+        self._port = None
         self._username = None
+        self._password = None
+        self._properties = None
         self.discriminator = None
 
-        self.hostname = hostname
         self.name = name
-        self.password = password
+        self.type = type
+        self.hostname = hostname
         self.port = port
+        self.username = username
+        self.password = password
         if properties is not None:
             self.properties = properties
-        self.type = type
-        self.username = username
-
-    @property
-    def hostname(self):
-        """Gets the hostname of this ExternalDatabaseServer.  # noqa: E501
-
-        External database server hostname  # noqa: E501
-
-        :return: The hostname of this ExternalDatabaseServer.  # noqa: E501
-        :rtype: str
-        """
-        return self._hostname
-
-    @hostname.setter
-    def hostname(self, hostname):
-        """Sets the hostname of this ExternalDatabaseServer.
-
-        External database server hostname  # noqa: E501
-
-        :param hostname: The hostname of this ExternalDatabaseServer.  # noqa: E501
-        :type: str
-        """
-        if hostname is None:
-            raise ValueError("Invalid value for `hostname`, must not be `None`")  # noqa: E501
-
-        self._hostname = hostname
 
     @property
     def name(self):
@@ -128,79 +103,6 @@ class ExternalDatabaseServer(object):
             raise ValueError("Invalid value for `name`, must not be `None`")  # noqa: E501
 
         self._name = name
-
-    @property
-    def password(self):
-        """Gets the password of this ExternalDatabaseServer.  # noqa: E501
-
-        Password for administrative access to external database server [redacted on read]  # noqa: E501
-
-        :return: The password of this ExternalDatabaseServer.  # noqa: E501
-        :rtype: str
-        """
-        return self._password
-
-    @password.setter
-    def password(self, password):
-        """Sets the password of this ExternalDatabaseServer.
-
-        Password for administrative access to external database server [redacted on read]  # noqa: E501
-
-        :param password: The password of this ExternalDatabaseServer.  # noqa: E501
-        :type: str
-        """
-        if password is None:
-            raise ValueError("Invalid value for `password`, must not be `None`")  # noqa: E501
-
-        self._password = password
-
-    @property
-    def port(self):
-        """Gets the port of this ExternalDatabaseServer.  # noqa: E501
-
-        External database server port  # noqa: E501
-
-        :return: The port of this ExternalDatabaseServer.  # noqa: E501
-        :rtype: int
-        """
-        return self._port
-
-    @port.setter
-    def port(self, port):
-        """Sets the port of this ExternalDatabaseServer.
-
-        External database server port  # noqa: E501
-
-        :param port: The port of this ExternalDatabaseServer.  # noqa: E501
-        :type: int
-        """
-        if port is None:
-            raise ValueError("Invalid value for `port`, must not be `None`")  # noqa: E501
-
-        self._port = port
-
-    @property
-    def properties(self):
-        """Gets the properties of this ExternalDatabaseServer.  # noqa: E501
-
-        External database server display properties  # noqa: E501
-
-        :return: The properties of this ExternalDatabaseServer.  # noqa: E501
-        :rtype: dict(str, str)
-        """
-        return self._properties
-
-    @properties.setter
-    def properties(self, properties):
-        """Sets the properties of this ExternalDatabaseServer.
-
-        External database server display properties  # noqa: E501
-
-        :param properties: The properties of this ExternalDatabaseServer.  # noqa: E501
-        :type: dict(str, str)
-        """
-
-        self._properties = properties
 
     @property
     def type(self):
@@ -234,6 +136,56 @@ class ExternalDatabaseServer(object):
         self._type = type
 
     @property
+    def hostname(self):
+        """Gets the hostname of this ExternalDatabaseServer.  # noqa: E501
+
+        External database server hostname  # noqa: E501
+
+        :return: The hostname of this ExternalDatabaseServer.  # noqa: E501
+        :rtype: str
+        """
+        return self._hostname
+
+    @hostname.setter
+    def hostname(self, hostname):
+        """Sets the hostname of this ExternalDatabaseServer.
+
+        External database server hostname  # noqa: E501
+
+        :param hostname: The hostname of this ExternalDatabaseServer.  # noqa: E501
+        :type: str
+        """
+        if hostname is None:
+            raise ValueError("Invalid value for `hostname`, must not be `None`")  # noqa: E501
+
+        self._hostname = hostname
+
+    @property
+    def port(self):
+        """Gets the port of this ExternalDatabaseServer.  # noqa: E501
+
+        External database server port  # noqa: E501
+
+        :return: The port of this ExternalDatabaseServer.  # noqa: E501
+        :rtype: int
+        """
+        return self._port
+
+    @port.setter
+    def port(self, port):
+        """Sets the port of this ExternalDatabaseServer.
+
+        External database server port  # noqa: E501
+
+        :param port: The port of this ExternalDatabaseServer.  # noqa: E501
+        :type: int
+        """
+        if port is None:
+            raise ValueError("Invalid value for `port`, must not be `None`")  # noqa: E501
+
+        self._port = port
+
+    @property
     def username(self):
         """Gets the username of this ExternalDatabaseServer.  # noqa: E501
 
@@ -257,6 +209,54 @@ class ExternalDatabaseServer(object):
             raise ValueError("Invalid value for `username`, must not be `None`")  # noqa: E501
 
         self._username = username
+
+    @property
+    def password(self):
+        """Gets the password of this ExternalDatabaseServer.  # noqa: E501
+
+        Password for administrative access to external database server [redacted on read]  # noqa: E501
+
+        :return: The password of this ExternalDatabaseServer.  # noqa: E501
+        :rtype: str
+        """
+        return self._password
+
+    @password.setter
+    def password(self, password):
+        """Sets the password of this ExternalDatabaseServer.
+
+        Password for administrative access to external database server [redacted on read]  # noqa: E501
+
+        :param password: The password of this ExternalDatabaseServer.  # noqa: E501
+        :type: str
+        """
+        if password is None:
+            raise ValueError("Invalid value for `password`, must not be `None`")  # noqa: E501
+
+        self._password = password
+
+    @property
+    def properties(self):
+        """Gets the properties of this ExternalDatabaseServer.  # noqa: E501
+
+        External database server display properties  # noqa: E501
+
+        :return: The properties of this ExternalDatabaseServer.  # noqa: E501
+        :rtype: dict(str, str)
+        """
+        return self._properties
+
+    @properties.setter
+    def properties(self, properties):
+        """Sets the properties of this ExternalDatabaseServer.
+
+        External database server display properties  # noqa: E501
+
+        :param properties: The properties of this ExternalDatabaseServer.  # noqa: E501
+        :type: dict(str, str)
+        """
+
+        self._properties = properties
 
     def to_dict(self):
         """Returns the model properties as a dict"""

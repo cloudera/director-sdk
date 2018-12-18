@@ -40,29 +40,29 @@ class TimeSeriesResponse(object):
     """
     swagger_types = {
         'time_series': 'list[TimeSeries]',
-        'time_series_query': 'str',
-        'warnings': 'list[str]'
+        'warnings': 'list[str]',
+        'time_series_query': 'str'
     }
 
     attribute_map = {
         'time_series': 'timeSeries',
-        'time_series_query': 'timeSeriesQuery',
-        'warnings': 'warnings'
+        'warnings': 'warnings',
+        'time_series_query': 'timeSeriesQuery'
     }
 
-    def __init__(self, time_series=None, time_series_query=None, warnings=None):  # noqa: E501
+    def __init__(self, time_series=None, warnings=None, time_series_query=None):  # noqa: E501
         """TimeSeriesResponse - a model defined in Swagger"""  # noqa: E501
 
         self._time_series = None
-        self._time_series_query = None
         self._warnings = None
+        self._time_series_query = None
         self.discriminator = None
 
         if time_series is not None:
             self.time_series = time_series
-        self.time_series_query = time_series_query
         if warnings is not None:
             self.warnings = warnings
+        self.time_series_query = time_series_query
 
     @property
     def time_series(self):
@@ -88,6 +88,29 @@ class TimeSeriesResponse(object):
         self._time_series = time_series
 
     @property
+    def warnings(self):
+        """Gets the warnings of this TimeSeriesResponse.  # noqa: E501
+
+        Warnings  # noqa: E501
+
+        :return: The warnings of this TimeSeriesResponse.  # noqa: E501
+        :rtype: list[str]
+        """
+        return self._warnings
+
+    @warnings.setter
+    def warnings(self, warnings):
+        """Sets the warnings of this TimeSeriesResponse.
+
+        Warnings  # noqa: E501
+
+        :param warnings: The warnings of this TimeSeriesResponse.  # noqa: E501
+        :type: list[str]
+        """
+
+        self._warnings = warnings
+
+    @property
     def time_series_query(self):
         """Gets the time_series_query of this TimeSeriesResponse.  # noqa: E501
 
@@ -111,29 +134,6 @@ class TimeSeriesResponse(object):
             raise ValueError("Invalid value for `time_series_query`, must not be `None`")  # noqa: E501
 
         self._time_series_query = time_series_query
-
-    @property
-    def warnings(self):
-        """Gets the warnings of this TimeSeriesResponse.  # noqa: E501
-
-        Warnings  # noqa: E501
-
-        :return: The warnings of this TimeSeriesResponse.  # noqa: E501
-        :rtype: list[str]
-        """
-        return self._warnings
-
-    @warnings.setter
-    def warnings(self, warnings):
-        """Sets the warnings of this TimeSeriesResponse.
-
-        Warnings  # noqa: E501
-
-        :param warnings: The warnings of this TimeSeriesResponse.  # noqa: E501
-        :type: list[str]
-        """
-
-        self._warnings = warnings
 
     def to_dict(self):
         """Returns the model properties as a dict"""

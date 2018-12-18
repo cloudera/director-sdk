@@ -37,18 +37,18 @@ import java.util.Map;
 @ApiModel(description = "Details on users of an external database server")
 
 public class ExternalDatabaseServerUsage {
-  @SerializedName("clusters")
-  private Map<String, List<String>> clusters = null;
   @SerializedName("deployments")
   private List<String> deployments = null;
+  @SerializedName("clusters")
+  private Map<String, List<String>> clusters = null;
 
   public ExternalDatabaseServerUsage() {
     // Do nothing
   }
 
   private ExternalDatabaseServerUsage(ExternalDatabaseServerUsageBuilder builder) {
-      this.clusters = builder.clusters;
       this.deployments = builder.deployments;
+      this.clusters = builder.clusters;
     }
 
   public static ExternalDatabaseServerUsageBuilder builder() {
@@ -56,18 +56,18 @@ public class ExternalDatabaseServerUsage {
   }
 
   public static class ExternalDatabaseServerUsageBuilder {
-      private Map<String, List<String>> clusters = new HashMap<String, List<String>>();
       private List<String> deployments = new ArrayList<String>();
+      private Map<String, List<String>> clusters = new HashMap<String, List<String>>();
   
 
-    public ExternalDatabaseServerUsageBuilder clusters(Map<String, List<String>> clusters) {
-      this.clusters = clusters;
+    public ExternalDatabaseServerUsageBuilder deployments(List<String> deployments) {
+      this.deployments = deployments;
       return this;
     }
 
 
-    public ExternalDatabaseServerUsageBuilder deployments(List<String> deployments) {
-      this.deployments = deployments;
+    public ExternalDatabaseServerUsageBuilder clusters(Map<String, List<String>> clusters) {
+      this.clusters = clusters;
       return this;
     }
 
@@ -79,35 +79,9 @@ public class ExternalDatabaseServerUsage {
 
   public ExternalDatabaseServerUsageBuilder toBuilder() {
     return builder()
-      .clusters(clusters)
-            .deployments(deployments)
+      .deployments(deployments)
+            .clusters(clusters)
       ;
-  }
-
-  public ExternalDatabaseServerUsage clusters(Map<String, List<String>> clusters) {
-    this.clusters = clusters;
-    return this;
-  }
-
-  public ExternalDatabaseServerUsage putClustersItem(String key, List<String> clustersItem) {
-    if (this.clusters == null) {
-      this.clusters = new HashMap<String, List<String>>();
-    }
-    this.clusters.put(key, clustersItem);
-    return this;
-  }
-
-   /**
-   * Clusters that use the specified database server, by deployment
-   * @return clusters
-  **/
-  @ApiModelProperty(value = "Clusters that use the specified database server, by deployment")
-  public Map<String, List<String>> getClusters() {
-    return clusters;
-  }
-
-  public void setClusters(Map<String, List<String>> clusters) {
-    this.clusters = clusters;
   }
 
   public ExternalDatabaseServerUsage deployments(List<String> deployments) {
@@ -136,6 +110,32 @@ public class ExternalDatabaseServerUsage {
     this.deployments = deployments;
   }
 
+  public ExternalDatabaseServerUsage clusters(Map<String, List<String>> clusters) {
+    this.clusters = clusters;
+    return this;
+  }
+
+  public ExternalDatabaseServerUsage putClustersItem(String key, List<String> clustersItem) {
+    if (this.clusters == null) {
+      this.clusters = new HashMap<String, List<String>>();
+    }
+    this.clusters.put(key, clustersItem);
+    return this;
+  }
+
+   /**
+   * Clusters that use the specified database server, by deployment
+   * @return clusters
+  **/
+  @ApiModelProperty(value = "Clusters that use the specified database server, by deployment")
+  public Map<String, List<String>> getClusters() {
+    return clusters;
+  }
+
+  public void setClusters(Map<String, List<String>> clusters) {
+    this.clusters = clusters;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -146,13 +146,13 @@ public class ExternalDatabaseServerUsage {
       return false;
     }
     ExternalDatabaseServerUsage externalDatabaseServerUsage = (ExternalDatabaseServerUsage) o;
-    return Objects.equals(this.clusters, externalDatabaseServerUsage.clusters) &&
-        Objects.equals(this.deployments, externalDatabaseServerUsage.deployments);
+    return Objects.equals(this.deployments, externalDatabaseServerUsage.deployments) &&
+        Objects.equals(this.clusters, externalDatabaseServerUsage.clusters);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(clusters, deployments);
+    return Objects.hash(deployments, clusters);
   }
 
 
@@ -161,8 +161,8 @@ public class ExternalDatabaseServerUsage {
     StringBuilder sb = new StringBuilder();
     sb.append("class ExternalDatabaseServerUsage {\n");
     
-    sb.append("    clusters: ").append(toIndentedString(clusters)).append("\n");
     sb.append("    deployments: ").append(toIndentedString(deployments)).append("\n");
+    sb.append("    clusters: ").append(toIndentedString(clusters)).append("\n");
     sb.append("}");
     return sb.toString();
   }

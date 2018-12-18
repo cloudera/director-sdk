@@ -39,68 +39,45 @@ class DisplayProperty(object):
                             and the value is json key in definition.
     """
     swagger_types = {
-        'description': 'str',
         'display_key': 'str',
         'name': 'str',
+        'description': 'str',
         'sensitive': 'bool',
         'type': 'str',
         'widget': 'str'
     }
 
     attribute_map = {
-        'description': 'description',
         'display_key': 'displayKey',
         'name': 'name',
+        'description': 'description',
         'sensitive': 'sensitive',
         'type': 'type',
         'widget': 'widget'
     }
 
-    def __init__(self, description=None, display_key=None, name=None, sensitive=None, type=None, widget=None):  # noqa: E501
+    def __init__(self, display_key=None, name=None, description=None, sensitive=None, type=None, widget=None):  # noqa: E501
         """DisplayProperty - a model defined in Swagger"""  # noqa: E501
 
-        self._description = None
         self._display_key = None
         self._name = None
+        self._description = None
         self._sensitive = None
         self._type = None
         self._widget = None
         self.discriminator = None
 
-        if description is not None:
-            self.description = description
         self.display_key = display_key
         if name is not None:
             self.name = name
+        if description is not None:
+            self.description = description
         if sensitive is not None:
             self.sensitive = sensitive
         if type is not None:
             self.type = type
         if widget is not None:
             self.widget = widget
-
-    @property
-    def description(self):
-        """Gets the description of this DisplayProperty.  # noqa: E501
-
-        Display property description  # noqa: E501
-
-        :return: The description of this DisplayProperty.  # noqa: E501
-        :rtype: str
-        """
-        return self._description
-
-    @description.setter
-    def description(self, description):
-        """Sets the description of this DisplayProperty.
-
-        Display property description  # noqa: E501
-
-        :param description: The description of this DisplayProperty.  # noqa: E501
-        :type: str
-        """
-
-        self._description = description
 
     @property
     def display_key(self):
@@ -149,6 +126,29 @@ class DisplayProperty(object):
         """
 
         self._name = name
+
+    @property
+    def description(self):
+        """Gets the description of this DisplayProperty.  # noqa: E501
+
+        Display property description  # noqa: E501
+
+        :return: The description of this DisplayProperty.  # noqa: E501
+        :rtype: str
+        """
+        return self._description
+
+    @description.setter
+    def description(self, description):
+        """Sets the description of this DisplayProperty.
+
+        Display property description  # noqa: E501
+
+        :param description: The description of this DisplayProperty.  # noqa: E501
+        :type: str
+        """
+
+        self._description = description
 
     @property
     def sensitive(self):

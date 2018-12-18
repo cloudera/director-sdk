@@ -33,12 +33,6 @@ import java.io.IOException;
 @ApiModel(description = "A condition that caused a validation exception")
 
 public class ValidationExceptionCondition {
-  @SerializedName("key")
-  private String key = null;
-  @SerializedName("message")
-  private String message = null;
-  @SerializedName("scope")
-  private String scope = null;
   /**
    * The type of condition
    */
@@ -88,16 +82,22 @@ public class ValidationExceptionCondition {
 
   @SerializedName("type")
   private TypeEnum type = null;
+  @SerializedName("scope")
+  private String scope = null;
+  @SerializedName("key")
+  private String key = null;
+  @SerializedName("message")
+  private String message = null;
 
   public ValidationExceptionCondition() {
     // Do nothing
   }
 
   private ValidationExceptionCondition(ValidationExceptionConditionBuilder builder) {
+      this.type = builder.type;
+      this.scope = builder.scope;
       this.key = builder.key;
       this.message = builder.message;
-      this.scope = builder.scope;
-      this.type = builder.type;
     }
 
   public static ValidationExceptionConditionBuilder builder() {
@@ -105,11 +105,23 @@ public class ValidationExceptionCondition {
   }
 
   public static class ValidationExceptionConditionBuilder {
+      private TypeEnum type = null;
+      private String scope = null;
       private String key = null;
       private String message = null;
-      private String scope = null;
-      private TypeEnum type = null;
   
+
+    public ValidationExceptionConditionBuilder type(TypeEnum type) {
+      this.type = type;
+      return this;
+    }
+
+
+    public ValidationExceptionConditionBuilder scope(String scope) {
+      this.scope = scope;
+      return this;
+    }
+
 
     public ValidationExceptionConditionBuilder key(String key) {
       this.key = key;
@@ -123,18 +135,6 @@ public class ValidationExceptionCondition {
     }
 
 
-    public ValidationExceptionConditionBuilder scope(String scope) {
-      this.scope = scope;
-      return this;
-    }
-
-
-    public ValidationExceptionConditionBuilder type(TypeEnum type) {
-      this.type = type;
-      return this;
-    }
-
-
     public ValidationExceptionCondition build() {
       return new ValidationExceptionCondition(this);
     }
@@ -142,70 +142,11 @@ public class ValidationExceptionCondition {
 
   public ValidationExceptionConditionBuilder toBuilder() {
     return builder()
-      .key(key)
-            .message(message)
+      .type(type)
             .scope(scope)
-            .type(type)
+            .key(key)
+            .message(message)
       ;
-  }
-
-  public ValidationExceptionCondition key(String key) {
-    this.key = key;
-    return this;
-  }
-
-   /**
-   * The optional key of the condition
-   * @return key
-  **/
-  @ApiModelProperty(value = "The optional key of the condition")
-  public String getKey() {
-    return key;
-  }
-
-  public void setKey(String key) {
-    this.key = key;
-  }
-
-  public ValidationExceptionCondition message(String message) {
-    this.message = message;
-    return this;
-  }
-
-   /**
-   * The message of the condition
-   * @return message
-  **/
-  @ApiModelProperty(required = true, value = "The message of the condition")
-  public String getMessage() {
-    return message;
-  }
-
-  public void setMessage(String message) {
-    this.message = message;
-  }
-
-  public ValidationExceptionCondition scope(String scope) {
-    this.scope = scope;
-    return this;
-  }
-
-   /**
-   * The scope of the condition
-   * @return scope
-  **/
-  @ApiModelProperty(required = true, value = "The scope of the condition")
-  public String getScope() {
-    return scope;
-  }
-
-  public void setScope(String scope) {
-    this.scope = scope;
-  }
-
-  public ValidationExceptionCondition type(TypeEnum type) {
-    this.type = type;
-    return this;
   }
 
    /**
@@ -217,8 +158,31 @@ public class ValidationExceptionCondition {
     return type;
   }
 
-  public void setType(TypeEnum type) {
-    this.type = type;
+   /**
+   * The scope of the condition
+   * @return scope
+  **/
+  @ApiModelProperty(required = true, value = "The scope of the condition")
+  public String getScope() {
+    return scope;
+  }
+
+   /**
+   * The optional key of the condition
+   * @return key
+  **/
+  @ApiModelProperty(value = "The optional key of the condition")
+  public String getKey() {
+    return key;
+  }
+
+   /**
+   * The message of the condition
+   * @return message
+  **/
+  @ApiModelProperty(required = true, value = "The message of the condition")
+  public String getMessage() {
+    return message;
   }
 
 
@@ -231,15 +195,15 @@ public class ValidationExceptionCondition {
       return false;
     }
     ValidationExceptionCondition validationExceptionCondition = (ValidationExceptionCondition) o;
-    return Objects.equals(this.key, validationExceptionCondition.key) &&
-        Objects.equals(this.message, validationExceptionCondition.message) &&
+    return Objects.equals(this.type, validationExceptionCondition.type) &&
         Objects.equals(this.scope, validationExceptionCondition.scope) &&
-        Objects.equals(this.type, validationExceptionCondition.type);
+        Objects.equals(this.key, validationExceptionCondition.key) &&
+        Objects.equals(this.message, validationExceptionCondition.message);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(key, message, scope, type);
+    return Objects.hash(type, scope, key, message);
   }
 
 
@@ -248,10 +212,10 @@ public class ValidationExceptionCondition {
     StringBuilder sb = new StringBuilder();
     sb.append("class ValidationExceptionCondition {\n");
     
+    sb.append("    type: ").append(toIndentedString(type)).append("\n");
+    sb.append("    scope: ").append(toIndentedString(scope)).append("\n");
     sb.append("    key: ").append(toIndentedString(key)).append("\n");
     sb.append("    message: ").append(toIndentedString(message)).append("\n");
-    sb.append("    scope: ").append(toIndentedString(scope)).append("\n");
-    sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("}");
     return sb.toString();
   }

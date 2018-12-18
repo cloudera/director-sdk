@@ -37,18 +37,6 @@ import java.util.List;
 @ApiModel(description = "The status of a multi-step Cloudera Altus Director process")
 
 public class Status {
-  @SerializedName("completedSteps")
-  private Integer completedSteps = null;
-  @SerializedName("description")
-  private String description = null;
-  @SerializedName("descriptionDetails")
-  private List<String> descriptionDetails = null;
-  @SerializedName("diagnosticDataSummaries")
-  private List<DiagnosticDataSummary> diagnosticDataSummaries = null;
-  @SerializedName("health")
-  private Health health = null;
-  @SerializedName("remainingSteps")
-  private Integer remainingSteps = null;
   /**
    * Current stage of the process
    */
@@ -112,19 +100,31 @@ public class Status {
 
   @SerializedName("stage")
   private StageEnum stage = null;
+  @SerializedName("description")
+  private String description = null;
+  @SerializedName("descriptionDetails")
+  private List<String> descriptionDetails = null;
+  @SerializedName("remainingSteps")
+  private Integer remainingSteps = null;
+  @SerializedName("completedSteps")
+  private Integer completedSteps = null;
+  @SerializedName("health")
+  private Health health = null;
+  @SerializedName("diagnosticDataSummaries")
+  private List<DiagnosticDataSummary> diagnosticDataSummaries = null;
 
   public Status() {
     // Do nothing
   }
 
   private Status(StatusBuilder builder) {
-      this.completedSteps = builder.completedSteps;
+      this.stage = builder.stage;
       this.description = builder.description;
       this.descriptionDetails = builder.descriptionDetails;
-      this.diagnosticDataSummaries = builder.diagnosticDataSummaries;
-      this.health = builder.health;
       this.remainingSteps = builder.remainingSteps;
-      this.stage = builder.stage;
+      this.completedSteps = builder.completedSteps;
+      this.health = builder.health;
+      this.diagnosticDataSummaries = builder.diagnosticDataSummaries;
     }
 
   public static StatusBuilder builder() {
@@ -132,17 +132,17 @@ public class Status {
   }
 
   public static class StatusBuilder {
-      private Integer completedSteps = null;
+      private StageEnum stage = null;
       private String description = null;
       private List<String> descriptionDetails = new ArrayList<String>();
-      private List<DiagnosticDataSummary> diagnosticDataSummaries = new ArrayList<DiagnosticDataSummary>();
-      private Health health = null;
       private Integer remainingSteps = null;
-      private StageEnum stage = null;
+      private Integer completedSteps = null;
+      private Health health = null;
+      private List<DiagnosticDataSummary> diagnosticDataSummaries = new ArrayList<DiagnosticDataSummary>();
   
 
-    public StatusBuilder completedSteps(Integer completedSteps) {
-      this.completedSteps = completedSteps;
+    public StatusBuilder stage(StageEnum stage) {
+      this.stage = stage;
       return this;
     }
 
@@ -159,8 +159,14 @@ public class Status {
     }
 
 
-    public StatusBuilder diagnosticDataSummaries(List<DiagnosticDataSummary> diagnosticDataSummaries) {
-      this.diagnosticDataSummaries = diagnosticDataSummaries;
+    public StatusBuilder remainingSteps(Integer remainingSteps) {
+      this.remainingSteps = remainingSteps;
+      return this;
+    }
+
+
+    public StatusBuilder completedSteps(Integer completedSteps) {
+      this.completedSteps = completedSteps;
       return this;
     }
 
@@ -171,14 +177,8 @@ public class Status {
     }
 
 
-    public StatusBuilder remainingSteps(Integer remainingSteps) {
-      this.remainingSteps = remainingSteps;
-      return this;
-    }
-
-
-    public StatusBuilder stage(StageEnum stage) {
-      this.stage = stage;
+    public StatusBuilder diagnosticDataSummaries(List<DiagnosticDataSummary> diagnosticDataSummaries) {
+      this.diagnosticDataSummaries = diagnosticDataSummaries;
       return this;
     }
 
@@ -190,32 +190,32 @@ public class Status {
 
   public StatusBuilder toBuilder() {
     return builder()
-      .completedSteps(completedSteps)
+      .stage(stage)
             .description(description)
             .descriptionDetails(descriptionDetails)
-            .diagnosticDataSummaries(diagnosticDataSummaries)
-            .health(health)
             .remainingSteps(remainingSteps)
-            .stage(stage)
+            .completedSteps(completedSteps)
+            .health(health)
+            .diagnosticDataSummaries(diagnosticDataSummaries)
       ;
   }
 
-  public Status completedSteps(Integer completedSteps) {
-    this.completedSteps = completedSteps;
+  public Status stage(StageEnum stage) {
+    this.stage = stage;
     return this;
   }
 
    /**
-   * Number of steps completed for the process
-   * @return completedSteps
+   * Current stage of the process
+   * @return stage
   **/
-  @ApiModelProperty(required = true, value = "Number of steps completed for the process")
-  public Integer getCompletedSteps() {
-    return completedSteps;
+  @ApiModelProperty(required = true, value = "Current stage of the process")
+  public StageEnum getStage() {
+    return stage;
   }
 
-  public void setCompletedSteps(Integer completedSteps) {
-    this.completedSteps = completedSteps;
+  public void setStage(StageEnum stage) {
+    this.stage = stage;
   }
 
   public Status description(String description) {
@@ -262,6 +262,60 @@ public class Status {
     this.descriptionDetails = descriptionDetails;
   }
 
+  public Status remainingSteps(Integer remainingSteps) {
+    this.remainingSteps = remainingSteps;
+    return this;
+  }
+
+   /**
+   * Number of remaining steps planned for the process
+   * @return remainingSteps
+  **/
+  @ApiModelProperty(required = true, value = "Number of remaining steps planned for the process")
+  public Integer getRemainingSteps() {
+    return remainingSteps;
+  }
+
+  public void setRemainingSteps(Integer remainingSteps) {
+    this.remainingSteps = remainingSteps;
+  }
+
+  public Status completedSteps(Integer completedSteps) {
+    this.completedSteps = completedSteps;
+    return this;
+  }
+
+   /**
+   * Number of steps completed for the process
+   * @return completedSteps
+  **/
+  @ApiModelProperty(required = true, value = "Number of steps completed for the process")
+  public Integer getCompletedSteps() {
+    return completedSteps;
+  }
+
+  public void setCompletedSteps(Integer completedSteps) {
+    this.completedSteps = completedSteps;
+  }
+
+  public Status health(Health health) {
+    this.health = health;
+    return this;
+  }
+
+   /**
+   * Health reported for the entity being processed
+   * @return health
+  **/
+  @ApiModelProperty(required = true, value = "Health reported for the entity being processed")
+  public Health getHealth() {
+    return health;
+  }
+
+  public void setHealth(Health health) {
+    this.health = health;
+  }
+
   public Status diagnosticDataSummaries(List<DiagnosticDataSummary> diagnosticDataSummaries) {
     this.diagnosticDataSummaries = diagnosticDataSummaries;
     return this;
@@ -288,60 +342,6 @@ public class Status {
     this.diagnosticDataSummaries = diagnosticDataSummaries;
   }
 
-  public Status health(Health health) {
-    this.health = health;
-    return this;
-  }
-
-   /**
-   * Health reported for the entity being processed
-   * @return health
-  **/
-  @ApiModelProperty(required = true, value = "Health reported for the entity being processed")
-  public Health getHealth() {
-    return health;
-  }
-
-  public void setHealth(Health health) {
-    this.health = health;
-  }
-
-  public Status remainingSteps(Integer remainingSteps) {
-    this.remainingSteps = remainingSteps;
-    return this;
-  }
-
-   /**
-   * Number of remaining steps planned for the process
-   * @return remainingSteps
-  **/
-  @ApiModelProperty(required = true, value = "Number of remaining steps planned for the process")
-  public Integer getRemainingSteps() {
-    return remainingSteps;
-  }
-
-  public void setRemainingSteps(Integer remainingSteps) {
-    this.remainingSteps = remainingSteps;
-  }
-
-  public Status stage(StageEnum stage) {
-    this.stage = stage;
-    return this;
-  }
-
-   /**
-   * Current stage of the process
-   * @return stage
-  **/
-  @ApiModelProperty(required = true, value = "Current stage of the process")
-  public StageEnum getStage() {
-    return stage;
-  }
-
-  public void setStage(StageEnum stage) {
-    this.stage = stage;
-  }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -352,18 +352,18 @@ public class Status {
       return false;
     }
     Status status = (Status) o;
-    return Objects.equals(this.completedSteps, status.completedSteps) &&
+    return Objects.equals(this.stage, status.stage) &&
         Objects.equals(this.description, status.description) &&
         Objects.equals(this.descriptionDetails, status.descriptionDetails) &&
-        Objects.equals(this.diagnosticDataSummaries, status.diagnosticDataSummaries) &&
-        Objects.equals(this.health, status.health) &&
         Objects.equals(this.remainingSteps, status.remainingSteps) &&
-        Objects.equals(this.stage, status.stage);
+        Objects.equals(this.completedSteps, status.completedSteps) &&
+        Objects.equals(this.health, status.health) &&
+        Objects.equals(this.diagnosticDataSummaries, status.diagnosticDataSummaries);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(completedSteps, description, descriptionDetails, diagnosticDataSummaries, health, remainingSteps, stage);
+    return Objects.hash(stage, description, descriptionDetails, remainingSteps, completedSteps, health, diagnosticDataSummaries);
   }
 
 
@@ -372,13 +372,13 @@ public class Status {
     StringBuilder sb = new StringBuilder();
     sb.append("class Status {\n");
     
-    sb.append("    completedSteps: ").append(toIndentedString(completedSteps)).append("\n");
+    sb.append("    stage: ").append(toIndentedString(stage)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    descriptionDetails: ").append(toIndentedString(descriptionDetails)).append("\n");
-    sb.append("    diagnosticDataSummaries: ").append(toIndentedString(diagnosticDataSummaries)).append("\n");
-    sb.append("    health: ").append(toIndentedString(health)).append("\n");
     sb.append("    remainingSteps: ").append(toIndentedString(remainingSteps)).append("\n");
-    sb.append("    stage: ").append(toIndentedString(stage)).append("\n");
+    sb.append("    completedSteps: ").append(toIndentedString(completedSteps)).append("\n");
+    sb.append("    health: ").append(toIndentedString(health)).append("\n");
+    sb.append("    diagnosticDataSummaries: ").append(toIndentedString(diagnosticDataSummaries)).append("\n");
     sb.append("}");
     return sb.toString();
   }

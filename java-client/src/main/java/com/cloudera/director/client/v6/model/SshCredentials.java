@@ -32,30 +32,30 @@ import java.io.IOException;
  */
 
 public class SshCredentials {
-  @SerializedName("hostKeyFingerprint")
-  private String hostKeyFingerprint = null;
-  @SerializedName("passphrase")
-  private String passphrase = null;
-  @SerializedName("password")
-  private String password = null;
-  @SerializedName("port")
-  private Integer port = null;
-  @SerializedName("privateKey")
-  private String privateKey = null;
   @SerializedName("username")
   private String username = null;
+  @SerializedName("password")
+  private String password = null;
+  @SerializedName("privateKey")
+  private String privateKey = null;
+  @SerializedName("passphrase")
+  private String passphrase = null;
+  @SerializedName("port")
+  private Integer port = null;
+  @SerializedName("hostKeyFingerprint")
+  private String hostKeyFingerprint = null;
 
   public SshCredentials() {
     // Do nothing
   }
 
   private SshCredentials(SshCredentialsBuilder builder) {
-      this.hostKeyFingerprint = builder.hostKeyFingerprint;
-      this.passphrase = builder.passphrase;
-      this.password = builder.password;
-      this.port = builder.port;
-      this.privateKey = builder.privateKey;
       this.username = builder.username;
+      this.password = builder.password;
+      this.privateKey = builder.privateKey;
+      this.passphrase = builder.passphrase;
+      this.port = builder.port;
+      this.hostKeyFingerprint = builder.hostKeyFingerprint;
     }
 
   public static SshCredentialsBuilder builder() {
@@ -63,22 +63,16 @@ public class SshCredentials {
   }
 
   public static class SshCredentialsBuilder {
-      private String hostKeyFingerprint = null;
-      private String passphrase = null;
-      private String password = null;
-      private Integer port = null;
-      private String privateKey = null;
       private String username = null;
+      private String password = null;
+      private String privateKey = null;
+      private String passphrase = null;
+      private Integer port = null;
+      private String hostKeyFingerprint = null;
   
 
-    public SshCredentialsBuilder hostKeyFingerprint(String hostKeyFingerprint) {
-      this.hostKeyFingerprint = hostKeyFingerprint;
-      return this;
-    }
-
-
-    public SshCredentialsBuilder passphrase(String passphrase) {
-      this.passphrase = passphrase;
+    public SshCredentialsBuilder username(String username) {
+      this.username = username;
       return this;
     }
 
@@ -89,20 +83,26 @@ public class SshCredentials {
     }
 
 
-    public SshCredentialsBuilder port(Integer port) {
-      this.port = port;
-      return this;
-    }
-
-
     public SshCredentialsBuilder privateKey(String privateKey) {
       this.privateKey = privateKey;
       return this;
     }
 
 
-    public SshCredentialsBuilder username(String username) {
-      this.username = username;
+    public SshCredentialsBuilder passphrase(String passphrase) {
+      this.passphrase = passphrase;
+      return this;
+    }
+
+
+    public SshCredentialsBuilder port(Integer port) {
+      this.port = port;
+      return this;
+    }
+
+
+    public SshCredentialsBuilder hostKeyFingerprint(String hostKeyFingerprint) {
+      this.hostKeyFingerprint = hostKeyFingerprint;
       return this;
     }
 
@@ -114,103 +114,13 @@ public class SshCredentials {
 
   public SshCredentialsBuilder toBuilder() {
     return builder()
-      .hostKeyFingerprint(hostKeyFingerprint)
-            .passphrase(passphrase)
+      .username(username)
             .password(password)
-            .port(port)
             .privateKey(privateKey)
-            .username(username)
+            .passphrase(passphrase)
+            .port(port)
+            .hostKeyFingerprint(hostKeyFingerprint)
       ;
-  }
-
-  public SshCredentials hostKeyFingerprint(String hostKeyFingerprint) {
-    this.hostKeyFingerprint = hostKeyFingerprint;
-    return this;
-  }
-
-   /**
-   * SSH server host key fingerprint
-   * @return hostKeyFingerprint
-  **/
-  @ApiModelProperty(value = "SSH server host key fingerprint")
-  public String getHostKeyFingerprint() {
-    return hostKeyFingerprint;
-  }
-
-  public void setHostKeyFingerprint(String hostKeyFingerprint) {
-    this.hostKeyFingerprint = hostKeyFingerprint;
-  }
-
-  public SshCredentials passphrase(String passphrase) {
-    this.passphrase = passphrase;
-    return this;
-  }
-
-   /**
-   * Optional private key passphrase [redacted on read]
-   * @return passphrase
-  **/
-  @ApiModelProperty(value = "Optional private key passphrase [redacted on read]")
-  public String getPassphrase() {
-    return passphrase;
-  }
-
-  public void setPassphrase(String passphrase) {
-    this.passphrase = passphrase;
-  }
-
-  public SshCredentials password(String password) {
-    this.password = password;
-    return this;
-  }
-
-   /**
-   * Optional SSH password [redacted on read]
-   * @return password
-  **/
-  @ApiModelProperty(value = "Optional SSH password [redacted on read]")
-  public String getPassword() {
-    return password;
-  }
-
-  public void setPassword(String password) {
-    this.password = password;
-  }
-
-  public SshCredentials port(Integer port) {
-    this.port = port;
-    return this;
-  }
-
-   /**
-   * SSH server port
-   * @return port
-  **/
-  @ApiModelProperty(required = true, value = "SSH server port")
-  public Integer getPort() {
-    return port;
-  }
-
-  public void setPort(Integer port) {
-    this.port = port;
-  }
-
-  public SshCredentials privateKey(String privateKey) {
-    this.privateKey = privateKey;
-    return this;
-  }
-
-   /**
-   * Optional SSH PKCS8 private key [redacted on read]
-   * @return privateKey
-  **/
-  @ApiModelProperty(value = "Optional SSH PKCS8 private key [redacted on read]")
-  public String getPrivateKey() {
-    return privateKey;
-  }
-
-  public void setPrivateKey(String privateKey) {
-    this.privateKey = privateKey;
   }
 
   public SshCredentials username(String username) {
@@ -231,6 +141,96 @@ public class SshCredentials {
     this.username = username;
   }
 
+  public SshCredentials password(String password) {
+    this.password = password;
+    return this;
+  }
+
+   /**
+   * Optional SSH password [redacted on read]
+   * @return password
+  **/
+  @ApiModelProperty(value = "Optional SSH password [redacted on read]")
+  public String getPassword() {
+    return password;
+  }
+
+  public void setPassword(String password) {
+    this.password = password;
+  }
+
+  public SshCredentials privateKey(String privateKey) {
+    this.privateKey = privateKey;
+    return this;
+  }
+
+   /**
+   * Optional SSH PKCS8 private key [redacted on read]
+   * @return privateKey
+  **/
+  @ApiModelProperty(value = "Optional SSH PKCS8 private key [redacted on read]")
+  public String getPrivateKey() {
+    return privateKey;
+  }
+
+  public void setPrivateKey(String privateKey) {
+    this.privateKey = privateKey;
+  }
+
+  public SshCredentials passphrase(String passphrase) {
+    this.passphrase = passphrase;
+    return this;
+  }
+
+   /**
+   * Optional private key passphrase [redacted on read]
+   * @return passphrase
+  **/
+  @ApiModelProperty(value = "Optional private key passphrase [redacted on read]")
+  public String getPassphrase() {
+    return passphrase;
+  }
+
+  public void setPassphrase(String passphrase) {
+    this.passphrase = passphrase;
+  }
+
+  public SshCredentials port(Integer port) {
+    this.port = port;
+    return this;
+  }
+
+   /**
+   * SSH server port
+   * @return port
+  **/
+  @ApiModelProperty(required = true, value = "SSH server port")
+  public Integer getPort() {
+    return port;
+  }
+
+  public void setPort(Integer port) {
+    this.port = port;
+  }
+
+  public SshCredentials hostKeyFingerprint(String hostKeyFingerprint) {
+    this.hostKeyFingerprint = hostKeyFingerprint;
+    return this;
+  }
+
+   /**
+   * SSH server host key fingerprint
+   * @return hostKeyFingerprint
+  **/
+  @ApiModelProperty(value = "SSH server host key fingerprint")
+  public String getHostKeyFingerprint() {
+    return hostKeyFingerprint;
+  }
+
+  public void setHostKeyFingerprint(String hostKeyFingerprint) {
+    this.hostKeyFingerprint = hostKeyFingerprint;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -241,17 +241,17 @@ public class SshCredentials {
       return false;
     }
     SshCredentials sshCredentials = (SshCredentials) o;
-    return Objects.equals(this.hostKeyFingerprint, sshCredentials.hostKeyFingerprint) &&
-        Objects.equals(this.passphrase, sshCredentials.passphrase) &&
+    return Objects.equals(this.username, sshCredentials.username) &&
         Objects.equals(this.password, sshCredentials.password) &&
-        Objects.equals(this.port, sshCredentials.port) &&
         Objects.equals(this.privateKey, sshCredentials.privateKey) &&
-        Objects.equals(this.username, sshCredentials.username);
+        Objects.equals(this.passphrase, sshCredentials.passphrase) &&
+        Objects.equals(this.port, sshCredentials.port) &&
+        Objects.equals(this.hostKeyFingerprint, sshCredentials.hostKeyFingerprint);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(hostKeyFingerprint, passphrase, password, port, privateKey, username);
+    return Objects.hash(username, password, privateKey, passphrase, port, hostKeyFingerprint);
   }
 
 
@@ -260,12 +260,12 @@ public class SshCredentials {
     StringBuilder sb = new StringBuilder();
     sb.append("class SshCredentials {\n");
     
-    sb.append("    hostKeyFingerprint: ").append(toIndentedString(hostKeyFingerprint)).append("\n");
-    sb.append("    passphrase: ").append(toIndentedString(passphrase)).append("\n");
-    sb.append("    password: ").append(toIndentedString(password)).append("\n");
-    sb.append("    port: ").append(toIndentedString(port)).append("\n");
-    sb.append("    privateKey: ").append(toIndentedString(privateKey)).append("\n");
     sb.append("    username: ").append(toIndentedString(username)).append("\n");
+    sb.append("    password: ").append(toIndentedString(password)).append("\n");
+    sb.append("    privateKey: ").append(toIndentedString(privateKey)).append("\n");
+    sb.append("    passphrase: ").append(toIndentedString(passphrase)).append("\n");
+    sb.append("    port: ").append(toIndentedString(port)).append("\n");
+    sb.append("    hostKeyFingerprint: ").append(toIndentedString(hostKeyFingerprint)).append("\n");
     sb.append("}");
     return sb.toString();
   }

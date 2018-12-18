@@ -39,209 +39,65 @@ class TimeSeriesMetadata(object):
                             and the value is json key in definition.
     """
     swagger_types = {
-        'alias': 'str',
-        'attributes': 'dict(str, str)',
-        'end_time': 'int',
-        'entity_name': 'str',
-        'expression': 'str',
-        'metric_collection_frequency_ms': 'int',
         'metric_name': 'str',
-        'rollup_used': 'str',
-        'start_time': 'int',
+        'entity_name': 'str',
+        'start_time': 'datetime',
+        'end_time': 'datetime',
+        'attributes': 'dict(str, str)',
+        'unit_numerators': 'list[str]',
         'unit_denominators': 'list[str]',
-        'unit_numerators': 'list[str]'
+        'expression': 'str',
+        'alias': 'str',
+        'metric_collection_frequency_ms': 'int',
+        'rollup_used': 'str'
     }
 
     attribute_map = {
-        'alias': 'alias',
-        'attributes': 'attributes',
-        'end_time': 'endTime',
-        'entity_name': 'entityName',
-        'expression': 'expression',
-        'metric_collection_frequency_ms': 'metricCollectionFrequencyMs',
         'metric_name': 'metricName',
-        'rollup_used': 'rollupUsed',
+        'entity_name': 'entityName',
         'start_time': 'startTime',
+        'end_time': 'endTime',
+        'attributes': 'attributes',
+        'unit_numerators': 'unitNumerators',
         'unit_denominators': 'unitDenominators',
-        'unit_numerators': 'unitNumerators'
+        'expression': 'expression',
+        'alias': 'alias',
+        'metric_collection_frequency_ms': 'metricCollectionFrequencyMs',
+        'rollup_used': 'rollupUsed'
     }
 
-    def __init__(self, alias=None, attributes=None, end_time=None, entity_name=None, expression=None, metric_collection_frequency_ms=None, metric_name=None, rollup_used=None, start_time=None, unit_denominators=None, unit_numerators=None):  # noqa: E501
+    def __init__(self, metric_name=None, entity_name=None, start_time=None, end_time=None, attributes=None, unit_numerators=None, unit_denominators=None, expression=None, alias=None, metric_collection_frequency_ms=None, rollup_used=None):  # noqa: E501
         """TimeSeriesMetadata - a model defined in Swagger"""  # noqa: E501
 
-        self._alias = None
-        self._attributes = None
-        self._end_time = None
-        self._entity_name = None
-        self._expression = None
-        self._metric_collection_frequency_ms = None
         self._metric_name = None
-        self._rollup_used = None
+        self._entity_name = None
         self._start_time = None
-        self._unit_denominators = None
+        self._end_time = None
+        self._attributes = None
         self._unit_numerators = None
+        self._unit_denominators = None
+        self._expression = None
+        self._alias = None
+        self._metric_collection_frequency_ms = None
+        self._rollup_used = None
         self.discriminator = None
 
-        if alias is not None:
-            self.alias = alias
+        self.metric_name = metric_name
+        self.entity_name = entity_name
+        self.start_time = start_time
+        self.end_time = end_time
         if attributes is not None:
             self.attributes = attributes
-        self.end_time = end_time
-        self.entity_name = entity_name
-        self.expression = expression
-        if metric_collection_frequency_ms is not None:
-            self.metric_collection_frequency_ms = metric_collection_frequency_ms
-        self.metric_name = metric_name
-        self.rollup_used = rollup_used
-        self.start_time = start_time
-        if unit_denominators is not None:
-            self.unit_denominators = unit_denominators
         if unit_numerators is not None:
             self.unit_numerators = unit_numerators
-
-    @property
-    def alias(self):
-        """Gets the alias of this TimeSeriesMetadata.  # noqa: E501
-
-        Alias  # noqa: E501
-
-        :return: The alias of this TimeSeriesMetadata.  # noqa: E501
-        :rtype: str
-        """
-        return self._alias
-
-    @alias.setter
-    def alias(self, alias):
-        """Sets the alias of this TimeSeriesMetadata.
-
-        Alias  # noqa: E501
-
-        :param alias: The alias of this TimeSeriesMetadata.  # noqa: E501
-        :type: str
-        """
-
-        self._alias = alias
-
-    @property
-    def attributes(self):
-        """Gets the attributes of this TimeSeriesMetadata.  # noqa: E501
-
-        Attributes  # noqa: E501
-
-        :return: The attributes of this TimeSeriesMetadata.  # noqa: E501
-        :rtype: dict(str, str)
-        """
-        return self._attributes
-
-    @attributes.setter
-    def attributes(self, attributes):
-        """Sets the attributes of this TimeSeriesMetadata.
-
-        Attributes  # noqa: E501
-
-        :param attributes: The attributes of this TimeSeriesMetadata.  # noqa: E501
-        :type: dict(str, str)
-        """
-
-        self._attributes = attributes
-
-    @property
-    def end_time(self):
-        """Gets the end_time of this TimeSeriesMetadata.  # noqa: E501
-
-        End time  # noqa: E501
-
-        :return: The end_time of this TimeSeriesMetadata.  # noqa: E501
-        :rtype: int
-        """
-        return self._end_time
-
-    @end_time.setter
-    def end_time(self, end_time):
-        """Sets the end_time of this TimeSeriesMetadata.
-
-        End time  # noqa: E501
-
-        :param end_time: The end_time of this TimeSeriesMetadata.  # noqa: E501
-        :type: int
-        """
-        if end_time is None:
-            raise ValueError("Invalid value for `end_time`, must not be `None`")  # noqa: E501
-
-        self._end_time = end_time
-
-    @property
-    def entity_name(self):
-        """Gets the entity_name of this TimeSeriesMetadata.  # noqa: E501
-
-        Entity name  # noqa: E501
-
-        :return: The entity_name of this TimeSeriesMetadata.  # noqa: E501
-        :rtype: str
-        """
-        return self._entity_name
-
-    @entity_name.setter
-    def entity_name(self, entity_name):
-        """Sets the entity_name of this TimeSeriesMetadata.
-
-        Entity name  # noqa: E501
-
-        :param entity_name: The entity_name of this TimeSeriesMetadata.  # noqa: E501
-        :type: str
-        """
-        if entity_name is None:
-            raise ValueError("Invalid value for `entity_name`, must not be `None`")  # noqa: E501
-
-        self._entity_name = entity_name
-
-    @property
-    def expression(self):
-        """Gets the expression of this TimeSeriesMetadata.  # noqa: E501
-
-        Expression  # noqa: E501
-
-        :return: The expression of this TimeSeriesMetadata.  # noqa: E501
-        :rtype: str
-        """
-        return self._expression
-
-    @expression.setter
-    def expression(self, expression):
-        """Sets the expression of this TimeSeriesMetadata.
-
-        Expression  # noqa: E501
-
-        :param expression: The expression of this TimeSeriesMetadata.  # noqa: E501
-        :type: str
-        """
-        if expression is None:
-            raise ValueError("Invalid value for `expression`, must not be `None`")  # noqa: E501
-
-        self._expression = expression
-
-    @property
-    def metric_collection_frequency_ms(self):
-        """Gets the metric_collection_frequency_ms of this TimeSeriesMetadata.  # noqa: E501
-
-        Metric collection frequency in milliseconds  # noqa: E501
-
-        :return: The metric_collection_frequency_ms of this TimeSeriesMetadata.  # noqa: E501
-        :rtype: int
-        """
-        return self._metric_collection_frequency_ms
-
-    @metric_collection_frequency_ms.setter
-    def metric_collection_frequency_ms(self, metric_collection_frequency_ms):
-        """Sets the metric_collection_frequency_ms of this TimeSeriesMetadata.
-
-        Metric collection frequency in milliseconds  # noqa: E501
-
-        :param metric_collection_frequency_ms: The metric_collection_frequency_ms of this TimeSeriesMetadata.  # noqa: E501
-        :type: int
-        """
-
-        self._metric_collection_frequency_ms = metric_collection_frequency_ms
+        if unit_denominators is not None:
+            self.unit_denominators = unit_denominators
+        self.expression = expression
+        if alias is not None:
+            self.alias = alias
+        if metric_collection_frequency_ms is not None:
+            self.metric_collection_frequency_ms = metric_collection_frequency_ms
+        self.rollup_used = rollup_used
 
     @property
     def metric_name(self):
@@ -269,29 +125,29 @@ class TimeSeriesMetadata(object):
         self._metric_name = metric_name
 
     @property
-    def rollup_used(self):
-        """Gets the rollup_used of this TimeSeriesMetadata.  # noqa: E501
+    def entity_name(self):
+        """Gets the entity_name of this TimeSeriesMetadata.  # noqa: E501
 
-        Rollup used  # noqa: E501
+        Entity name  # noqa: E501
 
-        :return: The rollup_used of this TimeSeriesMetadata.  # noqa: E501
+        :return: The entity_name of this TimeSeriesMetadata.  # noqa: E501
         :rtype: str
         """
-        return self._rollup_used
+        return self._entity_name
 
-    @rollup_used.setter
-    def rollup_used(self, rollup_used):
-        """Sets the rollup_used of this TimeSeriesMetadata.
+    @entity_name.setter
+    def entity_name(self, entity_name):
+        """Sets the entity_name of this TimeSeriesMetadata.
 
-        Rollup used  # noqa: E501
+        Entity name  # noqa: E501
 
-        :param rollup_used: The rollup_used of this TimeSeriesMetadata.  # noqa: E501
+        :param entity_name: The entity_name of this TimeSeriesMetadata.  # noqa: E501
         :type: str
         """
-        if rollup_used is None:
-            raise ValueError("Invalid value for `rollup_used`, must not be `None`")  # noqa: E501
+        if entity_name is None:
+            raise ValueError("Invalid value for `entity_name`, must not be `None`")  # noqa: E501
 
-        self._rollup_used = rollup_used
+        self._entity_name = entity_name
 
     @property
     def start_time(self):
@@ -300,7 +156,7 @@ class TimeSeriesMetadata(object):
         Start time  # noqa: E501
 
         :return: The start_time of this TimeSeriesMetadata.  # noqa: E501
-        :rtype: int
+        :rtype: datetime
         """
         return self._start_time
 
@@ -311,12 +167,83 @@ class TimeSeriesMetadata(object):
         Start time  # noqa: E501
 
         :param start_time: The start_time of this TimeSeriesMetadata.  # noqa: E501
-        :type: int
+        :type: datetime
         """
         if start_time is None:
             raise ValueError("Invalid value for `start_time`, must not be `None`")  # noqa: E501
 
         self._start_time = start_time
+
+    @property
+    def end_time(self):
+        """Gets the end_time of this TimeSeriesMetadata.  # noqa: E501
+
+        End time  # noqa: E501
+
+        :return: The end_time of this TimeSeriesMetadata.  # noqa: E501
+        :rtype: datetime
+        """
+        return self._end_time
+
+    @end_time.setter
+    def end_time(self, end_time):
+        """Sets the end_time of this TimeSeriesMetadata.
+
+        End time  # noqa: E501
+
+        :param end_time: The end_time of this TimeSeriesMetadata.  # noqa: E501
+        :type: datetime
+        """
+        if end_time is None:
+            raise ValueError("Invalid value for `end_time`, must not be `None`")  # noqa: E501
+
+        self._end_time = end_time
+
+    @property
+    def attributes(self):
+        """Gets the attributes of this TimeSeriesMetadata.  # noqa: E501
+
+        Attributes  # noqa: E501
+
+        :return: The attributes of this TimeSeriesMetadata.  # noqa: E501
+        :rtype: dict(str, str)
+        """
+        return self._attributes
+
+    @attributes.setter
+    def attributes(self, attributes):
+        """Sets the attributes of this TimeSeriesMetadata.
+
+        Attributes  # noqa: E501
+
+        :param attributes: The attributes of this TimeSeriesMetadata.  # noqa: E501
+        :type: dict(str, str)
+        """
+
+        self._attributes = attributes
+
+    @property
+    def unit_numerators(self):
+        """Gets the unit_numerators of this TimeSeriesMetadata.  # noqa: E501
+
+        Unit numerators  # noqa: E501
+
+        :return: The unit_numerators of this TimeSeriesMetadata.  # noqa: E501
+        :rtype: list[str]
+        """
+        return self._unit_numerators
+
+    @unit_numerators.setter
+    def unit_numerators(self, unit_numerators):
+        """Sets the unit_numerators of this TimeSeriesMetadata.
+
+        Unit numerators  # noqa: E501
+
+        :param unit_numerators: The unit_numerators of this TimeSeriesMetadata.  # noqa: E501
+        :type: list[str]
+        """
+
+        self._unit_numerators = unit_numerators
 
     @property
     def unit_denominators(self):
@@ -342,27 +269,100 @@ class TimeSeriesMetadata(object):
         self._unit_denominators = unit_denominators
 
     @property
-    def unit_numerators(self):
-        """Gets the unit_numerators of this TimeSeriesMetadata.  # noqa: E501
+    def expression(self):
+        """Gets the expression of this TimeSeriesMetadata.  # noqa: E501
 
-        Unit numerators  # noqa: E501
+        Expression  # noqa: E501
 
-        :return: The unit_numerators of this TimeSeriesMetadata.  # noqa: E501
-        :rtype: list[str]
+        :return: The expression of this TimeSeriesMetadata.  # noqa: E501
+        :rtype: str
         """
-        return self._unit_numerators
+        return self._expression
 
-    @unit_numerators.setter
-    def unit_numerators(self, unit_numerators):
-        """Sets the unit_numerators of this TimeSeriesMetadata.
+    @expression.setter
+    def expression(self, expression):
+        """Sets the expression of this TimeSeriesMetadata.
 
-        Unit numerators  # noqa: E501
+        Expression  # noqa: E501
 
-        :param unit_numerators: The unit_numerators of this TimeSeriesMetadata.  # noqa: E501
-        :type: list[str]
+        :param expression: The expression of this TimeSeriesMetadata.  # noqa: E501
+        :type: str
+        """
+        if expression is None:
+            raise ValueError("Invalid value for `expression`, must not be `None`")  # noqa: E501
+
+        self._expression = expression
+
+    @property
+    def alias(self):
+        """Gets the alias of this TimeSeriesMetadata.  # noqa: E501
+
+        Alias  # noqa: E501
+
+        :return: The alias of this TimeSeriesMetadata.  # noqa: E501
+        :rtype: str
+        """
+        return self._alias
+
+    @alias.setter
+    def alias(self, alias):
+        """Sets the alias of this TimeSeriesMetadata.
+
+        Alias  # noqa: E501
+
+        :param alias: The alias of this TimeSeriesMetadata.  # noqa: E501
+        :type: str
         """
 
-        self._unit_numerators = unit_numerators
+        self._alias = alias
+
+    @property
+    def metric_collection_frequency_ms(self):
+        """Gets the metric_collection_frequency_ms of this TimeSeriesMetadata.  # noqa: E501
+
+        Metric collection frequency in milliseconds  # noqa: E501
+
+        :return: The metric_collection_frequency_ms of this TimeSeriesMetadata.  # noqa: E501
+        :rtype: int
+        """
+        return self._metric_collection_frequency_ms
+
+    @metric_collection_frequency_ms.setter
+    def metric_collection_frequency_ms(self, metric_collection_frequency_ms):
+        """Sets the metric_collection_frequency_ms of this TimeSeriesMetadata.
+
+        Metric collection frequency in milliseconds  # noqa: E501
+
+        :param metric_collection_frequency_ms: The metric_collection_frequency_ms of this TimeSeriesMetadata.  # noqa: E501
+        :type: int
+        """
+
+        self._metric_collection_frequency_ms = metric_collection_frequency_ms
+
+    @property
+    def rollup_used(self):
+        """Gets the rollup_used of this TimeSeriesMetadata.  # noqa: E501
+
+        Rollup used  # noqa: E501
+
+        :return: The rollup_used of this TimeSeriesMetadata.  # noqa: E501
+        :rtype: str
+        """
+        return self._rollup_used
+
+    @rollup_used.setter
+    def rollup_used(self, rollup_used):
+        """Sets the rollup_used of this TimeSeriesMetadata.
+
+        Rollup used  # noqa: E501
+
+        :param rollup_used: The rollup_used of this TimeSeriesMetadata.  # noqa: E501
+        :type: str
+        """
+        if rollup_used is None:
+            raise ValueError("Invalid value for `rollup_used`, must not be `None`")  # noqa: E501
+
+        self._rollup_used = rollup_used
 
     def to_dict(self):
         """Returns the model properties as a dict"""

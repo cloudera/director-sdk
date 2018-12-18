@@ -41,22 +41,38 @@ import java.util.Map;
 @ApiModel(description = "A template for a deployment (Cloudera Manager installation) running in a cloud provider")
 
 public class DeploymentTemplate {
-  @SerializedName("billingId")
-  private String billingId = null;
-  @SerializedName("configs")
-  private Map<String, Map<String, String>> configs = null;
-  @SerializedName("csds")
-  private List<String> csds = null;
-  @SerializedName("enableEnterpriseTrial")
-  private Boolean enableEnterpriseTrial = null;
-  @SerializedName("externalAccounts")
-  private Map<String, ExternalAccount> externalAccounts = null;
+  @SerializedName("name")
+  private String name = null;
+  @SerializedName("managerVirtualInstance")
+  private VirtualInstance managerVirtualInstance = null;
   @SerializedName("externalDatabaseTemplates")
   private Map<String, ExternalDatabaseTemplate> externalDatabaseTemplates = null;
   @SerializedName("externalDatabases")
   private Map<String, ExternalDatabase> externalDatabases = null;
+  @SerializedName("configs")
+  private Map<String, Map<String, String>> configs = null;
+  @SerializedName("externalAccounts")
+  private Map<String, ExternalAccount> externalAccounts = null;
   @SerializedName("hostname")
   private String hostname = null;
+  @SerializedName("port")
+  private Integer port = null;
+  @SerializedName("username")
+  private String username = null;
+  @SerializedName("password")
+  private String password = null;
+  @SerializedName("repository")
+  private String repository = null;
+  @SerializedName("repositoryKeyUrl")
+  private String repositoryKeyUrl = null;
+  @SerializedName("enableEnterpriseTrial")
+  private Boolean enableEnterpriseTrial = null;
+  @SerializedName("unlimitedJce")
+  private Boolean unlimitedJce = null;
+  @SerializedName("krbAdminUsername")
+  private String krbAdminUsername = null;
+  @SerializedName("krbAdminPassword")
+  private String krbAdminPassword = null;
   /**
    * Cloudera Altus Director and Cloudera Manager&#39;s Java installation strategy
    */
@@ -108,57 +124,41 @@ public class DeploymentTemplate {
 
   @SerializedName("javaInstallationStrategy")
   private JavaInstallationStrategyEnum javaInstallationStrategy = null;
-  @SerializedName("krbAdminPassword")
-  private String krbAdminPassword = null;
-  @SerializedName("krbAdminUsername")
-  private String krbAdminUsername = null;
   @SerializedName("license")
   private String license = null;
-  @SerializedName("managerVirtualInstance")
-  private VirtualInstance managerVirtualInstance = null;
-  @SerializedName("name")
-  private String name = null;
-  @SerializedName("password")
-  private String password = null;
-  @SerializedName("port")
-  private Integer port = null;
+  @SerializedName("billingId")
+  private String billingId = null;
   @SerializedName("postCreateScripts")
   private List<String> postCreateScripts = null;
-  @SerializedName("repository")
-  private String repository = null;
-  @SerializedName("repositoryKeyUrl")
-  private String repositoryKeyUrl = null;
-  @SerializedName("unlimitedJce")
-  private Boolean unlimitedJce = null;
-  @SerializedName("username")
-  private String username = null;
+  @SerializedName("csds")
+  private List<String> csds = null;
 
   public DeploymentTemplate() {
     // Do nothing
   }
 
   private DeploymentTemplate(DeploymentTemplateBuilder builder) {
-      this.billingId = builder.billingId;
-      this.configs = builder.configs;
-      this.csds = builder.csds;
-      this.enableEnterpriseTrial = builder.enableEnterpriseTrial;
-      this.externalAccounts = builder.externalAccounts;
+      this.name = builder.name;
+      this.managerVirtualInstance = builder.managerVirtualInstance;
       this.externalDatabaseTemplates = builder.externalDatabaseTemplates;
       this.externalDatabases = builder.externalDatabases;
+      this.configs = builder.configs;
+      this.externalAccounts = builder.externalAccounts;
       this.hostname = builder.hostname;
-      this.javaInstallationStrategy = builder.javaInstallationStrategy;
-      this.krbAdminPassword = builder.krbAdminPassword;
-      this.krbAdminUsername = builder.krbAdminUsername;
-      this.license = builder.license;
-      this.managerVirtualInstance = builder.managerVirtualInstance;
-      this.name = builder.name;
-      this.password = builder.password;
       this.port = builder.port;
-      this.postCreateScripts = builder.postCreateScripts;
+      this.username = builder.username;
+      this.password = builder.password;
       this.repository = builder.repository;
       this.repositoryKeyUrl = builder.repositoryKeyUrl;
+      this.enableEnterpriseTrial = builder.enableEnterpriseTrial;
       this.unlimitedJce = builder.unlimitedJce;
-      this.username = builder.username;
+      this.krbAdminUsername = builder.krbAdminUsername;
+      this.krbAdminPassword = builder.krbAdminPassword;
+      this.javaInstallationStrategy = builder.javaInstallationStrategy;
+      this.license = builder.license;
+      this.billingId = builder.billingId;
+      this.postCreateScripts = builder.postCreateScripts;
+      this.csds = builder.csds;
     }
 
   public static DeploymentTemplateBuilder builder() {
@@ -166,55 +166,37 @@ public class DeploymentTemplate {
   }
 
   public static class DeploymentTemplateBuilder {
-      private String billingId = null;
-      private Map<String, Map<String, String>> configs = new HashMap<String, Map<String, String>>();
-      private List<String> csds = new ArrayList<String>();
-      private Boolean enableEnterpriseTrial = null;
-      private Map<String, ExternalAccount> externalAccounts = new HashMap<String, ExternalAccount>();
+      private String name = null;
+      private VirtualInstance managerVirtualInstance = null;
       private Map<String, ExternalDatabaseTemplate> externalDatabaseTemplates = new HashMap<String, ExternalDatabaseTemplate>();
       private Map<String, ExternalDatabase> externalDatabases = new HashMap<String, ExternalDatabase>();
+      private Map<String, Map<String, String>> configs = new HashMap<String, Map<String, String>>();
+      private Map<String, ExternalAccount> externalAccounts = new HashMap<String, ExternalAccount>();
       private String hostname = null;
-      private JavaInstallationStrategyEnum javaInstallationStrategy = null;
-      private String krbAdminPassword = null;
-      private String krbAdminUsername = null;
-      private String license = null;
-      private VirtualInstance managerVirtualInstance = null;
-      private String name = null;
-      private String password = null;
       private Integer port = null;
-      private List<String> postCreateScripts = new ArrayList<String>();
+      private String username = null;
+      private String password = null;
       private String repository = null;
       private String repositoryKeyUrl = null;
+      private Boolean enableEnterpriseTrial = null;
       private Boolean unlimitedJce = null;
-      private String username = null;
+      private String krbAdminUsername = null;
+      private String krbAdminPassword = null;
+      private JavaInstallationStrategyEnum javaInstallationStrategy = null;
+      private String license = null;
+      private String billingId = null;
+      private List<String> postCreateScripts = new ArrayList<String>();
+      private List<String> csds = new ArrayList<String>();
   
 
-    public DeploymentTemplateBuilder billingId(String billingId) {
-      this.billingId = billingId;
+    public DeploymentTemplateBuilder name(String name) {
+      this.name = name;
       return this;
     }
 
 
-    public DeploymentTemplateBuilder configs(Map<String, Map<String, String>> configs) {
-      this.configs = configs;
-      return this;
-    }
-
-
-    public DeploymentTemplateBuilder csds(List<String> csds) {
-      this.csds = csds;
-      return this;
-    }
-
-
-    public DeploymentTemplateBuilder enableEnterpriseTrial(Boolean enableEnterpriseTrial) {
-      this.enableEnterpriseTrial = enableEnterpriseTrial;
-      return this;
-    }
-
-
-    public DeploymentTemplateBuilder externalAccounts(Map<String, ExternalAccount> externalAccounts) {
-      this.externalAccounts = externalAccounts;
+    public DeploymentTemplateBuilder managerVirtualInstance(VirtualInstance managerVirtualInstance) {
+      this.managerVirtualInstance = managerVirtualInstance;
       return this;
     }
 
@@ -231,50 +213,20 @@ public class DeploymentTemplate {
     }
 
 
+    public DeploymentTemplateBuilder configs(Map<String, Map<String, String>> configs) {
+      this.configs = configs;
+      return this;
+    }
+
+
+    public DeploymentTemplateBuilder externalAccounts(Map<String, ExternalAccount> externalAccounts) {
+      this.externalAccounts = externalAccounts;
+      return this;
+    }
+
+
     public DeploymentTemplateBuilder hostname(String hostname) {
       this.hostname = hostname;
-      return this;
-    }
-
-
-    public DeploymentTemplateBuilder javaInstallationStrategy(JavaInstallationStrategyEnum javaInstallationStrategy) {
-      this.javaInstallationStrategy = javaInstallationStrategy;
-      return this;
-    }
-
-
-    public DeploymentTemplateBuilder krbAdminPassword(String krbAdminPassword) {
-      this.krbAdminPassword = krbAdminPassword;
-      return this;
-    }
-
-
-    public DeploymentTemplateBuilder krbAdminUsername(String krbAdminUsername) {
-      this.krbAdminUsername = krbAdminUsername;
-      return this;
-    }
-
-
-    public DeploymentTemplateBuilder license(String license) {
-      this.license = license;
-      return this;
-    }
-
-
-    public DeploymentTemplateBuilder managerVirtualInstance(VirtualInstance managerVirtualInstance) {
-      this.managerVirtualInstance = managerVirtualInstance;
-      return this;
-    }
-
-
-    public DeploymentTemplateBuilder name(String name) {
-      this.name = name;
-      return this;
-    }
-
-
-    public DeploymentTemplateBuilder password(String password) {
-      this.password = password;
       return this;
     }
 
@@ -285,8 +237,14 @@ public class DeploymentTemplate {
     }
 
 
-    public DeploymentTemplateBuilder postCreateScripts(List<String> postCreateScripts) {
-      this.postCreateScripts = postCreateScripts;
+    public DeploymentTemplateBuilder username(String username) {
+      this.username = username;
+      return this;
+    }
+
+
+    public DeploymentTemplateBuilder password(String password) {
+      this.password = password;
       return this;
     }
 
@@ -303,14 +261,56 @@ public class DeploymentTemplate {
     }
 
 
+    public DeploymentTemplateBuilder enableEnterpriseTrial(Boolean enableEnterpriseTrial) {
+      this.enableEnterpriseTrial = enableEnterpriseTrial;
+      return this;
+    }
+
+
     public DeploymentTemplateBuilder unlimitedJce(Boolean unlimitedJce) {
       this.unlimitedJce = unlimitedJce;
       return this;
     }
 
 
-    public DeploymentTemplateBuilder username(String username) {
-      this.username = username;
+    public DeploymentTemplateBuilder krbAdminUsername(String krbAdminUsername) {
+      this.krbAdminUsername = krbAdminUsername;
+      return this;
+    }
+
+
+    public DeploymentTemplateBuilder krbAdminPassword(String krbAdminPassword) {
+      this.krbAdminPassword = krbAdminPassword;
+      return this;
+    }
+
+
+    public DeploymentTemplateBuilder javaInstallationStrategy(JavaInstallationStrategyEnum javaInstallationStrategy) {
+      this.javaInstallationStrategy = javaInstallationStrategy;
+      return this;
+    }
+
+
+    public DeploymentTemplateBuilder license(String license) {
+      this.license = license;
+      return this;
+    }
+
+
+    public DeploymentTemplateBuilder billingId(String billingId) {
+      this.billingId = billingId;
+      return this;
+    }
+
+
+    public DeploymentTemplateBuilder postCreateScripts(List<String> postCreateScripts) {
+      this.postCreateScripts = postCreateScripts;
+      return this;
+    }
+
+
+    public DeploymentTemplateBuilder csds(List<String> csds) {
+      this.csds = csds;
       return this;
     }
 
@@ -322,142 +322,64 @@ public class DeploymentTemplate {
 
   public DeploymentTemplateBuilder toBuilder() {
     return builder()
-      .billingId(billingId)
-            .configs(configs)
-            .csds(csds)
-            .enableEnterpriseTrial(enableEnterpriseTrial)
-            .externalAccounts(externalAccounts)
+      .name(name)
+            .managerVirtualInstance(managerVirtualInstance)
             .externalDatabaseTemplates(externalDatabaseTemplates)
             .externalDatabases(externalDatabases)
+            .configs(configs)
+            .externalAccounts(externalAccounts)
             .hostname(hostname)
-            .javaInstallationStrategy(javaInstallationStrategy)
-            .krbAdminPassword(krbAdminPassword)
-            .krbAdminUsername(krbAdminUsername)
-            .license(license)
-            .managerVirtualInstance(managerVirtualInstance)
-            .name(name)
-            .password(password)
             .port(port)
-            .postCreateScripts(postCreateScripts)
+            .username(username)
+            .password(password)
             .repository(repository)
             .repositoryKeyUrl(repositoryKeyUrl)
+            .enableEnterpriseTrial(enableEnterpriseTrial)
             .unlimitedJce(unlimitedJce)
-            .username(username)
+            .krbAdminUsername(krbAdminUsername)
+            .krbAdminPassword(krbAdminPassword)
+            .javaInstallationStrategy(javaInstallationStrategy)
+            .license(license)
+            .billingId(billingId)
+            .postCreateScripts(postCreateScripts)
+            .csds(csds)
       ;
   }
 
-  public DeploymentTemplate billingId(String billingId) {
-    this.billingId = billingId;
+  public DeploymentTemplate name(String name) {
+    this.name = name;
     return this;
   }
 
    /**
-   * Billing ID for usage-based billing [redacted on read]
-   * @return billingId
+   * Deployment name
+   * @return name
   **/
-  @ApiModelProperty(value = "Billing ID for usage-based billing [redacted on read]")
-  public String getBillingId() {
-    return billingId;
+  @ApiModelProperty(required = true, value = "Deployment name")
+  public String getName() {
+    return name;
   }
 
-  public void setBillingId(String billingId) {
-    this.billingId = billingId;
+  public void setName(String name) {
+    this.name = name;
   }
 
-  public DeploymentTemplate configs(Map<String, Map<String, String>> configs) {
-    this.configs = configs;
-    return this;
-  }
-
-  public DeploymentTemplate putConfigsItem(String key, Map<String, String> configsItem) {
-    if (this.configs == null) {
-      this.configs = new HashMap<String, Map<String, String>>();
-    }
-    this.configs.put(key, configsItem);
+  public DeploymentTemplate managerVirtualInstance(VirtualInstance managerVirtualInstance) {
+    this.managerVirtualInstance = managerVirtualInstance;
     return this;
   }
 
    /**
-   * Optional configurations for Cloudera Manager and its management services
-   * @return configs
+   * Instance definition for a Cloudera Manager instance created from scratch
+   * @return managerVirtualInstance
   **/
-  @ApiModelProperty(value = "Optional configurations for Cloudera Manager and its management services")
-  public Map<String, Map<String, String>> getConfigs() {
-    return configs;
+  @ApiModelProperty(value = "Instance definition for a Cloudera Manager instance created from scratch")
+  public VirtualInstance getManagerVirtualInstance() {
+    return managerVirtualInstance;
   }
 
-  public void setConfigs(Map<String, Map<String, String>> configs) {
-    this.configs = configs;
-  }
-
-  public DeploymentTemplate csds(List<String> csds) {
-    this.csds = csds;
-    return this;
-  }
-
-  public DeploymentTemplate addCsdsItem(String csdsItem) {
-    if (this.csds == null) {
-      this.csds = new ArrayList<String>();
-    }
-    this.csds.add(csdsItem);
-    return this;
-  }
-
-   /**
-   * A list of CSD package URLs
-   * @return csds
-  **/
-  @ApiModelProperty(value = "A list of CSD package URLs")
-  public List<String> getCsds() {
-    return csds;
-  }
-
-  public void setCsds(List<String> csds) {
-    this.csds = csds;
-  }
-
-  public DeploymentTemplate enableEnterpriseTrial(Boolean enableEnterpriseTrial) {
-    this.enableEnterpriseTrial = enableEnterpriseTrial;
-    return this;
-  }
-
-   /**
-   * Whether to enable Cloudera Enterprise Trial
-   * @return enableEnterpriseTrial
-  **/
-  @ApiModelProperty(example = "false", value = "Whether to enable Cloudera Enterprise Trial")
-  public Boolean isEnableEnterpriseTrial() {
-    return enableEnterpriseTrial;
-  }
-
-  public void setEnableEnterpriseTrial(Boolean enableEnterpriseTrial) {
-    this.enableEnterpriseTrial = enableEnterpriseTrial;
-  }
-
-  public DeploymentTemplate externalAccounts(Map<String, ExternalAccount> externalAccounts) {
-    this.externalAccounts = externalAccounts;
-    return this;
-  }
-
-  public DeploymentTemplate putExternalAccountsItem(String key, ExternalAccount externalAccountsItem) {
-    if (this.externalAccounts == null) {
-      this.externalAccounts = new HashMap<String, ExternalAccount>();
-    }
-    this.externalAccounts.put(key, externalAccountsItem);
-    return this;
-  }
-
-   /**
-   * External account definitions
-   * @return externalAccounts
-  **/
-  @ApiModelProperty(value = "External account definitions")
-  public Map<String, ExternalAccount> getExternalAccounts() {
-    return externalAccounts;
-  }
-
-  public void setExternalAccounts(Map<String, ExternalAccount> externalAccounts) {
-    this.externalAccounts = externalAccounts;
+  public void setManagerVirtualInstance(VirtualInstance managerVirtualInstance) {
+    this.managerVirtualInstance = managerVirtualInstance;
   }
 
   public DeploymentTemplate externalDatabaseTemplates(Map<String, ExternalDatabaseTemplate> externalDatabaseTemplates) {
@@ -512,6 +434,58 @@ public class DeploymentTemplate {
     this.externalDatabases = externalDatabases;
   }
 
+  public DeploymentTemplate configs(Map<String, Map<String, String>> configs) {
+    this.configs = configs;
+    return this;
+  }
+
+  public DeploymentTemplate putConfigsItem(String key, Map<String, String> configsItem) {
+    if (this.configs == null) {
+      this.configs = new HashMap<String, Map<String, String>>();
+    }
+    this.configs.put(key, configsItem);
+    return this;
+  }
+
+   /**
+   * Optional configurations for Cloudera Manager and its management services
+   * @return configs
+  **/
+  @ApiModelProperty(value = "Optional configurations for Cloudera Manager and its management services")
+  public Map<String, Map<String, String>> getConfigs() {
+    return configs;
+  }
+
+  public void setConfigs(Map<String, Map<String, String>> configs) {
+    this.configs = configs;
+  }
+
+  public DeploymentTemplate externalAccounts(Map<String, ExternalAccount> externalAccounts) {
+    this.externalAccounts = externalAccounts;
+    return this;
+  }
+
+  public DeploymentTemplate putExternalAccountsItem(String key, ExternalAccount externalAccountsItem) {
+    if (this.externalAccounts == null) {
+      this.externalAccounts = new HashMap<String, ExternalAccount>();
+    }
+    this.externalAccounts.put(key, externalAccountsItem);
+    return this;
+  }
+
+   /**
+   * External account definitions
+   * @return externalAccounts
+  **/
+  @ApiModelProperty(value = "External account definitions")
+  public Map<String, ExternalAccount> getExternalAccounts() {
+    return externalAccounts;
+  }
+
+  public void setExternalAccounts(Map<String, ExternalAccount> externalAccounts) {
+    this.externalAccounts = externalAccounts;
+  }
+
   public DeploymentTemplate hostname(String hostname) {
     this.hostname = hostname;
     return this;
@@ -528,132 +502,6 @@ public class DeploymentTemplate {
 
   public void setHostname(String hostname) {
     this.hostname = hostname;
-  }
-
-  public DeploymentTemplate javaInstallationStrategy(JavaInstallationStrategyEnum javaInstallationStrategy) {
-    this.javaInstallationStrategy = javaInstallationStrategy;
-    return this;
-  }
-
-   /**
-   * Cloudera Altus Director and Cloudera Manager&#39;s Java installation strategy
-   * @return javaInstallationStrategy
-  **/
-  @ApiModelProperty(value = "Cloudera Altus Director and Cloudera Manager's Java installation strategy")
-  public JavaInstallationStrategyEnum getJavaInstallationStrategy() {
-    return javaInstallationStrategy;
-  }
-
-  public void setJavaInstallationStrategy(JavaInstallationStrategyEnum javaInstallationStrategy) {
-    this.javaInstallationStrategy = javaInstallationStrategy;
-  }
-
-  public DeploymentTemplate krbAdminPassword(String krbAdminPassword) {
-    this.krbAdminPassword = krbAdminPassword;
-    return this;
-  }
-
-   /**
-   * Password for Kerberos administrative principal used by Cloudera Manager [redacted on read]
-   * @return krbAdminPassword
-  **/
-  @ApiModelProperty(value = "Password for Kerberos administrative principal used by Cloudera Manager [redacted on read]")
-  public String getKrbAdminPassword() {
-    return krbAdminPassword;
-  }
-
-  public void setKrbAdminPassword(String krbAdminPassword) {
-    this.krbAdminPassword = krbAdminPassword;
-  }
-
-  public DeploymentTemplate krbAdminUsername(String krbAdminUsername) {
-    this.krbAdminUsername = krbAdminUsername;
-    return this;
-  }
-
-   /**
-   * Username for Kerberos administrative principal used by Cloudera Manager
-   * @return krbAdminUsername
-  **/
-  @ApiModelProperty(value = "Username for Kerberos administrative principal used by Cloudera Manager")
-  public String getKrbAdminUsername() {
-    return krbAdminUsername;
-  }
-
-  public void setKrbAdminUsername(String krbAdminUsername) {
-    this.krbAdminUsername = krbAdminUsername;
-  }
-
-  public DeploymentTemplate license(String license) {
-    this.license = license;
-    return this;
-  }
-
-   /**
-   * License for Cloudera Manager [redacted on read]
-   * @return license
-  **/
-  @ApiModelProperty(value = "License for Cloudera Manager [redacted on read]")
-  public String getLicense() {
-    return license;
-  }
-
-  public void setLicense(String license) {
-    this.license = license;
-  }
-
-  public DeploymentTemplate managerVirtualInstance(VirtualInstance managerVirtualInstance) {
-    this.managerVirtualInstance = managerVirtualInstance;
-    return this;
-  }
-
-   /**
-   * Instance definition for a Cloudera Manager instance created from scratch
-   * @return managerVirtualInstance
-  **/
-  @ApiModelProperty(value = "Instance definition for a Cloudera Manager instance created from scratch")
-  public VirtualInstance getManagerVirtualInstance() {
-    return managerVirtualInstance;
-  }
-
-  public void setManagerVirtualInstance(VirtualInstance managerVirtualInstance) {
-    this.managerVirtualInstance = managerVirtualInstance;
-  }
-
-  public DeploymentTemplate name(String name) {
-    this.name = name;
-    return this;
-  }
-
-   /**
-   * Deployment name
-   * @return name
-  **/
-  @ApiModelProperty(required = true, value = "Deployment name")
-  public String getName() {
-    return name;
-  }
-
-  public void setName(String name) {
-    this.name = name;
-  }
-
-  public DeploymentTemplate password(String password) {
-    this.password = password;
-    return this;
-  }
-
-   /**
-   * Web UI and API password [redacted on read]
-   * @return password
-  **/
-  @ApiModelProperty(value = "Web UI and API password [redacted on read]")
-  public String getPassword() {
-    return password;
-  }
-
-  public void setPassword(String password) {
-    this.password = password;
   }
 
   public DeploymentTemplate port(Integer port) {
@@ -674,30 +522,40 @@ public class DeploymentTemplate {
     this.port = port;
   }
 
-  public DeploymentTemplate postCreateScripts(List<String> postCreateScripts) {
-    this.postCreateScripts = postCreateScripts;
-    return this;
-  }
-
-  public DeploymentTemplate addPostCreateScriptsItem(String postCreateScriptsItem) {
-    if (this.postCreateScripts == null) {
-      this.postCreateScripts = new ArrayList<String>();
-    }
-    this.postCreateScripts.add(postCreateScriptsItem);
+  public DeploymentTemplate username(String username) {
+    this.username = username;
     return this;
   }
 
    /**
-   * A list of scripts to be run after deployment creation
-   * @return postCreateScripts
+   * Web UI and API username
+   * @return username
   **/
-  @ApiModelProperty(value = "A list of scripts to be run after deployment creation")
-  public List<String> getPostCreateScripts() {
-    return postCreateScripts;
+  @ApiModelProperty(value = "Web UI and API username")
+  public String getUsername() {
+    return username;
   }
 
-  public void setPostCreateScripts(List<String> postCreateScripts) {
-    this.postCreateScripts = postCreateScripts;
+  public void setUsername(String username) {
+    this.username = username;
+  }
+
+  public DeploymentTemplate password(String password) {
+    this.password = password;
+    return this;
+  }
+
+   /**
+   * Web UI and API password [redacted on read]
+   * @return password
+  **/
+  @ApiModelProperty(value = "Web UI and API password [redacted on read]")
+  public String getPassword() {
+    return password;
+  }
+
+  public void setPassword(String password) {
+    this.password = password;
   }
 
   public DeploymentTemplate repository(String repository) {
@@ -736,6 +594,24 @@ public class DeploymentTemplate {
     this.repositoryKeyUrl = repositoryKeyUrl;
   }
 
+  public DeploymentTemplate enableEnterpriseTrial(Boolean enableEnterpriseTrial) {
+    this.enableEnterpriseTrial = enableEnterpriseTrial;
+    return this;
+  }
+
+   /**
+   * Whether to enable Cloudera Enterprise Trial
+   * @return enableEnterpriseTrial
+  **/
+  @ApiModelProperty(value = "Whether to enable Cloudera Enterprise Trial")
+  public Boolean isEnableEnterpriseTrial() {
+    return enableEnterpriseTrial;
+  }
+
+  public void setEnableEnterpriseTrial(Boolean enableEnterpriseTrial) {
+    this.enableEnterpriseTrial = enableEnterpriseTrial;
+  }
+
   public DeploymentTemplate unlimitedJce(Boolean unlimitedJce) {
     this.unlimitedJce = unlimitedJce;
     return this;
@@ -745,7 +621,7 @@ public class DeploymentTemplate {
    * Whether to install unlimited strength JCE policy files
    * @return unlimitedJce
   **/
-  @ApiModelProperty(example = "false", value = "Whether to install unlimited strength JCE policy files")
+  @ApiModelProperty(value = "Whether to install unlimited strength JCE policy files")
   public Boolean isUnlimitedJce() {
     return unlimitedJce;
   }
@@ -754,22 +630,146 @@ public class DeploymentTemplate {
     this.unlimitedJce = unlimitedJce;
   }
 
-  public DeploymentTemplate username(String username) {
-    this.username = username;
+  public DeploymentTemplate krbAdminUsername(String krbAdminUsername) {
+    this.krbAdminUsername = krbAdminUsername;
     return this;
   }
 
    /**
-   * Web UI and API username
-   * @return username
+   * Username for Kerberos administrative principal used by Cloudera Manager
+   * @return krbAdminUsername
   **/
-  @ApiModelProperty(value = "Web UI and API username")
-  public String getUsername() {
-    return username;
+  @ApiModelProperty(value = "Username for Kerberos administrative principal used by Cloudera Manager")
+  public String getKrbAdminUsername() {
+    return krbAdminUsername;
   }
 
-  public void setUsername(String username) {
-    this.username = username;
+  public void setKrbAdminUsername(String krbAdminUsername) {
+    this.krbAdminUsername = krbAdminUsername;
+  }
+
+  public DeploymentTemplate krbAdminPassword(String krbAdminPassword) {
+    this.krbAdminPassword = krbAdminPassword;
+    return this;
+  }
+
+   /**
+   * Password for Kerberos administrative principal used by Cloudera Manager [redacted on read]
+   * @return krbAdminPassword
+  **/
+  @ApiModelProperty(value = "Password for Kerberos administrative principal used by Cloudera Manager [redacted on read]")
+  public String getKrbAdminPassword() {
+    return krbAdminPassword;
+  }
+
+  public void setKrbAdminPassword(String krbAdminPassword) {
+    this.krbAdminPassword = krbAdminPassword;
+  }
+
+  public DeploymentTemplate javaInstallationStrategy(JavaInstallationStrategyEnum javaInstallationStrategy) {
+    this.javaInstallationStrategy = javaInstallationStrategy;
+    return this;
+  }
+
+   /**
+   * Cloudera Altus Director and Cloudera Manager&#39;s Java installation strategy
+   * @return javaInstallationStrategy
+  **/
+  @ApiModelProperty(value = "Cloudera Altus Director and Cloudera Manager's Java installation strategy")
+  public JavaInstallationStrategyEnum getJavaInstallationStrategy() {
+    return javaInstallationStrategy;
+  }
+
+  public void setJavaInstallationStrategy(JavaInstallationStrategyEnum javaInstallationStrategy) {
+    this.javaInstallationStrategy = javaInstallationStrategy;
+  }
+
+  public DeploymentTemplate license(String license) {
+    this.license = license;
+    return this;
+  }
+
+   /**
+   * License for Cloudera Manager [redacted on read]
+   * @return license
+  **/
+  @ApiModelProperty(value = "License for Cloudera Manager [redacted on read]")
+  public String getLicense() {
+    return license;
+  }
+
+  public void setLicense(String license) {
+    this.license = license;
+  }
+
+  public DeploymentTemplate billingId(String billingId) {
+    this.billingId = billingId;
+    return this;
+  }
+
+   /**
+   * Billing ID for usage-based billing [redacted on read]
+   * @return billingId
+  **/
+  @ApiModelProperty(value = "Billing ID for usage-based billing [redacted on read]")
+  public String getBillingId() {
+    return billingId;
+  }
+
+  public void setBillingId(String billingId) {
+    this.billingId = billingId;
+  }
+
+  public DeploymentTemplate postCreateScripts(List<String> postCreateScripts) {
+    this.postCreateScripts = postCreateScripts;
+    return this;
+  }
+
+  public DeploymentTemplate addPostCreateScriptsItem(String postCreateScriptsItem) {
+    if (this.postCreateScripts == null) {
+      this.postCreateScripts = new ArrayList<String>();
+    }
+    this.postCreateScripts.add(postCreateScriptsItem);
+    return this;
+  }
+
+   /**
+   * A list of scripts to be run after deployment creation
+   * @return postCreateScripts
+  **/
+  @ApiModelProperty(value = "A list of scripts to be run after deployment creation")
+  public List<String> getPostCreateScripts() {
+    return postCreateScripts;
+  }
+
+  public void setPostCreateScripts(List<String> postCreateScripts) {
+    this.postCreateScripts = postCreateScripts;
+  }
+
+  public DeploymentTemplate csds(List<String> csds) {
+    this.csds = csds;
+    return this;
+  }
+
+  public DeploymentTemplate addCsdsItem(String csdsItem) {
+    if (this.csds == null) {
+      this.csds = new ArrayList<String>();
+    }
+    this.csds.add(csdsItem);
+    return this;
+  }
+
+   /**
+   * A list of CSD package URLs
+   * @return csds
+  **/
+  @ApiModelProperty(value = "A list of CSD package URLs")
+  public List<String> getCsds() {
+    return csds;
+  }
+
+  public void setCsds(List<String> csds) {
+    this.csds = csds;
   }
 
 
@@ -782,32 +782,32 @@ public class DeploymentTemplate {
       return false;
     }
     DeploymentTemplate deploymentTemplate = (DeploymentTemplate) o;
-    return Objects.equals(this.billingId, deploymentTemplate.billingId) &&
-        Objects.equals(this.configs, deploymentTemplate.configs) &&
-        Objects.equals(this.csds, deploymentTemplate.csds) &&
-        Objects.equals(this.enableEnterpriseTrial, deploymentTemplate.enableEnterpriseTrial) &&
-        Objects.equals(this.externalAccounts, deploymentTemplate.externalAccounts) &&
+    return Objects.equals(this.name, deploymentTemplate.name) &&
+        Objects.equals(this.managerVirtualInstance, deploymentTemplate.managerVirtualInstance) &&
         Objects.equals(this.externalDatabaseTemplates, deploymentTemplate.externalDatabaseTemplates) &&
         Objects.equals(this.externalDatabases, deploymentTemplate.externalDatabases) &&
+        Objects.equals(this.configs, deploymentTemplate.configs) &&
+        Objects.equals(this.externalAccounts, deploymentTemplate.externalAccounts) &&
         Objects.equals(this.hostname, deploymentTemplate.hostname) &&
-        Objects.equals(this.javaInstallationStrategy, deploymentTemplate.javaInstallationStrategy) &&
-        Objects.equals(this.krbAdminPassword, deploymentTemplate.krbAdminPassword) &&
-        Objects.equals(this.krbAdminUsername, deploymentTemplate.krbAdminUsername) &&
-        Objects.equals(this.license, deploymentTemplate.license) &&
-        Objects.equals(this.managerVirtualInstance, deploymentTemplate.managerVirtualInstance) &&
-        Objects.equals(this.name, deploymentTemplate.name) &&
-        Objects.equals(this.password, deploymentTemplate.password) &&
         Objects.equals(this.port, deploymentTemplate.port) &&
-        Objects.equals(this.postCreateScripts, deploymentTemplate.postCreateScripts) &&
+        Objects.equals(this.username, deploymentTemplate.username) &&
+        Objects.equals(this.password, deploymentTemplate.password) &&
         Objects.equals(this.repository, deploymentTemplate.repository) &&
         Objects.equals(this.repositoryKeyUrl, deploymentTemplate.repositoryKeyUrl) &&
+        Objects.equals(this.enableEnterpriseTrial, deploymentTemplate.enableEnterpriseTrial) &&
         Objects.equals(this.unlimitedJce, deploymentTemplate.unlimitedJce) &&
-        Objects.equals(this.username, deploymentTemplate.username);
+        Objects.equals(this.krbAdminUsername, deploymentTemplate.krbAdminUsername) &&
+        Objects.equals(this.krbAdminPassword, deploymentTemplate.krbAdminPassword) &&
+        Objects.equals(this.javaInstallationStrategy, deploymentTemplate.javaInstallationStrategy) &&
+        Objects.equals(this.license, deploymentTemplate.license) &&
+        Objects.equals(this.billingId, deploymentTemplate.billingId) &&
+        Objects.equals(this.postCreateScripts, deploymentTemplate.postCreateScripts) &&
+        Objects.equals(this.csds, deploymentTemplate.csds);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(billingId, configs, csds, enableEnterpriseTrial, externalAccounts, externalDatabaseTemplates, externalDatabases, hostname, javaInstallationStrategy, krbAdminPassword, krbAdminUsername, license, managerVirtualInstance, name, password, port, postCreateScripts, repository, repositoryKeyUrl, unlimitedJce, username);
+    return Objects.hash(name, managerVirtualInstance, externalDatabaseTemplates, externalDatabases, configs, externalAccounts, hostname, port, username, password, repository, repositoryKeyUrl, enableEnterpriseTrial, unlimitedJce, krbAdminUsername, krbAdminPassword, javaInstallationStrategy, license, billingId, postCreateScripts, csds);
   }
 
 
@@ -816,27 +816,27 @@ public class DeploymentTemplate {
     StringBuilder sb = new StringBuilder();
     sb.append("class DeploymentTemplate {\n");
     
-    sb.append("    billingId: ").append(toIndentedString(billingId)).append("\n");
-    sb.append("    configs: ").append(toIndentedString(configs)).append("\n");
-    sb.append("    csds: ").append(toIndentedString(csds)).append("\n");
-    sb.append("    enableEnterpriseTrial: ").append(toIndentedString(enableEnterpriseTrial)).append("\n");
-    sb.append("    externalAccounts: ").append(toIndentedString(externalAccounts)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    managerVirtualInstance: ").append(toIndentedString(managerVirtualInstance)).append("\n");
     sb.append("    externalDatabaseTemplates: ").append(toIndentedString(externalDatabaseTemplates)).append("\n");
     sb.append("    externalDatabases: ").append(toIndentedString(externalDatabases)).append("\n");
+    sb.append("    configs: ").append(toIndentedString(configs)).append("\n");
+    sb.append("    externalAccounts: ").append(toIndentedString(externalAccounts)).append("\n");
     sb.append("    hostname: ").append(toIndentedString(hostname)).append("\n");
-    sb.append("    javaInstallationStrategy: ").append(toIndentedString(javaInstallationStrategy)).append("\n");
-    sb.append("    krbAdminPassword: ").append(toIndentedString(krbAdminPassword)).append("\n");
-    sb.append("    krbAdminUsername: ").append(toIndentedString(krbAdminUsername)).append("\n");
-    sb.append("    license: ").append(toIndentedString(license)).append("\n");
-    sb.append("    managerVirtualInstance: ").append(toIndentedString(managerVirtualInstance)).append("\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
-    sb.append("    password: ").append(toIndentedString(password)).append("\n");
     sb.append("    port: ").append(toIndentedString(port)).append("\n");
-    sb.append("    postCreateScripts: ").append(toIndentedString(postCreateScripts)).append("\n");
+    sb.append("    username: ").append(toIndentedString(username)).append("\n");
+    sb.append("    password: ").append(toIndentedString(password)).append("\n");
     sb.append("    repository: ").append(toIndentedString(repository)).append("\n");
     sb.append("    repositoryKeyUrl: ").append(toIndentedString(repositoryKeyUrl)).append("\n");
+    sb.append("    enableEnterpriseTrial: ").append(toIndentedString(enableEnterpriseTrial)).append("\n");
     sb.append("    unlimitedJce: ").append(toIndentedString(unlimitedJce)).append("\n");
-    sb.append("    username: ").append(toIndentedString(username)).append("\n");
+    sb.append("    krbAdminUsername: ").append(toIndentedString(krbAdminUsername)).append("\n");
+    sb.append("    krbAdminPassword: ").append(toIndentedString(krbAdminPassword)).append("\n");
+    sb.append("    javaInstallationStrategy: ").append(toIndentedString(javaInstallationStrategy)).append("\n");
+    sb.append("    license: ").append(toIndentedString(license)).append("\n");
+    sb.append("    billingId: ").append(toIndentedString(billingId)).append("\n");
+    sb.append("    postCreateScripts: ").append(toIndentedString(postCreateScripts)).append("\n");
+    sb.append("    csds: ").append(toIndentedString(csds)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -24,7 +24,7 @@ Note: This file is auto generated. Do not edit manually.
     <artifactId>java-client</artifactId>
     <packaging>jar</packaging>
     <name>Cloudera Altus Director :: java-client</name>
-    <version>6.0.0</version>
+    <version>6.1.0</version>
     <url>https://www.cloudera.com</url>
     <scm>
         <connection>scm:git:git@github.com:swagger-api/swagger-codegen.git</connection>

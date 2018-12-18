@@ -35,8 +35,6 @@ import java.io.IOException;
 public class HealthCheck {
   @SerializedName("checkName")
   private String checkName = null;
-  @SerializedName("explanation")
-  private String explanation = null;
   /**
    * Health status value
    */
@@ -98,6 +96,8 @@ public class HealthCheck {
 
   @SerializedName("healthStatus")
   private HealthStatusEnum healthStatus = null;
+  @SerializedName("explanation")
+  private String explanation = null;
   @SerializedName("suppressed")
   private Boolean suppressed = null;
 
@@ -107,8 +107,8 @@ public class HealthCheck {
 
   private HealthCheck(HealthCheckBuilder builder) {
       this.checkName = builder.checkName;
-      this.explanation = builder.explanation;
       this.healthStatus = builder.healthStatus;
+      this.explanation = builder.explanation;
       this.suppressed = builder.suppressed;
     }
 
@@ -118,8 +118,8 @@ public class HealthCheck {
 
   public static class HealthCheckBuilder {
       private String checkName = null;
-      private String explanation = null;
       private HealthStatusEnum healthStatus = null;
+      private String explanation = null;
       private Boolean suppressed = null;
   
 
@@ -129,14 +129,14 @@ public class HealthCheck {
     }
 
 
-    public HealthCheckBuilder explanation(String explanation) {
-      this.explanation = explanation;
+    public HealthCheckBuilder healthStatus(HealthStatusEnum healthStatus) {
+      this.healthStatus = healthStatus;
       return this;
     }
 
 
-    public HealthCheckBuilder healthStatus(HealthStatusEnum healthStatus) {
-      this.healthStatus = healthStatus;
+    public HealthCheckBuilder explanation(String explanation) {
+      this.explanation = explanation;
       return this;
     }
 
@@ -155,8 +155,8 @@ public class HealthCheck {
   public HealthCheckBuilder toBuilder() {
     return builder()
       .checkName(checkName)
-            .explanation(explanation)
             .healthStatus(healthStatus)
+            .explanation(explanation)
             .suppressed(suppressed)
       ;
   }
@@ -179,24 +179,6 @@ public class HealthCheck {
     this.checkName = checkName;
   }
 
-  public HealthCheck explanation(String explanation) {
-    this.explanation = explanation;
-    return this;
-  }
-
-   /**
-   * Explanation for health status
-   * @return explanation
-  **/
-  @ApiModelProperty(value = "Explanation for health status")
-  public String getExplanation() {
-    return explanation;
-  }
-
-  public void setExplanation(String explanation) {
-    this.explanation = explanation;
-  }
-
   public HealthCheck healthStatus(HealthStatusEnum healthStatus) {
     this.healthStatus = healthStatus;
     return this;
@@ -215,6 +197,24 @@ public class HealthCheck {
     this.healthStatus = healthStatus;
   }
 
+  public HealthCheck explanation(String explanation) {
+    this.explanation = explanation;
+    return this;
+  }
+
+   /**
+   * Explanation for health status
+   * @return explanation
+  **/
+  @ApiModelProperty(value = "Explanation for health status")
+  public String getExplanation() {
+    return explanation;
+  }
+
+  public void setExplanation(String explanation) {
+    this.explanation = explanation;
+  }
+
   public HealthCheck suppressed(Boolean suppressed) {
     this.suppressed = suppressed;
     return this;
@@ -224,7 +224,7 @@ public class HealthCheck {
    * Check suppression flag
    * @return suppressed
   **/
-  @ApiModelProperty(example = "false", value = "Check suppression flag")
+  @ApiModelProperty(value = "Check suppression flag")
   public Boolean isSuppressed() {
     return suppressed;
   }
@@ -244,14 +244,14 @@ public class HealthCheck {
     }
     HealthCheck healthCheck = (HealthCheck) o;
     return Objects.equals(this.checkName, healthCheck.checkName) &&
-        Objects.equals(this.explanation, healthCheck.explanation) &&
         Objects.equals(this.healthStatus, healthCheck.healthStatus) &&
+        Objects.equals(this.explanation, healthCheck.explanation) &&
         Objects.equals(this.suppressed, healthCheck.suppressed);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(checkName, explanation, healthStatus, suppressed);
+    return Objects.hash(checkName, healthStatus, explanation, suppressed);
   }
 
 
@@ -261,8 +261,8 @@ public class HealthCheck {
     sb.append("class HealthCheck {\n");
     
     sb.append("    checkName: ").append(toIndentedString(checkName)).append("\n");
-    sb.append("    explanation: ").append(toIndentedString(explanation)).append("\n");
     sb.append("    healthStatus: ").append(toIndentedString(healthStatus)).append("\n");
+    sb.append("    explanation: ").append(toIndentedString(explanation)).append("\n");
     sb.append("    suppressed: ").append(toIndentedString(suppressed)).append("\n");
     sb.append("}");
     return sb.toString();

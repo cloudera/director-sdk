@@ -39,25 +39,48 @@ class PasswordChange(object):
                             and the value is json key in definition.
     """
     swagger_types = {
-        'new_password': 'str',
-        'old_password': 'str'
+        'old_password': 'str',
+        'new_password': 'str'
     }
 
     attribute_map = {
-        'new_password': 'newPassword',
-        'old_password': 'oldPassword'
+        'old_password': 'oldPassword',
+        'new_password': 'newPassword'
     }
 
-    def __init__(self, new_password=None, old_password=None):  # noqa: E501
+    def __init__(self, old_password=None, new_password=None):  # noqa: E501
         """PasswordChange - a model defined in Swagger"""  # noqa: E501
 
-        self._new_password = None
         self._old_password = None
+        self._new_password = None
         self.discriminator = None
 
-        self.new_password = new_password
         if old_password is not None:
             self.old_password = old_password
+        self.new_password = new_password
+
+    @property
+    def old_password(self):
+        """Gets the old_password of this PasswordChange.  # noqa: E501
+
+        Old password [redacted on read]  # noqa: E501
+
+        :return: The old_password of this PasswordChange.  # noqa: E501
+        :rtype: str
+        """
+        return self._old_password
+
+    @old_password.setter
+    def old_password(self, old_password):
+        """Sets the old_password of this PasswordChange.
+
+        Old password [redacted on read]  # noqa: E501
+
+        :param old_password: The old_password of this PasswordChange.  # noqa: E501
+        :type: str
+        """
+
+        self._old_password = old_password
 
     @property
     def new_password(self):
@@ -83,29 +106,6 @@ class PasswordChange(object):
             raise ValueError("Invalid value for `new_password`, must not be `None`")  # noqa: E501
 
         self._new_password = new_password
-
-    @property
-    def old_password(self):
-        """Gets the old_password of this PasswordChange.  # noqa: E501
-
-        Old password [redacted on read]  # noqa: E501
-
-        :return: The old_password of this PasswordChange.  # noqa: E501
-        :rtype: str
-        """
-        return self._old_password
-
-    @old_password.setter
-    def old_password(self, old_password):
-        """Sets the old_password of this PasswordChange.
-
-        Old password [redacted on read]  # noqa: E501
-
-        :param old_password: The old_password of this PasswordChange.  # noqa: E501
-        :type: str
-        """
-
-        self._old_password = old_password
 
     def to_dict(self):
         """Returns the model properties as a dict"""

@@ -2,7 +2,7 @@ apply plugin: 'idea'
 apply plugin: 'eclipse'
 
 group = 'com.cloudera.director'
-version = '6.0.0'
+version = '6.1.0'
 
 buildscript {
     repositories {

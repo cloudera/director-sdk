@@ -38,10 +38,10 @@ import java.util.List;
 public class ValidationResult {
   @SerializedName("errors")
   private List<ErrorInfo> errors = null;
-  @SerializedName("formatWarnings")
-  private List<WarningInfo> formatWarnings = null;
   @SerializedName("warnings")
   private List<WarningInfo> warnings = null;
+  @SerializedName("formatWarnings")
+  private List<WarningInfo> formatWarnings = null;
 
   public ValidationResult() {
     // Do nothing
@@ -49,8 +49,8 @@ public class ValidationResult {
 
   private ValidationResult(ValidationResultBuilder builder) {
       this.errors = builder.errors;
-      this.formatWarnings = builder.formatWarnings;
       this.warnings = builder.warnings;
+      this.formatWarnings = builder.formatWarnings;
     }
 
   public static ValidationResultBuilder builder() {
@@ -59,8 +59,8 @@ public class ValidationResult {
 
   public static class ValidationResultBuilder {
       private List<ErrorInfo> errors = new ArrayList<ErrorInfo>();
-      private List<WarningInfo> formatWarnings = new ArrayList<WarningInfo>();
       private List<WarningInfo> warnings = new ArrayList<WarningInfo>();
+      private List<WarningInfo> formatWarnings = new ArrayList<WarningInfo>();
   
 
     public ValidationResultBuilder errors(List<ErrorInfo> errors) {
@@ -69,14 +69,14 @@ public class ValidationResult {
     }
 
 
-    public ValidationResultBuilder formatWarnings(List<WarningInfo> formatWarnings) {
-      this.formatWarnings = formatWarnings;
+    public ValidationResultBuilder warnings(List<WarningInfo> warnings) {
+      this.warnings = warnings;
       return this;
     }
 
 
-    public ValidationResultBuilder warnings(List<WarningInfo> warnings) {
-      this.warnings = warnings;
+    public ValidationResultBuilder formatWarnings(List<WarningInfo> formatWarnings) {
+      this.formatWarnings = formatWarnings;
       return this;
     }
 
@@ -89,8 +89,8 @@ public class ValidationResult {
   public ValidationResultBuilder toBuilder() {
     return builder()
       .errors(errors)
-            .formatWarnings(formatWarnings)
             .warnings(warnings)
+            .formatWarnings(formatWarnings)
       ;
   }
 
@@ -120,32 +120,6 @@ public class ValidationResult {
     this.errors = errors;
   }
 
-  public ValidationResult formatWarnings(List<WarningInfo> formatWarnings) {
-    this.formatWarnings = formatWarnings;
-    return this;
-  }
-
-  public ValidationResult addFormatWarningsItem(WarningInfo formatWarningsItem) {
-    if (this.formatWarnings == null) {
-      this.formatWarnings = new ArrayList<WarningInfo>();
-    }
-    this.formatWarnings.add(formatWarningsItem);
-    return this;
-  }
-
-   /**
-   * Format Warnings
-   * @return formatWarnings
-  **/
-  @ApiModelProperty(value = "Format Warnings")
-  public List<WarningInfo> getFormatWarnings() {
-    return formatWarnings;
-  }
-
-  public void setFormatWarnings(List<WarningInfo> formatWarnings) {
-    this.formatWarnings = formatWarnings;
-  }
-
   public ValidationResult warnings(List<WarningInfo> warnings) {
     this.warnings = warnings;
     return this;
@@ -172,6 +146,32 @@ public class ValidationResult {
     this.warnings = warnings;
   }
 
+  public ValidationResult formatWarnings(List<WarningInfo> formatWarnings) {
+    this.formatWarnings = formatWarnings;
+    return this;
+  }
+
+  public ValidationResult addFormatWarningsItem(WarningInfo formatWarningsItem) {
+    if (this.formatWarnings == null) {
+      this.formatWarnings = new ArrayList<WarningInfo>();
+    }
+    this.formatWarnings.add(formatWarningsItem);
+    return this;
+  }
+
+   /**
+   * Format Warnings
+   * @return formatWarnings
+  **/
+  @ApiModelProperty(value = "Format Warnings")
+  public List<WarningInfo> getFormatWarnings() {
+    return formatWarnings;
+  }
+
+  public void setFormatWarnings(List<WarningInfo> formatWarnings) {
+    this.formatWarnings = formatWarnings;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -183,13 +183,13 @@ public class ValidationResult {
     }
     ValidationResult validationResult = (ValidationResult) o;
     return Objects.equals(this.errors, validationResult.errors) &&
-        Objects.equals(this.formatWarnings, validationResult.formatWarnings) &&
-        Objects.equals(this.warnings, validationResult.warnings);
+        Objects.equals(this.warnings, validationResult.warnings) &&
+        Objects.equals(this.formatWarnings, validationResult.formatWarnings);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(errors, formatWarnings, warnings);
+    return Objects.hash(errors, warnings, formatWarnings);
   }
 
 
@@ -199,8 +199,8 @@ public class ValidationResult {
     sb.append("class ValidationResult {\n");
     
     sb.append("    errors: ").append(toIndentedString(errors)).append("\n");
-    sb.append("    formatWarnings: ").append(toIndentedString(formatWarnings)).append("\n");
     sb.append("    warnings: ").append(toIndentedString(warnings)).append("\n");
+    sb.append("    formatWarnings: ").append(toIndentedString(formatWarnings)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -36,18 +36,18 @@ import java.util.Map;
 @ApiModel(description = "Cloud instance provider configuration")
 
 public class InstanceProviderConfig {
-  @SerializedName("config")
-  private Map<String, String> config = new HashMap<String, String>();
   @SerializedName("type")
   private String type = null;
+  @SerializedName("config")
+  private Map<String, String> config = new HashMap<String, String>();
 
   public InstanceProviderConfig() {
     // Do nothing
   }
 
   private InstanceProviderConfig(InstanceProviderConfigBuilder builder) {
-      this.config = builder.config;
       this.type = builder.type;
+      this.config = builder.config;
     }
 
   public static InstanceProviderConfigBuilder builder() {
@@ -55,18 +55,18 @@ public class InstanceProviderConfig {
   }
 
   public static class InstanceProviderConfigBuilder {
-      private Map<String, String> config = new HashMap<String, String>();
       private String type = null;
+      private Map<String, String> config = new HashMap<String, String>();
   
 
-    public InstanceProviderConfigBuilder config(Map<String, String> config) {
-      this.config = config;
+    public InstanceProviderConfigBuilder type(String type) {
+      this.type = type;
       return this;
     }
 
 
-    public InstanceProviderConfigBuilder type(String type) {
-      this.type = type;
+    public InstanceProviderConfigBuilder config(Map<String, String> config) {
+      this.config = config;
       return this;
     }
 
@@ -78,9 +78,27 @@ public class InstanceProviderConfig {
 
   public InstanceProviderConfigBuilder toBuilder() {
     return builder()
-      .config(config)
-            .type(type)
+      .type(type)
+            .config(config)
       ;
+  }
+
+  public InstanceProviderConfig type(String type) {
+    this.type = type;
+    return this;
+  }
+
+   /**
+   * Provider type
+   * @return type
+  **/
+  @ApiModelProperty(required = true, value = "Provider type")
+  public String getType() {
+    return type;
+  }
+
+  public void setType(String type) {
+    this.type = type;
   }
 
   public InstanceProviderConfig config(Map<String, String> config) {
@@ -106,24 +124,6 @@ public class InstanceProviderConfig {
     this.config = config;
   }
 
-  public InstanceProviderConfig type(String type) {
-    this.type = type;
-    return this;
-  }
-
-   /**
-   * Provider type
-   * @return type
-  **/
-  @ApiModelProperty(required = true, value = "Provider type")
-  public String getType() {
-    return type;
-  }
-
-  public void setType(String type) {
-    this.type = type;
-  }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -134,13 +134,13 @@ public class InstanceProviderConfig {
       return false;
     }
     InstanceProviderConfig instanceProviderConfig = (InstanceProviderConfig) o;
-    return Objects.equals(this.config, instanceProviderConfig.config) &&
-        Objects.equals(this.type, instanceProviderConfig.type);
+    return Objects.equals(this.type, instanceProviderConfig.type) &&
+        Objects.equals(this.config, instanceProviderConfig.config);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(config, type);
+    return Objects.hash(type, config);
   }
 
 
@@ -149,8 +149,8 @@ public class InstanceProviderConfig {
     StringBuilder sb = new StringBuilder();
     sb.append("class InstanceProviderConfig {\n");
     
-    sb.append("    config: ").append(toIndentedString(config)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
+    sb.append("    config: ").append(toIndentedString(config)).append("\n");
     sb.append("}");
     return sb.toString();
   }

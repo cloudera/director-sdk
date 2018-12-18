@@ -39,49 +39,24 @@ class ClusterAdministrationSettings(object):
                             and the value is json key in definition.
     """
     swagger_types = {
-        'auto_repair_cooldown_period_in_seconds': 'int',
-        'auto_repair_enabled': 'bool'
+        'auto_repair_enabled': 'bool',
+        'auto_repair_cooldown_period_in_seconds': 'int'
     }
 
     attribute_map = {
-        'auto_repair_cooldown_period_in_seconds': 'autoRepairCooldownPeriodInSeconds',
-        'auto_repair_enabled': 'autoRepairEnabled'
+        'auto_repair_enabled': 'autoRepairEnabled',
+        'auto_repair_cooldown_period_in_seconds': 'autoRepairCooldownPeriodInSeconds'
     }
 
-    def __init__(self, auto_repair_cooldown_period_in_seconds=None, auto_repair_enabled=None):  # noqa: E501
+    def __init__(self, auto_repair_enabled=None, auto_repair_cooldown_period_in_seconds=None):  # noqa: E501
         """ClusterAdministrationSettings - a model defined in Swagger"""  # noqa: E501
 
-        self._auto_repair_cooldown_period_in_seconds = None
         self._auto_repair_enabled = None
+        self._auto_repair_cooldown_period_in_seconds = None
         self.discriminator = None
 
-        self.auto_repair_cooldown_period_in_seconds = auto_repair_cooldown_period_in_seconds
         self.auto_repair_enabled = auto_repair_enabled
-
-    @property
-    def auto_repair_cooldown_period_in_seconds(self):
-        """Gets the auto_repair_cooldown_period_in_seconds of this ClusterAdministrationSettings.  # noqa: E501
-
-        Delay after a modification before auto-repair will execute  # noqa: E501
-
-        :return: The auto_repair_cooldown_period_in_seconds of this ClusterAdministrationSettings.  # noqa: E501
-        :rtype: int
-        """
-        return self._auto_repair_cooldown_period_in_seconds
-
-    @auto_repair_cooldown_period_in_seconds.setter
-    def auto_repair_cooldown_period_in_seconds(self, auto_repair_cooldown_period_in_seconds):
-        """Sets the auto_repair_cooldown_period_in_seconds of this ClusterAdministrationSettings.
-
-        Delay after a modification before auto-repair will execute  # noqa: E501
-
-        :param auto_repair_cooldown_period_in_seconds: The auto_repair_cooldown_period_in_seconds of this ClusterAdministrationSettings.  # noqa: E501
-        :type: int
-        """
-        if auto_repair_cooldown_period_in_seconds is None:
-            raise ValueError("Invalid value for `auto_repair_cooldown_period_in_seconds`, must not be `None`")  # noqa: E501
-
-        self._auto_repair_cooldown_period_in_seconds = auto_repair_cooldown_period_in_seconds
+        self.auto_repair_cooldown_period_in_seconds = auto_repair_cooldown_period_in_seconds
 
     @property
     def auto_repair_enabled(self):
@@ -107,6 +82,31 @@ class ClusterAdministrationSettings(object):
             raise ValueError("Invalid value for `auto_repair_enabled`, must not be `None`")  # noqa: E501
 
         self._auto_repair_enabled = auto_repair_enabled
+
+    @property
+    def auto_repair_cooldown_period_in_seconds(self):
+        """Gets the auto_repair_cooldown_period_in_seconds of this ClusterAdministrationSettings.  # noqa: E501
+
+        Delay after a modification before auto-repair will execute  # noqa: E501
+
+        :return: The auto_repair_cooldown_period_in_seconds of this ClusterAdministrationSettings.  # noqa: E501
+        :rtype: int
+        """
+        return self._auto_repair_cooldown_period_in_seconds
+
+    @auto_repair_cooldown_period_in_seconds.setter
+    def auto_repair_cooldown_period_in_seconds(self, auto_repair_cooldown_period_in_seconds):
+        """Sets the auto_repair_cooldown_period_in_seconds of this ClusterAdministrationSettings.
+
+        Delay after a modification before auto-repair will execute  # noqa: E501
+
+        :param auto_repair_cooldown_period_in_seconds: The auto_repair_cooldown_period_in_seconds of this ClusterAdministrationSettings.  # noqa: E501
+        :type: int
+        """
+        if auto_repair_cooldown_period_in_seconds is None:
+            raise ValueError("Invalid value for `auto_repair_cooldown_period_in_seconds`, must not be `None`")  # noqa: E501
+
+        self._auto_repair_cooldown_period_in_seconds = auto_repair_cooldown_period_in_seconds
 
     def to_dict(self):
         """Returns the model properties as a dict"""

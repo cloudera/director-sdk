@@ -22,7 +22,7 @@ limitations under the License.
 from setuptools import setup, find_packages  # noqa: H301
 
 NAME = "cloudera-director-python-client"
-VERSION = "6.0.0"
+VERSION = "6.1.0"
 # To install the library, run the following
 #
 # python setup.py install
@@ -36,7 +36,7 @@ setup(
     name=NAME,
     version=VERSION,
     description="Cloudera Altus Director API",
-    author_email="sme-eng-cloud@cloudera.com",
+    author_email="",
     url="",
     keywords=["Swagger", "Cloudera Altus Director API"],
     install_requires=REQUIRES,

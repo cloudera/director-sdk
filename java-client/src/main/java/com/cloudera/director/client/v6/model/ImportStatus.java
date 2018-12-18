@@ -80,11 +80,6 @@ public class ImportStatus {
       ;
   }
 
-  public ImportStatus name(String name) {
-    this.name = name;
-    return this;
-  }
-
    /**
    * Name of the imported entity
    * @return name
@@ -94,26 +89,13 @@ public class ImportStatus {
     return name;
   }
 
-  public void setName(String name) {
-    this.name = name;
-  }
-
-  public ImportStatus skipped(Boolean skipped) {
-    this.skipped = skipped;
-    return this;
-  }
-
    /**
    * Skipped or not during import
    * @return skipped
   **/
-  @ApiModelProperty(example = "false", value = "Skipped or not during import")
+  @ApiModelProperty(value = "Skipped or not during import")
   public Boolean isSkipped() {
     return skipped;
-  }
-
-  public void setSkipped(Boolean skipped) {
-    this.skipped = skipped;
   }
 
 

@@ -60,7 +60,7 @@ public class ProviderMetadataApi {
 
     /**
      * Build call for get
-     * @param providerId providerId (required)
+     * @param providerId  (required)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
@@ -125,7 +125,7 @@ public class ProviderMetadataApi {
     /**
      * Get a provider by name
      * 
-     * @param providerId providerId (required)
+     * @param providerId  (required)
      * @return CloudProviderMetadata
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
@@ -137,7 +137,7 @@ public class ProviderMetadataApi {
     /**
      * Get a provider by name
      * 
-     * @param providerId providerId (required)
+     * @param providerId  (required)
      * @return ApiResponse&lt;CloudProviderMetadata&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
@@ -150,7 +150,7 @@ public class ProviderMetadataApi {
     /**
      * Get a provider by name (asynchronously)
      * 
-     * @param providerId providerId (required)
+     * @param providerId  (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object

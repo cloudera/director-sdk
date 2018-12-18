@@ -39,49 +39,24 @@ class Health(object):
                             and the value is json key in definition.
     """
     swagger_types = {
-        'last_reported': 'int',
-        'status': 'str'
+        'status': 'str',
+        'last_reported': 'int'
     }
 
     attribute_map = {
-        'last_reported': 'lastReported',
-        'status': 'status'
+        'status': 'status',
+        'last_reported': 'lastReported'
     }
 
-    def __init__(self, last_reported=None, status=None):  # noqa: E501
+    def __init__(self, status=None, last_reported=None):  # noqa: E501
         """Health - a model defined in Swagger"""  # noqa: E501
 
-        self._last_reported = None
         self._status = None
+        self._last_reported = None
         self.discriminator = None
 
-        self.last_reported = last_reported
         self.status = status
-
-    @property
-    def last_reported(self):
-        """Gets the last_reported of this Health.  # noqa: E501
-
-        Time when health status was reported  # noqa: E501
-
-        :return: The last_reported of this Health.  # noqa: E501
-        :rtype: int
-        """
-        return self._last_reported
-
-    @last_reported.setter
-    def last_reported(self, last_reported):
-        """Sets the last_reported of this Health.
-
-        Time when health status was reported  # noqa: E501
-
-        :param last_reported: The last_reported of this Health.  # noqa: E501
-        :type: int
-        """
-        if last_reported is None:
-            raise ValueError("Invalid value for `last_reported`, must not be `None`")  # noqa: E501
-
-        self._last_reported = last_reported
+        self.last_reported = last_reported
 
     @property
     def status(self):
@@ -113,6 +88,31 @@ class Health(object):
             )
 
         self._status = status
+
+    @property
+    def last_reported(self):
+        """Gets the last_reported of this Health.  # noqa: E501
+
+        Time when health status was reported  # noqa: E501
+
+        :return: The last_reported of this Health.  # noqa: E501
+        :rtype: int
+        """
+        return self._last_reported
+
+    @last_reported.setter
+    def last_reported(self, last_reported):
+        """Sets the last_reported of this Health.
+
+        Time when health status was reported  # noqa: E501
+
+        :param last_reported: The last_reported of this Health.  # noqa: E501
+        :type: int
+        """
+        if last_reported is None:
+            raise ValueError("Invalid value for `last_reported`, must not be `None`")  # noqa: E501
+
+        self._last_reported = last_reported
 
     def to_dict(self):
         """Returns the model properties as a dict"""

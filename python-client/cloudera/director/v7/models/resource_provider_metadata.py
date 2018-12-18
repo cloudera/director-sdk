@@ -39,95 +39,47 @@ class ResourceProviderMetadata(object):
                             and the value is json key in definition.
     """
     swagger_types = {
-        'configuration_properties': 'list[ConfigurationProperty]',
-        'description': 'str',
         'id': 'str',
+        'type': 'str',
         'name': 'str',
-        'resource_display_properties': 'list[DisplayProperty]',
+        'description': 'str',
+        'configuration_properties': 'list[ConfigurationProperty]',
         'template_properties': 'list[ConfigurationProperty]',
-        'type': 'str'
+        'resource_display_properties': 'list[DisplayProperty]'
     }
 
     attribute_map = {
-        'configuration_properties': 'configurationProperties',
-        'description': 'description',
         'id': 'id',
+        'type': 'type',
         'name': 'name',
-        'resource_display_properties': 'resourceDisplayProperties',
+        'description': 'description',
+        'configuration_properties': 'configurationProperties',
         'template_properties': 'templateProperties',
-        'type': 'type'
+        'resource_display_properties': 'resourceDisplayProperties'
     }
 
-    def __init__(self, configuration_properties=None, description=None, id=None, name=None, resource_display_properties=None, template_properties=None, type=None):  # noqa: E501
+    def __init__(self, id=None, type=None, name=None, description=None, configuration_properties=None, template_properties=None, resource_display_properties=None):  # noqa: E501
         """ResourceProviderMetadata - a model defined in Swagger"""  # noqa: E501
 
-        self._configuration_properties = None
-        self._description = None
         self._id = None
-        self._name = None
-        self._resource_display_properties = None
-        self._template_properties = None
         self._type = None
+        self._name = None
+        self._description = None
+        self._configuration_properties = None
+        self._template_properties = None
+        self._resource_display_properties = None
         self.discriminator = None
 
+        self.id = id
+        self.type = type
+        self.name = name
+        self.description = description
         if configuration_properties is not None:
             self.configuration_properties = configuration_properties
-        self.description = description
-        self.id = id
-        self.name = name
-        if resource_display_properties is not None:
-            self.resource_display_properties = resource_display_properties
         if template_properties is not None:
             self.template_properties = template_properties
-        self.type = type
-
-    @property
-    def configuration_properties(self):
-        """Gets the configuration_properties of this ResourceProviderMetadata.  # noqa: E501
-
-        Resource provider configuration properties  # noqa: E501
-
-        :return: The configuration_properties of this ResourceProviderMetadata.  # noqa: E501
-        :rtype: list[ConfigurationProperty]
-        """
-        return self._configuration_properties
-
-    @configuration_properties.setter
-    def configuration_properties(self, configuration_properties):
-        """Sets the configuration_properties of this ResourceProviderMetadata.
-
-        Resource provider configuration properties  # noqa: E501
-
-        :param configuration_properties: The configuration_properties of this ResourceProviderMetadata.  # noqa: E501
-        :type: list[ConfigurationProperty]
-        """
-
-        self._configuration_properties = configuration_properties
-
-    @property
-    def description(self):
-        """Gets the description of this ResourceProviderMetadata.  # noqa: E501
-
-        Resource provider description  # noqa: E501
-
-        :return: The description of this ResourceProviderMetadata.  # noqa: E501
-        :rtype: str
-        """
-        return self._description
-
-    @description.setter
-    def description(self, description):
-        """Sets the description of this ResourceProviderMetadata.
-
-        Resource provider description  # noqa: E501
-
-        :param description: The description of this ResourceProviderMetadata.  # noqa: E501
-        :type: str
-        """
-        if description is None:
-            raise ValueError("Invalid value for `description`, must not be `None`")  # noqa: E501
-
-        self._description = description
+        if resource_display_properties is not None:
+            self.resource_display_properties = resource_display_properties
 
     @property
     def id(self):
@@ -153,77 +105,6 @@ class ResourceProviderMetadata(object):
             raise ValueError("Invalid value for `id`, must not be `None`")  # noqa: E501
 
         self._id = id
-
-    @property
-    def name(self):
-        """Gets the name of this ResourceProviderMetadata.  # noqa: E501
-
-        Resource provider name  # noqa: E501
-
-        :return: The name of this ResourceProviderMetadata.  # noqa: E501
-        :rtype: str
-        """
-        return self._name
-
-    @name.setter
-    def name(self, name):
-        """Sets the name of this ResourceProviderMetadata.
-
-        Resource provider name  # noqa: E501
-
-        :param name: The name of this ResourceProviderMetadata.  # noqa: E501
-        :type: str
-        """
-        if name is None:
-            raise ValueError("Invalid value for `name`, must not be `None`")  # noqa: E501
-
-        self._name = name
-
-    @property
-    def resource_display_properties(self):
-        """Gets the resource_display_properties of this ResourceProviderMetadata.  # noqa: E501
-
-        Resource provider display properties  # noqa: E501
-
-        :return: The resource_display_properties of this ResourceProviderMetadata.  # noqa: E501
-        :rtype: list[DisplayProperty]
-        """
-        return self._resource_display_properties
-
-    @resource_display_properties.setter
-    def resource_display_properties(self, resource_display_properties):
-        """Sets the resource_display_properties of this ResourceProviderMetadata.
-
-        Resource provider display properties  # noqa: E501
-
-        :param resource_display_properties: The resource_display_properties of this ResourceProviderMetadata.  # noqa: E501
-        :type: list[DisplayProperty]
-        """
-
-        self._resource_display_properties = resource_display_properties
-
-    @property
-    def template_properties(self):
-        """Gets the template_properties of this ResourceProviderMetadata.  # noqa: E501
-
-        Template configuration properties  # noqa: E501
-
-        :return: The template_properties of this ResourceProviderMetadata.  # noqa: E501
-        :rtype: list[ConfigurationProperty]
-        """
-        return self._template_properties
-
-    @template_properties.setter
-    def template_properties(self, template_properties):
-        """Sets the template_properties of this ResourceProviderMetadata.
-
-        Template configuration properties  # noqa: E501
-
-        :param template_properties: The template_properties of this ResourceProviderMetadata.  # noqa: E501
-        :type: list[ConfigurationProperty]
-        """
-
-        self._template_properties = template_properties
 
     @property
     def type(self):
@@ -255,6 +136,125 @@ class ResourceProviderMetadata(object):
             )
 
         self._type = type
+
+    @property
+    def name(self):
+        """Gets the name of this ResourceProviderMetadata.  # noqa: E501
+
+        Resource provider name  # noqa: E501
+
+        :return: The name of this ResourceProviderMetadata.  # noqa: E501
+        :rtype: str
+        """
+        return self._name
+
+    @name.setter
+    def name(self, name):
+        """Sets the name of this ResourceProviderMetadata.
+
+        Resource provider name  # noqa: E501
+
+        :param name: The name of this ResourceProviderMetadata.  # noqa: E501
+        :type: str
+        """
+        if name is None:
+            raise ValueError("Invalid value for `name`, must not be `None`")  # noqa: E501
+
+        self._name = name
+
+    @property
+    def description(self):
+        """Gets the description of this ResourceProviderMetadata.  # noqa: E501
+
+        Resource provider description  # noqa: E501
+
+        :return: The description of this ResourceProviderMetadata.  # noqa: E501
+        :rtype: str
+        """
+        return self._description
+
+    @description.setter
+    def description(self, description):
+        """Sets the description of this ResourceProviderMetadata.
+
+        Resource provider description  # noqa: E501
+
+        :param description: The description of this ResourceProviderMetadata.  # noqa: E501
+        :type: str
+        """
+        if description is None:
+            raise ValueError("Invalid value for `description`, must not be `None`")  # noqa: E501
+
+        self._description = description
+
+    @property
+    def configuration_properties(self):
+        """Gets the configuration_properties of this ResourceProviderMetadata.  # noqa: E501
+
+        Resource provider configuration properties  # noqa: E501
+
+        :return: The configuration_properties of this ResourceProviderMetadata.  # noqa: E501
+        :rtype: list[ConfigurationProperty]
+        """
+        return self._configuration_properties
+
+    @configuration_properties.setter
+    def configuration_properties(self, configuration_properties):
+        """Sets the configuration_properties of this ResourceProviderMetadata.
+
+        Resource provider configuration properties  # noqa: E501
+
+        :param configuration_properties: The configuration_properties of this ResourceProviderMetadata.  # noqa: E501
+        :type: list[ConfigurationProperty]
+        """
+
+        self._configuration_properties = configuration_properties
+
+    @property
+    def template_properties(self):
+        """Gets the template_properties of this ResourceProviderMetadata.  # noqa: E501
+
+        Template configuration properties  # noqa: E501
+
+        :return: The template_properties of this ResourceProviderMetadata.  # noqa: E501
+        :rtype: list[ConfigurationProperty]
+        """
+        return self._template_properties
+
+    @template_properties.setter
+    def template_properties(self, template_properties):
+        """Sets the template_properties of this ResourceProviderMetadata.
+
+        Template configuration properties  # noqa: E501
+
+        :param template_properties: The template_properties of this ResourceProviderMetadata.  # noqa: E501
+        :type: list[ConfigurationProperty]
+        """
+
+        self._template_properties = template_properties
+
+    @property
+    def resource_display_properties(self):
+        """Gets the resource_display_properties of this ResourceProviderMetadata.  # noqa: E501
+
+        Resource provider display properties  # noqa: E501
+
+        :return: The resource_display_properties of this ResourceProviderMetadata.  # noqa: E501
+        :rtype: list[DisplayProperty]
+        """
+        return self._resource_display_properties
+
+    @resource_display_properties.setter
+    def resource_display_properties(self, resource_display_properties):
+        """Sets the resource_display_properties of this ResourceProviderMetadata.
+
+        Resource provider display properties  # noqa: E501
+
+        :param resource_display_properties: The resource_display_properties of this ResourceProviderMetadata.  # noqa: E501
+        :type: list[DisplayProperty]
+        """
+
+        self._resource_display_properties = resource_display_properties
 
     def to_dict(self):
         """Returns the model properties as a dict"""

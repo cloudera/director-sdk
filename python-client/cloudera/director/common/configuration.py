@@ -55,7 +55,7 @@ class Configuration(six.with_metaclass(TypeWithDefault, object)):
     def __init__(self):
         """Constructor"""
         # Default Base url
-        self.host = "https://localhost:7189"
+        self.host = "https://localhost"
         # Temp file folder for downloading files
         self.temp_folder_path = None
 
@@ -250,6 +250,6 @@ class Configuration(six.with_metaclass(TypeWithDefault, object)):
         return "Python SDK Debug Report:\n"\
                "OS: {env}\n"\
                "Python Version: {pyversion}\n"\
-               "Version of the API: d6.0\n"\
-               "SDK Package Version: 6.0.0".\
+               "Version of the API: d6.1\n"\
+               "SDK Package Version: 6.1.0".\
                format(env=sys.platform, pyversion=sys.version)

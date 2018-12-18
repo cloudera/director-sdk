@@ -39,114 +39,45 @@ class Cluster(object):
                             and the value is json key in definition.
     """
     swagger_types = {
-        'health': 'Health',
-        'instances': 'list[Instance]',
-        'instances_url': 'str',
         'name': 'str',
+        'instances': 'list[Instance]',
         'services': 'list[Service]',
-        'url': 'str'
+        'url': 'str',
+        'instances_url': 'str',
+        'health': 'Health'
     }
 
     attribute_map = {
-        'health': 'health',
-        'instances': 'instances',
-        'instances_url': 'instancesUrl',
         'name': 'name',
+        'instances': 'instances',
         'services': 'services',
-        'url': 'url'
+        'url': 'url',
+        'instances_url': 'instancesUrl',
+        'health': 'health'
     }
 
-    def __init__(self, health=None, instances=None, instances_url=None, name=None, services=None, url=None):  # noqa: E501
+    def __init__(self, name=None, instances=None, services=None, url=None, instances_url=None, health=None):  # noqa: E501
         """Cluster - a model defined in Swagger"""  # noqa: E501
 
-        self._health = None
-        self._instances = None
-        self._instances_url = None
         self._name = None
+        self._instances = None
         self._services = None
         self._url = None
+        self._instances_url = None
+        self._health = None
         self.discriminator = None
 
-        if health is not None:
-            self.health = health
+        self.name = name
         if instances is not None:
             self.instances = instances
-        if instances_url is not None:
-            self.instances_url = instances_url
-        self.name = name
         if services is not None:
             self.services = services
         if url is not None:
             self.url = url
-
-    @property
-    def health(self):
-        """Gets the health of this Cluster.  # noqa: E501
-
-        Overall cluster health  # noqa: E501
-
-        :return: The health of this Cluster.  # noqa: E501
-        :rtype: Health
-        """
-        return self._health
-
-    @health.setter
-    def health(self, health):
-        """Sets the health of this Cluster.
-
-        Overall cluster health  # noqa: E501
-
-        :param health: The health of this Cluster.  # noqa: E501
-        :type: Health
-        """
-
-        self._health = health
-
-    @property
-    def instances(self):
-        """Gets the instances of this Cluster.  # noqa: E501
-
-        Instances comprising this cluster  # noqa: E501
-
-        :return: The instances of this Cluster.  # noqa: E501
-        :rtype: list[Instance]
-        """
-        return self._instances
-
-    @instances.setter
-    def instances(self, instances):
-        """Sets the instances of this Cluster.
-
-        Instances comprising this cluster  # noqa: E501
-
-        :param instances: The instances of this Cluster.  # noqa: E501
-        :type: list[Instance]
-        """
-
-        self._instances = instances
-
-    @property
-    def instances_url(self):
-        """Gets the instances_url of this Cluster.  # noqa: E501
-
-        Optional URL for cluster instances in Cloudera Manager  # noqa: E501
-
-        :return: The instances_url of this Cluster.  # noqa: E501
-        :rtype: str
-        """
-        return self._instances_url
-
-    @instances_url.setter
-    def instances_url(self, instances_url):
-        """Sets the instances_url of this Cluster.
-
-        Optional URL for cluster instances in Cloudera Manager  # noqa: E501
-
-        :param instances_url: The instances_url of this Cluster.  # noqa: E501
-        :type: str
-        """
-
-        self._instances_url = instances_url
+        if instances_url is not None:
+            self.instances_url = instances_url
+        if health is not None:
+            self.health = health
 
     @property
     def name(self):
@@ -172,6 +103,29 @@ class Cluster(object):
             raise ValueError("Invalid value for `name`, must not be `None`")  # noqa: E501
 
         self._name = name
+
+    @property
+    def instances(self):
+        """Gets the instances of this Cluster.  # noqa: E501
+
+        Instances comprising this cluster  # noqa: E501
+
+        :return: The instances of this Cluster.  # noqa: E501
+        :rtype: list[Instance]
+        """
+        return self._instances
+
+    @instances.setter
+    def instances(self, instances):
+        """Sets the instances of this Cluster.
+
+        Instances comprising this cluster  # noqa: E501
+
+        :param instances: The instances of this Cluster.  # noqa: E501
+        :type: list[Instance]
+        """
+
+        self._instances = instances
 
     @property
     def services(self):
@@ -218,6 +172,52 @@ class Cluster(object):
         """
 
         self._url = url
+
+    @property
+    def instances_url(self):
+        """Gets the instances_url of this Cluster.  # noqa: E501
+
+        Optional URL for cluster instances in Cloudera Manager  # noqa: E501
+
+        :return: The instances_url of this Cluster.  # noqa: E501
+        :rtype: str
+        """
+        return self._instances_url
+
+    @instances_url.setter
+    def instances_url(self, instances_url):
+        """Sets the instances_url of this Cluster.
+
+        Optional URL for cluster instances in Cloudera Manager  # noqa: E501
+
+        :param instances_url: The instances_url of this Cluster.  # noqa: E501
+        :type: str
+        """
+
+        self._instances_url = instances_url
+
+    @property
+    def health(self):
+        """Gets the health of this Cluster.  # noqa: E501
+
+        Overall cluster health  # noqa: E501
+
+        :return: The health of this Cluster.  # noqa: E501
+        :rtype: Health
+        """
+        return self._health
+
+    @health.setter
+    def health(self, health):
+        """Sets the health of this Cluster.
+
+        Overall cluster health  # noqa: E501
+
+        :param health: The health of this Cluster.  # noqa: E501
+        :type: Health
+        """
+
+        self._health = health
 
     def to_dict(self):
         """Returns the model properties as a dict"""

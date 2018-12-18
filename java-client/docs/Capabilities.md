@@ -4,25 +4,16 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**iptablesEnabled** | **Boolean** | Whether iptables is enabled | 
-**javaVendor** | [**JavaVendorEnum**](#JavaVendorEnum) | Vendor of installed JDK/JRE |  [optional]
-**javaVersion** | **String** | Version of installed JDK/JRE |  [optional]
 **operatingSystemType** | [**OperatingSystemTypeEnum**](#OperatingSystemTypeEnum) | Operating system type | 
 **operatingSystemVersion** | [**OperatingSystemVersionEnum**](#OperatingSystemVersionEnum) | Operating system version | 
-**packageManager** | [**PackageManagerEnum**](#PackageManagerEnum) | Package manager used |  [optional]
-**passwordlessSudoEnabled** | **Boolean** | Whether the default login can use passwordless sudo | 
-**pythonVersion** | **String** | Version of installed Python |  [optional]
-**selinuxEnabled** | **Boolean** | Whether SELinux is enabled | 
 **virtualizationType** | [**VirtualizationTypeEnum**](#VirtualizationTypeEnum) | Virtualization type | 
-
-
-<a name="JavaVendorEnum"></a>
-## Enum: JavaVendorEnum
-Name | Value
----- | -----
-OPENJDK | &quot;OPENJDK&quot;
-ORACLE | &quot;ORACLE&quot;
-UNKNOWN | &quot;UNKNOWN&quot;
+**packageManager** | [**PackageManagerEnum**](#PackageManagerEnum) | Package manager used |  [optional]
+**javaVendor** | [**JavaVendorEnum**](#JavaVendorEnum) | Vendor of installed JDK/JRE |  [optional]
+**javaVersion** | **String** | Version of installed JDK/JRE |  [optional]
+**pythonVersion** | **String** | Version of installed Python |  [optional]
+**passwordlessSudoEnabled** | **Boolean** | Whether the default login can use passwordless sudo | 
+**selinuxEnabled** | **Boolean** | Whether SELinux is enabled | 
+**iptablesEnabled** | **Boolean** | Whether iptables is enabled | 
 
 
 <a name="OperatingSystemTypeEnum"></a>
@@ -54,6 +45,15 @@ UBUNTU_TRUSTY | &quot;UBUNTU_TRUSTY&quot;
 UNKNOWN | &quot;UNKNOWN&quot;
 
 
+<a name="VirtualizationTypeEnum"></a>
+## Enum: VirtualizationTypeEnum
+Name | Value
+---- | -----
+PARAVIRTUALIZATION | &quot;PARAVIRTUALIZATION&quot;
+HARDWARE_ASSISTED | &quot;HARDWARE_ASSISTED&quot;
+UNKNOWN | &quot;UNKNOWN&quot;
+
+
 <a name="PackageManagerEnum"></a>
 ## Enum: PackageManagerEnum
 Name | Value
@@ -64,12 +64,12 @@ ZYPPER | &quot;ZYPPER&quot;
 UNKNOWN | &quot;UNKNOWN&quot;
 
 
-<a name="VirtualizationTypeEnum"></a>
-## Enum: VirtualizationTypeEnum
+<a name="JavaVendorEnum"></a>
+## Enum: JavaVendorEnum
 Name | Value
 ---- | -----
-PARAVIRTUALIZATION | &quot;PARAVIRTUALIZATION&quot;
-HARDWARE_ASSISTED | &quot;HARDWARE_ASSISTED&quot;
+OPENJDK | &quot;OPENJDK&quot;
+ORACLE | &quot;ORACLE&quot;
 UNKNOWN | &quot;UNKNOWN&quot;
 
 

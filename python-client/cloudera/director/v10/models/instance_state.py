@@ -39,78 +39,28 @@ class InstanceState(object):
                             and the value is json key in definition.
     """
     swagger_types = {
-        'last_checked': 'int',
+        'status': 'str',
         'last_reported': 'int',
-        'status': 'str'
+        'last_checked': 'int'
     }
 
     attribute_map = {
-        'last_checked': 'lastChecked',
+        'status': 'status',
         'last_reported': 'lastReported',
-        'status': 'status'
+        'last_checked': 'lastChecked'
     }
 
-    def __init__(self, last_checked=None, last_reported=None, status=None):  # noqa: E501
+    def __init__(self, status=None, last_reported=None, last_checked=None):  # noqa: E501
         """InstanceState - a model defined in Swagger"""  # noqa: E501
 
-        self._last_checked = None
-        self._last_reported = None
         self._status = None
+        self._last_reported = None
+        self._last_checked = None
         self.discriminator = None
 
-        self.last_checked = last_checked
-        self.last_reported = last_reported
         self.status = status
-
-    @property
-    def last_checked(self):
-        """Gets the last_checked of this InstanceState.  # noqa: E501
-
-        Last time that instance state was checked  # noqa: E501
-
-        :return: The last_checked of this InstanceState.  # noqa: E501
-        :rtype: int
-        """
-        return self._last_checked
-
-    @last_checked.setter
-    def last_checked(self, last_checked):
-        """Sets the last_checked of this InstanceState.
-
-        Last time that instance state was checked  # noqa: E501
-
-        :param last_checked: The last_checked of this InstanceState.  # noqa: E501
-        :type: int
-        """
-        if last_checked is None:
-            raise ValueError("Invalid value for `last_checked`, must not be `None`")  # noqa: E501
-
-        self._last_checked = last_checked
-
-    @property
-    def last_reported(self):
-        """Gets the last_reported of this InstanceState.  # noqa: E501
-
-        Last time that instance state was reported  # noqa: E501
-
-        :return: The last_reported of this InstanceState.  # noqa: E501
-        :rtype: int
-        """
-        return self._last_reported
-
-    @last_reported.setter
-    def last_reported(self, last_reported):
-        """Sets the last_reported of this InstanceState.
-
-        Last time that instance state was reported  # noqa: E501
-
-        :param last_reported: The last_reported of this InstanceState.  # noqa: E501
-        :type: int
-        """
-        if last_reported is None:
-            raise ValueError("Invalid value for `last_reported`, must not be `None`")  # noqa: E501
-
-        self._last_reported = last_reported
+        self.last_reported = last_reported
+        self.last_checked = last_checked
 
     @property
     def status(self):
@@ -142,6 +92,56 @@ class InstanceState(object):
             )
 
         self._status = status
+
+    @property
+    def last_reported(self):
+        """Gets the last_reported of this InstanceState.  # noqa: E501
+
+        Last time that instance state was reported  # noqa: E501
+
+        :return: The last_reported of this InstanceState.  # noqa: E501
+        :rtype: int
+        """
+        return self._last_reported
+
+    @last_reported.setter
+    def last_reported(self, last_reported):
+        """Sets the last_reported of this InstanceState.
+
+        Last time that instance state was reported  # noqa: E501
+
+        :param last_reported: The last_reported of this InstanceState.  # noqa: E501
+        :type: int
+        """
+        if last_reported is None:
+            raise ValueError("Invalid value for `last_reported`, must not be `None`")  # noqa: E501
+
+        self._last_reported = last_reported
+
+    @property
+    def last_checked(self):
+        """Gets the last_checked of this InstanceState.  # noqa: E501
+
+        Last time that instance state was checked  # noqa: E501
+
+        :return: The last_checked of this InstanceState.  # noqa: E501
+        :rtype: int
+        """
+        return self._last_checked
+
+    @last_checked.setter
+    def last_checked(self, last_checked):
+        """Sets the last_checked of this InstanceState.
+
+        Last time that instance state was checked  # noqa: E501
+
+        :param last_checked: The last_checked of this InstanceState.  # noqa: E501
+        :type: int
+        """
+        if last_checked is None:
+            raise ValueError("Invalid value for `last_checked`, must not be `None`")  # noqa: E501
+
+        self._last_checked = last_checked
 
     def to_dict(self):
         """Returns the model properties as a dict"""

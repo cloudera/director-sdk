@@ -44,15 +44,16 @@ class ClustersApi(object):
     def collect_diagnostic_data(self, environment, deployment, cluster, **kwargs):  # noqa: E501
         """Collects diagnostic data  # noqa: E501
 
+          # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
         >>> thread = api.collect_diagnostic_data(environment, deployment, cluster, async=True)
         >>> result = thread.get()
 
         :param async bool
-        :param str environment: environment (required)
-        :param str deployment: deployment (required)
-        :param str cluster: cluster (required)
+        :param str environment: (required)
+        :param str deployment: (required)
+        :param str cluster: (required)
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
@@ -67,15 +68,16 @@ class ClustersApi(object):
     def collect_diagnostic_data_with_http_info(self, environment, deployment, cluster, **kwargs):  # noqa: E501
         """Collects diagnostic data  # noqa: E501
 
+          # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
         >>> thread = api.collect_diagnostic_data_with_http_info(environment, deployment, cluster, async=True)
         >>> result = thread.get()
 
         :param async bool
-        :param str environment: environment (required)
-        :param str deployment: deployment (required)
-        :param str cluster: cluster (required)
+        :param str environment: (required)
+        :param str deployment: (required)
+        :param str cluster: (required)
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
@@ -131,10 +133,6 @@ class ClustersApi(object):
         header_params['Accept'] = self.api_client.select_header_accept(
             ['application/json'])  # noqa: E501
 
-        # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json'])  # noqa: E501
-
         # Authentication setting
         auth_settings = ['basic']  # noqa: E501
 
@@ -158,15 +156,16 @@ class ClustersApi(object):
     def create(self, environment, deployment, cluster_template, **kwargs):  # noqa: E501
         """Create a new cluster  # noqa: E501
 
+          # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
         >>> thread = api.create(environment, deployment, cluster_template, async=True)
         >>> result = thread.get()
 
         :param async bool
-        :param str environment: environment (required)
-        :param str deployment: deployment (required)
-        :param ClusterTemplate cluster_template: clusterTemplate (required)
+        :param str environment: (required)
+        :param str deployment: (required)
+        :param ClusterTemplate cluster_template: (required)
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
@@ -181,15 +180,16 @@ class ClustersApi(object):
     def create_with_http_info(self, environment, deployment, cluster_template, **kwargs):  # noqa: E501
         """Create a new cluster  # noqa: E501
 
+          # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
         >>> thread = api.create_with_http_info(environment, deployment, cluster_template, async=True)
         >>> result = thread.get()
 
         :param async bool
-        :param str environment: environment (required)
-        :param str deployment: deployment (required)
-        :param ClusterTemplate cluster_template: clusterTemplate (required)
+        :param str environment: (required)
+        :param str deployment: (required)
+        :param ClusterTemplate cluster_template: (required)
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
@@ -245,10 +245,6 @@ class ClustersApi(object):
         header_params['Accept'] = self.api_client.select_header_accept(
             ['application/json'])  # noqa: E501
 
-        # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json'])  # noqa: E501
-
         # Authentication setting
         auth_settings = ['basic']  # noqa: E501
 
@@ -272,15 +268,16 @@ class ClustersApi(object):
     def delete(self, environment, deployment, cluster, **kwargs):  # noqa: E501
         """Delete a cluster by name  # noqa: E501
 
+          # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
         >>> thread = api.delete(environment, deployment, cluster, async=True)
         >>> result = thread.get()
 
         :param async bool
-        :param str environment: environment (required)
-        :param str deployment: deployment (required)
-        :param str cluster: cluster (required)
+        :param str environment: (required)
+        :param str deployment: (required)
+        :param str cluster: (required)
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
@@ -295,15 +292,16 @@ class ClustersApi(object):
     def delete_with_http_info(self, environment, deployment, cluster, **kwargs):  # noqa: E501
         """Delete a cluster by name  # noqa: E501
 
+          # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
         >>> thread = api.delete_with_http_info(environment, deployment, cluster, async=True)
         >>> result = thread.get()
 
         :param async bool
-        :param str environment: environment (required)
-        :param str deployment: deployment (required)
-        :param str cluster: cluster (required)
+        :param str environment: (required)
+        :param str deployment: (required)
+        :param str cluster: (required)
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
@@ -382,15 +380,16 @@ class ClustersApi(object):
     def get(self, environment, deployment, cluster, **kwargs):  # noqa: E501
         """Get a cluster by name  # noqa: E501
 
+          # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
         >>> thread = api.get(environment, deployment, cluster, async=True)
         >>> result = thread.get()
 
         :param async bool
-        :param str environment: environment (required)
-        :param str deployment: deployment (required)
-        :param str cluster: cluster (required)
+        :param str environment: (required)
+        :param str deployment: (required)
+        :param str cluster: (required)
         :return: Cluster
                  If the method is called asynchronously,
                  returns the request thread.
@@ -405,15 +404,16 @@ class ClustersApi(object):
     def get_with_http_info(self, environment, deployment, cluster, **kwargs):  # noqa: E501
         """Get a cluster by name  # noqa: E501
 
+          # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
         >>> thread = api.get_with_http_info(environment, deployment, cluster, async=True)
         >>> result = thread.get()
 
         :param async bool
-        :param str environment: environment (required)
-        :param str deployment: deployment (required)
-        :param str cluster: cluster (required)
+        :param str environment: (required)
+        :param str deployment: (required)
+        :param str cluster: (required)
         :return: Cluster
                  If the method is called asynchronously,
                  returns the request thread.
@@ -492,15 +492,16 @@ class ClustersApi(object):
     def get_administration_settings(self, environment, deployment, cluster, **kwargs):  # noqa: E501
         """Get administration settings for a cluster  # noqa: E501
 
+          # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
         >>> thread = api.get_administration_settings(environment, deployment, cluster, async=True)
         >>> result = thread.get()
 
         :param async bool
-        :param str environment: environment (required)
-        :param str deployment: deployment (required)
-        :param str cluster: cluster (required)
+        :param str environment: (required)
+        :param str deployment: (required)
+        :param str cluster: (required)
         :return: ClusterAdministrationSettings
                  If the method is called asynchronously,
                  returns the request thread.
@@ -515,15 +516,16 @@ class ClustersApi(object):
     def get_administration_settings_with_http_info(self, environment, deployment, cluster, **kwargs):  # noqa: E501
         """Get administration settings for a cluster  # noqa: E501
 
+          # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
         >>> thread = api.get_administration_settings_with_http_info(environment, deployment, cluster, async=True)
         >>> result = thread.get()
 
         :param async bool
-        :param str environment: environment (required)
-        :param str deployment: deployment (required)
-        :param str cluster: cluster (required)
+        :param str environment: (required)
+        :param str deployment: (required)
+        :param str cluster: (required)
         :return: ClusterAdministrationSettings
                  If the method is called asynchronously,
                  returns the request thread.
@@ -599,45 +601,47 @@ class ClustersApi(object):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def get_history(self, environment, deployment, cluster, **kwargs):  # noqa: E501
+    def get_history(self, environment, deployment, cluster, num_events, page, **kwargs):  # noqa: E501
         """Get history of updates for a cluster  # noqa: E501
 
+          # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
-        >>> thread = api.get_history(environment, deployment, cluster, async=True)
+        >>> thread = api.get_history(environment, deployment, cluster, num_events, page, async=True)
         >>> result = thread.get()
 
         :param async bool
-        :param str environment: environment (required)
-        :param str deployment: deployment (required)
-        :param str cluster: cluster (required)
-        :param int num_events: numEvents
-        :param int page: page
+        :param str environment: (required)
+        :param str deployment: (required)
+        :param str cluster: (required)
+        :param int num_events: (required)
+        :param int page: (required)
         :return: list[ClusterUpdateEventSummary]
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async'):
-            return self.get_history_with_http_info(environment, deployment, cluster, **kwargs)  # noqa: E501
+            return self.get_history_with_http_info(environment, deployment, cluster, num_events, page, **kwargs)  # noqa: E501
         else:
-            (data) = self.get_history_with_http_info(environment, deployment, cluster, **kwargs)  # noqa: E501
+            (data) = self.get_history_with_http_info(environment, deployment, cluster, num_events, page, **kwargs)  # noqa: E501
             return data
 
-    def get_history_with_http_info(self, environment, deployment, cluster, **kwargs):  # noqa: E501
+    def get_history_with_http_info(self, environment, deployment, cluster, num_events, page, **kwargs):  # noqa: E501
         """Get history of updates for a cluster  # noqa: E501
 
+          # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
-        >>> thread = api.get_history_with_http_info(environment, deployment, cluster, async=True)
+        >>> thread = api.get_history_with_http_info(environment, deployment, cluster, num_events, page, async=True)
         >>> result = thread.get()
 
         :param async bool
-        :param str environment: environment (required)
-        :param str deployment: deployment (required)
-        :param str cluster: cluster (required)
-        :param int num_events: numEvents
-        :param int page: page
+        :param str environment: (required)
+        :param str deployment: (required)
+        :param str cluster: (required)
+        :param int num_events: (required)
+        :param int page: (required)
         :return: list[ClusterUpdateEventSummary]
                  If the method is called asynchronously,
                  returns the request thread.
@@ -670,6 +674,14 @@ class ClustersApi(object):
         if ('cluster' not in params or
                 params['cluster'] is None):
             raise ValueError("Missing the required parameter `cluster` when calling `get_history`")  # noqa: E501
+        # verify the required parameter 'num_events' is set
+        if ('num_events' not in params or
+                params['num_events'] is None):
+            raise ValueError("Missing the required parameter `num_events` when calling `get_history`")  # noqa: E501
+        # verify the required parameter 'page' is set
+        if ('page' not in params or
+                params['page'] is None):
+            raise ValueError("Missing the required parameter `page` when calling `get_history`")  # noqa: E501
 
         collection_formats = {}
 
@@ -720,15 +732,16 @@ class ClustersApi(object):
     def get_metrics(self, environment, deployment, cluster, **kwargs):  # noqa: E501
         """Get cluster metrics by name  # noqa: E501
 
+          # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
         >>> thread = api.get_metrics(environment, deployment, cluster, async=True)
         >>> result = thread.get()
 
         :param async bool
-        :param str environment: environment (required)
-        :param str deployment: deployment (required)
-        :param str cluster: cluster (required)
+        :param str environment: (required)
+        :param str deployment: (required)
+        :param str cluster: (required)
         :return: Metrics
                  If the method is called asynchronously,
                  returns the request thread.
@@ -743,15 +756,16 @@ class ClustersApi(object):
     def get_metrics_with_http_info(self, environment, deployment, cluster, **kwargs):  # noqa: E501
         """Get cluster metrics by name  # noqa: E501
 
+          # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
         >>> thread = api.get_metrics_with_http_info(environment, deployment, cluster, async=True)
         >>> result = thread.get()
 
         :param async bool
-        :param str environment: environment (required)
-        :param str deployment: deployment (required)
-        :param str cluster: cluster (required)
+        :param str environment: (required)
+        :param str deployment: (required)
+        :param str cluster: (required)
         :return: Metrics
                  If the method is called asynchronously,
                  returns the request thread.
@@ -830,15 +844,16 @@ class ClustersApi(object):
     def get_status(self, environment, deployment, cluster, **kwargs):  # noqa: E501
         """Get a cluster status by name  # noqa: E501
 
+          # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
         >>> thread = api.get_status(environment, deployment, cluster, async=True)
         >>> result = thread.get()
 
         :param async bool
-        :param str environment: environment (required)
-        :param str deployment: deployment (required)
-        :param str cluster: cluster (required)
+        :param str environment: (required)
+        :param str deployment: (required)
+        :param str cluster: (required)
         :return: Status
                  If the method is called asynchronously,
                  returns the request thread.
@@ -853,15 +868,16 @@ class ClustersApi(object):
     def get_status_with_http_info(self, environment, deployment, cluster, **kwargs):  # noqa: E501
         """Get a cluster status by name  # noqa: E501
 
+          # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
         >>> thread = api.get_status_with_http_info(environment, deployment, cluster, async=True)
         >>> result = thread.get()
 
         :param async bool
-        :param str environment: environment (required)
-        :param str deployment: deployment (required)
-        :param str cluster: cluster (required)
+        :param str environment: (required)
+        :param str deployment: (required)
+        :param str cluster: (required)
         :return: Status
                  If the method is called asynchronously,
                  returns the request thread.
@@ -940,15 +956,16 @@ class ClustersApi(object):
     def get_template_redacted(self, environment, deployment, cluster, **kwargs):  # noqa: E501
         """Get a cluster template by name  # noqa: E501
 
+          # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
         >>> thread = api.get_template_redacted(environment, deployment, cluster, async=True)
         >>> result = thread.get()
 
         :param async bool
-        :param str environment: environment (required)
-        :param str deployment: deployment (required)
-        :param str cluster: cluster (required)
+        :param str environment: (required)
+        :param str deployment: (required)
+        :param str cluster: (required)
         :return: ClusterTemplate
                  If the method is called asynchronously,
                  returns the request thread.
@@ -963,15 +980,16 @@ class ClustersApi(object):
     def get_template_redacted_with_http_info(self, environment, deployment, cluster, **kwargs):  # noqa: E501
         """Get a cluster template by name  # noqa: E501
 
+          # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
         >>> thread = api.get_template_redacted_with_http_info(environment, deployment, cluster, async=True)
         >>> result = thread.get()
 
         :param async bool
-        :param str environment: environment (required)
-        :param str deployment: deployment (required)
-        :param str cluster: cluster (required)
+        :param str environment: (required)
+        :param str deployment: (required)
+        :param str cluster: (required)
         :return: ClusterTemplate
                  If the method is called asynchronously,
                  returns the request thread.
@@ -1050,14 +1068,15 @@ class ClustersApi(object):
     def list(self, environment, deployment, **kwargs):  # noqa: E501
         """List all clusters  # noqa: E501
 
+          # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
         >>> thread = api.list(environment, deployment, async=True)
         >>> result = thread.get()
 
         :param async bool
-        :param str environment: environment (required)
-        :param str deployment: deployment (required)
+        :param str environment: (required)
+        :param str deployment: (required)
         :return: list[str]
                  If the method is called asynchronously,
                  returns the request thread.
@@ -1072,14 +1091,15 @@ class ClustersApi(object):
     def list_with_http_info(self, environment, deployment, **kwargs):  # noqa: E501
         """List all clusters  # noqa: E501
 
+          # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
         >>> thread = api.list_with_http_info(environment, deployment, async=True)
         >>> result = thread.get()
 
         :param async bool
-        :param str environment: environment (required)
-        :param str deployment: deployment (required)
+        :param str environment: (required)
+        :param str deployment: (required)
         :return: list[str]
                  If the method is called asynchronously,
                  returns the request thread.
@@ -1152,16 +1172,17 @@ class ClustersApi(object):
     def update(self, environment, deployment, cluster, desired, **kwargs):  # noqa: E501
         """Update an existing cluster  # noqa: E501
 
+          # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
         >>> thread = api.update(environment, deployment, cluster, desired, async=True)
         >>> result = thread.get()
 
         :param async bool
-        :param str environment: environment (required)
-        :param str deployment: deployment (required)
-        :param str cluster: cluster (required)
-        :param ClusterTemplate desired: desired (required)
+        :param str environment: (required)
+        :param str deployment: (required)
+        :param str cluster: (required)
+        :param ClusterTemplate desired: (required)
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
@@ -1176,16 +1197,17 @@ class ClustersApi(object):
     def update_with_http_info(self, environment, deployment, cluster, desired, **kwargs):  # noqa: E501
         """Update an existing cluster  # noqa: E501
 
+          # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
         >>> thread = api.update_with_http_info(environment, deployment, cluster, desired, async=True)
         >>> result = thread.get()
 
         :param async bool
-        :param str environment: environment (required)
-        :param str deployment: deployment (required)
-        :param str cluster: cluster (required)
-        :param ClusterTemplate desired: desired (required)
+        :param str environment: (required)
+        :param str deployment: (required)
+        :param str cluster: (required)
+        :param ClusterTemplate desired: (required)
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
@@ -1247,10 +1269,6 @@ class ClustersApi(object):
         header_params['Accept'] = self.api_client.select_header_accept(
             ['application/json'])  # noqa: E501
 
-        # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json'])  # noqa: E501
-
         # Authentication setting
         auth_settings = ['basic']  # noqa: E501
 
@@ -1274,16 +1292,17 @@ class ClustersApi(object):
     def update_administration_settings(self, environment, deployment, cluster, administration_settings, **kwargs):  # noqa: E501
         """Update administration settings for a cluster  # noqa: E501
 
+          # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
         >>> thread = api.update_administration_settings(environment, deployment, cluster, administration_settings, async=True)
         >>> result = thread.get()
 
         :param async bool
-        :param str environment: environment (required)
-        :param str deployment: deployment (required)
-        :param str cluster: cluster (required)
-        :param ClusterAdministrationSettings administration_settings: administrationSettings (required)
+        :param str environment: (required)
+        :param str deployment: (required)
+        :param str cluster: (required)
+        :param ClusterAdministrationSettings administration_settings: (required)
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
@@ -1298,16 +1317,17 @@ class ClustersApi(object):
     def update_administration_settings_with_http_info(self, environment, deployment, cluster, administration_settings, **kwargs):  # noqa: E501
         """Update administration settings for a cluster  # noqa: E501
 
+          # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
         >>> thread = api.update_administration_settings_with_http_info(environment, deployment, cluster, administration_settings, async=True)
         >>> result = thread.get()
 
         :param async bool
-        :param str environment: environment (required)
-        :param str deployment: deployment (required)
-        :param str cluster: cluster (required)
-        :param ClusterAdministrationSettings administration_settings: administrationSettings (required)
+        :param str environment: (required)
+        :param str deployment: (required)
+        :param str cluster: (required)
+        :param ClusterAdministrationSettings administration_settings: (required)
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
@@ -1367,10 +1387,6 @@ class ClustersApi(object):
             body_params = params['administration_settings']
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
-
-        # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
             ['application/json'])  # noqa: E501
 
         # Authentication setting

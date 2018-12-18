@@ -4,11 +4,11 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**causes** | [**List&lt;ErrorInfo&gt;**](ErrorInfo.md) | Causes of the error, if any | 
 **errorCode** | [**ErrorCodeEnum**](#ErrorCodeEnum) | Error code | 
 **errorType** | [**ErrorTypeEnum**](#ErrorTypeEnum) | Error type | 
 **properties** | **Map&lt;String, String&gt;** | Properties associated with the error | 
 **retryable** | **Boolean** | Whether the operation that produced this error is retryable | 
+**causes** | [**List&lt;ErrorInfo&gt;**](ErrorInfo.md) | Causes of the error, if any | 
 
 
 <a name="ErrorCodeEnum"></a>

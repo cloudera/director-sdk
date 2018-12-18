@@ -37,16 +37,16 @@ import java.util.List;
 @ApiModel(description = "Metadata about a cloud provider")
 
 public class CloudProviderMetadata {
-  @SerializedName("configurationProperties")
-  private List<ConfigurationProperty> configurationProperties = null;
-  @SerializedName("credentialsProperties")
-  private List<ConfigurationProperty> credentialsProperties = null;
-  @SerializedName("description")
-  private String description = null;
   @SerializedName("id")
   private String id = null;
   @SerializedName("name")
   private String name = null;
+  @SerializedName("description")
+  private String description = null;
+  @SerializedName("configurationProperties")
+  private List<ConfigurationProperty> configurationProperties = null;
+  @SerializedName("credentialsProperties")
+  private List<ConfigurationProperty> credentialsProperties = null;
   @SerializedName("resourceProviders")
   private List<ResourceProviderMetadata> resourceProviders = null;
 
@@ -55,11 +55,11 @@ public class CloudProviderMetadata {
   }
 
   private CloudProviderMetadata(CloudProviderMetadataBuilder builder) {
-      this.configurationProperties = builder.configurationProperties;
-      this.credentialsProperties = builder.credentialsProperties;
-      this.description = builder.description;
       this.id = builder.id;
       this.name = builder.name;
+      this.description = builder.description;
+      this.configurationProperties = builder.configurationProperties;
+      this.credentialsProperties = builder.credentialsProperties;
       this.resourceProviders = builder.resourceProviders;
     }
 
@@ -68,22 +68,22 @@ public class CloudProviderMetadata {
   }
 
   public static class CloudProviderMetadataBuilder {
-      private List<ConfigurationProperty> configurationProperties = new ArrayList<ConfigurationProperty>();
-      private List<ConfigurationProperty> credentialsProperties = new ArrayList<ConfigurationProperty>();
-      private String description = null;
       private String id = null;
       private String name = null;
+      private String description = null;
+      private List<ConfigurationProperty> configurationProperties = new ArrayList<ConfigurationProperty>();
+      private List<ConfigurationProperty> credentialsProperties = new ArrayList<ConfigurationProperty>();
       private List<ResourceProviderMetadata> resourceProviders = new ArrayList<ResourceProviderMetadata>();
   
 
-    public CloudProviderMetadataBuilder configurationProperties(List<ConfigurationProperty> configurationProperties) {
-      this.configurationProperties = configurationProperties;
+    public CloudProviderMetadataBuilder id(String id) {
+      this.id = id;
       return this;
     }
 
 
-    public CloudProviderMetadataBuilder credentialsProperties(List<ConfigurationProperty> credentialsProperties) {
-      this.credentialsProperties = credentialsProperties;
+    public CloudProviderMetadataBuilder name(String name) {
+      this.name = name;
       return this;
     }
 
@@ -94,14 +94,14 @@ public class CloudProviderMetadata {
     }
 
 
-    public CloudProviderMetadataBuilder id(String id) {
-      this.id = id;
+    public CloudProviderMetadataBuilder configurationProperties(List<ConfigurationProperty> configurationProperties) {
+      this.configurationProperties = configurationProperties;
       return this;
     }
 
 
-    public CloudProviderMetadataBuilder name(String name) {
-      this.name = name;
+    public CloudProviderMetadataBuilder credentialsProperties(List<ConfigurationProperty> credentialsProperties) {
+      this.credentialsProperties = credentialsProperties;
       return this;
     }
 
@@ -119,13 +119,67 @@ public class CloudProviderMetadata {
 
   public CloudProviderMetadataBuilder toBuilder() {
     return builder()
-      .configurationProperties(configurationProperties)
-            .credentialsProperties(credentialsProperties)
-            .description(description)
-            .id(id)
+      .id(id)
             .name(name)
+            .description(description)
+            .configurationProperties(configurationProperties)
+            .credentialsProperties(credentialsProperties)
             .resourceProviders(resourceProviders)
       ;
+  }
+
+  public CloudProviderMetadata id(String id) {
+    this.id = id;
+    return this;
+  }
+
+   /**
+   * Cloud provider metadata ID
+   * @return id
+  **/
+  @ApiModelProperty(required = true, value = "Cloud provider metadata ID")
+  public String getId() {
+    return id;
+  }
+
+  public void setId(String id) {
+    this.id = id;
+  }
+
+  public CloudProviderMetadata name(String name) {
+    this.name = name;
+    return this;
+  }
+
+   /**
+   * Cloud provider name
+   * @return name
+  **/
+  @ApiModelProperty(required = true, value = "Cloud provider name")
+  public String getName() {
+    return name;
+  }
+
+  public void setName(String name) {
+    this.name = name;
+  }
+
+  public CloudProviderMetadata description(String description) {
+    this.description = description;
+    return this;
+  }
+
+   /**
+   * Cloud provider description
+   * @return description
+  **/
+  @ApiModelProperty(required = true, value = "Cloud provider description")
+  public String getDescription() {
+    return description;
+  }
+
+  public void setDescription(String description) {
+    this.description = description;
   }
 
   public CloudProviderMetadata configurationProperties(List<ConfigurationProperty> configurationProperties) {
@@ -180,60 +234,6 @@ public class CloudProviderMetadata {
     this.credentialsProperties = credentialsProperties;
   }
 
-  public CloudProviderMetadata description(String description) {
-    this.description = description;
-    return this;
-  }
-
-   /**
-   * Cloud provider description
-   * @return description
-  **/
-  @ApiModelProperty(required = true, value = "Cloud provider description")
-  public String getDescription() {
-    return description;
-  }
-
-  public void setDescription(String description) {
-    this.description = description;
-  }
-
-  public CloudProviderMetadata id(String id) {
-    this.id = id;
-    return this;
-  }
-
-   /**
-   * Cloud provider metadata ID
-   * @return id
-  **/
-  @ApiModelProperty(required = true, value = "Cloud provider metadata ID")
-  public String getId() {
-    return id;
-  }
-
-  public void setId(String id) {
-    this.id = id;
-  }
-
-  public CloudProviderMetadata name(String name) {
-    this.name = name;
-    return this;
-  }
-
-   /**
-   * Cloud provider name
-   * @return name
-  **/
-  @ApiModelProperty(required = true, value = "Cloud provider name")
-  public String getName() {
-    return name;
-  }
-
-  public void setName(String name) {
-    this.name = name;
-  }
-
   public CloudProviderMetadata resourceProviders(List<ResourceProviderMetadata> resourceProviders) {
     this.resourceProviders = resourceProviders;
     return this;
@@ -270,17 +270,17 @@ public class CloudProviderMetadata {
       return false;
     }
     CloudProviderMetadata cloudProviderMetadata = (CloudProviderMetadata) o;
-    return Objects.equals(this.configurationProperties, cloudProviderMetadata.configurationProperties) &&
-        Objects.equals(this.credentialsProperties, cloudProviderMetadata.credentialsProperties) &&
-        Objects.equals(this.description, cloudProviderMetadata.description) &&
-        Objects.equals(this.id, cloudProviderMetadata.id) &&
+    return Objects.equals(this.id, cloudProviderMetadata.id) &&
         Objects.equals(this.name, cloudProviderMetadata.name) &&
+        Objects.equals(this.description, cloudProviderMetadata.description) &&
+        Objects.equals(this.configurationProperties, cloudProviderMetadata.configurationProperties) &&
+        Objects.equals(this.credentialsProperties, cloudProviderMetadata.credentialsProperties) &&
         Objects.equals(this.resourceProviders, cloudProviderMetadata.resourceProviders);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(configurationProperties, credentialsProperties, description, id, name, resourceProviders);
+    return Objects.hash(id, name, description, configurationProperties, credentialsProperties, resourceProviders);
   }
 
 
@@ -289,11 +289,11 @@ public class CloudProviderMetadata {
     StringBuilder sb = new StringBuilder();
     sb.append("class CloudProviderMetadata {\n");
     
-    sb.append("    configurationProperties: ").append(toIndentedString(configurationProperties)).append("\n");
-    sb.append("    credentialsProperties: ").append(toIndentedString(credentialsProperties)).append("\n");
-    sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    description: ").append(toIndentedString(description)).append("\n");
+    sb.append("    configurationProperties: ").append(toIndentedString(configurationProperties)).append("\n");
+    sb.append("    credentialsProperties: ").append(toIndentedString(credentialsProperties)).append("\n");
     sb.append("    resourceProviders: ").append(toIndentedString(resourceProviders)).append("\n");
     sb.append("}");
     return sb.toString();

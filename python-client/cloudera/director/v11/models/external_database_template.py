@@ -39,58 +39,58 @@ class ExternalDatabaseTemplate(object):
                             and the value is json key in definition.
     """
     swagger_types = {
-        'database_name_prefix': 'str',
-        'database_server_name': 'str',
         'name': 'str',
+        'database_server_name': 'str',
+        'database_name_prefix': 'str',
         'username_prefix': 'str'
     }
 
     attribute_map = {
-        'database_name_prefix': 'databaseNamePrefix',
-        'database_server_name': 'databaseServerName',
         'name': 'name',
+        'database_server_name': 'databaseServerName',
+        'database_name_prefix': 'databaseNamePrefix',
         'username_prefix': 'usernamePrefix'
     }
 
-    def __init__(self, database_name_prefix=None, database_server_name=None, name=None, username_prefix=None):  # noqa: E501
+    def __init__(self, name=None, database_server_name=None, database_name_prefix=None, username_prefix=None):  # noqa: E501
         """ExternalDatabaseTemplate - a model defined in Swagger"""  # noqa: E501
 
-        self._database_name_prefix = None
-        self._database_server_name = None
         self._name = None
+        self._database_server_name = None
+        self._database_name_prefix = None
         self._username_prefix = None
         self.discriminator = None
 
-        self.database_name_prefix = database_name_prefix
-        self.database_server_name = database_server_name
         self.name = name
+        self.database_server_name = database_server_name
+        self.database_name_prefix = database_name_prefix
         if username_prefix is not None:
             self.username_prefix = username_prefix
 
     @property
-    def database_name_prefix(self):
-        """Gets the database_name_prefix of this ExternalDatabaseTemplate.  # noqa: E501
+    def name(self):
+        """Gets the name of this ExternalDatabaseTemplate.  # noqa: E501
 
-        Prefix to use when generating external database name  # noqa: E501
+        External database template name  # noqa: E501
 
-        :return: The database_name_prefix of this ExternalDatabaseTemplate.  # noqa: E501
+        :return: The name of this ExternalDatabaseTemplate.  # noqa: E501
         :rtype: str
         """
-        return self._database_name_prefix
+        return self._name
 
-    @database_name_prefix.setter
-    def database_name_prefix(self, database_name_prefix):
-        """Sets the database_name_prefix of this ExternalDatabaseTemplate.
+    @name.setter
+    def name(self, name):
+        """Sets the name of this ExternalDatabaseTemplate.
 
-        Prefix to use when generating external database name  # noqa: E501
+        External database template name  # noqa: E501
 
-        :param database_name_prefix: The database_name_prefix of this ExternalDatabaseTemplate.  # noqa: E501
+        :param name: The name of this ExternalDatabaseTemplate.  # noqa: E501
         :type: str
         """
-        if database_name_prefix is None:
-            raise ValueError("Invalid value for `database_name_prefix`, must not be `None`")  # noqa: E501
+        if name is None:
+            raise ValueError("Invalid value for `name`, must not be `None`")  # noqa: E501
 
-        self._database_name_prefix = database_name_prefix
+        self._name = name
 
     @property
     def database_server_name(self):
@@ -118,29 +118,29 @@ class ExternalDatabaseTemplate(object):
         self._database_server_name = database_server_name
 
     @property
-    def name(self):
-        """Gets the name of this ExternalDatabaseTemplate.  # noqa: E501
+    def database_name_prefix(self):
+        """Gets the database_name_prefix of this ExternalDatabaseTemplate.  # noqa: E501
 
-        External database template name  # noqa: E501
+        Prefix to use when generating external database name  # noqa: E501
 
-        :return: The name of this ExternalDatabaseTemplate.  # noqa: E501
+        :return: The database_name_prefix of this ExternalDatabaseTemplate.  # noqa: E501
         :rtype: str
         """
-        return self._name
+        return self._database_name_prefix
 
-    @name.setter
-    def name(self, name):
-        """Sets the name of this ExternalDatabaseTemplate.
+    @database_name_prefix.setter
+    def database_name_prefix(self, database_name_prefix):
+        """Sets the database_name_prefix of this ExternalDatabaseTemplate.
 
-        External database template name  # noqa: E501
+        Prefix to use when generating external database name  # noqa: E501
 
-        :param name: The name of this ExternalDatabaseTemplate.  # noqa: E501
+        :param database_name_prefix: The database_name_prefix of this ExternalDatabaseTemplate.  # noqa: E501
         :type: str
         """
-        if name is None:
-            raise ValueError("Invalid value for `name`, must not be `None`")  # noqa: E501
+        if database_name_prefix is None:
+            raise ValueError("Invalid value for `database_name_prefix`, must not be `None`")  # noqa: E501
 
-        self._name = name
+        self._database_name_prefix = database_name_prefix
 
     @property
     def username_prefix(self):

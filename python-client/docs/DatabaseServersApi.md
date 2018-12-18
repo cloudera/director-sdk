@@ -1,23 +1,25 @@
 # cloudera.director.DatabaseServersApi
 
-All URIs are relative to *https://localhost:7189*
+All URIs are relative to *https://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**create**](DatabaseServersApi.md#create) | **POST** /api/d6.0/environments/{environment}/databaseServers | Create a new external database server
-[**delete**](DatabaseServersApi.md#delete) | **DELETE** /api/d6.0/environments/{environment}/databaseServers/{externalDatabaseServer} | Delete an external database server by name
-[**get_database_server_usage**](DatabaseServersApi.md#get_database_server_usage) | **GET** /api/d6.0/environments/{environment}/databaseServers/{externalDatabaseServer}/usage | Get an external database server usage by name
-[**get_redacted**](DatabaseServersApi.md#get_redacted) | **GET** /api/d6.0/environments/{environment}/databaseServers/{externalDatabaseServer} | Get an external database server by name
-[**get_status**](DatabaseServersApi.md#get_status) | **GET** /api/d6.0/environments/{environment}/databaseServers/{externalDatabaseServer}/status | Get an external database server status by name
-[**get_template_redacted**](DatabaseServersApi.md#get_template_redacted) | **GET** /api/d6.0/environments/{environment}/databaseServers/{externalDatabaseServer}/template | Get an external database server template by name
-[**list**](DatabaseServersApi.md#list) | **GET** /api/d6.0/environments/{environment}/databaseServers | List all externalDatabaseServers
-[**update**](DatabaseServersApi.md#update) | **PUT** /api/d6.0/environments/{environment}/databaseServers/{externalDatabaseServer} | Update an existing external database server (unsupported)
+[**create**](DatabaseServersApi.md#create) | **POST** /api/d6.1/environments/{environment}/databaseServers | Create a new external database server
+[**delete**](DatabaseServersApi.md#delete) | **DELETE** /api/d6.1/environments/{environment}/databaseServers/{externalDatabaseServer} | Delete an external database server by name
+[**get_database_server_usage**](DatabaseServersApi.md#get_database_server_usage) | **GET** /api/d6.1/environments/{environment}/databaseServers/{externalDatabaseServer}/usage | Get an external database server usage by name
+[**get_redacted**](DatabaseServersApi.md#get_redacted) | **GET** /api/d6.1/environments/{environment}/databaseServers/{externalDatabaseServer} | Get an external database server by name
+[**get_status**](DatabaseServersApi.md#get_status) | **GET** /api/d6.1/environments/{environment}/databaseServers/{externalDatabaseServer}/status | Get an external database server status by name
+[**get_template_redacted**](DatabaseServersApi.md#get_template_redacted) | **GET** /api/d6.1/environments/{environment}/databaseServers/{externalDatabaseServer}/template | Get an external database server template by name
+[**list**](DatabaseServersApi.md#list) | **GET** /api/d6.1/environments/{environment}/databaseServers | List all externalDatabaseServers
+[**update**](DatabaseServersApi.md#update) | **PUT** /api/d6.1/environments/{environment}/databaseServers/{externalDatabaseServer} | Update an existing external database server (unsupported)
 
 
 # **create**
 > create(environment, external_database_server_template)
 
 Create a new external database server
+
+
 
 ### Example
 ```python
@@ -34,8 +36,8 @@ configuration.password = 'YOUR_PASSWORD'
 
 # create an instance of the API class
 api_instance = cloudera.director.DatabaseServersApi(cloudera.director.ApiClient(configuration))
-environment = 'environment_example' # str | environment
-external_database_server_template = cloudera.director.ExternalDatabaseServerTemplate() # ExternalDatabaseServerTemplate | externalDatabaseServerTemplate
+environment = 'environment_example' # str | 
+external_database_server_template = cloudera.director.ExternalDatabaseServerTemplate() # ExternalDatabaseServerTemplate | 
 
 try:
     # Create a new external database server
@@ -48,8 +50,8 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **environment** | **str**| environment | 
- **external_database_server_template** | [**ExternalDatabaseServerTemplate**](ExternalDatabaseServerTemplate.md)| externalDatabaseServerTemplate | 
+ **environment** | **str**|  | 
+ **external_database_server_template** | [**ExternalDatabaseServerTemplate**](ExternalDatabaseServerTemplate.md)|  | 
 
 ### Return type
 
@@ -61,7 +63,7 @@ void (empty response body)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -70,6 +72,8 @@ void (empty response body)
 > delete(environment, external_database_server)
 
 Delete an external database server by name
+
+
 
 ### Example
 ```python
@@ -86,8 +90,8 @@ configuration.password = 'YOUR_PASSWORD'
 
 # create an instance of the API class
 api_instance = cloudera.director.DatabaseServersApi(cloudera.director.ApiClient(configuration))
-environment = 'environment_example' # str | environment
-external_database_server = 'external_database_server_example' # str | externalDatabaseServer
+environment = 'environment_example' # str | 
+external_database_server = 'external_database_server_example' # str | 
 
 try:
     # Delete an external database server by name
@@ -100,8 +104,8 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **environment** | **str**| environment | 
- **external_database_server** | **str**| externalDatabaseServer | 
+ **environment** | **str**|  | 
+ **external_database_server** | **str**|  | 
 
 ### Return type
 
@@ -123,6 +127,8 @@ void (empty response body)
 
 Get an external database server usage by name
 
+
+
 ### Example
 ```python
 from __future__ import print_function
@@ -138,8 +144,8 @@ configuration.password = 'YOUR_PASSWORD'
 
 # create an instance of the API class
 api_instance = cloudera.director.DatabaseServersApi(cloudera.director.ApiClient(configuration))
-environment = 'environment_example' # str | environment
-external_database_server = 'external_database_server_example' # str | externalDatabaseServer
+environment = 'environment_example' # str | 
+external_database_server = 'external_database_server_example' # str | 
 
 try:
     # Get an external database server usage by name
@@ -153,8 +159,8 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **environment** | **str**| environment | 
- **external_database_server** | **str**| externalDatabaseServer | 
+ **environment** | **str**|  | 
+ **external_database_server** | **str**|  | 
 
 ### Return type
 
@@ -176,6 +182,8 @@ Name | Type | Description  | Notes
 
 Get an external database server by name
 
+
+
 ### Example
 ```python
 from __future__ import print_function
@@ -191,8 +199,8 @@ configuration.password = 'YOUR_PASSWORD'
 
 # create an instance of the API class
 api_instance = cloudera.director.DatabaseServersApi(cloudera.director.ApiClient(configuration))
-environment = 'environment_example' # str | environment
-external_database_server = 'external_database_server_example' # str | externalDatabaseServer
+environment = 'environment_example' # str | 
+external_database_server = 'external_database_server_example' # str | 
 
 try:
     # Get an external database server by name
@@ -206,8 +214,8 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **environment** | **str**| environment | 
- **external_database_server** | **str**| externalDatabaseServer | 
+ **environment** | **str**|  | 
+ **external_database_server** | **str**|  | 
 
 ### Return type
 
@@ -229,6 +237,8 @@ Name | Type | Description  | Notes
 
 Get an external database server status by name
 
+
+
 ### Example
 ```python
 from __future__ import print_function
@@ -244,8 +254,8 @@ configuration.password = 'YOUR_PASSWORD'
 
 # create an instance of the API class
 api_instance = cloudera.director.DatabaseServersApi(cloudera.director.ApiClient(configuration))
-environment = 'environment_example' # str | environment
-external_database_server = 'external_database_server_example' # str | externalDatabaseServer
+environment = 'environment_example' # str | 
+external_database_server = 'external_database_server_example' # str | 
 
 try:
     # Get an external database server status by name
@@ -259,8 +269,8 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **environment** | **str**| environment | 
- **external_database_server** | **str**| externalDatabaseServer | 
+ **environment** | **str**|  | 
+ **external_database_server** | **str**|  | 
 
 ### Return type
 
@@ -282,6 +292,8 @@ Name | Type | Description  | Notes
 
 Get an external database server template by name
 
+
+
 ### Example
 ```python
 from __future__ import print_function
@@ -297,8 +309,8 @@ configuration.password = 'YOUR_PASSWORD'
 
 # create an instance of the API class
 api_instance = cloudera.director.DatabaseServersApi(cloudera.director.ApiClient(configuration))
-environment = 'environment_example' # str | environment
-external_database_server = 'external_database_server_example' # str | externalDatabaseServer
+environment = 'environment_example' # str | 
+external_database_server = 'external_database_server_example' # str | 
 
 try:
     # Get an external database server template by name
@@ -312,8 +324,8 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **environment** | **str**| environment | 
- **external_database_server** | **str**| externalDatabaseServer | 
+ **environment** | **str**|  | 
+ **external_database_server** | **str**|  | 
 
 ### Return type
 
@@ -335,6 +347,8 @@ Name | Type | Description  | Notes
 
 List all externalDatabaseServers
 
+
+
 ### Example
 ```python
 from __future__ import print_function
@@ -350,7 +364,7 @@ configuration.password = 'YOUR_PASSWORD'
 
 # create an instance of the API class
 api_instance = cloudera.director.DatabaseServersApi(cloudera.director.ApiClient(configuration))
-environment = 'environment_example' # str | environment
+environment = 'environment_example' # str | 
 
 try:
     # List all externalDatabaseServers
@@ -364,7 +378,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **environment** | **str**| environment | 
+ **environment** | **str**|  | 
 
 ### Return type
 
@@ -386,6 +400,8 @@ Name | Type | Description  | Notes
 
 Update an existing external database server (unsupported)
 
+
+
 ### Example
 ```python
 from __future__ import print_function
@@ -401,9 +417,9 @@ configuration.password = 'YOUR_PASSWORD'
 
 # create an instance of the API class
 api_instance = cloudera.director.DatabaseServersApi(cloudera.director.ApiClient(configuration))
-environment = 'environment_example' # str | environment
-external_database_server = 'external_database_server_example' # str | externalDatabaseServer
-updated_template = cloudera.director.ExternalDatabaseServerTemplate() # ExternalDatabaseServerTemplate | updatedTemplate
+environment = 'environment_example' # str | 
+external_database_server = 'external_database_server_example' # str | 
+updated_template = cloudera.director.ExternalDatabaseServerTemplate() # ExternalDatabaseServerTemplate | 
 
 try:
     # Update an existing external database server (unsupported)
@@ -416,9 +432,9 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **environment** | **str**| environment | 
- **external_database_server** | **str**| externalDatabaseServer | 
- **updated_template** | [**ExternalDatabaseServerTemplate**](ExternalDatabaseServerTemplate.md)| updatedTemplate | 
+ **environment** | **str**|  | 
+ **external_database_server** | **str**|  | 
+ **updated_template** | [**ExternalDatabaseServerTemplate**](ExternalDatabaseServerTemplate.md)|  | 
 
 ### Return type
 
@@ -430,7 +446,7 @@ void (empty response body)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

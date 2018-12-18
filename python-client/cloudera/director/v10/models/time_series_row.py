@@ -41,7 +41,7 @@ class TimeSeriesRow(object):
     swagger_types = {
         'entity_name': 'str',
         'metric_name': 'str',
-        'timestamp': 'int',
+        'timestamp': 'datetime',
         'value': 'float'
     }
 
@@ -123,7 +123,7 @@ class TimeSeriesRow(object):
         Timestamp  # noqa: E501
 
         :return: The timestamp of this TimeSeriesRow.  # noqa: E501
-        :rtype: int
+        :rtype: datetime
         """
         return self._timestamp
 
@@ -134,7 +134,7 @@ class TimeSeriesRow(object):
         Timestamp  # noqa: E501
 
         :param timestamp: The timestamp of this TimeSeriesRow.  # noqa: E501
-        :type: int
+        :type: datetime
         """
         if timestamp is None:
             raise ValueError("Invalid value for `timestamp`, must not be `None`")  # noqa: E501

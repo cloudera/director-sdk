@@ -38,20 +38,26 @@ import java.util.Map;
 @ApiModel(description = "Requirements for the construction of an instance")
 
 public class InstanceTemplate {
-  @SerializedName("bootstrapScripts")
-  private List<String> bootstrapScripts = null;
-  @SerializedName("config")
-  private Map<String, String> config = null;
-  @SerializedName("image")
-  private String image = null;
   @SerializedName("name")
   private String name = null;
-  @SerializedName("normalizationConfig")
-  private NormalizationConfiguration normalizationConfig = null;
-  @SerializedName("normalizeInstance")
-  private Boolean normalizeInstance = null;
+  @SerializedName("type")
+  private String type = null;
+  @SerializedName("image")
+  private String image = null;
   @SerializedName("rackId")
   private String rackId = null;
+  @SerializedName("config")
+  private Map<String, String> config = null;
+  @SerializedName("tags")
+  private Map<String, String> tags = null;
+  @SerializedName("normalizeInstance")
+  private Boolean normalizeInstance = null;
+  @SerializedName("normalizationConfig")
+  private NormalizationConfiguration normalizationConfig = null;
+  @SerializedName("sshUsername")
+  private String sshUsername = null;
+  @SerializedName("bootstrapScripts")
+  private List<String> bootstrapScripts = null;
   /**
    * SSH host key retrieval type
    */
@@ -105,32 +111,23 @@ public class InstanceTemplate {
 
   @SerializedName("sshHostKeyRetrievalType")
   private SshHostKeyRetrievalTypeEnum sshHostKeyRetrievalType = null;
-  @SerializedName("sshUsername")
-  private String sshUsername = null;
-  @SerializedName("tags")
-  private Map<String, String> tags = null;
-  @SerializedName("type")
-  private String type = null;
-  @SerializedName("bootstrapScript")
-  private String bootstrapScript = null;
 
   public InstanceTemplate() {
     // Do nothing
   }
 
   private InstanceTemplate(InstanceTemplateBuilder builder) {
-      this.bootstrapScripts = builder.bootstrapScripts;
-      this.config = builder.config;
-      this.image = builder.image;
       this.name = builder.name;
-      this.normalizationConfig = builder.normalizationConfig;
-      this.normalizeInstance = builder.normalizeInstance;
-      this.rackId = builder.rackId;
-      this.sshHostKeyRetrievalType = builder.sshHostKeyRetrievalType;
-      this.sshUsername = builder.sshUsername;
-      this.tags = builder.tags;
       this.type = builder.type;
-      this.bootstrapScript = builder.bootstrapScript;
+      this.image = builder.image;
+      this.rackId = builder.rackId;
+      this.config = builder.config;
+      this.tags = builder.tags;
+      this.normalizeInstance = builder.normalizeInstance;
+      this.normalizationConfig = builder.normalizationConfig;
+      this.sshUsername = builder.sshUsername;
+      this.bootstrapScripts = builder.bootstrapScripts;
+      this.sshHostKeyRetrievalType = builder.sshHostKeyRetrievalType;
     }
 
   public static InstanceTemplateBuilder builder() {
@@ -138,76 +135,21 @@ public class InstanceTemplate {
   }
 
   public static class InstanceTemplateBuilder {
-      private List<String> bootstrapScripts = new ArrayList<String>();
-      private Map<String, String> config = new HashMap<String, String>();
-      private String image = null;
       private String name = null;
-      private NormalizationConfiguration normalizationConfig = null;
-      private Boolean normalizeInstance = null;
-      private String rackId = null;
-      private SshHostKeyRetrievalTypeEnum sshHostKeyRetrievalType = null;
-      private String sshUsername = null;
-      private Map<String, String> tags = new HashMap<String, String>();
       private String type = null;
-      private String bootstrapScript = null;
+      private String image = null;
+      private String rackId = null;
+      private Map<String, String> config = new HashMap<String, String>();
+      private Map<String, String> tags = new HashMap<String, String>();
+      private Boolean normalizeInstance = null;
+      private NormalizationConfiguration normalizationConfig = null;
+      private String sshUsername = null;
+      private List<String> bootstrapScripts = new ArrayList<String>();
+      private SshHostKeyRetrievalTypeEnum sshHostKeyRetrievalType = null;
   
-
-    public InstanceTemplateBuilder bootstrapScripts(List<String> bootstrapScripts) {
-      this.bootstrapScripts = bootstrapScripts;
-      return this;
-    }
-
-
-    public InstanceTemplateBuilder config(Map<String, String> config) {
-      this.config = config;
-      return this;
-    }
-
-
-    public InstanceTemplateBuilder image(String image) {
-      this.image = image;
-      return this;
-    }
-
 
     public InstanceTemplateBuilder name(String name) {
       this.name = name;
-      return this;
-    }
-
-
-    public InstanceTemplateBuilder normalizationConfig(NormalizationConfiguration normalizationConfig) {
-      this.normalizationConfig = normalizationConfig;
-      return this;
-    }
-
-
-    public InstanceTemplateBuilder normalizeInstance(Boolean normalizeInstance) {
-      this.normalizeInstance = normalizeInstance;
-      return this;
-    }
-
-
-    public InstanceTemplateBuilder rackId(String rackId) {
-      this.rackId = rackId;
-      return this;
-    }
-
-
-    public InstanceTemplateBuilder sshHostKeyRetrievalType(SshHostKeyRetrievalTypeEnum sshHostKeyRetrievalType) {
-      this.sshHostKeyRetrievalType = sshHostKeyRetrievalType;
-      return this;
-    }
-
-
-    public InstanceTemplateBuilder sshUsername(String sshUsername) {
-      this.sshUsername = sshUsername;
-      return this;
-    }
-
-
-    public InstanceTemplateBuilder tags(Map<String, String> tags) {
-      this.tags = tags;
       return this;
     }
 
@@ -218,8 +160,56 @@ public class InstanceTemplate {
     }
 
 
-    public InstanceTemplateBuilder bootstrapScript(String bootstrapScript) {
-      this.bootstrapScript = bootstrapScript;
+    public InstanceTemplateBuilder image(String image) {
+      this.image = image;
+      return this;
+    }
+
+
+    public InstanceTemplateBuilder rackId(String rackId) {
+      this.rackId = rackId;
+      return this;
+    }
+
+
+    public InstanceTemplateBuilder config(Map<String, String> config) {
+      this.config = config;
+      return this;
+    }
+
+
+    public InstanceTemplateBuilder tags(Map<String, String> tags) {
+      this.tags = tags;
+      return this;
+    }
+
+
+    public InstanceTemplateBuilder normalizeInstance(Boolean normalizeInstance) {
+      this.normalizeInstance = normalizeInstance;
+      return this;
+    }
+
+
+    public InstanceTemplateBuilder normalizationConfig(NormalizationConfiguration normalizationConfig) {
+      this.normalizationConfig = normalizationConfig;
+      return this;
+    }
+
+
+    public InstanceTemplateBuilder sshUsername(String sshUsername) {
+      this.sshUsername = sshUsername;
+      return this;
+    }
+
+
+    public InstanceTemplateBuilder bootstrapScripts(List<String> bootstrapScripts) {
+      this.bootstrapScripts = bootstrapScripts;
+      return this;
+    }
+
+
+    public InstanceTemplateBuilder sshHostKeyRetrievalType(SshHostKeyRetrievalTypeEnum sshHostKeyRetrievalType) {
+      this.sshHostKeyRetrievalType = sshHostKeyRetrievalType;
       return this;
     }
 
@@ -231,45 +221,90 @@ public class InstanceTemplate {
 
   public InstanceTemplateBuilder toBuilder() {
     return builder()
-      .bootstrapScripts(bootstrapScripts)
-            .config(config)
-            .image(image)
-            .name(name)
-            .normalizationConfig(normalizationConfig)
-            .normalizeInstance(normalizeInstance)
-            .rackId(rackId)
-            .sshHostKeyRetrievalType(sshHostKeyRetrievalType)
-            .sshUsername(sshUsername)
-            .tags(tags)
+      .name(name)
             .type(type)
-            .bootstrapScript(bootstrapScript)
+            .image(image)
+            .rackId(rackId)
+            .config(config)
+            .tags(tags)
+            .normalizeInstance(normalizeInstance)
+            .normalizationConfig(normalizationConfig)
+            .sshUsername(sshUsername)
+            .bootstrapScripts(bootstrapScripts)
+            .sshHostKeyRetrievalType(sshHostKeyRetrievalType)
       ;
   }
 
-  public InstanceTemplate bootstrapScripts(List<String> bootstrapScripts) {
-    this.bootstrapScripts = bootstrapScripts;
-    return this;
-  }
-
-  public InstanceTemplate addBootstrapScriptsItem(String bootstrapScriptsItem) {
-    if (this.bootstrapScripts == null) {
-      this.bootstrapScripts = new ArrayList<String>();
-    }
-    this.bootstrapScripts.add(bootstrapScriptsItem);
+  public InstanceTemplate name(String name) {
+    this.name = name;
     return this;
   }
 
    /**
-   * List of instance bootstrap scripts
-   * @return bootstrapScripts
+   * Instance template name
+   * @return name
   **/
-  @ApiModelProperty(value = "List of instance bootstrap scripts")
-  public List<String> getBootstrapScripts() {
-    return bootstrapScripts;
+  @ApiModelProperty(required = true, value = "Instance template name")
+  public String getName() {
+    return name;
   }
 
-  public void setBootstrapScripts(List<String> bootstrapScripts) {
-    this.bootstrapScripts = bootstrapScripts;
+  public void setName(String name) {
+    this.name = name;
+  }
+
+  public InstanceTemplate type(String type) {
+    this.type = type;
+    return this;
+  }
+
+   /**
+   * Instance type
+   * @return type
+  **/
+  @ApiModelProperty(required = true, value = "Instance type")
+  public String getType() {
+    return type;
+  }
+
+  public void setType(String type) {
+    this.type = type;
+  }
+
+  public InstanceTemplate image(String image) {
+    this.image = image;
+    return this;
+  }
+
+   /**
+   * Operating system image
+   * @return image
+  **/
+  @ApiModelProperty(required = true, value = "Operating system image")
+  public String getImage() {
+    return image;
+  }
+
+  public void setImage(String image) {
+    this.image = image;
+  }
+
+  public InstanceTemplate rackId(String rackId) {
+    this.rackId = rackId;
+    return this;
+  }
+
+   /**
+   * Instance virtual rack ID
+   * @return rackId
+  **/
+  @ApiModelProperty(value = "Instance virtual rack ID")
+  public String getRackId() {
+    return rackId;
+  }
+
+  public void setRackId(String rackId) {
+    this.rackId = rackId;
   }
 
   public InstanceTemplate config(Map<String, String> config) {
@@ -298,132 +333,6 @@ public class InstanceTemplate {
     this.config = config;
   }
 
-  public InstanceTemplate image(String image) {
-    this.image = image;
-    return this;
-  }
-
-   /**
-   * Operating system image
-   * @return image
-  **/
-  @ApiModelProperty(required = true, value = "Operating system image")
-  public String getImage() {
-    return image;
-  }
-
-  public void setImage(String image) {
-    this.image = image;
-  }
-
-  public InstanceTemplate name(String name) {
-    this.name = name;
-    return this;
-  }
-
-   /**
-   * Instance template name
-   * @return name
-  **/
-  @ApiModelProperty(required = true, value = "Instance template name")
-  public String getName() {
-    return name;
-  }
-
-  public void setName(String name) {
-    this.name = name;
-  }
-
-  public InstanceTemplate normalizationConfig(NormalizationConfiguration normalizationConfig) {
-    this.normalizationConfig = normalizationConfig;
-    return this;
-  }
-
-   /**
-   * Normalization configuration
-   * @return normalizationConfig
-  **/
-  @ApiModelProperty(value = "Normalization configuration")
-  public NormalizationConfiguration getNormalizationConfig() {
-    return normalizationConfig;
-  }
-
-  public void setNormalizationConfig(NormalizationConfiguration normalizationConfig) {
-    this.normalizationConfig = normalizationConfig;
-  }
-
-  public InstanceTemplate normalizeInstance(Boolean normalizeInstance) {
-    this.normalizeInstance = normalizeInstance;
-    return this;
-  }
-
-   /**
-   * Flag indicating whether to normalize the instance
-   * @return normalizeInstance
-  **/
-  @ApiModelProperty(example = "false", value = "Flag indicating whether to normalize the instance")
-  public Boolean isNormalizeInstance() {
-    return normalizeInstance;
-  }
-
-  public void setNormalizeInstance(Boolean normalizeInstance) {
-    this.normalizeInstance = normalizeInstance;
-  }
-
-  public InstanceTemplate rackId(String rackId) {
-    this.rackId = rackId;
-    return this;
-  }
-
-   /**
-   * Instance virtual rack ID
-   * @return rackId
-  **/
-  @ApiModelProperty(value = "Instance virtual rack ID")
-  public String getRackId() {
-    return rackId;
-  }
-
-  public void setRackId(String rackId) {
-    this.rackId = rackId;
-  }
-
-  public InstanceTemplate sshHostKeyRetrievalType(SshHostKeyRetrievalTypeEnum sshHostKeyRetrievalType) {
-    this.sshHostKeyRetrievalType = sshHostKeyRetrievalType;
-    return this;
-  }
-
-   /**
-   * SSH host key retrieval type
-   * @return sshHostKeyRetrievalType
-  **/
-  @ApiModelProperty(value = "SSH host key retrieval type")
-  public SshHostKeyRetrievalTypeEnum getSshHostKeyRetrievalType() {
-    return sshHostKeyRetrievalType;
-  }
-
-  public void setSshHostKeyRetrievalType(SshHostKeyRetrievalTypeEnum sshHostKeyRetrievalType) {
-    this.sshHostKeyRetrievalType = sshHostKeyRetrievalType;
-  }
-
-  public InstanceTemplate sshUsername(String sshUsername) {
-    this.sshUsername = sshUsername;
-    return this;
-  }
-
-   /**
-   * Optional SSH username to override username specified in environment
-   * @return sshUsername
-  **/
-  @ApiModelProperty(value = "Optional SSH username to override username specified in environment")
-  public String getSshUsername() {
-    return sshUsername;
-  }
-
-  public void setSshUsername(String sshUsername) {
-    this.sshUsername = sshUsername;
-  }
-
   public InstanceTemplate tags(Map<String, String> tags) {
     this.tags = tags;
     return this;
@@ -450,40 +359,102 @@ public class InstanceTemplate {
     this.tags = tags;
   }
 
-  public InstanceTemplate type(String type) {
-    this.type = type;
+  public InstanceTemplate normalizeInstance(Boolean normalizeInstance) {
+    this.normalizeInstance = normalizeInstance;
     return this;
   }
 
    /**
-   * Instance type
-   * @return type
+   * Flag indicating whether to normalize the instance
+   * @return normalizeInstance
   **/
-  @ApiModelProperty(required = true, value = "Instance type")
-  public String getType() {
-    return type;
+  @ApiModelProperty(value = "Flag indicating whether to normalize the instance")
+  public Boolean isNormalizeInstance() {
+    return normalizeInstance;
   }
 
-  public void setType(String type) {
-    this.type = type;
+  public void setNormalizeInstance(Boolean normalizeInstance) {
+    this.normalizeInstance = normalizeInstance;
   }
 
-  public InstanceTemplate bootstrapScript(String bootstrapScript) {
-    this.bootstrapScript = bootstrapScript;
+  public InstanceTemplate normalizationConfig(NormalizationConfiguration normalizationConfig) {
+    this.normalizationConfig = normalizationConfig;
     return this;
   }
 
    /**
-   * Get bootstrapScript
-   * @return bootstrapScript
+   * Normalization configuration
+   * @return normalizationConfig
   **/
-  @ApiModelProperty(value = "")
-  public String getBootstrapScript() {
-    return bootstrapScript;
+  @ApiModelProperty(value = "Normalization configuration")
+  public NormalizationConfiguration getNormalizationConfig() {
+    return normalizationConfig;
   }
 
-  public void setBootstrapScript(String bootstrapScript) {
-    this.bootstrapScript = bootstrapScript;
+  public void setNormalizationConfig(NormalizationConfiguration normalizationConfig) {
+    this.normalizationConfig = normalizationConfig;
+  }
+
+  public InstanceTemplate sshUsername(String sshUsername) {
+    this.sshUsername = sshUsername;
+    return this;
+  }
+
+   /**
+   * Optional SSH username to override username specified in environment
+   * @return sshUsername
+  **/
+  @ApiModelProperty(value = "Optional SSH username to override username specified in environment")
+  public String getSshUsername() {
+    return sshUsername;
+  }
+
+  public void setSshUsername(String sshUsername) {
+    this.sshUsername = sshUsername;
+  }
+
+  public InstanceTemplate bootstrapScripts(List<String> bootstrapScripts) {
+    this.bootstrapScripts = bootstrapScripts;
+    return this;
+  }
+
+  public InstanceTemplate addBootstrapScriptsItem(String bootstrapScriptsItem) {
+    if (this.bootstrapScripts == null) {
+      this.bootstrapScripts = new ArrayList<String>();
+    }
+    this.bootstrapScripts.add(bootstrapScriptsItem);
+    return this;
+  }
+
+   /**
+   * List of instance bootstrap scripts
+   * @return bootstrapScripts
+  **/
+  @ApiModelProperty(value = "List of instance bootstrap scripts")
+  public List<String> getBootstrapScripts() {
+    return bootstrapScripts;
+  }
+
+  public void setBootstrapScripts(List<String> bootstrapScripts) {
+    this.bootstrapScripts = bootstrapScripts;
+  }
+
+  public InstanceTemplate sshHostKeyRetrievalType(SshHostKeyRetrievalTypeEnum sshHostKeyRetrievalType) {
+    this.sshHostKeyRetrievalType = sshHostKeyRetrievalType;
+    return this;
+  }
+
+   /**
+   * SSH host key retrieval type
+   * @return sshHostKeyRetrievalType
+  **/
+  @ApiModelProperty(value = "SSH host key retrieval type")
+  public SshHostKeyRetrievalTypeEnum getSshHostKeyRetrievalType() {
+    return sshHostKeyRetrievalType;
+  }
+
+  public void setSshHostKeyRetrievalType(SshHostKeyRetrievalTypeEnum sshHostKeyRetrievalType) {
+    this.sshHostKeyRetrievalType = sshHostKeyRetrievalType;
   }
 
 
@@ -496,23 +467,22 @@ public class InstanceTemplate {
       return false;
     }
     InstanceTemplate instanceTemplate = (InstanceTemplate) o;
-    return Objects.equals(this.bootstrapScripts, instanceTemplate.bootstrapScripts) &&
-        Objects.equals(this.config, instanceTemplate.config) &&
-        Objects.equals(this.image, instanceTemplate.image) &&
-        Objects.equals(this.name, instanceTemplate.name) &&
-        Objects.equals(this.normalizationConfig, instanceTemplate.normalizationConfig) &&
-        Objects.equals(this.normalizeInstance, instanceTemplate.normalizeInstance) &&
-        Objects.equals(this.rackId, instanceTemplate.rackId) &&
-        Objects.equals(this.sshHostKeyRetrievalType, instanceTemplate.sshHostKeyRetrievalType) &&
-        Objects.equals(this.sshUsername, instanceTemplate.sshUsername) &&
-        Objects.equals(this.tags, instanceTemplate.tags) &&
+    return Objects.equals(this.name, instanceTemplate.name) &&
         Objects.equals(this.type, instanceTemplate.type) &&
-        Objects.equals(this.bootstrapScript, instanceTemplate.bootstrapScript);
+        Objects.equals(this.image, instanceTemplate.image) &&
+        Objects.equals(this.rackId, instanceTemplate.rackId) &&
+        Objects.equals(this.config, instanceTemplate.config) &&
+        Objects.equals(this.tags, instanceTemplate.tags) &&
+        Objects.equals(this.normalizeInstance, instanceTemplate.normalizeInstance) &&
+        Objects.equals(this.normalizationConfig, instanceTemplate.normalizationConfig) &&
+        Objects.equals(this.sshUsername, instanceTemplate.sshUsername) &&
+        Objects.equals(this.bootstrapScripts, instanceTemplate.bootstrapScripts) &&
+        Objects.equals(this.sshHostKeyRetrievalType, instanceTemplate.sshHostKeyRetrievalType);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(bootstrapScripts, config, image, name, normalizationConfig, normalizeInstance, rackId, sshHostKeyRetrievalType, sshUsername, tags, type, bootstrapScript);
+    return Objects.hash(name, type, image, rackId, config, tags, normalizeInstance, normalizationConfig, sshUsername, bootstrapScripts, sshHostKeyRetrievalType);
   }
 
 
@@ -521,18 +491,17 @@ public class InstanceTemplate {
     StringBuilder sb = new StringBuilder();
     sb.append("class InstanceTemplate {\n");
     
-    sb.append("    bootstrapScripts: ").append(toIndentedString(bootstrapScripts)).append("\n");
-    sb.append("    config: ").append(toIndentedString(config)).append("\n");
-    sb.append("    image: ").append(toIndentedString(image)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
-    sb.append("    normalizationConfig: ").append(toIndentedString(normalizationConfig)).append("\n");
-    sb.append("    normalizeInstance: ").append(toIndentedString(normalizeInstance)).append("\n");
-    sb.append("    rackId: ").append(toIndentedString(rackId)).append("\n");
-    sb.append("    sshHostKeyRetrievalType: ").append(toIndentedString(sshHostKeyRetrievalType)).append("\n");
-    sb.append("    sshUsername: ").append(toIndentedString(sshUsername)).append("\n");
-    sb.append("    tags: ").append(toIndentedString(tags)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
-    sb.append("    bootstrapScript: ").append(toIndentedString(bootstrapScript)).append("\n");
+    sb.append("    image: ").append(toIndentedString(image)).append("\n");
+    sb.append("    rackId: ").append(toIndentedString(rackId)).append("\n");
+    sb.append("    config: ").append(toIndentedString(config)).append("\n");
+    sb.append("    tags: ").append(toIndentedString(tags)).append("\n");
+    sb.append("    normalizeInstance: ").append(toIndentedString(normalizeInstance)).append("\n");
+    sb.append("    normalizationConfig: ").append(toIndentedString(normalizationConfig)).append("\n");
+    sb.append("    sshUsername: ").append(toIndentedString(sshUsername)).append("\n");
+    sb.append("    bootstrapScripts: ").append(toIndentedString(bootstrapScripts)).append("\n");
+    sb.append("    sshHostKeyRetrievalType: ").append(toIndentedString(sshHostKeyRetrievalType)).append("\n");
     sb.append("}");
     return sb.toString();
   }

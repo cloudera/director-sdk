@@ -1,12 +1,12 @@
 # ImportClientConfigApi
 
-All URIs are relative to *https://localhost:7189*
+All URIs are relative to *https://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**convertSimple**](ImportClientConfigApi.md#convertSimple) | **POST** /api/d6.0/import/clientConfig/convertSimple | Convert Simple Configuration
-[**importClientConfig**](ImportClientConfigApi.md#importClientConfig) | **POST** /api/d6.0/import | Import Client Config
-[**validate**](ImportClientConfigApi.md#validate) | **POST** /api/d6.0/import/clientConfig/validate | Validate Client Config
+[**convertSimple**](ImportClientConfigApi.md#convertSimple) | **POST** /api/d6.1/import/clientConfig/convertSimple | Convert Simple Configuration
+[**importClientConfig**](ImportClientConfigApi.md#importClientConfig) | **POST** /api/d6.1/import | Import Client Config
+[**validate**](ImportClientConfigApi.md#validate) | **POST** /api/d6.1/import/clientConfig/validate | Validate Client Config
 
 
 <a name="convertSimple"></a>
@@ -14,6 +14,8 @@ Method | HTTP request | Description
 > String convertSimple(simpleClientConfig, includeOriginComments)
 
 Convert Simple Configuration
+
+
 
 ### Example
 ```java
@@ -32,8 +34,8 @@ basic.setUsername("YOUR USERNAME");
 basic.setPassword("YOUR PASSWORD");
 
 ImportClientConfigApi apiInstance = new ImportClientConfigApi();
-String simpleClientConfig = "simpleClientConfig_example"; // String | simpleClientConfig
-Boolean includeOriginComments = true; // Boolean | includeOriginComments
+String simpleClientConfig = "simpleClientConfig_example"; // String | 
+Boolean includeOriginComments = true; // Boolean | 
 try {
     String result = apiInstance.convertSimple(simpleClientConfig, includeOriginComments);
     System.out.println(result);
@@ -47,8 +49,8 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **simpleClientConfig** | **String**| simpleClientConfig |
- **includeOriginComments** | **Boolean**| includeOriginComments | [optional]
+ **simpleClientConfig** | **String**|  |
+ **includeOriginComments** | **Boolean**|  | [optional]
 
 ### Return type
 
@@ -69,6 +71,8 @@ Name | Type | Description  | Notes
 
 Import Client Config
 
+
+
 ### Example
 ```java
 // Import classes:
@@ -86,10 +90,10 @@ basic.setUsername("YOUR USERNAME");
 basic.setPassword("YOUR PASSWORD");
 
 ImportClientConfigApi apiInstance = new ImportClientConfigApi();
-String clientConfig = "clientConfig_example"; // String | clientConfig
-String clusterName = "clusterName_example"; // String | clusterName
-String deploymentName = "deploymentName_example"; // String | deploymentName
-String environmentName = "environmentName_example"; // String | environmentName
+String clientConfig = "clientConfig_example"; // String | 
+String clusterName = "clusterName_example"; // String | 
+String deploymentName = "deploymentName_example"; // String | 
+String environmentName = "environmentName_example"; // String | 
 try {
     ImportResult result = apiInstance.importClientConfig(clientConfig, clusterName, deploymentName, environmentName);
     System.out.println(result);
@@ -103,10 +107,10 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **clientConfig** | **String**| clientConfig |
- **clusterName** | **String**| clusterName | [optional]
- **deploymentName** | **String**| deploymentName | [optional]
- **environmentName** | **String**| environmentName | [optional]
+ **clientConfig** | **String**|  |
+ **clusterName** | **String**|  | [optional]
+ **deploymentName** | **String**|  | [optional]
+ **environmentName** | **String**|  | [optional]
 
 ### Return type
 
@@ -127,6 +131,8 @@ Name | Type | Description  | Notes
 
 Validate Client Config
 
+
+
 ### Example
 ```java
 // Import classes:
@@ -144,10 +150,10 @@ basic.setUsername("YOUR USERNAME");
 basic.setPassword("YOUR PASSWORD");
 
 ImportClientConfigApi apiInstance = new ImportClientConfigApi();
-String clientConfig = "clientConfig_example"; // String | clientConfig
-String clusterName = "clusterName_example"; // String | clusterName
-String deploymentName = "deploymentName_example"; // String | deploymentName
-String environmentName = "environmentName_example"; // String | environmentName
+String clientConfig = "clientConfig_example"; // String | 
+String clusterName = "clusterName_example"; // String | 
+String deploymentName = "deploymentName_example"; // String | 
+String environmentName = "environmentName_example"; // String | 
 try {
     ValidationResults result = apiInstance.validate(clientConfig, clusterName, deploymentName, environmentName);
     System.out.println(result);
@@ -161,10 +167,10 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **clientConfig** | **String**| clientConfig |
- **clusterName** | **String**| clusterName | [optional]
- **deploymentName** | **String**| deploymentName | [optional]
- **environmentName** | **String**| environmentName | [optional]
+ **clientConfig** | **String**|  |
+ **clusterName** | **String**|  | [optional]
+ **deploymentName** | **String**|  | [optional]
+ **environmentName** | **String**|  | [optional]
 
 ### Return type
 

@@ -39,49 +39,24 @@ class ConfigurationPropertyValue(object):
                             and the value is json key in definition.
     """
     swagger_types = {
-        'label': 'str',
-        'value': 'str'
+        'value': 'str',
+        'label': 'str'
     }
 
     attribute_map = {
-        'label': 'label',
-        'value': 'value'
+        'value': 'value',
+        'label': 'label'
     }
 
-    def __init__(self, label=None, value=None):  # noqa: E501
+    def __init__(self, value=None, label=None):  # noqa: E501
         """ConfigurationPropertyValue - a model defined in Swagger"""  # noqa: E501
 
-        self._label = None
         self._value = None
+        self._label = None
         self.discriminator = None
 
-        self.label = label
         self.value = value
-
-    @property
-    def label(self):
-        """Gets the label of this ConfigurationPropertyValue.  # noqa: E501
-
-        Label associated with value  # noqa: E501
-
-        :return: The label of this ConfigurationPropertyValue.  # noqa: E501
-        :rtype: str
-        """
-        return self._label
-
-    @label.setter
-    def label(self, label):
-        """Sets the label of this ConfigurationPropertyValue.
-
-        Label associated with value  # noqa: E501
-
-        :param label: The label of this ConfigurationPropertyValue.  # noqa: E501
-        :type: str
-        """
-        if label is None:
-            raise ValueError("Invalid value for `label`, must not be `None`")  # noqa: E501
-
-        self._label = label
+        self.label = label
 
     @property
     def value(self):
@@ -107,6 +82,31 @@ class ConfigurationPropertyValue(object):
             raise ValueError("Invalid value for `value`, must not be `None`")  # noqa: E501
 
         self._value = value
+
+    @property
+    def label(self):
+        """Gets the label of this ConfigurationPropertyValue.  # noqa: E501
+
+        Label associated with value  # noqa: E501
+
+        :return: The label of this ConfigurationPropertyValue.  # noqa: E501
+        :rtype: str
+        """
+        return self._label
+
+    @label.setter
+    def label(self, label):
+        """Sets the label of this ConfigurationPropertyValue.
+
+        Label associated with value  # noqa: E501
+
+        :param label: The label of this ConfigurationPropertyValue.  # noqa: E501
+        :type: str
+        """
+        if label is None:
+            raise ValueError("Invalid value for `label`, must not be `None`")  # noqa: E501
+
+        self._label = label
 
     def to_dict(self):
         """Returns the model properties as a dict"""

@@ -33,8 +33,6 @@ import java.io.IOException;
 @ApiModel(description = "The health of an entity")
 
 public class Health {
-  @SerializedName("lastReported")
-  private Long lastReported = null;
   /**
    * Health status value
    */
@@ -96,14 +94,16 @@ public class Health {
 
   @SerializedName("status")
   private StatusEnum status = null;
+  @SerializedName("lastReported")
+  private Long lastReported = null;
 
   public Health() {
     // Do nothing
   }
 
   private Health(HealthBuilder builder) {
-      this.lastReported = builder.lastReported;
       this.status = builder.status;
+      this.lastReported = builder.lastReported;
     }
 
   public static HealthBuilder builder() {
@@ -111,18 +111,18 @@ public class Health {
   }
 
   public static class HealthBuilder {
-      private Long lastReported = null;
       private StatusEnum status = null;
+      private Long lastReported = null;
   
 
-    public HealthBuilder lastReported(Long lastReported) {
-      this.lastReported = lastReported;
+    public HealthBuilder status(StatusEnum status) {
+      this.status = status;
       return this;
     }
 
 
-    public HealthBuilder status(StatusEnum status) {
-      this.status = status;
+    public HealthBuilder lastReported(Long lastReported) {
+      this.lastReported = lastReported;
       return this;
     }
 
@@ -134,27 +134,9 @@ public class Health {
 
   public HealthBuilder toBuilder() {
     return builder()
-      .lastReported(lastReported)
-            .status(status)
+      .status(status)
+            .lastReported(lastReported)
       ;
-  }
-
-  public Health lastReported(Long lastReported) {
-    this.lastReported = lastReported;
-    return this;
-  }
-
-   /**
-   * Time when health status was reported
-   * @return lastReported
-  **/
-  @ApiModelProperty(required = true, value = "Time when health status was reported")
-  public Long getLastReported() {
-    return lastReported;
-  }
-
-  public void setLastReported(Long lastReported) {
-    this.lastReported = lastReported;
   }
 
   public Health status(StatusEnum status) {
@@ -175,6 +157,24 @@ public class Health {
     this.status = status;
   }
 
+  public Health lastReported(Long lastReported) {
+    this.lastReported = lastReported;
+    return this;
+  }
+
+   /**
+   * Time when health status was reported
+   * @return lastReported
+  **/
+  @ApiModelProperty(required = true, value = "Time when health status was reported")
+  public Long getLastReported() {
+    return lastReported;
+  }
+
+  public void setLastReported(Long lastReported) {
+    this.lastReported = lastReported;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -185,13 +185,13 @@ public class Health {
       return false;
     }
     Health health = (Health) o;
-    return Objects.equals(this.lastReported, health.lastReported) &&
-        Objects.equals(this.status, health.status);
+    return Objects.equals(this.status, health.status) &&
+        Objects.equals(this.lastReported, health.lastReported);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(lastReported, status);
+    return Objects.hash(status, lastReported);
   }
 
 
@@ -200,8 +200,8 @@ public class Health {
     StringBuilder sb = new StringBuilder();
     sb.append("class Health {\n");
     
-    sb.append("    lastReported: ").append(toIndentedString(lastReported)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
+    sb.append("    lastReported: ").append(toIndentedString(lastReported)).append("\n");
     sb.append("}");
     return sb.toString();
   }

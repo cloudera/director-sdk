@@ -44,13 +44,14 @@ class UsersApi(object):
     def create(self, user, **kwargs):  # noqa: E501
         """Create a new user  # noqa: E501
 
+          # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
         >>> thread = api.create(user, async=True)
         >>> result = thread.get()
 
         :param async bool
-        :param User user: user (required)
+        :param User user: (required)
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
@@ -65,13 +66,14 @@ class UsersApi(object):
     def create_with_http_info(self, user, **kwargs):  # noqa: E501
         """Create a new user  # noqa: E501
 
+          # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
         >>> thread = api.create_with_http_info(user, async=True)
         >>> result = thread.get()
 
         :param async bool
-        :param User user: user (required)
+        :param User user: (required)
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
@@ -115,15 +117,11 @@ class UsersApi(object):
         header_params['Accept'] = self.api_client.select_header_accept(
             ['application/json'])  # noqa: E501
 
-        # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json'])  # noqa: E501
-
         # Authentication setting
         auth_settings = ['basic']  # noqa: E501
 
         return self.api_client.call_api(
-            '/api/d6.0/users', 'POST',
+            '/api/d6.1/users', 'POST',
             path_params,
             query_params,
             header_params,
@@ -142,6 +140,7 @@ class UsersApi(object):
     def current_redacted(self, **kwargs):  # noqa: E501
         """Get the current user  # noqa: E501
 
+          # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
         >>> thread = api.current_redacted(async=True)
@@ -162,6 +161,7 @@ class UsersApi(object):
     def current_redacted_with_http_info(self, **kwargs):  # noqa: E501
         """Get the current user  # noqa: E501
 
+          # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
         >>> thread = api.current_redacted_with_http_info(async=True)
@@ -209,7 +209,7 @@ class UsersApi(object):
         auth_settings = ['basic']  # noqa: E501
 
         return self.api_client.call_api(
-            '/api/d6.0/users/current', 'GET',
+            '/api/d6.1/users/current', 'GET',
             path_params,
             query_params,
             header_params,
@@ -228,13 +228,14 @@ class UsersApi(object):
     def delete(self, username, **kwargs):  # noqa: E501
         """Delete a user by username  # noqa: E501
 
+          # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
         >>> thread = api.delete(username, async=True)
         >>> result = thread.get()
 
         :param async bool
-        :param str username: username (required)
+        :param str username: (required)
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
@@ -249,13 +250,14 @@ class UsersApi(object):
     def delete_with_http_info(self, username, **kwargs):  # noqa: E501
         """Delete a user by username  # noqa: E501
 
+          # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
         >>> thread = api.delete_with_http_info(username, async=True)
         >>> result = thread.get()
 
         :param async bool
-        :param str username: username (required)
+        :param str username: (required)
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
@@ -281,6 +283,8 @@ class UsersApi(object):
                 params['username'] is None):
             raise ValueError("Missing the required parameter `username` when calling `delete`")  # noqa: E501
 
+        if 'username' in params and not re.search('.+', params['username']):  # noqa: E501
+            raise ValueError("Invalid value for parameter `username` when calling `delete`, must conform to the pattern `/.+/`")  # noqa: E501
         collection_formats = {}
 
         path_params = {}
@@ -303,7 +307,7 @@ class UsersApi(object):
         auth_settings = ['basic']  # noqa: E501
 
         return self.api_client.call_api(
-            '/api/d6.0/users/{username}', 'DELETE',
+            '/api/d6.1/users/{username}', 'DELETE',
             path_params,
             query_params,
             header_params,
@@ -322,13 +326,14 @@ class UsersApi(object):
     def get_redacted(self, username, **kwargs):  # noqa: E501
         """Get a user by username  # noqa: E501
 
+          # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
         >>> thread = api.get_redacted(username, async=True)
         >>> result = thread.get()
 
         :param async bool
-        :param str username: username (required)
+        :param str username: (required)
         :return: User
                  If the method is called asynchronously,
                  returns the request thread.
@@ -343,13 +348,14 @@ class UsersApi(object):
     def get_redacted_with_http_info(self, username, **kwargs):  # noqa: E501
         """Get a user by username  # noqa: E501
 
+          # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
         >>> thread = api.get_redacted_with_http_info(username, async=True)
         >>> result = thread.get()
 
         :param async bool
-        :param str username: username (required)
+        :param str username: (required)
         :return: User
                  If the method is called asynchronously,
                  returns the request thread.
@@ -375,6 +381,8 @@ class UsersApi(object):
                 params['username'] is None):
             raise ValueError("Missing the required parameter `username` when calling `get_redacted`")  # noqa: E501
 
+        if 'username' in params and not re.search('.+', params['username']):  # noqa: E501
+            raise ValueError("Invalid value for parameter `username` when calling `get_redacted`, must conform to the pattern `/.+/`")  # noqa: E501
         collection_formats = {}
 
         path_params = {}
@@ -397,7 +405,7 @@ class UsersApi(object):
         auth_settings = ['basic']  # noqa: E501
 
         return self.api_client.call_api(
-            '/api/d6.0/users/{username}', 'GET',
+            '/api/d6.1/users/{username}', 'GET',
             path_params,
             query_params,
             header_params,
@@ -416,6 +424,7 @@ class UsersApi(object):
     def get_user_management_status(self, **kwargs):  # noqa: E501
         """Gets user management status  # noqa: E501
 
+          # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
         >>> thread = api.get_user_management_status(async=True)
@@ -436,6 +445,7 @@ class UsersApi(object):
     def get_user_management_status_with_http_info(self, **kwargs):  # noqa: E501
         """Gets user management status  # noqa: E501
 
+          # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
         >>> thread = api.get_user_management_status_with_http_info(async=True)
@@ -483,7 +493,7 @@ class UsersApi(object):
         auth_settings = ['basic']  # noqa: E501
 
         return self.api_client.call_api(
-            '/api/d6.0/users/managementStatus', 'GET',
+            '/api/d6.1/users/managementStatus', 'GET',
             path_params,
             query_params,
             header_params,
@@ -502,6 +512,7 @@ class UsersApi(object):
     def list(self, **kwargs):  # noqa: E501
         """List all users  # noqa: E501
 
+          # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
         >>> thread = api.list(async=True)
@@ -522,6 +533,7 @@ class UsersApi(object):
     def list_with_http_info(self, **kwargs):  # noqa: E501
         """List all users  # noqa: E501
 
+          # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
         >>> thread = api.list_with_http_info(async=True)
@@ -569,7 +581,7 @@ class UsersApi(object):
         auth_settings = ['basic']  # noqa: E501
 
         return self.api_client.call_api(
-            '/api/d6.0/users', 'GET',
+            '/api/d6.1/users', 'GET',
             path_params,
             query_params,
             header_params,
@@ -588,14 +600,15 @@ class UsersApi(object):
     def update(self, username, user, **kwargs):  # noqa: E501
         """Update an existing user  # noqa: E501
 
+          # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
         >>> thread = api.update(username, user, async=True)
         >>> result = thread.get()
 
         :param async bool
-        :param str username: username (required)
-        :param User user: user (required)
+        :param str username: (required)
+        :param User user: (required)
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
@@ -610,14 +623,15 @@ class UsersApi(object):
     def update_with_http_info(self, username, user, **kwargs):  # noqa: E501
         """Update an existing user  # noqa: E501
 
+          # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
         >>> thread = api.update_with_http_info(username, user, async=True)
         >>> result = thread.get()
 
         :param async bool
-        :param str username: username (required)
-        :param User user: user (required)
+        :param str username: (required)
+        :param User user: (required)
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
@@ -647,6 +661,8 @@ class UsersApi(object):
                 params['user'] is None):
             raise ValueError("Missing the required parameter `user` when calling `update`")  # noqa: E501
 
+        if 'username' in params and not re.search('.+', params['username']):  # noqa: E501
+            raise ValueError("Invalid value for parameter `username` when calling `update`, must conform to the pattern `/.+/`")  # noqa: E501
         collection_formats = {}
 
         path_params = {}
@@ -667,15 +683,11 @@ class UsersApi(object):
         header_params['Accept'] = self.api_client.select_header_accept(
             ['application/json'])  # noqa: E501
 
-        # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json'])  # noqa: E501
-
         # Authentication setting
         auth_settings = ['basic']  # noqa: E501
 
         return self.api_client.call_api(
-            '/api/d6.0/users/{username}', 'PUT',
+            '/api/d6.1/users/{username}', 'PUT',
             path_params,
             query_params,
             header_params,
@@ -694,14 +706,15 @@ class UsersApi(object):
     def update_password(self, username, passwords, **kwargs):  # noqa: E501
         """Update the password of an existing user  # noqa: E501
 
+          # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
         >>> thread = api.update_password(username, passwords, async=True)
         >>> result = thread.get()
 
         :param async bool
-        :param str username: username (required)
-        :param PasswordChange passwords: passwords (required)
+        :param str username: (required)
+        :param PasswordChange passwords: (required)
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
@@ -716,14 +729,15 @@ class UsersApi(object):
     def update_password_with_http_info(self, username, passwords, **kwargs):  # noqa: E501
         """Update the password of an existing user  # noqa: E501
 
+          # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
         >>> thread = api.update_password_with_http_info(username, passwords, async=True)
         >>> result = thread.get()
 
         :param async bool
-        :param str username: username (required)
-        :param PasswordChange passwords: passwords (required)
+        :param str username: (required)
+        :param PasswordChange passwords: (required)
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
@@ -773,15 +787,11 @@ class UsersApi(object):
         header_params['Accept'] = self.api_client.select_header_accept(
             ['application/json'])  # noqa: E501
 
-        # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json'])  # noqa: E501
-
         # Authentication setting
         auth_settings = ['basic']  # noqa: E501
 
         return self.api_client.call_api(
-            '/api/d6.0/users/{username}/password', 'PUT',
+            '/api/d6.1/users/{username}/password', 'PUT',
             path_params,
             query_params,
             header_params,

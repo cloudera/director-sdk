@@ -1,15 +1,15 @@
 # EnvironmentsApi
 
-All URIs are relative to *https://localhost:7189*
+All URIs are relative to *https://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**create**](EnvironmentsApi.md#create) | **POST** /api/d6.0/environments | Create a new environment
-[**delete**](EnvironmentsApi.md#delete) | **DELETE** /api/d6.0/environments/{name} | Delete an environment by name
-[**getRedacted**](EnvironmentsApi.md#getRedacted) | **GET** /api/d6.0/environments/{name} | Get an environment by name
-[**list**](EnvironmentsApi.md#list) | **GET** /api/d6.0/environments | List all environments
-[**update**](EnvironmentsApi.md#update) | **PUT** /api/d6.0/environments/{name} | Update an existing environment
-[**updateProviderCredentials**](EnvironmentsApi.md#updateProviderCredentials) | **PUT** /api/d6.0/environments/{name}/provider/credentials | Update provider credentials for a specific environment
+[**create**](EnvironmentsApi.md#create) | **POST** /api/d6.1/environments | Create a new environment
+[**delete**](EnvironmentsApi.md#delete) | **DELETE** /api/d6.1/environments/{name} | Delete an environment by name
+[**getRedacted**](EnvironmentsApi.md#getRedacted) | **GET** /api/d6.1/environments/{name} | Get an environment by name
+[**list**](EnvironmentsApi.md#list) | **GET** /api/d6.1/environments | List all environments
+[**update**](EnvironmentsApi.md#update) | **PUT** /api/d6.1/environments/{name} | Update an existing environment
+[**updateProviderCredentials**](EnvironmentsApi.md#updateProviderCredentials) | **PUT** /api/d6.1/environments/{name}/provider/credentials | Update provider credentials for a specific environment
 
 
 <a name="create"></a>
@@ -17,6 +17,8 @@ Method | HTTP request | Description
 > create(environment)
 
 Create a new environment
+
+
 
 ### Example
 ```java
@@ -35,7 +37,7 @@ basic.setUsername("YOUR USERNAME");
 basic.setPassword("YOUR PASSWORD");
 
 EnvironmentsApi apiInstance = new EnvironmentsApi();
-Environment environment = new Environment(); // Environment | environment
+Environment environment = new Environment(); // Environment | 
 try {
     apiInstance.create(environment);
 } catch (ApiException e) {
@@ -48,7 +50,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **environment** | [**Environment**](Environment.md)| environment |
+ **environment** | [**Environment**](Environment.md)|  |
 
 ### Return type
 
@@ -60,7 +62,7 @@ null (empty response body)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 <a name="delete"></a>
@@ -68,6 +70,8 @@ null (empty response body)
 > delete(name)
 
 Delete an environment by name
+
+
 
 ### Example
 ```java
@@ -86,7 +90,7 @@ basic.setUsername("YOUR USERNAME");
 basic.setPassword("YOUR PASSWORD");
 
 EnvironmentsApi apiInstance = new EnvironmentsApi();
-String name = "name_example"; // String | name
+String name = "name_example"; // String | 
 try {
     apiInstance.delete(name);
 } catch (ApiException e) {
@@ -99,7 +103,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **name** | **String**| name |
+ **name** | **String**|  |
 
 ### Return type
 
@@ -120,6 +124,8 @@ null (empty response body)
 
 Get an environment by name
 
+
+
 ### Example
 ```java
 // Import classes:
@@ -137,7 +143,7 @@ basic.setUsername("YOUR USERNAME");
 basic.setPassword("YOUR PASSWORD");
 
 EnvironmentsApi apiInstance = new EnvironmentsApi();
-String name = "name_example"; // String | name
+String name = "name_example"; // String | 
 try {
     Environment result = apiInstance.getRedacted(name);
     System.out.println(result);
@@ -151,7 +157,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **name** | **String**| name |
+ **name** | **String**|  |
 
 ### Return type
 
@@ -171,6 +177,8 @@ Name | Type | Description  | Notes
 > List&lt;String&gt; list()
 
 List all environments
+
+
 
 ### Example
 ```java
@@ -220,6 +228,8 @@ This endpoint does not need any parameter.
 
 Update an existing environment
 
+
+
 ### Example
 ```java
 // Import classes:
@@ -237,8 +247,8 @@ basic.setUsername("YOUR USERNAME");
 basic.setPassword("YOUR PASSWORD");
 
 EnvironmentsApi apiInstance = new EnvironmentsApi();
-String name = "name_example"; // String | name
-Environment environment = new Environment(); // Environment | environment
+String name = "name_example"; // String | 
+Environment environment = new Environment(); // Environment | 
 try {
     apiInstance.update(name, environment);
 } catch (ApiException e) {
@@ -251,8 +261,8 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **name** | **String**| name |
- **environment** | [**Environment**](Environment.md)| environment |
+ **name** | **String**|  |
+ **environment** | [**Environment**](Environment.md)|  |
 
 ### Return type
 
@@ -264,7 +274,7 @@ null (empty response body)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 <a name="updateProviderCredentials"></a>
@@ -272,6 +282,8 @@ null (empty response body)
 > updateProviderCredentials(name, credentials)
 
 Update provider credentials for a specific environment
+
+
 
 ### Example
 ```java
@@ -290,8 +302,8 @@ basic.setUsername("YOUR USERNAME");
 basic.setPassword("YOUR PASSWORD");
 
 EnvironmentsApi apiInstance = new EnvironmentsApi();
-String name = "name_example"; // String | name
-Object credentials = null; // Object | credentials
+String name = "name_example"; // String | 
+Object credentials = null; // Object | 
 try {
     apiInstance.updateProviderCredentials(name, credentials);
 } catch (ApiException e) {
@@ -304,8 +316,8 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **name** | **String**| name |
- **credentials** | **Object**| credentials |
+ **name** | **String**|  |
+ **credentials** | **Object**|  |
 
 ### Return type
 
@@ -317,6 +329,6 @@ null (empty response body)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 

@@ -39,98 +39,75 @@ class ConfigurationProperty(object):
                             and the value is json key in definition.
     """
     swagger_types = {
-        'basic': 'bool',
         'config_key': 'str',
-        'default_value': 'str',
-        'description': 'str',
-        'list_separator': 'str',
         'name': 'str',
-        'placeholder': 'str',
-        'required': 'bool',
+        'description': 'str',
         'sensitive': 'bool',
+        'required': 'bool',
+        'basic': 'bool',
         'type': 'str',
-        'valid_values': 'list[ConfigurationPropertyValue]',
-        'widget': 'str'
+        'widget': 'str',
+        'default_value': 'str',
+        'list_separator': 'str',
+        'placeholder': 'str',
+        'valid_values': 'list[ConfigurationPropertyValue]'
     }
 
     attribute_map = {
-        'basic': 'basic',
         'config_key': 'configKey',
-        'default_value': 'defaultValue',
-        'description': 'description',
-        'list_separator': 'listSeparator',
         'name': 'name',
-        'placeholder': 'placeholder',
-        'required': 'required',
+        'description': 'description',
         'sensitive': 'sensitive',
+        'required': 'required',
+        'basic': 'basic',
         'type': 'type',
-        'valid_values': 'validValues',
-        'widget': 'widget'
+        'widget': 'widget',
+        'default_value': 'defaultValue',
+        'list_separator': 'listSeparator',
+        'placeholder': 'placeholder',
+        'valid_values': 'validValues'
     }
 
-    def __init__(self, basic=None, config_key=None, default_value=None, description=None, list_separator=None, name=None, placeholder=None, required=None, sensitive=None, type=None, valid_values=None, widget=None):  # noqa: E501
+    def __init__(self, config_key=None, name=None, description=None, sensitive=None, required=None, basic=None, type=None, widget=None, default_value=None, list_separator=None, placeholder=None, valid_values=None):  # noqa: E501
         """ConfigurationProperty - a model defined in Swagger"""  # noqa: E501
 
-        self._basic = None
         self._config_key = None
-        self._default_value = None
-        self._description = None
-        self._list_separator = None
         self._name = None
-        self._placeholder = None
-        self._required = None
+        self._description = None
         self._sensitive = None
+        self._required = None
+        self._basic = None
         self._type = None
-        self._valid_values = None
         self._widget = None
+        self._default_value = None
+        self._list_separator = None
+        self._placeholder = None
+        self._valid_values = None
         self.discriminator = None
 
-        if basic is not None:
-            self.basic = basic
         self.config_key = config_key
-        if default_value is not None:
-            self.default_value = default_value
-        if description is not None:
-            self.description = description
-        if list_separator is not None:
-            self.list_separator = list_separator
         if name is not None:
             self.name = name
-        if placeholder is not None:
-            self.placeholder = placeholder
-        if required is not None:
-            self.required = required
+        if description is not None:
+            self.description = description
         if sensitive is not None:
             self.sensitive = sensitive
+        if required is not None:
+            self.required = required
+        if basic is not None:
+            self.basic = basic
         if type is not None:
             self.type = type
-        if valid_values is not None:
-            self.valid_values = valid_values
         if widget is not None:
             self.widget = widget
-
-    @property
-    def basic(self):
-        """Gets the basic of this ConfigurationProperty.  # noqa: E501
-
-        Whether this property is basic  # noqa: E501
-
-        :return: The basic of this ConfigurationProperty.  # noqa: E501
-        :rtype: bool
-        """
-        return self._basic
-
-    @basic.setter
-    def basic(self, basic):
-        """Sets the basic of this ConfigurationProperty.
-
-        Whether this property is basic  # noqa: E501
-
-        :param basic: The basic of this ConfigurationProperty.  # noqa: E501
-        :type: bool
-        """
-
-        self._basic = basic
+        if default_value is not None:
+            self.default_value = default_value
+        if list_separator is not None:
+            self.list_separator = list_separator
+        if placeholder is not None:
+            self.placeholder = placeholder
+        if valid_values is not None:
+            self.valid_values = valid_values
 
     @property
     def config_key(self):
@@ -158,27 +135,27 @@ class ConfigurationProperty(object):
         self._config_key = config_key
 
     @property
-    def default_value(self):
-        """Gets the default_value of this ConfigurationProperty.  # noqa: E501
+    def name(self):
+        """Gets the name of this ConfigurationProperty.  # noqa: E501
 
-        Default value for this property  # noqa: E501
+        Configuration property name  # noqa: E501
 
-        :return: The default_value of this ConfigurationProperty.  # noqa: E501
+        :return: The name of this ConfigurationProperty.  # noqa: E501
         :rtype: str
         """
-        return self._default_value
+        return self._name
 
-    @default_value.setter
-    def default_value(self, default_value):
-        """Sets the default_value of this ConfigurationProperty.
+    @name.setter
+    def name(self, name):
+        """Sets the name of this ConfigurationProperty.
 
-        Default value for this property  # noqa: E501
+        Configuration property name  # noqa: E501
 
-        :param default_value: The default_value of this ConfigurationProperty.  # noqa: E501
+        :param name: The name of this ConfigurationProperty.  # noqa: E501
         :type: str
         """
 
-        self._default_value = default_value
+        self._name = name
 
     @property
     def description(self):
@@ -204,73 +181,27 @@ class ConfigurationProperty(object):
         self._description = description
 
     @property
-    def list_separator(self):
-        """Gets the list_separator of this ConfigurationProperty.  # noqa: E501
+    def sensitive(self):
+        """Gets the sensitive of this ConfigurationProperty.  # noqa: E501
 
-        Character to use to separate lists  # noqa: E501
+        Whether this property is sensitive  # noqa: E501
 
-        :return: The list_separator of this ConfigurationProperty.  # noqa: E501
-        :rtype: str
+        :return: The sensitive of this ConfigurationProperty.  # noqa: E501
+        :rtype: bool
         """
-        return self._list_separator
+        return self._sensitive
 
-    @list_separator.setter
-    def list_separator(self, list_separator):
-        """Sets the list_separator of this ConfigurationProperty.
+    @sensitive.setter
+    def sensitive(self, sensitive):
+        """Sets the sensitive of this ConfigurationProperty.
 
-        Character to use to separate lists  # noqa: E501
+        Whether this property is sensitive  # noqa: E501
 
-        :param list_separator: The list_separator of this ConfigurationProperty.  # noqa: E501
-        :type: str
-        """
-
-        self._list_separator = list_separator
-
-    @property
-    def name(self):
-        """Gets the name of this ConfigurationProperty.  # noqa: E501
-
-        Configuration property name  # noqa: E501
-
-        :return: The name of this ConfigurationProperty.  # noqa: E501
-        :rtype: str
-        """
-        return self._name
-
-    @name.setter
-    def name(self, name):
-        """Sets the name of this ConfigurationProperty.
-
-        Configuration property name  # noqa: E501
-
-        :param name: The name of this ConfigurationProperty.  # noqa: E501
-        :type: str
+        :param sensitive: The sensitive of this ConfigurationProperty.  # noqa: E501
+        :type: bool
         """
 
-        self._name = name
-
-    @property
-    def placeholder(self):
-        """Gets the placeholder of this ConfigurationProperty.  # noqa: E501
-
-        Placeholder value to use if the value is unset  # noqa: E501
-
-        :return: The placeholder of this ConfigurationProperty.  # noqa: E501
-        :rtype: str
-        """
-        return self._placeholder
-
-    @placeholder.setter
-    def placeholder(self, placeholder):
-        """Sets the placeholder of this ConfigurationProperty.
-
-        Placeholder value to use if the value is unset  # noqa: E501
-
-        :param placeholder: The placeholder of this ConfigurationProperty.  # noqa: E501
-        :type: str
-        """
-
-        self._placeholder = placeholder
+        self._sensitive = sensitive
 
     @property
     def required(self):
@@ -296,27 +227,27 @@ class ConfigurationProperty(object):
         self._required = required
 
     @property
-    def sensitive(self):
-        """Gets the sensitive of this ConfigurationProperty.  # noqa: E501
+    def basic(self):
+        """Gets the basic of this ConfigurationProperty.  # noqa: E501
 
-        Whether this property is sensitive  # noqa: E501
+        Whether this property is basic  # noqa: E501
 
-        :return: The sensitive of this ConfigurationProperty.  # noqa: E501
+        :return: The basic of this ConfigurationProperty.  # noqa: E501
         :rtype: bool
         """
-        return self._sensitive
+        return self._basic
 
-    @sensitive.setter
-    def sensitive(self, sensitive):
-        """Sets the sensitive of this ConfigurationProperty.
+    @basic.setter
+    def basic(self, basic):
+        """Sets the basic of this ConfigurationProperty.
 
-        Whether this property is sensitive  # noqa: E501
+        Whether this property is basic  # noqa: E501
 
-        :param sensitive: The sensitive of this ConfigurationProperty.  # noqa: E501
+        :param basic: The basic of this ConfigurationProperty.  # noqa: E501
         :type: bool
         """
 
-        self._sensitive = sensitive
+        self._basic = basic
 
     @property
     def type(self):
@@ -348,29 +279,6 @@ class ConfigurationProperty(object):
         self._type = type
 
     @property
-    def valid_values(self):
-        """Gets the valid_values of this ConfigurationProperty.  # noqa: E501
-
-        List of all valid values for this property  # noqa: E501
-
-        :return: The valid_values of this ConfigurationProperty.  # noqa: E501
-        :rtype: list[ConfigurationPropertyValue]
-        """
-        return self._valid_values
-
-    @valid_values.setter
-    def valid_values(self, valid_values):
-        """Sets the valid_values of this ConfigurationProperty.
-
-        List of all valid values for this property  # noqa: E501
-
-        :param valid_values: The valid_values of this ConfigurationProperty.  # noqa: E501
-        :type: list[ConfigurationPropertyValue]
-        """
-
-        self._valid_values = valid_values
-
-    @property
     def widget(self):
         """Gets the widget of this ConfigurationProperty.  # noqa: E501
 
@@ -398,6 +306,98 @@ class ConfigurationProperty(object):
             )
 
         self._widget = widget
+
+    @property
+    def default_value(self):
+        """Gets the default_value of this ConfigurationProperty.  # noqa: E501
+
+        Default value for this property  # noqa: E501
+
+        :return: The default_value of this ConfigurationProperty.  # noqa: E501
+        :rtype: str
+        """
+        return self._default_value
+
+    @default_value.setter
+    def default_value(self, default_value):
+        """Sets the default_value of this ConfigurationProperty.
+
+        Default value for this property  # noqa: E501
+
+        :param default_value: The default_value of this ConfigurationProperty.  # noqa: E501
+        :type: str
+        """
+
+        self._default_value = default_value
+
+    @property
+    def list_separator(self):
+        """Gets the list_separator of this ConfigurationProperty.  # noqa: E501
+
+        Character to use to separate lists  # noqa: E501
+
+        :return: The list_separator of this ConfigurationProperty.  # noqa: E501
+        :rtype: str
+        """
+        return self._list_separator
+
+    @list_separator.setter
+    def list_separator(self, list_separator):
+        """Sets the list_separator of this ConfigurationProperty.
+
+        Character to use to separate lists  # noqa: E501
+
+        :param list_separator: The list_separator of this ConfigurationProperty.  # noqa: E501
+        :type: str
+        """
+
+        self._list_separator = list_separator
+
+    @property
+    def placeholder(self):
+        """Gets the placeholder of this ConfigurationProperty.  # noqa: E501
+
+        Placeholder value to use if the value is unset  # noqa: E501
+
+        :return: The placeholder of this ConfigurationProperty.  # noqa: E501
+        :rtype: str
+        """
+        return self._placeholder
+
+    @placeholder.setter
+    def placeholder(self, placeholder):
+        """Sets the placeholder of this ConfigurationProperty.
+
+        Placeholder value to use if the value is unset  # noqa: E501
+
+        :param placeholder: The placeholder of this ConfigurationProperty.  # noqa: E501
+        :type: str
+        """
+
+        self._placeholder = placeholder
+
+    @property
+    def valid_values(self):
+        """Gets the valid_values of this ConfigurationProperty.  # noqa: E501
+
+        List of all valid values for this property  # noqa: E501
+
+        :return: The valid_values of this ConfigurationProperty.  # noqa: E501
+        :rtype: list[ConfigurationPropertyValue]
+        """
+        return self._valid_values
+
+    @valid_values.setter
+    def valid_values(self, valid_values):
+        """Sets the valid_values of this ConfigurationProperty.
+
+        List of all valid values for this property  # noqa: E501
+
+        :param valid_values: The valid_values of this ConfigurationProperty.  # noqa: E501
+        :type: list[ConfigurationPropertyValue]
+        """
+
+        self._valid_values = valid_values
 
     def to_dict(self):
         """Returns the model properties as a dict"""

@@ -79,7 +79,7 @@ public class VersionsApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "*/*"
+            
         };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
@@ -102,7 +102,7 @@ public class VersionsApi {
             });
         }
 
-        String[] localVarAuthNames = new String[] { "basic" };
+        String[] localVarAuthNames = new String[] {  };
         return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
 
@@ -116,7 +116,7 @@ public class VersionsApi {
     }
 
     /**
-     * getLatestVersion
+     * 
      * 
      * @return String
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -127,7 +127,7 @@ public class VersionsApi {
     }
 
     /**
-     * getLatestVersion
+     * 
      * 
      * @return ApiResponse&lt;String&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -139,7 +139,7 @@ public class VersionsApi {
     }
 
     /**
-     * getLatestVersion (asynchronously)
+     *  (asynchronously)
      * 
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
@@ -192,7 +192,7 @@ public class VersionsApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "*/*"
+            
         };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
@@ -215,7 +215,7 @@ public class VersionsApi {
             });
         }
 
-        String[] localVarAuthNames = new String[] { "basic" };
+        String[] localVarAuthNames = new String[] {  };
         return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
 
@@ -229,7 +229,7 @@ public class VersionsApi {
     }
 
     /**
-     * getVersions
+     * 
      * 
      * @return Version
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -240,7 +240,7 @@ public class VersionsApi {
     }
 
     /**
-     * getVersions
+     * 
      * 
      * @return ApiResponse&lt;Version&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -252,7 +252,7 @@ public class VersionsApi {
     }
 
     /**
-     * getVersions (asynchronously)
+     *  (asynchronously)
      * 
      * @param callback The callback to be executed when the API call finishes
      * @return The request call

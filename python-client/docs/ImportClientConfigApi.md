@@ -1,18 +1,20 @@
 # cloudera.director.ImportClientConfigApi
 
-All URIs are relative to *https://localhost:7189*
+All URIs are relative to *https://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**convert_simple**](ImportClientConfigApi.md#convert_simple) | **POST** /api/d6.0/import/clientConfig/convertSimple | Convert Simple Configuration
-[**import_client_config**](ImportClientConfigApi.md#import_client_config) | **POST** /api/d6.0/import | Import Client Config
-[**validate**](ImportClientConfigApi.md#validate) | **POST** /api/d6.0/import/clientConfig/validate | Validate Client Config
+[**convert_simple**](ImportClientConfigApi.md#convert_simple) | **POST** /api/d6.1/import/clientConfig/convertSimple | Convert Simple Configuration
+[**import_client_config**](ImportClientConfigApi.md#import_client_config) | **POST** /api/d6.1/import | Import Client Config
+[**validate**](ImportClientConfigApi.md#validate) | **POST** /api/d6.1/import/clientConfig/validate | Validate Client Config
 
 
 # **convert_simple**
 > str convert_simple(simple_client_config, include_origin_comments=include_origin_comments)
 
 Convert Simple Configuration
+
+
 
 ### Example
 ```python
@@ -29,8 +31,8 @@ configuration.password = 'YOUR_PASSWORD'
 
 # create an instance of the API class
 api_instance = cloudera.director.ImportClientConfigApi(cloudera.director.ApiClient(configuration))
-simple_client_config = 'simple_client_config_example' # str | simpleClientConfig
-include_origin_comments = true # bool | includeOriginComments (optional)
+simple_client_config = 'simple_client_config_example' # str | 
+include_origin_comments = true # bool |  (optional)
 
 try:
     # Convert Simple Configuration
@@ -44,8 +46,8 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **simple_client_config** | **str**| simpleClientConfig | 
- **include_origin_comments** | **bool**| includeOriginComments | [optional] 
+ **simple_client_config** | **str**|  | 
+ **include_origin_comments** | **bool**|  | [optional] 
 
 ### Return type
 
@@ -67,6 +69,8 @@ Name | Type | Description  | Notes
 
 Import Client Config
 
+
+
 ### Example
 ```python
 from __future__ import print_function
@@ -82,10 +86,10 @@ configuration.password = 'YOUR_PASSWORD'
 
 # create an instance of the API class
 api_instance = cloudera.director.ImportClientConfigApi(cloudera.director.ApiClient(configuration))
-client_config = 'client_config_example' # str | clientConfig
-cluster_name = 'cluster_name_example' # str | clusterName (optional)
-deployment_name = 'deployment_name_example' # str | deploymentName (optional)
-environment_name = 'environment_name_example' # str | environmentName (optional)
+client_config = 'client_config_example' # str | 
+cluster_name = 'cluster_name_example' # str |  (optional)
+deployment_name = 'deployment_name_example' # str |  (optional)
+environment_name = 'environment_name_example' # str |  (optional)
 
 try:
     # Import Client Config
@@ -99,10 +103,10 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **client_config** | **str**| clientConfig | 
- **cluster_name** | **str**| clusterName | [optional] 
- **deployment_name** | **str**| deploymentName | [optional] 
- **environment_name** | **str**| environmentName | [optional] 
+ **client_config** | **str**|  | 
+ **cluster_name** | **str**|  | [optional] 
+ **deployment_name** | **str**|  | [optional] 
+ **environment_name** | **str**|  | [optional] 
 
 ### Return type
 
@@ -124,6 +128,8 @@ Name | Type | Description  | Notes
 
 Validate Client Config
 
+
+
 ### Example
 ```python
 from __future__ import print_function
@@ -139,10 +145,10 @@ configuration.password = 'YOUR_PASSWORD'
 
 # create an instance of the API class
 api_instance = cloudera.director.ImportClientConfigApi(cloudera.director.ApiClient(configuration))
-client_config = 'client_config_example' # str | clientConfig
-cluster_name = 'cluster_name_example' # str | clusterName (optional)
-deployment_name = 'deployment_name_example' # str | deploymentName (optional)
-environment_name = 'environment_name_example' # str | environmentName (optional)
+client_config = 'client_config_example' # str | 
+cluster_name = 'cluster_name_example' # str |  (optional)
+deployment_name = 'deployment_name_example' # str |  (optional)
+environment_name = 'environment_name_example' # str |  (optional)
 
 try:
     # Validate Client Config
@@ -156,10 +162,10 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **client_config** | **str**| clientConfig | 
- **cluster_name** | **str**| clusterName | [optional] 
- **deployment_name** | **str**| deploymentName | [optional] 
- **environment_name** | **str**| environmentName | [optional] 
+ **client_config** | **str**|  | 
+ **cluster_name** | **str**|  | [optional] 
+ **deployment_name** | **str**|  | [optional] 
+ **environment_name** | **str**|  | [optional] 
 
 ### Return type
 

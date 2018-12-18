@@ -39,57 +39,107 @@ class TimeSeriesAggregateStatistics(object):
                             and the value is json key in definition.
     """
     swagger_types = {
+        'sample_time': 'int',
+        'sample_value': 'float',
         'count': 'int',
-        'cross_entity_metadata': 'TimeSeriesCrossEntityMetadata',
+        'min': 'float',
+        'min_time': 'int',
         'max': 'float',
         'max_time': 'int',
         'mean': 'float',
-        'min': 'float',
-        'min_time': 'int',
-        'sample_time': 'int',
-        'sample_value': 'float',
-        'std_dev': 'float'
+        'std_dev': 'float',
+        'cross_entity_metadata': 'TimeSeriesCrossEntityMetadata'
     }
 
     attribute_map = {
+        'sample_time': 'sampleTime',
+        'sample_value': 'sampleValue',
         'count': 'count',
-        'cross_entity_metadata': 'crossEntityMetadata',
+        'min': 'min',
+        'min_time': 'minTime',
         'max': 'max',
         'max_time': 'maxTime',
         'mean': 'mean',
-        'min': 'min',
-        'min_time': 'minTime',
-        'sample_time': 'sampleTime',
-        'sample_value': 'sampleValue',
-        'std_dev': 'stdDev'
+        'std_dev': 'stdDev',
+        'cross_entity_metadata': 'crossEntityMetadata'
     }
 
-    def __init__(self, count=None, cross_entity_metadata=None, max=None, max_time=None, mean=None, min=None, min_time=None, sample_time=None, sample_value=None, std_dev=None):  # noqa: E501
+    def __init__(self, sample_time=None, sample_value=None, count=None, min=None, min_time=None, max=None, max_time=None, mean=None, std_dev=None, cross_entity_metadata=None):  # noqa: E501
         """TimeSeriesAggregateStatistics - a model defined in Swagger"""  # noqa: E501
 
+        self._sample_time = None
+        self._sample_value = None
         self._count = None
-        self._cross_entity_metadata = None
+        self._min = None
+        self._min_time = None
         self._max = None
         self._max_time = None
         self._mean = None
-        self._min = None
-        self._min_time = None
-        self._sample_time = None
-        self._sample_value = None
         self._std_dev = None
+        self._cross_entity_metadata = None
         self.discriminator = None
 
+        self.sample_time = sample_time
+        self.sample_value = sample_value
         self.count = count
-        if cross_entity_metadata is not None:
-            self.cross_entity_metadata = cross_entity_metadata
+        self.min = min
+        self.min_time = min_time
         self.max = max
         self.max_time = max_time
         self.mean = mean
-        self.min = min
-        self.min_time = min_time
-        self.sample_time = sample_time
-        self.sample_value = sample_value
         self.std_dev = std_dev
+        if cross_entity_metadata is not None:
+            self.cross_entity_metadata = cross_entity_metadata
+
+    @property
+    def sample_time(self):
+        """Gets the sample_time of this TimeSeriesAggregateStatistics.  # noqa: E501
+
+        Sample time  # noqa: E501
+
+        :return: The sample_time of this TimeSeriesAggregateStatistics.  # noqa: E501
+        :rtype: int
+        """
+        return self._sample_time
+
+    @sample_time.setter
+    def sample_time(self, sample_time):
+        """Sets the sample_time of this TimeSeriesAggregateStatistics.
+
+        Sample time  # noqa: E501
+
+        :param sample_time: The sample_time of this TimeSeriesAggregateStatistics.  # noqa: E501
+        :type: int
+        """
+        if sample_time is None:
+            raise ValueError("Invalid value for `sample_time`, must not be `None`")  # noqa: E501
+
+        self._sample_time = sample_time
+
+    @property
+    def sample_value(self):
+        """Gets the sample_value of this TimeSeriesAggregateStatistics.  # noqa: E501
+
+        Sample value  # noqa: E501
+
+        :return: The sample_value of this TimeSeriesAggregateStatistics.  # noqa: E501
+        :rtype: float
+        """
+        return self._sample_value
+
+    @sample_value.setter
+    def sample_value(self, sample_value):
+        """Sets the sample_value of this TimeSeriesAggregateStatistics.
+
+        Sample value  # noqa: E501
+
+        :param sample_value: The sample_value of this TimeSeriesAggregateStatistics.  # noqa: E501
+        :type: float
+        """
+        if sample_value is None:
+            raise ValueError("Invalid value for `sample_value`, must not be `None`")  # noqa: E501
+
+        self._sample_value = sample_value
 
     @property
     def count(self):
@@ -117,27 +167,54 @@ class TimeSeriesAggregateStatistics(object):
         self._count = count
 
     @property
-    def cross_entity_metadata(self):
-        """Gets the cross_entity_metadata of this TimeSeriesAggregateStatistics.  # noqa: E501
+    def min(self):
+        """Gets the min of this TimeSeriesAggregateStatistics.  # noqa: E501
 
-        Cross-entity metadata  # noqa: E501
+        Minimum value  # noqa: E501
 
-        :return: The cross_entity_metadata of this TimeSeriesAggregateStatistics.  # noqa: E501
-        :rtype: TimeSeriesCrossEntityMetadata
+        :return: The min of this TimeSeriesAggregateStatistics.  # noqa: E501
+        :rtype: float
         """
-        return self._cross_entity_metadata
+        return self._min
 
-    @cross_entity_metadata.setter
-    def cross_entity_metadata(self, cross_entity_metadata):
-        """Sets the cross_entity_metadata of this TimeSeriesAggregateStatistics.
+    @min.setter
+    def min(self, min):
+        """Sets the min of this TimeSeriesAggregateStatistics.
 
-        Cross-entity metadata  # noqa: E501
+        Minimum value  # noqa: E501
 
-        :param cross_entity_metadata: The cross_entity_metadata of this TimeSeriesAggregateStatistics.  # noqa: E501
-        :type: TimeSeriesCrossEntityMetadata
+        :param min: The min of this TimeSeriesAggregateStatistics.  # noqa: E501
+        :type: float
         """
+        if min is None:
+            raise ValueError("Invalid value for `min`, must not be `None`")  # noqa: E501
 
-        self._cross_entity_metadata = cross_entity_metadata
+        self._min = min
+
+    @property
+    def min_time(self):
+        """Gets the min_time of this TimeSeriesAggregateStatistics.  # noqa: E501
+
+        Timestamp for minimum value  # noqa: E501
+
+        :return: The min_time of this TimeSeriesAggregateStatistics.  # noqa: E501
+        :rtype: int
+        """
+        return self._min_time
+
+    @min_time.setter
+    def min_time(self, min_time):
+        """Sets the min_time of this TimeSeriesAggregateStatistics.
+
+        Timestamp for minimum value  # noqa: E501
+
+        :param min_time: The min_time of this TimeSeriesAggregateStatistics.  # noqa: E501
+        :type: int
+        """
+        if min_time is None:
+            raise ValueError("Invalid value for `min_time`, must not be `None`")  # noqa: E501
+
+        self._min_time = min_time
 
     @property
     def max(self):
@@ -215,106 +292,6 @@ class TimeSeriesAggregateStatistics(object):
         self._mean = mean
 
     @property
-    def min(self):
-        """Gets the min of this TimeSeriesAggregateStatistics.  # noqa: E501
-
-        Minimum value  # noqa: E501
-
-        :return: The min of this TimeSeriesAggregateStatistics.  # noqa: E501
-        :rtype: float
-        """
-        return self._min
-
-    @min.setter
-    def min(self, min):
-        """Sets the min of this TimeSeriesAggregateStatistics.
-
-        Minimum value  # noqa: E501
-
-        :param min: The min of this TimeSeriesAggregateStatistics.  # noqa: E501
-        :type: float
-        """
-        if min is None:
-            raise ValueError("Invalid value for `min`, must not be `None`")  # noqa: E501
-
-        self._min = min
-
-    @property
-    def min_time(self):
-        """Gets the min_time of this TimeSeriesAggregateStatistics.  # noqa: E501
-
-        Timestamp for minimum value  # noqa: E501
-
-        :return: The min_time of this TimeSeriesAggregateStatistics.  # noqa: E501
-        :rtype: int
-        """
-        return self._min_time
-
-    @min_time.setter
-    def min_time(self, min_time):
-        """Sets the min_time of this TimeSeriesAggregateStatistics.
-
-        Timestamp for minimum value  # noqa: E501
-
-        :param min_time: The min_time of this TimeSeriesAggregateStatistics.  # noqa: E501
-        :type: int
-        """
-        if min_time is None:
-            raise ValueError("Invalid value for `min_time`, must not be `None`")  # noqa: E501
-
-        self._min_time = min_time
-
-    @property
-    def sample_time(self):
-        """Gets the sample_time of this TimeSeriesAggregateStatistics.  # noqa: E501
-
-        Sample time  # noqa: E501
-
-        :return: The sample_time of this TimeSeriesAggregateStatistics.  # noqa: E501
-        :rtype: int
-        """
-        return self._sample_time
-
-    @sample_time.setter
-    def sample_time(self, sample_time):
-        """Sets the sample_time of this TimeSeriesAggregateStatistics.
-
-        Sample time  # noqa: E501
-
-        :param sample_time: The sample_time of this TimeSeriesAggregateStatistics.  # noqa: E501
-        :type: int
-        """
-        if sample_time is None:
-            raise ValueError("Invalid value for `sample_time`, must not be `None`")  # noqa: E501
-
-        self._sample_time = sample_time
-
-    @property
-    def sample_value(self):
-        """Gets the sample_value of this TimeSeriesAggregateStatistics.  # noqa: E501
-
-        Sample value  # noqa: E501
-
-        :return: The sample_value of this TimeSeriesAggregateStatistics.  # noqa: E501
-        :rtype: float
-        """
-        return self._sample_value
-
-    @sample_value.setter
-    def sample_value(self, sample_value):
-        """Sets the sample_value of this TimeSeriesAggregateStatistics.
-
-        Sample value  # noqa: E501
-
-        :param sample_value: The sample_value of this TimeSeriesAggregateStatistics.  # noqa: E501
-        :type: float
-        """
-        if sample_value is None:
-            raise ValueError("Invalid value for `sample_value`, must not be `None`")  # noqa: E501
-
-        self._sample_value = sample_value
-
-    @property
     def std_dev(self):
         """Gets the std_dev of this TimeSeriesAggregateStatistics.  # noqa: E501
 
@@ -338,6 +315,29 @@ class TimeSeriesAggregateStatistics(object):
             raise ValueError("Invalid value for `std_dev`, must not be `None`")  # noqa: E501
 
         self._std_dev = std_dev
+
+    @property
+    def cross_entity_metadata(self):
+        """Gets the cross_entity_metadata of this TimeSeriesAggregateStatistics.  # noqa: E501
+
+        Cross-entity metadata  # noqa: E501
+
+        :return: The cross_entity_metadata of this TimeSeriesAggregateStatistics.  # noqa: E501
+        :rtype: TimeSeriesCrossEntityMetadata
+        """
+        return self._cross_entity_metadata
+
+    @cross_entity_metadata.setter
+    def cross_entity_metadata(self, cross_entity_metadata):
+        """Sets the cross_entity_metadata of this TimeSeriesAggregateStatistics.
+
+        Cross-entity metadata  # noqa: E501
+
+        :param cross_entity_metadata: The cross_entity_metadata of this TimeSeriesAggregateStatistics.  # noqa: E501
+        :type: TimeSeriesCrossEntityMetadata
+        """
+
+        self._cross_entity_metadata = cross_entity_metadata
 
     def to_dict(self):
         """Returns the model properties as a dict"""

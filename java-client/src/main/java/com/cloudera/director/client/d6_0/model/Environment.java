@@ -35,21 +35,21 @@ import java.io.IOException;
 @ApiModel(description = "A cloud provider environment")
 
 public class Environment {
-  @SerializedName("credentials")
-  private SshCredentials credentials = null;
   @SerializedName("name")
   private String name = null;
   @SerializedName("provider")
   private InstanceProviderConfig provider = null;
+  @SerializedName("credentials")
+  private SshCredentials credentials = null;
 
   public Environment() {
     // Do nothing
   }
 
   private Environment(EnvironmentBuilder builder) {
-      this.credentials = builder.credentials;
       this.name = builder.name;
       this.provider = builder.provider;
+      this.credentials = builder.credentials;
     }
 
   public static EnvironmentBuilder builder() {
@@ -57,16 +57,10 @@ public class Environment {
   }
 
   public static class EnvironmentBuilder {
-      private SshCredentials credentials = null;
       private String name = null;
       private InstanceProviderConfig provider = null;
+      private SshCredentials credentials = null;
   
-
-    public EnvironmentBuilder credentials(SshCredentials credentials) {
-      this.credentials = credentials;
-      return this;
-    }
-
 
     public EnvironmentBuilder name(String name) {
       this.name = name;
@@ -80,6 +74,12 @@ public class Environment {
     }
 
 
+    public EnvironmentBuilder credentials(SshCredentials credentials) {
+      this.credentials = credentials;
+      return this;
+    }
+
+
     public Environment build() {
       return new Environment(this);
     }
@@ -87,28 +87,10 @@ public class Environment {
 
   public EnvironmentBuilder toBuilder() {
     return builder()
-      .credentials(credentials)
-            .name(name)
+      .name(name)
             .provider(provider)
+            .credentials(credentials)
       ;
-  }
-
-  public Environment credentials(SshCredentials credentials) {
-    this.credentials = credentials;
-    return this;
-  }
-
-   /**
-   * SSH credentials for instance access
-   * @return credentials
-  **/
-  @ApiModelProperty(required = true, value = "SSH credentials for instance access")
-  public SshCredentials getCredentials() {
-    return credentials;
-  }
-
-  public void setCredentials(SshCredentials credentials) {
-    this.credentials = credentials;
   }
 
   public Environment name(String name) {
@@ -147,6 +129,24 @@ public class Environment {
     this.provider = provider;
   }
 
+  public Environment credentials(SshCredentials credentials) {
+    this.credentials = credentials;
+    return this;
+  }
+
+   /**
+   * SSH credentials for instance access
+   * @return credentials
+  **/
+  @ApiModelProperty(required = true, value = "SSH credentials for instance access")
+  public SshCredentials getCredentials() {
+    return credentials;
+  }
+
+  public void setCredentials(SshCredentials credentials) {
+    this.credentials = credentials;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -157,14 +157,14 @@ public class Environment {
       return false;
     }
     Environment environment = (Environment) o;
-    return Objects.equals(this.credentials, environment.credentials) &&
-        Objects.equals(this.name, environment.name) &&
-        Objects.equals(this.provider, environment.provider);
+    return Objects.equals(this.name, environment.name) &&
+        Objects.equals(this.provider, environment.provider) &&
+        Objects.equals(this.credentials, environment.credentials);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(credentials, name, provider);
+    return Objects.hash(name, provider, credentials);
   }
 
 
@@ -173,9 +173,9 @@ public class Environment {
     StringBuilder sb = new StringBuilder();
     sb.append("class Environment {\n");
     
-    sb.append("    credentials: ").append(toIndentedString(credentials)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    provider: ").append(toIndentedString(provider)).append("\n");
+    sb.append("    credentials: ").append(toIndentedString(credentials)).append("\n");
     sb.append("}");
     return sb.toString();
   }

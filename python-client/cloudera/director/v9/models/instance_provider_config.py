@@ -39,49 +39,24 @@ class InstanceProviderConfig(object):
                             and the value is json key in definition.
     """
     swagger_types = {
-        'config': 'dict(str, str)',
-        'type': 'str'
+        'type': 'str',
+        'config': 'dict(str, str)'
     }
 
     attribute_map = {
-        'config': 'config',
-        'type': 'type'
+        'type': 'type',
+        'config': 'config'
     }
 
-    def __init__(self, config=None, type=None):  # noqa: E501
+    def __init__(self, type=None, config=None):  # noqa: E501
         """InstanceProviderConfig - a model defined in Swagger"""  # noqa: E501
 
-        self._config = None
         self._type = None
+        self._config = None
         self.discriminator = None
 
-        self.config = config
         self.type = type
-
-    @property
-    def config(self):
-        """Gets the config of this InstanceProviderConfig.  # noqa: E501
-
-        Provider specific configurations [redacted on read]  # noqa: E501
-
-        :return: The config of this InstanceProviderConfig.  # noqa: E501
-        :rtype: dict(str, str)
-        """
-        return self._config
-
-    @config.setter
-    def config(self, config):
-        """Sets the config of this InstanceProviderConfig.
-
-        Provider specific configurations [redacted on read]  # noqa: E501
-
-        :param config: The config of this InstanceProviderConfig.  # noqa: E501
-        :type: dict(str, str)
-        """
-        if config is None:
-            raise ValueError("Invalid value for `config`, must not be `None`")  # noqa: E501
-
-        self._config = config
+        self.config = config
 
     @property
     def type(self):
@@ -107,6 +82,31 @@ class InstanceProviderConfig(object):
             raise ValueError("Invalid value for `type`, must not be `None`")  # noqa: E501
 
         self._type = type
+
+    @property
+    def config(self):
+        """Gets the config of this InstanceProviderConfig.  # noqa: E501
+
+        Provider specific configurations [redacted on read]  # noqa: E501
+
+        :return: The config of this InstanceProviderConfig.  # noqa: E501
+        :rtype: dict(str, str)
+        """
+        return self._config
+
+    @config.setter
+    def config(self, config):
+        """Sets the config of this InstanceProviderConfig.
+
+        Provider specific configurations [redacted on read]  # noqa: E501
+
+        :param config: The config of this InstanceProviderConfig.  # noqa: E501
+        :type: dict(str, str)
+        """
+        if config is None:
+            raise ValueError("Invalid value for `config`, must not be `None`")  # noqa: E501
+
+        self._config = config
 
     def to_dict(self):
         """Returns the model properties as a dict"""

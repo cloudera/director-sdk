@@ -33,18 +33,18 @@ import java.io.IOException;
 @ApiModel(description = "A valid value and label for a configuration property")
 
 public class ConfigurationPropertyValue {
-  @SerializedName("label")
-  private String label = null;
   @SerializedName("value")
   private String value = null;
+  @SerializedName("label")
+  private String label = null;
 
   public ConfigurationPropertyValue() {
     // Do nothing
   }
 
   private ConfigurationPropertyValue(ConfigurationPropertyValueBuilder builder) {
-      this.label = builder.label;
       this.value = builder.value;
+      this.label = builder.label;
     }
 
   public static ConfigurationPropertyValueBuilder builder() {
@@ -52,18 +52,18 @@ public class ConfigurationPropertyValue {
   }
 
   public static class ConfigurationPropertyValueBuilder {
-      private String label = null;
       private String value = null;
+      private String label = null;
   
 
-    public ConfigurationPropertyValueBuilder label(String label) {
-      this.label = label;
+    public ConfigurationPropertyValueBuilder value(String value) {
+      this.value = value;
       return this;
     }
 
 
-    public ConfigurationPropertyValueBuilder value(String value) {
-      this.value = value;
+    public ConfigurationPropertyValueBuilder label(String label) {
+      this.label = label;
       return this;
     }
 
@@ -75,27 +75,9 @@ public class ConfigurationPropertyValue {
 
   public ConfigurationPropertyValueBuilder toBuilder() {
     return builder()
-      .label(label)
-            .value(value)
+      .value(value)
+            .label(label)
       ;
-  }
-
-  public ConfigurationPropertyValue label(String label) {
-    this.label = label;
-    return this;
-  }
-
-   /**
-   * Label associated with value
-   * @return label
-  **/
-  @ApiModelProperty(required = true, value = "Label associated with value")
-  public String getLabel() {
-    return label;
-  }
-
-  public void setLabel(String label) {
-    this.label = label;
   }
 
   public ConfigurationPropertyValue value(String value) {
@@ -116,6 +98,24 @@ public class ConfigurationPropertyValue {
     this.value = value;
   }
 
+  public ConfigurationPropertyValue label(String label) {
+    this.label = label;
+    return this;
+  }
+
+   /**
+   * Label associated with value
+   * @return label
+  **/
+  @ApiModelProperty(required = true, value = "Label associated with value")
+  public String getLabel() {
+    return label;
+  }
+
+  public void setLabel(String label) {
+    this.label = label;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -126,13 +126,13 @@ public class ConfigurationPropertyValue {
       return false;
     }
     ConfigurationPropertyValue configurationPropertyValue = (ConfigurationPropertyValue) o;
-    return Objects.equals(this.label, configurationPropertyValue.label) &&
-        Objects.equals(this.value, configurationPropertyValue.value);
+    return Objects.equals(this.value, configurationPropertyValue.value) &&
+        Objects.equals(this.label, configurationPropertyValue.label);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(label, value);
+    return Objects.hash(value, label);
   }
 
 
@@ -141,8 +141,8 @@ public class ConfigurationPropertyValue {
     StringBuilder sb = new StringBuilder();
     sb.append("class ConfigurationPropertyValue {\n");
     
-    sb.append("    label: ").append(toIndentedString(label)).append("\n");
     sb.append("    value: ").append(toIndentedString(value)).append("\n");
+    sb.append("    label: ").append(toIndentedString(label)).append("\n");
     sb.append("}");
     return sb.toString();
   }

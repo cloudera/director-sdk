@@ -4,13 +4,13 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**backingConfigKey** | **String** | Backing configuration property key |  [optional]
-**description** | **String** | Display property description |  [optional]
 **displayKey** | **String** | Display property key | 
 **name** | **String** | Display property name |  [optional]
+**description** | **String** | Display property description |  [optional]
 **sensitive** | **Boolean** | Whether this property is sensitive |  [optional]
 **type** | [**TypeEnum**](#TypeEnum) | Display property type |  [optional]
 **widget** | [**WidgetEnum**](#WidgetEnum) | Widget used to display this property |  [optional]
+**backingConfigKey** | **String** | Backing configuration property key |  [optional]
 
 
 <a name="TypeEnum"></a>

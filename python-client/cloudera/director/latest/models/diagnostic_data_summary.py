@@ -39,72 +39,80 @@ class DiagnosticDataSummary(object):
                             and the value is json key in definition.
     """
     swagger_types = {
-        'cloudera_manager_logs_downloaded': 'bool',
+        'status': 'str',
         'collection_time': 'int',
+        'local_file_path': 'str',
         'details': 'list[str]',
         'diagnostic_data_collected': 'bool',
         'diagnostic_data_downloaded': 'bool',
-        'local_file_path': 'str',
-        'status': 'str'
+        'cloudera_manager_logs_downloaded': 'bool'
     }
 
     attribute_map = {
-        'cloudera_manager_logs_downloaded': 'clouderaManagerLogsDownloaded',
+        'status': 'status',
         'collection_time': 'collectionTime',
+        'local_file_path': 'localFilePath',
         'details': 'details',
         'diagnostic_data_collected': 'diagnosticDataCollected',
         'diagnostic_data_downloaded': 'diagnosticDataDownloaded',
-        'local_file_path': 'localFilePath',
-        'status': 'status'
+        'cloudera_manager_logs_downloaded': 'clouderaManagerLogsDownloaded'
     }
 
-    def __init__(self, cloudera_manager_logs_downloaded=None, collection_time=None, details=None, diagnostic_data_collected=None, diagnostic_data_downloaded=None, local_file_path=None, status=None):  # noqa: E501
+    def __init__(self, status=None, collection_time=None, local_file_path=None, details=None, diagnostic_data_collected=None, diagnostic_data_downloaded=None, cloudera_manager_logs_downloaded=None):  # noqa: E501
         """DiagnosticDataSummary - a model defined in Swagger"""  # noqa: E501
 
-        self._cloudera_manager_logs_downloaded = None
+        self._status = None
         self._collection_time = None
+        self._local_file_path = None
         self._details = None
         self._diagnostic_data_collected = None
         self._diagnostic_data_downloaded = None
-        self._local_file_path = None
-        self._status = None
+        self._cloudera_manager_logs_downloaded = None
         self.discriminator = None
 
-        if cloudera_manager_logs_downloaded is not None:
-            self.cloudera_manager_logs_downloaded = cloudera_manager_logs_downloaded
+        self.status = status
         self.collection_time = collection_time
+        if local_file_path is not None:
+            self.local_file_path = local_file_path
         if details is not None:
             self.details = details
         if diagnostic_data_collected is not None:
             self.diagnostic_data_collected = diagnostic_data_collected
         if diagnostic_data_downloaded is not None:
             self.diagnostic_data_downloaded = diagnostic_data_downloaded
-        if local_file_path is not None:
-            self.local_file_path = local_file_path
-        self.status = status
+        if cloudera_manager_logs_downloaded is not None:
+            self.cloudera_manager_logs_downloaded = cloudera_manager_logs_downloaded
 
     @property
-    def cloudera_manager_logs_downloaded(self):
-        """Gets the cloudera_manager_logs_downloaded of this DiagnosticDataSummary.  # noqa: E501
+    def status(self):
+        """Gets the status of this DiagnosticDataSummary.  # noqa: E501
 
-        Whether Cloudera Manager logs were also downloaded from Cloudera Manager  # noqa: E501
+        Status of the collection effort  # noqa: E501
 
-        :return: The cloudera_manager_logs_downloaded of this DiagnosticDataSummary.  # noqa: E501
-        :rtype: bool
+        :return: The status of this DiagnosticDataSummary.  # noqa: E501
+        :rtype: str
         """
-        return self._cloudera_manager_logs_downloaded
+        return self._status
 
-    @cloudera_manager_logs_downloaded.setter
-    def cloudera_manager_logs_downloaded(self, cloudera_manager_logs_downloaded):
-        """Sets the cloudera_manager_logs_downloaded of this DiagnosticDataSummary.
+    @status.setter
+    def status(self, status):
+        """Sets the status of this DiagnosticDataSummary.
 
-        Whether Cloudera Manager logs were also downloaded from Cloudera Manager  # noqa: E501
+        Status of the collection effort  # noqa: E501
 
-        :param cloudera_manager_logs_downloaded: The cloudera_manager_logs_downloaded of this DiagnosticDataSummary.  # noqa: E501
-        :type: bool
+        :param status: The status of this DiagnosticDataSummary.  # noqa: E501
+        :type: str
         """
+        if status is None:
+            raise ValueError("Invalid value for `status`, must not be `None`")  # noqa: E501
+        allowed_values = ["COLLECTING", "READY", "FAILED"]  # noqa: E501
+        if status not in allowed_values:
+            raise ValueError(
+                "Invalid value for `status` ({0}), must be one of {1}"  # noqa: E501
+                .format(status, allowed_values)
+            )
 
-        self._cloudera_manager_logs_downloaded = cloudera_manager_logs_downloaded
+        self._status = status
 
     @property
     def collection_time(self):
@@ -130,6 +138,29 @@ class DiagnosticDataSummary(object):
             raise ValueError("Invalid value for `collection_time`, must not be `None`")  # noqa: E501
 
         self._collection_time = collection_time
+
+    @property
+    def local_file_path(self):
+        """Gets the local_file_path of this DiagnosticDataSummary.  # noqa: E501
+
+        Local path to the diagnostic data file  # noqa: E501
+
+        :return: The local_file_path of this DiagnosticDataSummary.  # noqa: E501
+        :rtype: str
+        """
+        return self._local_file_path
+
+    @local_file_path.setter
+    def local_file_path(self, local_file_path):
+        """Sets the local_file_path of this DiagnosticDataSummary.
+
+        Local path to the diagnostic data file  # noqa: E501
+
+        :param local_file_path: The local_file_path of this DiagnosticDataSummary.  # noqa: E501
+        :type: str
+        """
+
+        self._local_file_path = local_file_path
 
     @property
     def details(self):
@@ -201,58 +232,27 @@ class DiagnosticDataSummary(object):
         self._diagnostic_data_downloaded = diagnostic_data_downloaded
 
     @property
-    def local_file_path(self):
-        """Gets the local_file_path of this DiagnosticDataSummary.  # noqa: E501
+    def cloudera_manager_logs_downloaded(self):
+        """Gets the cloudera_manager_logs_downloaded of this DiagnosticDataSummary.  # noqa: E501
 
-        Local path to the diagnostic data file  # noqa: E501
+        Whether Cloudera Manager logs were also downloaded from Cloudera Manager  # noqa: E501
 
-        :return: The local_file_path of this DiagnosticDataSummary.  # noqa: E501
-        :rtype: str
+        :return: The cloudera_manager_logs_downloaded of this DiagnosticDataSummary.  # noqa: E501
+        :rtype: bool
         """
-        return self._local_file_path
+        return self._cloudera_manager_logs_downloaded
 
-    @local_file_path.setter
-    def local_file_path(self, local_file_path):
-        """Sets the local_file_path of this DiagnosticDataSummary.
+    @cloudera_manager_logs_downloaded.setter
+    def cloudera_manager_logs_downloaded(self, cloudera_manager_logs_downloaded):
+        """Sets the cloudera_manager_logs_downloaded of this DiagnosticDataSummary.
 
-        Local path to the diagnostic data file  # noqa: E501
+        Whether Cloudera Manager logs were also downloaded from Cloudera Manager  # noqa: E501
 
-        :param local_file_path: The local_file_path of this DiagnosticDataSummary.  # noqa: E501
-        :type: str
+        :param cloudera_manager_logs_downloaded: The cloudera_manager_logs_downloaded of this DiagnosticDataSummary.  # noqa: E501
+        :type: bool
         """
 
-        self._local_file_path = local_file_path
-
-    @property
-    def status(self):
-        """Gets the status of this DiagnosticDataSummary.  # noqa: E501
-
-        Status of the collection effort  # noqa: E501
-
-        :return: The status of this DiagnosticDataSummary.  # noqa: E501
-        :rtype: str
-        """
-        return self._status
-
-    @status.setter
-    def status(self, status):
-        """Sets the status of this DiagnosticDataSummary.
-
-        Status of the collection effort  # noqa: E501
-
-        :param status: The status of this DiagnosticDataSummary.  # noqa: E501
-        :type: str
-        """
-        if status is None:
-            raise ValueError("Invalid value for `status`, must not be `None`")  # noqa: E501
-        allowed_values = ["COLLECTING", "READY", "FAILED"]  # noqa: E501
-        if status not in allowed_values:
-            raise ValueError(
-                "Invalid value for `status` ({0}), must be one of {1}"  # noqa: E501
-                .format(status, allowed_values)
-            )
-
-        self._status = status
+        self._cloudera_manager_logs_downloaded = cloudera_manager_logs_downloaded
 
     def to_dict(self):
         """Returns the model properties as a dict"""

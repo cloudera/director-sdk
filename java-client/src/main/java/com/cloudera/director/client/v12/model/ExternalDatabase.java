@@ -33,14 +33,6 @@ import java.io.IOException;
 @ApiModel(description = "A database residing on an external database server")
 
 public class ExternalDatabase {
-  @SerializedName("host")
-  private String host = null;
-  @SerializedName("name")
-  private String name = null;
-  @SerializedName("password")
-  private String password = null;
-  @SerializedName("port")
-  private Integer port = null;
   /**
    * External database server type
    */
@@ -92,20 +84,28 @@ public class ExternalDatabase {
 
   @SerializedName("type")
   private TypeEnum type = null;
+  @SerializedName("host")
+  private String host = null;
+  @SerializedName("port")
+  private Integer port = null;
+  @SerializedName("name")
+  private String name = null;
   @SerializedName("user")
   private String user = null;
+  @SerializedName("password")
+  private String password = null;
 
   public ExternalDatabase() {
     // Do nothing
   }
 
   private ExternalDatabase(ExternalDatabaseBuilder builder) {
-      this.host = builder.host;
-      this.name = builder.name;
-      this.password = builder.password;
-      this.port = builder.port;
       this.type = builder.type;
+      this.host = builder.host;
+      this.port = builder.port;
+      this.name = builder.name;
       this.user = builder.user;
+      this.password = builder.password;
     }
 
   public static ExternalDatabaseBuilder builder() {
@@ -113,28 +113,22 @@ public class ExternalDatabase {
   }
 
   public static class ExternalDatabaseBuilder {
-      private String host = null;
-      private String name = null;
-      private String password = null;
-      private Integer port = null;
       private TypeEnum type = null;
+      private String host = null;
+      private Integer port = null;
+      private String name = null;
       private String user = null;
+      private String password = null;
   
+
+    public ExternalDatabaseBuilder type(TypeEnum type) {
+      this.type = type;
+      return this;
+    }
+
 
     public ExternalDatabaseBuilder host(String host) {
       this.host = host;
-      return this;
-    }
-
-
-    public ExternalDatabaseBuilder name(String name) {
-      this.name = name;
-      return this;
-    }
-
-
-    public ExternalDatabaseBuilder password(String password) {
-      this.password = password;
       return this;
     }
 
@@ -145,14 +139,20 @@ public class ExternalDatabase {
     }
 
 
-    public ExternalDatabaseBuilder type(TypeEnum type) {
-      this.type = type;
+    public ExternalDatabaseBuilder name(String name) {
+      this.name = name;
       return this;
     }
 
 
     public ExternalDatabaseBuilder user(String user) {
       this.user = user;
+      return this;
+    }
+
+
+    public ExternalDatabaseBuilder password(String password) {
+      this.password = password;
       return this;
     }
 
@@ -164,85 +164,13 @@ public class ExternalDatabase {
 
   public ExternalDatabaseBuilder toBuilder() {
     return builder()
-      .host(host)
-            .name(name)
-            .password(password)
+      .type(type)
+            .host(host)
             .port(port)
-            .type(type)
+            .name(name)
             .user(user)
+            .password(password)
       ;
-  }
-
-  public ExternalDatabase host(String host) {
-    this.host = host;
-    return this;
-  }
-
-   /**
-   * External database server host
-   * @return host
-  **/
-  @ApiModelProperty(required = true, value = "External database server host")
-  public String getHost() {
-    return host;
-  }
-
-  public void setHost(String host) {
-    this.host = host;
-  }
-
-  public ExternalDatabase name(String name) {
-    this.name = name;
-    return this;
-  }
-
-   /**
-   * External database name
-   * @return name
-  **/
-  @ApiModelProperty(required = true, value = "External database name")
-  public String getName() {
-    return name;
-  }
-
-  public void setName(String name) {
-    this.name = name;
-  }
-
-  public ExternalDatabase password(String password) {
-    this.password = password;
-    return this;
-  }
-
-   /**
-   * Password for access to database [redacted on read]
-   * @return password
-  **/
-  @ApiModelProperty(required = true, value = "Password for access to database [redacted on read]")
-  public String getPassword() {
-    return password;
-  }
-
-  public void setPassword(String password) {
-    this.password = password;
-  }
-
-  public ExternalDatabase port(Integer port) {
-    this.port = port;
-    return this;
-  }
-
-   /**
-   * External database server port
-   * @return port
-  **/
-  @ApiModelProperty(required = true, value = "External database server port")
-  public Integer getPort() {
-    return port;
-  }
-
-  public void setPort(Integer port) {
-    this.port = port;
   }
 
   public ExternalDatabase type(TypeEnum type) {
@@ -263,6 +191,60 @@ public class ExternalDatabase {
     this.type = type;
   }
 
+  public ExternalDatabase host(String host) {
+    this.host = host;
+    return this;
+  }
+
+   /**
+   * External database server host
+   * @return host
+  **/
+  @ApiModelProperty(required = true, value = "External database server host")
+  public String getHost() {
+    return host;
+  }
+
+  public void setHost(String host) {
+    this.host = host;
+  }
+
+  public ExternalDatabase port(Integer port) {
+    this.port = port;
+    return this;
+  }
+
+   /**
+   * External database server port
+   * @return port
+  **/
+  @ApiModelProperty(required = true, value = "External database server port")
+  public Integer getPort() {
+    return port;
+  }
+
+  public void setPort(Integer port) {
+    this.port = port;
+  }
+
+  public ExternalDatabase name(String name) {
+    this.name = name;
+    return this;
+  }
+
+   /**
+   * External database name
+   * @return name
+  **/
+  @ApiModelProperty(required = true, value = "External database name")
+  public String getName() {
+    return name;
+  }
+
+  public void setName(String name) {
+    this.name = name;
+  }
+
   public ExternalDatabase user(String user) {
     this.user = user;
     return this;
@@ -281,6 +263,24 @@ public class ExternalDatabase {
     this.user = user;
   }
 
+  public ExternalDatabase password(String password) {
+    this.password = password;
+    return this;
+  }
+
+   /**
+   * Password for access to database [redacted on read]
+   * @return password
+  **/
+  @ApiModelProperty(required = true, value = "Password for access to database [redacted on read]")
+  public String getPassword() {
+    return password;
+  }
+
+  public void setPassword(String password) {
+    this.password = password;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -291,17 +291,17 @@ public class ExternalDatabase {
       return false;
     }
     ExternalDatabase externalDatabase = (ExternalDatabase) o;
-    return Objects.equals(this.host, externalDatabase.host) &&
-        Objects.equals(this.name, externalDatabase.name) &&
-        Objects.equals(this.password, externalDatabase.password) &&
+    return Objects.equals(this.type, externalDatabase.type) &&
+        Objects.equals(this.host, externalDatabase.host) &&
         Objects.equals(this.port, externalDatabase.port) &&
-        Objects.equals(this.type, externalDatabase.type) &&
-        Objects.equals(this.user, externalDatabase.user);
+        Objects.equals(this.name, externalDatabase.name) &&
+        Objects.equals(this.user, externalDatabase.user) &&
+        Objects.equals(this.password, externalDatabase.password);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(host, name, password, port, type, user);
+    return Objects.hash(type, host, port, name, user, password);
   }
 
 
@@ -310,12 +310,12 @@ public class ExternalDatabase {
     StringBuilder sb = new StringBuilder();
     sb.append("class ExternalDatabase {\n");
     
-    sb.append("    host: ").append(toIndentedString(host)).append("\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
-    sb.append("    password: ").append(toIndentedString(password)).append("\n");
-    sb.append("    port: ").append(toIndentedString(port)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
+    sb.append("    host: ").append(toIndentedString(host)).append("\n");
+    sb.append("    port: ").append(toIndentedString(port)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    user: ").append(toIndentedString(user)).append("\n");
+    sb.append("    password: ").append(toIndentedString(password)).append("\n");
     sb.append("}");
     return sb.toString();
   }

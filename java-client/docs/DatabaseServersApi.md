@@ -1,17 +1,17 @@
 # DatabaseServersApi
 
-All URIs are relative to *https://localhost:7189*
+All URIs are relative to *https://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**create**](DatabaseServersApi.md#create) | **POST** /api/d6.0/environments/{environment}/databaseServers | Create a new external database server
-[**delete**](DatabaseServersApi.md#delete) | **DELETE** /api/d6.0/environments/{environment}/databaseServers/{externalDatabaseServer} | Delete an external database server by name
-[**getDatabaseServerUsage**](DatabaseServersApi.md#getDatabaseServerUsage) | **GET** /api/d6.0/environments/{environment}/databaseServers/{externalDatabaseServer}/usage | Get an external database server usage by name
-[**getRedacted**](DatabaseServersApi.md#getRedacted) | **GET** /api/d6.0/environments/{environment}/databaseServers/{externalDatabaseServer} | Get an external database server by name
-[**getStatus**](DatabaseServersApi.md#getStatus) | **GET** /api/d6.0/environments/{environment}/databaseServers/{externalDatabaseServer}/status | Get an external database server status by name
-[**getTemplateRedacted**](DatabaseServersApi.md#getTemplateRedacted) | **GET** /api/d6.0/environments/{environment}/databaseServers/{externalDatabaseServer}/template | Get an external database server template by name
-[**list**](DatabaseServersApi.md#list) | **GET** /api/d6.0/environments/{environment}/databaseServers | List all externalDatabaseServers
-[**update**](DatabaseServersApi.md#update) | **PUT** /api/d6.0/environments/{environment}/databaseServers/{externalDatabaseServer} | Update an existing external database server (unsupported)
+[**create**](DatabaseServersApi.md#create) | **POST** /api/d6.1/environments/{environment}/databaseServers | Create a new external database server
+[**delete**](DatabaseServersApi.md#delete) | **DELETE** /api/d6.1/environments/{environment}/databaseServers/{externalDatabaseServer} | Delete an external database server by name
+[**getDatabaseServerUsage**](DatabaseServersApi.md#getDatabaseServerUsage) | **GET** /api/d6.1/environments/{environment}/databaseServers/{externalDatabaseServer}/usage | Get an external database server usage by name
+[**getRedacted**](DatabaseServersApi.md#getRedacted) | **GET** /api/d6.1/environments/{environment}/databaseServers/{externalDatabaseServer} | Get an external database server by name
+[**getStatus**](DatabaseServersApi.md#getStatus) | **GET** /api/d6.1/environments/{environment}/databaseServers/{externalDatabaseServer}/status | Get an external database server status by name
+[**getTemplateRedacted**](DatabaseServersApi.md#getTemplateRedacted) | **GET** /api/d6.1/environments/{environment}/databaseServers/{externalDatabaseServer}/template | Get an external database server template by name
+[**list**](DatabaseServersApi.md#list) | **GET** /api/d6.1/environments/{environment}/databaseServers | List all externalDatabaseServers
+[**update**](DatabaseServersApi.md#update) | **PUT** /api/d6.1/environments/{environment}/databaseServers/{externalDatabaseServer} | Update an existing external database server (unsupported)
 
 
 <a name="create"></a>
@@ -19,6 +19,8 @@ Method | HTTP request | Description
 > create(environment, externalDatabaseServerTemplate)
 
 Create a new external database server
+
+
 
 ### Example
 ```java
@@ -37,8 +39,8 @@ basic.setUsername("YOUR USERNAME");
 basic.setPassword("YOUR PASSWORD");
 
 DatabaseServersApi apiInstance = new DatabaseServersApi();
-String environment = "environment_example"; // String | environment
-ExternalDatabaseServerTemplate externalDatabaseServerTemplate = new ExternalDatabaseServerTemplate(); // ExternalDatabaseServerTemplate | externalDatabaseServerTemplate
+String environment = "environment_example"; // String | 
+ExternalDatabaseServerTemplate externalDatabaseServerTemplate = new ExternalDatabaseServerTemplate(); // ExternalDatabaseServerTemplate | 
 try {
     apiInstance.create(environment, externalDatabaseServerTemplate);
 } catch (ApiException e) {
@@ -51,8 +53,8 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **environment** | **String**| environment |
- **externalDatabaseServerTemplate** | [**ExternalDatabaseServerTemplate**](ExternalDatabaseServerTemplate.md)| externalDatabaseServerTemplate |
+ **environment** | **String**|  |
+ **externalDatabaseServerTemplate** | [**ExternalDatabaseServerTemplate**](ExternalDatabaseServerTemplate.md)|  |
 
 ### Return type
 
@@ -64,7 +66,7 @@ null (empty response body)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 <a name="delete"></a>
@@ -72,6 +74,8 @@ null (empty response body)
 > delete(environment, externalDatabaseServer)
 
 Delete an external database server by name
+
+
 
 ### Example
 ```java
@@ -90,8 +94,8 @@ basic.setUsername("YOUR USERNAME");
 basic.setPassword("YOUR PASSWORD");
 
 DatabaseServersApi apiInstance = new DatabaseServersApi();
-String environment = "environment_example"; // String | environment
-String externalDatabaseServer = "externalDatabaseServer_example"; // String | externalDatabaseServer
+String environment = "environment_example"; // String | 
+String externalDatabaseServer = "externalDatabaseServer_example"; // String | 
 try {
     apiInstance.delete(environment, externalDatabaseServer);
 } catch (ApiException e) {
@@ -104,8 +108,8 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **environment** | **String**| environment |
- **externalDatabaseServer** | **String**| externalDatabaseServer |
+ **environment** | **String**|  |
+ **externalDatabaseServer** | **String**|  |
 
 ### Return type
 
@@ -126,6 +130,8 @@ null (empty response body)
 
 Get an external database server usage by name
 
+
+
 ### Example
 ```java
 // Import classes:
@@ -143,8 +149,8 @@ basic.setUsername("YOUR USERNAME");
 basic.setPassword("YOUR PASSWORD");
 
 DatabaseServersApi apiInstance = new DatabaseServersApi();
-String environment = "environment_example"; // String | environment
-String externalDatabaseServer = "externalDatabaseServer_example"; // String | externalDatabaseServer
+String environment = "environment_example"; // String | 
+String externalDatabaseServer = "externalDatabaseServer_example"; // String | 
 try {
     ExternalDatabaseServerUsage result = apiInstance.getDatabaseServerUsage(environment, externalDatabaseServer);
     System.out.println(result);
@@ -158,8 +164,8 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **environment** | **String**| environment |
- **externalDatabaseServer** | **String**| externalDatabaseServer |
+ **environment** | **String**|  |
+ **externalDatabaseServer** | **String**|  |
 
 ### Return type
 
@@ -180,6 +186,8 @@ Name | Type | Description  | Notes
 
 Get an external database server by name
 
+
+
 ### Example
 ```java
 // Import classes:
@@ -197,8 +205,8 @@ basic.setUsername("YOUR USERNAME");
 basic.setPassword("YOUR PASSWORD");
 
 DatabaseServersApi apiInstance = new DatabaseServersApi();
-String environment = "environment_example"; // String | environment
-String externalDatabaseServer = "externalDatabaseServer_example"; // String | externalDatabaseServer
+String environment = "environment_example"; // String | 
+String externalDatabaseServer = "externalDatabaseServer_example"; // String | 
 try {
     ExternalDatabaseServer result = apiInstance.getRedacted(environment, externalDatabaseServer);
     System.out.println(result);
@@ -212,8 +220,8 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **environment** | **String**| environment |
- **externalDatabaseServer** | **String**| externalDatabaseServer |
+ **environment** | **String**|  |
+ **externalDatabaseServer** | **String**|  |
 
 ### Return type
 
@@ -234,6 +242,8 @@ Name | Type | Description  | Notes
 
 Get an external database server status by name
 
+
+
 ### Example
 ```java
 // Import classes:
@@ -251,8 +261,8 @@ basic.setUsername("YOUR USERNAME");
 basic.setPassword("YOUR PASSWORD");
 
 DatabaseServersApi apiInstance = new DatabaseServersApi();
-String environment = "environment_example"; // String | environment
-String externalDatabaseServer = "externalDatabaseServer_example"; // String | externalDatabaseServer
+String environment = "environment_example"; // String | 
+String externalDatabaseServer = "externalDatabaseServer_example"; // String | 
 try {
     Status result = apiInstance.getStatus(environment, externalDatabaseServer);
     System.out.println(result);
@@ -266,8 +276,8 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **environment** | **String**| environment |
- **externalDatabaseServer** | **String**| externalDatabaseServer |
+ **environment** | **String**|  |
+ **externalDatabaseServer** | **String**|  |
 
 ### Return type
 
@@ -288,6 +298,8 @@ Name | Type | Description  | Notes
 
 Get an external database server template by name
 
+
+
 ### Example
 ```java
 // Import classes:
@@ -305,8 +317,8 @@ basic.setUsername("YOUR USERNAME");
 basic.setPassword("YOUR PASSWORD");
 
 DatabaseServersApi apiInstance = new DatabaseServersApi();
-String environment = "environment_example"; // String | environment
-String externalDatabaseServer = "externalDatabaseServer_example"; // String | externalDatabaseServer
+String environment = "environment_example"; // String | 
+String externalDatabaseServer = "externalDatabaseServer_example"; // String | 
 try {
     ExternalDatabaseServerTemplate result = apiInstance.getTemplateRedacted(environment, externalDatabaseServer);
     System.out.println(result);
@@ -320,8 +332,8 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **environment** | **String**| environment |
- **externalDatabaseServer** | **String**| externalDatabaseServer |
+ **environment** | **String**|  |
+ **externalDatabaseServer** | **String**|  |
 
 ### Return type
 
@@ -342,6 +354,8 @@ Name | Type | Description  | Notes
 
 List all externalDatabaseServers
 
+
+
 ### Example
 ```java
 // Import classes:
@@ -359,7 +373,7 @@ basic.setUsername("YOUR USERNAME");
 basic.setPassword("YOUR PASSWORD");
 
 DatabaseServersApi apiInstance = new DatabaseServersApi();
-String environment = "environment_example"; // String | environment
+String environment = "environment_example"; // String | 
 try {
     List<String> result = apiInstance.list(environment);
     System.out.println(result);
@@ -373,7 +387,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **environment** | **String**| environment |
+ **environment** | **String**|  |
 
 ### Return type
 
@@ -394,6 +408,8 @@ Name | Type | Description  | Notes
 
 Update an existing external database server (unsupported)
 
+
+
 ### Example
 ```java
 // Import classes:
@@ -411,9 +427,9 @@ basic.setUsername("YOUR USERNAME");
 basic.setPassword("YOUR PASSWORD");
 
 DatabaseServersApi apiInstance = new DatabaseServersApi();
-String environment = "environment_example"; // String | environment
-String externalDatabaseServer = "externalDatabaseServer_example"; // String | externalDatabaseServer
-ExternalDatabaseServerTemplate updatedTemplate = new ExternalDatabaseServerTemplate(); // ExternalDatabaseServerTemplate | updatedTemplate
+String environment = "environment_example"; // String | 
+String externalDatabaseServer = "externalDatabaseServer_example"; // String | 
+ExternalDatabaseServerTemplate updatedTemplate = new ExternalDatabaseServerTemplate(); // ExternalDatabaseServerTemplate | 
 try {
     apiInstance.update(environment, externalDatabaseServer, updatedTemplate);
 } catch (ApiException e) {
@@ -426,9 +442,9 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **environment** | **String**| environment |
- **externalDatabaseServer** | **String**| externalDatabaseServer |
- **updatedTemplate** | [**ExternalDatabaseServerTemplate**](ExternalDatabaseServerTemplate.md)| updatedTemplate |
+ **environment** | **String**|  |
+ **externalDatabaseServer** | **String**|  |
+ **updatedTemplate** | [**ExternalDatabaseServerTemplate**](ExternalDatabaseServerTemplate.md)|  |
 
 ### Return type
 
@@ -440,6 +456,6 @@ null (empty response body)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 

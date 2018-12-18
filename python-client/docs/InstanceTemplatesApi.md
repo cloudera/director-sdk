@@ -1,20 +1,22 @@
 # cloudera.director.InstanceTemplatesApi
 
-All URIs are relative to *https://localhost:7189*
+All URIs are relative to *https://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**create**](InstanceTemplatesApi.md#create) | **POST** /api/d6.0/environments/{environment}/templates/instances | Create a new instance template
-[**delete**](InstanceTemplatesApi.md#delete) | **DELETE** /api/d6.0/environments/{environment}/templates/instances/{template} | Delete an instance template by name
-[**get**](InstanceTemplatesApi.md#get) | **GET** /api/d6.0/environments/{environment}/templates/instances/{template} | Get an instance template by name
-[**list**](InstanceTemplatesApi.md#list) | **GET** /api/d6.0/environments/{environment}/templates/instances | List all instance templates
-[**update**](InstanceTemplatesApi.md#update) | **PUT** /api/d6.0/environments/{environment}/templates/instances/{template} | Update an existing instance template
+[**create**](InstanceTemplatesApi.md#create) | **POST** /api/d6.1/environments/{environment}/templates/instances | Create a new instance template
+[**delete**](InstanceTemplatesApi.md#delete) | **DELETE** /api/d6.1/environments/{environment}/templates/instances/{template} | Delete an instance template by name
+[**get**](InstanceTemplatesApi.md#get) | **GET** /api/d6.1/environments/{environment}/templates/instances/{template} | Get an instance template by name
+[**list**](InstanceTemplatesApi.md#list) | **GET** /api/d6.1/environments/{environment}/templates/instances | List all instance templates
+[**update**](InstanceTemplatesApi.md#update) | **PUT** /api/d6.1/environments/{environment}/templates/instances/{template} | Update an existing instance template
 
 
 # **create**
 > create(environment, instance_template)
 
 Create a new instance template
+
+
 
 ### Example
 ```python
@@ -31,8 +33,8 @@ configuration.password = 'YOUR_PASSWORD'
 
 # create an instance of the API class
 api_instance = cloudera.director.InstanceTemplatesApi(cloudera.director.ApiClient(configuration))
-environment = 'environment_example' # str | environment
-instance_template = cloudera.director.InstanceTemplate() # InstanceTemplate | instanceTemplate
+environment = 'environment_example' # str | 
+instance_template = cloudera.director.InstanceTemplate() # InstanceTemplate | 
 
 try:
     # Create a new instance template
@@ -45,8 +47,8 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **environment** | **str**| environment | 
- **instance_template** | [**InstanceTemplate**](InstanceTemplate.md)| instanceTemplate | 
+ **environment** | **str**|  | 
+ **instance_template** | [**InstanceTemplate**](InstanceTemplate.md)|  | 
 
 ### Return type
 
@@ -58,7 +60,7 @@ void (empty response body)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -67,6 +69,8 @@ void (empty response body)
 > delete(environment, template)
 
 Delete an instance template by name
+
+
 
 ### Example
 ```python
@@ -83,8 +87,8 @@ configuration.password = 'YOUR_PASSWORD'
 
 # create an instance of the API class
 api_instance = cloudera.director.InstanceTemplatesApi(cloudera.director.ApiClient(configuration))
-environment = 'environment_example' # str | environment
-template = 'template_example' # str | template
+environment = 'environment_example' # str | 
+template = 'template_example' # str | 
 
 try:
     # Delete an instance template by name
@@ -97,8 +101,8 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **environment** | **str**| environment | 
- **template** | **str**| template | 
+ **environment** | **str**|  | 
+ **template** | **str**|  | 
 
 ### Return type
 
@@ -120,6 +124,8 @@ void (empty response body)
 
 Get an instance template by name
 
+
+
 ### Example
 ```python
 from __future__ import print_function
@@ -135,8 +141,8 @@ configuration.password = 'YOUR_PASSWORD'
 
 # create an instance of the API class
 api_instance = cloudera.director.InstanceTemplatesApi(cloudera.director.ApiClient(configuration))
-environment = 'environment_example' # str | environment
-template = 'template_example' # str | template
+environment = 'environment_example' # str | 
+template = 'template_example' # str | 
 
 try:
     # Get an instance template by name
@@ -150,8 +156,8 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **environment** | **str**| environment | 
- **template** | **str**| template | 
+ **environment** | **str**|  | 
+ **template** | **str**|  | 
 
 ### Return type
 
@@ -173,6 +179,8 @@ Name | Type | Description  | Notes
 
 List all instance templates
 
+
+
 ### Example
 ```python
 from __future__ import print_function
@@ -188,7 +196,7 @@ configuration.password = 'YOUR_PASSWORD'
 
 # create an instance of the API class
 api_instance = cloudera.director.InstanceTemplatesApi(cloudera.director.ApiClient(configuration))
-environment = 'environment_example' # str | environment
+environment = 'environment_example' # str | 
 
 try:
     # List all instance templates
@@ -202,7 +210,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **environment** | **str**| environment | 
+ **environment** | **str**|  | 
 
 ### Return type
 
@@ -224,6 +232,8 @@ Name | Type | Description  | Notes
 
 Update an existing instance template
 
+
+
 ### Example
 ```python
 from __future__ import print_function
@@ -239,9 +249,9 @@ configuration.password = 'YOUR_PASSWORD'
 
 # create an instance of the API class
 api_instance = cloudera.director.InstanceTemplatesApi(cloudera.director.ApiClient(configuration))
-environment = 'environment_example' # str | environment
-template = 'template_example' # str | template
-instance_template = cloudera.director.InstanceTemplate() # InstanceTemplate | instanceTemplate
+environment = 'environment_example' # str | 
+template = 'template_example' # str | 
+instance_template = cloudera.director.InstanceTemplate() # InstanceTemplate | 
 
 try:
     # Update an existing instance template
@@ -254,9 +264,9 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **environment** | **str**| environment | 
- **template** | **str**| template | 
- **instance_template** | [**InstanceTemplate**](InstanceTemplate.md)| instanceTemplate | 
+ **environment** | **str**|  | 
+ **template** | **str**|  | 
+ **instance_template** | [**InstanceTemplate**](InstanceTemplate.md)|  | 
 
 ### Return type
 
@@ -268,7 +278,7 @@ void (empty response body)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

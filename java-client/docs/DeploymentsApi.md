@@ -1,18 +1,18 @@
 # DeploymentsApi
 
-All URIs are relative to *https://localhost:7189*
+All URIs are relative to *https://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**collectDiagnosticData**](DeploymentsApi.md#collectDiagnosticData) | **POST** /api/d6.0/environments/{environment}/deployments/{deployment}/diagnosticData | Collects diagnostic data
-[**create**](DeploymentsApi.md#create) | **POST** /api/d6.0/environments/{environment}/deployments | Create a new deployment
-[**delete**](DeploymentsApi.md#delete) | **DELETE** /api/d6.0/environments/{environment}/deployments/{deployment} | Delete a deployment by name
-[**getRedacted**](DeploymentsApi.md#getRedacted) | **GET** /api/d6.0/environments/{environment}/deployments/{deployment} | Get a deployment by name
-[**getStatus**](DeploymentsApi.md#getStatus) | **GET** /api/d6.0/environments/{environment}/deployments/{deployment}/status | Get a deployment status by name
-[**getTemplateRedacted**](DeploymentsApi.md#getTemplateRedacted) | **GET** /api/d6.0/environments/{environment}/deployments/{deployment}/template | Get a deployment template by name
-[**list**](DeploymentsApi.md#list) | **GET** /api/d6.0/environments/{environment}/deployments | List all deployments
-[**update**](DeploymentsApi.md#update) | **PUT** /api/d6.0/environments/{environment}/deployments/{deployment} | Update an existing deployment template
-[**updateMeteringSetting**](DeploymentsApi.md#updateMeteringSetting) | **PUT** /api/d6.0/environments/{environment}/deployments/{deployment}/metering | Update billing ID for an existing deployment
+[**collectDiagnosticData**](DeploymentsApi.md#collectDiagnosticData) | **POST** /api/d6.1/environments/{environment}/deployments/{deployment}/diagnosticData | Collects diagnostic data
+[**create**](DeploymentsApi.md#create) | **POST** /api/d6.1/environments/{environment}/deployments | Create a new deployment
+[**delete**](DeploymentsApi.md#delete) | **DELETE** /api/d6.1/environments/{environment}/deployments/{deployment} | Delete a deployment by name
+[**getRedacted**](DeploymentsApi.md#getRedacted) | **GET** /api/d6.1/environments/{environment}/deployments/{deployment} | Get a deployment by name
+[**getStatus**](DeploymentsApi.md#getStatus) | **GET** /api/d6.1/environments/{environment}/deployments/{deployment}/status | Get a deployment status by name
+[**getTemplateRedacted**](DeploymentsApi.md#getTemplateRedacted) | **GET** /api/d6.1/environments/{environment}/deployments/{deployment}/template | Get a deployment template by name
+[**list**](DeploymentsApi.md#list) | **GET** /api/d6.1/environments/{environment}/deployments | List all deployments
+[**update**](DeploymentsApi.md#update) | **PUT** /api/d6.1/environments/{environment}/deployments/{deployment} | Update an existing deployment template
+[**updateMeteringSetting**](DeploymentsApi.md#updateMeteringSetting) | **PUT** /api/d6.1/environments/{environment}/deployments/{deployment}/metering | Update billing ID for an existing deployment
 
 
 <a name="collectDiagnosticData"></a>
@@ -20,6 +20,8 @@ Method | HTTP request | Description
 > collectDiagnosticData(environment, deployment)
 
 Collects diagnostic data
+
+
 
 ### Example
 ```java
@@ -38,8 +40,8 @@ basic.setUsername("YOUR USERNAME");
 basic.setPassword("YOUR PASSWORD");
 
 DeploymentsApi apiInstance = new DeploymentsApi();
-String environment = "environment_example"; // String | environment
-String deployment = "deployment_example"; // String | deployment
+String environment = "environment_example"; // String | 
+String deployment = "deployment_example"; // String | 
 try {
     apiInstance.collectDiagnosticData(environment, deployment);
 } catch (ApiException e) {
@@ -52,8 +54,8 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **environment** | **String**| environment |
- **deployment** | **String**| deployment |
+ **environment** | **String**|  |
+ **deployment** | **String**|  |
 
 ### Return type
 
@@ -65,7 +67,7 @@ null (empty response body)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 <a name="create"></a>
@@ -73,6 +75,8 @@ null (empty response body)
 > create(environment, deploymentTemplate)
 
 Create a new deployment
+
+
 
 ### Example
 ```java
@@ -91,8 +95,8 @@ basic.setUsername("YOUR USERNAME");
 basic.setPassword("YOUR PASSWORD");
 
 DeploymentsApi apiInstance = new DeploymentsApi();
-String environment = "environment_example"; // String | environment
-DeploymentTemplate deploymentTemplate = new DeploymentTemplate(); // DeploymentTemplate | deploymentTemplate
+String environment = "environment_example"; // String | 
+DeploymentTemplate deploymentTemplate = new DeploymentTemplate(); // DeploymentTemplate | 
 try {
     apiInstance.create(environment, deploymentTemplate);
 } catch (ApiException e) {
@@ -105,8 +109,8 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **environment** | **String**| environment |
- **deploymentTemplate** | [**DeploymentTemplate**](DeploymentTemplate.md)| deploymentTemplate |
+ **environment** | **String**|  |
+ **deploymentTemplate** | [**DeploymentTemplate**](DeploymentTemplate.md)|  |
 
 ### Return type
 
@@ -118,7 +122,7 @@ null (empty response body)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 <a name="delete"></a>
@@ -126,6 +130,8 @@ null (empty response body)
 > delete(environment, deployment)
 
 Delete a deployment by name
+
+
 
 ### Example
 ```java
@@ -144,8 +150,8 @@ basic.setUsername("YOUR USERNAME");
 basic.setPassword("YOUR PASSWORD");
 
 DeploymentsApi apiInstance = new DeploymentsApi();
-String environment = "environment_example"; // String | environment
-String deployment = "deployment_example"; // String | deployment
+String environment = "environment_example"; // String | 
+String deployment = "deployment_example"; // String | 
 try {
     apiInstance.delete(environment, deployment);
 } catch (ApiException e) {
@@ -158,8 +164,8 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **environment** | **String**| environment |
- **deployment** | **String**| deployment |
+ **environment** | **String**|  |
+ **deployment** | **String**|  |
 
 ### Return type
 
@@ -180,6 +186,8 @@ null (empty response body)
 
 Get a deployment by name
 
+
+
 ### Example
 ```java
 // Import classes:
@@ -197,8 +205,8 @@ basic.setUsername("YOUR USERNAME");
 basic.setPassword("YOUR PASSWORD");
 
 DeploymentsApi apiInstance = new DeploymentsApi();
-String environment = "environment_example"; // String | environment
-String deployment = "deployment_example"; // String | deployment
+String environment = "environment_example"; // String | 
+String deployment = "deployment_example"; // String | 
 try {
     Deployment result = apiInstance.getRedacted(environment, deployment);
     System.out.println(result);
@@ -212,8 +220,8 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **environment** | **String**| environment |
- **deployment** | **String**| deployment |
+ **environment** | **String**|  |
+ **deployment** | **String**|  |
 
 ### Return type
 
@@ -234,6 +242,8 @@ Name | Type | Description  | Notes
 
 Get a deployment status by name
 
+
+
 ### Example
 ```java
 // Import classes:
@@ -251,8 +261,8 @@ basic.setUsername("YOUR USERNAME");
 basic.setPassword("YOUR PASSWORD");
 
 DeploymentsApi apiInstance = new DeploymentsApi();
-String environment = "environment_example"; // String | environment
-String deployment = "deployment_example"; // String | deployment
+String environment = "environment_example"; // String | 
+String deployment = "deployment_example"; // String | 
 try {
     Status result = apiInstance.getStatus(environment, deployment);
     System.out.println(result);
@@ -266,8 +276,8 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **environment** | **String**| environment |
- **deployment** | **String**| deployment |
+ **environment** | **String**|  |
+ **deployment** | **String**|  |
 
 ### Return type
 
@@ -288,6 +298,8 @@ Name | Type | Description  | Notes
 
 Get a deployment template by name
 
+
+
 ### Example
 ```java
 // Import classes:
@@ -305,8 +317,8 @@ basic.setUsername("YOUR USERNAME");
 basic.setPassword("YOUR PASSWORD");
 
 DeploymentsApi apiInstance = new DeploymentsApi();
-String environment = "environment_example"; // String | environment
-String deployment = "deployment_example"; // String | deployment
+String environment = "environment_example"; // String | 
+String deployment = "deployment_example"; // String | 
 try {
     DeploymentTemplate result = apiInstance.getTemplateRedacted(environment, deployment);
     System.out.println(result);
@@ -320,8 +332,8 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **environment** | **String**| environment |
- **deployment** | **String**| deployment |
+ **environment** | **String**|  |
+ **deployment** | **String**|  |
 
 ### Return type
 
@@ -342,6 +354,8 @@ Name | Type | Description  | Notes
 
 List all deployments
 
+
+
 ### Example
 ```java
 // Import classes:
@@ -359,7 +373,7 @@ basic.setUsername("YOUR USERNAME");
 basic.setPassword("YOUR PASSWORD");
 
 DeploymentsApi apiInstance = new DeploymentsApi();
-String environment = "environment_example"; // String | environment
+String environment = "environment_example"; // String | 
 try {
     List<String> result = apiInstance.list(environment);
     System.out.println(result);
@@ -373,7 +387,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **environment** | **String**| environment |
+ **environment** | **String**|  |
 
 ### Return type
 
@@ -394,6 +408,8 @@ Name | Type | Description  | Notes
 
 Update an existing deployment template
 
+
+
 ### Example
 ```java
 // Import classes:
@@ -411,9 +427,9 @@ basic.setUsername("YOUR USERNAME");
 basic.setPassword("YOUR PASSWORD");
 
 DeploymentsApi apiInstance = new DeploymentsApi();
-String environment = "environment_example"; // String | environment
-String deployment = "deployment_example"; // String | deployment
-DeploymentTemplate updatedTemplate = new DeploymentTemplate(); // DeploymentTemplate | updatedTemplate
+String environment = "environment_example"; // String | 
+String deployment = "deployment_example"; // String | 
+DeploymentTemplate updatedTemplate = new DeploymentTemplate(); // DeploymentTemplate | 
 try {
     apiInstance.update(environment, deployment, updatedTemplate);
 } catch (ApiException e) {
@@ -426,9 +442,9 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **environment** | **String**| environment |
- **deployment** | **String**| deployment |
- **updatedTemplate** | [**DeploymentTemplate**](DeploymentTemplate.md)| updatedTemplate |
+ **environment** | **String**|  |
+ **deployment** | **String**|  |
+ **updatedTemplate** | [**DeploymentTemplate**](DeploymentTemplate.md)|  |
 
 ### Return type
 
@@ -440,7 +456,7 @@ null (empty response body)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 <a name="updateMeteringSetting"></a>
@@ -448,6 +464,8 @@ null (empty response body)
 > updateMeteringSetting(environment, deployment, meteringSetting)
 
 Update billing ID for an existing deployment
+
+
 
 ### Example
 ```java
@@ -466,9 +484,9 @@ basic.setUsername("YOUR USERNAME");
 basic.setPassword("YOUR PASSWORD");
 
 DeploymentsApi apiInstance = new DeploymentsApi();
-String environment = "environment_example"; // String | environment
-String deployment = "deployment_example"; // String | deployment
-MeteringSetting meteringSetting = new MeteringSetting(); // MeteringSetting | meteringSetting
+String environment = "environment_example"; // String | 
+String deployment = "deployment_example"; // String | 
+MeteringSetting meteringSetting = new MeteringSetting(); // MeteringSetting | 
 try {
     apiInstance.updateMeteringSetting(environment, deployment, meteringSetting);
 } catch (ApiException e) {
@@ -481,9 +499,9 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **environment** | **String**| environment |
- **deployment** | **String**| deployment |
- **meteringSetting** | [**MeteringSetting**](MeteringSetting.md)| meteringSetting |
+ **environment** | **String**|  |
+ **deployment** | **String**|  |
+ **meteringSetting** | [**MeteringSetting**](MeteringSetting.md)|  |
 
 ### Return type
 
@@ -495,6 +513,6 @@ null (empty response body)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 

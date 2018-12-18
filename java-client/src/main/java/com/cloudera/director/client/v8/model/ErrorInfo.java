@@ -373,7 +373,7 @@ public class ErrorInfo {
    * Whether the operation that produced this error is retryable
    * @return retryable
   **/
-  @ApiModelProperty(example = "false", required = true, value = "Whether the operation that produced this error is retryable")
+  @ApiModelProperty(required = true, value = "Whether the operation that produced this error is retryable")
   public Boolean isRetryable() {
     return retryable;
   }

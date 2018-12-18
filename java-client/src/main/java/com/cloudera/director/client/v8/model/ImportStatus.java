@@ -107,7 +107,7 @@ public class ImportStatus {
    * Skipped or not during import
    * @return skipped
   **/
-  @ApiModelProperty(example = "false", value = "Skipped or not during import")
+  @ApiModelProperty(value = "Skipped or not during import")
   public Boolean isSkipped() {
     return skipped;
   }

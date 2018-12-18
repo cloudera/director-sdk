@@ -26,6 +26,9 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * A script to be run on a cloud instance
@@ -33,18 +36,21 @@ import java.io.IOException;
 @ApiModel(description = "A script to be run on a cloud instance")
 
 public class Script {
-  @SerializedName("content")
-  private String content = null;
   @SerializedName("id")
   private String id = null;
+  @SerializedName("env")
+  private Map<String, String> env = null;
+  @SerializedName("content")
+  private String content = null;
 
   public Script() {
     // Do nothing
   }
 
   private Script(ScriptBuilder builder) {
-      this.content = builder.content;
       this.id = builder.id;
+      this.env = builder.env;
+      this.content = builder.content;
     }
 
   public static ScriptBuilder builder() {
@@ -52,18 +58,25 @@ public class Script {
   }
 
   public static class ScriptBuilder {
-      private String content = null;
       private String id = null;
+      private Map<String, String> env = new HashMap<String, String>();
+      private String content = null;
   
 
-    public ScriptBuilder content(String content) {
-      this.content = content;
+    public ScriptBuilder id(String id) {
+      this.id = id;
       return this;
     }
 
 
-    public ScriptBuilder id(String id) {
-      this.id = id;
+    public ScriptBuilder env(Map<String, String> env) {
+      this.env = env;
+      return this;
+    }
+
+
+    public ScriptBuilder content(String content) {
+      this.content = content;
       return this;
     }
 
@@ -75,27 +88,10 @@ public class Script {
 
   public ScriptBuilder toBuilder() {
     return builder()
-      .content(content)
-            .id(id)
+      .id(id)
+            .env(env)
+            .content(content)
       ;
-  }
-
-  public Script content(String content) {
-    this.content = content;
-    return this;
-  }
-
-   /**
-   * The content of the script
-   * @return content
-  **/
-  @ApiModelProperty(required = true, value = "The content of the script")
-  public String getContent() {
-    return content;
-  }
-
-  public void setContent(String content) {
-    this.content = content;
   }
 
   public Script id(String id) {
@@ -116,6 +112,50 @@ public class Script {
     this.id = id;
   }
 
+  public Script env(Map<String, String> env) {
+    this.env = env;
+    return this;
+  }
+
+  public Script putEnvItem(String key, String envItem) {
+    if (this.env == null) {
+      this.env = new HashMap<String, String>();
+    }
+    this.env.put(key, envItem);
+    return this;
+  }
+
+   /**
+   * Environment variables to set when running the script
+   * @return env
+  **/
+  @ApiModelProperty(value = "Environment variables to set when running the script")
+  public Map<String, String> getEnv() {
+    return env;
+  }
+
+  public void setEnv(Map<String, String> env) {
+    this.env = env;
+  }
+
+  public Script content(String content) {
+    this.content = content;
+    return this;
+  }
+
+   /**
+   * The content of the script
+   * @return content
+  **/
+  @ApiModelProperty(required = true, value = "The content of the script")
+  public String getContent() {
+    return content;
+  }
+
+  public void setContent(String content) {
+    this.content = content;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -126,13 +166,14 @@ public class Script {
       return false;
     }
     Script script = (Script) o;
-    return Objects.equals(this.content, script.content) &&
-        Objects.equals(this.id, script.id);
+    return Objects.equals(this.id, script.id) &&
+        Objects.equals(this.env, script.env) &&
+        Objects.equals(this.content, script.content);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(content, id);
+    return Objects.hash(id, env, content);
   }
 
 
@@ -141,8 +182,9 @@ public class Script {
     StringBuilder sb = new StringBuilder();
     sb.append("class Script {\n");
     
-    sb.append("    content: ").append(toIndentedString(content)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    env: ").append(toIndentedString(env)).append("\n");
+    sb.append("    content: ").append(toIndentedString(content)).append("\n");
     sb.append("}");
     return sb.toString();
   }

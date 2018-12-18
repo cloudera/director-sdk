@@ -27,30 +27,31 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
+import org.joda.time.DateTime;
 
 /**
  * TimeSeriesData
  */
 
 public class TimeSeriesData {
-  @SerializedName("aggregateStatistics")
-  private TimeSeriesAggregateStatistics aggregateStatistics = null;
   @SerializedName("timestamp")
-  private Long timestamp = null;
-  @SerializedName("type")
-  private String type = null;
+  private DateTime timestamp = null;
   @SerializedName("value")
   private Double value = null;
+  @SerializedName("type")
+  private String type = null;
+  @SerializedName("aggregateStatistics")
+  private TimeSeriesAggregateStatistics aggregateStatistics = null;
 
   public TimeSeriesData() {
     // Do nothing
   }
 
   private TimeSeriesData(TimeSeriesDataBuilder builder) {
-      this.aggregateStatistics = builder.aggregateStatistics;
       this.timestamp = builder.timestamp;
-      this.type = builder.type;
       this.value = builder.value;
+      this.type = builder.type;
+      this.aggregateStatistics = builder.aggregateStatistics;
     }
 
   public static TimeSeriesDataBuilder builder() {
@@ -58,20 +59,20 @@ public class TimeSeriesData {
   }
 
   public static class TimeSeriesDataBuilder {
-      private TimeSeriesAggregateStatistics aggregateStatistics = null;
-      private Long timestamp = null;
-      private String type = null;
+      private DateTime timestamp = null;
       private Double value = null;
+      private String type = null;
+      private TimeSeriesAggregateStatistics aggregateStatistics = null;
   
 
-    public TimeSeriesDataBuilder aggregateStatistics(TimeSeriesAggregateStatistics aggregateStatistics) {
-      this.aggregateStatistics = aggregateStatistics;
+    public TimeSeriesDataBuilder timestamp(DateTime timestamp) {
+      this.timestamp = timestamp;
       return this;
     }
 
 
-    public TimeSeriesDataBuilder timestamp(Long timestamp) {
-      this.timestamp = timestamp;
+    public TimeSeriesDataBuilder value(Double value) {
+      this.value = value;
       return this;
     }
 
@@ -82,8 +83,8 @@ public class TimeSeriesData {
     }
 
 
-    public TimeSeriesDataBuilder value(Double value) {
-      this.value = value;
+    public TimeSeriesDataBuilder aggregateStatistics(TimeSeriesAggregateStatistics aggregateStatistics) {
+      this.aggregateStatistics = aggregateStatistics;
       return this;
     }
 
@@ -95,32 +96,14 @@ public class TimeSeriesData {
 
   public TimeSeriesDataBuilder toBuilder() {
     return builder()
-      .aggregateStatistics(aggregateStatistics)
-            .timestamp(timestamp)
-            .type(type)
+      .timestamp(timestamp)
             .value(value)
+            .type(type)
+            .aggregateStatistics(aggregateStatistics)
       ;
   }
 
-  public TimeSeriesData aggregateStatistics(TimeSeriesAggregateStatistics aggregateStatistics) {
-    this.aggregateStatistics = aggregateStatistics;
-    return this;
-  }
-
-   /**
-   * Aggregate statistics
-   * @return aggregateStatistics
-  **/
-  @ApiModelProperty(value = "Aggregate statistics")
-  public TimeSeriesAggregateStatistics getAggregateStatistics() {
-    return aggregateStatistics;
-  }
-
-  public void setAggregateStatistics(TimeSeriesAggregateStatistics aggregateStatistics) {
-    this.aggregateStatistics = aggregateStatistics;
-  }
-
-  public TimeSeriesData timestamp(Long timestamp) {
+  public TimeSeriesData timestamp(DateTime timestamp) {
     this.timestamp = timestamp;
     return this;
   }
@@ -130,30 +113,12 @@ public class TimeSeriesData {
    * @return timestamp
   **/
   @ApiModelProperty(required = true, value = "Timestamp")
-  public Long getTimestamp() {
+  public DateTime getTimestamp() {
     return timestamp;
   }
 
-  public void setTimestamp(Long timestamp) {
+  public void setTimestamp(DateTime timestamp) {
     this.timestamp = timestamp;
-  }
-
-  public TimeSeriesData type(String type) {
-    this.type = type;
-    return this;
-  }
-
-   /**
-   * Type
-   * @return type
-  **/
-  @ApiModelProperty(required = true, value = "Type")
-  public String getType() {
-    return type;
-  }
-
-  public void setType(String type) {
-    this.type = type;
   }
 
   public TimeSeriesData value(Double value) {
@@ -174,6 +139,42 @@ public class TimeSeriesData {
     this.value = value;
   }
 
+  public TimeSeriesData type(String type) {
+    this.type = type;
+    return this;
+  }
+
+   /**
+   * Type
+   * @return type
+  **/
+  @ApiModelProperty(required = true, value = "Type")
+  public String getType() {
+    return type;
+  }
+
+  public void setType(String type) {
+    this.type = type;
+  }
+
+  public TimeSeriesData aggregateStatistics(TimeSeriesAggregateStatistics aggregateStatistics) {
+    this.aggregateStatistics = aggregateStatistics;
+    return this;
+  }
+
+   /**
+   * Aggregate statistics
+   * @return aggregateStatistics
+  **/
+  @ApiModelProperty(value = "Aggregate statistics")
+  public TimeSeriesAggregateStatistics getAggregateStatistics() {
+    return aggregateStatistics;
+  }
+
+  public void setAggregateStatistics(TimeSeriesAggregateStatistics aggregateStatistics) {
+    this.aggregateStatistics = aggregateStatistics;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -184,15 +185,15 @@ public class TimeSeriesData {
       return false;
     }
     TimeSeriesData timeSeriesData = (TimeSeriesData) o;
-    return Objects.equals(this.aggregateStatistics, timeSeriesData.aggregateStatistics) &&
-        Objects.equals(this.timestamp, timeSeriesData.timestamp) &&
+    return Objects.equals(this.timestamp, timeSeriesData.timestamp) &&
+        Objects.equals(this.value, timeSeriesData.value) &&
         Objects.equals(this.type, timeSeriesData.type) &&
-        Objects.equals(this.value, timeSeriesData.value);
+        Objects.equals(this.aggregateStatistics, timeSeriesData.aggregateStatistics);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(aggregateStatistics, timestamp, type, value);
+    return Objects.hash(timestamp, value, type, aggregateStatistics);
   }
 
 
@@ -201,10 +202,10 @@ public class TimeSeriesData {
     StringBuilder sb = new StringBuilder();
     sb.append("class TimeSeriesData {\n");
     
-    sb.append("    aggregateStatistics: ").append(toIndentedString(aggregateStatistics)).append("\n");
     sb.append("    timestamp: ").append(toIndentedString(timestamp)).append("\n");
-    sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    value: ").append(toIndentedString(value)).append("\n");
+    sb.append("    type: ").append(toIndentedString(type)).append("\n");
+    sb.append("    aggregateStatistics: ").append(toIndentedString(aggregateStatistics)).append("\n");
     sb.append("}");
     return sb.toString();
   }

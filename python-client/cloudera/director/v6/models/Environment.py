@@ -39,53 +39,28 @@ class Environment(object):
                             and the value is json key in definition.
     """
     swagger_types = {
-        'credentials': 'SshCredentials',
         'name': 'str',
-        'provider': 'InstanceProviderConfig'
+        'provider': 'InstanceProviderConfig',
+        'credentials': 'SshCredentials'
     }
 
     attribute_map = {
-        'credentials': 'credentials',
         'name': 'name',
-        'provider': 'provider'
+        'provider': 'provider',
+        'credentials': 'credentials'
     }
 
-    def __init__(self, credentials=None, name=None, provider=None):  # noqa: E501
+    def __init__(self, name=None, provider=None, credentials=None):  # noqa: E501
         """Environment - a model defined in Swagger"""  # noqa: E501
 
-        self._credentials = None
         self._name = None
         self._provider = None
+        self._credentials = None
         self.discriminator = None
 
-        self.credentials = credentials
         self.name = name
         self.provider = provider
-
-    @property
-    def credentials(self):
-        """Gets the credentials of this Environment.  # noqa: E501
-
-        SSH credentials for instance access  # noqa: E501
-
-        :return: The credentials of this Environment.  # noqa: E501
-        :rtype: SshCredentials
-        """
-        return self._credentials
-
-    @credentials.setter
-    def credentials(self, credentials):
-        """Sets the credentials of this Environment.
-
-        SSH credentials for instance access  # noqa: E501
-
-        :param credentials: The credentials of this Environment.  # noqa: E501
-        :type: SshCredentials
-        """
-        if credentials is None:
-            raise ValueError("Invalid value for `credentials`, must not be `None`")  # noqa: E501
-
-        self._credentials = credentials
+        self.credentials = credentials
 
     @property
     def name(self):
@@ -136,6 +111,31 @@ class Environment(object):
             raise ValueError("Invalid value for `provider`, must not be `None`")  # noqa: E501
 
         self._provider = provider
+
+    @property
+    def credentials(self):
+        """Gets the credentials of this Environment.  # noqa: E501
+
+        SSH credentials for instance access  # noqa: E501
+
+        :return: The credentials of this Environment.  # noqa: E501
+        :rtype: SshCredentials
+        """
+        return self._credentials
+
+    @credentials.setter
+    def credentials(self, credentials):
+        """Sets the credentials of this Environment.
+
+        SSH credentials for instance access  # noqa: E501
+
+        :param credentials: The credentials of this Environment.  # noqa: E501
+        :type: SshCredentials
+        """
+        if credentials is None:
+            raise ValueError("Invalid value for `credentials`, must not be `None`")  # noqa: E501
+
+        self._credentials = credentials
 
     def to_dict(self):
         """Returns the model properties as a dict"""

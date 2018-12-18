@@ -1,17 +1,19 @@
 # cloudera.director.ProviderMetadataApi
 
-All URIs are relative to *https://localhost:7189*
+All URIs are relative to *https://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**get**](ProviderMetadataApi.md#get) | **GET** /api/d6.0/metadata/providers/{providerId} | Get a provider by name
-[**list**](ProviderMetadataApi.md#list) | **GET** /api/d6.0/metadata/providers | List all provider metadata
+[**get**](ProviderMetadataApi.md#get) | **GET** /api/d6.1/metadata/providers/{providerId} | Get a provider by name
+[**list**](ProviderMetadataApi.md#list) | **GET** /api/d6.1/metadata/providers | List all provider metadata
 
 
 # **get**
 > CloudProviderMetadata get(provider_id)
 
 Get a provider by name
+
+
 
 ### Example
 ```python
@@ -28,7 +30,7 @@ configuration.password = 'YOUR_PASSWORD'
 
 # create an instance of the API class
 api_instance = cloudera.director.ProviderMetadataApi(cloudera.director.ApiClient(configuration))
-provider_id = 'provider_id_example' # str | providerId
+provider_id = 'provider_id_example' # str | 
 
 try:
     # Get a provider by name
@@ -42,7 +44,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **provider_id** | **str**| providerId | 
+ **provider_id** | **str**|  | 
 
 ### Return type
 
@@ -63,6 +65,8 @@ Name | Type | Description  | Notes
 > list[CloudProviderMetadata] list()
 
 List all provider metadata
+
+
 
 ### Example
 ```python

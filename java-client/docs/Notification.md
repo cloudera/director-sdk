@@ -4,9 +4,9 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**description** | **String** | Notification description |  [optional]
-**message** | **String** | Notification message | 
 **type** | [**TypeEnum**](#TypeEnum) | Notification type | 
+**message** | **String** | Notification message | 
+**description** | **String** | Notification description |  [optional]
 
 
 <a name="TypeEnum"></a>

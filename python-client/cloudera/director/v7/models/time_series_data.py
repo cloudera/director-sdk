@@ -39,56 +39,33 @@ class TimeSeriesData(object):
                             and the value is json key in definition.
     """
     swagger_types = {
-        'aggregate_statistics': 'TimeSeriesAggregateStatistics',
-        'timestamp': 'int',
+        'timestamp': 'datetime',
+        'value': 'float',
         'type': 'str',
-        'value': 'float'
+        'aggregate_statistics': 'TimeSeriesAggregateStatistics'
     }
 
     attribute_map = {
-        'aggregate_statistics': 'aggregateStatistics',
         'timestamp': 'timestamp',
+        'value': 'value',
         'type': 'type',
-        'value': 'value'
+        'aggregate_statistics': 'aggregateStatistics'
     }
 
-    def __init__(self, aggregate_statistics=None, timestamp=None, type=None, value=None):  # noqa: E501
+    def __init__(self, timestamp=None, value=None, type=None, aggregate_statistics=None):  # noqa: E501
         """TimeSeriesData - a model defined in Swagger"""  # noqa: E501
 
-        self._aggregate_statistics = None
         self._timestamp = None
-        self._type = None
         self._value = None
+        self._type = None
+        self._aggregate_statistics = None
         self.discriminator = None
 
+        self.timestamp = timestamp
+        self.value = value
+        self.type = type
         if aggregate_statistics is not None:
             self.aggregate_statistics = aggregate_statistics
-        self.timestamp = timestamp
-        self.type = type
-        self.value = value
-
-    @property
-    def aggregate_statistics(self):
-        """Gets the aggregate_statistics of this TimeSeriesData.  # noqa: E501
-
-        Aggregate statistics  # noqa: E501
-
-        :return: The aggregate_statistics of this TimeSeriesData.  # noqa: E501
-        :rtype: TimeSeriesAggregateStatistics
-        """
-        return self._aggregate_statistics
-
-    @aggregate_statistics.setter
-    def aggregate_statistics(self, aggregate_statistics):
-        """Sets the aggregate_statistics of this TimeSeriesData.
-
-        Aggregate statistics  # noqa: E501
-
-        :param aggregate_statistics: The aggregate_statistics of this TimeSeriesData.  # noqa: E501
-        :type: TimeSeriesAggregateStatistics
-        """
-
-        self._aggregate_statistics = aggregate_statistics
 
     @property
     def timestamp(self):
@@ -97,7 +74,7 @@ class TimeSeriesData(object):
         Timestamp  # noqa: E501
 
         :return: The timestamp of this TimeSeriesData.  # noqa: E501
-        :rtype: int
+        :rtype: datetime
         """
         return self._timestamp
 
@@ -108,12 +85,37 @@ class TimeSeriesData(object):
         Timestamp  # noqa: E501
 
         :param timestamp: The timestamp of this TimeSeriesData.  # noqa: E501
-        :type: int
+        :type: datetime
         """
         if timestamp is None:
             raise ValueError("Invalid value for `timestamp`, must not be `None`")  # noqa: E501
 
         self._timestamp = timestamp
+
+    @property
+    def value(self):
+        """Gets the value of this TimeSeriesData.  # noqa: E501
+
+        Value  # noqa: E501
+
+        :return: The value of this TimeSeriesData.  # noqa: E501
+        :rtype: float
+        """
+        return self._value
+
+    @value.setter
+    def value(self, value):
+        """Sets the value of this TimeSeriesData.
+
+        Value  # noqa: E501
+
+        :param value: The value of this TimeSeriesData.  # noqa: E501
+        :type: float
+        """
+        if value is None:
+            raise ValueError("Invalid value for `value`, must not be `None`")  # noqa: E501
+
+        self._value = value
 
     @property
     def type(self):
@@ -141,29 +143,27 @@ class TimeSeriesData(object):
         self._type = type
 
     @property
-    def value(self):
-        """Gets the value of this TimeSeriesData.  # noqa: E501
+    def aggregate_statistics(self):
+        """Gets the aggregate_statistics of this TimeSeriesData.  # noqa: E501
 
-        Value  # noqa: E501
+        Aggregate statistics  # noqa: E501
 
-        :return: The value of this TimeSeriesData.  # noqa: E501
-        :rtype: float
+        :return: The aggregate_statistics of this TimeSeriesData.  # noqa: E501
+        :rtype: TimeSeriesAggregateStatistics
         """
-        return self._value
+        return self._aggregate_statistics
 
-    @value.setter
-    def value(self, value):
-        """Sets the value of this TimeSeriesData.
+    @aggregate_statistics.setter
+    def aggregate_statistics(self, aggregate_statistics):
+        """Sets the aggregate_statistics of this TimeSeriesData.
 
-        Value  # noqa: E501
+        Aggregate statistics  # noqa: E501
 
-        :param value: The value of this TimeSeriesData.  # noqa: E501
-        :type: float
+        :param aggregate_statistics: The aggregate_statistics of this TimeSeriesData.  # noqa: E501
+        :type: TimeSeriesAggregateStatistics
         """
-        if value is None:
-            raise ValueError("Invalid value for `value`, must not be `None`")  # noqa: E501
 
-        self._value = value
+        self._aggregate_statistics = aggregate_statistics
 
     def to_dict(self):
         """Returns the model properties as a dict"""

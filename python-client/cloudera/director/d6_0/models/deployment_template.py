@@ -39,250 +39,183 @@ class DeploymentTemplate(object):
                             and the value is json key in definition.
     """
     swagger_types = {
-        'billing_id': 'str',
-        'configs': 'dict(str, dict(str, str))',
-        'csds': 'list[str]',
-        'enable_enterprise_trial': 'bool',
-        'external_accounts': 'dict(str, ExternalAccount)',
+        'name': 'str',
+        'manager_virtual_instance': 'VirtualInstance',
         'external_database_templates': 'dict(str, ExternalDatabaseTemplate)',
         'external_databases': 'dict(str, ExternalDatabase)',
+        'configs': 'dict(str, dict(str, str))',
+        'external_accounts': 'dict(str, ExternalAccount)',
         'hostname': 'str',
-        'java_installation_strategy': 'str',
-        'krb_admin_password': 'str',
-        'krb_admin_username': 'str',
-        'license': 'str',
-        'manager_virtual_instance': 'VirtualInstance',
-        'name': 'str',
-        'password': 'str',
         'port': 'int',
-        'post_create_scripts': 'list[Script]',
-        'repository': 'str',
-        'repository_key_url': 'str',
-        'tls_configuration_properties': 'dict(str, str)',
+        'username': 'str',
+        'password': 'str',
         'tls_enabled': 'bool',
         'trusted_certificate': 'str',
+        'tls_configuration_properties': 'dict(str, str)',
+        'repository': 'str',
+        'repository_key_url': 'str',
+        'enable_enterprise_trial': 'bool',
         'unlimited_jce': 'bool',
-        'username': 'str'
+        'krb_admin_username': 'str',
+        'krb_admin_password': 'str',
+        'java_installation_strategy': 'str',
+        'license': 'str',
+        'billing_id': 'str',
+        'post_create_scripts': 'list[Script]',
+        'csds': 'list[str]'
     }
 
     attribute_map = {
-        'billing_id': 'billingId',
-        'configs': 'configs',
-        'csds': 'csds',
-        'enable_enterprise_trial': 'enableEnterpriseTrial',
-        'external_accounts': 'externalAccounts',
+        'name': 'name',
+        'manager_virtual_instance': 'managerVirtualInstance',
         'external_database_templates': 'externalDatabaseTemplates',
         'external_databases': 'externalDatabases',
+        'configs': 'configs',
+        'external_accounts': 'externalAccounts',
         'hostname': 'hostname',
-        'java_installation_strategy': 'javaInstallationStrategy',
-        'krb_admin_password': 'krbAdminPassword',
-        'krb_admin_username': 'krbAdminUsername',
-        'license': 'license',
-        'manager_virtual_instance': 'managerVirtualInstance',
-        'name': 'name',
-        'password': 'password',
         'port': 'port',
-        'post_create_scripts': 'postCreateScripts',
-        'repository': 'repository',
-        'repository_key_url': 'repositoryKeyUrl',
-        'tls_configuration_properties': 'tlsConfigurationProperties',
+        'username': 'username',
+        'password': 'password',
         'tls_enabled': 'tlsEnabled',
         'trusted_certificate': 'trustedCertificate',
+        'tls_configuration_properties': 'tlsConfigurationProperties',
+        'repository': 'repository',
+        'repository_key_url': 'repositoryKeyUrl',
+        'enable_enterprise_trial': 'enableEnterpriseTrial',
         'unlimited_jce': 'unlimitedJce',
-        'username': 'username'
+        'krb_admin_username': 'krbAdminUsername',
+        'krb_admin_password': 'krbAdminPassword',
+        'java_installation_strategy': 'javaInstallationStrategy',
+        'license': 'license',
+        'billing_id': 'billingId',
+        'post_create_scripts': 'postCreateScripts',
+        'csds': 'csds'
     }
 
-    def __init__(self, billing_id=None, configs=None, csds=None, enable_enterprise_trial=None, external_accounts=None, external_database_templates=None, external_databases=None, hostname=None, java_installation_strategy=None, krb_admin_password=None, krb_admin_username=None, license=None, manager_virtual_instance=None, name=None, password=None, port=None, post_create_scripts=None, repository=None, repository_key_url=None, tls_configuration_properties=None, tls_enabled=None, trusted_certificate=None, unlimited_jce=None, username=None):  # noqa: E501
+    def __init__(self, name=None, manager_virtual_instance=None, external_database_templates=None, external_databases=None, configs=None, external_accounts=None, hostname=None, port=None, username=None, password=None, tls_enabled=None, trusted_certificate=None, tls_configuration_properties=None, repository=None, repository_key_url=None, enable_enterprise_trial=None, unlimited_jce=None, krb_admin_username=None, krb_admin_password=None, java_installation_strategy=None, license=None, billing_id=None, post_create_scripts=None, csds=None):  # noqa: E501
         """DeploymentTemplate - a model defined in Swagger"""  # noqa: E501
 
-        self._billing_id = None
-        self._configs = None
-        self._csds = None
-        self._enable_enterprise_trial = None
-        self._external_accounts = None
+        self._name = None
+        self._manager_virtual_instance = None
         self._external_database_templates = None
         self._external_databases = None
+        self._configs = None
+        self._external_accounts = None
         self._hostname = None
-        self._java_installation_strategy = None
-        self._krb_admin_password = None
-        self._krb_admin_username = None
-        self._license = None
-        self._manager_virtual_instance = None
-        self._name = None
-        self._password = None
         self._port = None
-        self._post_create_scripts = None
-        self._repository = None
-        self._repository_key_url = None
-        self._tls_configuration_properties = None
+        self._username = None
+        self._password = None
         self._tls_enabled = None
         self._trusted_certificate = None
+        self._tls_configuration_properties = None
+        self._repository = None
+        self._repository_key_url = None
+        self._enable_enterprise_trial = None
         self._unlimited_jce = None
-        self._username = None
+        self._krb_admin_username = None
+        self._krb_admin_password = None
+        self._java_installation_strategy = None
+        self._license = None
+        self._billing_id = None
+        self._post_create_scripts = None
+        self._csds = None
         self.discriminator = None
 
-        if billing_id is not None:
-            self.billing_id = billing_id
-        if configs is not None:
-            self.configs = configs
-        if csds is not None:
-            self.csds = csds
-        if enable_enterprise_trial is not None:
-            self.enable_enterprise_trial = enable_enterprise_trial
-        if external_accounts is not None:
-            self.external_accounts = external_accounts
+        self.name = name
+        if manager_virtual_instance is not None:
+            self.manager_virtual_instance = manager_virtual_instance
         if external_database_templates is not None:
             self.external_database_templates = external_database_templates
         if external_databases is not None:
             self.external_databases = external_databases
+        if configs is not None:
+            self.configs = configs
+        if external_accounts is not None:
+            self.external_accounts = external_accounts
         if hostname is not None:
             self.hostname = hostname
-        if java_installation_strategy is not None:
-            self.java_installation_strategy = java_installation_strategy
-        if krb_admin_password is not None:
-            self.krb_admin_password = krb_admin_password
-        if krb_admin_username is not None:
-            self.krb_admin_username = krb_admin_username
-        if license is not None:
-            self.license = license
-        if manager_virtual_instance is not None:
-            self.manager_virtual_instance = manager_virtual_instance
-        self.name = name
-        if password is not None:
-            self.password = password
         if port is not None:
             self.port = port
-        if post_create_scripts is not None:
-            self.post_create_scripts = post_create_scripts
-        if repository is not None:
-            self.repository = repository
-        if repository_key_url is not None:
-            self.repository_key_url = repository_key_url
-        if tls_configuration_properties is not None:
-            self.tls_configuration_properties = tls_configuration_properties
+        if username is not None:
+            self.username = username
+        if password is not None:
+            self.password = password
         if tls_enabled is not None:
             self.tls_enabled = tls_enabled
         if trusted_certificate is not None:
             self.trusted_certificate = trusted_certificate
+        if tls_configuration_properties is not None:
+            self.tls_configuration_properties = tls_configuration_properties
+        if repository is not None:
+            self.repository = repository
+        if repository_key_url is not None:
+            self.repository_key_url = repository_key_url
+        if enable_enterprise_trial is not None:
+            self.enable_enterprise_trial = enable_enterprise_trial
         if unlimited_jce is not None:
             self.unlimited_jce = unlimited_jce
-        if username is not None:
-            self.username = username
+        if krb_admin_username is not None:
+            self.krb_admin_username = krb_admin_username
+        if krb_admin_password is not None:
+            self.krb_admin_password = krb_admin_password
+        if java_installation_strategy is not None:
+            self.java_installation_strategy = java_installation_strategy
+        if license is not None:
+            self.license = license
+        if billing_id is not None:
+            self.billing_id = billing_id
+        if post_create_scripts is not None:
+            self.post_create_scripts = post_create_scripts
+        if csds is not None:
+            self.csds = csds
 
     @property
-    def billing_id(self):
-        """Gets the billing_id of this DeploymentTemplate.  # noqa: E501
+    def name(self):
+        """Gets the name of this DeploymentTemplate.  # noqa: E501
 
-        Billing ID for usage-based billing [redacted on read]  # noqa: E501
+        Deployment name  # noqa: E501
 
-        :return: The billing_id of this DeploymentTemplate.  # noqa: E501
+        :return: The name of this DeploymentTemplate.  # noqa: E501
         :rtype: str
         """
-        return self._billing_id
+        return self._name
 
-    @billing_id.setter
-    def billing_id(self, billing_id):
-        """Sets the billing_id of this DeploymentTemplate.
+    @name.setter
+    def name(self, name):
+        """Sets the name of this DeploymentTemplate.
 
-        Billing ID for usage-based billing [redacted on read]  # noqa: E501
+        Deployment name  # noqa: E501
 
-        :param billing_id: The billing_id of this DeploymentTemplate.  # noqa: E501
+        :param name: The name of this DeploymentTemplate.  # noqa: E501
         :type: str
         """
+        if name is None:
+            raise ValueError("Invalid value for `name`, must not be `None`")  # noqa: E501
 
-        self._billing_id = billing_id
-
-    @property
-    def configs(self):
-        """Gets the configs of this DeploymentTemplate.  # noqa: E501
-
-        Optional configurations for Cloudera Manager and its management services  # noqa: E501
-
-        :return: The configs of this DeploymentTemplate.  # noqa: E501
-        :rtype: dict(str, dict(str, str))
-        """
-        return self._configs
-
-    @configs.setter
-    def configs(self, configs):
-        """Sets the configs of this DeploymentTemplate.
-
-        Optional configurations for Cloudera Manager and its management services  # noqa: E501
-
-        :param configs: The configs of this DeploymentTemplate.  # noqa: E501
-        :type: dict(str, dict(str, str))
-        """
-
-        self._configs = configs
+        self._name = name
 
     @property
-    def csds(self):
-        """Gets the csds of this DeploymentTemplate.  # noqa: E501
+    def manager_virtual_instance(self):
+        """Gets the manager_virtual_instance of this DeploymentTemplate.  # noqa: E501
 
-        A list of CSD package URLs  # noqa: E501
+        Instance definition for a Cloudera Manager instance created from scratch  # noqa: E501
 
-        :return: The csds of this DeploymentTemplate.  # noqa: E501
-        :rtype: list[str]
+        :return: The manager_virtual_instance of this DeploymentTemplate.  # noqa: E501
+        :rtype: VirtualInstance
         """
-        return self._csds
+        return self._manager_virtual_instance
 
-    @csds.setter
-    def csds(self, csds):
-        """Sets the csds of this DeploymentTemplate.
+    @manager_virtual_instance.setter
+    def manager_virtual_instance(self, manager_virtual_instance):
+        """Sets the manager_virtual_instance of this DeploymentTemplate.
 
-        A list of CSD package URLs  # noqa: E501
+        Instance definition for a Cloudera Manager instance created from scratch  # noqa: E501
 
-        :param csds: The csds of this DeploymentTemplate.  # noqa: E501
-        :type: list[str]
-        """
-
-        self._csds = csds
-
-    @property
-    def enable_enterprise_trial(self):
-        """Gets the enable_enterprise_trial of this DeploymentTemplate.  # noqa: E501
-
-        Whether to enable Cloudera Enterprise Trial  # noqa: E501
-
-        :return: The enable_enterprise_trial of this DeploymentTemplate.  # noqa: E501
-        :rtype: bool
-        """
-        return self._enable_enterprise_trial
-
-    @enable_enterprise_trial.setter
-    def enable_enterprise_trial(self, enable_enterprise_trial):
-        """Sets the enable_enterprise_trial of this DeploymentTemplate.
-
-        Whether to enable Cloudera Enterprise Trial  # noqa: E501
-
-        :param enable_enterprise_trial: The enable_enterprise_trial of this DeploymentTemplate.  # noqa: E501
-        :type: bool
+        :param manager_virtual_instance: The manager_virtual_instance of this DeploymentTemplate.  # noqa: E501
+        :type: VirtualInstance
         """
 
-        self._enable_enterprise_trial = enable_enterprise_trial
-
-    @property
-    def external_accounts(self):
-        """Gets the external_accounts of this DeploymentTemplate.  # noqa: E501
-
-        External account definitions  # noqa: E501
-
-        :return: The external_accounts of this DeploymentTemplate.  # noqa: E501
-        :rtype: dict(str, ExternalAccount)
-        """
-        return self._external_accounts
-
-    @external_accounts.setter
-    def external_accounts(self, external_accounts):
-        """Sets the external_accounts of this DeploymentTemplate.
-
-        External account definitions  # noqa: E501
-
-        :param external_accounts: The external_accounts of this DeploymentTemplate.  # noqa: E501
-        :type: dict(str, ExternalAccount)
-        """
-
-        self._external_accounts = external_accounts
+        self._manager_virtual_instance = manager_virtual_instance
 
     @property
     def external_database_templates(self):
@@ -331,6 +264,52 @@ class DeploymentTemplate(object):
         self._external_databases = external_databases
 
     @property
+    def configs(self):
+        """Gets the configs of this DeploymentTemplate.  # noqa: E501
+
+        Optional configurations for Cloudera Manager and its management services  # noqa: E501
+
+        :return: The configs of this DeploymentTemplate.  # noqa: E501
+        :rtype: dict(str, dict(str, str))
+        """
+        return self._configs
+
+    @configs.setter
+    def configs(self, configs):
+        """Sets the configs of this DeploymentTemplate.
+
+        Optional configurations for Cloudera Manager and its management services  # noqa: E501
+
+        :param configs: The configs of this DeploymentTemplate.  # noqa: E501
+        :type: dict(str, dict(str, str))
+        """
+
+        self._configs = configs
+
+    @property
+    def external_accounts(self):
+        """Gets the external_accounts of this DeploymentTemplate.  # noqa: E501
+
+        External account definitions  # noqa: E501
+
+        :return: The external_accounts of this DeploymentTemplate.  # noqa: E501
+        :rtype: dict(str, ExternalAccount)
+        """
+        return self._external_accounts
+
+    @external_accounts.setter
+    def external_accounts(self, external_accounts):
+        """Sets the external_accounts of this DeploymentTemplate.
+
+        External account definitions  # noqa: E501
+
+        :param external_accounts: The external_accounts of this DeploymentTemplate.  # noqa: E501
+        :type: dict(str, ExternalAccount)
+        """
+
+        self._external_accounts = external_accounts
+
+    @property
     def hostname(self):
         """Gets the hostname of this DeploymentTemplate.  # noqa: E501
 
@@ -352,175 +331,6 @@ class DeploymentTemplate(object):
         """
 
         self._hostname = hostname
-
-    @property
-    def java_installation_strategy(self):
-        """Gets the java_installation_strategy of this DeploymentTemplate.  # noqa: E501
-
-        Cloudera Altus Director and Cloudera Manager's Java installation strategy  # noqa: E501
-
-        :return: The java_installation_strategy of this DeploymentTemplate.  # noqa: E501
-        :rtype: str
-        """
-        return self._java_installation_strategy
-
-    @java_installation_strategy.setter
-    def java_installation_strategy(self, java_installation_strategy):
-        """Sets the java_installation_strategy of this DeploymentTemplate.
-
-        Cloudera Altus Director and Cloudera Manager's Java installation strategy  # noqa: E501
-
-        :param java_installation_strategy: The java_installation_strategy of this DeploymentTemplate.  # noqa: E501
-        :type: str
-        """
-        allowed_values = ["AUTO", "NONE", "DIRECTOR_MANAGED"]  # noqa: E501
-        if java_installation_strategy not in allowed_values:
-            raise ValueError(
-                "Invalid value for `java_installation_strategy` ({0}), must be one of {1}"  # noqa: E501
-                .format(java_installation_strategy, allowed_values)
-            )
-
-        self._java_installation_strategy = java_installation_strategy
-
-    @property
-    def krb_admin_password(self):
-        """Gets the krb_admin_password of this DeploymentTemplate.  # noqa: E501
-
-        Password for Kerberos administrative principal used by Cloudera Manager [redacted on read]  # noqa: E501
-
-        :return: The krb_admin_password of this DeploymentTemplate.  # noqa: E501
-        :rtype: str
-        """
-        return self._krb_admin_password
-
-    @krb_admin_password.setter
-    def krb_admin_password(self, krb_admin_password):
-        """Sets the krb_admin_password of this DeploymentTemplate.
-
-        Password for Kerberos administrative principal used by Cloudera Manager [redacted on read]  # noqa: E501
-
-        :param krb_admin_password: The krb_admin_password of this DeploymentTemplate.  # noqa: E501
-        :type: str
-        """
-
-        self._krb_admin_password = krb_admin_password
-
-    @property
-    def krb_admin_username(self):
-        """Gets the krb_admin_username of this DeploymentTemplate.  # noqa: E501
-
-        Username for Kerberos administrative principal used by Cloudera Manager  # noqa: E501
-
-        :return: The krb_admin_username of this DeploymentTemplate.  # noqa: E501
-        :rtype: str
-        """
-        return self._krb_admin_username
-
-    @krb_admin_username.setter
-    def krb_admin_username(self, krb_admin_username):
-        """Sets the krb_admin_username of this DeploymentTemplate.
-
-        Username for Kerberos administrative principal used by Cloudera Manager  # noqa: E501
-
-        :param krb_admin_username: The krb_admin_username of this DeploymentTemplate.  # noqa: E501
-        :type: str
-        """
-
-        self._krb_admin_username = krb_admin_username
-
-    @property
-    def license(self):
-        """Gets the license of this DeploymentTemplate.  # noqa: E501
-
-        License for Cloudera Manager [redacted on read]  # noqa: E501
-
-        :return: The license of this DeploymentTemplate.  # noqa: E501
-        :rtype: str
-        """
-        return self._license
-
-    @license.setter
-    def license(self, license):
-        """Sets the license of this DeploymentTemplate.
-
-        License for Cloudera Manager [redacted on read]  # noqa: E501
-
-        :param license: The license of this DeploymentTemplate.  # noqa: E501
-        :type: str
-        """
-
-        self._license = license
-
-    @property
-    def manager_virtual_instance(self):
-        """Gets the manager_virtual_instance of this DeploymentTemplate.  # noqa: E501
-
-        Instance definition for a Cloudera Manager instance created from scratch  # noqa: E501
-
-        :return: The manager_virtual_instance of this DeploymentTemplate.  # noqa: E501
-        :rtype: VirtualInstance
-        """
-        return self._manager_virtual_instance
-
-    @manager_virtual_instance.setter
-    def manager_virtual_instance(self, manager_virtual_instance):
-        """Sets the manager_virtual_instance of this DeploymentTemplate.
-
-        Instance definition for a Cloudera Manager instance created from scratch  # noqa: E501
-
-        :param manager_virtual_instance: The manager_virtual_instance of this DeploymentTemplate.  # noqa: E501
-        :type: VirtualInstance
-        """
-
-        self._manager_virtual_instance = manager_virtual_instance
-
-    @property
-    def name(self):
-        """Gets the name of this DeploymentTemplate.  # noqa: E501
-
-        Deployment name  # noqa: E501
-
-        :return: The name of this DeploymentTemplate.  # noqa: E501
-        :rtype: str
-        """
-        return self._name
-
-    @name.setter
-    def name(self, name):
-        """Sets the name of this DeploymentTemplate.
-
-        Deployment name  # noqa: E501
-
-        :param name: The name of this DeploymentTemplate.  # noqa: E501
-        :type: str
-        """
-        if name is None:
-            raise ValueError("Invalid value for `name`, must not be `None`")  # noqa: E501
-
-        self._name = name
-
-    @property
-    def password(self):
-        """Gets the password of this DeploymentTemplate.  # noqa: E501
-
-        Web UI and API password [redacted on read]  # noqa: E501
-
-        :return: The password of this DeploymentTemplate.  # noqa: E501
-        :rtype: str
-        """
-        return self._password
-
-    @password.setter
-    def password(self, password):
-        """Sets the password of this DeploymentTemplate.
-
-        Web UI and API password [redacted on read]  # noqa: E501
-
-        :param password: The password of this DeploymentTemplate.  # noqa: E501
-        :type: str
-        """
-
-        self._password = password
 
     @property
     def port(self):
@@ -546,96 +356,50 @@ class DeploymentTemplate(object):
         self._port = port
 
     @property
-    def post_create_scripts(self):
-        """Gets the post_create_scripts of this DeploymentTemplate.  # noqa: E501
+    def username(self):
+        """Gets the username of this DeploymentTemplate.  # noqa: E501
 
-        A list of scripts to be run after deployment creation  # noqa: E501
+        Web UI and API username  # noqa: E501
 
-        :return: The post_create_scripts of this DeploymentTemplate.  # noqa: E501
-        :rtype: list[Script]
-        """
-        return self._post_create_scripts
-
-    @post_create_scripts.setter
-    def post_create_scripts(self, post_create_scripts):
-        """Sets the post_create_scripts of this DeploymentTemplate.
-
-        A list of scripts to be run after deployment creation  # noqa: E501
-
-        :param post_create_scripts: The post_create_scripts of this DeploymentTemplate.  # noqa: E501
-        :type: list[Script]
-        """
-
-        self._post_create_scripts = post_create_scripts
-
-    @property
-    def repository(self):
-        """Gets the repository of this DeploymentTemplate.  # noqa: E501
-
-        Custom Cloudera Manager repository URL  # noqa: E501
-
-        :return: The repository of this DeploymentTemplate.  # noqa: E501
+        :return: The username of this DeploymentTemplate.  # noqa: E501
         :rtype: str
         """
-        return self._repository
+        return self._username
 
-    @repository.setter
-    def repository(self, repository):
-        """Sets the repository of this DeploymentTemplate.
+    @username.setter
+    def username(self, username):
+        """Sets the username of this DeploymentTemplate.
 
-        Custom Cloudera Manager repository URL  # noqa: E501
+        Web UI and API username  # noqa: E501
 
-        :param repository: The repository of this DeploymentTemplate.  # noqa: E501
+        :param username: The username of this DeploymentTemplate.  # noqa: E501
         :type: str
         """
 
-        self._repository = repository
+        self._username = username
 
     @property
-    def repository_key_url(self):
-        """Gets the repository_key_url of this DeploymentTemplate.  # noqa: E501
+    def password(self):
+        """Gets the password of this DeploymentTemplate.  # noqa: E501
 
-        Custom Cloudera Manager public GPG key  # noqa: E501
+        Web UI and API password [redacted on read]  # noqa: E501
 
-        :return: The repository_key_url of this DeploymentTemplate.  # noqa: E501
+        :return: The password of this DeploymentTemplate.  # noqa: E501
         :rtype: str
         """
-        return self._repository_key_url
+        return self._password
 
-    @repository_key_url.setter
-    def repository_key_url(self, repository_key_url):
-        """Sets the repository_key_url of this DeploymentTemplate.
+    @password.setter
+    def password(self, password):
+        """Sets the password of this DeploymentTemplate.
 
-        Custom Cloudera Manager public GPG key  # noqa: E501
+        Web UI and API password [redacted on read]  # noqa: E501
 
-        :param repository_key_url: The repository_key_url of this DeploymentTemplate.  # noqa: E501
+        :param password: The password of this DeploymentTemplate.  # noqa: E501
         :type: str
         """
 
-        self._repository_key_url = repository_key_url
-
-    @property
-    def tls_configuration_properties(self):
-        """Gets the tls_configuration_properties of this DeploymentTemplate.  # noqa: E501
-
-        TLS configuration properties  # noqa: E501
-
-        :return: The tls_configuration_properties of this DeploymentTemplate.  # noqa: E501
-        :rtype: dict(str, str)
-        """
-        return self._tls_configuration_properties
-
-    @tls_configuration_properties.setter
-    def tls_configuration_properties(self, tls_configuration_properties):
-        """Sets the tls_configuration_properties of this DeploymentTemplate.
-
-        TLS configuration properties  # noqa: E501
-
-        :param tls_configuration_properties: The tls_configuration_properties of this DeploymentTemplate.  # noqa: E501
-        :type: dict(str, str)
-        """
-
-        self._tls_configuration_properties = tls_configuration_properties
+        self._password = password
 
     @property
     def tls_enabled(self):
@@ -684,6 +448,98 @@ class DeploymentTemplate(object):
         self._trusted_certificate = trusted_certificate
 
     @property
+    def tls_configuration_properties(self):
+        """Gets the tls_configuration_properties of this DeploymentTemplate.  # noqa: E501
+
+        TLS configuration properties  # noqa: E501
+
+        :return: The tls_configuration_properties of this DeploymentTemplate.  # noqa: E501
+        :rtype: dict(str, str)
+        """
+        return self._tls_configuration_properties
+
+    @tls_configuration_properties.setter
+    def tls_configuration_properties(self, tls_configuration_properties):
+        """Sets the tls_configuration_properties of this DeploymentTemplate.
+
+        TLS configuration properties  # noqa: E501
+
+        :param tls_configuration_properties: The tls_configuration_properties of this DeploymentTemplate.  # noqa: E501
+        :type: dict(str, str)
+        """
+
+        self._tls_configuration_properties = tls_configuration_properties
+
+    @property
+    def repository(self):
+        """Gets the repository of this DeploymentTemplate.  # noqa: E501
+
+        Custom Cloudera Manager repository URL  # noqa: E501
+
+        :return: The repository of this DeploymentTemplate.  # noqa: E501
+        :rtype: str
+        """
+        return self._repository
+
+    @repository.setter
+    def repository(self, repository):
+        """Sets the repository of this DeploymentTemplate.
+
+        Custom Cloudera Manager repository URL  # noqa: E501
+
+        :param repository: The repository of this DeploymentTemplate.  # noqa: E501
+        :type: str
+        """
+
+        self._repository = repository
+
+    @property
+    def repository_key_url(self):
+        """Gets the repository_key_url of this DeploymentTemplate.  # noqa: E501
+
+        Custom Cloudera Manager public GPG key  # noqa: E501
+
+        :return: The repository_key_url of this DeploymentTemplate.  # noqa: E501
+        :rtype: str
+        """
+        return self._repository_key_url
+
+    @repository_key_url.setter
+    def repository_key_url(self, repository_key_url):
+        """Sets the repository_key_url of this DeploymentTemplate.
+
+        Custom Cloudera Manager public GPG key  # noqa: E501
+
+        :param repository_key_url: The repository_key_url of this DeploymentTemplate.  # noqa: E501
+        :type: str
+        """
+
+        self._repository_key_url = repository_key_url
+
+    @property
+    def enable_enterprise_trial(self):
+        """Gets the enable_enterprise_trial of this DeploymentTemplate.  # noqa: E501
+
+        Whether to enable Cloudera Enterprise Trial  # noqa: E501
+
+        :return: The enable_enterprise_trial of this DeploymentTemplate.  # noqa: E501
+        :rtype: bool
+        """
+        return self._enable_enterprise_trial
+
+    @enable_enterprise_trial.setter
+    def enable_enterprise_trial(self, enable_enterprise_trial):
+        """Sets the enable_enterprise_trial of this DeploymentTemplate.
+
+        Whether to enable Cloudera Enterprise Trial  # noqa: E501
+
+        :param enable_enterprise_trial: The enable_enterprise_trial of this DeploymentTemplate.  # noqa: E501
+        :type: bool
+        """
+
+        self._enable_enterprise_trial = enable_enterprise_trial
+
+    @property
     def unlimited_jce(self):
         """Gets the unlimited_jce of this DeploymentTemplate.  # noqa: E501
 
@@ -707,27 +563,171 @@ class DeploymentTemplate(object):
         self._unlimited_jce = unlimited_jce
 
     @property
-    def username(self):
-        """Gets the username of this DeploymentTemplate.  # noqa: E501
+    def krb_admin_username(self):
+        """Gets the krb_admin_username of this DeploymentTemplate.  # noqa: E501
 
-        Web UI and API username  # noqa: E501
+        Username for Kerberos administrative principal used by Cloudera Manager  # noqa: E501
 
-        :return: The username of this DeploymentTemplate.  # noqa: E501
+        :return: The krb_admin_username of this DeploymentTemplate.  # noqa: E501
         :rtype: str
         """
-        return self._username
+        return self._krb_admin_username
 
-    @username.setter
-    def username(self, username):
-        """Sets the username of this DeploymentTemplate.
+    @krb_admin_username.setter
+    def krb_admin_username(self, krb_admin_username):
+        """Sets the krb_admin_username of this DeploymentTemplate.
 
-        Web UI and API username  # noqa: E501
+        Username for Kerberos administrative principal used by Cloudera Manager  # noqa: E501
 
-        :param username: The username of this DeploymentTemplate.  # noqa: E501
+        :param krb_admin_username: The krb_admin_username of this DeploymentTemplate.  # noqa: E501
         :type: str
         """
 
-        self._username = username
+        self._krb_admin_username = krb_admin_username
+
+    @property
+    def krb_admin_password(self):
+        """Gets the krb_admin_password of this DeploymentTemplate.  # noqa: E501
+
+        Password for Kerberos administrative principal used by Cloudera Manager [redacted on read]  # noqa: E501
+
+        :return: The krb_admin_password of this DeploymentTemplate.  # noqa: E501
+        :rtype: str
+        """
+        return self._krb_admin_password
+
+    @krb_admin_password.setter
+    def krb_admin_password(self, krb_admin_password):
+        """Sets the krb_admin_password of this DeploymentTemplate.
+
+        Password for Kerberos administrative principal used by Cloudera Manager [redacted on read]  # noqa: E501
+
+        :param krb_admin_password: The krb_admin_password of this DeploymentTemplate.  # noqa: E501
+        :type: str
+        """
+
+        self._krb_admin_password = krb_admin_password
+
+    @property
+    def java_installation_strategy(self):
+        """Gets the java_installation_strategy of this DeploymentTemplate.  # noqa: E501
+
+        Cloudera Altus Director and Cloudera Manager's Java installation strategy  # noqa: E501
+
+        :return: The java_installation_strategy of this DeploymentTemplate.  # noqa: E501
+        :rtype: str
+        """
+        return self._java_installation_strategy
+
+    @java_installation_strategy.setter
+    def java_installation_strategy(self, java_installation_strategy):
+        """Sets the java_installation_strategy of this DeploymentTemplate.
+
+        Cloudera Altus Director and Cloudera Manager's Java installation strategy  # noqa: E501
+
+        :param java_installation_strategy: The java_installation_strategy of this DeploymentTemplate.  # noqa: E501
+        :type: str
+        """
+        allowed_values = ["AUTO", "NONE", "DIRECTOR_MANAGED"]  # noqa: E501
+        if java_installation_strategy not in allowed_values:
+            raise ValueError(
+                "Invalid value for `java_installation_strategy` ({0}), must be one of {1}"  # noqa: E501
+                .format(java_installation_strategy, allowed_values)
+            )
+
+        self._java_installation_strategy = java_installation_strategy
+
+    @property
+    def license(self):
+        """Gets the license of this DeploymentTemplate.  # noqa: E501
+
+        License for Cloudera Manager [redacted on read]  # noqa: E501
+
+        :return: The license of this DeploymentTemplate.  # noqa: E501
+        :rtype: str
+        """
+        return self._license
+
+    @license.setter
+    def license(self, license):
+        """Sets the license of this DeploymentTemplate.
+
+        License for Cloudera Manager [redacted on read]  # noqa: E501
+
+        :param license: The license of this DeploymentTemplate.  # noqa: E501
+        :type: str
+        """
+
+        self._license = license
+
+    @property
+    def billing_id(self):
+        """Gets the billing_id of this DeploymentTemplate.  # noqa: E501
+
+        Billing ID for usage-based billing [redacted on read]  # noqa: E501
+
+        :return: The billing_id of this DeploymentTemplate.  # noqa: E501
+        :rtype: str
+        """
+        return self._billing_id
+
+    @billing_id.setter
+    def billing_id(self, billing_id):
+        """Sets the billing_id of this DeploymentTemplate.
+
+        Billing ID for usage-based billing [redacted on read]  # noqa: E501
+
+        :param billing_id: The billing_id of this DeploymentTemplate.  # noqa: E501
+        :type: str
+        """
+
+        self._billing_id = billing_id
+
+    @property
+    def post_create_scripts(self):
+        """Gets the post_create_scripts of this DeploymentTemplate.  # noqa: E501
+
+        A list of scripts to be run after deployment creation  # noqa: E501
+
+        :return: The post_create_scripts of this DeploymentTemplate.  # noqa: E501
+        :rtype: list[Script]
+        """
+        return self._post_create_scripts
+
+    @post_create_scripts.setter
+    def post_create_scripts(self, post_create_scripts):
+        """Sets the post_create_scripts of this DeploymentTemplate.
+
+        A list of scripts to be run after deployment creation  # noqa: E501
+
+        :param post_create_scripts: The post_create_scripts of this DeploymentTemplate.  # noqa: E501
+        :type: list[Script]
+        """
+
+        self._post_create_scripts = post_create_scripts
+
+    @property
+    def csds(self):
+        """Gets the csds of this DeploymentTemplate.  # noqa: E501
+
+        A list of CSD package URLs  # noqa: E501
+
+        :return: The csds of this DeploymentTemplate.  # noqa: E501
+        :rtype: list[str]
+        """
+        return self._csds
+
+    @csds.setter
+    def csds(self, csds):
+        """Sets the csds of this DeploymentTemplate.
+
+        A list of CSD package URLs  # noqa: E501
+
+        :param csds: The csds of this DeploymentTemplate.  # noqa: E501
+        :type: list[str]
+        """
+
+        self._csds = csds
 
     def to_dict(self):
         """Returns the model properties as a dict"""

@@ -4,13 +4,13 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**configurationProperties** | [**List&lt;ConfigurationProperty&gt;**](ConfigurationProperty.md) | Resource provider configuration properties |  [optional]
-**description** | **String** | Resource provider description | 
 **id** | **String** | Resource provider metadata ID | 
-**name** | **String** | Resource provider name | 
-**resourceDisplayProperties** | [**List&lt;DisplayProperty&gt;**](DisplayProperty.md) | Resource provider display properties |  [optional]
-**templateProperties** | [**List&lt;ConfigurationProperty&gt;**](ConfigurationProperty.md) | Template configuration properties |  [optional]
 **type** | [**TypeEnum**](#TypeEnum) | Resource provider metadata type | 
+**name** | **String** | Resource provider name | 
+**description** | **String** | Resource provider description | 
+**configurationProperties** | [**List&lt;ConfigurationProperty&gt;**](ConfigurationProperty.md) | Resource provider configuration properties |  [optional]
+**templateProperties** | [**List&lt;ConfigurationProperty&gt;**](ConfigurationProperty.md) | Template configuration properties |  [optional]
+**resourceDisplayProperties** | [**List&lt;DisplayProperty&gt;**](DisplayProperty.md) | Resource provider display properties |  [optional]
 
 
 <a name="TypeEnum"></a>

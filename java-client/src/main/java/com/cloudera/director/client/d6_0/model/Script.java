@@ -33,18 +33,18 @@ import java.io.IOException;
 @ApiModel(description = "A script to be run on a cloud instance")
 
 public class Script {
-  @SerializedName("content")
-  private String content = null;
   @SerializedName("id")
   private String id = null;
+  @SerializedName("content")
+  private String content = null;
 
   public Script() {
     // Do nothing
   }
 
   private Script(ScriptBuilder builder) {
-      this.content = builder.content;
       this.id = builder.id;
+      this.content = builder.content;
     }
 
   public static ScriptBuilder builder() {
@@ -52,18 +52,18 @@ public class Script {
   }
 
   public static class ScriptBuilder {
-      private String content = null;
       private String id = null;
+      private String content = null;
   
 
-    public ScriptBuilder content(String content) {
-      this.content = content;
+    public ScriptBuilder id(String id) {
+      this.id = id;
       return this;
     }
 
 
-    public ScriptBuilder id(String id) {
-      this.id = id;
+    public ScriptBuilder content(String content) {
+      this.content = content;
       return this;
     }
 
@@ -75,27 +75,9 @@ public class Script {
 
   public ScriptBuilder toBuilder() {
     return builder()
-      .content(content)
-            .id(id)
+      .id(id)
+            .content(content)
       ;
-  }
-
-  public Script content(String content) {
-    this.content = content;
-    return this;
-  }
-
-   /**
-   * The content of the script
-   * @return content
-  **/
-  @ApiModelProperty(required = true, value = "The content of the script")
-  public String getContent() {
-    return content;
-  }
-
-  public void setContent(String content) {
-    this.content = content;
   }
 
   public Script id(String id) {
@@ -116,6 +98,24 @@ public class Script {
     this.id = id;
   }
 
+  public Script content(String content) {
+    this.content = content;
+    return this;
+  }
+
+   /**
+   * The content of the script
+   * @return content
+  **/
+  @ApiModelProperty(required = true, value = "The content of the script")
+  public String getContent() {
+    return content;
+  }
+
+  public void setContent(String content) {
+    this.content = content;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -126,13 +126,13 @@ public class Script {
       return false;
     }
     Script script = (Script) o;
-    return Objects.equals(this.content, script.content) &&
-        Objects.equals(this.id, script.id);
+    return Objects.equals(this.id, script.id) &&
+        Objects.equals(this.content, script.content);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(content, id);
+    return Objects.hash(id, content);
   }
 
 
@@ -141,8 +141,8 @@ public class Script {
     StringBuilder sb = new StringBuilder();
     sb.append("class Script {\n");
     
-    sb.append("    content: ").append(toIndentedString(content)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    content: ").append(toIndentedString(content)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -44,6 +44,7 @@ class NotificationsApi(object):
     def get(self, **kwargs):  # noqa: E501
         """Get system notification messages  # noqa: E501
 
+          # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
         >>> thread = api.get(async=True)
@@ -64,6 +65,7 @@ class NotificationsApi(object):
     def get_with_http_info(self, **kwargs):  # noqa: E501
         """Get system notification messages  # noqa: E501
 
+          # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
         >>> thread = api.get_with_http_info(async=True)
@@ -111,7 +113,7 @@ class NotificationsApi(object):
         auth_settings = ['basic']  # noqa: E501
 
         return self.api_client.call_api(
-            '/api/d6.0/notifications', 'GET',
+            '/api/d6.1/notifications', 'GET',
             path_params,
             query_params,
             header_params,

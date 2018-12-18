@@ -5,8 +5,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **checkName** | **String** | Health check name | 
-**explanation** | **String** | Explanation for health status |  [optional]
 **healthStatus** | [**HealthStatusEnum**](#HealthStatusEnum) | Health status value | 
+**explanation** | **String** | Explanation for health status |  [optional]
 **suppressed** | **Boolean** | Check suppression flag |  [optional]
 
 

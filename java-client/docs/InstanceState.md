@@ -4,9 +4,9 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**lastChecked** | **Long** | Last time that instance state was checked | 
-**lastReported** | **Long** | Last time that instance state was reported | 
 **status** | [**StatusEnum**](#StatusEnum) | Instance status | 
+**lastReported** | **Long** | Last time that instance state was reported | 
+**lastChecked** | **Long** | Last time that instance state was checked | 
 
 
 <a name="StatusEnum"></a>

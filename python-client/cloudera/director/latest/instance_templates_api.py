@@ -44,14 +44,15 @@ class InstanceTemplatesApi(object):
     def create(self, environment, instance_template, **kwargs):  # noqa: E501
         """Create a new instance template  # noqa: E501
 
+          # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
         >>> thread = api.create(environment, instance_template, async=True)
         >>> result = thread.get()
 
         :param async bool
-        :param str environment: environment (required)
-        :param InstanceTemplate instance_template: instanceTemplate (required)
+        :param str environment: (required)
+        :param InstanceTemplate instance_template: (required)
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
@@ -66,14 +67,15 @@ class InstanceTemplatesApi(object):
     def create_with_http_info(self, environment, instance_template, **kwargs):  # noqa: E501
         """Create a new instance template  # noqa: E501
 
+          # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
         >>> thread = api.create_with_http_info(environment, instance_template, async=True)
         >>> result = thread.get()
 
         :param async bool
-        :param str environment: environment (required)
-        :param InstanceTemplate instance_template: instanceTemplate (required)
+        :param str environment: (required)
+        :param InstanceTemplate instance_template: (required)
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
@@ -123,15 +125,11 @@ class InstanceTemplatesApi(object):
         header_params['Accept'] = self.api_client.select_header_accept(
             ['application/json'])  # noqa: E501
 
-        # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json'])  # noqa: E501
-
         # Authentication setting
         auth_settings = ['basic']  # noqa: E501
 
         return self.api_client.call_api(
-            '/api/d6.0/environments/{environment}/templates/instances', 'POST',
+            '/api/d6.1/environments/{environment}/templates/instances', 'POST',
             path_params,
             query_params,
             header_params,
@@ -150,14 +148,15 @@ class InstanceTemplatesApi(object):
     def delete(self, environment, template, **kwargs):  # noqa: E501
         """Delete an instance template by name  # noqa: E501
 
+          # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
         >>> thread = api.delete(environment, template, async=True)
         >>> result = thread.get()
 
         :param async bool
-        :param str environment: environment (required)
-        :param str template: template (required)
+        :param str environment: (required)
+        :param str template: (required)
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
@@ -172,14 +171,15 @@ class InstanceTemplatesApi(object):
     def delete_with_http_info(self, environment, template, **kwargs):  # noqa: E501
         """Delete an instance template by name  # noqa: E501
 
+          # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
         >>> thread = api.delete_with_http_info(environment, template, async=True)
         >>> result = thread.get()
 
         :param async bool
-        :param str environment: environment (required)
-        :param str template: template (required)
+        :param str environment: (required)
+        :param str template: (required)
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
@@ -233,7 +233,7 @@ class InstanceTemplatesApi(object):
         auth_settings = ['basic']  # noqa: E501
 
         return self.api_client.call_api(
-            '/api/d6.0/environments/{environment}/templates/instances/{template}', 'DELETE',
+            '/api/d6.1/environments/{environment}/templates/instances/{template}', 'DELETE',
             path_params,
             query_params,
             header_params,
@@ -252,14 +252,15 @@ class InstanceTemplatesApi(object):
     def get(self, environment, template, **kwargs):  # noqa: E501
         """Get an instance template by name  # noqa: E501
 
+          # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
         >>> thread = api.get(environment, template, async=True)
         >>> result = thread.get()
 
         :param async bool
-        :param str environment: environment (required)
-        :param str template: template (required)
+        :param str environment: (required)
+        :param str template: (required)
         :return: InstanceTemplate
                  If the method is called asynchronously,
                  returns the request thread.
@@ -274,14 +275,15 @@ class InstanceTemplatesApi(object):
     def get_with_http_info(self, environment, template, **kwargs):  # noqa: E501
         """Get an instance template by name  # noqa: E501
 
+          # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
         >>> thread = api.get_with_http_info(environment, template, async=True)
         >>> result = thread.get()
 
         :param async bool
-        :param str environment: environment (required)
-        :param str template: template (required)
+        :param str environment: (required)
+        :param str template: (required)
         :return: InstanceTemplate
                  If the method is called asynchronously,
                  returns the request thread.
@@ -335,7 +337,7 @@ class InstanceTemplatesApi(object):
         auth_settings = ['basic']  # noqa: E501
 
         return self.api_client.call_api(
-            '/api/d6.0/environments/{environment}/templates/instances/{template}', 'GET',
+            '/api/d6.1/environments/{environment}/templates/instances/{template}', 'GET',
             path_params,
             query_params,
             header_params,
@@ -354,13 +356,14 @@ class InstanceTemplatesApi(object):
     def list(self, environment, **kwargs):  # noqa: E501
         """List all instance templates  # noqa: E501
 
+          # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
         >>> thread = api.list(environment, async=True)
         >>> result = thread.get()
 
         :param async bool
-        :param str environment: environment (required)
+        :param str environment: (required)
         :return: list[str]
                  If the method is called asynchronously,
                  returns the request thread.
@@ -375,13 +378,14 @@ class InstanceTemplatesApi(object):
     def list_with_http_info(self, environment, **kwargs):  # noqa: E501
         """List all instance templates  # noqa: E501
 
+          # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
         >>> thread = api.list_with_http_info(environment, async=True)
         >>> result = thread.get()
 
         :param async bool
-        :param str environment: environment (required)
+        :param str environment: (required)
         :return: list[str]
                  If the method is called asynchronously,
                  returns the request thread.
@@ -429,7 +433,7 @@ class InstanceTemplatesApi(object):
         auth_settings = ['basic']  # noqa: E501
 
         return self.api_client.call_api(
-            '/api/d6.0/environments/{environment}/templates/instances', 'GET',
+            '/api/d6.1/environments/{environment}/templates/instances', 'GET',
             path_params,
             query_params,
             header_params,
@@ -448,15 +452,16 @@ class InstanceTemplatesApi(object):
     def update(self, environment, template, instance_template, **kwargs):  # noqa: E501
         """Update an existing instance template  # noqa: E501
 
+          # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
         >>> thread = api.update(environment, template, instance_template, async=True)
         >>> result = thread.get()
 
         :param async bool
-        :param str environment: environment (required)
-        :param str template: template (required)
-        :param InstanceTemplate instance_template: instanceTemplate (required)
+        :param str environment: (required)
+        :param str template: (required)
+        :param InstanceTemplate instance_template: (required)
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
@@ -471,15 +476,16 @@ class InstanceTemplatesApi(object):
     def update_with_http_info(self, environment, template, instance_template, **kwargs):  # noqa: E501
         """Update an existing instance template  # noqa: E501
 
+          # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
         >>> thread = api.update_with_http_info(environment, template, instance_template, async=True)
         >>> result = thread.get()
 
         :param async bool
-        :param str environment: environment (required)
-        :param str template: template (required)
-        :param InstanceTemplate instance_template: instanceTemplate (required)
+        :param str environment: (required)
+        :param str template: (required)
+        :param InstanceTemplate instance_template: (required)
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
@@ -535,15 +541,11 @@ class InstanceTemplatesApi(object):
         header_params['Accept'] = self.api_client.select_header_accept(
             ['application/json'])  # noqa: E501
 
-        # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json'])  # noqa: E501
-
         # Authentication setting
         auth_settings = ['basic']  # noqa: E501
 
         return self.api_client.call_api(
-            '/api/d6.0/environments/{environment}/templates/instances/{template}', 'PUT',
+            '/api/d6.1/environments/{environment}/templates/instances/{template}', 'PUT',
             path_params,
             query_params,
             header_params,

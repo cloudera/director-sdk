@@ -1,16 +1,18 @@
 # cloudera.director.NotificationsApi
 
-All URIs are relative to *https://localhost:7189*
+All URIs are relative to *https://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**get**](NotificationsApi.md#get) | **GET** /api/d6.0/notifications | Get system notification messages
+[**get**](NotificationsApi.md#get) | **GET** /api/d6.1/notifications | Get system notification messages
 
 
 # **get**
 > list[Notification] get()
 
 Get system notification messages
+
+
 
 ### Example
 ```python

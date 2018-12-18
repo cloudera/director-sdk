@@ -37,27 +37,27 @@ import java.util.List;
 @ApiModel(description = "A service running in a cluster")
 
 public class Service {
-  @SerializedName("health")
-  private Health health = null;
-  @SerializedName("healthChecks")
-  private List<HealthCheck> healthChecks = null;
-  @SerializedName("roleInstancesUrl")
-  private String roleInstancesUrl = null;
   @SerializedName("serviceName")
   private String serviceName = null;
   @SerializedName("url")
   private String url = null;
+  @SerializedName("roleInstancesUrl")
+  private String roleInstancesUrl = null;
+  @SerializedName("health")
+  private Health health = null;
+  @SerializedName("healthChecks")
+  private List<HealthCheck> healthChecks = null;
 
   public Service() {
     // Do nothing
   }
 
   private Service(ServiceBuilder builder) {
-      this.health = builder.health;
-      this.healthChecks = builder.healthChecks;
-      this.roleInstancesUrl = builder.roleInstancesUrl;
       this.serviceName = builder.serviceName;
       this.url = builder.url;
+      this.roleInstancesUrl = builder.roleInstancesUrl;
+      this.health = builder.health;
+      this.healthChecks = builder.healthChecks;
     }
 
   public static ServiceBuilder builder() {
@@ -65,30 +65,12 @@ public class Service {
   }
 
   public static class ServiceBuilder {
-      private Health health = null;
-      private List<HealthCheck> healthChecks = new ArrayList<HealthCheck>();
-      private String roleInstancesUrl = null;
       private String serviceName = null;
       private String url = null;
+      private String roleInstancesUrl = null;
+      private Health health = null;
+      private List<HealthCheck> healthChecks = new ArrayList<HealthCheck>();
   
-
-    public ServiceBuilder health(Health health) {
-      this.health = health;
-      return this;
-    }
-
-
-    public ServiceBuilder healthChecks(List<HealthCheck> healthChecks) {
-      this.healthChecks = healthChecks;
-      return this;
-    }
-
-
-    public ServiceBuilder roleInstancesUrl(String roleInstancesUrl) {
-      this.roleInstancesUrl = roleInstancesUrl;
-      return this;
-    }
-
 
     public ServiceBuilder serviceName(String serviceName) {
       this.serviceName = serviceName;
@@ -102,6 +84,24 @@ public class Service {
     }
 
 
+    public ServiceBuilder roleInstancesUrl(String roleInstancesUrl) {
+      this.roleInstancesUrl = roleInstancesUrl;
+      return this;
+    }
+
+
+    public ServiceBuilder health(Health health) {
+      this.health = health;
+      return this;
+    }
+
+
+    public ServiceBuilder healthChecks(List<HealthCheck> healthChecks) {
+      this.healthChecks = healthChecks;
+      return this;
+    }
+
+
     public Service build() {
       return new Service(this);
     }
@@ -109,12 +109,66 @@ public class Service {
 
   public ServiceBuilder toBuilder() {
     return builder()
-      .health(health)
-            .healthChecks(healthChecks)
-            .roleInstancesUrl(roleInstancesUrl)
-            .serviceName(serviceName)
+      .serviceName(serviceName)
             .url(url)
+            .roleInstancesUrl(roleInstancesUrl)
+            .health(health)
+            .healthChecks(healthChecks)
       ;
+  }
+
+  public Service serviceName(String serviceName) {
+    this.serviceName = serviceName;
+    return this;
+  }
+
+   /**
+   * Service name
+   * @return serviceName
+  **/
+  @ApiModelProperty(required = true, value = "Service name")
+  public String getServiceName() {
+    return serviceName;
+  }
+
+  public void setServiceName(String serviceName) {
+    this.serviceName = serviceName;
+  }
+
+  public Service url(String url) {
+    this.url = url;
+    return this;
+  }
+
+   /**
+   * URL for service
+   * @return url
+  **/
+  @ApiModelProperty(value = "URL for service")
+  public String getUrl() {
+    return url;
+  }
+
+  public void setUrl(String url) {
+    this.url = url;
+  }
+
+  public Service roleInstancesUrl(String roleInstancesUrl) {
+    this.roleInstancesUrl = roleInstancesUrl;
+    return this;
+  }
+
+   /**
+   * URL for service instances
+   * @return roleInstancesUrl
+  **/
+  @ApiModelProperty(value = "URL for service instances")
+  public String getRoleInstancesUrl() {
+    return roleInstancesUrl;
+  }
+
+  public void setRoleInstancesUrl(String roleInstancesUrl) {
+    this.roleInstancesUrl = roleInstancesUrl;
   }
 
   public Service health(Health health) {
@@ -161,60 +215,6 @@ public class Service {
     this.healthChecks = healthChecks;
   }
 
-  public Service roleInstancesUrl(String roleInstancesUrl) {
-    this.roleInstancesUrl = roleInstancesUrl;
-    return this;
-  }
-
-   /**
-   * URL for service instances
-   * @return roleInstancesUrl
-  **/
-  @ApiModelProperty(value = "URL for service instances")
-  public String getRoleInstancesUrl() {
-    return roleInstancesUrl;
-  }
-
-  public void setRoleInstancesUrl(String roleInstancesUrl) {
-    this.roleInstancesUrl = roleInstancesUrl;
-  }
-
-  public Service serviceName(String serviceName) {
-    this.serviceName = serviceName;
-    return this;
-  }
-
-   /**
-   * Service name
-   * @return serviceName
-  **/
-  @ApiModelProperty(required = true, value = "Service name")
-  public String getServiceName() {
-    return serviceName;
-  }
-
-  public void setServiceName(String serviceName) {
-    this.serviceName = serviceName;
-  }
-
-  public Service url(String url) {
-    this.url = url;
-    return this;
-  }
-
-   /**
-   * URL for service
-   * @return url
-  **/
-  @ApiModelProperty(value = "URL for service")
-  public String getUrl() {
-    return url;
-  }
-
-  public void setUrl(String url) {
-    this.url = url;
-  }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -225,16 +225,16 @@ public class Service {
       return false;
     }
     Service service = (Service) o;
-    return Objects.equals(this.health, service.health) &&
-        Objects.equals(this.healthChecks, service.healthChecks) &&
+    return Objects.equals(this.serviceName, service.serviceName) &&
+        Objects.equals(this.url, service.url) &&
         Objects.equals(this.roleInstancesUrl, service.roleInstancesUrl) &&
-        Objects.equals(this.serviceName, service.serviceName) &&
-        Objects.equals(this.url, service.url);
+        Objects.equals(this.health, service.health) &&
+        Objects.equals(this.healthChecks, service.healthChecks);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(health, healthChecks, roleInstancesUrl, serviceName, url);
+    return Objects.hash(serviceName, url, roleInstancesUrl, health, healthChecks);
   }
 
 
@@ -243,11 +243,11 @@ public class Service {
     StringBuilder sb = new StringBuilder();
     sb.append("class Service {\n");
     
-    sb.append("    health: ").append(toIndentedString(health)).append("\n");
-    sb.append("    healthChecks: ").append(toIndentedString(healthChecks)).append("\n");
-    sb.append("    roleInstancesUrl: ").append(toIndentedString(roleInstancesUrl)).append("\n");
     sb.append("    serviceName: ").append(toIndentedString(serviceName)).append("\n");
     sb.append("    url: ").append(toIndentedString(url)).append("\n");
+    sb.append("    roleInstancesUrl: ").append(toIndentedString(roleInstancesUrl)).append("\n");
+    sb.append("    health: ").append(toIndentedString(health)).append("\n");
+    sb.append("    healthChecks: ").append(toIndentedString(healthChecks)).append("\n");
     sb.append("}");
     return sb.toString();
   }

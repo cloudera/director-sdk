@@ -39,90 +39,69 @@ class SshCredentials(object):
                             and the value is json key in definition.
     """
     swagger_types = {
-        'host_key_fingerprint': 'str',
-        'passphrase': 'str',
+        'username': 'str',
         'password': 'str',
-        'port': 'int',
         'private_key': 'str',
-        'username': 'str'
+        'passphrase': 'str',
+        'port': 'int',
+        'host_key_fingerprint': 'str'
     }
 
     attribute_map = {
-        'host_key_fingerprint': 'hostKeyFingerprint',
-        'passphrase': 'passphrase',
+        'username': 'username',
         'password': 'password',
-        'port': 'port',
         'private_key': 'privateKey',
-        'username': 'username'
+        'passphrase': 'passphrase',
+        'port': 'port',
+        'host_key_fingerprint': 'hostKeyFingerprint'
     }
 
-    def __init__(self, host_key_fingerprint=None, passphrase=None, password=None, port=None, private_key=None, username=None):  # noqa: E501
+    def __init__(self, username=None, password=None, private_key=None, passphrase=None, port=None, host_key_fingerprint=None):  # noqa: E501
         """SshCredentials - a model defined in Swagger"""  # noqa: E501
 
-        self._host_key_fingerprint = None
-        self._passphrase = None
-        self._password = None
-        self._port = None
-        self._private_key = None
         self._username = None
+        self._password = None
+        self._private_key = None
+        self._passphrase = None
+        self._port = None
+        self._host_key_fingerprint = None
         self.discriminator = None
 
-        if host_key_fingerprint is not None:
-            self.host_key_fingerprint = host_key_fingerprint
-        if passphrase is not None:
-            self.passphrase = passphrase
+        self.username = username
         if password is not None:
             self.password = password
-        self.port = port
         if private_key is not None:
             self.private_key = private_key
-        self.username = username
+        if passphrase is not None:
+            self.passphrase = passphrase
+        self.port = port
+        if host_key_fingerprint is not None:
+            self.host_key_fingerprint = host_key_fingerprint
 
     @property
-    def host_key_fingerprint(self):
-        """Gets the host_key_fingerprint of this SshCredentials.  # noqa: E501
+    def username(self):
+        """Gets the username of this SshCredentials.  # noqa: E501
 
-        SSH server host key fingerprint  # noqa: E501
+        SSH user  # noqa: E501
 
-        :return: The host_key_fingerprint of this SshCredentials.  # noqa: E501
+        :return: The username of this SshCredentials.  # noqa: E501
         :rtype: str
         """
-        return self._host_key_fingerprint
+        return self._username
 
-    @host_key_fingerprint.setter
-    def host_key_fingerprint(self, host_key_fingerprint):
-        """Sets the host_key_fingerprint of this SshCredentials.
+    @username.setter
+    def username(self, username):
+        """Sets the username of this SshCredentials.
 
-        SSH server host key fingerprint  # noqa: E501
+        SSH user  # noqa: E501
 
-        :param host_key_fingerprint: The host_key_fingerprint of this SshCredentials.  # noqa: E501
+        :param username: The username of this SshCredentials.  # noqa: E501
         :type: str
         """
+        if username is None:
+            raise ValueError("Invalid value for `username`, must not be `None`")  # noqa: E501
 
-        self._host_key_fingerprint = host_key_fingerprint
-
-    @property
-    def passphrase(self):
-        """Gets the passphrase of this SshCredentials.  # noqa: E501
-
-        Optional private key passphrase [redacted on read]  # noqa: E501
-
-        :return: The passphrase of this SshCredentials.  # noqa: E501
-        :rtype: str
-        """
-        return self._passphrase
-
-    @passphrase.setter
-    def passphrase(self, passphrase):
-        """Sets the passphrase of this SshCredentials.
-
-        Optional private key passphrase [redacted on read]  # noqa: E501
-
-        :param passphrase: The passphrase of this SshCredentials.  # noqa: E501
-        :type: str
-        """
-
-        self._passphrase = passphrase
+        self._username = username
 
     @property
     def password(self):
@@ -146,6 +125,52 @@ class SshCredentials(object):
         """
 
         self._password = password
+
+    @property
+    def private_key(self):
+        """Gets the private_key of this SshCredentials.  # noqa: E501
+
+        Optional SSH PKCS8 private key [redacted on read]  # noqa: E501
+
+        :return: The private_key of this SshCredentials.  # noqa: E501
+        :rtype: str
+        """
+        return self._private_key
+
+    @private_key.setter
+    def private_key(self, private_key):
+        """Sets the private_key of this SshCredentials.
+
+        Optional SSH PKCS8 private key [redacted on read]  # noqa: E501
+
+        :param private_key: The private_key of this SshCredentials.  # noqa: E501
+        :type: str
+        """
+
+        self._private_key = private_key
+
+    @property
+    def passphrase(self):
+        """Gets the passphrase of this SshCredentials.  # noqa: E501
+
+        Optional private key passphrase [redacted on read]  # noqa: E501
+
+        :return: The passphrase of this SshCredentials.  # noqa: E501
+        :rtype: str
+        """
+        return self._passphrase
+
+    @passphrase.setter
+    def passphrase(self, passphrase):
+        """Sets the passphrase of this SshCredentials.
+
+        Optional private key passphrase [redacted on read]  # noqa: E501
+
+        :param passphrase: The passphrase of this SshCredentials.  # noqa: E501
+        :type: str
+        """
+
+        self._passphrase = passphrase
 
     @property
     def port(self):
@@ -173,52 +198,27 @@ class SshCredentials(object):
         self._port = port
 
     @property
-    def private_key(self):
-        """Gets the private_key of this SshCredentials.  # noqa: E501
+    def host_key_fingerprint(self):
+        """Gets the host_key_fingerprint of this SshCredentials.  # noqa: E501
 
-        Optional SSH PKCS8 private key [redacted on read]  # noqa: E501
+        SSH server host key fingerprint  # noqa: E501
 
-        :return: The private_key of this SshCredentials.  # noqa: E501
+        :return: The host_key_fingerprint of this SshCredentials.  # noqa: E501
         :rtype: str
         """
-        return self._private_key
+        return self._host_key_fingerprint
 
-    @private_key.setter
-    def private_key(self, private_key):
-        """Sets the private_key of this SshCredentials.
+    @host_key_fingerprint.setter
+    def host_key_fingerprint(self, host_key_fingerprint):
+        """Sets the host_key_fingerprint of this SshCredentials.
 
-        Optional SSH PKCS8 private key [redacted on read]  # noqa: E501
+        SSH server host key fingerprint  # noqa: E501
 
-        :param private_key: The private_key of this SshCredentials.  # noqa: E501
+        :param host_key_fingerprint: The host_key_fingerprint of this SshCredentials.  # noqa: E501
         :type: str
         """
 
-        self._private_key = private_key
-
-    @property
-    def username(self):
-        """Gets the username of this SshCredentials.  # noqa: E501
-
-        SSH user  # noqa: E501
-
-        :return: The username of this SshCredentials.  # noqa: E501
-        :rtype: str
-        """
-        return self._username
-
-    @username.setter
-    def username(self, username):
-        """Sets the username of this SshCredentials.
-
-        SSH user  # noqa: E501
-
-        :param username: The username of this SshCredentials.  # noqa: E501
-        :type: str
-        """
-        if username is None:
-            raise ValueError("Invalid value for `username`, must not be `None`")  # noqa: E501
-
-        self._username = username
+        self._host_key_fingerprint = host_key_fingerprint
 
     def to_dict(self):
         """Returns the model properties as a dict"""

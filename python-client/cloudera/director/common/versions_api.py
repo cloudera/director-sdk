@@ -42,7 +42,7 @@ class VersionsApi(object):
         self.api_client = api_client
 
     def get_latest_version(self, **kwargs):  # noqa: E501
-        """getLatestVersion  # noqa: E501
+        """get_latest_version  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
@@ -62,7 +62,7 @@ class VersionsApi(object):
             return data
 
     def get_latest_version_with_http_info(self, **kwargs):  # noqa: E501
-        """getLatestVersion  # noqa: E501
+        """get_latest_version  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
@@ -103,12 +103,8 @@ class VersionsApi(object):
         local_var_files = {}
 
         body_params = None
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['*/*'])  # noqa: E501
-
         # Authentication setting
-        auth_settings = ['basic']  # noqa: E501
+        auth_settings = []  # noqa: E501
 
         return self.api_client.call_api(
             '/api/versions/latest', 'GET',
@@ -128,7 +124,7 @@ class VersionsApi(object):
             collection_formats=collection_formats)
 
     def get_versions(self, **kwargs):  # noqa: E501
-        """getVersions  # noqa: E501
+        """get_versions  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
@@ -148,7 +144,7 @@ class VersionsApi(object):
             return data
 
     def get_versions_with_http_info(self, **kwargs):  # noqa: E501
-        """getVersions  # noqa: E501
+        """get_versions  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
@@ -189,12 +185,8 @@ class VersionsApi(object):
         local_var_files = {}
 
         body_params = None
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['*/*'])  # noqa: E501
-
         # Authentication setting
-        auth_settings = ['basic']  # noqa: E501
+        auth_settings = []  # noqa: E501
 
         return self.api_client.call_api(
             '/api/versions', 'GET',

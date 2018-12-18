@@ -33,61 +33,6 @@ import java.io.IOException;
 @ApiModel(description = "Information about installed and available capabilities of an instance")
 
 public class Capabilities {
-  @SerializedName("iptablesEnabled")
-  private Boolean iptablesEnabled = null;
-  /**
-   * Vendor of installed JDK/JRE
-   */
-  @JsonAdapter(JavaVendorEnum.Adapter.class)
-  public enum JavaVendorEnum {
-    OPENJDK("OPENJDK"),
-    
-    ORACLE("ORACLE"),
-    
-    UNKNOWN("UNKNOWN");
-
-    private String value;
-
-    JavaVendorEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static JavaVendorEnum fromValue(String text) {
-      for (JavaVendorEnum b : JavaVendorEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      return null;
-    }
-
-    public static class Adapter extends TypeAdapter<JavaVendorEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final JavaVendorEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public JavaVendorEnum read(final JsonReader jsonReader) throws IOException {
-        String value = jsonReader.nextString();
-        return JavaVendorEnum.fromValue(String.valueOf(value));
-      }
-    }
-  }
-
-  @SerializedName("javaVendor")
-  private JavaVendorEnum javaVendor = null;
-  @SerializedName("javaVersion")
-  private String javaVersion = null;
   /**
    * Operating system type
    */
@@ -213,6 +158,57 @@ public class Capabilities {
   @SerializedName("operatingSystemVersion")
   private OperatingSystemVersionEnum operatingSystemVersion = null;
   /**
+   * Virtualization type
+   */
+  @JsonAdapter(VirtualizationTypeEnum.Adapter.class)
+  public enum VirtualizationTypeEnum {
+    PARAVIRTUALIZATION("PARAVIRTUALIZATION"),
+    
+    HARDWARE_ASSISTED("HARDWARE_ASSISTED"),
+    
+    UNKNOWN("UNKNOWN");
+
+    private String value;
+
+    VirtualizationTypeEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static VirtualizationTypeEnum fromValue(String text) {
+      for (VirtualizationTypeEnum b : VirtualizationTypeEnum.values()) {
+        if (String.valueOf(b.value).equals(text)) {
+          return b;
+        }
+      }
+      return null;
+    }
+
+    public static class Adapter extends TypeAdapter<VirtualizationTypeEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final VirtualizationTypeEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public VirtualizationTypeEnum read(final JsonReader jsonReader) throws IOException {
+        String value = jsonReader.nextString();
+        return VirtualizationTypeEnum.fromValue(String.valueOf(value));
+      }
+    }
+  }
+
+  @SerializedName("virtualizationType")
+  private VirtualizationTypeEnum virtualizationType = null;
+  /**
    * Package manager used
    */
   @JsonAdapter(PackageManagerEnum.Adapter.class)
@@ -265,26 +261,20 @@ public class Capabilities {
 
   @SerializedName("packageManager")
   private PackageManagerEnum packageManager = null;
-  @SerializedName("passwordlessSudoEnabled")
-  private Boolean passwordlessSudoEnabled = null;
-  @SerializedName("pythonVersion")
-  private String pythonVersion = null;
-  @SerializedName("selinuxEnabled")
-  private Boolean selinuxEnabled = null;
   /**
-   * Virtualization type
+   * Vendor of installed JDK/JRE
    */
-  @JsonAdapter(VirtualizationTypeEnum.Adapter.class)
-  public enum VirtualizationTypeEnum {
-    PARAVIRTUALIZATION("PARAVIRTUALIZATION"),
+  @JsonAdapter(JavaVendorEnum.Adapter.class)
+  public enum JavaVendorEnum {
+    OPENJDK("OPENJDK"),
     
-    HARDWARE_ASSISTED("HARDWARE_ASSISTED"),
+    ORACLE("ORACLE"),
     
     UNKNOWN("UNKNOWN");
 
     private String value;
 
-    VirtualizationTypeEnum(String value) {
+    JavaVendorEnum(String value) {
       this.value = value;
     }
 
@@ -297,8 +287,8 @@ public class Capabilities {
       return String.valueOf(value);
     }
 
-    public static VirtualizationTypeEnum fromValue(String text) {
-      for (VirtualizationTypeEnum b : VirtualizationTypeEnum.values()) {
+    public static JavaVendorEnum fromValue(String text) {
+      for (JavaVendorEnum b : JavaVendorEnum.values()) {
         if (String.valueOf(b.value).equals(text)) {
           return b;
         }
@@ -306,38 +296,48 @@ public class Capabilities {
       return null;
     }
 
-    public static class Adapter extends TypeAdapter<VirtualizationTypeEnum> {
+    public static class Adapter extends TypeAdapter<JavaVendorEnum> {
       @Override
-      public void write(final JsonWriter jsonWriter, final VirtualizationTypeEnum enumeration) throws IOException {
+      public void write(final JsonWriter jsonWriter, final JavaVendorEnum enumeration) throws IOException {
         jsonWriter.value(enumeration.getValue());
       }
 
       @Override
-      public VirtualizationTypeEnum read(final JsonReader jsonReader) throws IOException {
+      public JavaVendorEnum read(final JsonReader jsonReader) throws IOException {
         String value = jsonReader.nextString();
-        return VirtualizationTypeEnum.fromValue(String.valueOf(value));
+        return JavaVendorEnum.fromValue(String.valueOf(value));
       }
     }
   }
 
-  @SerializedName("virtualizationType")
-  private VirtualizationTypeEnum virtualizationType = null;
+  @SerializedName("javaVendor")
+  private JavaVendorEnum javaVendor = null;
+  @SerializedName("javaVersion")
+  private String javaVersion = null;
+  @SerializedName("pythonVersion")
+  private String pythonVersion = null;
+  @SerializedName("passwordlessSudoEnabled")
+  private Boolean passwordlessSudoEnabled = null;
+  @SerializedName("selinuxEnabled")
+  private Boolean selinuxEnabled = null;
+  @SerializedName("iptablesEnabled")
+  private Boolean iptablesEnabled = null;
 
   public Capabilities() {
     // Do nothing
   }
 
   private Capabilities(CapabilitiesBuilder builder) {
-      this.iptablesEnabled = builder.iptablesEnabled;
-      this.javaVendor = builder.javaVendor;
-      this.javaVersion = builder.javaVersion;
       this.operatingSystemType = builder.operatingSystemType;
       this.operatingSystemVersion = builder.operatingSystemVersion;
-      this.packageManager = builder.packageManager;
-      this.passwordlessSudoEnabled = builder.passwordlessSudoEnabled;
-      this.pythonVersion = builder.pythonVersion;
-      this.selinuxEnabled = builder.selinuxEnabled;
       this.virtualizationType = builder.virtualizationType;
+      this.packageManager = builder.packageManager;
+      this.javaVendor = builder.javaVendor;
+      this.javaVersion = builder.javaVersion;
+      this.pythonVersion = builder.pythonVersion;
+      this.passwordlessSudoEnabled = builder.passwordlessSudoEnabled;
+      this.selinuxEnabled = builder.selinuxEnabled;
+      this.iptablesEnabled = builder.iptablesEnabled;
     }
 
   public static CapabilitiesBuilder builder() {
@@ -345,20 +345,38 @@ public class Capabilities {
   }
 
   public static class CapabilitiesBuilder {
-      private Boolean iptablesEnabled = null;
-      private JavaVendorEnum javaVendor = null;
-      private String javaVersion = null;
       private OperatingSystemTypeEnum operatingSystemType = null;
       private OperatingSystemVersionEnum operatingSystemVersion = null;
-      private PackageManagerEnum packageManager = null;
-      private Boolean passwordlessSudoEnabled = null;
-      private String pythonVersion = null;
-      private Boolean selinuxEnabled = null;
       private VirtualizationTypeEnum virtualizationType = null;
+      private PackageManagerEnum packageManager = null;
+      private JavaVendorEnum javaVendor = null;
+      private String javaVersion = null;
+      private String pythonVersion = null;
+      private Boolean passwordlessSudoEnabled = null;
+      private Boolean selinuxEnabled = null;
+      private Boolean iptablesEnabled = null;
   
 
-    public CapabilitiesBuilder iptablesEnabled(Boolean iptablesEnabled) {
-      this.iptablesEnabled = iptablesEnabled;
+    public CapabilitiesBuilder operatingSystemType(OperatingSystemTypeEnum operatingSystemType) {
+      this.operatingSystemType = operatingSystemType;
+      return this;
+    }
+
+
+    public CapabilitiesBuilder operatingSystemVersion(OperatingSystemVersionEnum operatingSystemVersion) {
+      this.operatingSystemVersion = operatingSystemVersion;
+      return this;
+    }
+
+
+    public CapabilitiesBuilder virtualizationType(VirtualizationTypeEnum virtualizationType) {
+      this.virtualizationType = virtualizationType;
+      return this;
+    }
+
+
+    public CapabilitiesBuilder packageManager(PackageManagerEnum packageManager) {
+      this.packageManager = packageManager;
       return this;
     }
 
@@ -375,20 +393,8 @@ public class Capabilities {
     }
 
 
-    public CapabilitiesBuilder operatingSystemType(OperatingSystemTypeEnum operatingSystemType) {
-      this.operatingSystemType = operatingSystemType;
-      return this;
-    }
-
-
-    public CapabilitiesBuilder operatingSystemVersion(OperatingSystemVersionEnum operatingSystemVersion) {
-      this.operatingSystemVersion = operatingSystemVersion;
-      return this;
-    }
-
-
-    public CapabilitiesBuilder packageManager(PackageManagerEnum packageManager) {
-      this.packageManager = packageManager;
+    public CapabilitiesBuilder pythonVersion(String pythonVersion) {
+      this.pythonVersion = pythonVersion;
       return this;
     }
 
@@ -399,20 +405,14 @@ public class Capabilities {
     }
 
 
-    public CapabilitiesBuilder pythonVersion(String pythonVersion) {
-      this.pythonVersion = pythonVersion;
-      return this;
-    }
-
-
     public CapabilitiesBuilder selinuxEnabled(Boolean selinuxEnabled) {
       this.selinuxEnabled = selinuxEnabled;
       return this;
     }
 
 
-    public CapabilitiesBuilder virtualizationType(VirtualizationTypeEnum virtualizationType) {
-      this.virtualizationType = virtualizationType;
+    public CapabilitiesBuilder iptablesEnabled(Boolean iptablesEnabled) {
+      this.iptablesEnabled = iptablesEnabled;
       return this;
     }
 
@@ -424,71 +424,17 @@ public class Capabilities {
 
   public CapabilitiesBuilder toBuilder() {
     return builder()
-      .iptablesEnabled(iptablesEnabled)
+      .operatingSystemType(operatingSystemType)
+            .operatingSystemVersion(operatingSystemVersion)
+            .virtualizationType(virtualizationType)
+            .packageManager(packageManager)
             .javaVendor(javaVendor)
             .javaVersion(javaVersion)
-            .operatingSystemType(operatingSystemType)
-            .operatingSystemVersion(operatingSystemVersion)
-            .packageManager(packageManager)
-            .passwordlessSudoEnabled(passwordlessSudoEnabled)
             .pythonVersion(pythonVersion)
+            .passwordlessSudoEnabled(passwordlessSudoEnabled)
             .selinuxEnabled(selinuxEnabled)
-            .virtualizationType(virtualizationType)
+            .iptablesEnabled(iptablesEnabled)
       ;
-  }
-
-  public Capabilities iptablesEnabled(Boolean iptablesEnabled) {
-    this.iptablesEnabled = iptablesEnabled;
-    return this;
-  }
-
-   /**
-   * Whether iptables is enabled
-   * @return iptablesEnabled
-  **/
-  @ApiModelProperty(example = "false", required = true, value = "Whether iptables is enabled")
-  public Boolean isIptablesEnabled() {
-    return iptablesEnabled;
-  }
-
-  public void setIptablesEnabled(Boolean iptablesEnabled) {
-    this.iptablesEnabled = iptablesEnabled;
-  }
-
-  public Capabilities javaVendor(JavaVendorEnum javaVendor) {
-    this.javaVendor = javaVendor;
-    return this;
-  }
-
-   /**
-   * Vendor of installed JDK/JRE
-   * @return javaVendor
-  **/
-  @ApiModelProperty(value = "Vendor of installed JDK/JRE")
-  public JavaVendorEnum getJavaVendor() {
-    return javaVendor;
-  }
-
-  public void setJavaVendor(JavaVendorEnum javaVendor) {
-    this.javaVendor = javaVendor;
-  }
-
-  public Capabilities javaVersion(String javaVersion) {
-    this.javaVersion = javaVersion;
-    return this;
-  }
-
-   /**
-   * Version of installed JDK/JRE
-   * @return javaVersion
-  **/
-  @ApiModelProperty(value = "Version of installed JDK/JRE")
-  public String getJavaVersion() {
-    return javaVersion;
-  }
-
-  public void setJavaVersion(String javaVersion) {
-    this.javaVersion = javaVersion;
   }
 
   public Capabilities operatingSystemType(OperatingSystemTypeEnum operatingSystemType) {
@@ -527,6 +473,24 @@ public class Capabilities {
     this.operatingSystemVersion = operatingSystemVersion;
   }
 
+  public Capabilities virtualizationType(VirtualizationTypeEnum virtualizationType) {
+    this.virtualizationType = virtualizationType;
+    return this;
+  }
+
+   /**
+   * Virtualization type
+   * @return virtualizationType
+  **/
+  @ApiModelProperty(required = true, value = "Virtualization type")
+  public VirtualizationTypeEnum getVirtualizationType() {
+    return virtualizationType;
+  }
+
+  public void setVirtualizationType(VirtualizationTypeEnum virtualizationType) {
+    this.virtualizationType = virtualizationType;
+  }
+
   public Capabilities packageManager(PackageManagerEnum packageManager) {
     this.packageManager = packageManager;
     return this;
@@ -545,22 +509,40 @@ public class Capabilities {
     this.packageManager = packageManager;
   }
 
-  public Capabilities passwordlessSudoEnabled(Boolean passwordlessSudoEnabled) {
-    this.passwordlessSudoEnabled = passwordlessSudoEnabled;
+  public Capabilities javaVendor(JavaVendorEnum javaVendor) {
+    this.javaVendor = javaVendor;
     return this;
   }
 
    /**
-   * Whether the default login can use passwordless sudo
-   * @return passwordlessSudoEnabled
+   * Vendor of installed JDK/JRE
+   * @return javaVendor
   **/
-  @ApiModelProperty(example = "false", required = true, value = "Whether the default login can use passwordless sudo")
-  public Boolean isPasswordlessSudoEnabled() {
-    return passwordlessSudoEnabled;
+  @ApiModelProperty(value = "Vendor of installed JDK/JRE")
+  public JavaVendorEnum getJavaVendor() {
+    return javaVendor;
   }
 
-  public void setPasswordlessSudoEnabled(Boolean passwordlessSudoEnabled) {
-    this.passwordlessSudoEnabled = passwordlessSudoEnabled;
+  public void setJavaVendor(JavaVendorEnum javaVendor) {
+    this.javaVendor = javaVendor;
+  }
+
+  public Capabilities javaVersion(String javaVersion) {
+    this.javaVersion = javaVersion;
+    return this;
+  }
+
+   /**
+   * Version of installed JDK/JRE
+   * @return javaVersion
+  **/
+  @ApiModelProperty(value = "Version of installed JDK/JRE")
+  public String getJavaVersion() {
+    return javaVersion;
+  }
+
+  public void setJavaVersion(String javaVersion) {
+    this.javaVersion = javaVersion;
   }
 
   public Capabilities pythonVersion(String pythonVersion) {
@@ -581,6 +563,24 @@ public class Capabilities {
     this.pythonVersion = pythonVersion;
   }
 
+  public Capabilities passwordlessSudoEnabled(Boolean passwordlessSudoEnabled) {
+    this.passwordlessSudoEnabled = passwordlessSudoEnabled;
+    return this;
+  }
+
+   /**
+   * Whether the default login can use passwordless sudo
+   * @return passwordlessSudoEnabled
+  **/
+  @ApiModelProperty(required = true, value = "Whether the default login can use passwordless sudo")
+  public Boolean isPasswordlessSudoEnabled() {
+    return passwordlessSudoEnabled;
+  }
+
+  public void setPasswordlessSudoEnabled(Boolean passwordlessSudoEnabled) {
+    this.passwordlessSudoEnabled = passwordlessSudoEnabled;
+  }
+
   public Capabilities selinuxEnabled(Boolean selinuxEnabled) {
     this.selinuxEnabled = selinuxEnabled;
     return this;
@@ -590,7 +590,7 @@ public class Capabilities {
    * Whether SELinux is enabled
    * @return selinuxEnabled
   **/
-  @ApiModelProperty(example = "false", required = true, value = "Whether SELinux is enabled")
+  @ApiModelProperty(required = true, value = "Whether SELinux is enabled")
   public Boolean isSelinuxEnabled() {
     return selinuxEnabled;
   }
@@ -599,22 +599,22 @@ public class Capabilities {
     this.selinuxEnabled = selinuxEnabled;
   }
 
-  public Capabilities virtualizationType(VirtualizationTypeEnum virtualizationType) {
-    this.virtualizationType = virtualizationType;
+  public Capabilities iptablesEnabled(Boolean iptablesEnabled) {
+    this.iptablesEnabled = iptablesEnabled;
     return this;
   }
 
    /**
-   * Virtualization type
-   * @return virtualizationType
+   * Whether iptables is enabled
+   * @return iptablesEnabled
   **/
-  @ApiModelProperty(required = true, value = "Virtualization type")
-  public VirtualizationTypeEnum getVirtualizationType() {
-    return virtualizationType;
+  @ApiModelProperty(required = true, value = "Whether iptables is enabled")
+  public Boolean isIptablesEnabled() {
+    return iptablesEnabled;
   }
 
-  public void setVirtualizationType(VirtualizationTypeEnum virtualizationType) {
-    this.virtualizationType = virtualizationType;
+  public void setIptablesEnabled(Boolean iptablesEnabled) {
+    this.iptablesEnabled = iptablesEnabled;
   }
 
 
@@ -627,21 +627,21 @@ public class Capabilities {
       return false;
     }
     Capabilities capabilities = (Capabilities) o;
-    return Objects.equals(this.iptablesEnabled, capabilities.iptablesEnabled) &&
+    return Objects.equals(this.operatingSystemType, capabilities.operatingSystemType) &&
+        Objects.equals(this.operatingSystemVersion, capabilities.operatingSystemVersion) &&
+        Objects.equals(this.virtualizationType, capabilities.virtualizationType) &&
+        Objects.equals(this.packageManager, capabilities.packageManager) &&
         Objects.equals(this.javaVendor, capabilities.javaVendor) &&
         Objects.equals(this.javaVersion, capabilities.javaVersion) &&
-        Objects.equals(this.operatingSystemType, capabilities.operatingSystemType) &&
-        Objects.equals(this.operatingSystemVersion, capabilities.operatingSystemVersion) &&
-        Objects.equals(this.packageManager, capabilities.packageManager) &&
-        Objects.equals(this.passwordlessSudoEnabled, capabilities.passwordlessSudoEnabled) &&
         Objects.equals(this.pythonVersion, capabilities.pythonVersion) &&
+        Objects.equals(this.passwordlessSudoEnabled, capabilities.passwordlessSudoEnabled) &&
         Objects.equals(this.selinuxEnabled, capabilities.selinuxEnabled) &&
-        Objects.equals(this.virtualizationType, capabilities.virtualizationType);
+        Objects.equals(this.iptablesEnabled, capabilities.iptablesEnabled);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(iptablesEnabled, javaVendor, javaVersion, operatingSystemType, operatingSystemVersion, packageManager, passwordlessSudoEnabled, pythonVersion, selinuxEnabled, virtualizationType);
+    return Objects.hash(operatingSystemType, operatingSystemVersion, virtualizationType, packageManager, javaVendor, javaVersion, pythonVersion, passwordlessSudoEnabled, selinuxEnabled, iptablesEnabled);
   }
 
 
@@ -650,16 +650,16 @@ public class Capabilities {
     StringBuilder sb = new StringBuilder();
     sb.append("class Capabilities {\n");
     
-    sb.append("    iptablesEnabled: ").append(toIndentedString(iptablesEnabled)).append("\n");
-    sb.append("    javaVendor: ").append(toIndentedString(javaVendor)).append("\n");
-    sb.append("    javaVersion: ").append(toIndentedString(javaVersion)).append("\n");
     sb.append("    operatingSystemType: ").append(toIndentedString(operatingSystemType)).append("\n");
     sb.append("    operatingSystemVersion: ").append(toIndentedString(operatingSystemVersion)).append("\n");
-    sb.append("    packageManager: ").append(toIndentedString(packageManager)).append("\n");
-    sb.append("    passwordlessSudoEnabled: ").append(toIndentedString(passwordlessSudoEnabled)).append("\n");
-    sb.append("    pythonVersion: ").append(toIndentedString(pythonVersion)).append("\n");
-    sb.append("    selinuxEnabled: ").append(toIndentedString(selinuxEnabled)).append("\n");
     sb.append("    virtualizationType: ").append(toIndentedString(virtualizationType)).append("\n");
+    sb.append("    packageManager: ").append(toIndentedString(packageManager)).append("\n");
+    sb.append("    javaVendor: ").append(toIndentedString(javaVendor)).append("\n");
+    sb.append("    javaVersion: ").append(toIndentedString(javaVersion)).append("\n");
+    sb.append("    pythonVersion: ").append(toIndentedString(pythonVersion)).append("\n");
+    sb.append("    passwordlessSudoEnabled: ").append(toIndentedString(passwordlessSudoEnabled)).append("\n");
+    sb.append("    selinuxEnabled: ").append(toIndentedString(selinuxEnabled)).append("\n");
+    sb.append("    iptablesEnabled: ").append(toIndentedString(iptablesEnabled)).append("\n");
     sb.append("}");
     return sb.toString();
   }

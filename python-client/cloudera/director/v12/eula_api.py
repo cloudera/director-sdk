@@ -44,6 +44,7 @@ class EulaApi(object):
     def get(self, **kwargs):  # noqa: E501
         """Get the EULA  # noqa: E501
 
+          # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
         >>> thread = api.get(async=True)
@@ -64,6 +65,7 @@ class EulaApi(object):
     def get_with_http_info(self, **kwargs):  # noqa: E501
         """Get the EULA  # noqa: E501
 
+          # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
         >>> thread = api.get_with_http_info(async=True)
@@ -108,7 +110,7 @@ class EulaApi(object):
             ['application/json'])  # noqa: E501
 
         # Authentication setting
-        auth_settings = ['basic']  # noqa: E501
+        auth_settings = []  # noqa: E501
 
         return self.api_client.call_api(
             '/api/v12/eula', 'GET',
@@ -130,13 +132,14 @@ class EulaApi(object):
     def update(self, eula, **kwargs):  # noqa: E501
         """Update the EULA  # noqa: E501
 
+          # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
         >>> thread = api.update(eula, async=True)
         >>> result = thread.get()
 
         :param async bool
-        :param Eula eula: eula (required)
+        :param Eula eula: (required)
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
@@ -151,13 +154,14 @@ class EulaApi(object):
     def update_with_http_info(self, eula, **kwargs):  # noqa: E501
         """Update the EULA  # noqa: E501
 
+          # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
         >>> thread = api.update_with_http_info(eula, async=True)
         >>> result = thread.get()
 
         :param async bool
-        :param Eula eula: eula (required)
+        :param Eula eula: (required)
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
@@ -201,12 +205,8 @@ class EulaApi(object):
         header_params['Accept'] = self.api_client.select_header_accept(
             ['application/json'])  # noqa: E501
 
-        # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json'])  # noqa: E501
-
         # Authentication setting
-        auth_settings = ['basic']  # noqa: E501
+        auth_settings = []  # noqa: E501
 
         return self.api_client.call_api(
             '/api/v12/eula', 'PUT',

@@ -65,9 +65,9 @@ public class ClustersApi {
 
     /**
      * Build call for collectDiagnosticData
-     * @param environment environment (required)
-     * @param deployment deployment (required)
-     * @param cluster cluster (required)
+     * @param environment  (required)
+     * @param deployment  (required)
+     * @param cluster  (required)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
@@ -96,7 +96,7 @@ public class ClustersApi {
         if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
 
         final String[] localVarContentTypes = {
-            "application/json"
+            
         };
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
@@ -144,9 +144,9 @@ public class ClustersApi {
     /**
      * Collects diagnostic data
      * 
-     * @param environment environment (required)
-     * @param deployment deployment (required)
-     * @param cluster cluster (required)
+     * @param environment  (required)
+     * @param deployment  (required)
+     * @param cluster  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
     public void collectDiagnosticData(String environment, String deployment, String cluster) throws ApiException {
@@ -156,9 +156,9 @@ public class ClustersApi {
     /**
      * Collects diagnostic data
      * 
-     * @param environment environment (required)
-     * @param deployment deployment (required)
-     * @param cluster cluster (required)
+     * @param environment  (required)
+     * @param deployment  (required)
+     * @param cluster  (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
@@ -170,9 +170,9 @@ public class ClustersApi {
     /**
      * Collects diagnostic data (asynchronously)
      * 
-     * @param environment environment (required)
-     * @param deployment deployment (required)
-     * @param cluster cluster (required)
+     * @param environment  (required)
+     * @param deployment  (required)
+     * @param cluster  (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -204,9 +204,9 @@ public class ClustersApi {
     }
     /**
      * Build call for create
-     * @param environment environment (required)
-     * @param deployment deployment (required)
-     * @param clusterTemplate clusterTemplate (required)
+     * @param environment  (required)
+     * @param deployment  (required)
+     * @param clusterTemplate  (required)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
@@ -234,7 +234,7 @@ public class ClustersApi {
         if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
 
         final String[] localVarContentTypes = {
-            "application/json"
+            
         };
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
@@ -282,9 +282,9 @@ public class ClustersApi {
     /**
      * Create a new cluster
      * 
-     * @param environment environment (required)
-     * @param deployment deployment (required)
-     * @param clusterTemplate clusterTemplate (required)
+     * @param environment  (required)
+     * @param deployment  (required)
+     * @param clusterTemplate  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
     public void create(String environment, String deployment, ClusterTemplate clusterTemplate) throws ApiException {
@@ -294,9 +294,9 @@ public class ClustersApi {
     /**
      * Create a new cluster
      * 
-     * @param environment environment (required)
-     * @param deployment deployment (required)
-     * @param clusterTemplate clusterTemplate (required)
+     * @param environment  (required)
+     * @param deployment  (required)
+     * @param clusterTemplate  (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
@@ -308,9 +308,9 @@ public class ClustersApi {
     /**
      * Create a new cluster (asynchronously)
      * 
-     * @param environment environment (required)
-     * @param deployment deployment (required)
-     * @param clusterTemplate clusterTemplate (required)
+     * @param environment  (required)
+     * @param deployment  (required)
+     * @param clusterTemplate  (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -342,9 +342,9 @@ public class ClustersApi {
     }
     /**
      * Build call for delete
-     * @param environment environment (required)
-     * @param deployment deployment (required)
-     * @param cluster cluster (required)
+     * @param environment  (required)
+     * @param deployment  (required)
+     * @param cluster  (required)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
@@ -421,9 +421,9 @@ public class ClustersApi {
     /**
      * Delete a cluster by name
      * 
-     * @param environment environment (required)
-     * @param deployment deployment (required)
-     * @param cluster cluster (required)
+     * @param environment  (required)
+     * @param deployment  (required)
+     * @param cluster  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
     public void delete(String environment, String deployment, String cluster) throws ApiException {
@@ -433,9 +433,9 @@ public class ClustersApi {
     /**
      * Delete a cluster by name
      * 
-     * @param environment environment (required)
-     * @param deployment deployment (required)
-     * @param cluster cluster (required)
+     * @param environment  (required)
+     * @param deployment  (required)
+     * @param cluster  (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
@@ -447,9 +447,9 @@ public class ClustersApi {
     /**
      * Delete a cluster by name (asynchronously)
      * 
-     * @param environment environment (required)
-     * @param deployment deployment (required)
-     * @param cluster cluster (required)
+     * @param environment  (required)
+     * @param deployment  (required)
+     * @param cluster  (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -481,9 +481,9 @@ public class ClustersApi {
     }
     /**
      * Build call for get
-     * @param environment environment (required)
-     * @param deployment deployment (required)
-     * @param cluster cluster (required)
+     * @param environment  (required)
+     * @param deployment  (required)
+     * @param cluster  (required)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
@@ -560,9 +560,9 @@ public class ClustersApi {
     /**
      * Get a cluster by name
      * 
-     * @param environment environment (required)
-     * @param deployment deployment (required)
-     * @param cluster cluster (required)
+     * @param environment  (required)
+     * @param deployment  (required)
+     * @param cluster  (required)
      * @return Cluster
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
@@ -574,9 +574,9 @@ public class ClustersApi {
     /**
      * Get a cluster by name
      * 
-     * @param environment environment (required)
-     * @param deployment deployment (required)
-     * @param cluster cluster (required)
+     * @param environment  (required)
+     * @param deployment  (required)
+     * @param cluster  (required)
      * @return ApiResponse&lt;Cluster&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
@@ -589,9 +589,9 @@ public class ClustersApi {
     /**
      * Get a cluster by name (asynchronously)
      * 
-     * @param environment environment (required)
-     * @param deployment deployment (required)
-     * @param cluster cluster (required)
+     * @param environment  (required)
+     * @param deployment  (required)
+     * @param cluster  (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -624,9 +624,9 @@ public class ClustersApi {
     }
     /**
      * Build call for getAdministrationSettings
-     * @param environment environment (required)
-     * @param deployment deployment (required)
-     * @param cluster cluster (required)
+     * @param environment  (required)
+     * @param deployment  (required)
+     * @param cluster  (required)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
@@ -703,9 +703,9 @@ public class ClustersApi {
     /**
      * Get administration settings for a cluster
      * 
-     * @param environment environment (required)
-     * @param deployment deployment (required)
-     * @param cluster cluster (required)
+     * @param environment  (required)
+     * @param deployment  (required)
+     * @param cluster  (required)
      * @return ClusterAdministrationSettings
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
@@ -717,9 +717,9 @@ public class ClustersApi {
     /**
      * Get administration settings for a cluster
      * 
-     * @param environment environment (required)
-     * @param deployment deployment (required)
-     * @param cluster cluster (required)
+     * @param environment  (required)
+     * @param deployment  (required)
+     * @param cluster  (required)
      * @return ApiResponse&lt;ClusterAdministrationSettings&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
@@ -732,9 +732,9 @@ public class ClustersApi {
     /**
      * Get administration settings for a cluster (asynchronously)
      * 
-     * @param environment environment (required)
-     * @param deployment deployment (required)
-     * @param cluster cluster (required)
+     * @param environment  (required)
+     * @param deployment  (required)
+     * @param cluster  (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -767,11 +767,11 @@ public class ClustersApi {
     }
     /**
      * Build call for getHistory
-     * @param environment environment (required)
-     * @param deployment deployment (required)
-     * @param cluster cluster (required)
-     * @param numEvents numEvents (optional, default to 10)
-     * @param page page (optional, default to 0)
+     * @param environment  (required)
+     * @param deployment  (required)
+     * @param cluster  (required)
+     * @param numEvents  (required)
+     * @param page  (required)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
@@ -843,6 +843,16 @@ public class ClustersApi {
             throw new ApiException("Missing the required parameter 'cluster' when calling getHistory(Async)");
         }
         
+        // verify the required parameter 'numEvents' is set
+        if (numEvents == null) {
+            throw new ApiException("Missing the required parameter 'numEvents' when calling getHistory(Async)");
+        }
+        
+        // verify the required parameter 'page' is set
+        if (page == null) {
+            throw new ApiException("Missing the required parameter 'page' when calling getHistory(Async)");
+        }
+        
 
         com.squareup.okhttp.Call call = getHistoryCall(environment, deployment, cluster, numEvents, page, progressListener, progressRequestListener);
         return call;
@@ -852,11 +862,11 @@ public class ClustersApi {
     /**
      * Get history of updates for a cluster
      * 
-     * @param environment environment (required)
-     * @param deployment deployment (required)
-     * @param cluster cluster (required)
-     * @param numEvents numEvents (optional, default to 10)
-     * @param page page (optional, default to 0)
+     * @param environment  (required)
+     * @param deployment  (required)
+     * @param cluster  (required)
+     * @param numEvents  (required)
+     * @param page  (required)
      * @return List&lt;ClusterUpdateEventSummary&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
@@ -868,11 +878,11 @@ public class ClustersApi {
     /**
      * Get history of updates for a cluster
      * 
-     * @param environment environment (required)
-     * @param deployment deployment (required)
-     * @param cluster cluster (required)
-     * @param numEvents numEvents (optional, default to 10)
-     * @param page page (optional, default to 0)
+     * @param environment  (required)
+     * @param deployment  (required)
+     * @param cluster  (required)
+     * @param numEvents  (required)
+     * @param page  (required)
      * @return ApiResponse&lt;List&lt;ClusterUpdateEventSummary&gt;&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
@@ -885,11 +895,11 @@ public class ClustersApi {
     /**
      * Get history of updates for a cluster (asynchronously)
      * 
-     * @param environment environment (required)
-     * @param deployment deployment (required)
-     * @param cluster cluster (required)
-     * @param numEvents numEvents (optional, default to 10)
-     * @param page page (optional, default to 0)
+     * @param environment  (required)
+     * @param deployment  (required)
+     * @param cluster  (required)
+     * @param numEvents  (required)
+     * @param page  (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -922,9 +932,9 @@ public class ClustersApi {
     }
     /**
      * Build call for getMetrics
-     * @param environment environment (required)
-     * @param deployment deployment (required)
-     * @param cluster cluster (required)
+     * @param environment  (required)
+     * @param deployment  (required)
+     * @param cluster  (required)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
@@ -1001,9 +1011,9 @@ public class ClustersApi {
     /**
      * Get cluster metrics by name
      * 
-     * @param environment environment (required)
-     * @param deployment deployment (required)
-     * @param cluster cluster (required)
+     * @param environment  (required)
+     * @param deployment  (required)
+     * @param cluster  (required)
      * @return Metrics
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
@@ -1015,9 +1025,9 @@ public class ClustersApi {
     /**
      * Get cluster metrics by name
      * 
-     * @param environment environment (required)
-     * @param deployment deployment (required)
-     * @param cluster cluster (required)
+     * @param environment  (required)
+     * @param deployment  (required)
+     * @param cluster  (required)
      * @return ApiResponse&lt;Metrics&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
@@ -1030,9 +1040,9 @@ public class ClustersApi {
     /**
      * Get cluster metrics by name (asynchronously)
      * 
-     * @param environment environment (required)
-     * @param deployment deployment (required)
-     * @param cluster cluster (required)
+     * @param environment  (required)
+     * @param deployment  (required)
+     * @param cluster  (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1065,9 +1075,9 @@ public class ClustersApi {
     }
     /**
      * Build call for getStatus
-     * @param environment environment (required)
-     * @param deployment deployment (required)
-     * @param cluster cluster (required)
+     * @param environment  (required)
+     * @param deployment  (required)
+     * @param cluster  (required)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
@@ -1144,9 +1154,9 @@ public class ClustersApi {
     /**
      * Get a cluster status by name
      * 
-     * @param environment environment (required)
-     * @param deployment deployment (required)
-     * @param cluster cluster (required)
+     * @param environment  (required)
+     * @param deployment  (required)
+     * @param cluster  (required)
      * @return Status
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
@@ -1158,9 +1168,9 @@ public class ClustersApi {
     /**
      * Get a cluster status by name
      * 
-     * @param environment environment (required)
-     * @param deployment deployment (required)
-     * @param cluster cluster (required)
+     * @param environment  (required)
+     * @param deployment  (required)
+     * @param cluster  (required)
      * @return ApiResponse&lt;Status&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
@@ -1173,9 +1183,9 @@ public class ClustersApi {
     /**
      * Get a cluster status by name (asynchronously)
      * 
-     * @param environment environment (required)
-     * @param deployment deployment (required)
-     * @param cluster cluster (required)
+     * @param environment  (required)
+     * @param deployment  (required)
+     * @param cluster  (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1208,9 +1218,9 @@ public class ClustersApi {
     }
     /**
      * Build call for getTemplateRedacted
-     * @param environment environment (required)
-     * @param deployment deployment (required)
-     * @param cluster cluster (required)
+     * @param environment  (required)
+     * @param deployment  (required)
+     * @param cluster  (required)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
@@ -1287,9 +1297,9 @@ public class ClustersApi {
     /**
      * Get a cluster template by name
      * 
-     * @param environment environment (required)
-     * @param deployment deployment (required)
-     * @param cluster cluster (required)
+     * @param environment  (required)
+     * @param deployment  (required)
+     * @param cluster  (required)
      * @return ClusterTemplate
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
@@ -1301,9 +1311,9 @@ public class ClustersApi {
     /**
      * Get a cluster template by name
      * 
-     * @param environment environment (required)
-     * @param deployment deployment (required)
-     * @param cluster cluster (required)
+     * @param environment  (required)
+     * @param deployment  (required)
+     * @param cluster  (required)
      * @return ApiResponse&lt;ClusterTemplate&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
@@ -1316,9 +1326,9 @@ public class ClustersApi {
     /**
      * Get a cluster template by name (asynchronously)
      * 
-     * @param environment environment (required)
-     * @param deployment deployment (required)
-     * @param cluster cluster (required)
+     * @param environment  (required)
+     * @param deployment  (required)
+     * @param cluster  (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1351,8 +1361,8 @@ public class ClustersApi {
     }
     /**
      * Build call for list
-     * @param environment environment (required)
-     * @param deployment deployment (required)
+     * @param environment  (required)
+     * @param deployment  (required)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
@@ -1423,8 +1433,8 @@ public class ClustersApi {
     /**
      * List all clusters
      * 
-     * @param environment environment (required)
-     * @param deployment deployment (required)
+     * @param environment  (required)
+     * @param deployment  (required)
      * @return List&lt;String&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
@@ -1436,8 +1446,8 @@ public class ClustersApi {
     /**
      * List all clusters
      * 
-     * @param environment environment (required)
-     * @param deployment deployment (required)
+     * @param environment  (required)
+     * @param deployment  (required)
      * @return ApiResponse&lt;List&lt;String&gt;&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
@@ -1450,8 +1460,8 @@ public class ClustersApi {
     /**
      * List all clusters (asynchronously)
      * 
-     * @param environment environment (required)
-     * @param deployment deployment (required)
+     * @param environment  (required)
+     * @param deployment  (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1484,10 +1494,10 @@ public class ClustersApi {
     }
     /**
      * Build call for update
-     * @param environment environment (required)
-     * @param deployment deployment (required)
-     * @param cluster cluster (required)
-     * @param desired desired (required)
+     * @param environment  (required)
+     * @param deployment  (required)
+     * @param cluster  (required)
+     * @param desired  (required)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
@@ -1516,7 +1526,7 @@ public class ClustersApi {
         if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
 
         final String[] localVarContentTypes = {
-            "application/json"
+            
         };
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
@@ -1569,10 +1579,10 @@ public class ClustersApi {
     /**
      * Update an existing cluster
      * 
-     * @param environment environment (required)
-     * @param deployment deployment (required)
-     * @param cluster cluster (required)
-     * @param desired desired (required)
+     * @param environment  (required)
+     * @param deployment  (required)
+     * @param cluster  (required)
+     * @param desired  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
     public void update(String environment, String deployment, String cluster, ClusterTemplate desired) throws ApiException {
@@ -1582,10 +1592,10 @@ public class ClustersApi {
     /**
      * Update an existing cluster
      * 
-     * @param environment environment (required)
-     * @param deployment deployment (required)
-     * @param cluster cluster (required)
-     * @param desired desired (required)
+     * @param environment  (required)
+     * @param deployment  (required)
+     * @param cluster  (required)
+     * @param desired  (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
@@ -1597,10 +1607,10 @@ public class ClustersApi {
     /**
      * Update an existing cluster (asynchronously)
      * 
-     * @param environment environment (required)
-     * @param deployment deployment (required)
-     * @param cluster cluster (required)
-     * @param desired desired (required)
+     * @param environment  (required)
+     * @param deployment  (required)
+     * @param cluster  (required)
+     * @param desired  (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1632,10 +1642,10 @@ public class ClustersApi {
     }
     /**
      * Build call for updateAdministrationSettings
-     * @param environment environment (required)
-     * @param deployment deployment (required)
-     * @param cluster cluster (required)
-     * @param administrationSettings administrationSettings (required)
+     * @param environment  (required)
+     * @param deployment  (required)
+     * @param cluster  (required)
+     * @param administrationSettings  (required)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
@@ -1664,7 +1674,7 @@ public class ClustersApi {
         if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
 
         final String[] localVarContentTypes = {
-            "application/json"
+            
         };
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
@@ -1717,10 +1727,10 @@ public class ClustersApi {
     /**
      * Update administration settings for a cluster
      * 
-     * @param environment environment (required)
-     * @param deployment deployment (required)
-     * @param cluster cluster (required)
-     * @param administrationSettings administrationSettings (required)
+     * @param environment  (required)
+     * @param deployment  (required)
+     * @param cluster  (required)
+     * @param administrationSettings  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
     public void updateAdministrationSettings(String environment, String deployment, String cluster, ClusterAdministrationSettings administrationSettings) throws ApiException {
@@ -1730,10 +1740,10 @@ public class ClustersApi {
     /**
      * Update administration settings for a cluster
      * 
-     * @param environment environment (required)
-     * @param deployment deployment (required)
-     * @param cluster cluster (required)
-     * @param administrationSettings administrationSettings (required)
+     * @param environment  (required)
+     * @param deployment  (required)
+     * @param cluster  (required)
+     * @param administrationSettings  (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
@@ -1745,10 +1755,10 @@ public class ClustersApi {
     /**
      * Update administration settings for a cluster (asynchronously)
      * 
-     * @param environment environment (required)
-     * @param deployment deployment (required)
-     * @param cluster cluster (required)
-     * @param administrationSettings administrationSettings (required)
+     * @param environment  (required)
+     * @param deployment  (required)
+     * @param cluster  (required)
+     * @param administrationSettings  (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object

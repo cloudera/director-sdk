@@ -39,49 +39,24 @@ class Login(object):
                             and the value is json key in definition.
     """
     swagger_types = {
-        'password': 'str',
-        'username': 'str'
+        'username': 'str',
+        'password': 'str'
     }
 
     attribute_map = {
-        'password': 'password',
-        'username': 'username'
+        'username': 'username',
+        'password': 'password'
     }
 
-    def __init__(self, password=None, username=None):  # noqa: E501
+    def __init__(self, username=None, password=None):  # noqa: E501
         """Login - a model defined in Swagger"""  # noqa: E501
 
-        self._password = None
         self._username = None
+        self._password = None
         self.discriminator = None
 
-        self.password = password
         self.username = username
-
-    @property
-    def password(self):
-        """Gets the password of this Login.  # noqa: E501
-
-        Login password [redacted on read]  # noqa: E501
-
-        :return: The password of this Login.  # noqa: E501
-        :rtype: str
-        """
-        return self._password
-
-    @password.setter
-    def password(self, password):
-        """Sets the password of this Login.
-
-        Login password [redacted on read]  # noqa: E501
-
-        :param password: The password of this Login.  # noqa: E501
-        :type: str
-        """
-        if password is None:
-            raise ValueError("Invalid value for `password`, must not be `None`")  # noqa: E501
-
-        self._password = password
+        self.password = password
 
     @property
     def username(self):
@@ -107,6 +82,31 @@ class Login(object):
             raise ValueError("Invalid value for `username`, must not be `None`")  # noqa: E501
 
         self._username = username
+
+    @property
+    def password(self):
+        """Gets the password of this Login.  # noqa: E501
+
+        Login password [redacted on read]  # noqa: E501
+
+        :return: The password of this Login.  # noqa: E501
+        :rtype: str
+        """
+        return self._password
+
+    @password.setter
+    def password(self, password):
+        """Sets the password of this Login.
+
+        Login password [redacted on read]  # noqa: E501
+
+        :param password: The password of this Login.  # noqa: E501
+        :type: str
+        """
+        if password is None:
+            raise ValueError("Invalid value for `password`, must not be `None`")  # noqa: E501
+
+        self._password = password
 
     def to_dict(self):
         """Returns the model properties as a dict"""

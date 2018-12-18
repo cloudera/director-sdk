@@ -44,13 +44,14 @@ class ProviderMetadataApi(object):
     def get(self, provider_id, **kwargs):  # noqa: E501
         """Get a provider by name  # noqa: E501
 
+          # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
         >>> thread = api.get(provider_id, async=True)
         >>> result = thread.get()
 
         :param async bool
-        :param str provider_id: providerId (required)
+        :param str provider_id: (required)
         :return: CloudProviderMetadata
                  If the method is called asynchronously,
                  returns the request thread.
@@ -65,13 +66,14 @@ class ProviderMetadataApi(object):
     def get_with_http_info(self, provider_id, **kwargs):  # noqa: E501
         """Get a provider by name  # noqa: E501
 
+          # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
         >>> thread = api.get_with_http_info(provider_id, async=True)
         >>> result = thread.get()
 
         :param async bool
-        :param str provider_id: providerId (required)
+        :param str provider_id: (required)
         :return: CloudProviderMetadata
                  If the method is called asynchronously,
                  returns the request thread.
@@ -138,6 +140,7 @@ class ProviderMetadataApi(object):
     def list(self, **kwargs):  # noqa: E501
         """List all provider metadata  # noqa: E501
 
+          # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
         >>> thread = api.list(async=True)
@@ -158,6 +161,7 @@ class ProviderMetadataApi(object):
     def list_with_http_info(self, **kwargs):  # noqa: E501
         """List all provider metadata  # noqa: E501
 
+          # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async=True
         >>> thread = api.list_with_http_info(async=True)

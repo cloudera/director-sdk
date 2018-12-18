@@ -63,8 +63,8 @@ public class DeploymentsApi {
 
     /**
      * Build call for collectDiagnosticData
-     * @param environment environment (required)
-     * @param deployment deployment (required)
+     * @param environment  (required)
+     * @param deployment  (required)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
@@ -92,7 +92,7 @@ public class DeploymentsApi {
         if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
 
         final String[] localVarContentTypes = {
-            "application/json"
+            
         };
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
@@ -135,8 +135,8 @@ public class DeploymentsApi {
     /**
      * Collects diagnostic data
      * 
-     * @param environment environment (required)
-     * @param deployment deployment (required)
+     * @param environment  (required)
+     * @param deployment  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
     public void collectDiagnosticData(String environment, String deployment) throws ApiException {
@@ -146,8 +146,8 @@ public class DeploymentsApi {
     /**
      * Collects diagnostic data
      * 
-     * @param environment environment (required)
-     * @param deployment deployment (required)
+     * @param environment  (required)
+     * @param deployment  (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
@@ -159,8 +159,8 @@ public class DeploymentsApi {
     /**
      * Collects diagnostic data (asynchronously)
      * 
-     * @param environment environment (required)
-     * @param deployment deployment (required)
+     * @param environment  (required)
+     * @param deployment  (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -192,8 +192,8 @@ public class DeploymentsApi {
     }
     /**
      * Build call for create
-     * @param environment environment (required)
-     * @param deploymentTemplate deploymentTemplate (required)
+     * @param environment  (required)
+     * @param deploymentTemplate  (required)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
@@ -220,7 +220,7 @@ public class DeploymentsApi {
         if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
 
         final String[] localVarContentTypes = {
-            "application/json"
+            
         };
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
@@ -263,8 +263,8 @@ public class DeploymentsApi {
     /**
      * Create a new deployment
      * 
-     * @param environment environment (required)
-     * @param deploymentTemplate deploymentTemplate (required)
+     * @param environment  (required)
+     * @param deploymentTemplate  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
     public void create(String environment, DeploymentTemplate deploymentTemplate) throws ApiException {
@@ -274,8 +274,8 @@ public class DeploymentsApi {
     /**
      * Create a new deployment
      * 
-     * @param environment environment (required)
-     * @param deploymentTemplate deploymentTemplate (required)
+     * @param environment  (required)
+     * @param deploymentTemplate  (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
@@ -287,8 +287,8 @@ public class DeploymentsApi {
     /**
      * Create a new deployment (asynchronously)
      * 
-     * @param environment environment (required)
-     * @param deploymentTemplate deploymentTemplate (required)
+     * @param environment  (required)
+     * @param deploymentTemplate  (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -320,8 +320,8 @@ public class DeploymentsApi {
     }
     /**
      * Build call for delete
-     * @param environment environment (required)
-     * @param deployment deployment (required)
+     * @param environment  (required)
+     * @param deployment  (required)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
@@ -392,8 +392,8 @@ public class DeploymentsApi {
     /**
      * Delete a deployment by name
      * 
-     * @param environment environment (required)
-     * @param deployment deployment (required)
+     * @param environment  (required)
+     * @param deployment  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
     public void delete(String environment, String deployment) throws ApiException {
@@ -403,8 +403,8 @@ public class DeploymentsApi {
     /**
      * Delete a deployment by name
      * 
-     * @param environment environment (required)
-     * @param deployment deployment (required)
+     * @param environment  (required)
+     * @param deployment  (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
@@ -416,8 +416,8 @@ public class DeploymentsApi {
     /**
      * Delete a deployment by name (asynchronously)
      * 
-     * @param environment environment (required)
-     * @param deployment deployment (required)
+     * @param environment  (required)
+     * @param deployment  (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -449,8 +449,8 @@ public class DeploymentsApi {
     }
     /**
      * Build call for getRedacted
-     * @param environment environment (required)
-     * @param deployment deployment (required)
+     * @param environment  (required)
+     * @param deployment  (required)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
@@ -521,8 +521,8 @@ public class DeploymentsApi {
     /**
      * Get a deployment by name
      * 
-     * @param environment environment (required)
-     * @param deployment deployment (required)
+     * @param environment  (required)
+     * @param deployment  (required)
      * @return Deployment
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
@@ -534,8 +534,8 @@ public class DeploymentsApi {
     /**
      * Get a deployment by name
      * 
-     * @param environment environment (required)
-     * @param deployment deployment (required)
+     * @param environment  (required)
+     * @param deployment  (required)
      * @return ApiResponse&lt;Deployment&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
@@ -548,8 +548,8 @@ public class DeploymentsApi {
     /**
      * Get a deployment by name (asynchronously)
      * 
-     * @param environment environment (required)
-     * @param deployment deployment (required)
+     * @param environment  (required)
+     * @param deployment  (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -582,8 +582,8 @@ public class DeploymentsApi {
     }
     /**
      * Build call for getStatus
-     * @param environment environment (required)
-     * @param deployment deployment (required)
+     * @param environment  (required)
+     * @param deployment  (required)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
@@ -654,8 +654,8 @@ public class DeploymentsApi {
     /**
      * Get a deployment status by name
      * 
-     * @param environment environment (required)
-     * @param deployment deployment (required)
+     * @param environment  (required)
+     * @param deployment  (required)
      * @return Status
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
@@ -667,8 +667,8 @@ public class DeploymentsApi {
     /**
      * Get a deployment status by name
      * 
-     * @param environment environment (required)
-     * @param deployment deployment (required)
+     * @param environment  (required)
+     * @param deployment  (required)
      * @return ApiResponse&lt;Status&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
@@ -681,8 +681,8 @@ public class DeploymentsApi {
     /**
      * Get a deployment status by name (asynchronously)
      * 
-     * @param environment environment (required)
-     * @param deployment deployment (required)
+     * @param environment  (required)
+     * @param deployment  (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -715,8 +715,8 @@ public class DeploymentsApi {
     }
     /**
      * Build call for getTemplateRedacted
-     * @param environment environment (required)
-     * @param deployment deployment (required)
+     * @param environment  (required)
+     * @param deployment  (required)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
@@ -787,8 +787,8 @@ public class DeploymentsApi {
     /**
      * Get a deployment template by name
      * 
-     * @param environment environment (required)
-     * @param deployment deployment (required)
+     * @param environment  (required)
+     * @param deployment  (required)
      * @return DeploymentTemplate
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
@@ -800,8 +800,8 @@ public class DeploymentsApi {
     /**
      * Get a deployment template by name
      * 
-     * @param environment environment (required)
-     * @param deployment deployment (required)
+     * @param environment  (required)
+     * @param deployment  (required)
      * @return ApiResponse&lt;DeploymentTemplate&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
@@ -814,8 +814,8 @@ public class DeploymentsApi {
     /**
      * Get a deployment template by name (asynchronously)
      * 
-     * @param environment environment (required)
-     * @param deployment deployment (required)
+     * @param environment  (required)
+     * @param deployment  (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -848,7 +848,7 @@ public class DeploymentsApi {
     }
     /**
      * Build call for list
-     * @param environment environment (required)
+     * @param environment  (required)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
@@ -913,7 +913,7 @@ public class DeploymentsApi {
     /**
      * List all deployments
      * 
-     * @param environment environment (required)
+     * @param environment  (required)
      * @return List&lt;String&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
@@ -925,7 +925,7 @@ public class DeploymentsApi {
     /**
      * List all deployments
      * 
-     * @param environment environment (required)
+     * @param environment  (required)
      * @return ApiResponse&lt;List&lt;String&gt;&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
@@ -938,7 +938,7 @@ public class DeploymentsApi {
     /**
      * List all deployments (asynchronously)
      * 
-     * @param environment environment (required)
+     * @param environment  (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -971,9 +971,9 @@ public class DeploymentsApi {
     }
     /**
      * Build call for update
-     * @param environment environment (required)
-     * @param deployment deployment (required)
-     * @param updatedTemplate updatedTemplate (required)
+     * @param environment  (required)
+     * @param deployment  (required)
+     * @param updatedTemplate  (required)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
@@ -1001,7 +1001,7 @@ public class DeploymentsApi {
         if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
 
         final String[] localVarContentTypes = {
-            "application/json"
+            
         };
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
@@ -1049,9 +1049,9 @@ public class DeploymentsApi {
     /**
      * Update an existing deployment template
      * 
-     * @param environment environment (required)
-     * @param deployment deployment (required)
-     * @param updatedTemplate updatedTemplate (required)
+     * @param environment  (required)
+     * @param deployment  (required)
+     * @param updatedTemplate  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
     public void update(String environment, String deployment, DeploymentTemplate updatedTemplate) throws ApiException {
@@ -1061,9 +1061,9 @@ public class DeploymentsApi {
     /**
      * Update an existing deployment template
      * 
-     * @param environment environment (required)
-     * @param deployment deployment (required)
-     * @param updatedTemplate updatedTemplate (required)
+     * @param environment  (required)
+     * @param deployment  (required)
+     * @param updatedTemplate  (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
@@ -1075,9 +1075,9 @@ public class DeploymentsApi {
     /**
      * Update an existing deployment template (asynchronously)
      * 
-     * @param environment environment (required)
-     * @param deployment deployment (required)
-     * @param updatedTemplate updatedTemplate (required)
+     * @param environment  (required)
+     * @param deployment  (required)
+     * @param updatedTemplate  (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1109,9 +1109,9 @@ public class DeploymentsApi {
     }
     /**
      * Build call for updateMeteringSetting
-     * @param environment environment (required)
-     * @param deployment deployment (required)
-     * @param meteringSetting meteringSetting (required)
+     * @param environment  (required)
+     * @param deployment  (required)
+     * @param meteringSetting  (required)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
@@ -1139,7 +1139,7 @@ public class DeploymentsApi {
         if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
 
         final String[] localVarContentTypes = {
-            "application/json"
+            
         };
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
@@ -1187,9 +1187,9 @@ public class DeploymentsApi {
     /**
      * Update billing ID for an existing deployment
      * 
-     * @param environment environment (required)
-     * @param deployment deployment (required)
-     * @param meteringSetting meteringSetting (required)
+     * @param environment  (required)
+     * @param deployment  (required)
+     * @param meteringSetting  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
     public void updateMeteringSetting(String environment, String deployment, MeteringSetting meteringSetting) throws ApiException {
@@ -1199,9 +1199,9 @@ public class DeploymentsApi {
     /**
      * Update billing ID for an existing deployment
      * 
-     * @param environment environment (required)
-     * @param deployment deployment (required)
-     * @param meteringSetting meteringSetting (required)
+     * @param environment  (required)
+     * @param deployment  (required)
+     * @param meteringSetting  (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
@@ -1213,9 +1213,9 @@ public class DeploymentsApi {
     /**
      * Update billing ID for an existing deployment (asynchronously)
      * 
-     * @param environment environment (required)
-     * @param deployment deployment (required)
-     * @param meteringSetting meteringSetting (required)
+     * @param environment  (required)
+     * @param deployment  (required)
+     * @param meteringSetting  (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object

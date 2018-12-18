@@ -36,21 +36,21 @@ import java.util.Map;
 @ApiModel(description = "Information for an account or service outside Cloudera Manager or any cluster")
 
 public class ExternalAccount {
-  @SerializedName("configs")
-  private Map<String, String> configs = null;
   @SerializedName("name")
   private String name = null;
   @SerializedName("type")
   private String type = null;
+  @SerializedName("configs")
+  private Map<String, String> configs = null;
 
   public ExternalAccount() {
     // Do nothing
   }
 
   private ExternalAccount(ExternalAccountBuilder builder) {
-      this.configs = builder.configs;
       this.name = builder.name;
       this.type = builder.type;
+      this.configs = builder.configs;
     }
 
   public static ExternalAccountBuilder builder() {
@@ -58,16 +58,10 @@ public class ExternalAccount {
   }
 
   public static class ExternalAccountBuilder {
-      private Map<String, String> configs = new HashMap<String, String>();
       private String name = null;
       private String type = null;
+      private Map<String, String> configs = new HashMap<String, String>();
   
-
-    public ExternalAccountBuilder configs(Map<String, String> configs) {
-      this.configs = configs;
-      return this;
-    }
-
 
     public ExternalAccountBuilder name(String name) {
       this.name = name;
@@ -81,6 +75,12 @@ public class ExternalAccount {
     }
 
 
+    public ExternalAccountBuilder configs(Map<String, String> configs) {
+      this.configs = configs;
+      return this;
+    }
+
+
     public ExternalAccount build() {
       return new ExternalAccount(this);
     }
@@ -88,36 +88,10 @@ public class ExternalAccount {
 
   public ExternalAccountBuilder toBuilder() {
     return builder()
-      .configs(configs)
-            .name(name)
+      .name(name)
             .type(type)
+            .configs(configs)
       ;
-  }
-
-  public ExternalAccount configs(Map<String, String> configs) {
-    this.configs = configs;
-    return this;
-  }
-
-  public ExternalAccount putConfigsItem(String key, String configsItem) {
-    if (this.configs == null) {
-      this.configs = new HashMap<String, String>();
-    }
-    this.configs.put(key, configsItem);
-    return this;
-  }
-
-   /**
-   * External account configurations [redacted on read]
-   * @return configs
-  **/
-  @ApiModelProperty(value = "External account configurations [redacted on read]")
-  public Map<String, String> getConfigs() {
-    return configs;
-  }
-
-  public void setConfigs(Map<String, String> configs) {
-    this.configs = configs;
   }
 
   public ExternalAccount name(String name) {
@@ -156,6 +130,32 @@ public class ExternalAccount {
     this.type = type;
   }
 
+  public ExternalAccount configs(Map<String, String> configs) {
+    this.configs = configs;
+    return this;
+  }
+
+  public ExternalAccount putConfigsItem(String key, String configsItem) {
+    if (this.configs == null) {
+      this.configs = new HashMap<String, String>();
+    }
+    this.configs.put(key, configsItem);
+    return this;
+  }
+
+   /**
+   * External account configurations [redacted on read]
+   * @return configs
+  **/
+  @ApiModelProperty(value = "External account configurations [redacted on read]")
+  public Map<String, String> getConfigs() {
+    return configs;
+  }
+
+  public void setConfigs(Map<String, String> configs) {
+    this.configs = configs;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -166,14 +166,14 @@ public class ExternalAccount {
       return false;
     }
     ExternalAccount externalAccount = (ExternalAccount) o;
-    return Objects.equals(this.configs, externalAccount.configs) &&
-        Objects.equals(this.name, externalAccount.name) &&
-        Objects.equals(this.type, externalAccount.type);
+    return Objects.equals(this.name, externalAccount.name) &&
+        Objects.equals(this.type, externalAccount.type) &&
+        Objects.equals(this.configs, externalAccount.configs);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(configs, name, type);
+    return Objects.hash(name, type, configs);
   }
 
 
@@ -182,9 +182,9 @@ public class ExternalAccount {
     StringBuilder sb = new StringBuilder();
     sb.append("class ExternalAccount {\n");
     
-    sb.append("    configs: ").append(toIndentedString(configs)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
+    sb.append("    configs: ").append(toIndentedString(configs)).append("\n");
     sb.append("}");
     return sb.toString();
   }

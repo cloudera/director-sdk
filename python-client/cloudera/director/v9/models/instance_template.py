@@ -39,104 +39,103 @@ class InstanceTemplate(object):
                             and the value is json key in definition.
     """
     swagger_types = {
-        'bootstrap_scripts': 'list[str]',
-        'config': 'dict(str, str)',
-        'image': 'str',
         'name': 'str',
+        'type': 'str',
+        'image': 'str',
+        'config': 'dict(str, str)',
+        'tags': 'dict(str, str)',
         'normalize_instance': 'bool',
         'ssh_username': 'str',
-        'tags': 'dict(str, str)',
-        'type': 'str',
-        'bootstrap_script': 'str'
+        'bootstrap_scripts': 'list[str]'
     }
 
     attribute_map = {
-        'bootstrap_scripts': 'bootstrapScripts',
-        'config': 'config',
-        'image': 'image',
         'name': 'name',
+        'type': 'type',
+        'image': 'image',
+        'config': 'config',
+        'tags': 'tags',
         'normalize_instance': 'normalizeInstance',
         'ssh_username': 'sshUsername',
-        'tags': 'tags',
-        'type': 'type',
-        'bootstrap_script': 'bootstrapScript'
+        'bootstrap_scripts': 'bootstrapScripts'
     }
 
-    def __init__(self, bootstrap_scripts=None, config=None, image=None, name=None, normalize_instance=None, ssh_username=None, tags=None, type=None, bootstrap_script=None):  # noqa: E501
+    def __init__(self, name=None, type=None, image=None, config=None, tags=None, normalize_instance=None, ssh_username=None, bootstrap_scripts=None):  # noqa: E501
         """InstanceTemplate - a model defined in Swagger"""  # noqa: E501
 
-        self._bootstrap_scripts = None
-        self._config = None
-        self._image = None
         self._name = None
+        self._type = None
+        self._image = None
+        self._config = None
+        self._tags = None
         self._normalize_instance = None
         self._ssh_username = None
-        self._tags = None
-        self._type = None
-        self._bootstrap_script = None
+        self._bootstrap_scripts = None
         self.discriminator = None
 
-        if bootstrap_scripts is not None:
-            self.bootstrap_scripts = bootstrap_scripts
+        self.name = name
+        self.type = type
+        self.image = image
         if config is not None:
             self.config = config
-        self.image = image
-        self.name = name
+        if tags is not None:
+            self.tags = tags
         if normalize_instance is not None:
             self.normalize_instance = normalize_instance
         if ssh_username is not None:
             self.ssh_username = ssh_username
-        if tags is not None:
-            self.tags = tags
-        self.type = type
-        if bootstrap_script is not None:
-            self.bootstrap_script = bootstrap_script
+        if bootstrap_scripts is not None:
+            self.bootstrap_scripts = bootstrap_scripts
 
     @property
-    def bootstrap_scripts(self):
-        """Gets the bootstrap_scripts of this InstanceTemplate.  # noqa: E501
+    def name(self):
+        """Gets the name of this InstanceTemplate.  # noqa: E501
 
-        List of instance bootstrap scripts  # noqa: E501
+        Instance template name  # noqa: E501
 
-        :return: The bootstrap_scripts of this InstanceTemplate.  # noqa: E501
-        :rtype: list[str]
+        :return: The name of this InstanceTemplate.  # noqa: E501
+        :rtype: str
         """
-        return self._bootstrap_scripts
+        return self._name
 
-    @bootstrap_scripts.setter
-    def bootstrap_scripts(self, bootstrap_scripts):
-        """Sets the bootstrap_scripts of this InstanceTemplate.
+    @name.setter
+    def name(self, name):
+        """Sets the name of this InstanceTemplate.
 
-        List of instance bootstrap scripts  # noqa: E501
+        Instance template name  # noqa: E501
 
-        :param bootstrap_scripts: The bootstrap_scripts of this InstanceTemplate.  # noqa: E501
-        :type: list[str]
+        :param name: The name of this InstanceTemplate.  # noqa: E501
+        :type: str
         """
+        if name is None:
+            raise ValueError("Invalid value for `name`, must not be `None`")  # noqa: E501
 
-        self._bootstrap_scripts = bootstrap_scripts
+        self._name = name
 
     @property
-    def config(self):
-        """Gets the config of this InstanceTemplate.  # noqa: E501
+    def type(self):
+        """Gets the type of this InstanceTemplate.  # noqa: E501
 
-        Instance configuration properties  # noqa: E501
+        Instance type  # noqa: E501
 
-        :return: The config of this InstanceTemplate.  # noqa: E501
-        :rtype: dict(str, str)
+        :return: The type of this InstanceTemplate.  # noqa: E501
+        :rtype: str
         """
-        return self._config
+        return self._type
 
-    @config.setter
-    def config(self, config):
-        """Sets the config of this InstanceTemplate.
+    @type.setter
+    def type(self, type):
+        """Sets the type of this InstanceTemplate.
 
-        Instance configuration properties  # noqa: E501
+        Instance type  # noqa: E501
 
-        :param config: The config of this InstanceTemplate.  # noqa: E501
-        :type: dict(str, str)
+        :param type: The type of this InstanceTemplate.  # noqa: E501
+        :type: str
         """
+        if type is None:
+            raise ValueError("Invalid value for `type`, must not be `None`")  # noqa: E501
 
-        self._config = config
+        self._type = type
 
     @property
     def image(self):
@@ -164,29 +163,50 @@ class InstanceTemplate(object):
         self._image = image
 
     @property
-    def name(self):
-        """Gets the name of this InstanceTemplate.  # noqa: E501
+    def config(self):
+        """Gets the config of this InstanceTemplate.  # noqa: E501
 
-        Instance template name  # noqa: E501
+        Instance configuration properties  # noqa: E501
 
-        :return: The name of this InstanceTemplate.  # noqa: E501
-        :rtype: str
+        :return: The config of this InstanceTemplate.  # noqa: E501
+        :rtype: dict(str, str)
         """
-        return self._name
+        return self._config
 
-    @name.setter
-    def name(self, name):
-        """Sets the name of this InstanceTemplate.
+    @config.setter
+    def config(self, config):
+        """Sets the config of this InstanceTemplate.
 
-        Instance template name  # noqa: E501
+        Instance configuration properties  # noqa: E501
 
-        :param name: The name of this InstanceTemplate.  # noqa: E501
-        :type: str
+        :param config: The config of this InstanceTemplate.  # noqa: E501
+        :type: dict(str, str)
         """
-        if name is None:
-            raise ValueError("Invalid value for `name`, must not be `None`")  # noqa: E501
 
-        self._name = name
+        self._config = config
+
+    @property
+    def tags(self):
+        """Gets the tags of this InstanceTemplate.  # noqa: E501
+
+        Instance tags  # noqa: E501
+
+        :return: The tags of this InstanceTemplate.  # noqa: E501
+        :rtype: dict(str, str)
+        """
+        return self._tags
+
+    @tags.setter
+    def tags(self, tags):
+        """Sets the tags of this InstanceTemplate.
+
+        Instance tags  # noqa: E501
+
+        :param tags: The tags of this InstanceTemplate.  # noqa: E501
+        :type: dict(str, str)
+        """
+
+        self._tags = tags
 
     @property
     def normalize_instance(self):
@@ -235,73 +255,27 @@ class InstanceTemplate(object):
         self._ssh_username = ssh_username
 
     @property
-    def tags(self):
-        """Gets the tags of this InstanceTemplate.  # noqa: E501
+    def bootstrap_scripts(self):
+        """Gets the bootstrap_scripts of this InstanceTemplate.  # noqa: E501
 
-        Instance tags  # noqa: E501
+        List of instance bootstrap scripts  # noqa: E501
 
-        :return: The tags of this InstanceTemplate.  # noqa: E501
-        :rtype: dict(str, str)
+        :return: The bootstrap_scripts of this InstanceTemplate.  # noqa: E501
+        :rtype: list[str]
         """
-        return self._tags
+        return self._bootstrap_scripts
 
-    @tags.setter
-    def tags(self, tags):
-        """Sets the tags of this InstanceTemplate.
+    @bootstrap_scripts.setter
+    def bootstrap_scripts(self, bootstrap_scripts):
+        """Sets the bootstrap_scripts of this InstanceTemplate.
 
-        Instance tags  # noqa: E501
+        List of instance bootstrap scripts  # noqa: E501
 
-        :param tags: The tags of this InstanceTemplate.  # noqa: E501
-        :type: dict(str, str)
-        """
-
-        self._tags = tags
-
-    @property
-    def type(self):
-        """Gets the type of this InstanceTemplate.  # noqa: E501
-
-        Instance type  # noqa: E501
-
-        :return: The type of this InstanceTemplate.  # noqa: E501
-        :rtype: str
-        """
-        return self._type
-
-    @type.setter
-    def type(self, type):
-        """Sets the type of this InstanceTemplate.
-
-        Instance type  # noqa: E501
-
-        :param type: The type of this InstanceTemplate.  # noqa: E501
-        :type: str
-        """
-        if type is None:
-            raise ValueError("Invalid value for `type`, must not be `None`")  # noqa: E501
-
-        self._type = type
-
-    @property
-    def bootstrap_script(self):
-        """Gets the bootstrap_script of this InstanceTemplate.  # noqa: E501
-
-
-        :return: The bootstrap_script of this InstanceTemplate.  # noqa: E501
-        :rtype: str
-        """
-        return self._bootstrap_script
-
-    @bootstrap_script.setter
-    def bootstrap_script(self, bootstrap_script):
-        """Sets the bootstrap_script of this InstanceTemplate.
-
-
-        :param bootstrap_script: The bootstrap_script of this InstanceTemplate.  # noqa: E501
-        :type: str
+        :param bootstrap_scripts: The bootstrap_scripts of this InstanceTemplate.  # noqa: E501
+        :type: list[str]
         """
 
-        self._bootstrap_script = bootstrap_script
+        self._bootstrap_scripts = bootstrap_scripts
 
     def to_dict(self):
         """Returns the model properties as a dict"""

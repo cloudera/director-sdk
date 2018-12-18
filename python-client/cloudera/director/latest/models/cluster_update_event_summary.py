@@ -39,115 +39,40 @@ class ClusterUpdateEventSummary(object):
                             and the value is json key in definition.
     """
     swagger_types = {
-        'instances_added': 'int',
-        'instances_removed': 'int',
-        'instances_replaced': 'int',
         'occurred_at': 'int',
         'services_added': 'list[str]',
-        'services_removed': 'list[str]'
+        'services_removed': 'list[str]',
+        'instances_added': 'int',
+        'instances_removed': 'int',
+        'instances_replaced': 'int'
     }
 
     attribute_map = {
-        'instances_added': 'instancesAdded',
-        'instances_removed': 'instancesRemoved',
-        'instances_replaced': 'instancesReplaced',
         'occurred_at': 'occurredAt',
         'services_added': 'servicesAdded',
-        'services_removed': 'servicesRemoved'
+        'services_removed': 'servicesRemoved',
+        'instances_added': 'instancesAdded',
+        'instances_removed': 'instancesRemoved',
+        'instances_replaced': 'instancesReplaced'
     }
 
-    def __init__(self, instances_added=None, instances_removed=None, instances_replaced=None, occurred_at=None, services_added=None, services_removed=None):  # noqa: E501
+    def __init__(self, occurred_at=None, services_added=None, services_removed=None, instances_added=None, instances_removed=None, instances_replaced=None):  # noqa: E501
         """ClusterUpdateEventSummary - a model defined in Swagger"""  # noqa: E501
 
-        self._instances_added = None
-        self._instances_removed = None
-        self._instances_replaced = None
         self._occurred_at = None
         self._services_added = None
         self._services_removed = None
+        self._instances_added = None
+        self._instances_removed = None
+        self._instances_replaced = None
         self.discriminator = None
 
-        self.instances_added = instances_added
-        self.instances_removed = instances_removed
-        self.instances_replaced = instances_replaced
         self.occurred_at = occurred_at
         self.services_added = services_added
         self.services_removed = services_removed
-
-    @property
-    def instances_added(self):
-        """Gets the instances_added of this ClusterUpdateEventSummary.  # noqa: E501
-
-        The number of instances added  # noqa: E501
-
-        :return: The instances_added of this ClusterUpdateEventSummary.  # noqa: E501
-        :rtype: int
-        """
-        return self._instances_added
-
-    @instances_added.setter
-    def instances_added(self, instances_added):
-        """Sets the instances_added of this ClusterUpdateEventSummary.
-
-        The number of instances added  # noqa: E501
-
-        :param instances_added: The instances_added of this ClusterUpdateEventSummary.  # noqa: E501
-        :type: int
-        """
-        if instances_added is None:
-            raise ValueError("Invalid value for `instances_added`, must not be `None`")  # noqa: E501
-
-        self._instances_added = instances_added
-
-    @property
-    def instances_removed(self):
-        """Gets the instances_removed of this ClusterUpdateEventSummary.  # noqa: E501
-
-        The number of instances removed  # noqa: E501
-
-        :return: The instances_removed of this ClusterUpdateEventSummary.  # noqa: E501
-        :rtype: int
-        """
-        return self._instances_removed
-
-    @instances_removed.setter
-    def instances_removed(self, instances_removed):
-        """Sets the instances_removed of this ClusterUpdateEventSummary.
-
-        The number of instances removed  # noqa: E501
-
-        :param instances_removed: The instances_removed of this ClusterUpdateEventSummary.  # noqa: E501
-        :type: int
-        """
-        if instances_removed is None:
-            raise ValueError("Invalid value for `instances_removed`, must not be `None`")  # noqa: E501
-
-        self._instances_removed = instances_removed
-
-    @property
-    def instances_replaced(self):
-        """Gets the instances_replaced of this ClusterUpdateEventSummary.  # noqa: E501
-
-        The number of instances replaced  # noqa: E501
-
-        :return: The instances_replaced of this ClusterUpdateEventSummary.  # noqa: E501
-        :rtype: int
-        """
-        return self._instances_replaced
-
-    @instances_replaced.setter
-    def instances_replaced(self, instances_replaced):
-        """Sets the instances_replaced of this ClusterUpdateEventSummary.
-
-        The number of instances replaced  # noqa: E501
-
-        :param instances_replaced: The instances_replaced of this ClusterUpdateEventSummary.  # noqa: E501
-        :type: int
-        """
-        if instances_replaced is None:
-            raise ValueError("Invalid value for `instances_replaced`, must not be `None`")  # noqa: E501
-
-        self._instances_replaced = instances_replaced
+        self.instances_added = instances_added
+        self.instances_removed = instances_removed
+        self.instances_replaced = instances_replaced
 
     @property
     def occurred_at(self):
@@ -223,6 +148,81 @@ class ClusterUpdateEventSummary(object):
             raise ValueError("Invalid value for `services_removed`, must not be `None`")  # noqa: E501
 
         self._services_removed = services_removed
+
+    @property
+    def instances_added(self):
+        """Gets the instances_added of this ClusterUpdateEventSummary.  # noqa: E501
+
+        The number of instances added  # noqa: E501
+
+        :return: The instances_added of this ClusterUpdateEventSummary.  # noqa: E501
+        :rtype: int
+        """
+        return self._instances_added
+
+    @instances_added.setter
+    def instances_added(self, instances_added):
+        """Sets the instances_added of this ClusterUpdateEventSummary.
+
+        The number of instances added  # noqa: E501
+
+        :param instances_added: The instances_added of this ClusterUpdateEventSummary.  # noqa: E501
+        :type: int
+        """
+        if instances_added is None:
+            raise ValueError("Invalid value for `instances_added`, must not be `None`")  # noqa: E501
+
+        self._instances_added = instances_added
+
+    @property
+    def instances_removed(self):
+        """Gets the instances_removed of this ClusterUpdateEventSummary.  # noqa: E501
+
+        The number of instances removed  # noqa: E501
+
+        :return: The instances_removed of this ClusterUpdateEventSummary.  # noqa: E501
+        :rtype: int
+        """
+        return self._instances_removed
+
+    @instances_removed.setter
+    def instances_removed(self, instances_removed):
+        """Sets the instances_removed of this ClusterUpdateEventSummary.
+
+        The number of instances removed  # noqa: E501
+
+        :param instances_removed: The instances_removed of this ClusterUpdateEventSummary.  # noqa: E501
+        :type: int
+        """
+        if instances_removed is None:
+            raise ValueError("Invalid value for `instances_removed`, must not be `None`")  # noqa: E501
+
+        self._instances_removed = instances_removed
+
+    @property
+    def instances_replaced(self):
+        """Gets the instances_replaced of this ClusterUpdateEventSummary.  # noqa: E501
+
+        The number of instances replaced  # noqa: E501
+
+        :return: The instances_replaced of this ClusterUpdateEventSummary.  # noqa: E501
+        :rtype: int
+        """
+        return self._instances_replaced
+
+    @instances_replaced.setter
+    def instances_replaced(self, instances_replaced):
+        """Sets the instances_replaced of this ClusterUpdateEventSummary.
+
+        The number of instances replaced  # noqa: E501
+
+        :param instances_replaced: The instances_replaced of this ClusterUpdateEventSummary.  # noqa: E501
+        :type: int
+        """
+        if instances_replaced is None:
+            raise ValueError("Invalid value for `instances_replaced`, must not be `None`")  # noqa: E501
+
+        self._instances_replaced = instances_replaced
 
     def to_dict(self):
         """Returns the model properties as a dict"""

@@ -33,33 +33,33 @@ import java.io.IOException;
 @ApiModel(description = "Configuration for how normalization is performed on new instances")
 
 public class NormalizationConfiguration {
-  @SerializedName("increaseMaxNumberOfOpenFiles")
-  private Boolean increaseMaxNumberOfOpenFiles = null;
-  @SerializedName("installPackages")
-  private Boolean installPackages = null;
-  @SerializedName("minimizeSwappiness")
-  private Boolean minimizeSwappiness = null;
-  @SerializedName("miscellaneousServiceAdjustment")
-  private Boolean miscellaneousServiceAdjustment = null;
-  @SerializedName("mountAllUnmountedDisks")
-  private Boolean mountAllUnmountedDisks = null;
   @SerializedName("prewarmDirectory")
   private Boolean prewarmDirectory = null;
+  @SerializedName("installPackages")
+  private Boolean installPackages = null;
+  @SerializedName("miscellaneousServiceAdjustment")
+  private Boolean miscellaneousServiceAdjustment = null;
+  @SerializedName("minimizeSwappiness")
+  private Boolean minimizeSwappiness = null;
+  @SerializedName("increaseMaxNumberOfOpenFiles")
+  private Boolean increaseMaxNumberOfOpenFiles = null;
   @SerializedName("resizeRootPartition")
   private Boolean resizeRootPartition = null;
+  @SerializedName("mountAllUnmountedDisks")
+  private Boolean mountAllUnmountedDisks = null;
 
   public NormalizationConfiguration() {
     // Do nothing
   }
 
   private NormalizationConfiguration(NormalizationConfigurationBuilder builder) {
-      this.increaseMaxNumberOfOpenFiles = builder.increaseMaxNumberOfOpenFiles;
-      this.installPackages = builder.installPackages;
-      this.minimizeSwappiness = builder.minimizeSwappiness;
-      this.miscellaneousServiceAdjustment = builder.miscellaneousServiceAdjustment;
-      this.mountAllUnmountedDisks = builder.mountAllUnmountedDisks;
       this.prewarmDirectory = builder.prewarmDirectory;
+      this.installPackages = builder.installPackages;
+      this.miscellaneousServiceAdjustment = builder.miscellaneousServiceAdjustment;
+      this.minimizeSwappiness = builder.minimizeSwappiness;
+      this.increaseMaxNumberOfOpenFiles = builder.increaseMaxNumberOfOpenFiles;
       this.resizeRootPartition = builder.resizeRootPartition;
+      this.mountAllUnmountedDisks = builder.mountAllUnmountedDisks;
     }
 
   public static NormalizationConfigurationBuilder builder() {
@@ -67,17 +67,17 @@ public class NormalizationConfiguration {
   }
 
   public static class NormalizationConfigurationBuilder {
-      private Boolean increaseMaxNumberOfOpenFiles = null;
-      private Boolean installPackages = null;
-      private Boolean minimizeSwappiness = null;
-      private Boolean miscellaneousServiceAdjustment = null;
-      private Boolean mountAllUnmountedDisks = null;
       private Boolean prewarmDirectory = null;
+      private Boolean installPackages = null;
+      private Boolean miscellaneousServiceAdjustment = null;
+      private Boolean minimizeSwappiness = null;
+      private Boolean increaseMaxNumberOfOpenFiles = null;
       private Boolean resizeRootPartition = null;
+      private Boolean mountAllUnmountedDisks = null;
   
 
-    public NormalizationConfigurationBuilder increaseMaxNumberOfOpenFiles(Boolean increaseMaxNumberOfOpenFiles) {
-      this.increaseMaxNumberOfOpenFiles = increaseMaxNumberOfOpenFiles;
+    public NormalizationConfigurationBuilder prewarmDirectory(Boolean prewarmDirectory) {
+      this.prewarmDirectory = prewarmDirectory;
       return this;
     }
 
@@ -88,32 +88,32 @@ public class NormalizationConfiguration {
     }
 
 
-    public NormalizationConfigurationBuilder minimizeSwappiness(Boolean minimizeSwappiness) {
-      this.minimizeSwappiness = minimizeSwappiness;
-      return this;
-    }
-
-
     public NormalizationConfigurationBuilder miscellaneousServiceAdjustment(Boolean miscellaneousServiceAdjustment) {
       this.miscellaneousServiceAdjustment = miscellaneousServiceAdjustment;
       return this;
     }
 
 
-    public NormalizationConfigurationBuilder mountAllUnmountedDisks(Boolean mountAllUnmountedDisks) {
-      this.mountAllUnmountedDisks = mountAllUnmountedDisks;
+    public NormalizationConfigurationBuilder minimizeSwappiness(Boolean minimizeSwappiness) {
+      this.minimizeSwappiness = minimizeSwappiness;
       return this;
     }
 
 
-    public NormalizationConfigurationBuilder prewarmDirectory(Boolean prewarmDirectory) {
-      this.prewarmDirectory = prewarmDirectory;
+    public NormalizationConfigurationBuilder increaseMaxNumberOfOpenFiles(Boolean increaseMaxNumberOfOpenFiles) {
+      this.increaseMaxNumberOfOpenFiles = increaseMaxNumberOfOpenFiles;
       return this;
     }
 
 
     public NormalizationConfigurationBuilder resizeRootPartition(Boolean resizeRootPartition) {
       this.resizeRootPartition = resizeRootPartition;
+      return this;
+    }
+
+
+    public NormalizationConfigurationBuilder mountAllUnmountedDisks(Boolean mountAllUnmountedDisks) {
+      this.mountAllUnmountedDisks = mountAllUnmountedDisks;
       return this;
     }
 
@@ -125,104 +125,14 @@ public class NormalizationConfiguration {
 
   public NormalizationConfigurationBuilder toBuilder() {
     return builder()
-      .increaseMaxNumberOfOpenFiles(increaseMaxNumberOfOpenFiles)
+      .prewarmDirectory(prewarmDirectory)
             .installPackages(installPackages)
-            .minimizeSwappiness(minimizeSwappiness)
             .miscellaneousServiceAdjustment(miscellaneousServiceAdjustment)
-            .mountAllUnmountedDisks(mountAllUnmountedDisks)
-            .prewarmDirectory(prewarmDirectory)
+            .minimizeSwappiness(minimizeSwappiness)
+            .increaseMaxNumberOfOpenFiles(increaseMaxNumberOfOpenFiles)
             .resizeRootPartition(resizeRootPartition)
+            .mountAllUnmountedDisks(mountAllUnmountedDisks)
       ;
-  }
-
-  public NormalizationConfiguration increaseMaxNumberOfOpenFiles(Boolean increaseMaxNumberOfOpenFiles) {
-    this.increaseMaxNumberOfOpenFiles = increaseMaxNumberOfOpenFiles;
-    return this;
-  }
-
-   /**
-   * Whether the max number of files should be increased during normalization
-   * @return increaseMaxNumberOfOpenFiles
-  **/
-  @ApiModelProperty(example = "false", value = "Whether the max number of files should be increased during normalization")
-  public Boolean isIncreaseMaxNumberOfOpenFiles() {
-    return increaseMaxNumberOfOpenFiles;
-  }
-
-  public void setIncreaseMaxNumberOfOpenFiles(Boolean increaseMaxNumberOfOpenFiles) {
-    this.increaseMaxNumberOfOpenFiles = increaseMaxNumberOfOpenFiles;
-  }
-
-  public NormalizationConfiguration installPackages(Boolean installPackages) {
-    this.installPackages = installPackages;
-    return this;
-  }
-
-   /**
-   * Whether packages should be installed during normalization
-   * @return installPackages
-  **/
-  @ApiModelProperty(example = "false", value = "Whether packages should be installed during normalization")
-  public Boolean isInstallPackages() {
-    return installPackages;
-  }
-
-  public void setInstallPackages(Boolean installPackages) {
-    this.installPackages = installPackages;
-  }
-
-  public NormalizationConfiguration minimizeSwappiness(Boolean minimizeSwappiness) {
-    this.minimizeSwappiness = minimizeSwappiness;
-    return this;
-  }
-
-   /**
-   * Whether swappiness should be minimized during normalization
-   * @return minimizeSwappiness
-  **/
-  @ApiModelProperty(example = "false", value = "Whether swappiness should be minimized during normalization")
-  public Boolean isMinimizeSwappiness() {
-    return minimizeSwappiness;
-  }
-
-  public void setMinimizeSwappiness(Boolean minimizeSwappiness) {
-    this.minimizeSwappiness = minimizeSwappiness;
-  }
-
-  public NormalizationConfiguration miscellaneousServiceAdjustment(Boolean miscellaneousServiceAdjustment) {
-    this.miscellaneousServiceAdjustment = miscellaneousServiceAdjustment;
-    return this;
-  }
-
-   /**
-   * Whether services should be adjusted during normalization
-   * @return miscellaneousServiceAdjustment
-  **/
-  @ApiModelProperty(example = "false", value = "Whether services should be adjusted during normalization")
-  public Boolean isMiscellaneousServiceAdjustment() {
-    return miscellaneousServiceAdjustment;
-  }
-
-  public void setMiscellaneousServiceAdjustment(Boolean miscellaneousServiceAdjustment) {
-    this.miscellaneousServiceAdjustment = miscellaneousServiceAdjustment;
-  }
-
-  public NormalizationConfiguration mountAllUnmountedDisks(Boolean mountAllUnmountedDisks) {
-    this.mountAllUnmountedDisks = mountAllUnmountedDisks;
-    return this;
-  }
-
-   /**
-   * Whether unmounted disks should be mounted during normalization
-   * @return mountAllUnmountedDisks
-  **/
-  @ApiModelProperty(example = "false", value = "Whether unmounted disks should be mounted during normalization")
-  public Boolean isMountAllUnmountedDisks() {
-    return mountAllUnmountedDisks;
-  }
-
-  public void setMountAllUnmountedDisks(Boolean mountAllUnmountedDisks) {
-    this.mountAllUnmountedDisks = mountAllUnmountedDisks;
   }
 
   public NormalizationConfiguration prewarmDirectory(Boolean prewarmDirectory) {
@@ -234,13 +144,85 @@ public class NormalizationConfiguration {
    * Whether prewarming should be performed during normalization
    * @return prewarmDirectory
   **/
-  @ApiModelProperty(example = "false", value = "Whether prewarming should be performed during normalization")
+  @ApiModelProperty(value = "Whether prewarming should be performed during normalization")
   public Boolean isPrewarmDirectory() {
     return prewarmDirectory;
   }
 
   public void setPrewarmDirectory(Boolean prewarmDirectory) {
     this.prewarmDirectory = prewarmDirectory;
+  }
+
+  public NormalizationConfiguration installPackages(Boolean installPackages) {
+    this.installPackages = installPackages;
+    return this;
+  }
+
+   /**
+   * Whether packages should be installed during normalization
+   * @return installPackages
+  **/
+  @ApiModelProperty(value = "Whether packages should be installed during normalization")
+  public Boolean isInstallPackages() {
+    return installPackages;
+  }
+
+  public void setInstallPackages(Boolean installPackages) {
+    this.installPackages = installPackages;
+  }
+
+  public NormalizationConfiguration miscellaneousServiceAdjustment(Boolean miscellaneousServiceAdjustment) {
+    this.miscellaneousServiceAdjustment = miscellaneousServiceAdjustment;
+    return this;
+  }
+
+   /**
+   * Whether services should be adjusted during normalization
+   * @return miscellaneousServiceAdjustment
+  **/
+  @ApiModelProperty(value = "Whether services should be adjusted during normalization")
+  public Boolean isMiscellaneousServiceAdjustment() {
+    return miscellaneousServiceAdjustment;
+  }
+
+  public void setMiscellaneousServiceAdjustment(Boolean miscellaneousServiceAdjustment) {
+    this.miscellaneousServiceAdjustment = miscellaneousServiceAdjustment;
+  }
+
+  public NormalizationConfiguration minimizeSwappiness(Boolean minimizeSwappiness) {
+    this.minimizeSwappiness = minimizeSwappiness;
+    return this;
+  }
+
+   /**
+   * Whether swappiness should be minimized during normalization
+   * @return minimizeSwappiness
+  **/
+  @ApiModelProperty(value = "Whether swappiness should be minimized during normalization")
+  public Boolean isMinimizeSwappiness() {
+    return minimizeSwappiness;
+  }
+
+  public void setMinimizeSwappiness(Boolean minimizeSwappiness) {
+    this.minimizeSwappiness = minimizeSwappiness;
+  }
+
+  public NormalizationConfiguration increaseMaxNumberOfOpenFiles(Boolean increaseMaxNumberOfOpenFiles) {
+    this.increaseMaxNumberOfOpenFiles = increaseMaxNumberOfOpenFiles;
+    return this;
+  }
+
+   /**
+   * Whether the max number of files should be increased during normalization
+   * @return increaseMaxNumberOfOpenFiles
+  **/
+  @ApiModelProperty(value = "Whether the max number of files should be increased during normalization")
+  public Boolean isIncreaseMaxNumberOfOpenFiles() {
+    return increaseMaxNumberOfOpenFiles;
+  }
+
+  public void setIncreaseMaxNumberOfOpenFiles(Boolean increaseMaxNumberOfOpenFiles) {
+    this.increaseMaxNumberOfOpenFiles = increaseMaxNumberOfOpenFiles;
   }
 
   public NormalizationConfiguration resizeRootPartition(Boolean resizeRootPartition) {
@@ -252,13 +234,31 @@ public class NormalizationConfiguration {
    * Whether the root partition should be resized during normalization
    * @return resizeRootPartition
   **/
-  @ApiModelProperty(example = "false", value = "Whether the root partition should be resized during normalization")
+  @ApiModelProperty(value = "Whether the root partition should be resized during normalization")
   public Boolean isResizeRootPartition() {
     return resizeRootPartition;
   }
 
   public void setResizeRootPartition(Boolean resizeRootPartition) {
     this.resizeRootPartition = resizeRootPartition;
+  }
+
+  public NormalizationConfiguration mountAllUnmountedDisks(Boolean mountAllUnmountedDisks) {
+    this.mountAllUnmountedDisks = mountAllUnmountedDisks;
+    return this;
+  }
+
+   /**
+   * Whether unmounted disks should be mounted during normalization
+   * @return mountAllUnmountedDisks
+  **/
+  @ApiModelProperty(value = "Whether unmounted disks should be mounted during normalization")
+  public Boolean isMountAllUnmountedDisks() {
+    return mountAllUnmountedDisks;
+  }
+
+  public void setMountAllUnmountedDisks(Boolean mountAllUnmountedDisks) {
+    this.mountAllUnmountedDisks = mountAllUnmountedDisks;
   }
 
 
@@ -271,18 +271,18 @@ public class NormalizationConfiguration {
       return false;
     }
     NormalizationConfiguration normalizationConfiguration = (NormalizationConfiguration) o;
-    return Objects.equals(this.increaseMaxNumberOfOpenFiles, normalizationConfiguration.increaseMaxNumberOfOpenFiles) &&
+    return Objects.equals(this.prewarmDirectory, normalizationConfiguration.prewarmDirectory) &&
         Objects.equals(this.installPackages, normalizationConfiguration.installPackages) &&
-        Objects.equals(this.minimizeSwappiness, normalizationConfiguration.minimizeSwappiness) &&
         Objects.equals(this.miscellaneousServiceAdjustment, normalizationConfiguration.miscellaneousServiceAdjustment) &&
-        Objects.equals(this.mountAllUnmountedDisks, normalizationConfiguration.mountAllUnmountedDisks) &&
-        Objects.equals(this.prewarmDirectory, normalizationConfiguration.prewarmDirectory) &&
-        Objects.equals(this.resizeRootPartition, normalizationConfiguration.resizeRootPartition);
+        Objects.equals(this.minimizeSwappiness, normalizationConfiguration.minimizeSwappiness) &&
+        Objects.equals(this.increaseMaxNumberOfOpenFiles, normalizationConfiguration.increaseMaxNumberOfOpenFiles) &&
+        Objects.equals(this.resizeRootPartition, normalizationConfiguration.resizeRootPartition) &&
+        Objects.equals(this.mountAllUnmountedDisks, normalizationConfiguration.mountAllUnmountedDisks);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(increaseMaxNumberOfOpenFiles, installPackages, minimizeSwappiness, miscellaneousServiceAdjustment, mountAllUnmountedDisks, prewarmDirectory, resizeRootPartition);
+    return Objects.hash(prewarmDirectory, installPackages, miscellaneousServiceAdjustment, minimizeSwappiness, increaseMaxNumberOfOpenFiles, resizeRootPartition, mountAllUnmountedDisks);
   }
 
 
@@ -291,13 +291,13 @@ public class NormalizationConfiguration {
     StringBuilder sb = new StringBuilder();
     sb.append("class NormalizationConfiguration {\n");
     
-    sb.append("    increaseMaxNumberOfOpenFiles: ").append(toIndentedString(increaseMaxNumberOfOpenFiles)).append("\n");
-    sb.append("    installPackages: ").append(toIndentedString(installPackages)).append("\n");
-    sb.append("    minimizeSwappiness: ").append(toIndentedString(minimizeSwappiness)).append("\n");
-    sb.append("    miscellaneousServiceAdjustment: ").append(toIndentedString(miscellaneousServiceAdjustment)).append("\n");
-    sb.append("    mountAllUnmountedDisks: ").append(toIndentedString(mountAllUnmountedDisks)).append("\n");
     sb.append("    prewarmDirectory: ").append(toIndentedString(prewarmDirectory)).append("\n");
+    sb.append("    installPackages: ").append(toIndentedString(installPackages)).append("\n");
+    sb.append("    miscellaneousServiceAdjustment: ").append(toIndentedString(miscellaneousServiceAdjustment)).append("\n");
+    sb.append("    minimizeSwappiness: ").append(toIndentedString(minimizeSwappiness)).append("\n");
+    sb.append("    increaseMaxNumberOfOpenFiles: ").append(toIndentedString(increaseMaxNumberOfOpenFiles)).append("\n");
     sb.append("    resizeRootPartition: ").append(toIndentedString(resizeRootPartition)).append("\n");
+    sb.append("    mountAllUnmountedDisks: ").append(toIndentedString(mountAllUnmountedDisks)).append("\n");
     sb.append("}");
     return sb.toString();
   }

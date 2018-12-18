@@ -33,18 +33,18 @@ import java.io.IOException;
 @ApiModel(description = "Settings for Cloudera Altus Director cluster administration")
 
 public class ClusterAdministrationSettings {
-  @SerializedName("autoRepairCooldownPeriodInSeconds")
-  private Long autoRepairCooldownPeriodInSeconds = null;
   @SerializedName("autoRepairEnabled")
   private Boolean autoRepairEnabled = null;
+  @SerializedName("autoRepairCooldownPeriodInSeconds")
+  private Long autoRepairCooldownPeriodInSeconds = null;
 
   public ClusterAdministrationSettings() {
     // Do nothing
   }
 
   private ClusterAdministrationSettings(ClusterAdministrationSettingsBuilder builder) {
-      this.autoRepairCooldownPeriodInSeconds = builder.autoRepairCooldownPeriodInSeconds;
       this.autoRepairEnabled = builder.autoRepairEnabled;
+      this.autoRepairCooldownPeriodInSeconds = builder.autoRepairCooldownPeriodInSeconds;
     }
 
   public static ClusterAdministrationSettingsBuilder builder() {
@@ -52,18 +52,18 @@ public class ClusterAdministrationSettings {
   }
 
   public static class ClusterAdministrationSettingsBuilder {
-      private Long autoRepairCooldownPeriodInSeconds = null;
       private Boolean autoRepairEnabled = null;
+      private Long autoRepairCooldownPeriodInSeconds = null;
   
 
-    public ClusterAdministrationSettingsBuilder autoRepairCooldownPeriodInSeconds(Long autoRepairCooldownPeriodInSeconds) {
-      this.autoRepairCooldownPeriodInSeconds = autoRepairCooldownPeriodInSeconds;
+    public ClusterAdministrationSettingsBuilder autoRepairEnabled(Boolean autoRepairEnabled) {
+      this.autoRepairEnabled = autoRepairEnabled;
       return this;
     }
 
 
-    public ClusterAdministrationSettingsBuilder autoRepairEnabled(Boolean autoRepairEnabled) {
-      this.autoRepairEnabled = autoRepairEnabled;
+    public ClusterAdministrationSettingsBuilder autoRepairCooldownPeriodInSeconds(Long autoRepairCooldownPeriodInSeconds) {
+      this.autoRepairCooldownPeriodInSeconds = autoRepairCooldownPeriodInSeconds;
       return this;
     }
 
@@ -75,9 +75,27 @@ public class ClusterAdministrationSettings {
 
   public ClusterAdministrationSettingsBuilder toBuilder() {
     return builder()
-      .autoRepairCooldownPeriodInSeconds(autoRepairCooldownPeriodInSeconds)
-            .autoRepairEnabled(autoRepairEnabled)
+      .autoRepairEnabled(autoRepairEnabled)
+            .autoRepairCooldownPeriodInSeconds(autoRepairCooldownPeriodInSeconds)
       ;
+  }
+
+  public ClusterAdministrationSettings autoRepairEnabled(Boolean autoRepairEnabled) {
+    this.autoRepairEnabled = autoRepairEnabled;
+    return this;
+  }
+
+   /**
+   * Whether auto-repair is enabled
+   * @return autoRepairEnabled
+  **/
+  @ApiModelProperty(required = true, value = "Whether auto-repair is enabled")
+  public Boolean isAutoRepairEnabled() {
+    return autoRepairEnabled;
+  }
+
+  public void setAutoRepairEnabled(Boolean autoRepairEnabled) {
+    this.autoRepairEnabled = autoRepairEnabled;
   }
 
   public ClusterAdministrationSettings autoRepairCooldownPeriodInSeconds(Long autoRepairCooldownPeriodInSeconds) {
@@ -98,24 +116,6 @@ public class ClusterAdministrationSettings {
     this.autoRepairCooldownPeriodInSeconds = autoRepairCooldownPeriodInSeconds;
   }
 
-  public ClusterAdministrationSettings autoRepairEnabled(Boolean autoRepairEnabled) {
-    this.autoRepairEnabled = autoRepairEnabled;
-    return this;
-  }
-
-   /**
-   * Whether auto-repair is enabled
-   * @return autoRepairEnabled
-  **/
-  @ApiModelProperty(example = "false", required = true, value = "Whether auto-repair is enabled")
-  public Boolean isAutoRepairEnabled() {
-    return autoRepairEnabled;
-  }
-
-  public void setAutoRepairEnabled(Boolean autoRepairEnabled) {
-    this.autoRepairEnabled = autoRepairEnabled;
-  }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -126,13 +126,13 @@ public class ClusterAdministrationSettings {
       return false;
     }
     ClusterAdministrationSettings clusterAdministrationSettings = (ClusterAdministrationSettings) o;
-    return Objects.equals(this.autoRepairCooldownPeriodInSeconds, clusterAdministrationSettings.autoRepairCooldownPeriodInSeconds) &&
-        Objects.equals(this.autoRepairEnabled, clusterAdministrationSettings.autoRepairEnabled);
+    return Objects.equals(this.autoRepairEnabled, clusterAdministrationSettings.autoRepairEnabled) &&
+        Objects.equals(this.autoRepairCooldownPeriodInSeconds, clusterAdministrationSettings.autoRepairCooldownPeriodInSeconds);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(autoRepairCooldownPeriodInSeconds, autoRepairEnabled);
+    return Objects.hash(autoRepairEnabled, autoRepairCooldownPeriodInSeconds);
   }
 
 
@@ -141,8 +141,8 @@ public class ClusterAdministrationSettings {
     StringBuilder sb = new StringBuilder();
     sb.append("class ClusterAdministrationSettings {\n");
     
-    sb.append("    autoRepairCooldownPeriodInSeconds: ").append(toIndentedString(autoRepairCooldownPeriodInSeconds)).append("\n");
     sb.append("    autoRepairEnabled: ").append(toIndentedString(autoRepairEnabled)).append("\n");
+    sb.append("    autoRepairCooldownPeriodInSeconds: ").append(toIndentedString(autoRepairCooldownPeriodInSeconds)).append("\n");
     sb.append("}");
     return sb.toString();
   }

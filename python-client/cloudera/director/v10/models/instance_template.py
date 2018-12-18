@@ -39,139 +39,63 @@ class InstanceTemplate(object):
                             and the value is json key in definition.
     """
     swagger_types = {
-        'bootstrap_scripts': 'list[str]',
-        'config': 'dict(str, str)',
-        'image': 'str',
         'name': 'str',
-        'normalize_instance': 'bool',
-        'rack_id': 'str',
-        'ssh_host_key_retrieval_type': 'str',
-        'ssh_username': 'str',
-        'tags': 'dict(str, str)',
         'type': 'str',
-        'bootstrap_script': 'str'
+        'image': 'str',
+        'rack_id': 'str',
+        'config': 'dict(str, str)',
+        'tags': 'dict(str, str)',
+        'normalize_instance': 'bool',
+        'ssh_username': 'str',
+        'bootstrap_scripts': 'list[str]',
+        'ssh_host_key_retrieval_type': 'str'
     }
 
     attribute_map = {
-        'bootstrap_scripts': 'bootstrapScripts',
-        'config': 'config',
-        'image': 'image',
         'name': 'name',
-        'normalize_instance': 'normalizeInstance',
-        'rack_id': 'rackId',
-        'ssh_host_key_retrieval_type': 'sshHostKeyRetrievalType',
-        'ssh_username': 'sshUsername',
-        'tags': 'tags',
         'type': 'type',
-        'bootstrap_script': 'bootstrapScript'
+        'image': 'image',
+        'rack_id': 'rackId',
+        'config': 'config',
+        'tags': 'tags',
+        'normalize_instance': 'normalizeInstance',
+        'ssh_username': 'sshUsername',
+        'bootstrap_scripts': 'bootstrapScripts',
+        'ssh_host_key_retrieval_type': 'sshHostKeyRetrievalType'
     }
 
-    def __init__(self, bootstrap_scripts=None, config=None, image=None, name=None, normalize_instance=None, rack_id=None, ssh_host_key_retrieval_type=None, ssh_username=None, tags=None, type=None, bootstrap_script=None):  # noqa: E501
+    def __init__(self, name=None, type=None, image=None, rack_id=None, config=None, tags=None, normalize_instance=None, ssh_username=None, bootstrap_scripts=None, ssh_host_key_retrieval_type=None):  # noqa: E501
         """InstanceTemplate - a model defined in Swagger"""  # noqa: E501
 
-        self._bootstrap_scripts = None
-        self._config = None
-        self._image = None
         self._name = None
-        self._normalize_instance = None
-        self._rack_id = None
-        self._ssh_host_key_retrieval_type = None
-        self._ssh_username = None
-        self._tags = None
         self._type = None
-        self._bootstrap_script = None
+        self._image = None
+        self._rack_id = None
+        self._config = None
+        self._tags = None
+        self._normalize_instance = None
+        self._ssh_username = None
+        self._bootstrap_scripts = None
+        self._ssh_host_key_retrieval_type = None
         self.discriminator = None
 
-        if bootstrap_scripts is not None:
-            self.bootstrap_scripts = bootstrap_scripts
-        if config is not None:
-            self.config = config
-        self.image = image
         self.name = name
-        if normalize_instance is not None:
-            self.normalize_instance = normalize_instance
+        self.type = type
+        self.image = image
         if rack_id is not None:
             self.rack_id = rack_id
-        if ssh_host_key_retrieval_type is not None:
-            self.ssh_host_key_retrieval_type = ssh_host_key_retrieval_type
-        if ssh_username is not None:
-            self.ssh_username = ssh_username
+        if config is not None:
+            self.config = config
         if tags is not None:
             self.tags = tags
-        self.type = type
-        if bootstrap_script is not None:
-            self.bootstrap_script = bootstrap_script
-
-    @property
-    def bootstrap_scripts(self):
-        """Gets the bootstrap_scripts of this InstanceTemplate.  # noqa: E501
-
-        List of instance bootstrap scripts  # noqa: E501
-
-        :return: The bootstrap_scripts of this InstanceTemplate.  # noqa: E501
-        :rtype: list[str]
-        """
-        return self._bootstrap_scripts
-
-    @bootstrap_scripts.setter
-    def bootstrap_scripts(self, bootstrap_scripts):
-        """Sets the bootstrap_scripts of this InstanceTemplate.
-
-        List of instance bootstrap scripts  # noqa: E501
-
-        :param bootstrap_scripts: The bootstrap_scripts of this InstanceTemplate.  # noqa: E501
-        :type: list[str]
-        """
-
-        self._bootstrap_scripts = bootstrap_scripts
-
-    @property
-    def config(self):
-        """Gets the config of this InstanceTemplate.  # noqa: E501
-
-        Instance configuration properties  # noqa: E501
-
-        :return: The config of this InstanceTemplate.  # noqa: E501
-        :rtype: dict(str, str)
-        """
-        return self._config
-
-    @config.setter
-    def config(self, config):
-        """Sets the config of this InstanceTemplate.
-
-        Instance configuration properties  # noqa: E501
-
-        :param config: The config of this InstanceTemplate.  # noqa: E501
-        :type: dict(str, str)
-        """
-
-        self._config = config
-
-    @property
-    def image(self):
-        """Gets the image of this InstanceTemplate.  # noqa: E501
-
-        Operating system image  # noqa: E501
-
-        :return: The image of this InstanceTemplate.  # noqa: E501
-        :rtype: str
-        """
-        return self._image
-
-    @image.setter
-    def image(self, image):
-        """Sets the image of this InstanceTemplate.
-
-        Operating system image  # noqa: E501
-
-        :param image: The image of this InstanceTemplate.  # noqa: E501
-        :type: str
-        """
-        if image is None:
-            raise ValueError("Invalid value for `image`, must not be `None`")  # noqa: E501
-
-        self._image = image
+        if normalize_instance is not None:
+            self.normalize_instance = normalize_instance
+        if ssh_username is not None:
+            self.ssh_username = ssh_username
+        if bootstrap_scripts is not None:
+            self.bootstrap_scripts = bootstrap_scripts
+        if ssh_host_key_retrieval_type is not None:
+            self.ssh_host_key_retrieval_type = ssh_host_key_retrieval_type
 
     @property
     def name(self):
@@ -199,27 +123,54 @@ class InstanceTemplate(object):
         self._name = name
 
     @property
-    def normalize_instance(self):
-        """Gets the normalize_instance of this InstanceTemplate.  # noqa: E501
+    def type(self):
+        """Gets the type of this InstanceTemplate.  # noqa: E501
 
-        Flag indicating whether to normalize the instance  # noqa: E501
+        Instance type  # noqa: E501
 
-        :return: The normalize_instance of this InstanceTemplate.  # noqa: E501
-        :rtype: bool
+        :return: The type of this InstanceTemplate.  # noqa: E501
+        :rtype: str
         """
-        return self._normalize_instance
+        return self._type
 
-    @normalize_instance.setter
-    def normalize_instance(self, normalize_instance):
-        """Sets the normalize_instance of this InstanceTemplate.
+    @type.setter
+    def type(self, type):
+        """Sets the type of this InstanceTemplate.
 
-        Flag indicating whether to normalize the instance  # noqa: E501
+        Instance type  # noqa: E501
 
-        :param normalize_instance: The normalize_instance of this InstanceTemplate.  # noqa: E501
-        :type: bool
+        :param type: The type of this InstanceTemplate.  # noqa: E501
+        :type: str
         """
+        if type is None:
+            raise ValueError("Invalid value for `type`, must not be `None`")  # noqa: E501
 
-        self._normalize_instance = normalize_instance
+        self._type = type
+
+    @property
+    def image(self):
+        """Gets the image of this InstanceTemplate.  # noqa: E501
+
+        Operating system image  # noqa: E501
+
+        :return: The image of this InstanceTemplate.  # noqa: E501
+        :rtype: str
+        """
+        return self._image
+
+    @image.setter
+    def image(self, image):
+        """Sets the image of this InstanceTemplate.
+
+        Operating system image  # noqa: E501
+
+        :param image: The image of this InstanceTemplate.  # noqa: E501
+        :type: str
+        """
+        if image is None:
+            raise ValueError("Invalid value for `image`, must not be `None`")  # noqa: E501
+
+        self._image = image
 
     @property
     def rack_id(self):
@@ -243,6 +194,121 @@ class InstanceTemplate(object):
         """
 
         self._rack_id = rack_id
+
+    @property
+    def config(self):
+        """Gets the config of this InstanceTemplate.  # noqa: E501
+
+        Instance configuration properties  # noqa: E501
+
+        :return: The config of this InstanceTemplate.  # noqa: E501
+        :rtype: dict(str, str)
+        """
+        return self._config
+
+    @config.setter
+    def config(self, config):
+        """Sets the config of this InstanceTemplate.
+
+        Instance configuration properties  # noqa: E501
+
+        :param config: The config of this InstanceTemplate.  # noqa: E501
+        :type: dict(str, str)
+        """
+
+        self._config = config
+
+    @property
+    def tags(self):
+        """Gets the tags of this InstanceTemplate.  # noqa: E501
+
+        Instance tags  # noqa: E501
+
+        :return: The tags of this InstanceTemplate.  # noqa: E501
+        :rtype: dict(str, str)
+        """
+        return self._tags
+
+    @tags.setter
+    def tags(self, tags):
+        """Sets the tags of this InstanceTemplate.
+
+        Instance tags  # noqa: E501
+
+        :param tags: The tags of this InstanceTemplate.  # noqa: E501
+        :type: dict(str, str)
+        """
+
+        self._tags = tags
+
+    @property
+    def normalize_instance(self):
+        """Gets the normalize_instance of this InstanceTemplate.  # noqa: E501
+
+        Flag indicating whether to normalize the instance  # noqa: E501
+
+        :return: The normalize_instance of this InstanceTemplate.  # noqa: E501
+        :rtype: bool
+        """
+        return self._normalize_instance
+
+    @normalize_instance.setter
+    def normalize_instance(self, normalize_instance):
+        """Sets the normalize_instance of this InstanceTemplate.
+
+        Flag indicating whether to normalize the instance  # noqa: E501
+
+        :param normalize_instance: The normalize_instance of this InstanceTemplate.  # noqa: E501
+        :type: bool
+        """
+
+        self._normalize_instance = normalize_instance
+
+    @property
+    def ssh_username(self):
+        """Gets the ssh_username of this InstanceTemplate.  # noqa: E501
+
+        Optional SSH username to override username specified in environment  # noqa: E501
+
+        :return: The ssh_username of this InstanceTemplate.  # noqa: E501
+        :rtype: str
+        """
+        return self._ssh_username
+
+    @ssh_username.setter
+    def ssh_username(self, ssh_username):
+        """Sets the ssh_username of this InstanceTemplate.
+
+        Optional SSH username to override username specified in environment  # noqa: E501
+
+        :param ssh_username: The ssh_username of this InstanceTemplate.  # noqa: E501
+        :type: str
+        """
+
+        self._ssh_username = ssh_username
+
+    @property
+    def bootstrap_scripts(self):
+        """Gets the bootstrap_scripts of this InstanceTemplate.  # noqa: E501
+
+        List of instance bootstrap scripts  # noqa: E501
+
+        :return: The bootstrap_scripts of this InstanceTemplate.  # noqa: E501
+        :rtype: list[str]
+        """
+        return self._bootstrap_scripts
+
+    @bootstrap_scripts.setter
+    def bootstrap_scripts(self, bootstrap_scripts):
+        """Sets the bootstrap_scripts of this InstanceTemplate.
+
+        List of instance bootstrap scripts  # noqa: E501
+
+        :param bootstrap_scripts: The bootstrap_scripts of this InstanceTemplate.  # noqa: E501
+        :type: list[str]
+        """
+
+        self._bootstrap_scripts = bootstrap_scripts
 
     @property
     def ssh_host_key_retrieval_type(self):
@@ -272,98 +338,6 @@ class InstanceTemplate(object):
             )
 
         self._ssh_host_key_retrieval_type = ssh_host_key_retrieval_type
-
-    @property
-    def ssh_username(self):
-        """Gets the ssh_username of this InstanceTemplate.  # noqa: E501
-
-        Optional SSH username to override username specified in environment  # noqa: E501
-
-        :return: The ssh_username of this InstanceTemplate.  # noqa: E501
-        :rtype: str
-        """
-        return self._ssh_username
-
-    @ssh_username.setter
-    def ssh_username(self, ssh_username):
-        """Sets the ssh_username of this InstanceTemplate.
-
-        Optional SSH username to override username specified in environment  # noqa: E501
-
-        :param ssh_username: The ssh_username of this InstanceTemplate.  # noqa: E501
-        :type: str
-        """
-
-        self._ssh_username = ssh_username
-
-    @property
-    def tags(self):
-        """Gets the tags of this InstanceTemplate.  # noqa: E501
-
-        Instance tags  # noqa: E501
-
-        :return: The tags of this InstanceTemplate.  # noqa: E501
-        :rtype: dict(str, str)
-        """
-        return self._tags
-
-    @tags.setter
-    def tags(self, tags):
-        """Sets the tags of this InstanceTemplate.
-
-        Instance tags  # noqa: E501
-
-        :param tags: The tags of this InstanceTemplate.  # noqa: E501
-        :type: dict(str, str)
-        """
-
-        self._tags = tags
-
-    @property
-    def type(self):
-        """Gets the type of this InstanceTemplate.  # noqa: E501
-
-        Instance type  # noqa: E501
-
-        :return: The type of this InstanceTemplate.  # noqa: E501
-        :rtype: str
-        """
-        return self._type
-
-    @type.setter
-    def type(self, type):
-        """Sets the type of this InstanceTemplate.
-
-        Instance type  # noqa: E501
-
-        :param type: The type of this InstanceTemplate.  # noqa: E501
-        :type: str
-        """
-        if type is None:
-            raise ValueError("Invalid value for `type`, must not be `None`")  # noqa: E501
-
-        self._type = type
-
-    @property
-    def bootstrap_script(self):
-        """Gets the bootstrap_script of this InstanceTemplate.  # noqa: E501
-
-
-        :return: The bootstrap_script of this InstanceTemplate.  # noqa: E501
-        :rtype: str
-        """
-        return self._bootstrap_script
-
-    @bootstrap_script.setter
-    def bootstrap_script(self, bootstrap_script):
-        """Sets the bootstrap_script of this InstanceTemplate.
-
-
-        :param bootstrap_script: The bootstrap_script of this InstanceTemplate.  # noqa: E501
-        :type: str
-        """
-
-        self._bootstrap_script = bootstrap_script
 
     def to_dict(self):
         """Returns the model properties as a dict"""

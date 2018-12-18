@@ -26,6 +26,7 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
+import org.joda.time.DateTime;
 
 /**
  * TimeSeriesRow
@@ -37,7 +38,7 @@ public class TimeSeriesRow {
   @SerializedName("metricName")
   private String metricName = null;
   @SerializedName("timestamp")
-  private Long timestamp = null;
+  private DateTime timestamp = null;
   @SerializedName("value")
   private Double value = null;
 
@@ -59,7 +60,7 @@ public class TimeSeriesRow {
   public static class TimeSeriesRowBuilder {
       private String entityName = null;
       private String metricName = null;
-      private Long timestamp = null;
+      private DateTime timestamp = null;
       private Double value = null;
   
 
@@ -75,7 +76,7 @@ public class TimeSeriesRow {
     }
 
 
-    public TimeSeriesRowBuilder timestamp(Long timestamp) {
+    public TimeSeriesRowBuilder timestamp(DateTime timestamp) {
       this.timestamp = timestamp;
       return this;
     }
@@ -137,7 +138,7 @@ public class TimeSeriesRow {
     this.metricName = metricName;
   }
 
-  public TimeSeriesRow timestamp(Long timestamp) {
+  public TimeSeriesRow timestamp(DateTime timestamp) {
     this.timestamp = timestamp;
     return this;
   }
@@ -147,11 +148,11 @@ public class TimeSeriesRow {
    * @return timestamp
   **/
   @ApiModelProperty(required = true, value = "Timestamp")
-  public Long getTimestamp() {
+  public DateTime getTimestamp() {
     return timestamp;
   }
 
-  public void setTimestamp(Long timestamp) {
+  public void setTimestamp(DateTime timestamp) {
     this.timestamp = timestamp;
   }
 

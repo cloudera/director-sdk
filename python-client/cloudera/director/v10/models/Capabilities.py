@@ -39,137 +39,60 @@ class Capabilities(object):
                             and the value is json key in definition.
     """
     swagger_types = {
-        'iptables_enabled': 'bool',
-        'java_vendor': 'str',
-        'java_version': 'str',
         'operating_system_type': 'str',
         'operating_system_version': 'str',
+        'virtualization_type': 'str',
         'package_manager': 'str',
-        'passwordless_sudo_enabled': 'bool',
+        'java_vendor': 'str',
+        'java_version': 'str',
         'python_version': 'str',
+        'passwordless_sudo_enabled': 'bool',
         'selinux_enabled': 'bool',
-        'virtualization_type': 'str'
+        'iptables_enabled': 'bool'
     }
 
     attribute_map = {
-        'iptables_enabled': 'iptablesEnabled',
-        'java_vendor': 'javaVendor',
-        'java_version': 'javaVersion',
         'operating_system_type': 'operatingSystemType',
         'operating_system_version': 'operatingSystemVersion',
+        'virtualization_type': 'virtualizationType',
         'package_manager': 'packageManager',
-        'passwordless_sudo_enabled': 'passwordlessSudoEnabled',
+        'java_vendor': 'javaVendor',
+        'java_version': 'javaVersion',
         'python_version': 'pythonVersion',
+        'passwordless_sudo_enabled': 'passwordlessSudoEnabled',
         'selinux_enabled': 'selinuxEnabled',
-        'virtualization_type': 'virtualizationType'
+        'iptables_enabled': 'iptablesEnabled'
     }
 
-    def __init__(self, iptables_enabled=None, java_vendor=None, java_version=None, operating_system_type=None, operating_system_version=None, package_manager=None, passwordless_sudo_enabled=None, python_version=None, selinux_enabled=None, virtualization_type=None):  # noqa: E501
+    def __init__(self, operating_system_type=None, operating_system_version=None, virtualization_type=None, package_manager=None, java_vendor=None, java_version=None, python_version=None, passwordless_sudo_enabled=None, selinux_enabled=None, iptables_enabled=None):  # noqa: E501
         """Capabilities - a model defined in Swagger"""  # noqa: E501
 
-        self._iptables_enabled = None
-        self._java_vendor = None
-        self._java_version = None
         self._operating_system_type = None
         self._operating_system_version = None
-        self._package_manager = None
-        self._passwordless_sudo_enabled = None
-        self._python_version = None
-        self._selinux_enabled = None
         self._virtualization_type = None
+        self._package_manager = None
+        self._java_vendor = None
+        self._java_version = None
+        self._python_version = None
+        self._passwordless_sudo_enabled = None
+        self._selinux_enabled = None
+        self._iptables_enabled = None
         self.discriminator = None
 
-        self.iptables_enabled = iptables_enabled
+        self.operating_system_type = operating_system_type
+        self.operating_system_version = operating_system_version
+        self.virtualization_type = virtualization_type
+        if package_manager is not None:
+            self.package_manager = package_manager
         if java_vendor is not None:
             self.java_vendor = java_vendor
         if java_version is not None:
             self.java_version = java_version
-        self.operating_system_type = operating_system_type
-        self.operating_system_version = operating_system_version
-        if package_manager is not None:
-            self.package_manager = package_manager
-        self.passwordless_sudo_enabled = passwordless_sudo_enabled
         if python_version is not None:
             self.python_version = python_version
+        self.passwordless_sudo_enabled = passwordless_sudo_enabled
         self.selinux_enabled = selinux_enabled
-        self.virtualization_type = virtualization_type
-
-    @property
-    def iptables_enabled(self):
-        """Gets the iptables_enabled of this Capabilities.  # noqa: E501
-
-        Whether iptables is enabled  # noqa: E501
-
-        :return: The iptables_enabled of this Capabilities.  # noqa: E501
-        :rtype: bool
-        """
-        return self._iptables_enabled
-
-    @iptables_enabled.setter
-    def iptables_enabled(self, iptables_enabled):
-        """Sets the iptables_enabled of this Capabilities.
-
-        Whether iptables is enabled  # noqa: E501
-
-        :param iptables_enabled: The iptables_enabled of this Capabilities.  # noqa: E501
-        :type: bool
-        """
-        if iptables_enabled is None:
-            raise ValueError("Invalid value for `iptables_enabled`, must not be `None`")  # noqa: E501
-
-        self._iptables_enabled = iptables_enabled
-
-    @property
-    def java_vendor(self):
-        """Gets the java_vendor of this Capabilities.  # noqa: E501
-
-        Vendor of installed JDK/JRE  # noqa: E501
-
-        :return: The java_vendor of this Capabilities.  # noqa: E501
-        :rtype: str
-        """
-        return self._java_vendor
-
-    @java_vendor.setter
-    def java_vendor(self, java_vendor):
-        """Sets the java_vendor of this Capabilities.
-
-        Vendor of installed JDK/JRE  # noqa: E501
-
-        :param java_vendor: The java_vendor of this Capabilities.  # noqa: E501
-        :type: str
-        """
-        allowed_values = ["OPENJDK", "ORACLE", "UNKNOWN"]  # noqa: E501
-        if java_vendor not in allowed_values:
-            raise ValueError(
-                "Invalid value for `java_vendor` ({0}), must be one of {1}"  # noqa: E501
-                .format(java_vendor, allowed_values)
-            )
-
-        self._java_vendor = java_vendor
-
-    @property
-    def java_version(self):
-        """Gets the java_version of this Capabilities.  # noqa: E501
-
-        Version of installed JDK/JRE  # noqa: E501
-
-        :return: The java_version of this Capabilities.  # noqa: E501
-        :rtype: str
-        """
-        return self._java_version
-
-    @java_version.setter
-    def java_version(self, java_version):
-        """Sets the java_version of this Capabilities.
-
-        Version of installed JDK/JRE  # noqa: E501
-
-        :param java_version: The java_version of this Capabilities.  # noqa: E501
-        :type: str
-        """
-
-        self._java_version = java_version
+        self.iptables_enabled = iptables_enabled
 
     @property
     def operating_system_type(self):
@@ -234,108 +157,6 @@ class Capabilities(object):
         self._operating_system_version = operating_system_version
 
     @property
-    def package_manager(self):
-        """Gets the package_manager of this Capabilities.  # noqa: E501
-
-        Package manager used  # noqa: E501
-
-        :return: The package_manager of this Capabilities.  # noqa: E501
-        :rtype: str
-        """
-        return self._package_manager
-
-    @package_manager.setter
-    def package_manager(self, package_manager):
-        """Sets the package_manager of this Capabilities.
-
-        Package manager used  # noqa: E501
-
-        :param package_manager: The package_manager of this Capabilities.  # noqa: E501
-        :type: str
-        """
-        allowed_values = ["APT", "YUM", "ZYPPER", "UNKNOWN"]  # noqa: E501
-        if package_manager not in allowed_values:
-            raise ValueError(
-                "Invalid value for `package_manager` ({0}), must be one of {1}"  # noqa: E501
-                .format(package_manager, allowed_values)
-            )
-
-        self._package_manager = package_manager
-
-    @property
-    def passwordless_sudo_enabled(self):
-        """Gets the passwordless_sudo_enabled of this Capabilities.  # noqa: E501
-
-        Whether the default login can use passwordless sudo  # noqa: E501
-
-        :return: The passwordless_sudo_enabled of this Capabilities.  # noqa: E501
-        :rtype: bool
-        """
-        return self._passwordless_sudo_enabled
-
-    @passwordless_sudo_enabled.setter
-    def passwordless_sudo_enabled(self, passwordless_sudo_enabled):
-        """Sets the passwordless_sudo_enabled of this Capabilities.
-
-        Whether the default login can use passwordless sudo  # noqa: E501
-
-        :param passwordless_sudo_enabled: The passwordless_sudo_enabled of this Capabilities.  # noqa: E501
-        :type: bool
-        """
-        if passwordless_sudo_enabled is None:
-            raise ValueError("Invalid value for `passwordless_sudo_enabled`, must not be `None`")  # noqa: E501
-
-        self._passwordless_sudo_enabled = passwordless_sudo_enabled
-
-    @property
-    def python_version(self):
-        """Gets the python_version of this Capabilities.  # noqa: E501
-
-        Version of installed Python  # noqa: E501
-
-        :return: The python_version of this Capabilities.  # noqa: E501
-        :rtype: str
-        """
-        return self._python_version
-
-    @python_version.setter
-    def python_version(self, python_version):
-        """Sets the python_version of this Capabilities.
-
-        Version of installed Python  # noqa: E501
-
-        :param python_version: The python_version of this Capabilities.  # noqa: E501
-        :type: str
-        """
-
-        self._python_version = python_version
-
-    @property
-    def selinux_enabled(self):
-        """Gets the selinux_enabled of this Capabilities.  # noqa: E501
-
-        Whether SELinux is enabled  # noqa: E501
-
-        :return: The selinux_enabled of this Capabilities.  # noqa: E501
-        :rtype: bool
-        """
-        return self._selinux_enabled
-
-    @selinux_enabled.setter
-    def selinux_enabled(self, selinux_enabled):
-        """Sets the selinux_enabled of this Capabilities.
-
-        Whether SELinux is enabled  # noqa: E501
-
-        :param selinux_enabled: The selinux_enabled of this Capabilities.  # noqa: E501
-        :type: bool
-        """
-        if selinux_enabled is None:
-            raise ValueError("Invalid value for `selinux_enabled`, must not be `None`")  # noqa: E501
-
-        self._selinux_enabled = selinux_enabled
-
-    @property
     def virtualization_type(self):
         """Gets the virtualization_type of this Capabilities.  # noqa: E501
 
@@ -365,6 +186,185 @@ class Capabilities(object):
             )
 
         self._virtualization_type = virtualization_type
+
+    @property
+    def package_manager(self):
+        """Gets the package_manager of this Capabilities.  # noqa: E501
+
+        Package manager used  # noqa: E501
+
+        :return: The package_manager of this Capabilities.  # noqa: E501
+        :rtype: str
+        """
+        return self._package_manager
+
+    @package_manager.setter
+    def package_manager(self, package_manager):
+        """Sets the package_manager of this Capabilities.
+
+        Package manager used  # noqa: E501
+
+        :param package_manager: The package_manager of this Capabilities.  # noqa: E501
+        :type: str
+        """
+        allowed_values = ["APT", "YUM", "ZYPPER", "UNKNOWN"]  # noqa: E501
+        if package_manager not in allowed_values:
+            raise ValueError(
+                "Invalid value for `package_manager` ({0}), must be one of {1}"  # noqa: E501
+                .format(package_manager, allowed_values)
+            )
+
+        self._package_manager = package_manager
+
+    @property
+    def java_vendor(self):
+        """Gets the java_vendor of this Capabilities.  # noqa: E501
+
+        Vendor of installed JDK/JRE  # noqa: E501
+
+        :return: The java_vendor of this Capabilities.  # noqa: E501
+        :rtype: str
+        """
+        return self._java_vendor
+
+    @java_vendor.setter
+    def java_vendor(self, java_vendor):
+        """Sets the java_vendor of this Capabilities.
+
+        Vendor of installed JDK/JRE  # noqa: E501
+
+        :param java_vendor: The java_vendor of this Capabilities.  # noqa: E501
+        :type: str
+        """
+        allowed_values = ["OPENJDK", "ORACLE", "UNKNOWN"]  # noqa: E501
+        if java_vendor not in allowed_values:
+            raise ValueError(
+                "Invalid value for `java_vendor` ({0}), must be one of {1}"  # noqa: E501
+                .format(java_vendor, allowed_values)
+            )
+
+        self._java_vendor = java_vendor
+
+    @property
+    def java_version(self):
+        """Gets the java_version of this Capabilities.  # noqa: E501
+
+        Version of installed JDK/JRE  # noqa: E501
+
+        :return: The java_version of this Capabilities.  # noqa: E501
+        :rtype: str
+        """
+        return self._java_version
+
+    @java_version.setter
+    def java_version(self, java_version):
+        """Sets the java_version of this Capabilities.
+
+        Version of installed JDK/JRE  # noqa: E501
+
+        :param java_version: The java_version of this Capabilities.  # noqa: E501
+        :type: str
+        """
+
+        self._java_version = java_version
+
+    @property
+    def python_version(self):
+        """Gets the python_version of this Capabilities.  # noqa: E501
+
+        Version of installed Python  # noqa: E501
+
+        :return: The python_version of this Capabilities.  # noqa: E501
+        :rtype: str
+        """
+        return self._python_version
+
+    @python_version.setter
+    def python_version(self, python_version):
+        """Sets the python_version of this Capabilities.
+
+        Version of installed Python  # noqa: E501
+
+        :param python_version: The python_version of this Capabilities.  # noqa: E501
+        :type: str
+        """
+
+        self._python_version = python_version
+
+    @property
+    def passwordless_sudo_enabled(self):
+        """Gets the passwordless_sudo_enabled of this Capabilities.  # noqa: E501
+
+        Whether the default login can use passwordless sudo  # noqa: E501
+
+        :return: The passwordless_sudo_enabled of this Capabilities.  # noqa: E501
+        :rtype: bool
+        """
+        return self._passwordless_sudo_enabled
+
+    @passwordless_sudo_enabled.setter
+    def passwordless_sudo_enabled(self, passwordless_sudo_enabled):
+        """Sets the passwordless_sudo_enabled of this Capabilities.
+
+        Whether the default login can use passwordless sudo  # noqa: E501
+
+        :param passwordless_sudo_enabled: The passwordless_sudo_enabled of this Capabilities.  # noqa: E501
+        :type: bool
+        """
+        if passwordless_sudo_enabled is None:
+            raise ValueError("Invalid value for `passwordless_sudo_enabled`, must not be `None`")  # noqa: E501
+
+        self._passwordless_sudo_enabled = passwordless_sudo_enabled
+
+    @property
+    def selinux_enabled(self):
+        """Gets the selinux_enabled of this Capabilities.  # noqa: E501
+
+        Whether SELinux is enabled  # noqa: E501
+
+        :return: The selinux_enabled of this Capabilities.  # noqa: E501
+        :rtype: bool
+        """
+        return self._selinux_enabled
+
+    @selinux_enabled.setter
+    def selinux_enabled(self, selinux_enabled):
+        """Sets the selinux_enabled of this Capabilities.
+
+        Whether SELinux is enabled  # noqa: E501
+
+        :param selinux_enabled: The selinux_enabled of this Capabilities.  # noqa: E501
+        :type: bool
+        """
+        if selinux_enabled is None:
+            raise ValueError("Invalid value for `selinux_enabled`, must not be `None`")  # noqa: E501
+
+        self._selinux_enabled = selinux_enabled
+
+    @property
+    def iptables_enabled(self):
+        """Gets the iptables_enabled of this Capabilities.  # noqa: E501
+
+        Whether iptables is enabled  # noqa: E501
+
+        :return: The iptables_enabled of this Capabilities.  # noqa: E501
+        :rtype: bool
+        """
+        return self._iptables_enabled
+
+    @iptables_enabled.setter
+    def iptables_enabled(self, iptables_enabled):
+        """Sets the iptables_enabled of this Capabilities.
+
+        Whether iptables is enabled  # noqa: E501
+
+        :param iptables_enabled: The iptables_enabled of this Capabilities.  # noqa: E501
+        :type: bool
+        """
+        if iptables_enabled is None:
+            raise ValueError("Invalid value for `iptables_enabled`, must not be `None`")  # noqa: E501
+
+        self._iptables_enabled = iptables_enabled
 
     def to_dict(self):
         """Returns the model properties as a dict"""

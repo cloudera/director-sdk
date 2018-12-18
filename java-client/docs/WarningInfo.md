@@ -4,9 +4,9 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**properties** | **Map&lt;String, String&gt;** | Properties associated with the error | 
 **warningCode** | [**WarningCodeEnum**](#WarningCodeEnum) | Warning code | 
 **warningType** | [**WarningTypeEnum**](#WarningTypeEnum) | Warning type | 
+**properties** | **Map&lt;String, String&gt;** | Properties associated with the error | 
 
 
 <a name="WarningCodeEnum"></a>

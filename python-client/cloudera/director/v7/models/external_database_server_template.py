@@ -39,98 +39,52 @@ class ExternalDatabaseServerTemplate(object):
                             and the value is json key in definition.
     """
     swagger_types = {
-        'config': 'dict(str, str)',
-        'hostname': 'str',
         'name': 'str',
-        'password': 'str',
-        'port': 'int',
-        'tags': 'dict(str, str)',
         'type': 'str',
-        'username': 'str'
+        'hostname': 'str',
+        'port': 'int',
+        'username': 'str',
+        'password': 'str',
+        'config': 'dict(str, str)',
+        'tags': 'dict(str, str)'
     }
 
     attribute_map = {
-        'config': 'config',
-        'hostname': 'hostname',
         'name': 'name',
-        'password': 'password',
-        'port': 'port',
-        'tags': 'tags',
         'type': 'type',
-        'username': 'username'
+        'hostname': 'hostname',
+        'port': 'port',
+        'username': 'username',
+        'password': 'password',
+        'config': 'config',
+        'tags': 'tags'
     }
 
-    def __init__(self, config=None, hostname=None, name=None, password=None, port=None, tags=None, type=None, username=None):  # noqa: E501
+    def __init__(self, name=None, type=None, hostname=None, port=None, username=None, password=None, config=None, tags=None):  # noqa: E501
         """ExternalDatabaseServerTemplate - a model defined in Swagger"""  # noqa: E501
 
-        self._config = None
-        self._hostname = None
         self._name = None
-        self._password = None
-        self._port = None
-        self._tags = None
         self._type = None
+        self._hostname = None
+        self._port = None
         self._username = None
+        self._password = None
+        self._config = None
+        self._tags = None
         self.discriminator = None
 
-        if config is not None:
-            self.config = config
+        self.name = name
+        self.type = type
         if hostname is not None:
             self.hostname = hostname
-        self.name = name
-        self.password = password
         if port is not None:
             self.port = port
+        self.username = username
+        self.password = password
+        if config is not None:
+            self.config = config
         if tags is not None:
             self.tags = tags
-        self.type = type
-        self.username = username
-
-    @property
-    def config(self):
-        """Gets the config of this ExternalDatabaseServerTemplate.  # noqa: E501
-
-        Provider-specific configuration properties for creating a new external database server  # noqa: E501
-
-        :return: The config of this ExternalDatabaseServerTemplate.  # noqa: E501
-        :rtype: dict(str, str)
-        """
-        return self._config
-
-    @config.setter
-    def config(self, config):
-        """Sets the config of this ExternalDatabaseServerTemplate.
-
-        Provider-specific configuration properties for creating a new external database server  # noqa: E501
-
-        :param config: The config of this ExternalDatabaseServerTemplate.  # noqa: E501
-        :type: dict(str, str)
-        """
-
-        self._config = config
-
-    @property
-    def hostname(self):
-        """Gets the hostname of this ExternalDatabaseServerTemplate.  # noqa: E501
-
-        If server already exists, external database server hostname  # noqa: E501
-
-        :return: The hostname of this ExternalDatabaseServerTemplate.  # noqa: E501
-        :rtype: str
-        """
-        return self._hostname
-
-    @hostname.setter
-    def hostname(self, hostname):
-        """Sets the hostname of this ExternalDatabaseServerTemplate.
-
-        If server already exists, external database server hostname  # noqa: E501
-
-        :param hostname: The hostname of this ExternalDatabaseServerTemplate.  # noqa: E501
-        :type: str
-        """
-
-        self._hostname = hostname
 
     @property
     def name(self):
@@ -156,77 +110,6 @@ class ExternalDatabaseServerTemplate(object):
             raise ValueError("Invalid value for `name`, must not be `None`")  # noqa: E501
 
         self._name = name
-
-    @property
-    def password(self):
-        """Gets the password of this ExternalDatabaseServerTemplate.  # noqa: E501
-
-        Password for administrative access to external database server [redacted on read]  # noqa: E501
-
-        :return: The password of this ExternalDatabaseServerTemplate.  # noqa: E501
-        :rtype: str
-        """
-        return self._password
-
-    @password.setter
-    def password(self, password):
-        """Sets the password of this ExternalDatabaseServerTemplate.
-
-        Password for administrative access to external database server [redacted on read]  # noqa: E501
-
-        :param password: The password of this ExternalDatabaseServerTemplate.  # noqa: E501
-        :type: str
-        """
-        if password is None:
-            raise ValueError("Invalid value for `password`, must not be `None`")  # noqa: E501
-
-        self._password = password
-
-    @property
-    def port(self):
-        """Gets the port of this ExternalDatabaseServerTemplate.  # noqa: E501
-
-        If server already exists, external database server port  # noqa: E501
-
-        :return: The port of this ExternalDatabaseServerTemplate.  # noqa: E501
-        :rtype: int
-        """
-        return self._port
-
-    @port.setter
-    def port(self, port):
-        """Sets the port of this ExternalDatabaseServerTemplate.
-
-        If server already exists, external database server port  # noqa: E501
-
-        :param port: The port of this ExternalDatabaseServerTemplate.  # noqa: E501
-        :type: int
-        """
-
-        self._port = port
-
-    @property
-    def tags(self):
-        """Gets the tags of this ExternalDatabaseServerTemplate.  # noqa: E501
-
-        Tags to associate with a new external database server  # noqa: E501
-
-        :return: The tags of this ExternalDatabaseServerTemplate.  # noqa: E501
-        :rtype: dict(str, str)
-        """
-        return self._tags
-
-    @tags.setter
-    def tags(self, tags):
-        """Sets the tags of this ExternalDatabaseServerTemplate.
-
-        Tags to associate with a new external database server  # noqa: E501
-
-        :param tags: The tags of this ExternalDatabaseServerTemplate.  # noqa: E501
-        :type: dict(str, str)
-        """
-
-        self._tags = tags
 
     @property
     def type(self):
@@ -260,6 +143,52 @@ class ExternalDatabaseServerTemplate(object):
         self._type = type
 
     @property
+    def hostname(self):
+        """Gets the hostname of this ExternalDatabaseServerTemplate.  # noqa: E501
+
+        If server already exists, external database server hostname  # noqa: E501
+
+        :return: The hostname of this ExternalDatabaseServerTemplate.  # noqa: E501
+        :rtype: str
+        """
+        return self._hostname
+
+    @hostname.setter
+    def hostname(self, hostname):
+        """Sets the hostname of this ExternalDatabaseServerTemplate.
+
+        If server already exists, external database server hostname  # noqa: E501
+
+        :param hostname: The hostname of this ExternalDatabaseServerTemplate.  # noqa: E501
+        :type: str
+        """
+
+        self._hostname = hostname
+
+    @property
+    def port(self):
+        """Gets the port of this ExternalDatabaseServerTemplate.  # noqa: E501
+
+        If server already exists, external database server port  # noqa: E501
+
+        :return: The port of this ExternalDatabaseServerTemplate.  # noqa: E501
+        :rtype: int
+        """
+        return self._port
+
+    @port.setter
+    def port(self, port):
+        """Sets the port of this ExternalDatabaseServerTemplate.
+
+        If server already exists, external database server port  # noqa: E501
+
+        :param port: The port of this ExternalDatabaseServerTemplate.  # noqa: E501
+        :type: int
+        """
+
+        self._port = port
+
+    @property
     def username(self):
         """Gets the username of this ExternalDatabaseServerTemplate.  # noqa: E501
 
@@ -283,6 +212,77 @@ class ExternalDatabaseServerTemplate(object):
             raise ValueError("Invalid value for `username`, must not be `None`")  # noqa: E501
 
         self._username = username
+
+    @property
+    def password(self):
+        """Gets the password of this ExternalDatabaseServerTemplate.  # noqa: E501
+
+        Password for administrative access to external database server [redacted on read]  # noqa: E501
+
+        :return: The password of this ExternalDatabaseServerTemplate.  # noqa: E501
+        :rtype: str
+        """
+        return self._password
+
+    @password.setter
+    def password(self, password):
+        """Sets the password of this ExternalDatabaseServerTemplate.
+
+        Password for administrative access to external database server [redacted on read]  # noqa: E501
+
+        :param password: The password of this ExternalDatabaseServerTemplate.  # noqa: E501
+        :type: str
+        """
+        if password is None:
+            raise ValueError("Invalid value for `password`, must not be `None`")  # noqa: E501
+
+        self._password = password
+
+    @property
+    def config(self):
+        """Gets the config of this ExternalDatabaseServerTemplate.  # noqa: E501
+
+        Provider-specific configuration properties for creating a new external database server  # noqa: E501
+
+        :return: The config of this ExternalDatabaseServerTemplate.  # noqa: E501
+        :rtype: dict(str, str)
+        """
+        return self._config
+
+    @config.setter
+    def config(self, config):
+        """Sets the config of this ExternalDatabaseServerTemplate.
+
+        Provider-specific configuration properties for creating a new external database server  # noqa: E501
+
+        :param config: The config of this ExternalDatabaseServerTemplate.  # noqa: E501
+        :type: dict(str, str)
+        """
+
+        self._config = config
+
+    @property
+    def tags(self):
+        """Gets the tags of this ExternalDatabaseServerTemplate.  # noqa: E501
+
+        Tags to associate with a new external database server  # noqa: E501
+
+        :return: The tags of this ExternalDatabaseServerTemplate.  # noqa: E501
+        :rtype: dict(str, str)
+        """
+        return self._tags
+
+    @tags.setter
+    def tags(self, tags):
+        """Sets the tags of this ExternalDatabaseServerTemplate.
+
+        Tags to associate with a new external database server  # noqa: E501
+
+        :param tags: The tags of this ExternalDatabaseServerTemplate.  # noqa: E501
+        :type: dict(str, str)
+        """
+
+        self._tags = tags
 
     def to_dict(self):
         """Returns the model properties as a dict"""

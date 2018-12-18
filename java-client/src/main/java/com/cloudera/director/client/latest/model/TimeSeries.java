@@ -36,18 +36,18 @@ import java.util.List;
  */
 
 public class TimeSeries {
-  @SerializedName("data")
-  private List<TimeSeriesData> data = null;
   @SerializedName("metadata")
   private TimeSeriesMetadata metadata = null;
+  @SerializedName("data")
+  private List<TimeSeriesData> data = null;
 
   public TimeSeries() {
     // Do nothing
   }
 
   private TimeSeries(TimeSeriesBuilder builder) {
-      this.data = builder.data;
       this.metadata = builder.metadata;
+      this.data = builder.data;
     }
 
   public static TimeSeriesBuilder builder() {
@@ -55,18 +55,18 @@ public class TimeSeries {
   }
 
   public static class TimeSeriesBuilder {
-      private List<TimeSeriesData> data = new ArrayList<TimeSeriesData>();
       private TimeSeriesMetadata metadata = null;
+      private List<TimeSeriesData> data = new ArrayList<TimeSeriesData>();
   
 
-    public TimeSeriesBuilder data(List<TimeSeriesData> data) {
-      this.data = data;
+    public TimeSeriesBuilder metadata(TimeSeriesMetadata metadata) {
+      this.metadata = metadata;
       return this;
     }
 
 
-    public TimeSeriesBuilder metadata(TimeSeriesMetadata metadata) {
-      this.metadata = metadata;
+    public TimeSeriesBuilder data(List<TimeSeriesData> data) {
+      this.data = data;
       return this;
     }
 
@@ -78,9 +78,27 @@ public class TimeSeries {
 
   public TimeSeriesBuilder toBuilder() {
     return builder()
-      .data(data)
-            .metadata(metadata)
+      .metadata(metadata)
+            .data(data)
       ;
+  }
+
+  public TimeSeries metadata(TimeSeriesMetadata metadata) {
+    this.metadata = metadata;
+    return this;
+  }
+
+   /**
+   * Time series metadata
+   * @return metadata
+  **/
+  @ApiModelProperty(required = true, value = "Time series metadata")
+  public TimeSeriesMetadata getMetadata() {
+    return metadata;
+  }
+
+  public void setMetadata(TimeSeriesMetadata metadata) {
+    this.metadata = metadata;
   }
 
   public TimeSeries data(List<TimeSeriesData> data) {
@@ -109,24 +127,6 @@ public class TimeSeries {
     this.data = data;
   }
 
-  public TimeSeries metadata(TimeSeriesMetadata metadata) {
-    this.metadata = metadata;
-    return this;
-  }
-
-   /**
-   * Time series metadata
-   * @return metadata
-  **/
-  @ApiModelProperty(required = true, value = "Time series metadata")
-  public TimeSeriesMetadata getMetadata() {
-    return metadata;
-  }
-
-  public void setMetadata(TimeSeriesMetadata metadata) {
-    this.metadata = metadata;
-  }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -137,13 +137,13 @@ public class TimeSeries {
       return false;
     }
     TimeSeries timeSeries = (TimeSeries) o;
-    return Objects.equals(this.data, timeSeries.data) &&
-        Objects.equals(this.metadata, timeSeries.metadata);
+    return Objects.equals(this.metadata, timeSeries.metadata) &&
+        Objects.equals(this.data, timeSeries.data);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(data, metadata);
+    return Objects.hash(metadata, data);
   }
 
 
@@ -152,8 +152,8 @@ public class TimeSeries {
     StringBuilder sb = new StringBuilder();
     sb.append("class TimeSeries {\n");
     
-    sb.append("    data: ").append(toIndentedString(data)).append("\n");
     sb.append("    metadata: ").append(toIndentedString(metadata)).append("\n");
+    sb.append("    data: ").append(toIndentedString(data)).append("\n");
     sb.append("}");
     return sb.toString();
   }

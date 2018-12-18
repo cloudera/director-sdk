@@ -1,11 +1,11 @@
 # AuthenticationApi
 
-All URIs are relative to *https://localhost:7189*
+All URIs are relative to *https://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**login**](AuthenticationApi.md#login) | **POST** /api/d6.0/login | Log in to the API
-[**logout**](AuthenticationApi.md#logout) | **POST** /api/d6.0/logout | Log out from the API
+[**login**](AuthenticationApi.md#login) | **POST** /api/d6.1/login | Log in to the API
+[**logout**](AuthenticationApi.md#logout) | **POST** /api/d6.1/logout | Log out from the API
 
 
 <a name="login"></a>
@@ -14,24 +14,17 @@ Method | HTTP request | Description
 
 Log in to the API
 
+
+
 ### Example
 ```java
 // Import classes:
-//import com.cloudera.director.client.common.ApiClient;
 //import com.cloudera.director.client.common.ApiException;
-//import com.cloudera.director.client.common.Configuration;
-//import com.cloudera.director.client.common.auth.*;
 //import com.cloudera.director.client.latest.api.AuthenticationApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
-
-// Configure HTTP basic authorization: basic
-HttpBasicAuth basic = (HttpBasicAuth) defaultClient.getAuthentication("basic");
-basic.setUsername("YOUR USERNAME");
-basic.setPassword("YOUR PASSWORD");
 
 AuthenticationApi apiInstance = new AuthenticationApi();
-Login login = new Login(); // Login | login
+Login login = new Login(); // Login | 
 try {
     User result = apiInstance.login(login);
     System.out.println(result);
@@ -45,7 +38,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **login** | [**Login**](Login.md)| login |
+ **login** | [**Login**](Login.md)|  |
 
 ### Return type
 
@@ -53,11 +46,11 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[basic](../README.md#basic)
+No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 <a name="logout"></a>
@@ -66,21 +59,14 @@ Name | Type | Description  | Notes
 
 Log out from the API
 
+
+
 ### Example
 ```java
 // Import classes:
-//import com.cloudera.director.client.common.ApiClient;
 //import com.cloudera.director.client.common.ApiException;
-//import com.cloudera.director.client.common.Configuration;
-//import com.cloudera.director.client.common.auth.*;
 //import com.cloudera.director.client.latest.api.AuthenticationApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
-
-// Configure HTTP basic authorization: basic
-HttpBasicAuth basic = (HttpBasicAuth) defaultClient.getAuthentication("basic");
-basic.setUsername("YOUR USERNAME");
-basic.setPassword("YOUR PASSWORD");
 
 AuthenticationApi apiInstance = new AuthenticationApi();
 try {
@@ -101,10 +87,10 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[basic](../README.md#basic)
+No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
