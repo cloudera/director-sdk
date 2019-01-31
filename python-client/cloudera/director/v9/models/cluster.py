@@ -245,10 +245,10 @@ class Cluster(object):
         :type: dict(str, str)
         """
         allowed_values = ["UNKNOWN", "UNAVAILABLE", "AVAILABLE"]  # noqa: E501
-        if not set(feature_availability.keys()).issubset(set(allowed_values)):
+        if not set(feature_availability.values()).issubset(set(allowed_values)):
             raise ValueError(
-                "Invalid keys in `feature_availability` [{0}], must be a subset of [{1}]"  # noqa: E501
-                .format(", ".join(map(str, set(feature_availability.keys()) - set(allowed_values))),  # noqa: E501
+                "Invalid values in `feature_availability` [{0}], must be a subset of [{1}]"  # noqa: E501
+                .format(", ".join(map(str, set(feature_availability.values()) - set(allowed_values))),  # noqa: E501
                         ", ".join(map(str, allowed_values)))
             )
 
