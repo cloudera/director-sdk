@@ -10,7 +10,7 @@ API clients are generated from the server API itself. Therefore, pull requests a
 
 ## API Documentation
 
-[Documentation home](documentation/)
+[Documentation home](http://cloudera.github.io/director-sdk/documentation/)
 
 ## License
 
