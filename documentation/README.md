@@ -15,6 +15,10 @@ The table below lists the documentation by version, along with the version of Al
     <td>-</td>
   </tr>
   <tr>
+    <td><a href="d6.1/index.html">d6.1</a></td>
+    <td>6.1.0</td>
+  </tr>
+  <tr>
     <td><a href="d6.0/index.html">d6.0</a></td>
     <td>6.0.0</td>
   </tr>
