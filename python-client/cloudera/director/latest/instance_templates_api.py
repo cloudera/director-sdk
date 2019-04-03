@@ -129,7 +129,7 @@ class InstanceTemplatesApi(object):
         auth_settings = ['basic']  # noqa: E501
 
         return self.api_client.call_api(
-            '/api/d6.1/environments/{environment}/templates/instances', 'POST',
+            '/api/d6.2/environments/{environment}/templates/instances', 'POST',
             path_params,
             query_params,
             header_params,
@@ -233,7 +233,7 @@ class InstanceTemplatesApi(object):
         auth_settings = ['basic']  # noqa: E501
 
         return self.api_client.call_api(
-            '/api/d6.1/environments/{environment}/templates/instances/{template}', 'DELETE',
+            '/api/d6.2/environments/{environment}/templates/instances/{template}', 'DELETE',
             path_params,
             query_params,
             header_params,
@@ -337,7 +337,7 @@ class InstanceTemplatesApi(object):
         auth_settings = ['basic']  # noqa: E501
 
         return self.api_client.call_api(
-            '/api/d6.1/environments/{environment}/templates/instances/{template}', 'GET',
+            '/api/d6.2/environments/{environment}/templates/instances/{template}', 'GET',
             path_params,
             query_params,
             header_params,
@@ -433,7 +433,7 @@ class InstanceTemplatesApi(object):
         auth_settings = ['basic']  # noqa: E501
 
         return self.api_client.call_api(
-            '/api/d6.1/environments/{environment}/templates/instances', 'GET',
+            '/api/d6.2/environments/{environment}/templates/instances', 'GET',
             path_params,
             query_params,
             header_params,
@@ -545,7 +545,7 @@ class InstanceTemplatesApi(object):
         auth_settings = ['basic']  # noqa: E501
 
         return self.api_client.call_api(
-            '/api/d6.1/environments/{environment}/templates/instances/{template}', 'PUT',
+            '/api/d6.2/environments/{environment}/templates/instances/{template}', 'PUT',
             path_params,
             query_params,
             header_params,

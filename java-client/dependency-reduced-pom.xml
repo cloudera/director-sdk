@@ -4,7 +4,7 @@
   <groupId>com.cloudera.director</groupId>
   <artifactId>java-client</artifactId>
   <name>Cloudera Altus Director :: java-client</name>
-  <version>6.1.0</version>
+  <version>6.2.0</version>
   <url>https://www.cloudera.com</url>
   <scm>
     <connection>scm:git:git@github.com:swagger-api/swagger-codegen.git</connection>

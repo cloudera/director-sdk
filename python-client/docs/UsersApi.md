@@ -4,14 +4,14 @@ All URIs are relative to *https://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**create**](UsersApi.md#create) | **POST** /api/d6.1/users | Create a new user
-[**current_redacted**](UsersApi.md#current_redacted) | **GET** /api/d6.1/users/current | Get the current user
-[**delete**](UsersApi.md#delete) | **DELETE** /api/d6.1/users/{username} | Delete a user by username
-[**get_redacted**](UsersApi.md#get_redacted) | **GET** /api/d6.1/users/{username} | Get a user by username
-[**get_user_management_status**](UsersApi.md#get_user_management_status) | **GET** /api/d6.1/users/managementStatus | Gets user management status
-[**list**](UsersApi.md#list) | **GET** /api/d6.1/users | List all users
-[**update**](UsersApi.md#update) | **PUT** /api/d6.1/users/{username} | Update an existing user
-[**update_password**](UsersApi.md#update_password) | **PUT** /api/d6.1/users/{username}/password | Update the password of an existing user
+[**create**](UsersApi.md#create) | **POST** /api/d6.2/users | Create a new user
+[**current_redacted**](UsersApi.md#current_redacted) | **GET** /api/d6.2/users/current | Get the current user
+[**delete**](UsersApi.md#delete) | **DELETE** /api/d6.2/users/{username} | Delete a user by username
+[**get_redacted**](UsersApi.md#get_redacted) | **GET** /api/d6.2/users/{username} | Get a user by username
+[**get_user_management_status**](UsersApi.md#get_user_management_status) | **GET** /api/d6.2/users/managementStatus | Gets user management status
+[**list**](UsersApi.md#list) | **GET** /api/d6.2/users | List all users
+[**update**](UsersApi.md#update) | **PUT** /api/d6.2/users/{username} | Update an existing user
+[**update_password**](UsersApi.md#update_password) | **PUT** /api/d6.2/users/{username}/password | Update the password of an existing user
 
 
 # **create**

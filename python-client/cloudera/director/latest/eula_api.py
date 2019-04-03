@@ -113,7 +113,7 @@ class EulaApi(object):
         auth_settings = []  # noqa: E501
 
         return self.api_client.call_api(
-            '/api/d6.1/eula', 'GET',
+            '/api/d6.2/eula', 'GET',
             path_params,
             query_params,
             header_params,
@@ -209,7 +209,7 @@ class EulaApi(object):
         auth_settings = []  # noqa: E501
 
         return self.api_client.call_api(
-            '/api/d6.1/eula', 'PUT',
+            '/api/d6.2/eula', 'PUT',
             path_params,
             query_params,
             header_params,

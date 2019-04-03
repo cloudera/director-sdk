@@ -70,7 +70,7 @@ public class ProviderMetadataApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/api/d6.1/metadata/providers/{providerId}"
+        String localVarPath = "/api/d6.2/metadata/providers/{providerId}"
             .replaceAll("\\{" + "providerId" + "\\}", apiClient.escapeString(providerId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
@@ -192,7 +192,7 @@ public class ProviderMetadataApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/api/d6.1/metadata/providers";
+        String localVarPath = "/api/d6.2/metadata/providers";
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();

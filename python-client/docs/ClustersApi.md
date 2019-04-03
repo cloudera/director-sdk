@@ -4,19 +4,19 @@ All URIs are relative to *https://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**collect_diagnostic_data**](ClustersApi.md#collect_diagnostic_data) | **POST** /api/d6.1/environments/{environment}/deployments/{deployment}/clusters/{cluster}/diagnosticData | Collects diagnostic data
-[**create**](ClustersApi.md#create) | **POST** /api/d6.1/environments/{environment}/deployments/{deployment}/clusters | Create a new cluster
-[**delete**](ClustersApi.md#delete) | **DELETE** /api/d6.1/environments/{environment}/deployments/{deployment}/clusters/{cluster} | Delete a cluster by name
-[**export_cluster_configuration**](ClustersApi.md#export_cluster_configuration) | **GET** /api/d6.1/environments/{environment}/deployments/{deployment}/clusters/{cluster}/config | Exports the cluster configuration for this cluster
-[**get_administration_settings**](ClustersApi.md#get_administration_settings) | **GET** /api/d6.1/environments/{environment}/deployments/{deployment}/clusters/{cluster}/settings | Get administration settings for a cluster
-[**get_history**](ClustersApi.md#get_history) | **GET** /api/d6.1/environments/{environment}/deployments/{deployment}/clusters/{cluster}/history | Get history of updates for a cluster
-[**get_metrics**](ClustersApi.md#get_metrics) | **GET** /api/d6.1/environments/{environment}/deployments/{deployment}/clusters/{cluster}/metrics | Get cluster metrics by name
-[**get_redacted**](ClustersApi.md#get_redacted) | **GET** /api/d6.1/environments/{environment}/deployments/{deployment}/clusters/{cluster} | Get a cluster by name
-[**get_status**](ClustersApi.md#get_status) | **GET** /api/d6.1/environments/{environment}/deployments/{deployment}/clusters/{cluster}/status | Get a cluster status by name
-[**get_template_redacted**](ClustersApi.md#get_template_redacted) | **GET** /api/d6.1/environments/{environment}/deployments/{deployment}/clusters/{cluster}/template | Get a cluster template by name
-[**list**](ClustersApi.md#list) | **GET** /api/d6.1/environments/{environment}/deployments/{deployment}/clusters | List all clusters
-[**update**](ClustersApi.md#update) | **PUT** /api/d6.1/environments/{environment}/deployments/{deployment}/clusters/{cluster} | Update an existing cluster
-[**update_administration_settings**](ClustersApi.md#update_administration_settings) | **PUT** /api/d6.1/environments/{environment}/deployments/{deployment}/clusters/{cluster}/settings | Update administration settings for a cluster
+[**collect_diagnostic_data**](ClustersApi.md#collect_diagnostic_data) | **POST** /api/d6.2/environments/{environment}/deployments/{deployment}/clusters/{cluster}/diagnosticData | Collects diagnostic data
+[**create**](ClustersApi.md#create) | **POST** /api/d6.2/environments/{environment}/deployments/{deployment}/clusters | Create a new cluster
+[**delete**](ClustersApi.md#delete) | **DELETE** /api/d6.2/environments/{environment}/deployments/{deployment}/clusters/{cluster} | Delete a cluster by name
+[**export_cluster_configuration**](ClustersApi.md#export_cluster_configuration) | **GET** /api/d6.2/environments/{environment}/deployments/{deployment}/clusters/{cluster}/config | Exports the cluster configuration for this cluster
+[**get_administration_settings**](ClustersApi.md#get_administration_settings) | **GET** /api/d6.2/environments/{environment}/deployments/{deployment}/clusters/{cluster}/settings | Get administration settings for a cluster
+[**get_history**](ClustersApi.md#get_history) | **GET** /api/d6.2/environments/{environment}/deployments/{deployment}/clusters/{cluster}/history | Get history of updates for a cluster
+[**get_metrics**](ClustersApi.md#get_metrics) | **GET** /api/d6.2/environments/{environment}/deployments/{deployment}/clusters/{cluster}/metrics | Get cluster metrics by name
+[**get_redacted**](ClustersApi.md#get_redacted) | **GET** /api/d6.2/environments/{environment}/deployments/{deployment}/clusters/{cluster} | Get a cluster by name
+[**get_status**](ClustersApi.md#get_status) | **GET** /api/d6.2/environments/{environment}/deployments/{deployment}/clusters/{cluster}/status | Get a cluster status by name
+[**get_template_redacted**](ClustersApi.md#get_template_redacted) | **GET** /api/d6.2/environments/{environment}/deployments/{deployment}/clusters/{cluster}/template | Get a cluster template by name
+[**list**](ClustersApi.md#list) | **GET** /api/d6.2/environments/{environment}/deployments/{deployment}/clusters | List all clusters
+[**update**](ClustersApi.md#update) | **PUT** /api/d6.2/environments/{environment}/deployments/{deployment}/clusters/{cluster} | Update an existing cluster
+[**update_administration_settings**](ClustersApi.md#update_administration_settings) | **PUT** /api/d6.2/environments/{environment}/deployments/{deployment}/clusters/{cluster}/settings | Update administration settings for a cluster
 
 
 # **collect_diagnostic_data**

@@ -28,7 +28,7 @@ Add this dependency to your project's POM:
 <dependency>
     <groupId>com.cloudera.director</groupId>
     <artifactId>java-client</artifactId>
-    <version>6.1.0</version>
+    <version>6.2.0</version>
     <scope>compile</scope>
 </dependency>
 ```
@@ -38,7 +38,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "com.cloudera.director:java-client:6.1.0"
+compile "com.cloudera.director:java-client:6.2.0"
 ```
 
 ### Others
@@ -49,7 +49,7 @@ At first generate the JAR by executing:
 
 Then manually install the following JARs:
 
-* target/java-client-6.1.0.jar
+* target/java-client-6.2.0.jar
 * target/lib/*.jar
 
 ## Getting Started

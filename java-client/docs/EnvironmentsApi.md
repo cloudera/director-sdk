@@ -4,12 +4,12 @@ All URIs are relative to *https://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**create**](EnvironmentsApi.md#create) | **POST** /api/d6.1/environments | Create a new environment
-[**delete**](EnvironmentsApi.md#delete) | **DELETE** /api/d6.1/environments/{name} | Delete an environment by name
-[**getRedacted**](EnvironmentsApi.md#getRedacted) | **GET** /api/d6.1/environments/{name} | Get an environment by name
-[**list**](EnvironmentsApi.md#list) | **GET** /api/d6.1/environments | List all environments
-[**update**](EnvironmentsApi.md#update) | **PUT** /api/d6.1/environments/{name} | Update an existing environment
-[**updateProviderCredentials**](EnvironmentsApi.md#updateProviderCredentials) | **PUT** /api/d6.1/environments/{name}/provider/credentials | Update provider credentials for a specific environment
+[**create**](EnvironmentsApi.md#create) | **POST** /api/d6.2/environments | Create a new environment
+[**delete**](EnvironmentsApi.md#delete) | **DELETE** /api/d6.2/environments/{name} | Delete an environment by name
+[**getRedacted**](EnvironmentsApi.md#getRedacted) | **GET** /api/d6.2/environments/{name} | Get an environment by name
+[**list**](EnvironmentsApi.md#list) | **GET** /api/d6.2/environments | List all environments
+[**update**](EnvironmentsApi.md#update) | **PUT** /api/d6.2/environments/{name} | Update an existing environment
+[**updateProviderCredentials**](EnvironmentsApi.md#updateProviderCredentials) | **PUT** /api/d6.2/environments/{name}/provider/credentials | Update provider credentials for a specific environment
 
 
 <a name="create"></a>

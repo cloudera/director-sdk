@@ -4,8 +4,8 @@ All URIs are relative to *https://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**login**](AuthenticationApi.md#login) | **POST** /api/d6.1/login | Log in to the API
-[**logout**](AuthenticationApi.md#logout) | **POST** /api/d6.1/logout | Log out from the API
+[**login**](AuthenticationApi.md#login) | **POST** /api/d6.2/login | Log in to the API
+[**logout**](AuthenticationApi.md#logout) | **POST** /api/d6.2/logout | Log out from the API
 
 
 <a name="login"></a>

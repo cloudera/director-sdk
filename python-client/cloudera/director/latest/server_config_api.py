@@ -113,7 +113,7 @@ class ServerConfigApi(object):
         auth_settings = ['basic']  # noqa: E501
 
         return self.api_client.call_api(
-            '/api/d6.1/serverConfigs', 'GET',
+            '/api/d6.2/serverConfigs', 'GET',
             path_params,
             query_params,
             header_params,
@@ -201,7 +201,7 @@ class ServerConfigApi(object):
         auth_settings = ['basic']  # noqa: E501
 
         return self.api_client.call_api(
-            '/api/d6.1/serverConfigs/metadata', 'GET',
+            '/api/d6.2/serverConfigs/metadata', 'GET',
             path_params,
             query_params,
             header_params,
@@ -297,7 +297,7 @@ class ServerConfigApi(object):
         auth_settings = ['basic']  # noqa: E501
 
         return self.api_client.call_api(
-            '/api/d6.1/serverConfigs', 'POST',
+            '/api/d6.2/serverConfigs', 'POST',
             path_params,
             query_params,
             header_params,

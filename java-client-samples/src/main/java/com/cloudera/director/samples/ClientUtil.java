@@ -6,10 +6,8 @@ package com.cloudera.director.samples;
 
 import com.cloudera.director.client.common.ApiClient;
 import com.cloudera.director.client.common.ApiException;
-import com.cloudera.director.client.latest.api.AuthenticationApi;
 import com.cloudera.director.client.latest.api.ClustersApi;
 import com.cloudera.director.client.latest.api.DeploymentsApi;
-import com.cloudera.director.client.latest.model.Login;
 import com.cloudera.director.client.latest.model.Status;
 
 import java.util.concurrent.TimeUnit;
@@ -18,16 +16,8 @@ public class ClientUtil {
 
   public static ApiClient newAuthenticatedApiClient(CommonParameters common)
       throws ApiException {
-    ApiClient client = new ApiClient(common.getServerUrl());
+    ApiClient client = new ApiClient(common.getServerUrl(), common.getAdminUsername(), common.getAdminPassword());
     client.setVerifyingSsl(common.isHostnameVerificationEnabled());
-
-    Login login = Login.builder()
-        .username(common.getAdminUsername())
-        .password(common.getAdminPassword())
-        .build();
-
-    new AuthenticationApi(client).login(login);
-
     return client;
   }
 

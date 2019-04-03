@@ -129,7 +129,7 @@ class DatabaseServersApi(object):
         auth_settings = ['basic']  # noqa: E501
 
         return self.api_client.call_api(
-            '/api/d6.1/environments/{environment}/databaseServers', 'POST',
+            '/api/d6.2/environments/{environment}/databaseServers', 'POST',
             path_params,
             query_params,
             header_params,
@@ -233,7 +233,7 @@ class DatabaseServersApi(object):
         auth_settings = ['basic']  # noqa: E501
 
         return self.api_client.call_api(
-            '/api/d6.1/environments/{environment}/databaseServers/{externalDatabaseServer}', 'DELETE',
+            '/api/d6.2/environments/{environment}/databaseServers/{externalDatabaseServer}', 'DELETE',
             path_params,
             query_params,
             header_params,
@@ -337,7 +337,7 @@ class DatabaseServersApi(object):
         auth_settings = ['basic']  # noqa: E501
 
         return self.api_client.call_api(
-            '/api/d6.1/environments/{environment}/databaseServers/{externalDatabaseServer}/usage', 'GET',
+            '/api/d6.2/environments/{environment}/databaseServers/{externalDatabaseServer}/usage', 'GET',
             path_params,
             query_params,
             header_params,
@@ -441,7 +441,7 @@ class DatabaseServersApi(object):
         auth_settings = ['basic']  # noqa: E501
 
         return self.api_client.call_api(
-            '/api/d6.1/environments/{environment}/databaseServers/{externalDatabaseServer}', 'GET',
+            '/api/d6.2/environments/{environment}/databaseServers/{externalDatabaseServer}', 'GET',
             path_params,
             query_params,
             header_params,
@@ -545,7 +545,7 @@ class DatabaseServersApi(object):
         auth_settings = ['basic']  # noqa: E501
 
         return self.api_client.call_api(
-            '/api/d6.1/environments/{environment}/databaseServers/{externalDatabaseServer}/status', 'GET',
+            '/api/d6.2/environments/{environment}/databaseServers/{externalDatabaseServer}/status', 'GET',
             path_params,
             query_params,
             header_params,
@@ -649,7 +649,7 @@ class DatabaseServersApi(object):
         auth_settings = ['basic']  # noqa: E501
 
         return self.api_client.call_api(
-            '/api/d6.1/environments/{environment}/databaseServers/{externalDatabaseServer}/template', 'GET',
+            '/api/d6.2/environments/{environment}/databaseServers/{externalDatabaseServer}/template', 'GET',
             path_params,
             query_params,
             header_params,
@@ -745,7 +745,7 @@ class DatabaseServersApi(object):
         auth_settings = ['basic']  # noqa: E501
 
         return self.api_client.call_api(
-            '/api/d6.1/environments/{environment}/databaseServers', 'GET',
+            '/api/d6.2/environments/{environment}/databaseServers', 'GET',
             path_params,
             query_params,
             header_params,
@@ -857,7 +857,7 @@ class DatabaseServersApi(object):
         auth_settings = ['basic']  # noqa: E501
 
         return self.api_client.call_api(
-            '/api/d6.1/environments/{environment}/databaseServers/{externalDatabaseServer}', 'PUT',
+            '/api/d6.2/environments/{environment}/databaseServers/{externalDatabaseServer}', 'PUT',
             path_params,
             query_params,
             header_params,

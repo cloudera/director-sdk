@@ -32,6 +32,7 @@ from cloudera.director.latest.environments_api import EnvironmentsApi
 from cloudera.director.latest.eula_api import EulaApi
 from cloudera.director.latest.import_client_config_api import ImportClientConfigApi
 from cloudera.director.latest.instance_templates_api import InstanceTemplatesApi
+from cloudera.director.latest.marketplaces_api import MarketplacesApi
 from cloudera.director.latest.notifications_api import NotificationsApi
 from cloudera.director.latest.provider_metadata_api import ProviderMetadataApi
 from cloudera.director.latest.server_config_api import ServerConfigApi
@@ -71,6 +72,7 @@ from cloudera.director.latest.models.instance_provider_config import InstancePro
 from cloudera.director.latest.models.instance_state import InstanceState
 from cloudera.director.latest.models.instance_template import InstanceTemplate
 from cloudera.director.latest.models.login import Login
+from cloudera.director.latest.models.marketplace_image import MarketplaceImage
 from cloudera.director.latest.models.metering_setting import MeteringSetting
 from cloudera.director.latest.models.metrics import Metrics
 from cloudera.director.latest.models.migrating_group import MigratingGroup

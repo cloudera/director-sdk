@@ -129,7 +129,7 @@ class ImportClientConfigApi(object):
         auth_settings = ['basic']  # noqa: E501
 
         return self.api_client.call_api(
-            '/api/d6.1/import/clientConfig/convertSimple', 'POST',
+            '/api/d6.2/import/clientConfig/convertSimple', 'POST',
             path_params,
             query_params,
             header_params,
@@ -241,7 +241,7 @@ class ImportClientConfigApi(object):
         auth_settings = ['basic']  # noqa: E501
 
         return self.api_client.call_api(
-            '/api/d6.1/import', 'POST',
+            '/api/d6.2/import', 'POST',
             path_params,
             query_params,
             header_params,
@@ -353,7 +353,7 @@ class ImportClientConfigApi(object):
         auth_settings = ['basic']  # noqa: E501
 
         return self.api_client.call_api(
-            '/api/d6.1/import/clientConfig/validate', 'POST',
+            '/api/d6.2/import/clientConfig/validate', 'POST',
             path_params,
             query_params,
             header_params,

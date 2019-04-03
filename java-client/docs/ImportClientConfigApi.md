@@ -4,9 +4,9 @@ All URIs are relative to *https://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**convertSimple**](ImportClientConfigApi.md#convertSimple) | **POST** /api/d6.1/import/clientConfig/convertSimple | Convert Simple Configuration
-[**importClientConfig**](ImportClientConfigApi.md#importClientConfig) | **POST** /api/d6.1/import | Import Client Config
-[**validate**](ImportClientConfigApi.md#validate) | **POST** /api/d6.1/import/clientConfig/validate | Validate Client Config
+[**convertSimple**](ImportClientConfigApi.md#convertSimple) | **POST** /api/d6.2/import/clientConfig/convertSimple | Convert Simple Configuration
+[**importClientConfig**](ImportClientConfigApi.md#importClientConfig) | **POST** /api/d6.2/import | Import Client Config
+[**validate**](ImportClientConfigApi.md#validate) | **POST** /api/d6.2/import/clientConfig/validate | Validate Client Config
 
 
 <a name="convertSimple"></a>

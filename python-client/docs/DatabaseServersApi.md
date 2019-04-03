@@ -4,14 +4,14 @@ All URIs are relative to *https://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**create**](DatabaseServersApi.md#create) | **POST** /api/d6.1/environments/{environment}/databaseServers | Create a new external database server
-[**delete**](DatabaseServersApi.md#delete) | **DELETE** /api/d6.1/environments/{environment}/databaseServers/{externalDatabaseServer} | Delete an external database server by name
-[**get_database_server_usage**](DatabaseServersApi.md#get_database_server_usage) | **GET** /api/d6.1/environments/{environment}/databaseServers/{externalDatabaseServer}/usage | Get an external database server usage by name
-[**get_redacted**](DatabaseServersApi.md#get_redacted) | **GET** /api/d6.1/environments/{environment}/databaseServers/{externalDatabaseServer} | Get an external database server by name
-[**get_status**](DatabaseServersApi.md#get_status) | **GET** /api/d6.1/environments/{environment}/databaseServers/{externalDatabaseServer}/status | Get an external database server status by name
-[**get_template_redacted**](DatabaseServersApi.md#get_template_redacted) | **GET** /api/d6.1/environments/{environment}/databaseServers/{externalDatabaseServer}/template | Get an external database server template by name
-[**list**](DatabaseServersApi.md#list) | **GET** /api/d6.1/environments/{environment}/databaseServers | List all externalDatabaseServers
-[**update**](DatabaseServersApi.md#update) | **PUT** /api/d6.1/environments/{environment}/databaseServers/{externalDatabaseServer} | Update an existing external database server (unsupported)
+[**create**](DatabaseServersApi.md#create) | **POST** /api/d6.2/environments/{environment}/databaseServers | Create a new external database server
+[**delete**](DatabaseServersApi.md#delete) | **DELETE** /api/d6.2/environments/{environment}/databaseServers/{externalDatabaseServer} | Delete an external database server by name
+[**get_database_server_usage**](DatabaseServersApi.md#get_database_server_usage) | **GET** /api/d6.2/environments/{environment}/databaseServers/{externalDatabaseServer}/usage | Get an external database server usage by name
+[**get_redacted**](DatabaseServersApi.md#get_redacted) | **GET** /api/d6.2/environments/{environment}/databaseServers/{externalDatabaseServer} | Get an external database server by name
+[**get_status**](DatabaseServersApi.md#get_status) | **GET** /api/d6.2/environments/{environment}/databaseServers/{externalDatabaseServer}/status | Get an external database server status by name
+[**get_template_redacted**](DatabaseServersApi.md#get_template_redacted) | **GET** /api/d6.2/environments/{environment}/databaseServers/{externalDatabaseServer}/template | Get an external database server template by name
+[**list**](DatabaseServersApi.md#list) | **GET** /api/d6.2/environments/{environment}/databaseServers | List all externalDatabaseServers
+[**update**](DatabaseServersApi.md#update) | **PUT** /api/d6.2/environments/{environment}/databaseServers/{externalDatabaseServer} | Update an existing external database server (unsupported)
 
 
 # **create**

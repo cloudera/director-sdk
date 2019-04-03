@@ -4,15 +4,15 @@ All URIs are relative to *https://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**collect_diagnostic_data**](DeploymentsApi.md#collect_diagnostic_data) | **POST** /api/d6.1/environments/{environment}/deployments/{deployment}/diagnosticData | Collects diagnostic data
-[**create**](DeploymentsApi.md#create) | **POST** /api/d6.1/environments/{environment}/deployments | Create a new deployment
-[**delete**](DeploymentsApi.md#delete) | **DELETE** /api/d6.1/environments/{environment}/deployments/{deployment} | Delete a deployment by name
-[**get_redacted**](DeploymentsApi.md#get_redacted) | **GET** /api/d6.1/environments/{environment}/deployments/{deployment} | Get a deployment by name
-[**get_status**](DeploymentsApi.md#get_status) | **GET** /api/d6.1/environments/{environment}/deployments/{deployment}/status | Get a deployment status by name
-[**get_template_redacted**](DeploymentsApi.md#get_template_redacted) | **GET** /api/d6.1/environments/{environment}/deployments/{deployment}/template | Get a deployment template by name
-[**list**](DeploymentsApi.md#list) | **GET** /api/d6.1/environments/{environment}/deployments | List all deployments
-[**update**](DeploymentsApi.md#update) | **PUT** /api/d6.1/environments/{environment}/deployments/{deployment} | Update an existing deployment template
-[**update_metering_setting**](DeploymentsApi.md#update_metering_setting) | **PUT** /api/d6.1/environments/{environment}/deployments/{deployment}/metering | Update billing ID for an existing deployment
+[**collect_diagnostic_data**](DeploymentsApi.md#collect_diagnostic_data) | **POST** /api/d6.2/environments/{environment}/deployments/{deployment}/diagnosticData | Collects diagnostic data
+[**create**](DeploymentsApi.md#create) | **POST** /api/d6.2/environments/{environment}/deployments | Create a new deployment
+[**delete**](DeploymentsApi.md#delete) | **DELETE** /api/d6.2/environments/{environment}/deployments/{deployment} | Delete a deployment by name
+[**get_redacted**](DeploymentsApi.md#get_redacted) | **GET** /api/d6.2/environments/{environment}/deployments/{deployment} | Get a deployment by name
+[**get_status**](DeploymentsApi.md#get_status) | **GET** /api/d6.2/environments/{environment}/deployments/{deployment}/status | Get a deployment status by name
+[**get_template_redacted**](DeploymentsApi.md#get_template_redacted) | **GET** /api/d6.2/environments/{environment}/deployments/{deployment}/template | Get a deployment template by name
+[**list**](DeploymentsApi.md#list) | **GET** /api/d6.2/environments/{environment}/deployments | List all deployments
+[**update**](DeploymentsApi.md#update) | **PUT** /api/d6.2/environments/{environment}/deployments/{deployment} | Update an existing deployment template
+[**update_metering_setting**](DeploymentsApi.md#update_metering_setting) | **PUT** /api/d6.2/environments/{environment}/deployments/{deployment}/metering | Update billing ID for an existing deployment
 
 
 # **collect_diagnostic_data**

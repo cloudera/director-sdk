@@ -137,7 +137,7 @@ class ClustersApi(object):
         auth_settings = ['basic']  # noqa: E501
 
         return self.api_client.call_api(
-            '/api/d6.1/environments/{environment}/deployments/{deployment}/clusters/{cluster}/diagnosticData', 'POST',
+            '/api/d6.2/environments/{environment}/deployments/{deployment}/clusters/{cluster}/diagnosticData', 'POST',
             path_params,
             query_params,
             header_params,
@@ -249,7 +249,7 @@ class ClustersApi(object):
         auth_settings = ['basic']  # noqa: E501
 
         return self.api_client.call_api(
-            '/api/d6.1/environments/{environment}/deployments/{deployment}/clusters', 'POST',
+            '/api/d6.2/environments/{environment}/deployments/{deployment}/clusters', 'POST',
             path_params,
             query_params,
             header_params,
@@ -361,7 +361,7 @@ class ClustersApi(object):
         auth_settings = ['basic']  # noqa: E501
 
         return self.api_client.call_api(
-            '/api/d6.1/environments/{environment}/deployments/{deployment}/clusters/{cluster}', 'DELETE',
+            '/api/d6.2/environments/{environment}/deployments/{deployment}/clusters/{cluster}', 'DELETE',
             path_params,
             query_params,
             header_params,
@@ -473,7 +473,7 @@ class ClustersApi(object):
         auth_settings = ['basic']  # noqa: E501
 
         return self.api_client.call_api(
-            '/api/d6.1/environments/{environment}/deployments/{deployment}/clusters/{cluster}/config', 'GET',
+            '/api/d6.2/environments/{environment}/deployments/{deployment}/clusters/{cluster}/config', 'GET',
             path_params,
             query_params,
             header_params,
@@ -585,7 +585,7 @@ class ClustersApi(object):
         auth_settings = ['basic']  # noqa: E501
 
         return self.api_client.call_api(
-            '/api/d6.1/environments/{environment}/deployments/{deployment}/clusters/{cluster}/settings', 'GET',
+            '/api/d6.2/environments/{environment}/deployments/{deployment}/clusters/{cluster}/settings', 'GET',
             path_params,
             query_params,
             header_params,
@@ -705,7 +705,7 @@ class ClustersApi(object):
         auth_settings = ['basic']  # noqa: E501
 
         return self.api_client.call_api(
-            '/api/d6.1/environments/{environment}/deployments/{deployment}/clusters/{cluster}/history', 'GET',
+            '/api/d6.2/environments/{environment}/deployments/{deployment}/clusters/{cluster}/history', 'GET',
             path_params,
             query_params,
             header_params,
@@ -817,7 +817,7 @@ class ClustersApi(object):
         auth_settings = ['basic']  # noqa: E501
 
         return self.api_client.call_api(
-            '/api/d6.1/environments/{environment}/deployments/{deployment}/clusters/{cluster}/metrics', 'GET',
+            '/api/d6.2/environments/{environment}/deployments/{deployment}/clusters/{cluster}/metrics', 'GET',
             path_params,
             query_params,
             header_params,
@@ -929,7 +929,7 @@ class ClustersApi(object):
         auth_settings = ['basic']  # noqa: E501
 
         return self.api_client.call_api(
-            '/api/d6.1/environments/{environment}/deployments/{deployment}/clusters/{cluster}', 'GET',
+            '/api/d6.2/environments/{environment}/deployments/{deployment}/clusters/{cluster}', 'GET',
             path_params,
             query_params,
             header_params,
@@ -1041,7 +1041,7 @@ class ClustersApi(object):
         auth_settings = ['basic']  # noqa: E501
 
         return self.api_client.call_api(
-            '/api/d6.1/environments/{environment}/deployments/{deployment}/clusters/{cluster}/status', 'GET',
+            '/api/d6.2/environments/{environment}/deployments/{deployment}/clusters/{cluster}/status', 'GET',
             path_params,
             query_params,
             header_params,
@@ -1153,7 +1153,7 @@ class ClustersApi(object):
         auth_settings = ['basic']  # noqa: E501
 
         return self.api_client.call_api(
-            '/api/d6.1/environments/{environment}/deployments/{deployment}/clusters/{cluster}/template', 'GET',
+            '/api/d6.2/environments/{environment}/deployments/{deployment}/clusters/{cluster}/template', 'GET',
             path_params,
             query_params,
             header_params,
@@ -1257,7 +1257,7 @@ class ClustersApi(object):
         auth_settings = ['basic']  # noqa: E501
 
         return self.api_client.call_api(
-            '/api/d6.1/environments/{environment}/deployments/{deployment}/clusters', 'GET',
+            '/api/d6.2/environments/{environment}/deployments/{deployment}/clusters', 'GET',
             path_params,
             query_params,
             header_params,
@@ -1377,7 +1377,7 @@ class ClustersApi(object):
         auth_settings = ['basic']  # noqa: E501
 
         return self.api_client.call_api(
-            '/api/d6.1/environments/{environment}/deployments/{deployment}/clusters/{cluster}', 'PUT',
+            '/api/d6.2/environments/{environment}/deployments/{deployment}/clusters/{cluster}', 'PUT',
             path_params,
             query_params,
             header_params,
@@ -1497,7 +1497,7 @@ class ClustersApi(object):
         auth_settings = ['basic']  # noqa: E501
 
         return self.api_client.call_api(
-            '/api/d6.1/environments/{environment}/deployments/{deployment}/clusters/{cluster}/settings', 'PUT',
+            '/api/d6.2/environments/{environment}/deployments/{deployment}/clusters/{cluster}/settings', 'PUT',
             path_params,
             query_params,
             header_params,

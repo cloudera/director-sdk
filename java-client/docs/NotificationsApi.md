@@ -4,7 +4,7 @@ All URIs are relative to *https://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**get**](NotificationsApi.md#get) | **GET** /api/d6.1/notifications | Get system notification messages
+[**get**](NotificationsApi.md#get) | **GET** /api/d6.2/notifications | Get system notification messages
 
 
 <a name="get"></a>

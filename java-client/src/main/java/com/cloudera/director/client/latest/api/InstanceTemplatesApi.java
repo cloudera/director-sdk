@@ -71,7 +71,7 @@ public class InstanceTemplatesApi {
         Object localVarPostBody = instanceTemplate;
 
         // create path and map variables
-        String localVarPath = "/api/d6.1/environments/{environment}/templates/instances"
+        String localVarPath = "/api/d6.2/environments/{environment}/templates/instances"
             .replaceAll("\\{" + "environment" + "\\}", apiClient.escapeString(environment.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
@@ -199,7 +199,7 @@ public class InstanceTemplatesApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/api/d6.1/environments/{environment}/templates/instances/{template}"
+        String localVarPath = "/api/d6.2/environments/{environment}/templates/instances/{template}"
             .replaceAll("\\{" + "environment" + "\\}", apiClient.escapeString(environment.toString()))
             .replaceAll("\\{" + "template" + "\\}", apiClient.escapeString(template.toString()));
 
@@ -328,7 +328,7 @@ public class InstanceTemplatesApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/api/d6.1/environments/{environment}/templates/instances/{template}"
+        String localVarPath = "/api/d6.2/environments/{environment}/templates/instances/{template}"
             .replaceAll("\\{" + "environment" + "\\}", apiClient.escapeString(environment.toString()))
             .replaceAll("\\{" + "template" + "\\}", apiClient.escapeString(template.toString()));
 
@@ -460,7 +460,7 @@ public class InstanceTemplatesApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/api/d6.1/environments/{environment}/templates/instances"
+        String localVarPath = "/api/d6.2/environments/{environment}/templates/instances"
             .replaceAll("\\{" + "environment" + "\\}", apiClient.escapeString(environment.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
@@ -585,7 +585,7 @@ public class InstanceTemplatesApi {
         Object localVarPostBody = instanceTemplate;
 
         // create path and map variables
-        String localVarPath = "/api/d6.1/environments/{environment}/templates/instances/{template}"
+        String localVarPath = "/api/d6.2/environments/{environment}/templates/instances/{template}"
             .replaceAll("\\{" + "environment" + "\\}", apiClient.escapeString(environment.toString()))
             .replaceAll("\\{" + "template" + "\\}", apiClient.escapeString(template.toString()));
 

@@ -70,7 +70,7 @@ public class EnvironmentsApi {
         Object localVarPostBody = environment;
 
         // create path and map variables
-        String localVarPath = "/api/d6.1/environments";
+        String localVarPath = "/api/d6.2/environments";
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -188,7 +188,7 @@ public class EnvironmentsApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/api/d6.1/environments/{name}"
+        String localVarPath = "/api/d6.2/environments/{name}"
             .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
@@ -307,7 +307,7 @@ public class EnvironmentsApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/api/d6.1/environments/{name}"
+        String localVarPath = "/api/d6.2/environments/{name}"
             .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
@@ -429,7 +429,7 @@ public class EnvironmentsApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/api/d6.1/environments";
+        String localVarPath = "/api/d6.2/environments";
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -544,7 +544,7 @@ public class EnvironmentsApi {
         Object localVarPostBody = environment;
 
         // create path and map variables
-        String localVarPath = "/api/d6.1/environments/{name}"
+        String localVarPath = "/api/d6.2/environments/{name}"
             .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
@@ -672,7 +672,7 @@ public class EnvironmentsApi {
         Object localVarPostBody = credentials;
 
         // create path and map variables
-        String localVarPath = "/api/d6.1/environments/{name}/provider/credentials"
+        String localVarPath = "/api/d6.2/environments/{name}/provider/credentials"
             .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();

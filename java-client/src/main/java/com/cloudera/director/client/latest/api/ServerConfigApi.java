@@ -69,7 +69,7 @@ public class ServerConfigApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/api/d6.1/serverConfigs";
+        String localVarPath = "/api/d6.2/serverConfigs";
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -182,7 +182,7 @@ public class ServerConfigApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/api/d6.1/serverConfigs/metadata";
+        String localVarPath = "/api/d6.2/serverConfigs/metadata";
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -296,7 +296,7 @@ public class ServerConfigApi {
         Object localVarPostBody = serverConfigs;
 
         // create path and map variables
-        String localVarPath = "/api/d6.1/serverConfigs";
+        String localVarPath = "/api/d6.2/serverConfigs";
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();

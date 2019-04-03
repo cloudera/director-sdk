@@ -74,7 +74,7 @@ public class DeploymentsApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/api/d6.1/environments/{environment}/deployments/{deployment}/diagnosticData"
+        String localVarPath = "/api/d6.2/environments/{environment}/deployments/{deployment}/diagnosticData"
             .replaceAll("\\{" + "environment" + "\\}", apiClient.escapeString(environment.toString()))
             .replaceAll("\\{" + "deployment" + "\\}", apiClient.escapeString(deployment.toString()));
 
@@ -203,7 +203,7 @@ public class DeploymentsApi {
         Object localVarPostBody = deploymentTemplate;
 
         // create path and map variables
-        String localVarPath = "/api/d6.1/environments/{environment}/deployments"
+        String localVarPath = "/api/d6.2/environments/{environment}/deployments"
             .replaceAll("\\{" + "environment" + "\\}", apiClient.escapeString(environment.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
@@ -331,7 +331,7 @@ public class DeploymentsApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/api/d6.1/environments/{environment}/deployments/{deployment}"
+        String localVarPath = "/api/d6.2/environments/{environment}/deployments/{deployment}"
             .replaceAll("\\{" + "environment" + "\\}", apiClient.escapeString(environment.toString()))
             .replaceAll("\\{" + "deployment" + "\\}", apiClient.escapeString(deployment.toString()));
 
@@ -460,7 +460,7 @@ public class DeploymentsApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/api/d6.1/environments/{environment}/deployments/{deployment}"
+        String localVarPath = "/api/d6.2/environments/{environment}/deployments/{deployment}"
             .replaceAll("\\{" + "environment" + "\\}", apiClient.escapeString(environment.toString()))
             .replaceAll("\\{" + "deployment" + "\\}", apiClient.escapeString(deployment.toString()));
 
@@ -593,7 +593,7 @@ public class DeploymentsApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/api/d6.1/environments/{environment}/deployments/{deployment}/status"
+        String localVarPath = "/api/d6.2/environments/{environment}/deployments/{deployment}/status"
             .replaceAll("\\{" + "environment" + "\\}", apiClient.escapeString(environment.toString()))
             .replaceAll("\\{" + "deployment" + "\\}", apiClient.escapeString(deployment.toString()));
 
@@ -726,7 +726,7 @@ public class DeploymentsApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/api/d6.1/environments/{environment}/deployments/{deployment}/template"
+        String localVarPath = "/api/d6.2/environments/{environment}/deployments/{deployment}/template"
             .replaceAll("\\{" + "environment" + "\\}", apiClient.escapeString(environment.toString()))
             .replaceAll("\\{" + "deployment" + "\\}", apiClient.escapeString(deployment.toString()));
 
@@ -858,7 +858,7 @@ public class DeploymentsApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/api/d6.1/environments/{environment}/deployments"
+        String localVarPath = "/api/d6.2/environments/{environment}/deployments"
             .replaceAll("\\{" + "environment" + "\\}", apiClient.escapeString(environment.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
@@ -983,7 +983,7 @@ public class DeploymentsApi {
         Object localVarPostBody = updatedTemplate;
 
         // create path and map variables
-        String localVarPath = "/api/d6.1/environments/{environment}/deployments/{deployment}"
+        String localVarPath = "/api/d6.2/environments/{environment}/deployments/{deployment}"
             .replaceAll("\\{" + "environment" + "\\}", apiClient.escapeString(environment.toString()))
             .replaceAll("\\{" + "deployment" + "\\}", apiClient.escapeString(deployment.toString()));
 
@@ -1121,7 +1121,7 @@ public class DeploymentsApi {
         Object localVarPostBody = meteringSetting;
 
         // create path and map variables
-        String localVarPath = "/api/d6.1/environments/{environment}/deployments/{deployment}/metering"
+        String localVarPath = "/api/d6.2/environments/{environment}/deployments/{deployment}/metering"
             .replaceAll("\\{" + "environment" + "\\}", apiClient.escapeString(environment.toString()))
             .replaceAll("\\{" + "deployment" + "\\}", apiClient.escapeString(deployment.toString()));
 

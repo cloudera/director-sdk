@@ -699,6 +699,11 @@ margin-bottom: 20px;
             defs.version = {
   "type" : "object",
   "properties" : {
+    "productVersion" : {
+      "type" : "string",
+      "description" : "Current version of Director",
+      "readOnly" : true
+    },
     "apiVersions" : {
       "type" : "array",
       "description" : "The list of supported API versions",
@@ -708,14 +713,10 @@ margin-bottom: 20px;
     },
     "currentServerTime" : {
       "type" : "string",
-      "description" : "The current server time"
-    },
-    "productVersion" : {
-      "type" : "string",
-      "description" : "Current version of Director"
+      "description" : "The current server time",
+      "readOnly" : true
     }
-  },
-  "title" : "version"
+  }
 };
   </script>
 
@@ -765,7 +766,7 @@ margin-bottom: 20px;
                       <article id="api-Versions-getLatestVersion-0" data-group="User" data-name="getLatestVersion" data-version="0">
                         <div class="pull-left">
                           <h1>getLatestVersion</h1>
-                          <p>getLatestVersion</p>
+                          <p></p>
                         </div>
                         <div class="pull-right"></div>
                         <div class="clearfix"></div>
@@ -793,7 +794,7 @@ margin-bottom: 20px;
 
                         <div class="tab-content">
                           <div class="tab-pane active" id="examples-Versions-getLatestVersion-0-curl">
-                            <pre class="prettyprint"><code class="language-bsh">curl -X GET -H "Accept: */*" -H "Authorization: Basic [[basicHash]]" "https://localhost:7189/api/versions/latest"</code></pre>
+                            <pre class="prettyprint"><code class="language-bsh">curl -X GET "https://localhost/api/versions/latest"</code></pre>
                           </div>
                           <div class="tab-pane" id="examples-Versions-getLatestVersion-0-java">
                             <pre class="prettyprint"><code class="language-java">import com.cloudera.director.client.common.*;
@@ -807,13 +808,7 @@ import java.util.*;
 public class VersionsApiExample {
 
     public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
         
-        // Configure HTTP basic authorization: basic
-        HttpBasicAuth basic = (HttpBasicAuth) defaultClient.getAuthentication("basic");
-        basic.setUsername("YOUR USERNAME");
-        basic.setPassword("YOUR PASSWORD");
-
         VersionsApi apiInstance = new VersionsApi();
         try {
             'String' result = apiInstance.getLatestVersion();
@@ -848,15 +843,9 @@ public class VersionsApiExample {
   <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
   </div> -->
                             <div class="tab-pane" id="examples-Versions-getLatestVersion-0-objc">
-                              <pre class="prettyprint"><code class="language-cpp">Configuration *apiConfig = [Configuration sharedConfig];
-// Configure HTTP basic authorization (authentication scheme: basic)
-[apiConfig setUsername:@"YOUR_USERNAME"];
-[apiConfig setPassword:@"YOUR_PASSWORD"];
-
-
+                              <pre class="prettyprint"><code class="language-cpp">
 VersionsApi *apiInstance = [[VersionsApi alloc] init];
 
-// getLatestVersion
 [apiInstance getLatestVersionWithCompletionHandler: 
               ^('String' output, NSError* error) {
                             if (output) {
@@ -871,12 +860,6 @@ VersionsApi *apiInstance = [[VersionsApi alloc] init];
 
                             <div class="tab-pane" id="examples-Versions-getLatestVersion-0-javascript">
                               <pre class="prettyprint"><code class="language-js">var ClouderaAltusDirectorApi = require('cloudera_altus_director_api');
-var defaultClient = ClouderaAltusDirectorApi.ApiClient.instance;
-
-// Configure HTTP basic authorization: basic
-var basic = defaultClient.authentications['basic'];
-basic.username = 'YOUR USERNAME'
-basic.password = 'YOUR PASSWORD'
 
 var api = new ClouderaAltusDirectorApi.VersionsApi()
 
@@ -908,15 +891,10 @@ namespace Example
         public void main()
         {
             
-            // Configure HTTP basic authorization: basic
-            Configuration.Default.Username = "YOUR_USERNAME";
-            Configuration.Default.Password = "YOUR_PASSWORD";
-
             var apiInstance = new VersionsApi();
 
             try
             {
-                // getLatestVersion
                 'String' result = apiInstance.getLatestVersion();
                 Debug.WriteLine(result);
             }
@@ -934,10 +912,6 @@ namespace Example
                               <pre class="prettyprint"><code class="language-php"><&#63;php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-// Configure HTTP basic authorization: basic
-Swagger\Client\Configuration::getDefaultConfiguration()->setUsername('YOUR_USERNAME');
-Swagger\Client\Configuration::getDefaultConfiguration()->setPassword('YOUR_PASSWORD');
-
 $api_instance = new Swagger\Client\Api\VersionsApi();
 
 try {
@@ -953,10 +927,6 @@ try {
                               <pre class="prettyprint"><code class="language-perl">use Data::Dumper;
 use WWW::SwaggerClient::Configuration;
 use WWW::SwaggerClient::VersionsApi;
-
-# Configure HTTP basic authorization: basic
-$WWW::SwaggerClient::Configuration::username = 'YOUR_USERNAME';
-$WWW::SwaggerClient::Configuration::password = 'YOUR_PASSWORD';
 
 my $api_instance = WWW::SwaggerClient::VersionsApi->new();
 
@@ -976,15 +946,10 @@ import swagger_client
 from swagger_client.rest import ApiException
 from pprint import pprint
 
-# Configure HTTP basic authorization: basic
-swagger_client.configuration.username = 'YOUR_USERNAME'
-swagger_client.configuration.password = 'YOUR_PASSWORD'
-
 # create an instance of the API class
 api_instance = swagger_client.VersionsApi()
 
 try: 
-    # getLatestVersion
     api_response = api_instance.get_latest_version()
     pprint(api_response)
 except ApiException as e:
@@ -1000,7 +965,7 @@ except ApiException as e:
 
 
                           <h2>Responses</h2>
-                            <h3> Status: 200 - OK </h3>
+                            <h3> Status: 200 - successful operation </h3>
 
                             <ul class="nav nav-tabs nav-tabs-examples" >
                                 <li class="active">
@@ -1015,7 +980,7 @@ except ApiException as e:
                                     <script>
                                       $(document).ready(function() {
                                         var schemaWrapper = {
-  "description" : "OK",
+  "description" : "successful operation",
   "schema" : {
     "type" : "string"
   }
@@ -1050,7 +1015,7 @@ except ApiException as e:
                       <article id="api-Versions-getVersions-0" data-group="User" data-name="getVersions" data-version="0">
                         <div class="pull-left">
                           <h1>getVersions</h1>
-                          <p>getVersions</p>
+                          <p></p>
                         </div>
                         <div class="pull-right"></div>
                         <div class="clearfix"></div>
@@ -1078,7 +1043,7 @@ except ApiException as e:
 
                         <div class="tab-content">
                           <div class="tab-pane active" id="examples-Versions-getVersions-0-curl">
-                            <pre class="prettyprint"><code class="language-bsh">curl -X GET -H "Accept: */*" -H "Authorization: Basic [[basicHash]]" "https://localhost:7189/api/versions"</code></pre>
+                            <pre class="prettyprint"><code class="language-bsh">curl -X GET "https://localhost/api/versions"</code></pre>
                           </div>
                           <div class="tab-pane" id="examples-Versions-getVersions-0-java">
                             <pre class="prettyprint"><code class="language-java">import com.cloudera.director.client.common.*;
@@ -1092,13 +1057,7 @@ import java.util.*;
 public class VersionsApiExample {
 
     public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
         
-        // Configure HTTP basic authorization: basic
-        HttpBasicAuth basic = (HttpBasicAuth) defaultClient.getAuthentication("basic");
-        basic.setUsername("YOUR USERNAME");
-        basic.setPassword("YOUR PASSWORD");
-
         VersionsApi apiInstance = new VersionsApi();
         try {
             version result = apiInstance.getVersions();
@@ -1133,15 +1092,9 @@ public class VersionsApiExample {
   <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
   </div> -->
                             <div class="tab-pane" id="examples-Versions-getVersions-0-objc">
-                              <pre class="prettyprint"><code class="language-cpp">Configuration *apiConfig = [Configuration sharedConfig];
-// Configure HTTP basic authorization (authentication scheme: basic)
-[apiConfig setUsername:@"YOUR_USERNAME"];
-[apiConfig setPassword:@"YOUR_PASSWORD"];
-
-
+                              <pre class="prettyprint"><code class="language-cpp">
 VersionsApi *apiInstance = [[VersionsApi alloc] init];
 
-// getVersions
 [apiInstance getVersionsWithCompletionHandler: 
               ^(version output, NSError* error) {
                             if (output) {
@@ -1156,12 +1109,6 @@ VersionsApi *apiInstance = [[VersionsApi alloc] init];
 
                             <div class="tab-pane" id="examples-Versions-getVersions-0-javascript">
                               <pre class="prettyprint"><code class="language-js">var ClouderaAltusDirectorApi = require('cloudera_altus_director_api');
-var defaultClient = ClouderaAltusDirectorApi.ApiClient.instance;
-
-// Configure HTTP basic authorization: basic
-var basic = defaultClient.authentications['basic'];
-basic.username = 'YOUR USERNAME'
-basic.password = 'YOUR PASSWORD'
 
 var api = new ClouderaAltusDirectorApi.VersionsApi()
 
@@ -1193,15 +1140,10 @@ namespace Example
         public void main()
         {
             
-            // Configure HTTP basic authorization: basic
-            Configuration.Default.Username = "YOUR_USERNAME";
-            Configuration.Default.Password = "YOUR_PASSWORD";
-
             var apiInstance = new VersionsApi();
 
             try
             {
-                // getVersions
                 version result = apiInstance.getVersions();
                 Debug.WriteLine(result);
             }
@@ -1219,10 +1161,6 @@ namespace Example
                               <pre class="prettyprint"><code class="language-php"><&#63;php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-// Configure HTTP basic authorization: basic
-Swagger\Client\Configuration::getDefaultConfiguration()->setUsername('YOUR_USERNAME');
-Swagger\Client\Configuration::getDefaultConfiguration()->setPassword('YOUR_PASSWORD');
-
 $api_instance = new Swagger\Client\Api\VersionsApi();
 
 try {
@@ -1238,10 +1176,6 @@ try {
                               <pre class="prettyprint"><code class="language-perl">use Data::Dumper;
 use WWW::SwaggerClient::Configuration;
 use WWW::SwaggerClient::VersionsApi;
-
-# Configure HTTP basic authorization: basic
-$WWW::SwaggerClient::Configuration::username = 'YOUR_USERNAME';
-$WWW::SwaggerClient::Configuration::password = 'YOUR_PASSWORD';
 
 my $api_instance = WWW::SwaggerClient::VersionsApi->new();
 
@@ -1261,15 +1195,10 @@ import swagger_client
 from swagger_client.rest import ApiException
 from pprint import pprint
 
-# Configure HTTP basic authorization: basic
-swagger_client.configuration.username = 'YOUR_USERNAME'
-swagger_client.configuration.password = 'YOUR_PASSWORD'
-
 # create an instance of the API class
 api_instance = swagger_client.VersionsApi()
 
 try: 
-    # getVersions
     api_response = api_instance.get_versions()
     pprint(api_response)
 except ApiException as e:
@@ -1285,7 +1214,7 @@ except ApiException as e:
 
 
                           <h2>Responses</h2>
-                            <h3> Status: 200 - OK </h3>
+                            <h3> Status: 200 - successful operation </h3>
 
                             <ul class="nav nav-tabs nav-tabs-examples" >
                                 <li class="active">
@@ -1300,7 +1229,7 @@ except ApiException as e:
                                     <script>
                                       $(document).ready(function() {
                                         var schemaWrapper = {
-  "description" : "OK",
+  "description" : "successful operation",
   "schema" : {
     "$ref" : "#/definitions/version"
   }
@@ -1337,7 +1266,7 @@ except ApiException as e:
             <div id="api-_footer">
               <p>Suggestions, contact, support and error reporting;
                   <div class="app-desc">Information URL: <a href="http://www.cloudera.com/">http://www.cloudera.com/</a></div>
-                  <div class="app-desc">Contact Info: <a href="sme-eng-cloud@cloudera.com">sme-eng-cloud@cloudera.com</a></div>
+                  <div class="app-desc">Contact Info: <a href="hello@helloreverb.com">hello@helloreverb.com</a></div>
               </p>
                 <div class="license-info">Commercial License (c) 2018 Cloudera Inc.</div>
                 <div class="license-url">http://apache.org/licenses/LICENSE-2.0.html</div>
@@ -1345,7 +1274,7 @@ except ApiException as e:
           </div>
           <div id="generator">
             <div class="content">
-              Generated 2018-12-11T15:13:01.072-05:00
+              Generated 2019-04-03T15:08:43.875-04:00
             </div>
           </div>
       </div>

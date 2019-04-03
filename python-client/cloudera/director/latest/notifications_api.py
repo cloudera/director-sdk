@@ -113,7 +113,7 @@ class NotificationsApi(object):
         auth_settings = ['basic']  # noqa: E501
 
         return self.api_client.call_api(
-            '/api/d6.1/notifications', 'GET',
+            '/api/d6.2/notifications', 'GET',
             path_params,
             query_params,
             header_params,

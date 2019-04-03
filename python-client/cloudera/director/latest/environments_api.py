@@ -121,7 +121,7 @@ class EnvironmentsApi(object):
         auth_settings = ['basic']  # noqa: E501
 
         return self.api_client.call_api(
-            '/api/d6.1/environments', 'POST',
+            '/api/d6.2/environments', 'POST',
             path_params,
             query_params,
             header_params,
@@ -217,7 +217,7 @@ class EnvironmentsApi(object):
         auth_settings = ['basic']  # noqa: E501
 
         return self.api_client.call_api(
-            '/api/d6.1/environments/{name}', 'DELETE',
+            '/api/d6.2/environments/{name}', 'DELETE',
             path_params,
             query_params,
             header_params,
@@ -313,7 +313,7 @@ class EnvironmentsApi(object):
         auth_settings = ['basic']  # noqa: E501
 
         return self.api_client.call_api(
-            '/api/d6.1/environments/{name}', 'GET',
+            '/api/d6.2/environments/{name}', 'GET',
             path_params,
             query_params,
             header_params,
@@ -401,7 +401,7 @@ class EnvironmentsApi(object):
         auth_settings = ['basic']  # noqa: E501
 
         return self.api_client.call_api(
-            '/api/d6.1/environments', 'GET',
+            '/api/d6.2/environments', 'GET',
             path_params,
             query_params,
             header_params,
@@ -505,7 +505,7 @@ class EnvironmentsApi(object):
         auth_settings = ['basic']  # noqa: E501
 
         return self.api_client.call_api(
-            '/api/d6.1/environments/{name}', 'PUT',
+            '/api/d6.2/environments/{name}', 'PUT',
             path_params,
             query_params,
             header_params,
@@ -609,7 +609,7 @@ class EnvironmentsApi(object):
         auth_settings = ['basic']  # noqa: E501
 
         return self.api_client.call_api(
-            '/api/d6.1/environments/{name}/provider/credentials', 'PUT',
+            '/api/d6.2/environments/{name}/provider/credentials', 'PUT',
             path_params,
             query_params,
             header_params,

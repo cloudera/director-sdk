@@ -4,11 +4,11 @@ All URIs are relative to *https://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**create**](InstanceTemplatesApi.md#create) | **POST** /api/d6.1/environments/{environment}/templates/instances | Create a new instance template
-[**delete**](InstanceTemplatesApi.md#delete) | **DELETE** /api/d6.1/environments/{environment}/templates/instances/{template} | Delete an instance template by name
-[**get**](InstanceTemplatesApi.md#get) | **GET** /api/d6.1/environments/{environment}/templates/instances/{template} | Get an instance template by name
-[**list**](InstanceTemplatesApi.md#list) | **GET** /api/d6.1/environments/{environment}/templates/instances | List all instance templates
-[**update**](InstanceTemplatesApi.md#update) | **PUT** /api/d6.1/environments/{environment}/templates/instances/{template} | Update an existing instance template
+[**create**](InstanceTemplatesApi.md#create) | **POST** /api/d6.2/environments/{environment}/templates/instances | Create a new instance template
+[**delete**](InstanceTemplatesApi.md#delete) | **DELETE** /api/d6.2/environments/{environment}/templates/instances/{template} | Delete an instance template by name
+[**get**](InstanceTemplatesApi.md#get) | **GET** /api/d6.2/environments/{environment}/templates/instances/{template} | Get an instance template by name
+[**list**](InstanceTemplatesApi.md#list) | **GET** /api/d6.2/environments/{environment}/templates/instances | List all instance templates
+[**update**](InstanceTemplatesApi.md#update) | **PUT** /api/d6.2/environments/{environment}/templates/instances/{template} | Update an existing instance template
 
 
 # **create**

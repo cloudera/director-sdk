@@ -72,7 +72,7 @@ public class ImportClientConfigApi {
         Object localVarPostBody = simpleClientConfig;
 
         // create path and map variables
-        String localVarPath = "/api/d6.1/import/clientConfig/convertSimple";
+        String localVarPath = "/api/d6.2/import/clientConfig/convertSimple";
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -202,7 +202,7 @@ public class ImportClientConfigApi {
         Object localVarPostBody = clientConfig;
 
         // create path and map variables
-        String localVarPath = "/api/d6.1/import";
+        String localVarPath = "/api/d6.2/import";
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -342,7 +342,7 @@ public class ImportClientConfigApi {
         Object localVarPostBody = clientConfig;
 
         // create path and map variables
-        String localVarPath = "/api/d6.1/import/clientConfig/validate";
+        String localVarPath = "/api/d6.2/import/clientConfig/validate";
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();

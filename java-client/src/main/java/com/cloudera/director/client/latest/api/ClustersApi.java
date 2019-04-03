@@ -77,7 +77,7 @@ public class ClustersApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/api/d6.1/environments/{environment}/deployments/{deployment}/clusters/{cluster}/diagnosticData"
+        String localVarPath = "/api/d6.2/environments/{environment}/deployments/{deployment}/clusters/{cluster}/diagnosticData"
             .replaceAll("\\{" + "environment" + "\\}", apiClient.escapeString(environment.toString()))
             .replaceAll("\\{" + "deployment" + "\\}", apiClient.escapeString(deployment.toString()))
             .replaceAll("\\{" + "cluster" + "\\}", apiClient.escapeString(cluster.toString()));
@@ -216,7 +216,7 @@ public class ClustersApi {
         Object localVarPostBody = clusterTemplate;
 
         // create path and map variables
-        String localVarPath = "/api/d6.1/environments/{environment}/deployments/{deployment}/clusters"
+        String localVarPath = "/api/d6.2/environments/{environment}/deployments/{deployment}/clusters"
             .replaceAll("\\{" + "environment" + "\\}", apiClient.escapeString(environment.toString()))
             .replaceAll("\\{" + "deployment" + "\\}", apiClient.escapeString(deployment.toString()));
 
@@ -354,7 +354,7 @@ public class ClustersApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/api/d6.1/environments/{environment}/deployments/{deployment}/clusters/{cluster}"
+        String localVarPath = "/api/d6.2/environments/{environment}/deployments/{deployment}/clusters/{cluster}"
             .replaceAll("\\{" + "environment" + "\\}", apiClient.escapeString(environment.toString()))
             .replaceAll("\\{" + "deployment" + "\\}", apiClient.escapeString(deployment.toString()))
             .replaceAll("\\{" + "cluster" + "\\}", apiClient.escapeString(cluster.toString()));
@@ -493,7 +493,7 @@ public class ClustersApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/api/d6.1/environments/{environment}/deployments/{deployment}/clusters/{cluster}/config"
+        String localVarPath = "/api/d6.2/environments/{environment}/deployments/{deployment}/clusters/{cluster}/config"
             .replaceAll("\\{" + "environment" + "\\}", apiClient.escapeString(environment.toString()))
             .replaceAll("\\{" + "deployment" + "\\}", apiClient.escapeString(deployment.toString()))
             .replaceAll("\\{" + "cluster" + "\\}", apiClient.escapeString(cluster.toString()));
@@ -636,7 +636,7 @@ public class ClustersApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/api/d6.1/environments/{environment}/deployments/{deployment}/clusters/{cluster}/settings"
+        String localVarPath = "/api/d6.2/environments/{environment}/deployments/{deployment}/clusters/{cluster}/settings"
             .replaceAll("\\{" + "environment" + "\\}", apiClient.escapeString(environment.toString()))
             .replaceAll("\\{" + "deployment" + "\\}", apiClient.escapeString(deployment.toString()))
             .replaceAll("\\{" + "cluster" + "\\}", apiClient.escapeString(cluster.toString()));
@@ -781,7 +781,7 @@ public class ClustersApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/api/d6.1/environments/{environment}/deployments/{deployment}/clusters/{cluster}/history"
+        String localVarPath = "/api/d6.2/environments/{environment}/deployments/{deployment}/clusters/{cluster}/history"
             .replaceAll("\\{" + "environment" + "\\}", apiClient.escapeString(environment.toString()))
             .replaceAll("\\{" + "deployment" + "\\}", apiClient.escapeString(deployment.toString()))
             .replaceAll("\\{" + "cluster" + "\\}", apiClient.escapeString(cluster.toString()));
@@ -934,7 +934,7 @@ public class ClustersApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/api/d6.1/environments/{environment}/deployments/{deployment}/clusters/{cluster}/metrics"
+        String localVarPath = "/api/d6.2/environments/{environment}/deployments/{deployment}/clusters/{cluster}/metrics"
             .replaceAll("\\{" + "environment" + "\\}", apiClient.escapeString(environment.toString()))
             .replaceAll("\\{" + "deployment" + "\\}", apiClient.escapeString(deployment.toString()))
             .replaceAll("\\{" + "cluster" + "\\}", apiClient.escapeString(cluster.toString()));
@@ -1077,7 +1077,7 @@ public class ClustersApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/api/d6.1/environments/{environment}/deployments/{deployment}/clusters/{cluster}"
+        String localVarPath = "/api/d6.2/environments/{environment}/deployments/{deployment}/clusters/{cluster}"
             .replaceAll("\\{" + "environment" + "\\}", apiClient.escapeString(environment.toString()))
             .replaceAll("\\{" + "deployment" + "\\}", apiClient.escapeString(deployment.toString()))
             .replaceAll("\\{" + "cluster" + "\\}", apiClient.escapeString(cluster.toString()));
@@ -1220,7 +1220,7 @@ public class ClustersApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/api/d6.1/environments/{environment}/deployments/{deployment}/clusters/{cluster}/status"
+        String localVarPath = "/api/d6.2/environments/{environment}/deployments/{deployment}/clusters/{cluster}/status"
             .replaceAll("\\{" + "environment" + "\\}", apiClient.escapeString(environment.toString()))
             .replaceAll("\\{" + "deployment" + "\\}", apiClient.escapeString(deployment.toString()))
             .replaceAll("\\{" + "cluster" + "\\}", apiClient.escapeString(cluster.toString()));
@@ -1363,7 +1363,7 @@ public class ClustersApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/api/d6.1/environments/{environment}/deployments/{deployment}/clusters/{cluster}/template"
+        String localVarPath = "/api/d6.2/environments/{environment}/deployments/{deployment}/clusters/{cluster}/template"
             .replaceAll("\\{" + "environment" + "\\}", apiClient.escapeString(environment.toString()))
             .replaceAll("\\{" + "deployment" + "\\}", apiClient.escapeString(deployment.toString()))
             .replaceAll("\\{" + "cluster" + "\\}", apiClient.escapeString(cluster.toString()));
@@ -1505,7 +1505,7 @@ public class ClustersApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/api/d6.1/environments/{environment}/deployments/{deployment}/clusters"
+        String localVarPath = "/api/d6.2/environments/{environment}/deployments/{deployment}/clusters"
             .replaceAll("\\{" + "environment" + "\\}", apiClient.escapeString(environment.toString()))
             .replaceAll("\\{" + "deployment" + "\\}", apiClient.escapeString(deployment.toString()));
 
@@ -1640,7 +1640,7 @@ public class ClustersApi {
         Object localVarPostBody = desired;
 
         // create path and map variables
-        String localVarPath = "/api/d6.1/environments/{environment}/deployments/{deployment}/clusters/{cluster}"
+        String localVarPath = "/api/d6.2/environments/{environment}/deployments/{deployment}/clusters/{cluster}"
             .replaceAll("\\{" + "environment" + "\\}", apiClient.escapeString(environment.toString()))
             .replaceAll("\\{" + "deployment" + "\\}", apiClient.escapeString(deployment.toString()))
             .replaceAll("\\{" + "cluster" + "\\}", apiClient.escapeString(cluster.toString()));
@@ -1788,7 +1788,7 @@ public class ClustersApi {
         Object localVarPostBody = administrationSettings;
 
         // create path and map variables
-        String localVarPath = "/api/d6.1/environments/{environment}/deployments/{deployment}/clusters/{cluster}/settings"
+        String localVarPath = "/api/d6.2/environments/{environment}/deployments/{deployment}/clusters/{cluster}/settings"
             .replaceAll("\\{" + "environment" + "\\}", apiClient.escapeString(environment.toString()))
             .replaceAll("\\{" + "deployment" + "\\}", apiClient.escapeString(deployment.toString()))
             .replaceAll("\\{" + "cluster" + "\\}", apiClient.escapeString(cluster.toString()));

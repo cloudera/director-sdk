@@ -22,9 +22,7 @@ import com.beust.jcommander.Parameters;
 import com.beust.jcommander.internal.Lists;
 import com.cloudera.director.client.common.ApiClient;
 import com.cloudera.director.client.common.ApiException;
-import com.cloudera.director.client.latest.api.AuthenticationApi;
 import com.cloudera.director.client.latest.api.UsersApi;
-import com.cloudera.director.client.latest.model.Login;
 import com.cloudera.director.client.latest.model.User;
 
 import java.util.HashMap;
@@ -36,20 +34,6 @@ import java.util.Map;
  */
 public class UsersSample {
 
-  private static ApiClient newAuthenticatedApiClient(CommonParameters common) throws ApiException {
-    ApiClient client = new ApiClient(common.getServerUrl());
-    client.setVerifyingSsl(common.isHostnameVerificationEnabled());
-
-    Login login = Login.builder()
-        .username(common.getAdminUsername())
-        .password(common.getAdminPassword())
-        .build();
-
-    new AuthenticationApi(client).login(login);
-
-    return client;
-  }
-
   /**
    * A command to list all the user accounts.
    */
@@ -57,7 +41,7 @@ public class UsersSample {
   public static class ListCommand implements Command {
 
     public void run(CommonParameters common) throws ApiException {
-      ApiClient client = newAuthenticatedApiClient(common);
+      ApiClient client = ClientUtil.newAuthenticatedApiClient(common);
       UsersApi usersApi = new UsersApi(client);
 
       System.out.println("Listing all user accounts:");
@@ -81,7 +65,7 @@ public class UsersSample {
     private String password;
 
     public void run(CommonParameters common) throws Exception {
-      ApiClient client = newAuthenticatedApiClient(common);
+      ApiClient client = ClientUtil.newAuthenticatedApiClient(common);
       UsersApi usersApi = new UsersApi(client);
 
       List<String> roles = Lists.newArrayList();
@@ -118,7 +102,7 @@ public class UsersSample {
     private String username;
 
     public void run(CommonParameters common) throws Exception {
-      ApiClient client = newAuthenticatedApiClient(common);
+      ApiClient client = ClientUtil.newAuthenticatedApiClient(common);
 
       UsersApi usersApi = new UsersApi(client);
       usersApi.delete(username);

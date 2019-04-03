@@ -4,8 +4,8 @@ All URIs are relative to *https://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**get**](ProviderMetadataApi.md#get) | **GET** /api/d6.1/metadata/providers/{providerId} | Get a provider by name
-[**list**](ProviderMetadataApi.md#list) | **GET** /api/d6.1/metadata/providers | List all provider metadata
+[**get**](ProviderMetadataApi.md#get) | **GET** /api/d6.2/metadata/providers/{providerId} | Get a provider by name
+[**list**](ProviderMetadataApi.md#list) | **GET** /api/d6.2/metadata/providers | List all provider metadata
 
 
 <a name="get"></a>

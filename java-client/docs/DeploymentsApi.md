@@ -4,15 +4,15 @@ All URIs are relative to *https://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**collectDiagnosticData**](DeploymentsApi.md#collectDiagnosticData) | **POST** /api/d6.1/environments/{environment}/deployments/{deployment}/diagnosticData | Collects diagnostic data
-[**create**](DeploymentsApi.md#create) | **POST** /api/d6.1/environments/{environment}/deployments | Create a new deployment
-[**delete**](DeploymentsApi.md#delete) | **DELETE** /api/d6.1/environments/{environment}/deployments/{deployment} | Delete a deployment by name
-[**getRedacted**](DeploymentsApi.md#getRedacted) | **GET** /api/d6.1/environments/{environment}/deployments/{deployment} | Get a deployment by name
-[**getStatus**](DeploymentsApi.md#getStatus) | **GET** /api/d6.1/environments/{environment}/deployments/{deployment}/status | Get a deployment status by name
-[**getTemplateRedacted**](DeploymentsApi.md#getTemplateRedacted) | **GET** /api/d6.1/environments/{environment}/deployments/{deployment}/template | Get a deployment template by name
-[**list**](DeploymentsApi.md#list) | **GET** /api/d6.1/environments/{environment}/deployments | List all deployments
-[**update**](DeploymentsApi.md#update) | **PUT** /api/d6.1/environments/{environment}/deployments/{deployment} | Update an existing deployment template
-[**updateMeteringSetting**](DeploymentsApi.md#updateMeteringSetting) | **PUT** /api/d6.1/environments/{environment}/deployments/{deployment}/metering | Update billing ID for an existing deployment
+[**collectDiagnosticData**](DeploymentsApi.md#collectDiagnosticData) | **POST** /api/d6.2/environments/{environment}/deployments/{deployment}/diagnosticData | Collects diagnostic data
+[**create**](DeploymentsApi.md#create) | **POST** /api/d6.2/environments/{environment}/deployments | Create a new deployment
+[**delete**](DeploymentsApi.md#delete) | **DELETE** /api/d6.2/environments/{environment}/deployments/{deployment} | Delete a deployment by name
+[**getRedacted**](DeploymentsApi.md#getRedacted) | **GET** /api/d6.2/environments/{environment}/deployments/{deployment} | Get a deployment by name
+[**getStatus**](DeploymentsApi.md#getStatus) | **GET** /api/d6.2/environments/{environment}/deployments/{deployment}/status | Get a deployment status by name
+[**getTemplateRedacted**](DeploymentsApi.md#getTemplateRedacted) | **GET** /api/d6.2/environments/{environment}/deployments/{deployment}/template | Get a deployment template by name
+[**list**](DeploymentsApi.md#list) | **GET** /api/d6.2/environments/{environment}/deployments | List all deployments
+[**update**](DeploymentsApi.md#update) | **PUT** /api/d6.2/environments/{environment}/deployments/{deployment} | Update an existing deployment template
+[**updateMeteringSetting**](DeploymentsApi.md#updateMeteringSetting) | **PUT** /api/d6.2/environments/{environment}/deployments/{deployment}/metering | Update billing ID for an existing deployment
 
 
 <a name="collectDiagnosticData"></a>

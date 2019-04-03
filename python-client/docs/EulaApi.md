@@ -4,8 +4,8 @@ All URIs are relative to *https://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**get**](EulaApi.md#get) | **GET** /api/d6.1/eula | Get the EULA
-[**update**](EulaApi.md#update) | **PUT** /api/d6.1/eula | Update the EULA
+[**get**](EulaApi.md#get) | **GET** /api/d6.2/eula | Get the EULA
+[**update**](EulaApi.md#update) | **PUT** /api/d6.2/eula | Update the EULA
 
 
 # **get**

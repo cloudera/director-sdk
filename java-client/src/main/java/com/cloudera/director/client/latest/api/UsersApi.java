@@ -72,7 +72,7 @@ public class UsersApi {
         Object localVarPostBody = user;
 
         // create path and map variables
-        String localVarPath = "/api/d6.1/users";
+        String localVarPath = "/api/d6.2/users";
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -189,7 +189,7 @@ public class UsersApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/api/d6.1/users/current";
+        String localVarPath = "/api/d6.2/users/current";
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -303,7 +303,7 @@ public class UsersApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/api/d6.1/users/{username}"
+        String localVarPath = "/api/d6.2/users/{username}"
             .replaceAll("\\{" + "username" + "\\}", apiClient.escapeString(username.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
@@ -422,7 +422,7 @@ public class UsersApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/api/d6.1/users/{username}"
+        String localVarPath = "/api/d6.2/users/{username}"
             .replaceAll("\\{" + "username" + "\\}", apiClient.escapeString(username.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
@@ -544,7 +544,7 @@ public class UsersApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/api/d6.1/users/managementStatus";
+        String localVarPath = "/api/d6.2/users/managementStatus";
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -657,7 +657,7 @@ public class UsersApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/api/d6.1/users";
+        String localVarPath = "/api/d6.2/users";
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -772,7 +772,7 @@ public class UsersApi {
         Object localVarPostBody = user;
 
         // create path and map variables
-        String localVarPath = "/api/d6.1/users/{username}"
+        String localVarPath = "/api/d6.2/users/{username}"
             .replaceAll("\\{" + "username" + "\\}", apiClient.escapeString(username.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
@@ -900,7 +900,7 @@ public class UsersApi {
         Object localVarPostBody = passwords;
 
         // create path and map variables
-        String localVarPath = "/api/d6.1/users/{username}/password"
+        String localVarPath = "/api/d6.2/users/{username}/password"
             .replaceAll("\\{" + "username" + "\\}", apiClient.escapeString(username.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();

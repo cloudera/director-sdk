@@ -121,7 +121,7 @@ class ProviderMetadataApi(object):
         auth_settings = ['basic']  # noqa: E501
 
         return self.api_client.call_api(
-            '/api/d6.1/metadata/providers/{providerId}', 'GET',
+            '/api/d6.2/metadata/providers/{providerId}', 'GET',
             path_params,
             query_params,
             header_params,
@@ -209,7 +209,7 @@ class ProviderMetadataApi(object):
         auth_settings = ['basic']  # noqa: E501
 
         return self.api_client.call_api(
-            '/api/d6.1/metadata/providers', 'GET',
+            '/api/d6.2/metadata/providers', 'GET',
             path_params,
             query_params,
             header_params,

@@ -4,9 +4,9 @@ All URIs are relative to *https://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**get**](ServerConfigApi.md#get) | **GET** /api/d6.1/serverConfigs | Get server configuration
-[**metadata**](ServerConfigApi.md#metadata) | **GET** /api/d6.1/serverConfigs/metadata | Retrieves the metadata for server configuration
-[**update_configs**](ServerConfigApi.md#update_configs) | **POST** /api/d6.1/serverConfigs | Get server configuration
+[**get**](ServerConfigApi.md#get) | **GET** /api/d6.2/serverConfigs | Get server configuration
+[**metadata**](ServerConfigApi.md#metadata) | **GET** /api/d6.2/serverConfigs/metadata | Retrieves the metadata for server configuration
+[**update_configs**](ServerConfigApi.md#update_configs) | **POST** /api/d6.2/serverConfigs | Get server configuration
 
 
 # **get**

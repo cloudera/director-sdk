@@ -129,7 +129,7 @@ class DeploymentsApi(object):
         auth_settings = ['basic']  # noqa: E501
 
         return self.api_client.call_api(
-            '/api/d6.1/environments/{environment}/deployments/{deployment}/diagnosticData', 'POST',
+            '/api/d6.2/environments/{environment}/deployments/{deployment}/diagnosticData', 'POST',
             path_params,
             query_params,
             header_params,
@@ -233,7 +233,7 @@ class DeploymentsApi(object):
         auth_settings = ['basic']  # noqa: E501
 
         return self.api_client.call_api(
-            '/api/d6.1/environments/{environment}/deployments', 'POST',
+            '/api/d6.2/environments/{environment}/deployments', 'POST',
             path_params,
             query_params,
             header_params,
@@ -337,7 +337,7 @@ class DeploymentsApi(object):
         auth_settings = ['basic']  # noqa: E501
 
         return self.api_client.call_api(
-            '/api/d6.1/environments/{environment}/deployments/{deployment}', 'DELETE',
+            '/api/d6.2/environments/{environment}/deployments/{deployment}', 'DELETE',
             path_params,
             query_params,
             header_params,
@@ -441,7 +441,7 @@ class DeploymentsApi(object):
         auth_settings = ['basic']  # noqa: E501
 
         return self.api_client.call_api(
-            '/api/d6.1/environments/{environment}/deployments/{deployment}', 'GET',
+            '/api/d6.2/environments/{environment}/deployments/{deployment}', 'GET',
             path_params,
             query_params,
             header_params,
@@ -545,7 +545,7 @@ class DeploymentsApi(object):
         auth_settings = ['basic']  # noqa: E501
 
         return self.api_client.call_api(
-            '/api/d6.1/environments/{environment}/deployments/{deployment}/status', 'GET',
+            '/api/d6.2/environments/{environment}/deployments/{deployment}/status', 'GET',
             path_params,
             query_params,
             header_params,
@@ -649,7 +649,7 @@ class DeploymentsApi(object):
         auth_settings = ['basic']  # noqa: E501
 
         return self.api_client.call_api(
-            '/api/d6.1/environments/{environment}/deployments/{deployment}/template', 'GET',
+            '/api/d6.2/environments/{environment}/deployments/{deployment}/template', 'GET',
             path_params,
             query_params,
             header_params,
@@ -745,7 +745,7 @@ class DeploymentsApi(object):
         auth_settings = ['basic']  # noqa: E501
 
         return self.api_client.call_api(
-            '/api/d6.1/environments/{environment}/deployments', 'GET',
+            '/api/d6.2/environments/{environment}/deployments', 'GET',
             path_params,
             query_params,
             header_params,
@@ -857,7 +857,7 @@ class DeploymentsApi(object):
         auth_settings = ['basic']  # noqa: E501
 
         return self.api_client.call_api(
-            '/api/d6.1/environments/{environment}/deployments/{deployment}', 'PUT',
+            '/api/d6.2/environments/{environment}/deployments/{deployment}', 'PUT',
             path_params,
             query_params,
             header_params,
@@ -969,7 +969,7 @@ class DeploymentsApi(object):
         auth_settings = ['basic']  # noqa: E501
 
         return self.api_client.call_api(
-            '/api/d6.1/environments/{environment}/deployments/{deployment}/metering', 'PUT',
+            '/api/d6.2/environments/{environment}/deployments/{deployment}/metering', 'PUT',
             path_params,
             query_params,
             header_params,

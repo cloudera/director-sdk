@@ -121,7 +121,7 @@ class UsersApi(object):
         auth_settings = ['basic']  # noqa: E501
 
         return self.api_client.call_api(
-            '/api/d6.1/users', 'POST',
+            '/api/d6.2/users', 'POST',
             path_params,
             query_params,
             header_params,
@@ -209,7 +209,7 @@ class UsersApi(object):
         auth_settings = ['basic']  # noqa: E501
 
         return self.api_client.call_api(
-            '/api/d6.1/users/current', 'GET',
+            '/api/d6.2/users/current', 'GET',
             path_params,
             query_params,
             header_params,
@@ -307,7 +307,7 @@ class UsersApi(object):
         auth_settings = ['basic']  # noqa: E501
 
         return self.api_client.call_api(
-            '/api/d6.1/users/{username}', 'DELETE',
+            '/api/d6.2/users/{username}', 'DELETE',
             path_params,
             query_params,
             header_params,
@@ -405,7 +405,7 @@ class UsersApi(object):
         auth_settings = ['basic']  # noqa: E501
 
         return self.api_client.call_api(
-            '/api/d6.1/users/{username}', 'GET',
+            '/api/d6.2/users/{username}', 'GET',
             path_params,
             query_params,
             header_params,
@@ -493,7 +493,7 @@ class UsersApi(object):
         auth_settings = ['basic']  # noqa: E501
 
         return self.api_client.call_api(
-            '/api/d6.1/users/managementStatus', 'GET',
+            '/api/d6.2/users/managementStatus', 'GET',
             path_params,
             query_params,
             header_params,
@@ -581,7 +581,7 @@ class UsersApi(object):
         auth_settings = ['basic']  # noqa: E501
 
         return self.api_client.call_api(
-            '/api/d6.1/users', 'GET',
+            '/api/d6.2/users', 'GET',
             path_params,
             query_params,
             header_params,
@@ -687,7 +687,7 @@ class UsersApi(object):
         auth_settings = ['basic']  # noqa: E501
 
         return self.api_client.call_api(
-            '/api/d6.1/users/{username}', 'PUT',
+            '/api/d6.2/users/{username}', 'PUT',
             path_params,
             query_params,
             header_params,
@@ -791,7 +791,7 @@ class UsersApi(object):
         auth_settings = ['basic']  # noqa: E501
 
         return self.api_client.call_api(
-            '/api/d6.1/users/{username}/password', 'PUT',
+            '/api/d6.2/users/{username}/password', 'PUT',
             path_params,
             query_params,
             header_params,

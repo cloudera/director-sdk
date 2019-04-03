@@ -69,7 +69,7 @@ public class EulaApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/api/d6.1/eula";
+        String localVarPath = "/api/d6.2/eula";
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -183,7 +183,7 @@ public class EulaApi {
         Object localVarPostBody = eula;
 
         // create path and map variables
-        String localVarPath = "/api/d6.1/eula";
+        String localVarPath = "/api/d6.2/eula";
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();

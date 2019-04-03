@@ -74,7 +74,7 @@ public class DatabaseServersApi {
         Object localVarPostBody = externalDatabaseServerTemplate;
 
         // create path and map variables
-        String localVarPath = "/api/d6.1/environments/{environment}/databaseServers"
+        String localVarPath = "/api/d6.2/environments/{environment}/databaseServers"
             .replaceAll("\\{" + "environment" + "\\}", apiClient.escapeString(environment.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
@@ -202,7 +202,7 @@ public class DatabaseServersApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/api/d6.1/environments/{environment}/databaseServers/{externalDatabaseServer}"
+        String localVarPath = "/api/d6.2/environments/{environment}/databaseServers/{externalDatabaseServer}"
             .replaceAll("\\{" + "environment" + "\\}", apiClient.escapeString(environment.toString()))
             .replaceAll("\\{" + "externalDatabaseServer" + "\\}", apiClient.escapeString(externalDatabaseServer.toString()));
 
@@ -331,7 +331,7 @@ public class DatabaseServersApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/api/d6.1/environments/{environment}/databaseServers/{externalDatabaseServer}/usage"
+        String localVarPath = "/api/d6.2/environments/{environment}/databaseServers/{externalDatabaseServer}/usage"
             .replaceAll("\\{" + "environment" + "\\}", apiClient.escapeString(environment.toString()))
             .replaceAll("\\{" + "externalDatabaseServer" + "\\}", apiClient.escapeString(externalDatabaseServer.toString()));
 
@@ -464,7 +464,7 @@ public class DatabaseServersApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/api/d6.1/environments/{environment}/databaseServers/{externalDatabaseServer}"
+        String localVarPath = "/api/d6.2/environments/{environment}/databaseServers/{externalDatabaseServer}"
             .replaceAll("\\{" + "environment" + "\\}", apiClient.escapeString(environment.toString()))
             .replaceAll("\\{" + "externalDatabaseServer" + "\\}", apiClient.escapeString(externalDatabaseServer.toString()));
 
@@ -597,7 +597,7 @@ public class DatabaseServersApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/api/d6.1/environments/{environment}/databaseServers/{externalDatabaseServer}/status"
+        String localVarPath = "/api/d6.2/environments/{environment}/databaseServers/{externalDatabaseServer}/status"
             .replaceAll("\\{" + "environment" + "\\}", apiClient.escapeString(environment.toString()))
             .replaceAll("\\{" + "externalDatabaseServer" + "\\}", apiClient.escapeString(externalDatabaseServer.toString()));
 
@@ -730,7 +730,7 @@ public class DatabaseServersApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/api/d6.1/environments/{environment}/databaseServers/{externalDatabaseServer}/template"
+        String localVarPath = "/api/d6.2/environments/{environment}/databaseServers/{externalDatabaseServer}/template"
             .replaceAll("\\{" + "environment" + "\\}", apiClient.escapeString(environment.toString()))
             .replaceAll("\\{" + "externalDatabaseServer" + "\\}", apiClient.escapeString(externalDatabaseServer.toString()));
 
@@ -862,7 +862,7 @@ public class DatabaseServersApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/api/d6.1/environments/{environment}/databaseServers"
+        String localVarPath = "/api/d6.2/environments/{environment}/databaseServers"
             .replaceAll("\\{" + "environment" + "\\}", apiClient.escapeString(environment.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
@@ -987,7 +987,7 @@ public class DatabaseServersApi {
         Object localVarPostBody = updatedTemplate;
 
         // create path and map variables
-        String localVarPath = "/api/d6.1/environments/{environment}/databaseServers/{externalDatabaseServer}"
+        String localVarPath = "/api/d6.2/environments/{environment}/databaseServers/{externalDatabaseServer}"
             .replaceAll("\\{" + "environment" + "\\}", apiClient.escapeString(environment.toString()))
             .replaceAll("\\{" + "externalDatabaseServer" + "\\}", apiClient.escapeString(externalDatabaseServer.toString()));
 
