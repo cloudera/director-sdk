@@ -22,7 +22,7 @@ limitations under the License.
 from setuptools import setup, find_packages  # noqa: H301
 
 NAME = "cloudera-director-python-client"
-VERSION = "6.2.0"
+VERSION = "6.3.0"
 # To install the library, run the following
 #
 # python setup.py install

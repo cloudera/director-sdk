@@ -22,21 +22,35 @@
 
     <groupId>com.cloudera.director</groupId>
     <artifactId>director-samples</artifactId>
-    <version>6.2.0</version>
+    <version>6.3.0</version>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
-        <director-client.version>6.2.0</director-client.version>
+        <java.version>1.8</java.version>
+
+        <director-client.version>6.3.0</director-client.version>
         <ini4j.version>0.5.4</ini4j.version>
         <jcommander.version>1.47</jcommander.version>
         <junit.version>4.12</junit.version>
-        <maven-checkstyle-plugin.version>2.13</maven-checkstyle-plugin.version>
-        <findbugs-maven-plugin.version>3.0.3</findbugs-maven-plugin.version>
+        <maven-compiler-plugin.version>3.7.0</maven-compiler-plugin.version>
+        <maven-checkstyle-plugin.version>3.0.0</maven-checkstyle-plugin.version>
+        <spotbugs-maven-plugin.version>3.1.10</spotbugs-maven-plugin.version>
     </properties>
 
     <build>
         <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>${maven-compiler-plugin.version}</version>
+                <configuration>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                    <encoding>UTF-8</encoding>
+                </configuration>
+            </plugin>
+
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-install-plugin</artifactId>
@@ -56,9 +70,16 @@
             </plugin>
 
             <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>findbugs-maven-plugin</artifactId>
-                <version>${findbugs-maven-plugin.version}</version>
+                <groupId>com.github.spotbugs</groupId>
+                <artifactId>spotbugs-maven-plugin</artifactId>
+                <version>${spotbugs-maven-plugin.version}</version>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.slf4j</groupId>
+                        <artifactId>slf4j-api</artifactId>
+                        <version>1.8.0-beta2</version>
+                    </dependency>
+                </dependencies>
                 <configuration>
                     <failOnError>false</failOnError>
                 </configuration>
@@ -67,7 +88,7 @@
             <plugin>
                 <groupId>org.owasp</groupId>
                 <artifactId>dependency-check-maven</artifactId>
-                <version>1.4.3</version>
+                <version>3.2.1</version>
             </plugin>
         </plugins>
     </build>
