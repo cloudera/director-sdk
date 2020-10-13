@@ -32,7 +32,7 @@
         <director-client.version>6.3.0</director-client.version>
         <ini4j.version>0.5.4</ini4j.version>
         <jcommander.version>1.47</jcommander.version>
-        <junit.version>4.12</junit.version>
+        <junit.version>4.13.1</junit.version>
         <maven-compiler-plugin.version>3.7.0</maven-compiler-plugin.version>
         <maven-checkstyle-plugin.version>3.0.0</maven-checkstyle-plugin.version>
         <spotbugs-maven-plugin.version>3.1.10</spotbugs-maven-plugin.version>
